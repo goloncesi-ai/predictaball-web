@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Simulate Turkish Super League matches, predict scores, and analyze team stats with Gol Oncesi. Powered by advanced algorithms for football prediction.">
+    <meta name="keywords"
+        content="Turkish Super League, Football Prediction, Match Simulation, Soccer Stats, Gol Oncesi">
+    <meta name="author" content="Gol Oncesi Team">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://goloncesi.app/">
+    <meta property="og:title" content="Gol Oncesi - Advanced Football Match Simulation">
+    <meta property="og:description"
+        content="Predict match outcomes and analyze team performance in the Turkish Super League.">
+    <meta property="og:image" content="https://goloncesi.app/preview.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://goloncesi.app/">
+    <meta property="twitter:title" content="Gol Oncesi - Advanced Football Match Simulation">
+    <meta property="twitter:description"
+        content="Predict match outcomes and analyze team performance in the Turkish Super League.">
+    <meta property="twitter:image" content="https://goloncesi.app/preview.jpg">
+
+    <title>Gol Oncesi | Match Simulation & Stats</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Chart.js for Player Stats -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="app-background"></div>
+    <div class="overlay"></div>
+
+    <div class="main-wrapper">
+        <header class="main-header">
+            <div class="logo-area">
+                <h1>Gol Öncesi</h1>
+                <span class="badge">BETA</span>
+            </div>
+            <p class="subtitle">Next-Gen Football Analytics & Simulation</p>
+
+            <nav class="main-nav">
+                <button class="nav-btn active" data-tab="tab-comparison">
+                    <span class="icon">📊</span> Analysis
+                </button>
+                <button class="nav-btn" data-tab="tab-simulation">
+                    <span class="icon">🎮</span> Simulation
+                </button>
+                <button class="nav-btn" data-tab="tab-players">
+                    <span class="icon">👤</span> Scout
+                </button>
+            </nav>
+        </header>
+
+        <main class="content-container">
+            <!-- Tab 1: Comparison -->
+            <section id="tab-comparison" class="view-section active">
+                <div class="section-header">
+                    <h2>Pre-Match Analysis</h2>
+                    <p>Compare team statistics head-to-head before the whistle blows.</p>
+                </div>
+
+                <div class="comparison-interface">
+                    <!-- Home Team -->
+                    <div class="team-card home">
+                        <div class="card-glass"></div>
+                        <div class="card-content">
+                            <label for="team1-select">Home Team</label>
+                            <div class="select-wrapper">
+                                <select id="team1-select" class="team-select">
+                                    <option value="" disabled selected>Select Team</option>
+                                </select>
+                            </div>
+                            <div id="team1-display" class="team-info-display">
+                                <!-- Dynamic Team Name -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VS Divider -->
+                    <div class="vs-badge">
+                        <span>VS</span>
+                    </div>
+
+                    <!-- Away Team -->
+                    <div class="team-card away">
+                        <div class="card-glass"></div>
+                        <div class="card-content">
+                            <label for="team2-select">Away Team</label>
+                            <div class="select-wrapper">
+                                <select id="team2-select" class="team-select">
+                                    <option value="" disabled selected>Select Team</option>
+                                </select>
+                            </div>
+                            <div id="team2-display" class="team-info-display">
+                                <!-- Dynamic Team Name -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="stats-container" class="stats-grid hidden">
+                    <!-- Stats bars injected via JS -->
+                </div>
+            </section>
+
+            <!-- Tab 2: Simulation -->
+            <section id="tab-simulation" class="view-section hidden">
+                <div class="section-header">
+                    <h2>AI Match Engine</h2>
+                    <p>Run 1000+ Monte Carlo simulations to predict the outcome.</p>
+                </div>
+
+                <div class="simulation-layout">
+                    <div class="sim-config">
+                        <div class="config-card">
+                            <h3>Match Setup</h3>
+                            <div class="form-group">
+                                <label>Home Team</label>
+                                <select id="sim-team1" class="modern-select">
+                                    <option value="" disabled selected>Select...</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Away Team</label>
+                                <select id="sim-team2" class="modern-select">
+                                    <option value="" disabled selected>Select...</option>
+                                </select>
+                            </div>
+                            <button id="btn-run-sim" class="btn-action pulse-on-hover">
+                                <span class="btn-text">Run Prediction</span>
+                                <div class="btn-glow"></div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="sim-results" class="sim-output hidden">
+                        <!-- Results injected via JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tab 3: Players -->
+            <section id="tab-players" class="view-section hidden">
+                <div class="section-header">
+                    <h2>Player Scout</h2>
+                    <p>Deep dive into individual player ratings and performance history.</p>
+                </div>
+
+                <div class="scout-interface">
+                    <div class="search-wrapper">
+                        <input type="text" id="player-search" class="search-input"
+                            placeholder="Search for a player (e.g. Icardi)..." autocomplete="off" />
+                        <div class="search-icon">🔍</div>
+                        <ul id="search-results" class="dropdown-results hidden"></ul>
+                    </div>
+
+                    <div id="player-profile" class="player-profile-card hidden">
+                        <div class="profile-header-sm">
+                            <h3 id="p-name">Player Name</h3>
+                            <span id="p-team" class="team-chip">Team Name</span>
+                        </div>
+
+                        <div class="profile-stats">
+                            <div class="p-stat-box">
+                                <span class="lbl">Matches</span>
+                                <span class="val" id="p-matches">0</span>
+                            </div>
+                            <div class="p-stat-box highlight">
+                                <span class="lbl">Avg Rating</span>
+                                <span class="val" id="p-rating">0.0</span>
+                            </div>
+                        </div>
+
+                        <div class="chart-area">
+                            <canvas id="ratingChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="main-footer">
+            <p>&copy; 2025 Gol Oncesi Analytics. Data based on Turkish Super League 2024/25.</p>
+        </footer>
+    </div>
+
+    <!-- Data & App Logic -->
+    <script src="data.js?v=4"></script>
+    <script src="app.js?v=4"></script>
+</body>
+
+</html>

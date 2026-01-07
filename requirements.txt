@@ -1,0 +1,9 @@
+Flask==3.0.0
+flask-cors==4.0.0
+numpy
+pandas
+scikit-learn
+hmmlearn
+pillow
+gunicorn
+openpyxl
