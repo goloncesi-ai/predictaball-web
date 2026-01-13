@@ -136,6 +136,29 @@ def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_typ
         traceback.print_exc()
         raise e
 
+def resolve_team_name(base_dir, input_name):
+    """
+    Attempts to find the matching folder name for 'input_name' in 'base_dir',
+    handling Unicode Normalization differences (NFC vs NFD).
+    Returns the actual folder name on disk if found, else returns input_name.
+    """
+    import unicodedata
+    
+    target_norm = unicodedata.normalize('NFC', input_name).lower()
+    
+    if not os.path.exists(base_dir):
+        return input_name
+        
+    for item in os.listdir(base_dir):
+        if not os.path.isdir(os.path.join(base_dir, item)):
+            continue
+            
+        item_norm = unicodedata.normalize('NFC', item).lower()
+        if item_norm == target_norm:
+            return item
+            
+    return input_name
+
 def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_type=None):
     """
     Runs the combined simulation for team1 vs team2.
@@ -143,6 +166,18 @@ def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_typ
     Returns a dictionary with results and image URLs.
     """
     print(f"Starting Combined Simulation (patched): {team1} vs {team2}")
+    
+    # Resolve team names to match disk (fixes NFC/NFD issues on Linux)
+    real_team1 = resolve_team_name(base_data_dir, team1)
+    real_team2 = resolve_team_name(base_data_dir, team2)
+    
+    if real_team1 != team1:
+        print(f"Resolved Team1 '{team1}' -> '{real_team1}'")
+        team1 = real_team1
+        
+    if real_team2 != team2:
+        print(f"Resolved Team2 '{team2}' -> '{real_team2}'")
+        team2 = real_team2
     
     # Override paths in the module
     gol_oncesi_combined.OUTPUT_FOLDER = Path(assets_path)

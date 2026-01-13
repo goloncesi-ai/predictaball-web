@@ -117,7 +117,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (!response.ok) {
-                    throw new Error("Simulation failed. Check backend console.");
+                    const errData = await response.json();
+                    throw new Error(errData.error || "Simulation failed. Check backend console.");
                 }
 
                 const data = await response.json();
