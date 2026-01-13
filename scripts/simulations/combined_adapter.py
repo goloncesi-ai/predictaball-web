@@ -142,7 +142,7 @@ def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_typ
     gol_oncesi_combined.MAIN_FOLDER = Path(base_data_dir)
 
     # 1. Performance Patch: Reduce simulation count for server environment
-    gol_oncesi_combined.SIMS_PER_COMBO = 10 # Drastically reduced to prevent Gunicorn timeout (30s) or OOM
+    gol_oncesi_combined.SIMS_PER_COMBO = 50 # Increased to 50 (with 120s timeout) for better consistency
 
     # 2. Font Patch: Ensure fonts don't crash on Linux
     from PIL import ImageFont
@@ -208,10 +208,10 @@ def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_typ
             "predicted_score": combined['headline_score'],
             "exp_home_goals": round(exp_home, 2),
             "exp_away_goals": round(exp_away, 2),
-            "prob_image_url": f"/static/assets/{prob_image_name}",
-            "score_image_url": f"/static/assets/{score_image_name}",
-            "image_url": f"/static/assets/{prob_image_name}", 
-            "secondary_image_url": f"/static/assets/{score_image_name}"
+            "prob_image_url": f"/outputs/{prob_image_name}",
+            "score_image_url": f"/outputs/{score_image_name}",
+            "image_url": f"/outputs/{prob_image_name}", 
+            "secondary_image_url": f"/outputs/{score_image_name}"
         }
         
         return result
