@@ -117,8 +117,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (!response.ok) {
-                    const errData = await response.json();
-                    throw new Error(errData.error || "Simulation failed. Check backend console.");
+                    const errorText = await response.text();
+                    try {
+                        const errData = JSON.parse(errorText);
+                        throw new Error(errData.error || "Simulation failed. Check backend console.");
+                    } catch (e) {
+                        // If JSON parse fails, it's likely an HTML error page (500/502/504)
+                        throw new Error(`Server Error (${response.status}): ${errorText.substring(0, 100)}...`);
+                    }
                 }
 
                 const data = await response.json();

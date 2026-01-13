@@ -1,6 +1,7 @@
 import sys
 import os
 import json
+import math
 from pathlib import Path
 
 # Dynamic Path Calculation
@@ -109,15 +110,28 @@ def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_typ
         score_image_name = f"TahminiSkor_{team1}_{team2}.png"
         
         # 5. Structure Output
+
+        # Helper to clean NaNs
+        def clean_val(x):
+            if isinstance(x, float) and (math.isnan(x) or math.isinf(x)):
+                return 0.0
+            return x
+
+        win_val = clean_val(gol_oncesi_combined.percent(combined['home_win']))
+        draw_val = clean_val(gol_oncesi_combined.percent(combined['draw']))
+        lose_val = clean_val(gol_oncesi_combined.percent(combined['home_loss']))
+        exp_home = clean_val(combined['exp_home_goals'])
+        exp_away = clean_val(combined['exp_away_goals'])
+
         result = {
             "team1": team1,
             "team2": team2,
-            "win_prob": gol_oncesi_combined.percent(combined['home_win']),
-            "draw_prob": gol_oncesi_combined.percent(combined['draw']),
-            "lose_prob": gol_oncesi_combined.percent(combined['home_loss']),
+            "win_prob": win_val,
+            "draw_prob": draw_val,
+            "lose_prob": lose_val,
             "predicted_score": combined['headline_score'],
-            "exp_home_goals": round(combined['exp_home_goals'], 2),
-            "exp_away_goals": round(combined['exp_away_goals'], 2),
+            "exp_home_goals": round(exp_home, 2),
+            "exp_away_goals": round(exp_away, 2),
             "prob_image_url": f"/static/assets/{prob_image_name}",
             "score_image_url": f"/static/assets/{score_image_name}",
             # Pass both images to frontend? For now server usually returns `image_url`. 
