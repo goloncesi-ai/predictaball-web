@@ -13,13 +13,46 @@ sys.path.append(ALGO_DIR)
 
 # Import the combined script
 try:
-    import gol_oncesi_combined
+    from unittest.mock import patch
+    # Patch Path.mkdir during import to avoid "Permission denied" or "FileNotFound" 
+    # on hardcoded paths in the script (e.g. //Users/kagancalikoglu/...)
+    with patch('pathlib.Path.mkdir'):
+        import gol_oncesi_combined_v3 as gol_oncesi_combined
+
+    # Monkeypatch engineer_dataset to impute NaNs (fixes crash in RandomForest)
+    original_engineer = gol_oncesi_combined.engineer_dataset
+    def patched_engineer_dataset(df):
+        out = original_engineer(df)
+        return out.fillna(0) # Impute NaNs with 0 to prevent crashes
+    gol_oncesi_combined.engineer_dataset = patched_engineer_dataset
+
+    # Import and patch image generation modules to fix hardcoded paths
+    import KimKazanır
+    import tahmini_skor
+    
+
+
 except ImportError as e:
-    print(f"Error importing gol_oncesi_combined: {e}")
+    print(f"Error importing gol_oncesi_combined_v3: {e}")
     # Attempt fallback if running from root
     try:
         sys.path.append(os.path.abspath("Data/Algorithm/PredictaBall"))
-        import gol_oncesi_combined
+        from unittest.mock import patch
+        with patch('pathlib.Path.mkdir'):
+            import gol_oncesi_combined_v3 as gol_oncesi_combined
+            
+            # Monkeypatch logic for fallback
+            original_engineer = gol_oncesi_combined.engineer_dataset
+            def patched_engineer_dataset(df):
+                out = original_engineer(df)
+                return out.fillna(0)
+            gol_oncesi_combined.engineer_dataset = patched_engineer_dataset
+            
+            import KimKazanır
+            import tahmini_skor
+            
+
+
     except ImportError:
         raise
 
@@ -35,6 +68,16 @@ def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_typ
     gol_oncesi_combined.OUTPUT_FOLDER = Path(assets_path)
     gol_oncesi_combined.LOGO_FOLDER = Path(ALGO_DIR) / "Logos"
     gol_oncesi_combined.MAIN_FOLDER = Path(base_data_dir)
+
+    # Override paths for KimKazanır
+    KimKazanır.LOGO_FOLDER = Path(ALGO_DIR) / "Logos"
+    KimKazanır.OUTPUT_FOLDER = Path(assets_path)
+    KimKazanır.TEMPLATE_PATH = KimKazanır.LOGO_FOLDER / "kim_kazanır.png"
+    
+    # Override paths for tahmini_skor
+    tahmini_skor.LOGO_FOLDER = Path(ALGO_DIR) / "Logos"
+    tahmini_skor.OUTPUT_FOLDER = Path(assets_path)
+    tahmini_skor.TEMPLATE_PATH = tahmini_skor.LOGO_FOLDER / "tahmini_skor.png"
     
     try:
         # 1. Run Markov Models
