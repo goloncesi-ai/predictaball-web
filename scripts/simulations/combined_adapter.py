@@ -137,7 +137,7 @@ def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_typ
         team2 = real_team2
     
     # Override paths in the module
-    gol_oncesi_combined.OUTPUT_FOLDER = Path(assets_path)
+    gol_oncesi_combined.OUTPUT_FOLDER = Path(output_dir)
     gol_oncesi_combined.LOGO_FOLDER = Path(ALGO_DIR) / "Logos"
     gol_oncesi_combined.MAIN_FOLDER = Path(base_data_dir)
 
@@ -158,12 +158,12 @@ def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_typ
 
     # Override paths for KimKazanır (Use new ASCII name)
     KimKazanır.LOGO_FOLDER = Path(ALGO_DIR) / "Logos"
-    KimKazanır.OUTPUT_FOLDER = Path(assets_path)
+    KimKazanır.OUTPUT_FOLDER = Path(output_dir)
     KimKazanır.TEMPLATE_PATH = KimKazanır.LOGO_FOLDER / "kim_kazanir.png" 
     
     # Override paths for tahmini_skor
     tahmini_skor.LOGO_FOLDER = Path(ALGO_DIR) / "Logos"
-    tahmini_skor.OUTPUT_FOLDER = Path(assets_path)
+    tahmini_skor.OUTPUT_FOLDER = Path(output_dir)
     tahmini_skor.TEMPLATE_PATH = tahmini_skor.LOGO_FOLDER / "tahmini_skor.png"
     
     try:
