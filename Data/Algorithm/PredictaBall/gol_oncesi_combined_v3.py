@@ -1185,6 +1185,51 @@ def build_conclusion_text(
     return conclusion_text
 
 
+
+def find_logo_path(team_name: str, folder: Path) -> Path:
+    import unicodedata
+    
+    # Standardize input
+    target_nfc = unicodedata.normalize('NFC', team_name)
+    target_nfd = unicodedata.normalize('NFD', team_name)
+    
+    # 1. Try exact construction (files might be NFC or NFD on disk)
+    candidates = [
+        folder / f"{team_name}.png",
+        folder / f"{target_nfc}.png",
+        folder / f"{target_nfd}.png"
+    ]
+    
+    for cand in candidates:
+        if cand.exists():
+            return cand
+            
+    # 2. If simple path check fails, iterate directory (slower but robust)
+    # This handles cases where OS normalization hides the file
+    if folder.exists():
+        for file_path in folder.glob("*.png"):
+            fname = file_path.stem # filename without extension
+            fname_nfc = unicodedata.normalize('NFC', fname)
+            
+            if fname_nfc == target_nfc:
+                return file_path
+                
+        # 3. Last Desperate Resort: ASCII Match (e.g. Besiktas.png matches Beşiktaş)
+        # Only do this if strict match fails to avoid false positives
+        def to_ascii(s):
+            return "".join(c for c in unicodedata.normalize('NFD', s) if unicodedata.category(c) != 'Mn')
+            
+        target_ascii = to_ascii(target_nfc).lower()
+        
+        for file_path in folder.glob("*.png"):
+            fname_ascii = to_ascii(file_path.stem).lower()
+            if fname_ascii == target_ascii:
+                print(f"Warning: fuzzy logo match for {team_name} -> {file_path.name}")
+                return file_path
+
+    print(f"Warning: Logo not found for {team_name} in {folder}")
+    return folder / f"{team_name}.png" # Return default to let caller handle error
+
 def generate_images(home_team: str, away_team: str, combined: dict):
     home_prob = percent_int(combined["home_win"])
     draw_prob = percent_int(combined["draw"])
@@ -1205,8 +1250,8 @@ def generate_images(home_team: str, away_team: str, combined: dict):
         headline_score=headline_score,
     )
 
-    home_logo = LOGO_FOLDER / f"{home_team}.png"
-    away_logo = LOGO_FOLDER / f"{away_team}.png"
+    home_logo = find_logo_path(home_team, LOGO_FOLDER)
+    away_logo = find_logo_path(away_team, LOGO_FOLDER)
 
     create_probability_image(
         home_team=home_team,
