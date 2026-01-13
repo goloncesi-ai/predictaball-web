@@ -198,6 +198,9 @@ def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_typ
         lose_val = clean_val(gol_oncesi_combined.percent(combined['home_loss']))
         exp_home = clean_val(combined['exp_home_goals'])
         exp_away = clean_val(combined['exp_away_goals'])
+        
+        import time
+        ts = int(time.time())
 
         result = {
             "team1": team1,
@@ -208,10 +211,10 @@ def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_typ
             "predicted_score": combined['headline_score'],
             "exp_home_goals": round(exp_home, 2),
             "exp_away_goals": round(exp_away, 2),
-            "prob_image_url": f"/outputs/{prob_image_name}",
-            "score_image_url": f"/outputs/{score_image_name}",
-            "image_url": f"/outputs/{prob_image_name}", 
-            "secondary_image_url": f"/outputs/{score_image_name}"
+            "prob_image_url": f"/outputs/{prob_image_name}?v={ts}",
+            "score_image_url": f"/outputs/{score_image_name}?v={ts}",
+            "image_url": f"/outputs/{prob_image_name}?v={ts}", 
+            "secondary_image_url": f"/outputs/{score_image_name}?v={ts}"
         }
         
         return result
