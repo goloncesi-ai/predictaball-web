@@ -1,16 +1,41 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Nov 26 14:56:14 2025
-
-@author: kagancalikoglu
-"""
-
+from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
+
+LOGO_FOLDER = Path(__file__).parent / "Logos"
+OUTPUT_FOLDER = Path("Outputs")
+OUTPUT_FOLDER.mkdir(parents=True, exist_ok=True)
+
+TEMPLATE_PATH = LOGO_FOLDER / "tahmini_skor.png"
 
 def get_text_size(draw, text, font):
     left, top, right, bottom = draw.textbbox((0, 0), text, font=font)
     return right - left, bottom - top
+
+def draw_centered_text(draw, text, box, font, fill="white"):
+    x1, y1, x2, y2 = box
+    tw, th = get_text_size(draw, text, font)
+    x = x1 + (x2 - x1 - tw) / 2
+    y = y1 + (y2 - y1 - th) / 2
+    draw.text((x, y), text, font=font, fill=fill)
+
+def paste_logo_in_box(base_img, logo_path, box, max_scale=0.9):
+    x1, y1, x2, y2 = box
+    box_w, box_h = x2 - x1, y2 - y1
+
+    logo = Image.open(logo_path).convert("RGBA")
+    lw, lh = logo.size
+
+    max_w = int(box_w * max_scale)
+    max_h = int(box_h * max_scale)
+    scale = min(max_w / lw, max_h / lh)
+    new_size = (int(lw * scale), int(lh * scale))
+    logo = logo.resize(new_size, Image.LANCZOS)
+
+    lw, lh = logo.size
+    paste_x = int(x1 + (box_w - lw) / 2)
+    paste_y = int(y1 + (box_h - lh) / 2)
+
+    base_img.paste(logo, (paste_x, paste_y), logo)
 
 def create_match_image(
     first_team_name,
@@ -18,97 +43,45 @@ def create_match_image(
     first_logo_path,
     second_logo_path,
     score_text,
-    below_text,
-    output_path=None
+    below_text=None,   # kept for compatibility, not used
 ):
+    base = Image.open(TEMPLATE_PATH).convert("RGBA")
+    width, height = base.size
+    draw = ImageDraw.Draw(base)
 
-    width, height = 1080, 1350
-    bg = (28, 49, 68)
-    img = Image.new("RGB", (width, height), bg)
-    draw = ImageDraw.Draw(img)
-
-    # ---- FORCE REAL FONTS HERE ----
     try:
-        font_header = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 120)
-        font_team   = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 60)
-        font_score  = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 170)
-        font_small  = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 55)
-        font_corner = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 45)
-    except:
-        print("FONT LOAD FAILED — still using default")
-        font_header = font_team = font_score = font_small = font_corner = ImageFont.load_default()
+        font_path = "/System/Library/Fonts/Helvetica.ttc"
+        font_score = ImageFont.truetype(font_path, 190)
+        font_sim   = ImageFont.truetype(font_path, 48)
+    except Exception:
+        font_score = font_sim = ImageFont.load_default()
 
-    # HEADER
-    header_text = "TAHMİNİ SKOR"
-    h_w, h_h = get_text_size(draw, header_text, font_header)
-    draw.text(((width - h_w) / 2, 90), header_text, fill="white", font=font_header)
+    # Grey panel vertical bounds (from template)
+    PANEL_Y1, PANEL_Y2 = 509, 841
+    LEFT_BOX  = (46,  PANEL_Y1, 371, PANEL_Y2)
+    MID_BOX   = (399, PANEL_Y1, 679, PANEL_Y2)
+    RIGHT_BOX = (708, PANEL_Y1, 1033, PANEL_Y2)
 
-    # LOGOS
-    logo_size = 420
-    logo1 = Image.open(first_logo_path).convert("RGBA").resize((logo_size, logo_size))
-    logo2 = Image.open(second_logo_path).convert("RGBA").resize((logo_size, logo_size))
+    # Logos
+    paste_logo_in_box(base, first_logo_path, LEFT_BOX)
+    paste_logo_in_box(base, second_logo_path, RIGHT_BOX)
 
-    left_x = 90
-    right_x = width - logo_size - 90
-    y_logo = 270
-
-    img.paste(logo1, (left_x, y_logo), logo1)
-    img.paste(logo2, (right_x, y_logo), logo2)
-
-    # TEAM NAMES
-    t1_w, _ = get_text_size(draw, first_team_name, font_team)
-    t2_w, _ = get_text_size(draw, second_team_name, font_team)
-
-    draw.text((left_x + (logo_size - t1_w) / 2, y_logo + logo_size + 25),
-              first_team_name, fill="white", font=font_team)
-
-    draw.text((right_x + (logo_size - t2_w) / 2, y_logo + logo_size + 25),
-              second_team_name, fill="white", font=font_team)
-
-    # SCORE
-    s_w, _ = get_text_size(draw, score_text, font_score)
-    draw.text(((width - s_w) / 2, y_logo + logo_size + 120),
-              score_text, fill="white", font=font_score)
-
-    # BELOW TEXT
-    b_w, _ = get_text_size(draw, below_text, font_small)
-    draw.text(((width - b_w) / 2, y_logo + logo_size + 330),
-              below_text, fill="white", font=font_small)
-
-    # SIMULATION TEXT
-    sim_text = "3600 Simulasyon Sonucuna Göre"
-    sim_w, _ = get_text_size(draw, sim_text, font_small)
-    draw.text(((width - sim_w) / 2, y_logo + logo_size + 420),
-              sim_text, fill="white", font=font_small)
-
-    # CORNER TAG
-    corner_text = "@goloncesi"
-    c_w, c_h = get_text_size(draw, corner_text, font_corner)
-    draw.text((width - c_w - 40, height - c_h - 40),
-              corner_text, fill="white", font=font_corner)
-
-    # SAVE
-    # SAVE
-    if output_path:
-        img.save(output_path)
-        print("Image created:", output_path)
-    else:
-        post_name = f"{first_team_name}vs{second_team_name}.png"
-        output_path = f"/Users/kagancalikoglu/Documents/PredictaBall/Posts/{post_name}"
-        img.save(output_path)
-        print("Image created:", output_path)
-
-
-
-# ---------------------
-# Example usage:
-# ---------------------
-if __name__ == "__main__":
-    create_match_image(
-        first_team_name="Brann",
-        second_team_name="Fenerbahçe",
-        first_logo_path="/Users/kagancalikoglu/Documents/PredictaBall/Logos/Brann.png",
-        second_logo_path="/Users/kagancalikoglu/Documents/PredictaBall/Logos/Fenerbahçe.png",
-        score_text="0-0",
-        below_text="Avrupa Ligi Round 6"
+    # Score in middle box
+    SCORE_BOX = (
+        MID_BOX[0] + 20,
+        MID_BOX[1] + 40,
+        MID_BOX[2] - 20,
+        MID_BOX[3] - 40,
     )
+    draw_centered_text(draw, score_text, SCORE_BOX, font_score, fill="white")
+
+    # "3600 Simulasyon Sonucuna Göre" BELOW the boxes
+    sim_text = "3600 Simulasyon Sonucuna Göre"
+    sim_box = (80, PANEL_Y2 + 65, width - 80, PANEL_Y2 + 65 + 60)
+    draw_centered_text(draw, sim_text, sim_box, font_sim, fill="white")
+
+    # Save
+    post_name = f"{first_team_name}vs{second_team_name}_tahmini_skor.png"
+    output_path = OUTPUT_FOLDER / post_name
+    base.convert("RGB").save(output_path, format="PNG", quality=95)
+    print("Tahmini Skor image created:", output_path)

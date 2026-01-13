@@ -52,9 +52,9 @@ np.random.seed(42)
 # ================================================================
 # GLOBAL PATHS (same as originals)
 # ================================================================
-MAIN_FOLDER = Path("//Users/kagancalikoglu/Library/Mobile Documents/com~apple~CloudDocs/Gol Oncesi/Data/Turkish Super League")
-OUTPUT_FOLDER = Path("/Users/kagancalikoglu/Documents/PredictaBall/Outputs")
-LOGO_FOLDER = Path("/Users/kagancalikoglu/Documents/PredictaBall/Logos")
+MAIN_FOLDER = Path("Data/Turkish Super League")
+OUTPUT_FOLDER = Path("Outputs")
+LOGO_FOLDER = Path(__file__).parent / "Logos"
 OUTPUT_FOLDER.mkdir(parents=True, exist_ok=True)
 
 # ================================================================

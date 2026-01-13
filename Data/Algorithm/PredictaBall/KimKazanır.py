@@ -1,111 +1,100 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Nov 26 15:42:02 2025
-
-@author: kagancalikoglu
-"""
-
+from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
+
+LOGO_FOLDER = Path(__file__).parent / "Logos"
+OUTPUT_FOLDER = Path("Outputs")
+OUTPUT_FOLDER.mkdir(parents=True, exist_ok=True)
+
+TEMPLATE_PATH = LOGO_FOLDER / "kim_kazanır.png"
 
 def get_text_size(draw, text, font):
     left, top, right, bottom = draw.textbbox((0, 0), text, font=font)
     return right - left, bottom - top
 
+def draw_centered_text(draw, text, box, font, fill="white"):
+    x1, y1, x2, y2 = box
+    tw, th = get_text_size(draw, text, font)
+    x = x1 + (x2 - x1 - tw) / 2
+    y = y1 + (y2 - y1 - th) / 2
+    draw.text((x, y), text, font=font, fill=fill)
+
+def paste_logo_overlap_bottom(base_img, logo_path, center_x, center_y, target_size):
+    """
+    Paste logo so that its center is at (center_x, center_y).
+    If center_y == panel bottom, the panel line visually cuts the logo.
+    """
+    logo = Image.open(logo_path).convert("RGBA")
+    logo = logo.resize((target_size, target_size), Image.LANCZOS)
+    w, h = logo.size
+    paste_x = int(center_x - w / 2)
+    paste_y = int(center_y - h / 2)
+    base_img.paste(logo, (paste_x, paste_y), logo)
+
 def create_probability_image(
-    home_team,
-    away_team,
-    home_logo,
-    away_logo,
-    home_prob,
-    draw_prob,
-    away_prob,
-    conclusion_text,
-    output_path=None
+    home_team: str,
+    away_team: str,
+    home_logo: str,
+    away_logo: str,
+    home_prob: int,
+    draw_prob: int,
+    away_prob: int,
+    conclusion_text: str,
 ):
+    base = Image.open(TEMPLATE_PATH).convert("RGBA")
+    width, height = base.size
+    draw = ImageDraw.Draw(base)
 
-    width, height = 1080, 1350
-    #bg = (79, 93, 47)
-    bg = (90, 18, 18)  # Koyu bordo
-    img = Image.new("RGB", (width, height), bg)
-    draw = ImageDraw.Draw(img)
-
-    # Fonts
     try:
-        font_header = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 110)
-        font_sub    = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 48)
-        font_label  = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 45)
-        font_big    = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 150)
-        font_result = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 60)
-        font_corner = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", 40)
-    except:
-        font_header = font_sub = font_label = font_big = font_result = font_corner = ImageFont.load_default()
+        font_path = "/System/Library/Fonts/Helvetica.ttc"
+        font_percent    = ImageFont.truetype(font_path, 140)  # smaller than before
+        font_conclusion = ImageFont.truetype(font_path, 54)
+    except Exception:
+        font_percent = font_conclusion = ImageFont.load_default()
 
-    # HEADER
-    title = "KİM KAZANMAYA\nDAHA YAKIN?"
-    draw.multiline_text((width/2, 80), title, fill="white", font=font_header, anchor="ma", align="center")
+    # Panel coordinates from template
+    PANEL_Y1, PANEL_Y2 = 557, 890
+    LEFT_BOX  = (46,  PANEL_Y1, 371, PANEL_Y2)
+    MID_BOX   = (399, PANEL_Y1, 679, PANEL_Y2)
+    RIGHT_BOX = (708, PANEL_Y1, 1033, PANEL_Y2)
 
-    # SUBHEADER
-    sub = "3600 SİMÜLASYON\nSONUCUNA GÖRE:"
-    draw.multiline_text((width/2, 310), sub, fill="white", font=font_sub, anchor="ma", align="center")
+    # Upper area for percentages
+    def percent_box(box, top_margin=40, side_margin=30, frac_height=0.55):
+        x1, y1, x2, y2 = box
+        h = y2 - y1
+        return (
+            x1 + side_margin,
+            y1 + top_margin,
+            x2 - side_margin,
+            y1 + int(h * frac_height),
+        )
 
-    # BOX PROPERTIES
-    box_top = 480
-    box_height = 420
-    box_width = width // 3
-    box_color = (120, 30, 30)
-    box_border = (190, 50, 50)
+    LEFT_PERCENT_BOX  = percent_box(LEFT_BOX)
+    MID_PERCENT_BOX   = percent_box(MID_BOX)
+    RIGHT_PERCENT_BOX = percent_box(RIGHT_BOX)
 
-    # LOGOS
-    logo_size = 180
-    home_img = Image.open(home_logo).convert("RGBA").resize((logo_size, logo_size))
-    away_img = Image.open(away_logo).convert("RGBA").resize((logo_size, logo_size))
+    draw_centered_text(draw, f"{home_prob}%", LEFT_PERCENT_BOX,  font_percent, fill="white")
+    draw_centered_text(draw, f"{draw_prob}%", MID_PERCENT_BOX,   font_percent, fill="white")
+    draw_centered_text(draw, f"{away_prob}%", RIGHT_PERCENT_BOX, font_percent, fill="white")
 
-    items = [
-        ("{}".format(home_team.split()[0]), home_prob, home_img),
-        ("BERABERLİK", draw_prob, None),
-        ("{}".format(away_team.split()[0]), away_prob, away_img)
-    ]
+    # Bigger logos overlapping bottom edge of left/right boxes
+    center_y = PANEL_Y2  # so the rectangle's bottom line cuts through the logo
+    left_center_x  = (LEFT_BOX[0]  + LEFT_BOX[2])  // 2
+    right_center_x = (RIGHT_BOX[0] + RIGHT_BOX[2]) // 2
 
-    for i, (label, prob, logo) in enumerate(items):
+    paste_logo_overlap_bottom(base, home_logo, left_center_x,  center_y, target_size=260)
+    paste_logo_overlap_bottom(base, away_logo, right_center_x, center_y, target_size=260)
 
-        x1 = i * box_width
-        y1 = box_top
-        x2 = x1 + box_width
-        y2 = y1 + box_height
+    # ANA TAHMİN explanation (only the meaningful line)
+    lines = [ln.strip() for ln in conclusion_text.splitlines() if ln.strip()]
+    if lines:
+        main_line = lines[-1]  # e.g. "Fenerbahçe en az 1 puan alır."
+        y_header_bottom = 392  # around bottom of "ANA TAHMİN" heading in template
+        text_box = (80, y_header_bottom + 22, width - 80, y_header_bottom + 22 + 60)
+        draw_centered_text(draw, main_line, text_box, font_conclusion, fill="white")
 
-        draw.rectangle([x1, y1, x2, y2], outline=box_border, width=5, fill=box_color)
+    # No footer text anymore
 
-        # Label
-        lw, lh = get_text_size(draw, label, font_label)
-        draw.text((x1 + box_width/2, y1 + 25), label, fill="white", font=font_label, anchor="ma")
-
-        # Probability
-        prob_text = f"{prob}%"
-        pw, ph = get_text_size(draw, prob_text, font_big)
-        draw.text((x1 + box_width/2, y1 + 130), prob_text, fill="white", font=font_big, anchor="ma")
-
-        # Logos (left + right box only)
-        if logo is not None:
-            img.paste(logo, (int(x1 + (box_width - logo_size) / 2), int(y1 + 260)), logo)
-
-    # RESULT TEXT
-    draw.text((width/2, 1000), conclusion_text, fill="white", font=font_result, anchor="ma")
-
-    # LEFT BOTTOM TAG
-    draw.text((40, height - 40), "@goloncesi", fill="white", font=font_corner, anchor="ls")
-
-    # SAVE
-    # SAVE
-    if output_path:
-        img.save(output_path)
-        print("Image created:", output_path)
-    else:
-        # Default fallback (original behavior)
-        opath = f"/Users/kagancalikoglu/Documents/PredictaBall/Posts/KimKazanir_{home_team}vs{away_team}.png"
-        img.save(opath)
-        print("Image created (default):", opath)
-
-    
-
-
+    out_name = f"KimKazanir_{home_team}vs{away_team}.png"
+    out_path = OUTPUT_FOLDER / out_name
+    base.convert("RGB").save(out_path, format="PNG", quality=95)
+    print("KimKazanır image created:", out_path)
