@@ -135,3 +135,92 @@ def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_typ
         import traceback
         traceback.print_exc()
         raise e
+
+def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_type=None):
+    """
+    Runs the combined simulation for team1 vs team2.
+    Overrides the output folder to save images to assets_path.
+    Returns a dictionary with results and image URLs.
+    """
+    print(f"Starting Combined Simulation (patched): {team1} vs {team2}")
+    
+    # Override paths in the module
+    gol_oncesi_combined.OUTPUT_FOLDER = Path(assets_path)
+    gol_oncesi_combined.LOGO_FOLDER = Path(ALGO_DIR) / "Logos"
+    gol_oncesi_combined.MAIN_FOLDER = Path(base_data_dir)
+
+    # 1. Performance Patch: Reduce simulation count for server environment
+    gol_oncesi_combined.SIMS_PER_COMBO = 50 # Default was 200, reduce to avoid Timeout/OOM
+
+    # 2. Font Patch: Ensure fonts don't crash on Linux
+    # Check if we are on Linux (Render) and patch ImageFont if necessary
+    # Or just robustly patch it always? 
+    # Let's monkeypatch PIL.ImageFont.truetype to fallback gracefully if path is absolute and missing
+    from PIL import ImageFont
+    original_truetype = ImageFont.truetype
+    def safe_truetype(font, size=10, index=0, encoding="", layout_engine=None):
+        try:
+            return original_truetype(font, size, index, encoding, layout_engine)
+        except OSError:
+            # If specified font fails (e.g. /System/Library/...), fallback to default
+            print(f"Font {font} failed, loading default.")
+            return ImageFont.load_default()
+    ImageFont.truetype = safe_truetype
+
+    # Override paths for KimKazanır (Use new ASCII name)
+    KimKazanır.LOGO_FOLDER = Path(ALGO_DIR) / "Logos"
+    KimKazanır.OUTPUT_FOLDER = Path(assets_path)
+    KimKazanır.TEMPLATE_PATH = KimKazanır.LOGO_FOLDER / "kim_kazanir.png" 
+    
+    # Override paths for tahmini_skor
+    tahmini_skor.LOGO_FOLDER = Path(ALGO_DIR) / "Logos"
+    tahmini_skor.OUTPUT_FOLDER = Path(assets_path)
+    tahmini_skor.TEMPLATE_PATH = tahmini_skor.LOGO_FOLDER / "tahmini_skor.png"
+    
+    try:
+        # 1. Run Markov Models
+        print("Running Markov Models...")
+        markov_home = gol_oncesi_combined.run_markov_for_team(team1)
+        markov_away = gol_oncesi_combined.run_markov_for_team(team2)
+        
+        # 2. Run Simulations (Home & Away Perspectives)
+        print("Running Simulations...")
+        home_sim = gol_oncesi_combined.run_simulation_perspective(team1, team2)
+        away_sim = gol_oncesi_combined.run_simulation_perspective(team2, team1)
+        
+        # 3. Combine Results
+        combined = gol_oncesi_combined.combine_perspectives(home_sim, away_sim)
+        
+        # 4. Generate Images
+        gol_oncesi_combined.generate_images(team1, team2, combined)
+        
+        # Construct expected filenames based on how KimKazanır and TahminiSkor actually name them
+        # KimKazanır.py: out_name = f"KimKazanir_{home_team}vs{away_team}.png"
+        # tahmini_skor.py: post_name = f"{first_team_name}vs{second_team_name}_tahmini_skor.png"
+        
+        prob_image_name = f"KimKazanir_{team1}vs{team2}.png" 
+        score_image_name = f"{team1}vs{team2}_tahmini_skor.png"
+        
+        # 5. Structure Output
+        result = {
+            "team1": team1,
+            "team2": team2,
+            "win_prob": gol_oncesi_combined.percent(combined['home_win']),
+            "draw_prob": gol_oncesi_combined.percent(combined['draw']),
+            "lose_prob": gol_oncesi_combined.percent(combined['home_loss']),
+            "predicted_score": combined['headline_score'],
+            "exp_home_goals": round(combined['exp_home_goals'], 2),
+            "exp_away_goals": round(combined['exp_away_goals'], 2),
+            "prob_image_url": f"/static/assets/{prob_image_name}",
+            "score_image_url": f"/static/assets/{score_image_name}",
+            "image_url": f"/static/assets/{prob_image_name}", 
+            "secondary_image_url": f"/static/assets/{score_image_name}"
+        }
+        
+        return result
+
+    except Exception as e:
+        print(f"Error in combined simulation: {e}")
+        import traceback
+        traceback.print_exc()
+        raise e
