@@ -114,6 +114,17 @@ def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_typ
     print(f"Starting Combined Simulation: {team1} vs {team2}")
     
     # Resolve team names to match disk (fixes NFC/NFD issues on Linux)
+    # Also handle specific manual mappings where folder name differs significantly from UI name
+    team_mappings = {
+        "Fatih Karagümrük": "Karagümrük",
+        "Fatih Karagumruk": "Karagümrük"
+    }
+    
+    if team1 in team_mappings:
+        team1 = team_mappings[team1]
+    if team2 in team_mappings:
+        team2 = team_mappings[team2]
+
     real_team1 = resolve_team_name(base_data_dir, team1)
     real_team2 = resolve_team_name(base_data_dir, team2)
     
