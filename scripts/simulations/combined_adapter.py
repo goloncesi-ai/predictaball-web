@@ -131,7 +131,7 @@ def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_typ
     gol_oncesi_combined.MAIN_FOLDER = Path(base_data_dir)
 
     # 1. Performance Patch: Reduce simulation count for server environment
-    gol_oncesi_combined.SIMS_PER_COMBO = 50 # Default was 200, reduce to avoid Timeout/OOM
+    gol_oncesi_combined.SIMS_PER_COMBO = 10 # Drastically reduced to prevent Gunicorn timeout (30s) or OOM
 
     # 2. Font Patch: Ensure fonts don't crash on Linux
     from PIL import ImageFont
