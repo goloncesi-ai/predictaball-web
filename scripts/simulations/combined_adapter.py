@@ -57,6 +57,54 @@ except ImportError as e:
     except ImportError:
         raise
 
+
+def normalize_to_ascii(text):
+    import unicodedata
+    if not isinstance(text, str):
+        return str(text)
+    # Normalize to NFD form to decompose characters
+    normalized = unicodedata.normalize('NFD', text)
+    # Filter out non-spacing mark characters (accents) and encode to ascii
+    return "".join(c for c in normalized if unicodedata.category(c) != 'Mn').lower()
+
+def resolve_team_name(base_dir, input_name):
+    """
+    Attempts to find the matching folder name for 'input_name' in 'base_dir'.
+    1. Checks exact match (Unicode NFC normalized).
+    2. Checks ASCII fuzzy match (ignoring accents/case).
+    Returns the actual folder name on disk if found, else returns input_name.
+    """
+    import unicodedata
+    import os
+    
+    target_norm = unicodedata.normalize('NFC', input_name).lower()
+    
+    if not os.path.exists(base_dir):
+        return input_name
+        
+    items = os.listdir(base_dir)
+    
+    # 1. Exact / NFC match
+    for item in items:
+        if not os.path.isdir(os.path.join(base_dir, item)):
+            continue
+            
+        item_norm = unicodedata.normalize('NFC', item).lower()
+        if item_norm == target_norm:
+            return item
+
+    # 2. ASCII Fuzzy match (fallback for Besiktas -> Beşiktaş)
+    target_ascii = normalize_to_ascii(input_name)
+    for item in items:
+        if not os.path.isdir(os.path.join(base_dir, item)):
+            continue
+        
+        item_ascii = normalize_to_ascii(item)
+        if item_ascii == target_ascii:
+            return item
+            
+    return input_name
+
 def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_type=None):
     """
     Runs the combined simulation for team1 vs team2.
