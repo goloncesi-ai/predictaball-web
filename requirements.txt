@@ -1,9 +1,9 @@
 Flask==3.0.0
 flask-cors==4.0.0
-numpy
-pandas
-scikit-learn
-hmmlearn
-pillow
-gunicorn
-openpyxl
+numpy==1.26.4
+pandas==2.2.2
+scikit-learn==1.2.2
+hmmlearn==0.3.0
+pillow==10.3.0
+gunicorn==22.0.0
+openpyxl==3.1.2
