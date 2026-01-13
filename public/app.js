@@ -134,12 +134,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="result-card">
                         <div class="result-images-container" style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
                             <div class="img-wrapper">
-                                <h4>Win Probability</h4>
-                                ${data.prob_image_url ? `<img src="${data.prob_image_url}" alt="Probability" class="result-img">` : ''}
+                                <h4>${t1}</h4>
+                                ${data.team1_logo_url ? `<img src="${data.team1_logo_url}" alt="${t1} Logo" class="result-img" style="max-width: 200px; max-height: 200px; object-fit: contain;">` : ''}
                             </div>
                             <div class="img-wrapper">
-                                <h4>Predicted Score</h4>
-                                ${data.score_image_url ? `<img src="${data.score_image_url}" alt="Score" class="result-img">` : ''}
+                                <h4>${t2}</h4>
+                                ${data.team2_logo_url ? `<img src="${data.team2_logo_url}" alt="${t2} Logo" class="result-img" style="max-width: 200px; max-height: 200px; object-fit: contain;">` : ''}
                             </div>
                         </div>
                         

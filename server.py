@@ -62,6 +62,11 @@ def run_simulation():
 def serve_output(filename):
     return send_from_directory(OUTPUT_DIR, filename)
 
+@app.route('/logos/<path:filename>')
+def serve_logo(filename):
+    logo_dir = os.path.join(ASSETS_DIR, "Logos")
+    return send_from_directory(logo_dir, filename)
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5001))
     print(f"Starting Flask Backend on port {port}...")

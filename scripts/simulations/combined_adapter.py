@@ -205,6 +205,8 @@ def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_typ
         result = {
             "team1": team1,
             "team2": team2,
+            "team1_logo_url": f"/logos/{team1}.png",
+            "team2_logo_url": f"/logos/{team2}.png",
             "win_prob": win_val,
             "draw_prob": draw_val,
             "lose_prob": lose_val,
