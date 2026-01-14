@@ -105,13 +105,24 @@ def resolve_team_name(base_dir, input_name):
             
     return input_name
 
-def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_type=None):
+def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_type=None, team1_adj=0, team2_adj=0):
     """
     Runs the combined simulation for team1 vs team2.
     Overrides the output folder to save images to assets_path.
     Returns a dictionary with results and image URLs.
+    
+    Args:
+        team1: Home team name
+        team2: Away team name
+        assets_path: Path for assets
+        base_data_dir: Base data directory
+        output_dir: Output directory for images
+        sim_type: Simulation type (unused, for compatibility)
+        team1_adj: Adjustment percentage for team1 (-50 to +50)
+        team2_adj: Adjustment percentage for team2 (-50 to +50)
     """
     print(f"Starting Combined Simulation: {team1} vs {team2}")
+    print(f"Adjustments: {team1} = {team1_adj:+.1f}%, {team2} = {team2_adj:+.1f}%")
     
     # Resolve team names to match disk (fixes NFC/NFD issues on Linux)
     # Also handle specific manual mappings where folder name differs significantly from UI name
@@ -172,10 +183,18 @@ def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_typ
         markov_home = gol_oncesi_combined.run_markov_for_team(team1)
         markov_away = gol_oncesi_combined.run_markov_for_team(team2)
         
-        # 2. Run Simulations (Home & Away Perspectives)
+        # 2. Run Simulations (Home & Away Perspectives) with adjustments
         print("Running Simulations...")
-        home_sim = gol_oncesi_combined.run_simulation_perspective(team1, team2)
-        away_sim = gol_oncesi_combined.run_simulation_perspective(team2, team1)
+        home_sim = gol_oncesi_combined.run_simulation_perspective(
+            team1, team2, 
+            team1_adj_pct=team1_adj, 
+            team2_adj_pct=team2_adj
+        )
+        away_sim = gol_oncesi_combined.run_simulation_perspective(
+            team2, team1,
+            team1_adj_pct=team2_adj,
+            team2_adj_pct=team1_adj
+        )
         
         # 3. Combine Results
         combined = gol_oncesi_combined.combine_perspectives(home_sim, away_sim)

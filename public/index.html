@@ -146,6 +146,30 @@
                                     <option value="" disabled selected>Select...</option>
                                 </select>
                             </div>
+
+                            <!-- Team Adjustments -->
+                            <div class="form-group">
+                                <label>Home Team Adjustment: <span id="team1-adj-value">0</span>%</label>
+                                <input type="range" id="team1-adjustment" class="adjustment-slider" min="-50" max="50"
+                                    value="0" step="1">
+                                <div class="slider-labels">
+                                    <span>-50%</span>
+                                    <span>0%</span>
+                                    <span>+50%</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Away Team Adjustment: <span id="team2-adj-value">0</span>%</label>
+                                <input type="range" id="team2-adjustment" class="adjustment-slider" min="-50" max="50"
+                                    value="0" step="1">
+                                <div class="slider-labels">
+                                    <span>-50%</span>
+                                    <span>0%</span>
+                                    <span>+50%</span>
+                                </div>
+                            </div>
+
                             <button id="btn-run-sim" class="btn-action pulse-on-hover">
                                 <span class="btn-text">Run Prediction</span>
                                 <div class="btn-glow"></div>

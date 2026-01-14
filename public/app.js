@@ -91,6 +91,26 @@ document.addEventListener('DOMContentLoaded', () => {
         updateComparisonInterface();
     });
 
+    // --- Slider Event Listeners ---
+    const team1AdjSlider = document.getElementById('team1-adjustment');
+    const team2AdjSlider = document.getElementById('team2-adjustment');
+    const team1AdjValue = document.getElementById('team1-adj-value');
+    const team2AdjValue = document.getElementById('team2-adj-value');
+
+    if (team1AdjSlider && team1AdjValue) {
+        team1AdjSlider.addEventListener('input', (e) => {
+            const val = e.target.value;
+            team1AdjValue.textContent = val > 0 ? `+${val}` : val;
+        });
+    }
+
+    if (team2AdjSlider && team2AdjValue) {
+        team2AdjSlider.addEventListener('input', (e) => {
+            const val = e.target.value;
+            team2AdjValue.textContent = val > 0 ? `+${val}` : val;
+        });
+    }
+
     // --- Event Listeners (Simulation) ---
     if (btnRunSim) {
         btnRunSim.addEventListener('click', async () => {
@@ -110,10 +130,19 @@ document.addEventListener('DOMContentLoaded', () => {
             simResults.classList.remove('hidden');
 
             try {
+                // Get adjustment values
+                const team1Adj = parseFloat(team1AdjSlider?.value || 0);
+                const team2Adj = parseFloat(team2AdjSlider?.value || 0);
+
                 const response = await fetch('/api/simulate', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ team1: t1, team2: t2 })
+                    body: JSON.stringify({
+                        team1: t1,
+                        team2: t2,
+                        team1_adj: team1Adj,
+                        team2_adj: team2Adj
+                    })
                 });
 
                 if (!response.ok) {

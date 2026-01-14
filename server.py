@@ -31,7 +31,9 @@ def run_simulation():
         data = request.json
         team1 = data.get('team1')
         team2 = data.get('team2')
-        sim_type = data.get('type') 
+        sim_type = data.get('type')
+        team1_adj = data.get('team1_adj', 0)
+        team2_adj = data.get('team2_adj', 0)
 
         if not team1 or not team2:
             return jsonify({"error": "Missing teams"}), 400
@@ -48,7 +50,9 @@ def run_simulation():
             ASSETS_DIR, 
             BASE_DATA_DIR,
             OUTPUT_DIR,
-            sim_type
+            sim_type,
+            team1_adj,
+            team2_adj
         )
         
         return jsonify(results)
