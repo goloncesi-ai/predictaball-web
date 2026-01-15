@@ -68,6 +68,9 @@
                 <button class="nav-btn" data-tab="tab-players">
                     <span class="icon">👤</span> Scout
                 </button>
+                <button class="nav-btn" data-tab="tab-explore">
+                    <span class="icon">🔍</span> Explore
+                </button>
             </nav>
         </header>
 
@@ -221,6 +224,150 @@
                     </div>
                 </div>
             </section>
+
+            <!-- Tab 4: Explore -->
+            <section id="tab-explore" class="view-section hidden">
+                <div class="section-header">
+                    <h2>Player Explorer</h2>
+                    <p>Browse Turkish Super League players by team and view detailed statistics.</p>
+                </div>
+
+                <div class="explore-interface">
+                    <div class="team-selector-wrapper">
+                        <label for="explore-team-select">Select Team</label>
+                        <div class="select-wrapper">
+                            <select id="explore-team-select" class="team-select-explore">
+                                <option value="" disabled selected>Choose a team...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="player-grid" class="player-grid hidden">
+                        <!-- Player cards will be injected here -->
+                    </div>
+                </div>
+
+                <!-- Player Detail Modal -->
+                <div id="player-modal" class="player-modal hidden">
+                    <div class="modal-overlay"></div>
+                    <div class="modal-content">
+                        <button class="modal-close" aria-label="Close">&times;</button>
+
+                        <div class="player-detail-header">
+                            <div class="player-basic-info">
+                                <h2 id="modal-player-name">Player Name</h2>
+                                <div class="player-meta">
+                                    <span class="meta-item" id="modal-player-team">Team</span>
+                                    <span class="meta-item" id="modal-player-nationality">Nationality</span>
+                                    <span class="meta-item" id="modal-player-age">Age</span>
+                                </div>
+                            </div>
+                            <div class="player-overall">
+                                <div class="overall-badge">
+                                    <span class="overall-label">OVR</span>
+                                    <span class="overall-value" id="modal-player-overall">0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="player-detail-body">
+                            <!-- Main Attributes -->
+                            <div class="main-attributes">
+                                <h3>Main Attributes</h3>
+                                <div class="attr-grid">
+                                    <div class="attr-item">
+                                        <span class="attr-label">Pace</span>
+                                        <div class="attr-bar-container">
+                                            <div class="attr-bar" id="modal-pace-bar"></div>
+                                            <span class="attr-value" id="modal-pace">0</span>
+                                        </div>
+                                    </div>
+                                    <div class="attr-item">
+                                        <span class="attr-label">Shooting</span>
+                                        <div class="attr-bar-container">
+                                            <div class="attr-bar" id="modal-shooting-bar"></div>
+                                            <span class="attr-value" id="modal-shooting">0</span>
+                                        </div>
+                                    </div>
+                                    <div class="attr-item">
+                                        <span class="attr-label">Passing</span>
+                                        <div class="attr-bar-container">
+                                            <div class="attr-bar" id="modal-passing-bar"></div>
+                                            <span class="attr-value" id="modal-passing">0</span>
+                                        </div>
+                                    </div>
+                                    <div class="attr-item">
+                                        <span class="attr-label">Dribbling</span>
+                                        <div class="attr-bar-container">
+                                            <div class="attr-bar" id="modal-dribbling-bar"></div>
+                                            <span class="attr-value" id="modal-dribbling">0</span>
+                                        </div>
+                                    </div>
+                                    <div class="attr-item">
+                                        <span class="attr-label">Defending</span>
+                                        <div class="attr-bar-container">
+                                            <div class="attr-bar" id="modal-defending-bar"></div>
+                                            <span class="attr-value" id="modal-defending">0</span>
+                                        </div>
+                                    </div>
+                                    <div class="attr-item">
+                                        <span class="attr-label">Physical</span>
+                                        <div class="attr-bar-container">
+                                            <div class="attr-bar" id="modal-physical-bar"></div>
+                                            <span class="attr-value" id="modal-physical">0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Detailed Stats -->
+                            <div class="detailed-stats">
+                                <div class="stat-category">
+                                    <h4>Physical Info</h4>
+                                    <div class="stat-list">
+                                        <div class="stat-item">
+                                            <span>Height</span>
+                                            <span id="modal-height">N/A</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span>Foot</span>
+                                            <span id="modal-foot">N/A</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span>Body Type</span>
+                                            <span id="modal-body-type">N/A</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="stat-category">
+                                    <h4>Card Info</h4>
+                                    <div class="stat-list">
+                                        <div class="stat-item">
+                                            <span>Rarity</span>
+                                            <span id="modal-rarity">N/A</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span>Skills</span>
+                                            <span id="modal-skills">0★</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span>Weak Foot</span>
+                                            <span id="modal-weak-foot">0★</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Radar Chart -->
+                            <div class="radar-chart-container">
+                                <h3>Performance Radar</h3>
+                                <canvas id="player-radar-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <footer class="main-footer">
@@ -230,6 +377,7 @@
 
     <!-- Data & App Logic -->
     <script src="data.js?v=4"></script>
+    <script src="players_data.js?v=1"></script>
     <script src="app.js?v=4"></script>
 </body>
 

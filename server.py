@@ -66,6 +66,70 @@ def run_simulation():
 def serve_output(filename):
     return send_from_directory(OUTPUT_DIR, filename)
 
+@app.route('/api/players', methods=['GET'])
+def get_players():
+    """Get all players for a specific team."""
+    try:
+        import json
+        
+        team = request.args.get('team')
+        if not team:
+            return jsonify({"error": "Team parameter required"}), 400
+        
+        # Read players data
+        players_file = os.path.join(BASE_DIR, 'public', 'players_data.js')
+        if not os.path.exists(players_file):
+            return jsonify({"error": "Player data not found. Run process_players.py first."}), 404
+        
+        # Parse the JS file to extract JSON data
+        with open(players_file, 'r', encoding='utf-8') as f:
+            content = f.read()
+            # Extract JSON from "const playersData = {...};"
+            start = content.find('{')
+            end = content.rfind('}', 0, content.find('// Get all team names')) + 1
+            players_data = json.loads(content[start:end])
+        
+        if team not in players_data:
+            return jsonify({"error": f"Team '{team}' not found"}), 404
+        
+        return jsonify({"team": team, "players": players_data[team]})
+    
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/player/<int:player_id>', methods=['GET'])
+def get_player(player_id):
+    """Get detailed stats for a specific player."""
+    try:
+        import json
+        
+        # Read players data
+        players_file = os.path.join(BASE_DIR, 'public', 'players_data.js')
+        if not os.path.exists(players_file):
+            return jsonify({"error": "Player data not found. Run process_players.py first."}), 404
+        
+        # Parse the JS file to extract JSON data
+        with open(players_file, 'r', encoding='utf-8') as f:
+            content = f.read()
+            start = content.find('{')
+            end = content.rfind('}', 0, content.find('// Get all team names')) + 1
+            players_data = json.loads(content[start:end])
+        
+        # Search for player by ID across all teams
+        for team, players in players_data.items():
+            for player in players:
+                if player['id'] == player_id:
+                    return jsonify(player)
+        
+        return jsonify({"error": f"Player with ID {player_id} not found"}), 404
+    
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({"error": str(e)}), 500
+
 @app.route('/logos/<path:filename>')
 def serve_logo(filename):
     logo_dir = os.path.join(ASSETS_DIR, "Logos")

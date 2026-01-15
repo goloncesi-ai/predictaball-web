@@ -24,6 +24,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const chartCanvas = document.getElementById('ratingChart');
     let ratingChartInstance = null;
 
+    // Explore Tab Elements
+    const exploreTeamSelect = document.getElementById('explore-team-select');
+    const playerGrid = document.getElementById('player-grid');
+    const playerModal = document.getElementById('player-modal');
+    const modalClose = document.querySelector('.modal-close');
+    const modalOverlay = document.querySelector('.modal-overlay');
+    const radarChartCanvas = document.getElementById('player-radar-chart');
+    let radarChartInstance = null;
+
     // Tab Navigation
     const tabBtns = document.querySelectorAll('.nav-btn');
     const tabContents = document.querySelectorAll('.view-section');
@@ -35,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof teamData !== 'undefined' && teamData.length > 0) {
         populateAllSelectors();
         initTabs();
+        initExploreTab();
     } else {
         console.error("No data found. Ensure data.js is loaded.");
         alert("Data not found. Please run the ingestion script.");
@@ -396,7 +406,225 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 fillLeft.style.width = `${ratio1}%`;
                 fillRight.style.width = `${ratio2}%`;
+            })
+        });
+    }
+
+    // --- Explore Tab Functions ---
+    function initExploreTab() {
+        // Check if playersData is available
+        if (typeof playersData === 'undefined') {
+            console.error('playersData not found. Make sure players_data.js is loaded.');
+            return;
+        }
+
+        // Populate team selector
+        if (exploreTeamSelect && teamNames) {
+            teamNames.forEach(team => {
+                exploreTeamSelect.add(new Option(team, team));
             });
+        }
+
+        // Team selection handler
+        if (exploreTeamSelect) {
+            exploreTeamSelect.addEventListener('change', (e) => {
+                const selectedTeam = e.target.value;
+                if (selectedTeam && playersData[selectedTeam]) {
+                    renderPlayerGrid(playersData[selectedTeam]);
+                }
+            });
+        }
+
+        // Modal close handlers
+        if (modalClose) {
+            modalClose.addEventListener('click', closePlayerModal);
+        }
+        if (modalOverlay) {
+            modalOverlay.addEventListener('click', closePlayerModal);
+        }
+
+        // ESC key to close modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && playerModal && !playerModal.classList.contains('hidden')) {
+                closePlayerModal();
+            }
+        });
+    }
+
+    function renderPlayerGrid(players) {
+        if (!playerGrid) return;
+
+        playerGrid.innerHTML = '';
+        playerGrid.classList.remove('hidden');
+
+        players.forEach(player => {
+            const card = document.createElement('div');
+            card.className = 'player-card-explore';
+            card.innerHTML = `
+                <div class="player-card-name">${player.name}</div>
+                <div class="player-card-overall">${player.overall}</div>
+                <div class="player-card-stats">
+                    <div class="player-card-stat">
+                        <span>PAC</span>
+                        <span>${player.pace}</span>
+                    </div>
+                    <div class="player-card-stat">
+                        <span>SHO</span>
+                        <span>${player.shooting}</span>
+                    </div>
+                    <div class="player-card-stat">
+                        <span>PAS</span>
+                        <span>${player.passing}</span>
+                    </div>
+                    <div class="player-card-stat">
+                        <span>DRI</span>
+                        <span>${player.dribbling}</span>
+                    </div>
+                    <div class="player-card-stat">
+                        <span>DEF</span>
+                        <span>${player.defending}</span>
+                    </div>
+                    <div class="player-card-stat">
+                        <span>PHY</span>
+                        <span>${player.physical}</span>
+                    </div>
+                </div>
+            `;
+
+            card.addEventListener('click', () => showPlayerModal(player));
+            playerGrid.appendChild(card);
+        });
+    }
+
+    function showPlayerModal(player) {
+        if (!playerModal) return;
+
+        // Populate basic info
+        document.getElementById('modal-player-name').textContent = player.name;
+        document.getElementById('modal-player-team').textContent = player.team;
+        document.getElementById('modal-player-nationality').textContent = player.nationality;
+        document.getElementById('modal-player-age').textContent = `${player.age} years`;
+        document.getElementById('modal-player-overall').textContent = player.overall;
+
+        // Populate main attributes with animated bars
+        const mainAttrs = [
+            { key: 'pace', label: 'Pace' },
+            { key: 'shooting', label: 'Shooting' },
+            { key: 'passing', label: 'Passing' },
+            { key: 'dribbling', label: 'Dribbling' },
+            { key: 'defending', label: 'Defending' },
+            { key: 'physical', label: 'Physical' }
+        ];
+
+        mainAttrs.forEach(attr => {
+            const value = player[attr.key];
+            const valueEl = document.getElementById(`modal-${attr.key}`);
+            const barEl = document.getElementById(`modal-${attr.key}-bar`);
+
+            if (valueEl) valueEl.textContent = value;
+            if (barEl) {
+                // Reset then animate
+                barEl.style.width = '0%';
+                setTimeout(() => {
+                    barEl.style.width = `${value}%`;
+                }, 50);
+            }
+        });
+
+        // Populate detailed stats
+        document.getElementById('modal-height').textContent = player.height;
+        document.getElementById('modal-foot').textContent = player.foot;
+        document.getElementById('modal-body-type').textContent = player.bodyType;
+        document.getElementById('modal-rarity').textContent = player.rarity;
+        document.getElementById('modal-skills').textContent = `${player.skills}★`;
+        document.getElementById('modal-weak-foot').textContent = `${player.weakFoot}★`;
+
+        // Render radar chart
+        renderRadarChart(player);
+
+        // Show modal
+        playerModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Prevent background scroll
+    }
+
+    function closePlayerModal() {
+        if (playerModal) {
+            playerModal.classList.add('hidden');
+            document.body.style.overflow = ''; // Restore scroll
+        }
+    }
+
+    function renderRadarChart(player) {
+        if (!radarChartCanvas) return;
+
+        // Destroy existing chart
+        if (radarChartInstance) {
+            radarChartInstance.destroy();
+        }
+
+        const ctx = radarChartCanvas.getContext('2d');
+
+        radarChartInstance = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['Pace', 'Shooting', 'Passing', 'Dribbling', 'Defending', 'Physical'],
+                datasets: [{
+                    label: player.name,
+                    data: [
+                        player.pace,
+                        player.shooting,
+                        player.passing,
+                        player.dribbling,
+                        player.defending,
+                        player.physical
+                    ],
+                    backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                    borderColor: '#3b82f6',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#3b82f6',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#3b82f6'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100,
+                        min: 0,
+                        ticks: {
+                            stepSize: 20,
+                            color: '#94a3b8',
+                            backdropColor: 'transparent'
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        },
+                        pointLabels: {
+                            color: '#f8fafc',
+                            font: {
+                                size: 12,
+                                weight: '600'
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                return `${context.label}: ${context.parsed.r}`;
+                            }
+                        }
+                    }
+                }
+            }
         });
     }
 });
