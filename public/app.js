@@ -45,9 +45,164 @@ document.addEventListener('DOMContentLoaded', () => {
         populateAllSelectors();
         initTabs();
         initExploreTab();
+        initLanguage();
     } else {
         console.error("No data found. Ensure data.js is loaded.");
         alert("Data not found. Please run the ingestion script.");
+    }
+
+    // --- Localization ---
+    const translations = {
+        en: {
+            subtitle: "Next-Gen Football Analytics & Simulation",
+            nav_analysis: "Analysis",
+            nav_simulation: "Simulation",
+            nav_scout: "Scout",
+            nav_explore: "Explore",
+            analysis_title: "Pre-Match Analysis",
+            analysis_desc: "Compare team statistics head-to-head before the whistle blows.",
+            label_home_team: "Home Team",
+            label_away_team: "Away Team",
+            select_placeholder: "Select Team",
+            h2h_title: "Head-to-Head Record",
+            goals_trend_title: "Goal Scoring Trend (Last 15 Matches)",
+            radar_title: "Team Comparison Radar",
+            recent_form_title: "Recent Form (Last 10 Matches)",
+            recent_matches_title: "Recent Matches",
+            rankings_title: "Metric Rankings",
+            sim_title: "AI Match Engine",
+            sim_desc: "Run 1000+ Monte Carlo simulations to predict the outcome.",
+            match_setup: "Match Setup",
+            select_short: "Select...",
+            home_adj: "Home Team Adjustment",
+            away_adj: "Away Team Adjustment",
+            btn_run_sim: "Run Prediction",
+            scout_title: "Player Scout",
+            scout_desc: "Deep dive into individual player ratings and performance history.",
+            search_placeholder: "Search for a player (e.g. Icardi)...",
+            matches: "Matches",
+            avg_rating: "Avg Rating",
+            explore_title: "Player Explorer",
+            explore_desc: "Browse Turkish Super League players by team and view detailed statistics.",
+            label_select_team: "Select Team",
+            choose_team_placeholder: "Choose a team...",
+            main_attributes: "Main Attributes",
+            attr_pace: "Pace",
+            attr_shooting: "Shooting",
+            attr_passing: "Passing",
+            attr_dribbling: "Dribbling",
+            attr_defending: "Defending",
+            attr_physical: "Physical",
+            physical_info: "Physical Info",
+            height: "Height",
+            foot: "Foot",
+            body_type: "Body Type",
+            card_info: "Card Info",
+            rarity: "Rarity",
+            skills: "Skills",
+            weak_foot: "Weak Foot",
+            radar_title: "Performance Radar"
+        },
+        tr: {
+            subtitle: "Yeni Nesil Futbol Analizi ve Simülasyonu",
+            nav_analysis: "Analiz",
+            nav_simulation: "Simülasyon",
+            nav_scout: "Gözlemci",
+            nav_explore: "Keşfet",
+            analysis_title: "Maç Öncesi Analiz",
+            analysis_desc: "Takım istatistiklerini maçtan önce karşılaştırın.",
+            label_home_team: "Ev Sahibi",
+            label_away_team: "Deplasman",
+            select_placeholder: "Takım Seçin",
+            h2h_title: "Aradaki Maçlar",
+            goals_trend_title: "Gol Trendi (Son 15 Maç)",
+            radar_title: "Takım Karşılaştırma Radarı",
+            recent_form_title: "Son Form (Son 10 Maç)",
+            recent_matches_title: "Son Maçlar",
+            rankings_title: "Sıralamalar",
+            sim_title: "Yapay Zeka Maç Motoru",
+            sim_desc: "Maç sonucunu tahmin etmek için 1000+ Monte Carlo simülasyonu çalıştırın.",
+            match_setup: "Maç Kurulumu",
+            select_short: "Seç...",
+            home_adj: "Ev Sahibi Ayarı",
+            away_adj: "Deplasman Ayarı",
+            btn_run_sim: "Tahmin Yürüt",
+            scout_title: "Oyuncu Gözlemcisi",
+            scout_desc: "Oyuncu reytinglerine ve performans geçmişine derinlemesine bakın.",
+            search_placeholder: "Oyuncu ara (örn. Icardi)...",
+            matches: "Maçlar",
+            avg_rating: "Ort. Reyting",
+            explore_title: "Oyuncu Keşfi",
+            explore_desc: "Süper Lig oyuncularını takıma göre inceleyin.",
+            label_select_team: "Takım Seç",
+            choose_team_placeholder: "Bir takım seçin...",
+            main_attributes: "Ana Özellikler",
+            attr_pace: "Hız",
+            attr_shooting: "Şut",
+            attr_passing: "Pas",
+            attr_dribbling: "Top Sürme",
+            attr_defending: "Defans",
+            attr_physical: "Fizik",
+            physical_info: "Fiziksel Bilgi",
+            height: "Boy",
+            foot: "Ayak",
+            body_type: "Vücut Tipi",
+            card_info: "Kart Bilgisi",
+            rarity: "Nadirlik",
+            skills: "Yetenek",
+            weak_foot: "Zayıf Ayak",
+            radar_title: "Performans Radarı"
+        }
+    };
+
+    let currentLang = localStorage.getItem('goloncesi_lang') || 'en';
+
+    function initLanguage() {
+        const langOptions = document.querySelectorAll('.lang-option');
+
+        // Initial update
+        updateLanguage(currentLang);
+
+        langOptions.forEach(opt => {
+            opt.addEventListener('click', () => {
+                const lang = opt.getAttribute('data-lang');
+                updateLanguage(lang);
+            });
+        });
+    }
+
+    function updateLanguage(lang) {
+        currentLang = lang;
+        localStorage.setItem('goloncesi_lang', lang);
+
+        // Update Text Content
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang][key]) {
+                el.textContent = translations[lang][key];
+            }
+        });
+
+        // Update Placeholders
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            if (translations[lang][key]) {
+                el.placeholder = translations[lang][key];
+            }
+        });
+
+        // Update Dropdown UI
+        const flag = lang === 'en' ? '🇬🇧' : '🇹🇷';
+        const code = lang === 'en' ? 'EN' : 'TR';
+        const langBtn = document.getElementById('lang-btn');
+        if (langBtn) {
+            langBtn.innerHTML = `<span class="flag-icon">${flag}</span> <span class="lang-code">${code}</span>`;
+        }
+
+        // Update Menu Active State
+        document.querySelectorAll('.lang-option').forEach(opt => {
+            opt.classList.toggle('active', opt.getAttribute('data-lang') === lang);
+        });
     }
 
     // --- Functions ---

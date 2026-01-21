@@ -56,20 +56,37 @@
                 <h1 style="display: inline-block; vertical-align: middle;">Gol Öncesi</h1>
                 <span class="badge">BETA</span>
             </div>
-            <p class="subtitle">Next-Gen Football Analytics & Simulation</p>
+
+            <div class="header-controls">
+                <div class="language-dropdown">
+                    <button id="lang-btn" class="lang-btn" aria-label="Switch Language">
+                        <span class="flag-icon">🇬🇧</span> <span class="lang-code">EN</span>
+                    </button>
+                    <div class="lang-menu">
+                        <div class="lang-option active" data-lang="en">
+                            <span>🇬🇧</span> English
+                        </div>
+                        <div class="lang-option" data-lang="tr">
+                            <span>🇹🇷</span> Türkçe
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="subtitle" data-i18n="subtitle">Next-Gen Football Analytics & Simulation</p>
 
             <nav class="main-nav">
                 <button class="nav-btn" data-tab="tab-comparison">
-                    <span class="icon">📊</span> Analysis
+                    <span class="icon">📊</span> <span data-i18n="nav_analysis">Analysis</span>
                 </button>
                 <button class="nav-btn active" data-tab="tab-simulation">
-                    <span class="icon">🎮</span> Simulation
+                    <span class="icon">🎮</span> <span data-i18n="nav_simulation">Simulation</span>
                 </button>
                 <button class="nav-btn" data-tab="tab-players">
-                    <span class="icon">👤</span> Scout
+                    <span class="icon">👤</span> <span data-i18n="nav_scout">Scout</span>
                 </button>
                 <button class="nav-btn" data-tab="tab-explore">
-                    <span class="icon">🔍</span> Explore
+                    <span class="icon">🔍</span> <span data-i18n="nav_explore">Explore</span>
                 </button>
             </nav>
         </header>
@@ -78,8 +95,8 @@
             <!-- Tab 1: Comparison -->
             <section id="tab-comparison" class="view-section hidden">
                 <div class="section-header">
-                    <h2>Pre-Match Analysis</h2>
-                    <p>Compare team statistics head-to-head before the whistle blows.</p>
+                    <h2 data-i18n="analysis_title">Pre-Match Analysis</h2>
+                    <p data-i18n="analysis_desc">Compare team statistics head-to-head before the whistle blows.</p>
                 </div>
 
                 <div class="comparison-interface">
@@ -87,10 +104,11 @@
                     <div class="team-card home">
                         <div class="card-glass"></div>
                         <div class="card-content">
-                            <label for="team1-select">Home Team</label>
+                            <label for="team1-select" data-i18n="label_home_team">Home Team</label>
                             <div class="select-wrapper">
                                 <select id="team1-select" class="team-select">
-                                    <option value="" disabled selected>Select Team</option>
+                                    <option value="" disabled selected data-i18n="select_placeholder">Select Team
+                                    </option>
                                 </select>
                             </div>
                             <div id="team1-display" class="team-info-display">
@@ -108,10 +126,11 @@
                     <div class="team-card away">
                         <div class="card-glass"></div>
                         <div class="card-content">
-                            <label for="team2-select">Away Team</label>
+                            <label for="team2-select" data-i18n="label_away_team">Away Team</label>
                             <div class="select-wrapper">
                                 <select id="team2-select" class="team-select">
-                                    <option value="" disabled selected>Select Team</option>
+                                    <option value="" disabled selected data-i18n="select_placeholder">Select Team
+                                    </option>
                                 </select>
                             </div>
                             <div id="team2-display" class="team-info-display">
@@ -129,7 +148,7 @@
                 <div id="analysis-charts" class="analysis-charts hidden">
                     <!-- Head-to-Head Section -->
                     <div class="analysis-panel h2h-panel">
-                        <h3><span class="icon">⚔️</span> Head-to-Head Record</h3>
+                        <h3><span class="icon">⚔️</span> <span data-i18n="h2h_title">Head-to-Head Record</span></h3>
                         <div id="h2h-content" class="h2h-content">
                             <!-- H2H data injected via JS -->
                         </div>
@@ -137,7 +156,8 @@
 
                     <!-- Historical Goals Chart -->
                     <div class="analysis-panel">
-                        <h3><span class="icon">📈</span> Goal Scoring Trend (Last 15 Matches)</h3>
+                        <h3><span class="icon">📈</span> <span data-i18n="goals_trend_title">Goal Scoring Trend (Last 15
+                                Matches)</span></h3>
                         <div class="chart-wrapper">
                             <canvas id="goalsChart"></canvas>
                         </div>
@@ -145,7 +165,7 @@
 
                     <!-- Radar Comparison -->
                     <div class="analysis-panel">
-                        <h3><span class="icon">🎯</span> Team Comparison Radar</h3>
+                        <h3><span class="icon">🎯</span> <span data-i18n="radar_title">Team Comparison Radar</span></h3>
                         <div class="chart-wrapper radar-wrapper">
                             <canvas id="radarChart"></canvas>
                         </div>
@@ -153,7 +173,8 @@
 
                     <!-- Recent Form -->
                     <div class="analysis-panel form-panel">
-                        <h3><span class="icon">📊</span> Recent Form (Last 10 Matches)</h3>
+                        <h3><span class="icon">📊</span> <span data-i18n="recent_form_title">Recent Form (Last 10
+                                Matches)</span></h3>
                         <div id="form-display" class="form-display-grid">
                             <!-- Form indicators injected via JS -->
                         </div>
@@ -161,7 +182,8 @@
 
                     <!-- Match History Table -->
                     <div class="analysis-panel">
-                        <h3><span class="icon">📋</span> Recent Matches</h3>
+                        <h3><span class="icon">📋</span> <span data-i18n="recent_matches_title">Recent Matches</span>
+                        </h3>
                         <div id="match-history" class="match-history-container">
                             <!-- Match history tables injected via JS -->
                         </div>
@@ -169,7 +191,7 @@
 
                     <!-- League Rankings -->
                     <div class="analysis-panel">
-                        <h3><span class="icon">🏆</span> Metric Rankings</h3>
+                        <h3><span class="icon">🏆</span> <span data-i18n="rankings_title">Metric Rankings</span></h3>
                         <div id="rankings-display" class="rankings-grid">
                             <!-- Rankings injected via JS -->
                         </div>
@@ -180,30 +202,31 @@
             <!-- Tab 2: Simulation -->
             <section id="tab-simulation" class="view-section active">
                 <div class="section-header">
-                    <h2>AI Match Engine</h2>
-                    <p>Run 1000+ Monte Carlo simulations to predict the outcome.</p>
+                    <h2 data-i18n="sim_title">AI Match Engine</h2>
+                    <p data-i18n="sim_desc">Run 1000+ Monte Carlo simulations to predict the outcome.</p>
                 </div>
 
                 <div class="simulation-layout">
                     <div class="sim-config">
                         <div class="config-card">
-                            <h3>Match Setup</h3>
+                            <h3 data-i18n="match_setup">Match Setup</h3>
                             <div class="form-group">
-                                <label>Home Team</label>
+                                <label data-i18n="label_home_team">Home Team</label>
                                 <select id="sim-team1" class="modern-select">
-                                    <option value="" disabled selected>Select...</option>
+                                    <option value="" disabled selected data-i18n="select_short">Select...</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Away Team</label>
+                                <label data-i18n="label_away_team">Away Team</label>
                                 <select id="sim-team2" class="modern-select">
-                                    <option value="" disabled selected>Select...</option>
+                                    <option value="" disabled selected data-i18n="select_short">Select...</option>
                                 </select>
                             </div>
 
                             <!-- Team Adjustments -->
                             <div class="form-group">
-                                <label>Home Team Adjustment: <span id="team1-adj-value">0</span>%</label>
+                                <label><span data-i18n="home_adj">Home Team Adjustment</span>: <span
+                                        id="team1-adj-value">0</span>%</label>
                                 <input type="range" id="team1-adjustment" class="adjustment-slider" min="-50" max="50"
                                     value="0" step="1">
                                 <div class="slider-labels">
@@ -214,7 +237,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Away Team Adjustment: <span id="team2-adj-value">0</span>%</label>
+                                <label><span data-i18n="away_adj">Away Team Adjustment</span>: <span
+                                        id="team2-adj-value">0</span>%</label>
                                 <input type="range" id="team2-adjustment" class="adjustment-slider" min="-50" max="50"
                                     value="0" step="1">
                                 <div class="slider-labels">
@@ -225,7 +249,7 @@
                             </div>
 
                             <button id="btn-run-sim" class="btn-action pulse-on-hover">
-                                <span class="btn-text">Run Prediction</span>
+                                <span class="btn-text" data-i18n="btn_run_sim">Run Prediction</span>
                                 <div class="btn-glow"></div>
                             </button>
                         </div>
@@ -240,13 +264,14 @@
             <!-- Tab 3: Players -->
             <section id="tab-players" class="view-section hidden">
                 <div class="section-header">
-                    <h2>Player Scout</h2>
-                    <p>Deep dive into individual player ratings and performance history.</p>
+                    <h2 data-i18n="scout_title">Player Scout</h2>
+                    <p data-i18n="scout_desc">Deep dive into individual player ratings and performance history.</p>
                 </div>
 
                 <div class="scout-interface">
                     <div class="search-wrapper">
                         <input type="text" id="player-search" class="search-input"
+                            data-i18n-placeholder="search_placeholder"
                             placeholder="Search for a player (e.g. Icardi)..." autocomplete="off" />
                         <div class="search-icon">🔍</div>
                         <ul id="search-results" class="dropdown-results hidden"></ul>
@@ -260,11 +285,11 @@
 
                         <div class="profile-stats">
                             <div class="p-stat-box">
-                                <span class="lbl">Matches</span>
+                                <span class="lbl" data-i18n="matches">Matches</span>
                                 <span class="val" id="p-matches">0</span>
                             </div>
                             <div class="p-stat-box highlight">
-                                <span class="lbl">Avg Rating</span>
+                                <span class="lbl" data-i18n="avg_rating">Avg Rating</span>
                                 <span class="val" id="p-rating">0.0</span>
                             </div>
                         </div>
@@ -279,16 +304,18 @@
             <!-- Tab 4: Explore -->
             <section id="tab-explore" class="view-section hidden">
                 <div class="section-header">
-                    <h2>Player Explorer</h2>
-                    <p>Browse Turkish Super League players by team and view detailed statistics.</p>
+                    <h2 data-i18n="explore_title">Player Explorer</h2>
+                    <p data-i18n="explore_desc">Browse Turkish Super League players by team and view detailed
+                        statistics.</p>
                 </div>
 
                 <div class="explore-interface">
                     <div class="team-selector-wrapper">
-                        <label for="explore-team-select">Select Team</label>
+                        <label for="explore-team-select" data-i18n="label_select_team">Select Team</label>
                         <div class="select-wrapper">
                             <select id="explore-team-select" class="team-select-explore">
-                                <option value="" disabled selected>Choose a team...</option>
+                                <option value="" disabled selected data-i18n="choose_team_placeholder">Choose a team...
+                                </option>
                             </select>
                         </div>
                     </div>
@@ -324,45 +351,45 @@
                         <div class="player-detail-body">
                             <!-- Main Attributes -->
                             <div class="main-attributes">
-                                <h3>Main Attributes</h3>
+                                <h3 data-i18n="main_attributes">Main Attributes</h3>
                                 <div class="attr-grid">
                                     <div class="attr-item">
-                                        <span class="attr-label">Pace</span>
+                                        <span class="attr-label" data-i18n="attr_pace">Pace</span>
                                         <div class="attr-bar-container">
                                             <div class="attr-bar" id="modal-pace-bar"></div>
                                             <span class="attr-value" id="modal-pace">0</span>
                                         </div>
                                     </div>
                                     <div class="attr-item">
-                                        <span class="attr-label">Shooting</span>
+                                        <span class="attr-label" data-i18n="attr_shooting">Shooting</span>
                                         <div class="attr-bar-container">
                                             <div class="attr-bar" id="modal-shooting-bar"></div>
                                             <span class="attr-value" id="modal-shooting">0</span>
                                         </div>
                                     </div>
                                     <div class="attr-item">
-                                        <span class="attr-label">Passing</span>
+                                        <span class="attr-label" data-i18n="attr_passing">Passing</span>
                                         <div class="attr-bar-container">
                                             <div class="attr-bar" id="modal-passing-bar"></div>
                                             <span class="attr-value" id="modal-passing">0</span>
                                         </div>
                                     </div>
                                     <div class="attr-item">
-                                        <span class="attr-label">Dribbling</span>
+                                        <span class="attr-label" data-i18n="attr_dribbling">Dribbling</span>
                                         <div class="attr-bar-container">
                                             <div class="attr-bar" id="modal-dribbling-bar"></div>
                                             <span class="attr-value" id="modal-dribbling">0</span>
                                         </div>
                                     </div>
                                     <div class="attr-item">
-                                        <span class="attr-label">Defending</span>
+                                        <span class="attr-label" data-i18n="attr_defending">Defending</span>
                                         <div class="attr-bar-container">
                                             <div class="attr-bar" id="modal-defending-bar"></div>
                                             <span class="attr-value" id="modal-defending">0</span>
                                         </div>
                                     </div>
                                     <div class="attr-item">
-                                        <span class="attr-label">Physical</span>
+                                        <span class="attr-label" data-i18n="attr_physical">Physical</span>
                                         <div class="attr-bar-container">
                                             <div class="attr-bar" id="modal-physical-bar"></div>
                                             <span class="attr-value" id="modal-physical">0</span>
@@ -374,36 +401,36 @@
                             <!-- Detailed Stats -->
                             <div class="detailed-stats">
                                 <div class="stat-category">
-                                    <h4>Physical Info</h4>
+                                    <h4 data-i18n="physical_info">Physical Info</h4>
                                     <div class="stat-list">
                                         <div class="stat-item">
-                                            <span>Height</span>
+                                            <span data-i18n="height">Height</span>
                                             <span id="modal-height">N/A</span>
                                         </div>
                                         <div class="stat-item">
-                                            <span>Foot</span>
+                                            <span data-i18n="foot">Foot</span>
                                             <span id="modal-foot">N/A</span>
                                         </div>
                                         <div class="stat-item">
-                                            <span>Body Type</span>
+                                            <span data-i18n="body_type">Body Type</span>
                                             <span id="modal-body-type">N/A</span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="stat-category">
-                                    <h4>Card Info</h4>
+                                    <h4 data-i18n="card_info">Card Info</h4>
                                     <div class="stat-list">
                                         <div class="stat-item">
-                                            <span>Rarity</span>
+                                            <span data-i18n="rarity">Rarity</span>
                                             <span id="modal-rarity">N/A</span>
                                         </div>
                                         <div class="stat-item">
-                                            <span>Skills</span>
+                                            <span data-i18n="skills">Skills</span>
                                             <span id="modal-skills">0★</span>
                                         </div>
                                         <div class="stat-item">
-                                            <span>Weak Foot</span>
+                                            <span data-i18n="weak_foot">Weak Foot</span>
                                             <span id="modal-weak-foot">0★</span>
                                         </div>
                                     </div>
@@ -412,7 +439,7 @@
 
                             <!-- Radar Chart -->
                             <div class="radar-chart-container">
-                                <h3>Performance Radar</h3>
+                                <h3 data-i18n="radar_title">Performance Radar</h3>
                                 <canvas id="player-radar-chart"></canvas>
                             </div>
                         </div>
