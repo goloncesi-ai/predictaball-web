@@ -59,10 +59,10 @@
             <p class="subtitle">Next-Gen Football Analytics & Simulation</p>
 
             <nav class="main-nav">
-                <button class="nav-btn active" data-tab="tab-comparison">
+                <button class="nav-btn" data-tab="tab-comparison">
                     <span class="icon">📊</span> Analysis
                 </button>
-                <button class="nav-btn" data-tab="tab-simulation">
+                <button class="nav-btn active" data-tab="tab-simulation">
                     <span class="icon">🎮</span> Simulation
                 </button>
                 <button class="nav-btn" data-tab="tab-players">
@@ -76,7 +76,7 @@
 
         <main class="content-container">
             <!-- Tab 1: Comparison -->
-            <section id="tab-comparison" class="view-section active">
+            <section id="tab-comparison" class="view-section hidden">
                 <div class="section-header">
                     <h2>Pre-Match Analysis</h2>
                     <p>Compare team statistics head-to-head before the whistle blows.</p>
@@ -127,7 +127,7 @@
             </section>
 
             <!-- Tab 2: Simulation -->
-            <section id="tab-simulation" class="view-section hidden">
+            <section id="tab-simulation" class="view-section active">
                 <div class="section-header">
                     <h2>AI Match Engine</h2>
                     <p>Run 1000+ Monte Carlo simulations to predict the outcome.</p>
