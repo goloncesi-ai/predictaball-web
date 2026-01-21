@@ -221,6 +221,52 @@ def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_typ
         import time
         ts = int(time.time())
 
+        # Extract top 5 scores from home_sim
+        top5_list = []
+        if 'top5_scores' in home_sim and not home_sim['top5_scores'].empty:
+            total_sims = home_sim['top5_scores']['Count'].sum()
+            for _, row in home_sim['top5_scores'].iterrows():
+                pct = round(100 * row['Count'] / total_sims, 1) if total_sims > 0 else 0
+                top5_list.append({
+                    "score": row['Score'],
+                    "count": int(row['Count']),
+                    "percentage": pct
+                })
+
+        # Extract Markov form data
+        def get_form_label(win_prob):
+            if win_prob >= 0.55:
+                return "Hot 🔥"
+            elif win_prob >= 0.40:
+                return "Neutral ⚖️"
+            else:
+                return "Cold ❄️"
+
+        markov_data = {
+            "team1": {
+                "name": team1,
+                "next_win_prob": round(100 * markov_home['next_match_probs']['P_win'], 1),
+                "next_draw_prob": round(100 * markov_home['next_match_probs']['P_draw'], 1),
+                "next_loss_prob": round(100 * markov_home['next_match_probs']['P_loss'], 1),
+                "form_label": get_form_label(markov_home['next_match_probs']['P_win']),
+                "matches_analyzed": markov_home['matches_used']
+            },
+            "team2": {
+                "name": team2,
+                "next_win_prob": round(100 * markov_away['next_match_probs']['P_win'], 1),
+                "next_draw_prob": round(100 * markov_away['next_match_probs']['P_draw'], 1),
+                "next_loss_prob": round(100 * markov_away['next_match_probs']['P_loss'], 1),
+                "form_label": get_form_label(markov_away['next_match_probs']['P_win']),
+                "matches_analyzed": markov_away['matches_used']
+            }
+        }
+
+        # Extract average ratings
+        avg_ratings = {
+            "team1": round(clean_val(home_sim['avg_ratings']['team1']), 2),
+            "team2": round(clean_val(home_sim['avg_ratings']['team2']), 2)
+        }
+
         result = {
             "team1": team1,
             "team2": team2,
@@ -235,7 +281,16 @@ def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_typ
             "prob_image_url": f"/outputs/{prob_image_name}?v={ts}",
             "score_image_url": f"/outputs/{score_image_name}?v={ts}",
             "image_url": f"/outputs/{prob_image_name}?v={ts}", 
-            "secondary_image_url": f"/outputs/{score_image_name}?v={ts}"
+            "secondary_image_url": f"/outputs/{score_image_name}?v={ts}",
+            # New insights
+            "top5_scores": top5_list,
+            "markov_form": markov_data,
+            "avg_ratings": avg_ratings,
+            "simulated_matches": home_sim.get('simulated_matches', 0),
+            "adjustments": {
+                "team1": team1_adj,
+                "team2": team2_adj
+            }
         }
         
         return result
@@ -245,3 +300,4 @@ def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_typ
         import traceback
         traceback.print_exc()
         raise e
+

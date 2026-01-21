@@ -1261,3 +1261,286 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* ============================================
+   ENHANCED SIMULATION INSIGHTS STYLES
+   ============================================ */
+
+/* Insights Container */
+.insights-container {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* Insights Panel - Glassmorphism Card */
+.insights-panel {
+    background: rgba(30, 41, 59, 0.6);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.insights-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-1);
+    border-radius: 20px 20px 0 0;
+}
+
+.insights-panel h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.insights-panel h4 .icon {
+    font-size: 1rem;
+}
+
+/* Score Probabilities Section */
+.score-probabilities {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.scoreline-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.scoreline-label {
+    font-weight: 700;
+    font-size: 1rem;
+    min-width: 50px;
+    color: #fff;
+    font-family: 'Outfit', monospace;
+}
+
+.scoreline-bar-wrapper {
+    flex: 1;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.scoreline-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-radius: 8px;
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 0.75rem;
+    min-width: 40px;
+}
+
+.scoreline-pct {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Form Indicators */
+.form-indicators {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-team {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    padding: 1.25rem;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.form-team-name {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-badge {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.form-badge.hot {
+    color: #f97316;
+}
+
+.form-badge.neutral {
+    color: #a3a3a3;
+}
+
+.form-badge.cold {
+    color: #3b82f6;
+}
+
+.form-probs {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.form-prob-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-prob-item .prob-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.7;
+}
+
+.form-prob-item .prob-value {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #fff;
+}
+
+/* Team Ratings Comparison */
+.ratings-comparison {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.rating-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.rating-team-name {
+    min-width: 120px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rating-bar-wrapper {
+    flex: 1;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 100px;
+    overflow: hidden;
+}
+
+.rating-bar {
+    height: 100%;
+    border-radius: 100px;
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rating-bar.team1 {
+    background: linear-gradient(90deg, var(--primary), #60a5fa);
+}
+
+.rating-bar.team2 {
+    background: linear-gradient(90deg, var(--accent), #fb7185);
+}
+
+.rating-value {
+    font-weight: 800;
+    font-size: 1.1rem;
+    min-width: 40px;
+    text-align: right;
+}
+
+.rating-value.team1 {
+    color: var(--primary);
+}
+
+.rating-value.team2 {
+    color: var(--accent);
+}
+
+/* Simulation Meta Info */
+.sim-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    margin-top: 1rem;
+}
+
+.sim-meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.sim-meta-item .meta-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: 0.25rem;
+}
+
+.sim-meta-item .meta-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+/* Responsive Adjustments for Insights */
+@media (max-width: 768px) {
+    .form-indicators {
+        grid-template-columns: 1fr;
+    }
+
+    .scoreline-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .scoreline-bar-wrapper {
+        width: 100%;
+    }
+
+    .sim-meta {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .rating-team-name {
+        min-width: 80px;
+        font-size: 0.8rem;
+    }
+}

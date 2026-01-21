@@ -168,7 +168,96 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const data = await response.json();
 
-                // Render Results (Modified for Combined Output)
+                // Build Top 5 Scores HTML
+                let top5Html = '';
+                if (data.top5_scores && data.top5_scores.length > 0) {
+                    top5Html = data.top5_scores.map(s => `
+                        <div class="scoreline-row">
+                            <span class="scoreline-label">${s.score}</span>
+                            <div class="scoreline-bar-wrapper">
+                                <div class="scoreline-bar" style="width: ${s.percentage}%">
+                                    <span class="scoreline-pct">${s.percentage}%</span>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+
+                // Build Form Indicators HTML
+                let formHtml = '';
+                if (data.markov_form) {
+                    const m1 = data.markov_form.team1;
+                    const m2 = data.markov_form.team2;
+                    const getFormClass = (label) => {
+                        if (label.includes('Hot')) return 'hot';
+                        if (label.includes('Cold')) return 'cold';
+                        return 'neutral';
+                    };
+                    formHtml = `
+                        <div class="form-team">
+                            <div class="form-team-name">${m1.name}</div>
+                            <div class="form-badge ${getFormClass(m1.form_label)}">${m1.form_label}</div>
+                            <div class="form-probs">
+                                <div class="form-prob-item">
+                                    <span class="prob-label">Win</span>
+                                    <span class="prob-value">${m1.next_win_prob}%</span>
+                                </div>
+                                <div class="form-prob-item">
+                                    <span class="prob-label">Draw</span>
+                                    <span class="prob-value">${m1.next_draw_prob}%</span>
+                                </div>
+                                <div class="form-prob-item">
+                                    <span class="prob-label">Loss</span>
+                                    <span class="prob-value">${m1.next_loss_prob}%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-team">
+                            <div class="form-team-name">${m2.name}</div>
+                            <div class="form-badge ${getFormClass(m2.form_label)}">${m2.form_label}</div>
+                            <div class="form-probs">
+                                <div class="form-prob-item">
+                                    <span class="prob-label">Win</span>
+                                    <span class="prob-value">${m2.next_win_prob}%</span>
+                                </div>
+                                <div class="form-prob-item">
+                                    <span class="prob-label">Draw</span>
+                                    <span class="prob-value">${m2.next_draw_prob}%</span>
+                                </div>
+                                <div class="form-prob-item">
+                                    <span class="prob-label">Loss</span>
+                                    <span class="prob-value">${m2.next_loss_prob}%</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                // Build Ratings Comparison HTML
+                let ratingsHtml = '';
+                if (data.avg_ratings) {
+                    const maxRating = 10;
+                    const r1 = data.avg_ratings.team1;
+                    const r2 = data.avg_ratings.team2;
+                    ratingsHtml = `
+                        <div class="rating-row">
+                            <span class="rating-team-name">${t1}</span>
+                            <div class="rating-bar-wrapper">
+                                <div class="rating-bar team1" style="width: ${(r1 / maxRating) * 100}%"></div>
+                            </div>
+                            <span class="rating-value team1">${r1}</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-team-name">${t2}</span>
+                            <div class="rating-bar-wrapper">
+                                <div class="rating-bar team2" style="width: ${(r2 / maxRating) * 100}%"></div>
+                            </div>
+                            <span class="rating-value team2">${r2}</span>
+                        </div>
+                    `;
+                }
+
+                // Render Results with Enhanced Insights
                 simResults.innerHTML = `
                     <div class="result-card">
                         <div class="result-images-container" style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
@@ -183,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         
                         <div class="result-details">
-                            <h3>Combined Analysis</h3>
+                            <h3>Match Prediction</h3>
                             <div class="prob-grid">
                                 <div class="prob-item">
                                     <span class="label">${t1} Win</span>
@@ -199,10 +288,57 @@ document.addEventListener('DOMContentLoaded', () => {
                                 </div>
                             </div>
                             <div class="predicted-score">
-                                Headline Score: <span class="score-val">${data.predicted_score}</span>
+                                Predicted Score: <span class="score-val">${data.predicted_score}</span>
                                 <div style="font-size: 0.8em; margin-top: 5px; color: #aaa;">
-                                    Expected: ${data.exp_home_goals} - ${data.exp_away_goals}
+                                    Expected Goals: ${data.exp_home_goals} - ${data.exp_away_goals}
                                 </div>
+                            </div>
+                        </div>
+
+                        <!-- Enhanced Insights Section -->
+                        <div class="insights-container">
+                            ${top5Html ? `
+                            <div class="insights-panel">
+                                <h4><span class="icon">📊</span> Most Likely Scorelines</h4>
+                                <div class="score-probabilities">
+                                    ${top5Html}
+                                </div>
+                            </div>
+                            ` : ''}
+
+                            ${formHtml ? `
+                            <div class="insights-panel">
+                                <h4><span class="icon">🔥</span> Current Form (Markov Analysis)</h4>
+                                <div class="form-indicators">
+                                    ${formHtml}
+                                </div>
+                            </div>
+                            ` : ''}
+
+                            ${ratingsHtml ? `
+                            <div class="insights-panel">
+                                <h4><span class="icon">⭐</span> Average Player Ratings</h4>
+                                <div class="ratings-comparison">
+                                    ${ratingsHtml}
+                                </div>
+                            </div>
+                            ` : ''}
+
+                            <div class="sim-meta">
+                                <div class="sim-meta-item">
+                                    <span class="meta-label">Simulations</span>
+                                    <span class="meta-value">${data.simulated_matches?.toLocaleString() || '450+'}</span>
+                                </div>
+                                ${data.adjustments ? `
+                                <div class="sim-meta-item">
+                                    <span class="meta-label">${t1} Adj.</span>
+                                    <span class="meta-value">${data.adjustments.team1 >= 0 ? '+' : ''}${data.adjustments.team1}%</span>
+                                </div>
+                                <div class="sim-meta-item">
+                                    <span class="meta-label">${t2} Adj.</span>
+                                    <span class="meta-value">${data.adjustments.team2 >= 0 ? '+' : ''}${data.adjustments.team2}%</span>
+                                </div>
+                                ` : ''}
                             </div>
                         </div>
                     </div>
