@@ -1543,4 +1543,131 @@ body {
         min-width: 80px;
         font-size: 0.8rem;
     }
+
+    .state-profiles-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================
+   HMM STATE PROFILES STYLES
+   ============================================ */
+
+/* Form Meta Info */
+.form-meta {
+    margin-top: 0.75rem;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Panel Subtitle */
+.panel-subtitle {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    margin-top: -0.5rem;
+}
+
+/* State Profiles Grid */
+.state-profiles-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.team-states h5 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.states-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* State Profile Card */
+.state-profile-card {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.state-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.state-label {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #fff;
+}
+
+.state-matches {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.2rem 0.5rem;
+    border-radius: 100px;
+}
+
+/* State Probability Bars */
+.state-probs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.state-prob {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 20px;
+    position: relative;
+}
+
+.state-prob .prob-bar {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 4px;
+}
+
+.state-prob.win .prob-bar {
+    background: linear-gradient(90deg, #22c55e, #4ade80);
+}
+
+.state-prob.draw .prob-bar {
+    background: linear-gradient(90deg, #f59e0b, #fbbf24);
+}
+
+.state-prob.loss .prob-bar {
+    background: linear-gradient(90deg, #ef4444, #f87171);
+}
+
+.state-prob .prob-text {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #fff;
+    min-width: 55px;
+    text-align: right;
+}
+
+/* State Label Colors based on form */
+.state-profile-card:has(.state-label:contains("Peak")) .state-label {
+    color: #22c55e;
+}
+
+.state-profile-card:has(.state-label:contains("Crisis")) .state-label {
+    color: #ef4444;
 }

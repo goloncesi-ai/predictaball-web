@@ -233,7 +233,7 @@ def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_typ
                     "percentage": pct
                 })
 
-        # Extract Markov form data
+        # Extract Markov form data with full state profiles
         def get_form_label(win_prob):
             if win_prob >= 0.55:
                 return "Hot 🔥"
@@ -242,6 +242,34 @@ def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_typ
             else:
                 return "Cold ❄️"
 
+        def get_state_label(state_profile):
+            """Assign a descriptive label based on state's win probability."""
+            win = state_profile.get('P_win', 0)
+            if win >= 0.55:
+                return "Peak Form"
+            elif win >= 0.45:
+                return "Good Form"
+            elif win >= 0.35:
+                return "Average"
+            elif win >= 0.25:
+                return "Struggling"
+            else:
+                return "Crisis"
+
+        def format_state_profiles(profiles):
+            """Format state profiles for frontend display."""
+            formatted = []
+            for profile in profiles:
+                formatted.append({
+                    "state": profile['state'],
+                    "label": get_state_label(profile),
+                    "count": profile['count'],
+                    "win_prob": round(100 * profile['P_win'], 1),
+                    "draw_prob": round(100 * profile['P_draw'], 1),
+                    "loss_prob": round(100 * profile['P_loss'], 1)
+                })
+            return formatted
+
         markov_data = {
             "team1": {
                 "name": team1,
@@ -249,7 +277,9 @@ def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_typ
                 "next_draw_prob": round(100 * markov_home['next_match_probs']['P_draw'], 1),
                 "next_loss_prob": round(100 * markov_home['next_match_probs']['P_loss'], 1),
                 "form_label": get_form_label(markov_home['next_match_probs']['P_win']),
-                "matches_analyzed": markov_home['matches_used']
+                "matches_analyzed": markov_home['matches_used'],
+                "hidden_states": markov_home['hidden_states'],
+                "state_profiles": format_state_profiles(markov_home['state_profiles'])
             },
             "team2": {
                 "name": team2,
@@ -257,7 +287,9 @@ def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_typ
                 "next_draw_prob": round(100 * markov_away['next_match_probs']['P_draw'], 1),
                 "next_loss_prob": round(100 * markov_away['next_match_probs']['P_loss'], 1),
                 "form_label": get_form_label(markov_away['next_match_probs']['P_win']),
-                "matches_analyzed": markov_away['matches_used']
+                "matches_analyzed": markov_away['matches_used'],
+                "hidden_states": markov_away['hidden_states'],
+                "state_profiles": format_state_profiles(markov_away['state_profiles'])
             }
         }
 

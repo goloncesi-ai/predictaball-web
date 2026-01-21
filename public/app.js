@@ -185,6 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Build Form Indicators HTML
                 let formHtml = '';
+                let stateProfilesHtml = '';
                 if (data.markov_form) {
                     const m1 = data.markov_form.team1;
                     const m2 = data.markov_form.team2;
@@ -193,6 +194,34 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (label.includes('Cold')) return 'cold';
                         return 'neutral';
                     };
+
+                    // Build state profiles for each team
+                    const buildStateProfiles = (team) => {
+                        if (!team.state_profiles || team.state_profiles.length === 0) return '';
+                        return team.state_profiles.map(state => `
+                            <div class="state-profile-card">
+                                <div class="state-header">
+                                    <span class="state-label">${state.label}</span>
+                                    <span class="state-matches">${state.count} matches</span>
+                                </div>
+                                <div class="state-probs">
+                                    <div class="state-prob win">
+                                        <span class="prob-bar" style="width: ${state.win_prob}%"></span>
+                                        <span class="prob-text">W ${state.win_prob}%</span>
+                                    </div>
+                                    <div class="state-prob draw">
+                                        <span class="prob-bar" style="width: ${state.draw_prob}%"></span>
+                                        <span class="prob-text">D ${state.draw_prob}%</span>
+                                    </div>
+                                    <div class="state-prob loss">
+                                        <span class="prob-bar" style="width: ${state.loss_prob}%"></span>
+                                        <span class="prob-text">L ${state.loss_prob}%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('');
+                    };
+
                     formHtml = `
                         <div class="form-team">
                             <div class="form-team-name">${m1.name}</div>
@@ -211,6 +240,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <span class="prob-value">${m1.next_loss_prob}%</span>
                                 </div>
                             </div>
+                            <div class="form-meta">
+                                <span>${m1.matches_analyzed} matches • ${m1.hidden_states} states</span>
+                            </div>
                         </div>
                         <div class="form-team">
                             <div class="form-team-name">${m2.name}</div>
@@ -227,6 +259,27 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div class="form-prob-item">
                                     <span class="prob-label">Loss</span>
                                     <span class="prob-value">${m2.next_loss_prob}%</span>
+                                </div>
+                            </div>
+                            <div class="form-meta">
+                                <span>${m2.matches_analyzed} matches • ${m2.hidden_states} states</span>
+                            </div>
+                        </div>
+                    `;
+
+                    // Build detailed state profiles section
+                    stateProfilesHtml = `
+                        <div class="state-profiles-grid">
+                            <div class="team-states">
+                                <h5>${m1.name} Form States</h5>
+                                <div class="states-list">
+                                    ${buildStateProfiles(m1)}
+                                </div>
+                            </div>
+                            <div class="team-states">
+                                <h5>${m2.name} Form States</h5>
+                                <div class="states-list">
+                                    ${buildStateProfiles(m2)}
                                 </div>
                             </div>
                         </div>
@@ -312,6 +365,14 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div class="form-indicators">
                                     ${formHtml}
                                 </div>
+                            </div>
+                            ` : ''}
+
+                            ${stateProfilesHtml ? `
+                            <div class="insights-panel">
+                                <h4><span class="icon">🧠</span> HMM State Breakdown</h4>
+                                <p class="panel-subtitle">Historical form states detected by the Hidden Markov Model</p>
+                                ${stateProfilesHtml}
                             </div>
                             ` : ''}
 
