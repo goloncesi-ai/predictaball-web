@@ -551,7 +551,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (analysisCharts) {
                 analysisCharts.classList.remove('hidden');
                 renderGoalsChart(selectedTeam1, selectedTeam2);
-                renderRadarChart(selectedTeam1, selectedTeam2);
+                renderTeamRadarChart(selectedTeam1, selectedTeam2);
                 renderHeadToHead(selectedTeam1, selectedTeam2);
                 renderFormDisplay(selectedTeam1, selectedTeam2);
                 renderMatchHistory(selectedTeam1, selectedTeam2);
@@ -608,7 +608,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function renderRadarChart(t1, t2) {
+    function renderTeamRadarChart(t1, t2) {
         if (!analysisRadarCanvas) return;
         if (analysisRadarChartInstance) analysisRadarChartInstance.destroy();
 
@@ -1000,7 +1000,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('modal-weak-foot').textContent = `${player.weakFoot}★`;
 
         // Render radar chart
-        renderRadarChart(player);
+        renderPlayerRadarChart(player);
 
         // Show modal
         playerModal.classList.remove('hidden');
@@ -1014,7 +1014,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function renderRadarChart(player) {
+    function renderPlayerRadarChart(player) {
         if (!radarChartCanvas) return;
 
         // Destroy existing chart
