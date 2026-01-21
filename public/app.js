@@ -612,8 +612,34 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!analysisRadarCanvas) return;
         if (analysisRadarChartInstance) analysisRadarChartInstance.destroy();
 
-        // Normalize stats to 0-100 scale for radar
-        const normalize = (val, max) => Math.min(100, (val / max) * 100);
+        // Robust normalize function
+        const normalize = (val, max) => {
+            if (val === undefined || val === null || isNaN(val)) return 0;
+            return Math.min(100, (val / max) * 100);
+        };
+
+        // Helper to get stats safely
+        const getStats = (team) => team.stats || {};
+        const s1 = getStats(t1);
+        const s2 = getStats(t2);
+
+        const data1 = [
+            normalize(s1.win_rate, 1),
+            normalize(s1.avg_goals_scored, 3),
+            100 - normalize(s1.avg_goals_conceded, 3),
+            normalize(s1.avg_shots, 20),
+            normalize(s1.avg_possession, 1),
+            normalize(s1.avg_corners, 8)
+        ];
+
+        const data2 = [
+            normalize(s2.win_rate, 1),
+            normalize(s2.avg_goals_scored, 3),
+            100 - normalize(s2.avg_goals_conceded, 3),
+            normalize(s2.avg_shots, 20),
+            normalize(s2.avg_possession, 1),
+            normalize(s2.avg_corners, 8)
+        ];
 
         analysisRadarChartInstance = new Chart(analysisRadarCanvas, {
             type: 'radar',
@@ -622,40 +648,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 datasets: [
                     {
                         label: t1.name,
-                        data: [
-                            normalize(t1.stats.win_rate, 1),
-                            normalize(t1.stats.avg_goals_scored, 3),
-                            100 - normalize(t1.stats.avg_goals_conceded, 3), // Lower is better
-                            normalize(t1.stats.avg_shots, 20),
-                            normalize(t1.stats.avg_possession, 1),
-                            normalize(t1.stats.avg_corners, 8)
-                        ],
+                        data: data1,
                         backgroundColor: 'rgba(59, 130, 246, 0.2)',
                         borderColor: '#3b82f6',
-                        borderWidth: 2
+                        borderWidth: 2,
+                        pointBackgroundColor: '#3b82f6'
                     },
                     {
                         label: t2.name,
-                        data: [
-                            normalize(t2.stats.win_rate, 1),
-                            normalize(t2.stats.avg_goals_scored, 3),
-                            100 - normalize(t2.stats.avg_goals_conceded, 3),
-                            normalize(t2.stats.avg_shots, 20),
-                            normalize(t2.stats.avg_possession, 1),
-                            normalize(t2.stats.avg_corners, 8)
-                        ],
+                        data: data2,
                         backgroundColor: 'rgba(244, 63, 94, 0.2)',
                         borderColor: '#f43f5e',
-                        borderWidth: 2
+                        borderWidth: 2,
+                        pointBackgroundColor: '#f43f5e'
                     }
                 ]
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: true,
+                maintainAspectRatio: false,
                 scales: {
                     r: {
-                        beginAtZero: true, max: 100,
+                        beginAtZero: true,
+                        max: 100,
                         grid: { color: 'rgba(255,255,255,0.1)' },
                         pointLabels: { color: '#fff', font: { size: 11 } },
                         ticks: { display: false }
