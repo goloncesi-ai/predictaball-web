@@ -526,6 +526,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Render Logic ---
+    // Chart instances for Analysis tab (prefixed with analysis_ to avoid conflicts)
+    let analysisGoalsChartInstance = null;
+    let analysisRadarChartInstance = null;
+    const analysisCharts = document.getElementById('analysis-charts');
+    const analysisGoalsCanvas = document.getElementById('goalsChart');
+    const analysisRadarCanvas = document.getElementById('radarChart');
+
     function updateComparisonInterface() {
         // Update Headers
         if (selectedTeam1) {
@@ -539,9 +546,250 @@ document.addEventListener('DOMContentLoaded', () => {
         if (selectedTeam1 && selectedTeam2) {
             renderComparison(selectedTeam1, selectedTeam2, statsContainer);
             statsContainer.classList.remove('hidden');
+
+            // Render enhanced analysis
+            if (analysisCharts) {
+                analysisCharts.classList.remove('hidden');
+                renderGoalsChart(selectedTeam1, selectedTeam2);
+                renderRadarChart(selectedTeam1, selectedTeam2);
+                renderHeadToHead(selectedTeam1, selectedTeam2);
+                renderFormDisplay(selectedTeam1, selectedTeam2);
+                renderMatchHistory(selectedTeam1, selectedTeam2);
+                renderRankings(selectedTeam1, selectedTeam2);
+            }
         } else {
             statsContainer.classList.add('hidden');
+            if (analysisCharts) analysisCharts.classList.add('hidden');
         }
+    }
+
+    function renderGoalsChart(t1, t2) {
+        if (!analysisGoalsCanvas) return;
+        if (analysisGoalsChartInstance) analysisGoalsChartInstance.destroy();
+
+        const h1 = t1.match_history || [];
+        const h2 = t2.match_history || [];
+        const len = Math.max(h1.length, h2.length, 1);
+        const labels = Array.from({ length: len }, (_, i) => `M${i + 1}`);
+
+        analysisGoalsChartInstance = new Chart(analysisGoalsCanvas, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: `${t1.name} Goals`,
+                        data: h1.map(m => m.goals_for),
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    },
+                    {
+                        label: `${t2.name} Goals`,
+                        data: h2.map(m => m.goals_for),
+                        borderColor: '#f43f5e',
+                        backgroundColor: 'rgba(244, 63, 94, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: { intersect: false, mode: 'index' },
+                scales: {
+                    y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#ccc' } },
+                    x: { grid: { display: false }, ticks: { color: '#ccc' } }
+                },
+                plugins: { legend: { labels: { color: '#fff' } } }
+            }
+        });
+    }
+
+    function renderRadarChart(t1, t2) {
+        if (!analysisRadarCanvas) return;
+        if (analysisRadarChartInstance) analysisRadarChartInstance.destroy();
+
+        // Normalize stats to 0-100 scale for radar
+        const normalize = (val, max) => Math.min(100, (val / max) * 100);
+
+        analysisRadarChartInstance = new Chart(analysisRadarCanvas, {
+            type: 'radar',
+            data: {
+                labels: ['Win Rate', 'Goals Scored', 'Goals Conceded', 'Shots', 'Possession', 'Corners'],
+                datasets: [
+                    {
+                        label: t1.name,
+                        data: [
+                            normalize(t1.stats.win_rate, 1),
+                            normalize(t1.stats.avg_goals_scored, 3),
+                            100 - normalize(t1.stats.avg_goals_conceded, 3), // Lower is better
+                            normalize(t1.stats.avg_shots, 20),
+                            normalize(t1.stats.avg_possession, 1),
+                            normalize(t1.stats.avg_corners, 8)
+                        ],
+                        backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                        borderColor: '#3b82f6',
+                        borderWidth: 2
+                    },
+                    {
+                        label: t2.name,
+                        data: [
+                            normalize(t2.stats.win_rate, 1),
+                            normalize(t2.stats.avg_goals_scored, 3),
+                            100 - normalize(t2.stats.avg_goals_conceded, 3),
+                            normalize(t2.stats.avg_shots, 20),
+                            normalize(t2.stats.avg_possession, 1),
+                            normalize(t2.stats.avg_corners, 8)
+                        ],
+                        backgroundColor: 'rgba(244, 63, 94, 0.2)',
+                        borderColor: '#f43f5e',
+                        borderWidth: 2
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {
+                    r: {
+                        beginAtZero: true, max: 100,
+                        grid: { color: 'rgba(255,255,255,0.1)' },
+                        pointLabels: { color: '#fff', font: { size: 11 } },
+                        ticks: { display: false }
+                    }
+                },
+                plugins: { legend: { labels: { color: '#fff' } } }
+            }
+        });
+    }
+
+    function renderHeadToHead(t1, t2) {
+        const container = document.getElementById('h2h-content');
+        if (!container) return;
+
+        const h2h1 = t1.head_to_head?.[t2.name];
+        const h2h2 = t2.head_to_head?.[t1.name];
+
+        if (!h2h1 && !h2h2) {
+            container.innerHTML = '<p class="no-data">No head-to-head data available</p>';
+            return;
+        }
+
+        const record = h2h1 || { wins: 0, draws: 0, losses: 0, goals_for: 0, goals_against: 0 };
+        const total = record.wins + record.draws + record.losses;
+
+        container.innerHTML = `
+            <div class="h2h-stats">
+                <div class="h2h-team">
+                    <span class="team-name">${t1.name}</span>
+                    <span class="h2h-wins">${record.wins} wins</span>
+                </div>
+                <div class="h2h-center">
+                    <div class="h2h-draws">${record.draws} draws</div>
+                    <div class="h2h-matches">${total} matches</div>
+                </div>
+                <div class="h2h-team">
+                    <span class="team-name">${t2.name}</span>
+                    <span class="h2h-wins">${record.losses} wins</span>
+                </div>
+            </div>
+            <div class="h2h-goals">
+                <span>Goals: ${record.goals_for} - ${record.goals_against}</span>
+            </div>
+        `;
+    }
+
+    function renderFormDisplay(t1, t2) {
+        const container = document.getElementById('form-display');
+        if (!container) return;
+
+        const buildFormRow = (team) => {
+            const history = (team.match_history || []).slice(-10);
+            const formIcons = history.map(m => {
+                if (m.result === 'W') return '<span class="form-icon win">W</span>';
+                if (m.result === 'D') return '<span class="form-icon draw">D</span>';
+                return '<span class="form-icon loss">L</span>';
+            }).join('');
+            return `
+                <div class="form-row">
+                    <span class="form-team-label">${team.name}</span>
+                    <div class="form-icons">${formIcons || 'No data'}</div>
+                </div>
+            `;
+        };
+
+        container.innerHTML = buildFormRow(t1) + buildFormRow(t2);
+    }
+
+    function renderMatchHistory(t1, t2) {
+        const container = document.getElementById('match-history');
+        if (!container) return;
+
+        const buildTable = (team) => {
+            const history = (team.match_history || []).slice(-8).reverse();
+            if (history.length === 0) return `<p>${team.name}: No match data</p>`;
+
+            const rows = history.map(m => `
+                <tr class="result-${m.result.toLowerCase()}">
+                    <td>${m.home_away}</td>
+                    <td>${m.opponent}</td>
+                    <td>${m.goals_for} - ${m.goals_against}</td>
+                    <td>${m.possession}%</td>
+                    <td>${m.shots}</td>
+                </tr>
+            `).join('');
+
+            return `
+                <div class="history-table-wrapper">
+                    <h5>${team.name}</h5>
+                    <table class="history-table">
+                        <thead><tr><th>H/A</th><th>Opponent</th><th>Score</th><th>Poss</th><th>Shots</th></tr></thead>
+                        <tbody>${rows}</tbody>
+                    </table>
+                </div>
+            `;
+        };
+
+        container.innerHTML = `<div class="history-grid">${buildTable(t1)}${buildTable(t2)}</div>`;
+    }
+
+    function renderRankings(t1, t2) {
+        const container = document.getElementById('rankings-display');
+        if (!container) return;
+
+        // Calculate rankings among all teams
+        const rankings = {
+            'Goals Scored': teamData.sort((a, b) => b.stats.avg_goals_scored - a.stats.avg_goals_scored).map(t => t.name),
+            'Goals Conceded': teamData.sort((a, b) => a.stats.avg_goals_conceded - b.stats.avg_goals_conceded).map(t => t.name),
+            'Win Rate': teamData.sort((a, b) => b.stats.win_rate - a.stats.win_rate).map(t => t.name),
+            'Possession': teamData.sort((a, b) => b.stats.avg_possession - a.stats.avg_possession).map(t => t.name)
+        };
+
+        const html = Object.entries(rankings).map(([metric, order]) => {
+            const rank1 = order.indexOf(t1.name) + 1;
+            const rank2 = order.indexOf(t2.name) + 1;
+            return `
+                <div class="ranking-item">
+                    <span class="ranking-metric">${metric}</span>
+                    <div class="ranking-values">
+                        <span class="rank team1">#${rank1}</span>
+                        <span class="rank team2">#${rank2}</span>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        container.innerHTML = `
+            <div class="ranking-header">
+                <span></span>
+                <span class="team1-label">${t1.name}</span>
+                <span class="team2-label">${t2.name}</span>
+            </div>
+            ${html}
+        `;
     }
 
     function renderComparison(t1, t2, container) {

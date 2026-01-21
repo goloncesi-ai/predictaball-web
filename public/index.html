@@ -124,6 +124,57 @@
                 <div id="stats-container" class="stats-grid hidden">
                     <!-- Stats bars injected via JS -->
                 </div>
+
+                <!-- Enhanced Charts Section -->
+                <div id="analysis-charts" class="analysis-charts hidden">
+                    <!-- Head-to-Head Section -->
+                    <div class="analysis-panel h2h-panel">
+                        <h3><span class="icon">⚔️</span> Head-to-Head Record</h3>
+                        <div id="h2h-content" class="h2h-content">
+                            <!-- H2H data injected via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Historical Goals Chart -->
+                    <div class="analysis-panel">
+                        <h3><span class="icon">📈</span> Goal Scoring Trend (Last 15 Matches)</h3>
+                        <div class="chart-wrapper">
+                            <canvas id="goalsChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Radar Comparison -->
+                    <div class="analysis-panel">
+                        <h3><span class="icon">🎯</span> Team Comparison Radar</h3>
+                        <div class="chart-wrapper radar-wrapper">
+                            <canvas id="radarChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Recent Form -->
+                    <div class="analysis-panel form-panel">
+                        <h3><span class="icon">📊</span> Recent Form (Last 10 Matches)</h3>
+                        <div id="form-display" class="form-display-grid">
+                            <!-- Form indicators injected via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Match History Table -->
+                    <div class="analysis-panel">
+                        <h3><span class="icon">📋</span> Recent Matches</h3>
+                        <div id="match-history" class="match-history-container">
+                            <!-- Match history tables injected via JS -->
+                        </div>
+                    </div>
+
+                    <!-- League Rankings -->
+                    <div class="analysis-panel">
+                        <h3><span class="icon">🏆</span> Metric Rankings</h3>
+                        <div id="rankings-display" class="rankings-grid">
+                            <!-- Rankings injected via JS -->
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <!-- Tab 2: Simulation -->

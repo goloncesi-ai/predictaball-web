@@ -118,15 +118,23 @@ def process_team_df(df, team_name):
         'wins': 0, 'draws': 0, 'losses': 0
     }
     
+    # New: Match history for charts
+    match_history = []
+    
+    # New: Head-to-head records
+    h2h_records = {}
+    
     cols_to_numeric = [
         'Team1_Goals', 'Team2_Goals', 'Team1_TotalShots', 'Team2_TotalShots',
-        'Team1_BallPosses', 'Team2_BallPosses', 'Team1_Corners', 'Team2_Corners'
+        'Team1_BallPosses', 'Team2_BallPosses', 'Team1_Corners', 'Team2_Corners',
+        'Team1_Passes', 'Team2_Passes', 'Team1_BigChances', 'Team2_BigChances',
+        'Team1_Tackels', 'Team2_Tackels'
     ]
     for c in cols_to_numeric:
         if c in df.columns:
             df[c] = pd.to_numeric(df[c], errors='coerce').fillna(0)
 
-    for _, row in df.iterrows():
+    for idx, row in df.iterrows():
         t1 = str(row.get('Team1', ''))
         t2 = str(row.get('Team2', ''))
         
@@ -144,12 +152,20 @@ def process_team_df(df, team_name):
             my_shots = row.get('Team1_TotalShots', 0)
             my_poss = row.get('Team1_BallPosses', 0)
             my_corners = row.get('Team1_Corners', 0)
+            my_passes = row.get('Team1_Passes', 0)
+            my_big_chances = row.get('Team1_BigChances', 0)
+            opponent = normalize_name(t2)
+            home_away = str(row.get('Team1H_A', 'H'))
         else:
             my_goals = row.get('Team2_Goals', 0)
             op_goals = row.get('Team1_Goals', 0)
             my_shots = row.get('Team2_TotalShots', 0)
             my_poss = row.get('Team2_BallPosses', 0)
             my_corners = row.get('Team2_Corners', 0)
+            my_passes = row.get('Team2_Passes', 0)
+            my_big_chances = row.get('Team2_BigChances', 0)
+            opponent = normalize_name(t1)
+            home_away = 'A' if str(row.get('Team1H_A', 'H')) == 'H' else 'H'
             
         stats_acc['goals_scored'] += my_goals
         stats_acc['goals_conceded'] += op_goals
@@ -157,14 +173,52 @@ def process_team_df(df, team_name):
         stats_acc['possession_sum'] += my_poss
         stats_acc['corners'] += my_corners
         
-        if my_goals > op_goals: stats_acc['wins'] += 1
-        elif my_goals == op_goals: stats_acc['draws'] += 1
-        else: stats_acc['losses'] += 1
+        # Determine result
+        if my_goals > op_goals:
+            stats_acc['wins'] += 1
+            result = 'W'
+        elif my_goals == op_goals:
+            stats_acc['draws'] += 1
+            result = 'D'
+        else:
+            stats_acc['losses'] += 1
+            result = 'L'
+        
+        # Add to match history
+        match_history.append({
+            'opponent': opponent,
+            'home_away': home_away,
+            'goals_for': int(my_goals),
+            'goals_against': int(op_goals),
+            'shots': int(my_shots),
+            'possession': round(float(my_poss), 2),
+            'corners': int(my_corners),
+            'passes': int(my_passes),
+            'big_chances': int(my_big_chances),
+            'result': result
+        })
+        
+        # Update H2H records
+        if opponent not in h2h_records:
+            h2h_records[opponent] = {'wins': 0, 'draws': 0, 'losses': 0, 'goals_for': 0, 'goals_against': 0}
+        
+        h2h_records[opponent]['goals_for'] += int(my_goals)
+        h2h_records[opponent]['goals_against'] += int(op_goals)
+        if result == 'W':
+            h2h_records[opponent]['wins'] += 1
+        elif result == 'D':
+            h2h_records[opponent]['draws'] += 1
+        else:
+            h2h_records[opponent]['losses'] += 1
 
     if stats_acc['games'] == 0:
         return None
         
     g = stats_acc['games']
+    
+    # Keep only last 20 matches for history (most recent)
+    match_history = match_history[-20:]
+    
     return {
         'name': team_name,
         'stats': {
@@ -174,8 +228,13 @@ def process_team_df(df, team_name):
             'avg_shots': stats_acc['shots'] / g,
             'avg_possession': stats_acc['possession_sum'] / g,
             'avg_corners': stats_acc['corners'] / g,
-            'total_games': g
-        }
+            'total_games': g,
+            'wins': stats_acc['wins'],
+            'draws': stats_acc['draws'],
+            'losses': stats_acc['losses']
+        },
+        'match_history': match_history,
+        'head_to_head': h2h_records
     }
 
 def process_players_df(df, team_name, players_dict):
