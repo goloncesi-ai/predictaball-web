@@ -255,6 +255,35 @@
                         </div>
                     </div>
 
+                    <!-- Simulation Loading Animation -->
+                    <div id="sim-loader" class="sim-loader hidden">
+                        <div class="loader-container">
+                            <div class="loader-header">
+                                <div class="football-icon">⚽</div>
+                                <h3 class="loader-title" data-i18n="loader_title">Analyzing Match...</h3>
+                            </div>
+
+                            <div class="progress-wrapper">
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                    <div class="progress-glow"></div>
+                                </div>
+                                <div class="progress-percentage">0%</div>
+                            </div>
+
+                            <p class="loader-subtitle" data-i18n="loader_subtitle">
+                                Running 10,000 simulations with AI predictions
+                            </p>
+
+                            <!-- Decorative field lines -->
+                            <div class="field-lines">
+                                <div class="field-line"></div>
+                                <div class="field-line"></div>
+                                <div class="field-line"></div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div id="sim-results" class="sim-output hidden">
                         <!-- Results injected via JS -->
                     </div>

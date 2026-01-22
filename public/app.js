@@ -68,6 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
             home_adj: "Home Team Adjustment",
             away_adj: "Away Team Adjustment",
             btn_run_sim: "Run Prediction",
+            loader_title: "Analyzing Match...",
+            loader_subtitle: "Running 10,000 simulations with AI predictions",
             scout_title: "Player Scout",
             scout_desc: "Deep dive into individual player ratings and performance history.",
             search_placeholder: "Search for a player (e.g. Icardi)...",
@@ -118,6 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
             home_adj: "Ev Sahibi Ayarı",
             away_adj: "Deplasman Ayarı",
             btn_run_sim: "Tahmin Yürüt",
+            loader_title: "Maç Analiz Ediliyor...",
+            loader_subtitle: "10.000 simülasyon yapay zeka tahminleri ile çalışıyor",
             scout_title: "Oyuncu Gözlemcisi",
             scout_desc: "Oyuncu reytinglerine ve performans geçmişine derinlemesine bakın.",
             search_placeholder: "Oyuncu ara (örn. Icardi)...",
@@ -315,8 +319,28 @@ document.addEventListener('DOMContentLoaded', () => {
             // UI Loading State
             btnRunSim.disabled = true;
             btnRunSim.innerText = "Running Simulation...";
-            simResults.innerHTML = '<div class="loading">Running combined analysis (Markov + Simulations)...</div>';
-            simResults.classList.remove('hidden');
+            simResults.classList.add('hidden');
+
+            // Show loader with animation
+            const loader = document.getElementById('sim-loader');
+            const progressFill = document.querySelector('.progress-fill');
+            const progressGlow = document.querySelector('.progress-glow');
+            const progressPct = document.querySelector('.progress-percentage');
+
+            loader.classList.remove('hidden');
+
+            // Animate progress bar
+            let progress = 0;
+            const progressInterval = setInterval(() => {
+                progress += 2;
+                if (progress >= 95) {
+                    progress = 95; // Stop at 95% until we get response
+                    clearInterval(progressInterval);
+                }
+                progressFill.style.width = `${progress}%`;
+                progressGlow.style.width = `${progress}%`;
+                progressPct.textContent = `${Math.round(progress)}%`;
+            }, 50);
 
             try {
                 // Get adjustment values
@@ -584,9 +608,27 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
 
+                // Complete the progress animation
+                clearInterval(progressInterval);
+                progressFill.style.width = '100%';
+                progressGlow.style.width = '100%';
+                progressPct.textContent = '100%';
+
+                // Brief delay to show 100%, then hide loader and show results
+                setTimeout(() => {
+                    loader.classList.add('hidden');
+                    simResults.classList.remove('hidden');
+                }, 400);
+
             } catch (error) {
                 console.error(error);
+
+                // Complete progress and hide loader on error too
+                clearInterval(progressInterval);
+                loader.classList.add('hidden');
+
                 simResults.innerHTML = `<div class="error">Error: ${error.message}. Is server.py running?</div>`;
+                simResults.classList.remove('hidden');
             } finally {
                 btnRunSim.disabled = false;
                 btnRunSim.innerText = "Run Simulation";
