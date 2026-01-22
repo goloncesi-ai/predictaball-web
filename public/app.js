@@ -40,16 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let selectedTeam1 = null;
     let selectedTeam2 = null;
 
-    // --- Initialization ---
-    if (typeof teamData !== 'undefined' && teamData.length > 0) {
-        populateAllSelectors();
-        initTabs();
-        initExploreTab();
-        initLanguage();
-    } else {
-        console.error("No data found. Ensure data.js is loaded.");
-        alert("Data not found. Please run the ingestion script.");
-    }
+    // --- Initialization moved to after declarations ---
 
     // --- Localization ---
     const translations = {
@@ -155,18 +146,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    let currentLang = localStorage.getItem('goloncesi_lang') || 'en';
+    let currentLang = localStorage.getItem('goloncesi_lang') || 'tr';
 
     function initLanguage() {
+        const langBtn = document.getElementById('lang-btn');
+        const langMenu = document.querySelector('.lang-menu');
         const langOptions = document.querySelectorAll('.lang-option');
 
         // Initial update
         updateLanguage(currentLang);
 
+        // Toggle menu on button click
+        if (langBtn && langMenu) {
+            langBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                langMenu.classList.toggle('show');
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!langBtn.contains(e.target) && !langMenu.contains(e.target)) {
+                    langMenu.classList.remove('show');
+                }
+            });
+        }
+
+        // Handle language option clicks
         langOptions.forEach(opt => {
             opt.addEventListener('click', () => {
                 const lang = opt.getAttribute('data-lang');
                 updateLanguage(lang);
+                // Close menu after selection
+                if (langMenu) {
+                    langMenu.classList.remove('show');
+                }
             });
         });
     }
@@ -203,6 +216,17 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.lang-option').forEach(opt => {
             opt.classList.toggle('active', opt.getAttribute('data-lang') === lang);
         });
+    }
+
+    // --- Initialization ---
+    if (typeof teamData !== 'undefined' && teamData.length > 0) {
+        populateAllSelectors();
+        initTabs();
+        initExploreTab();
+        initLanguage();
+    } else {
+        console.error("No data found. Ensure data.js is loaded.");
+        alert("Data not found. Please run the ingestion script.");
     }
 
     // --- Functions ---
