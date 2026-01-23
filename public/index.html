@@ -82,6 +82,9 @@
                 <button class="nav-btn active" data-tab="tab-simulation">
                     <span class="icon">🎮</span> <span data-i18n="nav_simulation">Simulation</span>
                 </button>
+                <button class="nav-btn" data-tab="tab-recent-games">
+                    <span class="icon">⚽</span> <span data-i18n="nav_recent_games">Recent Games</span>
+                </button>
                 <button class="nav-btn" data-tab="tab-players">
                     <span class="icon">👤</span> <span data-i18n="nav_scout">Scout</span>
                 </button>
@@ -471,6 +474,41 @@
                                 <h3 data-i18n="radar_title">Performance Radar</h3>
                                 <canvas id="player-radar-chart"></canvas>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tab 5: Recent Games -->
+            <section id="tab-recent-games" class="view-section hidden">
+                <div class="section-header">
+                    <h2 data-i18n="recent_games_title">Weekly Predictions</h2>
+                    <p data-i18n="recent_games_desc">AI-powered predictions for upcoming Turkish Super League matches.
+                    </p>
+                </div>
+
+                <div class="recent-games-interface">
+                    <!-- Round Selector -->
+                    <div class="round-selector">
+                        <button id="prev-round" class="round-nav-btn" aria-label="Previous Round">
+                            <span>←</span>
+                        </button>
+                        <div class="round-display">
+                            <span data-i18n="round_label">Round</span>
+                            <select id="round-dropdown" class="round-select">
+                                <!-- Options populated by JS -->
+                            </select>
+                        </div>
+                        <button id="next-round" class="round-nav-btn" aria-label="Next Round">
+                            <span>→</span>
+                        </button>
+                    </div>
+
+                    <!-- Matches Container -->
+                    <div id="matches-container" class="matches-container">
+                        <div class="loading-state">
+                            <div class="spinner"></div>
+                            <p data-i18n="loading_matches">Loading matches...</p>
                         </div>
                     </div>
                 </div>

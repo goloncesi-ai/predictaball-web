@@ -58,10 +58,6 @@ def get_json(url, retries=3, backoff=1.3):
     for i in range(retries):
         _polite_sleep()
         r = SESSION.get(url, timeout=25)
-        print("DEBUG:", url, "→", r.status_code)
-        if not r.ok:
-            print("DEBUG body:", r.text[:300])
-
         # Cloudflare / anti-bot challenge: do NOT retry (it will just keep failing)
         if _is_challenge(r):
             raise SofaScoreChallengeError(

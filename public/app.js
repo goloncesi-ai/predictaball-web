@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             subtitle: "Next-Gen Football Analytics & Simulation",
             nav_analysis: "Analysis",
             nav_simulation: "Simulation",
+            nav_recent_games: "Recent Games",
             nav_scout: "Scout",
             nav_explore: "Explore",
             analysis_title: "Pre-Match Analysis",
@@ -94,12 +95,20 @@ document.addEventListener('DOMContentLoaded', () => {
             rarity: "Rarity",
             skills: "Skills",
             weak_foot: "Weak Foot",
-            radar_title: "Performance Radar"
+            radar_title: "Performance Radar",
+            recent_games_title: "Weekly Predictions",
+            recent_games_desc: "AI-powered predictions for upcoming Turkish Super League matches.",
+            round_label: "Round",
+            loading_matches: "Loading matches...",
+            confidence_high: "High Confidence",
+            confidence_medium: "Medium Confidence",
+            confidence_low: "Low Confidence"
         },
         tr: {
             subtitle: "Yeni Nesil Futbol Analizi ve Simülasyonu",
             nav_analysis: "Analiz",
             nav_simulation: "Simülasyon",
+            nav_recent_games: "Son Maçlar",
             nav_scout: "Gözlemci",
             nav_explore: "Keşfet",
             analysis_title: "Maç Öncesi Analiz",
@@ -146,7 +155,14 @@ document.addEventListener('DOMContentLoaded', () => {
             rarity: "Nadirlik",
             skills: "Yetenek",
             weak_foot: "Zayıf Ayak",
-            radar_title: "Performans Radarı"
+            radar_title: "Performans Radarı",
+            recent_games_title: "Haftalık Tahminler",
+            recent_games_desc: "Süper Lig maçları için yapay zeka destekli tahminler.",
+            round_label: "Hafta",
+            loading_matches: "Maçlar yükleniyor...",
+            confidence_high: "Yüksek Güven",
+            confidence_medium: "Orta Güven",
+            confidence_low: "Düşük Güven"
         }
     };
 
@@ -1307,5 +1323,203 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
+    }
+
+    // --- Recent Games Tab ---
+    let currentRoundNum = 19;
+    const recentGamesTab = document.getElementById('tab-recent-games');
+    const roundDropdown = document.getElementById('round-dropdown');
+    const prevRoundBtn = document.getElementById('prev-round');
+    const nextRoundBtn = document.getElementById('next-round');
+    const matchesContainer = document.getElementById('matches-container');
+
+    // Initialize Recent Games when tab is clicked
+    tabBtns.forEach(btn => {
+        if (btn.getAttribute('data-tab') === 'tab-recent-games') {
+            btn.addEventListener('click', () => {
+                if (!roundDropdown.options.length) {
+                    initRecentGamesTab();
+                }
+            });
+        }
+    });
+
+    async function initRecentGamesTab() {
+        try {
+            // Fetch current round
+            const roundResponse = await fetch('/api/current-round');
+            const roundData = await roundResponse.json();
+            currentRoundNum = roundData.current_round;
+
+            // Populate round dropdown (1-34)
+            for (let i = 1; i <= 34; i++) {
+                const option = new Option(`${translations[currentLang].round_label} ${i}`, i);
+                roundDropdown.add(option);
+            }
+            roundDropdown.value = currentRoundNum;
+
+            // Load matches for current round
+            await loadRoundMatches(currentRoundNum);
+
+            // Set up round navigation
+            roundDropdown.addEventListener('change', (e) => {
+                loadRoundMatches(parseInt(e.target.value));
+            });
+
+            prevRoundBtn.addEventListener('click', () => {
+                if (currentRoundNum > 1) {
+                    currentRoundNum--;
+                    roundDropdown.value = currentRoundNum;
+                    loadRoundMatches(currentRoundNum);
+                }
+            });
+
+            nextRoundBtn.addEventListener('click', () => {
+                if (currentRoundNum < 34) {
+                    currentRoundNum++;
+                    roundDropdown.value = currentRoundNum;
+                    loadRoundMatches(currentRoundNum);
+                }
+            });
+
+        } catch (error) {
+            console.error('Error initializing Recent Games:', error);
+            matchesContainer.innerHTML = `<div class="error">Error loading data: ${error.message}</div>`;
+        }
+    }
+
+    async function loadRoundMatches(roundNum) {
+        try {
+            matchesContainer.innerHTML = '<div class="loading-state"><div class="spinner"></div><p>Loading matches...</p></div>';
+
+            const response = await fetch(`/api/recent-games?round=${roundNum}`);
+            const data = await response.json();
+
+            currentRoundNum = roundNum;
+            renderMatches(data.matches);
+
+        } catch (error) {
+            console.error('Error loading matches:', error);
+            matchesContainer.innerHTML = `<div class="error">Error: ${error.message}</div>`;
+        }
+    }
+
+    function renderMatches(matches) {
+        if (!matches || matches.length === 0) {
+            matchesContainer.innerHTML = '<div class="no-matches">No matches found for this round.</div>';
+            return;
+        }
+
+        // Group matches by date
+        const grouped = {};
+        matches.forEach(match => {
+            const date = match.date;
+            if (!grouped[date]) grouped[date] = [];
+            grouped[date].push(match);
+        });
+
+        let html = '';
+        Object.keys(grouped).sort().forEach(date => {
+            const dateObj = new Date(date + 'T12:00:00');
+            const dateStr = dateObj.toLocaleDateString(currentLang === 'tr' ? 'tr-TR' : 'en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            html += `<div class="date-group"><h3 class="date-header">${dateStr}</h3>`;
+
+            grouped[date].forEach(match => {
+                html += renderMatchCard(match);
+            });
+
+            html += '</div>';
+        });
+
+        matchesContainer.innerHTML = html;
+
+        // Attach expand/collapse listeners
+        document.querySelectorAll('.match-card').forEach(card => {
+            const expandBtn = card.querySelector('.expand-btn');
+            if (expandBtn) {
+                expandBtn.addEventListener('click', () => {
+                    card.classList.toggle('expanded');
+                    const details = card.querySelector('.match-details');
+                    if (card.classList.contains('expanded')) {
+                        details.style.maxHeight = details.scrollHeight + 'px';
+                        expandBtn.textContent = '▲';
+                    } else {
+                        details.style.maxHeight = '0';
+                        expandBtn.textContent = '▼';
+                    }
+                });
+            }
+        });
+    }
+
+    function renderMatchCard(match) {
+        const pred = match.prediction;
+        if (!pred) {
+            return `
+                <div class="match-card no-prediction">
+                    <div class="match-header">
+                        <div class="team home">${match.home_team}</div>
+                        <div class="match-center">
+                            <div class="match-time">${match.time}</div>
+                            <div class="no-pred-label">No prediction yet</div>
+                        </div>
+                        <div class="team away">${match.away_team}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        const confClass = pred.confidence;
+        const confLabel = translations[currentLang][`confidence_${pred.confidence}`] || pred.confidence;
+
+        return `
+            <div class="match-card" data-match-id="${match.match_id}">
+                <div class="match-header">
+                    <div class="team home">
+                        <span class="team-name">${match.home_team}</span>
+                    </div>
+                    <div class="match-center">
+                        <div class="predicted-score">${pred.predicted_score}</div>
+                        <div class="match-time">${match.time}</div>
+                        <div class="confidence-badge ${confClass}">${confLabel}</div>
+                    </div>
+                    <div class="team away">
+                        <span class="team-name">${match.away_team}</span>
+                    </div>
+                    <button class="expand-btn">▼</button>
+                </div>
+
+                <div class="probabilities-bar">
+                    <div class="prob home" style="width: ${pred.probabilities.home_win}%" title="Home Win: ${pred.probabilities.home_win}%">
+                        ${pred.probabilities.home_win}%
+                    </div>
+                    <div class="prob draw" style="width: ${pred.probabilities.draw}%" title="Draw: ${pred.probabilities.draw}%">
+                        ${pred.probabilities.draw}%
+                    </div>
+                    <div class="prob away" style="width: ${pred.probabilities.away_win}%" title="Away Win: ${pred.probabilities.away_win}%">
+                        ${pred.probabilities.away_win}%
+                    </div>
+                </div>
+
+                <div class="match-details">
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <label>Expected Goals</label>
+                            <div class="xg-display">
+                                <span class="xg home">${pred.expected_goals.home.toFixed(2)}</span>
+                                <span class="xg-separator">-</span>
+                                <span class="xg away">${pred.expected_goals.away.toFixed(2)}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
     }
 });

@@ -135,6 +135,143 @@ def serve_logo(filename):
     logo_dir = os.path.join(ASSETS_DIR, "Logos")
     return send_from_directory(logo_dir, filename)
 
+@app.route('/api/current-round', methods=['GET'])
+def get_current_round():
+    """Get the current round number based on today's date."""
+    try:
+        import json
+        from datetime import datetime
+        
+        schedule_file = os.path.join(BASE_DIR, 'Data', 'schedule', 'season_schedule.json')
+        
+        if not os.path.exists(schedule_file):
+            return jsonify({"error": "Schedule not found"}), 404
+        
+        with open(schedule_file, 'r', encoding='utf-8') as f:
+            schedule = json.load(f)
+        
+        # Use current_round from schedule if available
+        if 'current_round' in schedule:
+            return jsonify({
+                "current_round": schedule['current_round'],
+                "season": schedule.get('season', '2024-25')
+            })
+        
+        # Fallback: find round based on today's date
+        today = datetime.now()
+        
+        for round_data in schedule.get('rounds', []):
+            for match in round_data.get('matches', []):
+                match_date_str = match.get('date')
+                if match_date_str:
+                    match_date = datetime.fromisoformat(match_date_str.replace('Z', '+00:00'))
+                    # If match is in the future, this is likely the current round
+                    if match_date >= today:
+                        return jsonify({
+                            "current_round": round_data['round'],
+                            "season": schedule.get('season', '2024-25')
+                        })
+        
+        # Default to round 1 if can't determine
+        return jsonify({"current_round": 1, "season": schedule.get('season', '2024-25')})
+    
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/recent-games', methods=['GET'])
+def get_recent_games():
+    """Get predictions and results for a specific round."""
+    try:
+        import json
+        
+        # Get round number from query params (default to current round)
+        round_num = request.args.get('round', type=int)
+        
+        # Load schedule
+        schedule_file = os.path.join(BASE_DIR, 'Data', 'schedule', 'season_schedule.json')
+        if not os.path.exists(schedule_file):
+            return jsonify({"error": "Schedule not found"}), 404
+        
+        with open(schedule_file, 'r', encoding='utf-8') as f:
+            schedule = json.load(f)
+        
+        # If no round specified, use current round
+        if round_num is None:
+            round_num = schedule.get('current_round', 19)
+        
+        # Find the round in schedule
+        round_data = None
+        for r in schedule.get('rounds', []):
+            if r['round'] == round_num:
+                round_data = r
+                break
+        
+        if not round_data:
+            return jsonify({"error": f"Round {round_num} not found"}), 404
+        
+        # Load predictions if available
+        predictions_file = os.path.join(BASE_DIR, 'Data', 'predictions', f'round_{round_num:02d}.json')
+        
+        # Try sample file if main predictions don't exist (for development)
+        if not os.path.exists(predictions_file):
+            predictions_file = os.path.join(BASE_DIR, 'Data', 'predictions', f'round_{round_num:02d}_sample.json')
+        
+        predictions_data = None
+        if os.path.exists(predictions_file):
+            with open(predictions_file, 'r', encoding='utf-8') as f:
+                predictions_data = json.load(f)
+        
+        # Merge schedule matches with predictions
+        matches = []
+        for match in round_data.get('matches', []):
+            match_info = {
+                "match_id": match['match_id'],
+                "date": match['date'],
+                "time": match['time'],
+                "datetime_iso": match.get('datetime_iso'),
+                "home_team": match['home_team'],
+                "away_team": match['away_team'],
+                "status": match['status'],
+                "actual_score": match.get('actual_score')
+            }
+            
+            # Add prediction data if available
+            if predictions_data:
+                pred_match = next(
+                    (p for p in predictions_data.get('matches', []) 
+                     if p['match_id'] == match['match_id']),
+                    None
+                )
+                if pred_match:
+                    match_info['prediction'] = {
+                        "predicted_score": pred_match.get('predicted_score'),
+                        "probabilities": pred_match.get('probabilities'),
+                        "confidence": pred_match.get('confidence'),
+                        "expected_goals": pred_match.get('expected_goals'),
+                        "score_distribution": pred_match.get('score_distribution', []),
+                        "heatmap_data": pred_match.get('heatmap_data', [])
+                    }
+            
+            matches.append(match_info)
+        
+        result = {
+            "round": round_num,
+            "season": schedule.get('season', '2024-25'),
+            "current_round": schedule.get('current_round'),
+            "matches": matches,
+            "predictions_available": predictions_data is not None,
+            "generated_at": predictions_data.get('generated_at') if predictions_data else None
+        }
+        
+        return jsonify(result)
+    
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({"error": str(e)}), 500
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5001))
     print(f"Starting Flask Backend on port {port}...")

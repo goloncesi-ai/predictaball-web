@@ -1,0 +1,429 @@
+{
+  "round": 19,
+  "generated_at": "2026-01-23T17:40:48.757866",
+  "matches": [
+    {
+      "match_id": 14109772,
+      "date": "2026-01-23",
+      "time": "18:00",
+      "datetime_iso": "2026-01-23T18:00:00",
+      "home_team": "Trabzonspor",
+      "away_team": "Kasımpaşa",
+      "predicted_score": "2-1",
+      "probabilities": {
+        "home_win": 62.9,
+        "draw": 28.8,
+        "away_win": 8.3
+      },
+      "confidence": "high",
+      "expected_goals": {
+        "home": 1.5,
+        "away": 1.0
+      },
+      "score_distribution": [
+        [
+          2,
+          1,
+          36.5
+        ],
+        [
+          2,
+          0,
+          29.7
+        ],
+        [
+          2,
+          2,
+          14.2
+        ],
+        [
+          3,
+          1,
+          10.8
+        ],
+        [
+          3,
+          0,
+          8.8
+        ]
+      ],
+      "heatmap_data": []
+    },
+    {
+      "match_id": 14109775,
+      "date": "2026-01-24",
+      "time": "12:30",
+      "datetime_iso": "2026-01-24T12:30:00",
+      "home_team": "Kayserispor",
+      "away_team": "Başakşehir FK",
+      "predicted_score": "0-2",
+      "probabilities": {
+        "home_win": 13.6,
+        "draw": 27.8,
+        "away_win": 58.7
+      },
+      "confidence": "medium",
+      "expected_goals": {
+        "home": 0.5,
+        "away": 1.5
+      },
+      "score_distribution": [
+        [
+          1,
+          1,
+          23.9
+        ],
+        [
+          2,
+          1,
+          23.6
+        ],
+        [
+          0,
+          2,
+          18.9
+        ],
+        [
+          0,
+          3,
+          18.6
+        ],
+        [
+          2,
+          2,
+          15.0
+        ]
+      ],
+      "heatmap_data": []
+    },
+    {
+      "match_id": 14109780,
+      "date": "2026-01-24",
+      "time": "15:00",
+      "datetime_iso": "2026-01-24T15:00:00",
+      "home_team": "Samsunspor",
+      "away_team": "Kocaelispor",
+      "predicted_score": "0-2",
+      "probabilities": {
+        "home_win": 5.9,
+        "draw": 31.2,
+        "away_win": 62.9
+      },
+      "confidence": "high",
+      "expected_goals": {
+        "home": 0.0,
+        "away": 2.0
+      },
+      "score_distribution": [
+        [
+          0,
+          2,
+          28.3
+        ],
+        [
+          1,
+          1,
+          20.4
+        ],
+        [
+          0,
+          3,
+          17.7
+        ],
+        [
+          1,
+          2,
+          17.7
+        ],
+        [
+          0,
+          1,
+          15.9
+        ]
+      ],
+      "heatmap_data": []
+    },
+    {
+      "match_id": 14109777,
+      "date": "2026-01-24",
+      "time": "18:00",
+      "datetime_iso": "2026-01-24T18:00:00",
+      "home_team": "Fatih Karagümrük",
+      "away_team": "Galatasaray",
+      "predicted_score": "0-2",
+      "probabilities": {
+        "home_win": 9.3,
+        "draw": 8.3,
+        "away_win": 82.3
+      },
+      "confidence": "high",
+      "expected_goals": {
+        "home": 0.5,
+        "away": 2.0
+      },
+      "score_distribution": [
+        [
+          0,
+          2,
+          56.4
+        ],
+        [
+          1,
+          2,
+          19.6
+        ],
+        [
+          0,
+          3,
+          9.7
+        ],
+        [
+          0,
+          1,
+          7.9
+        ],
+        [
+          1,
+          1,
+          6.4
+        ]
+      ],
+      "heatmap_data": []
+    },
+    {
+      "match_id": 14109773,
+      "date": "2026-01-25",
+      "time": "12:30",
+      "datetime_iso": "2026-01-25T12:30:00",
+      "home_team": "Gaziantep FK",
+      "away_team": "Konyaspor",
+      "predicted_score": "2-1",
+      "probabilities": {
+        "home_win": 61.9,
+        "draw": 20.1,
+        "away_win": 18.0
+      },
+      "confidence": "high",
+      "expected_goals": {
+        "home": 2.0,
+        "away": 1.0
+      },
+      "score_distribution": [
+        [
+          1,
+          1,
+          26.0
+        ],
+        [
+          2,
+          1,
+          23.2
+        ],
+        [
+          2,
+          0,
+          22.9
+        ],
+        [
+          3,
+          1,
+          14.4
+        ],
+        [
+          1,
+          0,
+          13.5
+        ]
+      ],
+      "heatmap_data": []
+    },
+    {
+      "match_id": 14109778,
+      "date": "2026-01-25",
+      "time": "15:00",
+      "datetime_iso": "2026-01-25T15:00:00",
+      "home_team": "Antalyaspor",
+      "away_team": "Gençlerbirliği",
+      "predicted_score": "0-3",
+      "probabilities": {
+        "home_win": 12.6,
+        "draw": 22.9,
+        "away_win": 64.6
+      },
+      "confidence": "high",
+      "expected_goals": {
+        "home": 0.0,
+        "away": 3.0
+      },
+      "score_distribution": [
+        [
+          0,
+          3,
+          23.1
+        ],
+        [
+          0,
+          2,
+          23.1
+        ],
+        [
+          1,
+          1,
+          22.8
+        ],
+        [
+          0,
+          1,
+          17.5
+        ],
+        [
+          2,
+          1,
+          13.5
+        ]
+      ],
+      "heatmap_data": []
+    },
+    {
+      "match_id": 14109774,
+      "date": "2026-01-25",
+      "time": "15:00",
+      "datetime_iso": "2026-01-25T15:00:00",
+      "home_team": "Çaykur Rizespor",
+      "away_team": "Alanyaspor",
+      "predicted_score": "0-2",
+      "probabilities": {
+        "home_win": 19.9,
+        "draw": 31.1,
+        "away_win": 49.0
+      },
+      "confidence": "medium",
+      "expected_goals": {
+        "home": 0.5,
+        "away": 2.0
+      },
+      "score_distribution": [
+        [
+          0,
+          3,
+          34.7
+        ],
+        [
+          0,
+          2,
+          27.8
+        ],
+        [
+          2,
+          2,
+          17.8
+        ],
+        [
+          1,
+          1,
+          10.9
+        ],
+        [
+          2,
+          1,
+          8.8
+        ]
+      ],
+      "heatmap_data": []
+    },
+    {
+      "match_id": 14109776,
+      "date": "2026-01-25",
+      "time": "18:00",
+      "datetime_iso": "2026-01-25T18:00:00",
+      "home_team": "Fenerbahçe",
+      "away_team": "Göztepe",
+      "predicted_score": "2-0",
+      "probabilities": {
+        "home_win": 50.0,
+        "draw": 33.9,
+        "away_win": 16.1
+      },
+      "confidence": "medium",
+      "expected_goals": {
+        "home": 1.5,
+        "away": 0.0
+      },
+      "score_distribution": [
+        [
+          3,
+          0,
+          25.8
+        ],
+        [
+          3,
+          1,
+          25.8
+        ],
+        [
+          1,
+          1,
+          18.1
+        ],
+        [
+          2,
+          0,
+          16.6
+        ],
+        [
+          2,
+          1,
+          13.8
+        ]
+      ],
+      "heatmap_data": []
+    },
+    {
+      "match_id": 14109771,
+      "date": "2026-01-26",
+      "time": "18:00",
+      "datetime_iso": "2026-01-26T18:00:00",
+      "home_team": "Eyüpspor",
+      "away_team": "Beşiktaş JK",
+      "predicted_score": "0-2",
+      "probabilities": {
+        "home_win": 15.2,
+        "draw": 25.3,
+        "away_win": 59.4
+      },
+      "confidence": "medium",
+      "expected_goals": {
+        "home": 0.5,
+        "away": 1.5
+      },
+      "score_distribution": [
+        [
+          0,
+          2,
+          50.5
+        ],
+        [
+          0,
+          3,
+          17.6
+        ],
+        [
+          0,
+          1,
+          11.6
+        ],
+        [
+          2,
+          0,
+          10.3
+        ],
+        [
+          1,
+          2,
+          10.0
+        ]
+      ],
+      "heatmap_data": []
+    }
+  ]
+}

@@ -126,9 +126,15 @@ def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_typ
     
     # Resolve team names to match disk (fixes NFC/NFD issues on Linux)
     # Also handle specific manual mappings where folder name differs significantly from UI name
+    # Sofascore uses "FK" and "JK" suffixes that our local folders don't have
     team_mappings = {
         "Fatih Karagümrük": "Karagümrük",
-        "Fatih Karagumruk": "Karagümrük"
+        "Fatih Karagumruk": "Karagümrük",
+        "Başakşehir FK": "Başakşehir",
+        "Basaksehir FK": "Başakşehir",
+        "Beşiktaş JK": "Beşiktaş",
+        "Besiktas JK": "Beşiktaş",
+        "Gaziantep FK": "Gaziantep"
     }
     
     if team1 in team_mappings:
