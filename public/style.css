@@ -2077,6 +2077,7 @@ body {
         margin-bottom: 1rem;
     }
 }
+
 /* ============================================
    SIMULATION LOADER ANIMATION
    ============================================ */
@@ -2118,9 +2119,12 @@ body {
 }
 
 @keyframes roll-football {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateX(-20px) rotate(0deg);
     }
+
     50% {
         transform: translateX(20px) rotate(360deg);
     }
@@ -2176,9 +2180,12 @@ body {
 }
 
 @keyframes glow-pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 0.5;
     }
+
     50% {
         opacity: 1;
     }
@@ -2235,10 +2242,13 @@ body {
 }
 
 @keyframes field-wave {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scaleY(0.5);
         opacity: 0.2;
     }
+
     50% {
         transform: scaleY(1);
         opacity: 0.6;
@@ -2250,15 +2260,15 @@ body {
     .sim-loader {
         padding: 2rem 1rem;
     }
-    
+
     .football-icon {
         font-size: 2.5rem;
     }
-    
+
     .loader-title {
         font-size: 1.2rem;
     }
-    
+
     .progress-wrapper {
         max-width: 100%;
     }
@@ -2381,6 +2391,13 @@ body {
 .team-name {
     font-size: 1.1rem;
     font-weight: 600;
+}
+
+.team-logo {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    border-radius: 4px;
 }
 
 .match-center {
@@ -2528,4 +2545,145 @@ body {
     border-top-color: var(--primary);
     border-radius: 50%;
     animation: spin 1s linear infinite;
+}
+/* ===== CONFIDENCE EXPLANATION PANEL ===== */
+.confidence-explanation-panel {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.8));
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.confidence-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.confidence-icon {
+    font-size: 2rem;
+    line-height: 1;
+    animation: pulse-icon 2s ease-in-out infinite;
+}
+
+@keyframes pulse-icon {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.confidence-header h4 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.confidence-reason {
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    font-size: 0.95rem;
+}
+
+.confidence-indicators {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.confidence-indicator {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.confidence-indicator:hover {
+    background: rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.indicator-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.indicator-value-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.indicator-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: monospace;
+}
+
+.indicator-value.good {
+    color: #22c55e;
+}
+
+.indicator-value.ok {
+    color: #eab308;
+}
+
+.indicator-value.warn {
+    color: #ef4444;
+}
+
+.indicator-status {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.indicator-status.good {
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.indicator-status.ok {
+    background: rgba(234, 179, 8, 0.2);
+    color: #eab308;
+    border: 1px solid rgba(234, 179, 8, 0.3);
+}
+
+.indicator-status.warn {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+@media (max-width: 600px) {
+    .confidence-indicators {
+        grid-template-columns: 1fr;
+    }
+    
+    .confidence-explanation-panel {
+        padding: 1rem;
+    }
 }

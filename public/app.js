@@ -1478,11 +1478,243 @@ document.addEventListener('DOMContentLoaded', () => {
         const confClass = pred.confidence;
         const confLabel = translations[currentLang][`confidence_${pred.confidence}`] || pred.confidence;
 
+        // Calculate confidence metrics for explanation
+        const maxProb = Math.max(pred.probabilities.home_win, pred.probabilities.draw, pred.probabilities.away_win);
+        const minProb = Math.min(pred.probabilities.home_win, pred.probabilities.draw, pred.probabilities.away_win);
+        const spread = maxProb - minProb;
+
+        // Build confidence explanation HTML
+        const confidenceExplanations = {
+            high: {
+                icon: '🟢',
+                title: 'High Confidence Prediction',
+                reason: `Our model shows a <strong>clear favorite</strong> with ${maxProb.toFixed(1)}% probability and a significant ${spread.toFixed(1)}% spread between outcomes. This indicates strong predictive signals from our analysis.`,
+                indicators: [
+                    { label: 'Max Probability', value: `${maxProb.toFixed(1)}%`, status: maxProb >= 60 ? 'good' : 'ok' },
+                    { label: 'Outcome Spread', value: `${spread.toFixed(1)}%`, status: spread >= 40 ? 'good' : 'ok' },
+                    { label: 'Model Agreement', value: 'Strong', status: 'good' }
+                ]
+            },
+            medium: {
+                icon: '🟡',
+                title: 'Medium Confidence Prediction',
+                reason: `Our model identifies a <strong>moderate favorite</strong> with ${maxProb.toFixed(1)}% probability. While the prediction is reliable, there's more uncertainty compared to high confidence matches.`,
+                indicators: [
+                    { label: 'Max Probability', value: `${maxProb.toFixed(1)}%`, status: maxProb >= 45 ? 'ok' : 'warn' },
+                    { label: 'Outcome Spread', value: `${spread.toFixed(1)}%`, status: spread >= 25 ? 'ok' : 'warn' },
+                    { label: 'Model Agreement', value: 'Moderate', status: 'ok' }
+                ]
+            },
+            low: {
+                icon: '🔴',
+                title: 'Low Confidence Prediction',
+                reason: `This is a <strong>highly competitive match</strong> with close probabilities (max: ${maxProb.toFixed(1)}%, spread: ${spread.toFixed(1)}%). Multiple outcomes are nearly equally likely, making this prediction less certain.`,
+                indicators: [
+                    { label: 'Max Probability', value: `${maxProb.toFixed(1)}%`, status: 'warn' },
+                    { label: 'Outcome Spread', value: `${spread.toFixed(1)}%`, status: 'warn' },
+                    { label: 'Model Agreement', value: 'Uncertain', status: 'warn' }
+                ]
+            }
+        };
+
+        const currentConfidence = confidenceExplanations[confClass];
+        const confidenceHtml = `
+            <div class="confidence-explanation-panel">
+                <div class="confidence-header">
+                    <span class="confidence-icon">${currentConfidence.icon}</span>
+                    <h4>${currentConfidence.title}</h4>
+                </div>
+                <p class="confidence-reason">${currentConfidence.reason}</p>
+                <div class="confidence-indicators">
+                    ${currentConfidence.indicators.map(ind => `
+                        <div class="confidence-indicator">
+                            <span class="indicator-label">${ind.label}</span>
+                            <div class="indicator-value-wrapper">
+                                <span class="indicator-value ${ind.status}">${ind.value}</span>
+                                <div class="indicator-status ${ind.status}">
+                                    ${ind.status === 'good' ? '✓' : ind.status === 'ok' ? '○' : '!'}
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+
+
+        // Build scorelines HTML
+        let scorelinesHtml = '';
+        if (pred.top5_scores && pred.top5_scores.length > 0) {
+            scorelinesHtml = `
+                <div class="insights-panel">
+                    <h4><span class="icon">📊</span> Most Likely Scorelines</h4>
+                    <div class="score-probabilities">
+                        ${pred.top5_scores.map(s => `
+                            <div class="scoreline-row">
+                                <span class="scoreline-label">${s.score}</span>
+                                <div class="scoreline-bar-wrapper">
+                                    <div class="scoreline-bar" style="width: ${s.percentage}%">
+                                        <span class="scoreline-pct">${s.percentage}%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Build Markov form HTML
+        let formHtml = '';
+        if (pred.markov_form) {
+            const m1 = pred.markov_form.team1;
+            const m2 = pred.markov_form.team2;
+            const getFormClass = (label) => {
+                if (label.includes('Hot')) return 'hot';
+                if (label.includes('Cold')) return 'cold';
+                return 'neutral';
+            };
+
+            formHtml = `
+                <div class="insights-panel">
+                    <h4><span class="icon">🔥</span> Current Form (Markov Analysis)</h4>
+                    <div class="form-indicators">
+                        <div class="form-team">
+                            <div class="form-team-name">${m1.name}</div>
+                            <div class="form-badge ${getFormClass(m1.form_label)}">${m1.form_label}</div>
+                            <div class="form-probs">
+                                <div class="form-prob-item">
+                                    <span class="prob-label">Win</span>
+                                    <span class="prob-value">${m1.next_win_prob}%</span>
+                                </div>
+                                <div class="form-prob-item">
+                                    <span class="prob-label">Draw</span>
+                                    <span class="prob-value">${m1.next_draw_prob}%</span>
+                                </div>
+                                <div class="form-prob-item">
+                                    <span class="prob-label">Loss</span>
+                                    <span class="prob-value">${m1.next_loss_prob}%</span>
+                                </div>
+                            </div>
+                            <div class="form-meta">
+                                <span>${m1.matches_analyzed} matches • ${m1.hidden_states} states</span>
+                            </div>
+                        </div>
+                        <div class="form-team">
+                            <div class="form-team-name">${m2.name}</div>
+                            <div class="form-badge ${getFormClass(m2.form_label)}">${m2.form_label}</div>
+                            <div class="form-probs">
+                                <div class="form-prob-item">
+                                    <span class="prob-label">Win</span>
+                                    <span class="prob-value">${m2.next_win_prob}%</span>
+                                </div>
+                                <div class="form-prob-item">
+                                    <span class="prob-label">Draw</span>
+                                    <span class="prob-value">${m2.next_draw_prob}%</span>
+                                </div>
+                                <div class="form-prob-item">
+                                    <span class="prob-label">Loss</span>
+                                    <span class="prob-value">${m2.next_loss_prob}%</span>
+                                </div>
+                            </div>
+                            <div class="form-meta">
+                                <span>${m2.matches_analyzed} matches • ${m2.hidden_states} states</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Build HMM state profiles HTML
+        let stateProfilesHtml = '';
+        if (pred.markov_form) {
+            const m1 = pred.markov_form.team1;
+            const m2 = pred.markov_form.team2;
+
+            const buildStateProfiles = (team) => {
+                if (!team.state_profiles || team.state_profiles.length === 0) return '';
+                return team.state_profiles.map(state => `
+                    <div class="state-profile-card">
+                        <div class="state-header">
+                            <span class="state-label">${state.label}</span>
+                            <span class="state-matches">${state.count} matches</span>
+                        </div>
+                        <div class="state-probs">
+                            <div class="state-prob win">
+                                <span class="prob-bar" style="width: ${state.win_prob}%"></span>
+                                <span class="prob-text">W ${state.win_prob}%</span>
+                            </div>
+                            <div class="state-prob draw">
+                                <span class="prob-bar" style="width: ${state.draw_prob}%"></span>
+                                <span class="prob-text">D ${state.draw_prob}%</span>
+                            </div>
+                            <div class="state-prob loss">
+                                <span class="prob-bar" style="width: ${state.loss_prob}%"></span>
+                                <span class="prob-text">L ${state.loss_prob}%</span>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            };
+
+            stateProfilesHtml = `
+                <div class="insights-panel">
+                    <h4><span class="icon">🧠</span> HMM State Breakdown</h4>
+                    <p class="panel-subtitle">Historical form states detected by the Hidden Markov Model</p>
+                    <div class="state-profiles-grid">
+                        <div class="team-states">
+                            <h5>${m1.name} Form States</h5>
+                            <div class="states-list">
+                                ${buildStateProfiles(m1)}
+                            </div>
+                        </div>
+                        <div class="team-states">
+                            <h5>${m2.name} Form States</h5>
+                            <div class="states-list">
+                                ${buildStateProfiles(m2)}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Build ratings HTML
+        let ratingsHtml = '';
+        if (pred.avg_ratings) {
+            const maxRating = 10;
+            const r1 = pred.avg_ratings.team1;
+            const r2 = pred.avg_ratings.team2;
+            ratingsHtml = `
+                <div class="insights-panel">
+                    <h4><span class="icon">⭐</span> Average Player Ratings</h4>
+                    <div class="ratings-comparison">
+                        <div class="rating-row">
+                            <span class="rating-team-name">${match.home_team}</span>
+                            <div class="rating-bar-wrapper">
+                                <div class="rating-bar team1" style="width: ${(r1 / maxRating) * 100}%"></div>
+                            </div>
+                            <span class="rating-value team1">${r1}</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-team-name">${match.away_team}</span>
+                            <div class="rating-bar-wrapper">
+                                <div class="rating-bar team2" style="width: ${(r2 / maxRating) * 100}%"></div>
+                            </div>
+                            <span class="rating-value team2">${r2}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
         return `
             <div class="match-card" data-match-id="${match.match_id}">
                 <div class="match-header">
                     <div class="team home">
                         <span class="team-name">${match.home_team}</span>
+                        ${pred.team1_logo_url ? `<img src="${pred.team1_logo_url}" alt="${match.home_team} Logo" class="team-logo">` : ''}
                     </div>
                     <div class="match-center">
                         <div class="predicted-score">${pred.predicted_score}</div>
@@ -1490,6 +1722,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="confidence-badge ${confClass}">${confLabel}</div>
                     </div>
                     <div class="team away">
+                        ${pred.team2_logo_url ? `<img src="${pred.team2_logo_url}" alt="${match.away_team} Logo" class="team-logo">` : ''}
                         <span class="team-name">${match.away_team}</span>
                     </div>
                     <button class="expand-btn">▼</button>
@@ -1508,6 +1741,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
 
                 <div class="match-details">
+                    ${confidenceHtml}
+                    
                     <div class="details-grid">
                         <div class="detail-item">
                             <label>Expected Goals</label>
@@ -1517,6 +1752,14 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <span class="xg away">${pred.expected_goals.away.toFixed(2)}</span>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- Enhanced Insights Section -->
+                    <div class="insights-container">
+                        ${scorelinesHtml}
+                        ${formHtml}
+                        ${stateProfilesHtml}
+                        ${ratingsHtml}
                     </div>
                 </div>
             </div>
