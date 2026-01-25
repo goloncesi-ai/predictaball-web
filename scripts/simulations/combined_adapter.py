@@ -118,8 +118,8 @@ def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_typ
         base_data_dir: Base data directory
         output_dir: Output directory for images
         sim_type: Simulation type (unused, for compatibility)
-        team1_adj: Adjustment percentage for team1 (-50 to +50)
-        team2_adj: Adjustment percentage for team2 (-50 to +50)
+        team1_adj: Adjustment percentage for team1 (-10 to +10)
+        team2_adj: Adjustment percentage for team2 (-10 to +10)
     """
     print(f"Starting Combined Simulation: {team1} vs {team2}")
     print(f"Adjustments: {team1} = {team1_adj:+.1f}%, {team2} = {team2_adj:+.1f}%")
