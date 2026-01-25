@@ -216,8 +216,8 @@ def process_team_df(df, team_name):
         
     g = stats_acc['games']
     
-    # Keep only last 20 matches for history (most recent)
-    match_history = match_history[-20:]
+    # Keep only first 20 matches for history (the newest records are at the top)
+    match_history = match_history[:20]
     
     return {
         'name': team_name,

@@ -713,8 +713,8 @@ document.addEventListener('DOMContentLoaded', () => {
             : ratings.map((_, i) => `Match ${i + 1}`);
 
         const dataPoints = isObject
-            ? ratings.map(r => r.rating)
-            : ratings;
+            ? ratings.map(r => r.rating).reverse()
+            : ratings.slice().reverse();
 
         ratingChartInstance = new Chart(chartCanvas, {
             type: 'line',
@@ -804,8 +804,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!analysisGoalsCanvas) return;
         if (analysisGoalsChartInstance) analysisGoalsChartInstance.destroy();
 
-        const h1 = t1.match_history || [];
-        const h2 = t2.match_history || [];
+        // Data comes in newest-first order. Reverse for time-series charts.
+        const h1 = (t1.match_history || []).slice().reverse();
+        const h2 = (t2.match_history || []).slice().reverse();
         const len = Math.max(h1.length, h2.length, 1);
         const labels = Array.from({ length: len }, (_, i) => `M${i + 1}`);
 
@@ -959,7 +960,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!container) return;
 
         const buildFormRow = (team) => {
-            const history = (team.match_history || []).slice(-10);
+            // Take first 10 (newest) and reverse for past-to-present visual order
+            const history = (team.match_history || []).slice(0, 10).reverse();
             const formIcons = history.map(m => {
                 if (m.result === 'W') return '<span class="form-icon win">W</span>';
                 if (m.result === 'D') return '<span class="form-icon draw">D</span>';
@@ -981,7 +983,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!container) return;
 
         const buildTable = (team) => {
-            const history = (team.match_history || []).slice(-8).reverse();
+            // First 8 matches are the newest. Keep that order for table.
+            const history = (team.match_history || []).slice(0, 8);
             if (history.length === 0) return `<p>${team.name}: No match data</p>`;
 
             const rows = history.map(m => `
