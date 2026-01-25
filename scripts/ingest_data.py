@@ -7,7 +7,7 @@ import re
 
 # Base paths
 BASE_DIR = "/Users/erdilsen/Library/Mobile Documents/com~apple~CloudDocs/Gol Oncesi/Data/Turkish Super League"
-OUTPUT_FILE = "/Users/erdilsen/Library/Mobile Documents/com~apple~CloudDocs/Gol Oncesi/data.js"
+OUTPUT_FILE = "/Users/erdilsen/Library/Mobile Documents/com~apple~CloudDocs/Gol Oncesi/public/data.js"
 
 def normalize_name(name):
     """Normalize unicode characters to NFC form."""
