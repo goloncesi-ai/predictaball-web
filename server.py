@@ -223,6 +223,9 @@ def get_recent_games():
             with open(predictions_file, 'r', encoding='utf-8') as f:
                 predictions_data = json.load(f)
         
+        # Import combined_adapter to get enriched match analysis
+        import combined_adapter
+        
         # Merge schedule matches with predictions
         matches = []
         for match in round_data.get('matches', []):
@@ -245,14 +248,32 @@ def get_recent_games():
                     None
                 )
                 if pred_match:
+                    # Map prediction data directly from JSON
+                    # These fields are pre-populated by weekly_predictions.py
                     match_info['prediction'] = {
                         "predicted_score": pred_match.get('predicted_score'),
                         "probabilities": pred_match.get('probabilities'),
                         "confidence": pred_match.get('confidence'),
                         "expected_goals": pred_match.get('expected_goals'),
                         "score_distribution": pred_match.get('score_distribution', []),
-                        "heatmap_data": pred_match.get('heatmap_data', [])
+                        "heatmap_data": pred_match.get('heatmap_data', []),
+                        "top5_scores": pred_match.get('top5_scores', []),
+                        "markov_form": pred_match.get('markov_form'),
+                        "avg_ratings": pred_match.get('avg_ratings'),
+                        "team1_logo_url": pred_match.get('team1_logo_url'),
+                        "team2_logo_url": pred_match.get('team2_logo_url')
                     }
+                    
+                    # Backwards compatibility for score distribution
+                    if not match_info['prediction']['top5_scores'] and pred_match.get('score_distribution'):
+                        top5_scores = []
+                        for score_data in pred_match['score_distribution'][:5]:
+                            if len(score_data) >= 3:
+                                top5_scores.append({
+                                    "score": f"{int(score_data[0])}-{int(score_data[1])}",
+                                    "percentage": round(score_data[2], 1)
+                                })
+                        match_info['prediction']['top5_scores'] = top5_scores
             
             matches.append(match_info)
         
