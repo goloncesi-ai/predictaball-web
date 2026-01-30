@@ -800,10 +800,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateComparisonInterface() {
         // Update Headers
         if (selectedTeam1) {
-            team1Display.innerHTML = `<h2>${selectedTeam1.name}</h2>`;
+            team1Display.innerHTML = `
+                <img src="/logos/${selectedTeam1.name}.png" alt="${selectedTeam1.name} Logo" class="team-logo" onerror="this.style.display='none'">
+                <h2>${selectedTeam1.name}</h2>
+            `;
         }
         if (selectedTeam2) {
-            team2Display.innerHTML = `<h2>${selectedTeam2.name}</h2>`;
+            team2Display.innerHTML = `
+                <img src="/logos/${selectedTeam2.name}.png" alt="${selectedTeam2.name} Logo" class="team-logo" onerror="this.style.display='none'">
+                <h2>${selectedTeam2.name}</h2>
+            `;
         }
 
         // Render Stats if both selected
