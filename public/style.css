@@ -249,26 +249,46 @@ body {
     position: relative;
     z-index: 2;
     height: 100%;
-    padding: 2rem;
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .team-card label {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     color: var(--text-muted);
     font-weight: 700;
+    margin-bottom: 0.5rem;
+    align-self: flex-start;
+    width: 100%;
+}
+
+.team-info-display {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.team-info-display .team-logo {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
 }
 
 .team-info-display h2 {
-    font-size: 2.2rem;
+    font-size: 2rem;
     text-align: center;
     line-height: 1.1;
-    margin-bottom: 1rem;
+    margin: 0;
     background: linear-gradient(to bottom right, #fff, #94a3b8);
     -webkit-background-clip: text;
     background-clip: text;
@@ -320,18 +340,19 @@ body {
 .select-wrapper {
     width: 100%;
     position: relative;
+    margin-bottom: 1rem;
 }
 
 /* Improve Select Visibility */
 .team-select {
     width: 100%;
-    padding: 1rem;
+    padding: 0.75rem;
     background: rgba(0, 0, 0, 0.4);
     /* Darker background */
     border: 1px solid var(--glass-border);
     border-radius: 12px;
     color: #fff;
-    font-size: 1rem;
+    font-size: 0.9rem;
     cursor: pointer;
     appearance: none;
     outline: none;
@@ -2546,6 +2567,7 @@ body {
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }
+
 /* ===== CONFIDENCE EXPLANATION PANEL ===== */
 .confidence-explanation-panel {
     background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.8));
@@ -2570,9 +2592,12 @@ body {
 }
 
 @keyframes pulse-icon {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.1);
     }
@@ -2682,7 +2707,7 @@ body {
     .confidence-indicators {
         grid-template-columns: 1fr;
     }
-    
+
     .confidence-explanation-panel {
         padding: 1rem;
     }
