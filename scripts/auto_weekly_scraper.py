@@ -23,9 +23,7 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHand
-
-ler('/tmp/auto_scraper.log'),
+        logging.FileHandler('/tmp/auto_scraper.log'),
         logging.StreamHandler()
     ]
 )
