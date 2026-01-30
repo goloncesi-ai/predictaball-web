@@ -26,6 +26,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install pandas openpyxl requests
       
+      - name: Update match schedule
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          python scripts/update_schedule.py
+        env:
+          PYTHONUNBUFFERED: 1
+      
       - name: Run automated scraper
         run: |
           cd "$GITHUB_WORKSPACE"
@@ -43,6 +50,7 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
+          git add Data/schedule/season_schedule.json
           git add Data/Turkish\ Super\ League/**/*.xlsx
           git add Data/Turkish\ Super\ League/**/*.csv
           git commit -m "🤖 Auto-update: Weekly match data scrape (Round ${{ github.run_number }})"
