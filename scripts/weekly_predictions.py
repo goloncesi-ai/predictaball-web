@@ -224,7 +224,13 @@ def generate_round_predictions(round_number, team1_adj=0, team2_adj=0):
                     'away': round(expected_goals_away, 2)
                 },
                 'score_distribution': score_dist,
-                'heatmap_data': sim_results.get('heatmap_data', [])
+                'heatmap_data': sim_results.get('heatmap_data', []),
+                # Pass through advanced fields for expanded UI
+                'top5_scores': top5_scores,
+                'markov_form': sim_results.get('markov_form'),
+                'avg_ratings': sim_results.get('avg_ratings'),
+                'team1_logo_url': sim_results.get('team1_logo_url'),
+                'team2_logo_url': sim_results.get('team2_logo_url')
             }
             
             predictions['matches'].append(prediction)

@@ -1,6 +1,6 @@
 {
   "round": 19,
-  "generated_at": "2026-01-23T17:40:48.757866",
+  "generated_at": "2026-01-30T21:40:26.836065",
   "matches": [
     {
       "match_id": 14109772,
@@ -47,7 +47,112 @@
           8.8
         ]
       ],
-      "heatmap_data": []
+      "heatmap_data": [],
+      "top5_scores": [
+        {
+          "score": "2-1",
+          "count": 108,
+          "percentage": 36.5
+        },
+        {
+          "score": "2-0",
+          "count": 88,
+          "percentage": 29.7
+        },
+        {
+          "score": "2-2",
+          "count": 42,
+          "percentage": 14.2
+        },
+        {
+          "score": "3-1",
+          "count": 32,
+          "percentage": 10.8
+        },
+        {
+          "score": "3-0",
+          "count": 26,
+          "percentage": 8.8
+        }
+      ],
+      "markov_form": {
+        "team1": {
+          "name": "Trabzonspor",
+          "next_win_prob": 46.2,
+          "next_draw_prob": 28.9,
+          "next_loss_prob": 25.0,
+          "form_label": "Neutral ⚖️",
+          "matches_analyzed": 38,
+          "hidden_states": 3,
+          "state_profiles": [
+            {
+              "state": 0,
+              "label": "Good Form",
+              "count": 13,
+              "win_prob": 46.2,
+              "draw_prob": 38.5,
+              "loss_prob": 15.4
+            },
+            {
+              "state": 1,
+              "label": "Peak Form",
+              "count": 16,
+              "win_prob": 81.2,
+              "draw_prob": 18.8,
+              "loss_prob": 0.0
+            },
+            {
+              "state": 2,
+              "label": "Crisis",
+              "count": 9,
+              "win_prob": 11.1,
+              "draw_prob": 22.2,
+              "loss_prob": 66.7
+            }
+          ]
+        },
+        "team2": {
+          "name": "Kasımpaşa",
+          "next_win_prob": 24.5,
+          "next_draw_prob": 34.9,
+          "next_loss_prob": 40.6,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 33,
+          "hidden_states": 3,
+          "state_profiles": [
+            {
+              "state": 0,
+              "label": "Crisis",
+              "count": 9,
+              "win_prob": 0.0,
+              "draw_prob": 11.1,
+              "loss_prob": 88.9
+            },
+            {
+              "state": 1,
+              "label": "Average",
+              "count": 11,
+              "win_prob": 36.4,
+              "draw_prob": 36.4,
+              "loss_prob": 27.3
+            },
+            {
+              "state": 2,
+              "label": "Struggling",
+              "count": 13,
+              "win_prob": 30.8,
+              "draw_prob": 46.2,
+              "loss_prob": 23.1
+            }
+          ]
+        }
+      },
+      "avg_ratings": {
+        "team1": 6.94,
+        "team2": 6.69
+      },
+      "team1_logo_url": "/logos/Trabzonspor.png",
+      "team2_logo_url": "/logos/Kasımpaşa.png"
     },
     {
       "match_id": 14109775,
@@ -94,7 +199,112 @@
           15.0
         ]
       ],
-      "heatmap_data": []
+      "heatmap_data": [],
+      "top5_scores": [
+        {
+          "score": "1-1",
+          "count": 72,
+          "percentage": 23.9
+        },
+        {
+          "score": "2-1",
+          "count": 71,
+          "percentage": 23.6
+        },
+        {
+          "score": "0-2",
+          "count": 57,
+          "percentage": 18.9
+        },
+        {
+          "score": "0-3",
+          "count": 56,
+          "percentage": 18.6
+        },
+        {
+          "score": "2-2",
+          "count": 45,
+          "percentage": 15.0
+        }
+      ],
+      "markov_form": {
+        "team1": {
+          "name": "Kayserispor",
+          "next_win_prob": 27.7,
+          "next_draw_prob": 34.7,
+          "next_loss_prob": 37.6,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 49,
+          "hidden_states": 2,
+          "state_profiles": [
+            {
+              "state": 0,
+              "label": "Crisis",
+              "count": 35,
+              "win_prob": 20.0,
+              "draw_prob": 31.4,
+              "loss_prob": 42.9
+            },
+            {
+              "state": 1,
+              "label": "Average",
+              "count": 14,
+              "win_prob": 42.9,
+              "draw_prob": 35.7,
+              "loss_prob": 14.3
+            }
+          ]
+        },
+        "team2": {
+          "name": "Başakşehir",
+          "next_win_prob": 42.9,
+          "next_draw_prob": 19.4,
+          "next_loss_prob": 37.6,
+          "form_label": "Neutral ⚖️",
+          "matches_analyzed": 47,
+          "hidden_states": 4,
+          "state_profiles": [
+            {
+              "state": 0,
+              "label": "Peak Form",
+              "count": 18,
+              "win_prob": 88.9,
+              "draw_prob": 11.1,
+              "loss_prob": 0.0
+            },
+            {
+              "state": 1,
+              "label": "Peak Form",
+              "count": 5,
+              "win_prob": 80.0,
+              "draw_prob": 0.0,
+              "loss_prob": 20.0
+            },
+            {
+              "state": 2,
+              "label": "Crisis",
+              "count": 16,
+              "win_prob": 12.5,
+              "draw_prob": 31.2,
+              "loss_prob": 56.2
+            },
+            {
+              "state": 3,
+              "label": "Crisis",
+              "count": 8,
+              "win_prob": 12.5,
+              "draw_prob": 12.5,
+              "loss_prob": 75.0
+            }
+          ]
+        }
+      },
+      "avg_ratings": {
+        "team1": 6.75,
+        "team2": 7.06
+      },
+      "team1_logo_url": "/logos/Kayserispor.png",
+      "team2_logo_url": "/logos/Başakşehir.png"
     },
     {
       "match_id": 14109780,
@@ -141,7 +351,112 @@
           15.9
         ]
       ],
-      "heatmap_data": []
+      "heatmap_data": [],
+      "top5_scores": [
+        {
+          "score": "0-2",
+          "count": 96,
+          "percentage": 28.3
+        },
+        {
+          "score": "1-1",
+          "count": 69,
+          "percentage": 20.4
+        },
+        {
+          "score": "0-3",
+          "count": 60,
+          "percentage": 17.7
+        },
+        {
+          "score": "1-2",
+          "count": 60,
+          "percentage": 17.7
+        },
+        {
+          "score": "0-1",
+          "count": 54,
+          "percentage": 15.9
+        }
+      ],
+      "markov_form": {
+        "team1": {
+          "name": "Samsunspor",
+          "next_win_prob": 46.5,
+          "next_draw_prob": 27.4,
+          "next_loss_prob": 26.1,
+          "form_label": "Neutral ⚖️",
+          "matches_analyzed": 49,
+          "hidden_states": 4,
+          "state_profiles": [
+            {
+              "state": 0,
+              "label": "Peak Form",
+              "count": 21,
+              "win_prob": 57.1,
+              "draw_prob": 23.8,
+              "loss_prob": 19.0
+            },
+            {
+              "state": 1,
+              "label": "Crisis",
+              "count": 10,
+              "win_prob": 0.0,
+              "draw_prob": 20.0,
+              "loss_prob": 80.0
+            },
+            {
+              "state": 2,
+              "label": "Average",
+              "count": 7,
+              "win_prob": 42.9,
+              "draw_prob": 57.1,
+              "loss_prob": 0.0
+            },
+            {
+              "state": 3,
+              "label": "Good Form",
+              "count": 11,
+              "win_prob": 54.5,
+              "draw_prob": 27.3,
+              "loss_prob": 18.2
+            }
+          ]
+        },
+        "team2": {
+          "name": "Kocaelispor",
+          "next_win_prob": 45.6,
+          "next_draw_prob": 27.7,
+          "next_loss_prob": 26.7,
+          "form_label": "Neutral ⚖️",
+          "matches_analyzed": 47,
+          "hidden_states": 2,
+          "state_profiles": [
+            {
+              "state": 0,
+              "label": "Peak Form",
+              "count": 28,
+              "win_prob": 67.9,
+              "draw_prob": 28.6,
+              "loss_prob": 3.6
+            },
+            {
+              "state": 1,
+              "label": "Crisis",
+              "count": 19,
+              "win_prob": 10.5,
+              "draw_prob": 26.3,
+              "loss_prob": 63.2
+            }
+          ]
+        }
+      },
+      "avg_ratings": {
+        "team1": 6.77,
+        "team2": 6.95
+      },
+      "team1_logo_url": "/logos/Samsunspor.png",
+      "team2_logo_url": "/logos/Kocaelispor.png"
     },
     {
       "match_id": 14109777,
@@ -152,43 +467,156 @@
       "away_team": "Galatasaray",
       "predicted_score": "0-2",
       "probabilities": {
-        "home_win": 9.3,
-        "draw": 8.3,
-        "away_win": 82.3
+        "home_win": 7.8,
+        "draw": 21.3,
+        "away_win": 70.9
       },
       "confidence": "high",
       "expected_goals": {
-        "home": 0.5,
-        "away": 2.0
+        "home": 0.0,
+        "away": 2.5
       },
       "score_distribution": [
         [
           0,
           2,
-          56.4
+          62.2
         ],
         [
           1,
           2,
-          19.6
+          16.3
         ],
         [
           0,
           3,
-          9.7
+          9.4
         ],
         [
           0,
           1,
-          7.9
+          7.4
         ],
         [
           1,
           1,
-          6.4
+          4.7
         ]
       ],
-      "heatmap_data": []
+      "heatmap_data": [],
+      "top5_scores": [
+        {
+          "score": "0-2",
+          "count": 252,
+          "percentage": 62.2
+        },
+        {
+          "score": "1-2",
+          "count": 66,
+          "percentage": 16.3
+        },
+        {
+          "score": "0-3",
+          "count": 38,
+          "percentage": 9.4
+        },
+        {
+          "score": "0-1",
+          "count": 30,
+          "percentage": 7.4
+        },
+        {
+          "score": "1-1",
+          "count": 19,
+          "percentage": 4.7
+        }
+      ],
+      "markov_form": {
+        "team1": {
+          "name": "Karagümrük",
+          "next_win_prob": 26.0,
+          "next_draw_prob": 20.7,
+          "next_loss_prob": 53.2,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 44,
+          "hidden_states": 3,
+          "state_profiles": [
+            {
+              "state": 0,
+              "label": "Peak Form",
+              "count": 16,
+              "win_prob": 68.8,
+              "draw_prob": 25.0,
+              "loss_prob": 6.2
+            },
+            {
+              "state": 1,
+              "label": "Crisis",
+              "count": 10,
+              "win_prob": 0.0,
+              "draw_prob": 10.0,
+              "loss_prob": 90.0
+            },
+            {
+              "state": 2,
+              "label": "Crisis",
+              "count": 18,
+              "win_prob": 16.7,
+              "draw_prob": 22.2,
+              "loss_prob": 61.1
+            }
+          ]
+        },
+        "team2": {
+          "name": "Galatasaray",
+          "next_win_prob": 72.6,
+          "next_draw_prob": 19.9,
+          "next_loss_prob": 7.5,
+          "form_label": "Hot 🔥",
+          "matches_analyzed": 52,
+          "hidden_states": 4,
+          "state_profiles": [
+            {
+              "state": 0,
+              "label": "Good Form",
+              "count": 14,
+              "win_prob": 50.0,
+              "draw_prob": 28.6,
+              "loss_prob": 21.4
+            },
+            {
+              "state": 1,
+              "label": "Peak Form",
+              "count": 17,
+              "win_prob": 100.0,
+              "draw_prob": 0.0,
+              "loss_prob": 0.0
+            },
+            {
+              "state": 2,
+              "label": "Peak Form",
+              "count": 15,
+              "win_prob": 66.7,
+              "draw_prob": 33.3,
+              "loss_prob": 0.0
+            },
+            {
+              "state": 3,
+              "label": "Crisis",
+              "count": 6,
+              "win_prob": 0.0,
+              "draw_prob": 16.7,
+              "loss_prob": 83.3
+            }
+          ]
+        }
+      },
+      "avg_ratings": {
+        "team1": 6.72,
+        "team2": 7.05
+      },
+      "team1_logo_url": "/logos/Karagümrük.png",
+      "team2_logo_url": "/logos/Galatasaray.png"
     },
     {
       "match_id": 14109773,
@@ -199,9 +627,9 @@
       "away_team": "Konyaspor",
       "predicted_score": "2-1",
       "probabilities": {
-        "home_win": 61.9,
-        "draw": 20.1,
-        "away_win": 18.0
+        "home_win": 60.7,
+        "draw": 21.6,
+        "away_win": 17.8
       },
       "confidence": "high",
       "expected_goals": {
@@ -212,30 +640,135 @@
         [
           1,
           1,
-          26.0
+          28.0
         ],
         [
           2,
           1,
-          23.2
+          22.0
         ],
         [
           2,
           0,
-          22.9
+          21.3
+        ],
+        [
+          1,
+          0,
+          14.6
         ],
         [
           3,
           1,
-          14.4
-        ],
-        [
-          1,
-          0,
-          13.5
+          14.0
         ]
       ],
-      "heatmap_data": []
+      "heatmap_data": [],
+      "top5_scores": [
+        {
+          "score": "1-1",
+          "count": 92,
+          "percentage": 28.0
+        },
+        {
+          "score": "2-1",
+          "count": 72,
+          "percentage": 22.0
+        },
+        {
+          "score": "2-0",
+          "count": 70,
+          "percentage": 21.3
+        },
+        {
+          "score": "1-0",
+          "count": 48,
+          "percentage": 14.6
+        },
+        {
+          "score": "3-1",
+          "count": 46,
+          "percentage": 14.0
+        }
+      ],
+      "markov_form": {
+        "team1": {
+          "name": "Gaziantep",
+          "next_win_prob": 30.8,
+          "next_draw_prob": 30.0,
+          "next_loss_prob": 39.2,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 47,
+          "hidden_states": 3,
+          "state_profiles": [
+            {
+              "state": 0,
+              "label": "Crisis",
+              "count": 15,
+              "win_prob": 20.0,
+              "draw_prob": 46.7,
+              "loss_prob": 33.3
+            },
+            {
+              "state": 1,
+              "label": "Struggling",
+              "count": 22,
+              "win_prob": 27.3,
+              "draw_prob": 18.2,
+              "loss_prob": 54.5
+            },
+            {
+              "state": 2,
+              "label": "Peak Form",
+              "count": 10,
+              "win_prob": 70.0,
+              "draw_prob": 30.0,
+              "loss_prob": 0.0
+            }
+          ]
+        },
+        "team2": {
+          "name": "Konyaspor",
+          "next_win_prob": 7.9,
+          "next_draw_prob": 36.3,
+          "next_loss_prob": 55.8,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 47,
+          "hidden_states": 3,
+          "state_profiles": [
+            {
+              "state": 0,
+              "label": "Peak Form",
+              "count": 16,
+              "win_prob": 81.2,
+              "draw_prob": 12.5,
+              "loss_prob": 6.2
+            },
+            {
+              "state": 1,
+              "label": "Crisis",
+              "count": 20,
+              "win_prob": 5.0,
+              "draw_prob": 15.0,
+              "loss_prob": 80.0
+            },
+            {
+              "state": 2,
+              "label": "Crisis",
+              "count": 11,
+              "win_prob": 9.1,
+              "draw_prob": 45.5,
+              "loss_prob": 45.5
+            }
+          ]
+        }
+      },
+      "avg_ratings": {
+        "team1": 6.85,
+        "team2": 6.68
+      },
+      "team1_logo_url": "/logos/Gaziantep.png",
+      "team2_logo_url": "/logos/Konyaspor.png"
     },
     {
       "match_id": 14109778,
@@ -282,7 +815,120 @@
           13.5
         ]
       ],
-      "heatmap_data": []
+      "heatmap_data": [],
+      "top5_scores": [
+        {
+          "score": "0-3",
+          "count": 70,
+          "percentage": 23.1
+        },
+        {
+          "score": "0-2",
+          "count": 70,
+          "percentage": 23.1
+        },
+        {
+          "score": "1-1",
+          "count": 69,
+          "percentage": 22.8
+        },
+        {
+          "score": "0-1",
+          "count": 53,
+          "percentage": 17.5
+        },
+        {
+          "score": "2-1",
+          "count": 41,
+          "percentage": 13.5
+        }
+      ],
+      "markov_form": {
+        "team1": {
+          "name": "Antalyaspor",
+          "next_win_prob": 7.6,
+          "next_draw_prob": 7.6,
+          "next_loss_prob": 84.8,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 47,
+          "hidden_states": 4,
+          "state_profiles": [
+            {
+              "state": 0,
+              "label": "Good Form",
+              "count": 13,
+              "win_prob": 53.8,
+              "draw_prob": 38.5,
+              "loss_prob": 7.7
+            },
+            {
+              "state": 1,
+              "label": "Crisis",
+              "count": 17,
+              "win_prob": 0.0,
+              "draw_prob": 0.0,
+              "loss_prob": 100.0
+            },
+            {
+              "state": 2,
+              "label": "Good Form",
+              "count": 11,
+              "win_prob": 45.5,
+              "draw_prob": 45.5,
+              "loss_prob": 9.1
+            },
+            {
+              "state": 3,
+              "label": "Crisis",
+              "count": 6,
+              "win_prob": 0.0,
+              "draw_prob": 0.0,
+              "loss_prob": 100.0
+            }
+          ]
+        },
+        "team2": {
+          "name": "Gençlerbirliği",
+          "next_win_prob": 47.5,
+          "next_draw_prob": 26.3,
+          "next_loss_prob": 26.3,
+          "form_label": "Neutral ⚖️",
+          "matches_analyzed": 44,
+          "hidden_states": 3,
+          "state_profiles": [
+            {
+              "state": 0,
+              "label": "Peak Form",
+              "count": 10,
+              "win_prob": 100.0,
+              "draw_prob": 0.0,
+              "loss_prob": 0.0
+            },
+            {
+              "state": 1,
+              "label": "Good Form",
+              "count": 17,
+              "win_prob": 52.9,
+              "draw_prob": 29.4,
+              "loss_prob": 17.6
+            },
+            {
+              "state": 2,
+              "label": "Crisis",
+              "count": 17,
+              "win_prob": 5.9,
+              "draw_prob": 41.2,
+              "loss_prob": 52.9
+            }
+          ]
+        }
+      },
+      "avg_ratings": {
+        "team1": 6.62,
+        "team2": 6.83
+      },
+      "team1_logo_url": "/logos/Antalyaspor.png",
+      "team2_logo_url": "/logos/Gençlerbirliği.png"
     },
     {
       "match_id": 14109774,
@@ -329,7 +975,104 @@
           8.8
         ]
       ],
-      "heatmap_data": []
+      "heatmap_data": [],
+      "top5_scores": [
+        {
+          "score": "0-3",
+          "count": 111,
+          "percentage": 34.7
+        },
+        {
+          "score": "0-2",
+          "count": 89,
+          "percentage": 27.8
+        },
+        {
+          "score": "2-2",
+          "count": 57,
+          "percentage": 17.8
+        },
+        {
+          "score": "1-1",
+          "count": 35,
+          "percentage": 10.9
+        },
+        {
+          "score": "2-1",
+          "count": 28,
+          "percentage": 8.8
+        }
+      ],
+      "markov_form": {
+        "team1": {
+          "name": "Çaykur Rizespor",
+          "next_win_prob": 36.4,
+          "next_draw_prob": 22.7,
+          "next_loss_prob": 40.9,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 30,
+          "hidden_states": 3,
+          "state_profiles": [
+            {
+              "state": 0,
+              "label": "Crisis",
+              "count": 11,
+              "win_prob": 9.1,
+              "draw_prob": 27.3,
+              "loss_prob": 63.6
+            },
+            {
+              "state": 1,
+              "label": "Crisis",
+              "count": 11,
+              "win_prob": 9.1,
+              "draw_prob": 36.4,
+              "loss_prob": 54.5
+            },
+            {
+              "state": 2,
+              "label": "Peak Form",
+              "count": 8,
+              "win_prob": 100.0,
+              "draw_prob": 0.0,
+              "loss_prob": 0.0
+            }
+          ]
+        },
+        "team2": {
+          "name": "Alanyaspor",
+          "next_win_prob": 31.9,
+          "next_draw_prob": 34.1,
+          "next_loss_prob": 34.1,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 36,
+          "hidden_states": 2,
+          "state_profiles": [
+            {
+              "state": 0,
+              "label": "Struggling",
+              "count": 19,
+              "win_prob": 26.3,
+              "draw_prob": 36.8,
+              "loss_prob": 36.8
+            },
+            {
+              "state": 1,
+              "label": "Average",
+              "count": 17,
+              "win_prob": 41.2,
+              "draw_prob": 29.4,
+              "loss_prob": 29.4
+            }
+          ]
+        }
+      },
+      "avg_ratings": {
+        "team1": 6.8,
+        "team2": 6.91
+      },
+      "team1_logo_url": "/logos/Çaykur Rizespor.png",
+      "team2_logo_url": "/logos/Alanyaspor.png"
     },
     {
       "match_id": 14109776,
@@ -340,9 +1083,9 @@
       "away_team": "Göztepe",
       "predicted_score": "2-0",
       "probabilities": {
-        "home_win": 50.0,
-        "draw": 33.9,
-        "away_win": 16.1
+        "home_win": 47.8,
+        "draw": 35.8,
+        "away_win": 16.4
       },
       "confidence": "medium",
       "expected_goals": {
@@ -353,30 +1096,143 @@
         [
           3,
           0,
-          25.8
+          28.4
         ],
         [
           3,
           1,
-          25.8
+          26.8
         ],
         [
           1,
           1,
-          18.1
+          19.2
         ],
         [
           2,
           0,
-          16.6
+          13.7
         ],
         [
           2,
           1,
-          13.8
+          11.9
         ]
       ],
-      "heatmap_data": []
+      "heatmap_data": [],
+      "top5_scores": [
+        {
+          "score": "3-0",
+          "count": 93,
+          "percentage": 28.4
+        },
+        {
+          "score": "3-1",
+          "count": 88,
+          "percentage": 26.8
+        },
+        {
+          "score": "1-1",
+          "count": 63,
+          "percentage": 19.2
+        },
+        {
+          "score": "2-0",
+          "count": 45,
+          "percentage": 13.7
+        },
+        {
+          "score": "2-1",
+          "count": 39,
+          "percentage": 11.9
+        }
+      ],
+      "markov_form": {
+        "team1": {
+          "name": "Fenerbahçe",
+          "next_win_prob": 51.6,
+          "next_draw_prob": 30.4,
+          "next_loss_prob": 17.9,
+          "form_label": "Neutral ⚖️",
+          "matches_analyzed": 52,
+          "hidden_states": 4,
+          "state_profiles": [
+            {
+              "state": 0,
+              "label": "Peak Form",
+              "count": 9,
+              "win_prob": 100.0,
+              "draw_prob": 0.0,
+              "loss_prob": 0.0
+            },
+            {
+              "state": 1,
+              "label": "Struggling",
+              "count": 13,
+              "win_prob": 30.8,
+              "draw_prob": 38.5,
+              "loss_prob": 30.8
+            },
+            {
+              "state": 2,
+              "label": "Peak Form",
+              "count": 16,
+              "win_prob": 93.8,
+              "draw_prob": 6.2,
+              "loss_prob": 0.0
+            },
+            {
+              "state": 3,
+              "label": "Crisis",
+              "count": 14,
+              "win_prob": 21.4,
+              "draw_prob": 50.0,
+              "loss_prob": 28.6
+            }
+          ]
+        },
+        "team2": {
+          "name": "Göztepe",
+          "next_win_prob": 40.9,
+          "next_draw_prob": 32.6,
+          "next_loss_prob": 26.4,
+          "form_label": "Neutral ⚖️",
+          "matches_analyzed": 35,
+          "hidden_states": 3,
+          "state_profiles": [
+            {
+              "state": 0,
+              "label": "Peak Form",
+              "count": 12,
+              "win_prob": 83.3,
+              "draw_prob": 16.7,
+              "loss_prob": 0.0
+            },
+            {
+              "state": 1,
+              "label": "Crisis",
+              "count": 10,
+              "win_prob": 20.0,
+              "draw_prob": 50.0,
+              "loss_prob": 30.0
+            },
+            {
+              "state": 2,
+              "label": "Crisis",
+              "count": 13,
+              "win_prob": 15.4,
+              "draw_prob": 38.5,
+              "loss_prob": 46.2
+            }
+          ]
+        }
+      },
+      "avg_ratings": {
+        "team1": 7.15,
+        "team2": 6.87
+      },
+      "team1_logo_url": "/logos/Fenerbahçe.png",
+      "team2_logo_url": "/logos/Göztepe.png"
     },
     {
       "match_id": 14109771,
@@ -423,7 +1279,120 @@
           10.0
         ]
       ],
-      "heatmap_data": []
+      "heatmap_data": [],
+      "top5_scores": [
+        {
+          "score": "0-2",
+          "count": 187,
+          "percentage": 50.5
+        },
+        {
+          "score": "0-3",
+          "count": 65,
+          "percentage": 17.6
+        },
+        {
+          "score": "0-1",
+          "count": 43,
+          "percentage": 11.6
+        },
+        {
+          "score": "2-0",
+          "count": 38,
+          "percentage": 10.3
+        },
+        {
+          "score": "1-2",
+          "count": 37,
+          "percentage": 10.0
+        }
+      ],
+      "markov_form": {
+        "team1": {
+          "name": "Eyüpspor",
+          "next_win_prob": 20.4,
+          "next_draw_prob": 17.2,
+          "next_loss_prob": 62.4,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 35,
+          "hidden_states": 5,
+          "state_profiles": [
+            {
+              "state": 0,
+              "label": "Crisis",
+              "count": 6,
+              "win_prob": 16.7,
+              "draw_prob": 50.0,
+              "loss_prob": 33.3
+            },
+            {
+              "state": 1,
+              "label": "Crisis",
+              "count": 9,
+              "win_prob": 0.0,
+              "draw_prob": 22.2,
+              "loss_prob": 77.8
+            },
+            {
+              "state": 2,
+              "label": "Peak Form",
+              "count": 7,
+              "win_prob": 71.4,
+              "draw_prob": 14.3,
+              "loss_prob": 14.3
+            },
+            {
+              "state": 3,
+              "label": "Crisis",
+              "count": 8,
+              "win_prob": 0.0,
+              "draw_prob": 12.5,
+              "loss_prob": 87.5
+            },
+            {
+              "state": 4,
+              "label": "Peak Form",
+              "count": 5,
+              "win_prob": 100.0,
+              "draw_prob": 0.0,
+              "loss_prob": 0.0
+            }
+          ]
+        },
+        "team2": {
+          "name": "Beşiktaş",
+          "next_win_prob": 47.9,
+          "next_draw_prob": 26.0,
+          "next_loss_prob": 26.1,
+          "form_label": "Neutral ⚖️",
+          "matches_analyzed": 46,
+          "hidden_states": 2,
+          "state_profiles": [
+            {
+              "state": 0,
+              "label": "Crisis",
+              "count": 13,
+              "win_prob": 7.7,
+              "draw_prob": 53.8,
+              "loss_prob": 38.5
+            },
+            {
+              "state": 1,
+              "label": "Peak Form",
+              "count": 33,
+              "win_prob": 63.6,
+              "draw_prob": 15.2,
+              "loss_prob": 21.2
+            }
+          ]
+        }
+      },
+      "avg_ratings": {
+        "team1": 6.76,
+        "team2": 6.94
+      },
+      "team1_logo_url": "/logos/Eyüpspor.png",
+      "team2_logo_url": "/logos/Beşiktaş.png"
     }
   ]
 }
