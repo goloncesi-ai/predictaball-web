@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.goloncesi.weekly-scraper</string>
+    
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/python3</string>
+        <string>/Users/erdilsen/Library/Mobile Documents/com~apple~CloudDocs/Gol Oncesi/scripts/auto_weekly_scraper.py</string>
+    </array>
+    
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Weekday</key>
+        <integer>2</integer>  <!-- Tuesday (0=Sunday, 1=Monday, 2=Tuesday...) -->
+        <key>Hour</key>
+        <integer>22</integer>  <!-- 10 PM -->
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+    
+    <key>StandardOutPath</key>
+    <string>/tmp/weekly-scraper-stdout.log</string>
+    
+    <key>StandardErrorPath</key>
+    <string>/tmp/weekly-scraper-stderr.log</string>
+    
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>
