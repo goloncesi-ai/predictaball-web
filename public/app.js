@@ -342,21 +342,47 @@ document.addEventListener('DOMContentLoaded', () => {
             const progressFill = document.querySelector('.progress-fill');
             const progressGlow = document.querySelector('.progress-glow');
             const progressPct = document.querySelector('.progress-percentage');
+            const progressStatus = document.querySelector('.progress-status');
 
             loader.classList.remove('hidden');
 
-            // Animate progress bar
+            // Define progress stages with milestones and status messages
+            const stages = [
+                { target: 37, message: 'Loading team data...', speed: 150 },
+                { target: 68, message: 'Running Markov chain analysis...', speed: 200 },
+                { target: 82, message: 'Simulating match outcomes...', speed: 250 },
+                { target: 94, message: 'Generating predictions...', speed: 300 }
+            ];
+
             let progress = 0;
+            let currentStage = 0;
+
             const progressInterval = setInterval(() => {
-                progress += 2;
-                if (progress >= 95) {
-                    progress = 95; // Stop at 95% until we get response
+                if (currentStage >= stages.length) {
                     clearInterval(progressInterval);
+                    return;
                 }
+
+                const stage = stages[currentStage];
+                const increment = (stage.target - progress) / 20; // Gradual approach to target
+
+                progress += Math.max(0.5, increment);
+
+                if (progress >= stage.target) {
+                    progress = stage.target;
+                    currentStage++;
+                    if (currentStage < stages.length) {
+                        progressStatus.textContent = stages[currentStage].message;
+                    }
+                }
+
                 progressFill.style.width = `${progress}%`;
                 progressGlow.style.width = `${progress}%`;
                 progressPct.textContent = `${Math.round(progress)}%`;
-            }, 50);
+            }, stages[currentStage]?.speed || 150);
+
+            // Set initial status
+            progressStatus.textContent = stages[0].message;
 
             try {
                 // Get adjustment values
@@ -626,6 +652,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Complete the progress animation
                 clearInterval(progressInterval);
+                progressStatus.textContent = 'Complete!';
                 progressFill.style.width = '100%';
                 progressGlow.style.width = '100%';
                 progressPct.textContent = '100%';
