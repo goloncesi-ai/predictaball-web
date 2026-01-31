@@ -211,7 +211,56 @@
                     <p data-i18n="sim_desc">Run 1000+ Monte Carlo simulations to predict the outcome.</p>
                 </div>
 
-                <div class="simulation-layout">
+
+                <div class="simulation-layout-grid">
+                    <!-- Left: Home Team Pitch -->
+                    <div id="pitch-team1-wrapper" class="pitch-column hidden">
+                        <div class="single-pitch-wrapper home-pitch">
+                            <div class="pitch-header">
+                                <div class="team-badge">🏠</div>
+                                <h4 id="pitch-team1-name" class="team-name">-</h4>
+                                <p id="pitch-team1-formation" class="team-formation">-</p>
+                            </div>
+
+                            <div class="pitch-view-single">
+                                <svg id="pitch-svg-team1" viewBox="0 0 68 100" preserveAspectRatio="xMidYMid meet">
+                                    <defs>
+                                        <linearGradient id="pitch-gradient-1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#1a472a;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#2d5a3d;stop-opacity:1" />
+                                        </linearGradient>
+                                    </defs>
+
+                                    <rect class="pitch-bg" x="0" y="0" width="68" height="100"
+                                        fill="url(#pitch-gradient-1)" />
+
+                                    <g class="pitch-markings">
+                                        <rect x="0.5" y="0.5" width="67" height="99" fill="none"
+                                            stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
+                                        <line x1="0" y1="50" x2="68" y2="50" stroke="rgba(255,255,255,0.4)"
+                                            stroke-width="0.3" />
+                                        <circle cx="34" cy="50" r="9.15" fill="none" stroke="rgba(255,255,255,0.4)"
+                                            stroke-width="0.3" />
+                                        <circle cx="34" cy="50" r="0.5" fill="rgba(255,255,255,0.4)" />
+                                        <rect x="13.85" y="0" width="40.3" height="16.5" fill="none"
+                                            stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
+                                        <rect x="13.85" y="83.5" width="40.3" height="16.5" fill="none"
+                                            stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
+                                        <rect x="24.85" y="0" width="18.3" height="5.5" fill="none"
+                                            stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
+                                        <rect x="24.85" y="94.5" width="18.3" height="5.5" fill="none"
+                                            stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
+                                        <circle cx="34" cy="11" r="0.4" fill="rgba(255,255,255,0.4)" />
+                                        <circle cx="34" cy="89" r="0.4" fill="rgba(255,255,255,0.4)" />
+                                    </g>
+
+                                    <g id="team1-players" class="team-players home-team"></g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Center: Match Setup -->
                     <div class="sim-config">
                         <div class="config-card">
                             <h3 data-i18n="match_setup">Match Setup</h3>
@@ -260,148 +309,92 @@
                         </div>
                     </div>
 
-                    <!-- Formation Pitch Visualization -->
-                    <div id="lineup-pitch-container" class="pitch-container hidden">
-                        <h3 class="pitch-title" data-i18n="pitch_lineup">Team Lineups</h3>
-
-                        <div class="dual-pitch-layout">
-                            <!-- Home Team Pitch -->
-                            <div class="single-pitch-wrapper home-pitch">
-                                <div class="pitch-header">
-                                    <div class="team-badge">🏠</div>
-                                    <h4 id="pitch-team1-name" class="team-name">-</h4>
-                                    <p id="pitch-team1-formation" class="team-formation">-</p>
-                                </div>
-
-                                <div class="pitch-view-single">
-                                    <svg id="pitch-svg-team1" viewBox="0 0 68 100" preserveAspectRatio="xMidYMid meet">
-                                        <defs>
-                                            <linearGradient id="pitch-gradient-1" x1="0%" y1="0%" x2="100%" y2="100%">
-                                                <stop offset="0%" style="stop-color:#1a472a;stop-opacity:1" />
-                                                <stop offset="100%" style="stop-color:#2d5a3d;stop-opacity:1" />
-                                            </linearGradient>
-                                        </defs>
-
-                                        <!-- Pitch Base -->
-                                        <rect class="pitch-bg" x="0" y="0" width="68" height="100"
-                                            fill="url(#pitch-gradient-1)" />
-
-                                        <!-- Pitch Markings -->
-                                        <g class="pitch-markings">
-                                            <rect x="0.5" y="0.5" width="67" height="99" fill="none"
-                                                stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
-                                            <line x1="0" y1="50" x2="68" y2="50" stroke="rgba(255,255,255,0.4)"
-                                                stroke-width="0.3" />
-                                            <circle cx="34" cy="50" r="9.15" fill="none" stroke="rgba(255,255,255,0.4)"
-                                                stroke-width="0.3" />
-                                            <circle cx="34" cy="50" r="0.5" fill="rgba(255,255,255,0.4)" />
-                                            <rect x="13.85" y="0" width="40.3" height="16.5" fill="none"
-                                                stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
-                                            <rect x="13.85" y="83.5" width="40.3" height="16.5" fill="none"
-                                                stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
-                                            <rect x="24.85" y="0" width="18.3" height="5.5" fill="none"
-                                                stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
-                                            <rect x="24.85" y="94.5" width="18.3" height="5.5" fill="none"
-                                                stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
-                                            <circle cx="34" cy="11" r="0.4" fill="rgba(255,255,255,0.4)" />
-                                            <circle cx="34" cy="89" r="0.4" fill="rgba(255,255,255,0.4)" />
-                                        </g>
-
-                                        <g id="team1-players" class="team-players home-team"></g>
-                                    </svg>
-                                </div>
+                    <!-- Right: Away Team Pitch -->
+                    <div id="pitch-team2-wrapper" class="pitch-column hidden">
+                        <div class="single-pitch-wrapper away-pitch">
+                            <div class="pitch-header">
+                                <div class="team-badge">✈️</div>
+                                <h4 id="pitch-team2-name" class="team-name">-</h4>
+                                <p id="pitch-team2-formation" class="team-formation">-</p>
                             </div>
 
-                            <div class="vs-divider-center">VS</div>
+                            <div class="pitch-view-single">
+                                <svg id="pitch-svg-team2" viewBox="0 0 68 100" preserveAspectRatio="xMidYMid meet">
+                                    <defs>
+                                        <linearGradient id="pitch-gradient-2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#1a472a;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#2d5a3d;stop-opacity:1" />
+                                        </linearGradient>
+                                    </defs>
 
-                            <!-- Away Team Pitch -->
-                            <div class="single-pitch-wrapper away-pitch">
-                                <div class="pitch-header">
-                                    <div class="team-badge">✈️</div>
-                                    <h4 id="pitch-team2-name" class="team-name">-</h4>
-                                    <p id="pitch-team2-formation" class="team-formation">-</p>
-                                </div>
+                                    <rect class="pitch-bg" x="0" y="0" width="68" height="100"
+                                        fill="url(#pitch-gradient-2)" />
 
-                                <div class="pitch-view-single">
-                                    <svg id="pitch-svg-team2" viewBox="0 0 68 100" preserveAspectRatio="xMidYMid meet">
-                                        <defs>
-                                            <linearGradient id="pitch-gradient-2" x1="0%" y1="0%" x2="100%" y2="100%">
-                                                <stop offset="0%" style="stop-color:#1a472a;stop-opacity:1" />
-                                                <stop offset="100%" style="stop-color:#2d5a3d;stop-opacity:1" />
-                                            </linearGradient>
-                                        </defs>
+                                    <g class="pitch-markings">
+                                        <rect x="0.5" y="0.5" width="67" height="99" fill="none"
+                                            stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
+                                        <line x1="0" y1="50" x2="68" y2="50" stroke="rgba(255,255,255,0.4)"
+                                            stroke-width="0.3" />
+                                        <circle cx="34" cy="50" r="9.15" fill="none" stroke="rgba(255,255,255,0.4)"
+                                            stroke-width="0.3" />
+                                        <circle cx="34" cy="50" r="0.5" fill="rgba(255,255,255,0.4)" />
+                                        <rect x="13.85" y="0" width="40.3" height="16.5" fill="none"
+                                            stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
+                                        <rect x="13.85" y="83.5" width="40.3" height="16.5" fill="none"
+                                            stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
+                                        <rect x="24.85" y="0" width="18.3" height="5.5" fill="none"
+                                            stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
+                                        <rect x="24.85" y="94.5" width="18.3" height="5.5" fill="none"
+                                            stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
+                                        <circle cx="34" cy="11" r="0.4" fill="rgba(255,255,255,0.4)" />
+                                        <circle cx="34" cy="89" r="0.4" fill="rgba(255,255,255,0.4)" />
+                                    </g>
 
-                                        <!-- Pitch Base -->
-                                        <rect class="pitch-bg" x="0" y="0" width="68" height="100"
-                                            fill="url(#pitch-gradient-2)" />
-
-                                        <!-- Pitch Markings (same as team1) -->
-                                        <g class="pitch-markings">
-                                            <rect x="0.5" y="0.5" width="67" height="99" fill="none"
-                                                stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
-                                            <line x1="0" y1="50" x2="68" y2="50" stroke="rgba(255,255,255,0.4)"
-                                                stroke-width="0.3" />
-                                            <circle cx="34" cy="50" r="9.15" fill="none" stroke="rgba(255,255,255,0.4)"
-                                                stroke-width="0.3" />
-                                            <circle cx="34" cy="50" r="0.5" fill="rgba(255,255,255,0.4)" />
-                                            <rect x="13.85" y="0" width="40.3" height="16.5" fill="none"
-                                                stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
-                                            <rect x="13.85" y="83.5" width="40.3" height="16.5" fill="none"
-                                                stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
-                                            <rect x="24.85" y="0" width="18.3" height="5.5" fill="none"
-                                                stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
-                                            <rect x="24.85" y="94.5" width="18.3" height="5.5" fill="none"
-                                                stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
-                                            <circle cx="34" cy="11" r="0.4" fill="rgba(255,255,255,0.4)" />
-                                            <circle cx="34" cy="89" r="0.4" fill="rgba(255,255,255,0.4)" />
-                                        </g>
-
-                                        <g id="team2-players" class="team-players away-team"></g>
-                                    </svg>
-                                </div>
+                                    <g id="team2-players" class="team-players away-team"></g>
+                                </svg>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Simulation Loading Animation -->
-                    <div id="sim-loader" class="sim-loader hidden">
-                        <div class="loader-container">
-                            <div class="loader-header">
-                                <div class="football-icon">⚽</div>
-                                <h3 class="loader-title" data-i18n="loader_title">Analyzing Match...</h3>
-                            </div>
-
-                            <div class="progress-wrapper">
-                                <div class="progress-bar">
-                                    <div class="progress-fill"></div>
-                                    <div class="progress-glow"></div>
-                                </div>
-                                <div class="progress-percentage">0%</div>
-                            </div>
-
-                            <p class="progress-status">Initializing...</p>
-
-                            <p class="loader-subtitle" data-i18n="loader_subtitle">
-                                Running 10,000 simulations with AI predictions
-                            </p>
-
-                            <!-- Decorative field lines -->
-                            <div class="field-lines">
-                                <div class="field-line"></div>
-                                <div class="field-line"></div>
-                                <div class="field-line"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="sim-results" class="sim-output hidden">
-                        <!-- Results injected via JS -->
                     </div>
                 </div>
-            </section>
+                <!-- Simulation Loading Animation -->
+                <div id="sim-loader" class="sim-loader hidden">
+                    <div class="loader-container">
+                        <div class="loader-header">
+                            <div class="football-icon">⚽</div>
+                            <h3 class="loader-title" data-i18n="loader_title">Analyzing Match...</h3>
+                        </div>
 
-            <!-- Tab 3: Players -->
-            <!-- 
+                        <div class="progress-wrapper">
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                                <div class="progress-glow"></div>
+                            </div>
+                            <div class="progress-percentage">0%</div>
+                        </div>
+
+                        <p class="progress-status">Initializing...</p>
+
+                        <p class="loader-subtitle" data-i18n="loader_subtitle">
+                            Running 10,000 simulations with AI predictions
+                        </p>
+
+                        <!-- Decorative field lines -->
+                        <div class="field-lines">
+                            <div class="field-line"></div>
+                            <div class="field-line"></div>
+                            <div class="field-line"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="sim-results" class="sim-output hidden">
+                    <!-- Results injected via JS -->
+                </div>
+    </div>
+    </section>
+
+    <!-- Tab 3: Players -->
+    <!-- 
             <section id="tab-players" class="view-section hidden">
                 <div class="section-header">
                     <h2 data-i18n="scout_title">Player Scout</h2>
@@ -442,8 +435,8 @@
             </section>
              -->
 
-            <!-- Tab 4: Explore -->
-            <!-- 
+    <!-- Tab 4: Explore -->
+    <!-- 
             <section id="tab-explore" class="view-section hidden">
                 <div class="section-header">
                     <h2 data-i18n="explore_title">Player Explorer</h2>
@@ -585,45 +578,45 @@
             </section>
              -->
 
-            <!-- Tab 5: Recent Games -->
-            <section id="tab-recent-games" class="view-section hidden">
-                <div class="section-header">
-                    <h2 data-i18n="recent_games_title">Weekly Predictions</h2>
-                    <p data-i18n="recent_games_desc">AI-powered predictions for upcoming Turkish Super League matches.
-                    </p>
+    <!-- Tab 5: Recent Games -->
+    <section id="tab-recent-games" class="view-section hidden">
+        <div class="section-header">
+            <h2 data-i18n="recent_games_title">Weekly Predictions</h2>
+            <p data-i18n="recent_games_desc">AI-powered predictions for upcoming Turkish Super League matches.
+            </p>
+        </div>
+
+        <div class="recent-games-interface">
+            <!-- Round Selector -->
+            <div class="round-selector">
+                <button id="prev-round" class="round-nav-btn" aria-label="Previous Round">
+                    <span>←</span>
+                </button>
+                <div class="round-display">
+                    <span data-i18n="round_label">Round</span>
+                    <select id="round-dropdown" class="round-select">
+                        <!-- Options populated by JS -->
+                    </select>
                 </div>
+                <button id="next-round" class="round-nav-btn" aria-label="Next Round">
+                    <span>→</span>
+                </button>
+            </div>
 
-                <div class="recent-games-interface">
-                    <!-- Round Selector -->
-                    <div class="round-selector">
-                        <button id="prev-round" class="round-nav-btn" aria-label="Previous Round">
-                            <span>←</span>
-                        </button>
-                        <div class="round-display">
-                            <span data-i18n="round_label">Round</span>
-                            <select id="round-dropdown" class="round-select">
-                                <!-- Options populated by JS -->
-                            </select>
-                        </div>
-                        <button id="next-round" class="round-nav-btn" aria-label="Next Round">
-                            <span>→</span>
-                        </button>
-                    </div>
-
-                    <!-- Matches Container -->
-                    <div id="matches-container" class="matches-container">
-                        <div class="loading-state">
-                            <div class="spinner"></div>
-                            <p data-i18n="loading_matches">Loading matches...</p>
-                        </div>
-                    </div>
+            <!-- Matches Container -->
+            <div id="matches-container" class="matches-container">
+                <div class="loading-state">
+                    <div class="spinner"></div>
+                    <p data-i18n="loading_matches">Loading matches...</p>
                 </div>
-            </section>
-        </main>
+            </div>
+        </div>
+    </section>
+    </main>
 
-        <footer class="main-footer">
-            <p>&copy; 2025 Gol Oncesi Analytics. Data based on Turkish Super League 2024/25.</p>
-        </footer>
+    <footer class="main-footer">
+        <p>&copy; 2025 Gol Oncesi Analytics. Data based on Turkish Super League 2024/25.</p>
+    </footer>
     </div>
 
     <!-- Data & App Logic -->

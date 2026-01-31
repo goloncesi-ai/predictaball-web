@@ -127,11 +127,11 @@ function renderPitchView(team1Data, team2Data) {
         return;
     }
 
-    // Show pitch container
-    const pitchContainer = document.getElementById('lineup-pitch-container');
-    if (pitchContainer) {
-        pitchContainer.classList.remove('hidden');
-    }
+    // Show pitch columns
+    const pitch1Wrapper = document.getElementById('pitch-team1-wrapper');
+    const pitch2Wrapper = document.getElementById('pitch-team2-wrapper');
+    if (pitch1Wrapper) pitch1Wrapper.classList.remove('hidden');
+    if (pitch2Wrapper) pitch2Wrapper.classList.remove('hidden');
 
     // Update team info
     document.getElementById('pitch-team1-name').textContent = team1Data.name || '-';
@@ -150,10 +150,10 @@ function renderPitchView(team1Data, team2Data) {
 
 // Hide pitch view
 function hidePitchView() {
-    const pitchContainer = document.getElementById('lineup-pitch-container');
-    if (pitchContainer) {
-        pitchContainer.classList.add('hidden');
-    }
+    const pitch1Wrapper = document.getElementById('pitch-team1-wrapper');
+    const pitch2Wrapper = document.getElementById('pitch-team2-wrapper');
+    if (pitch1Wrapper) pitch1Wrapper.classList.add('hidden');
+    if (pitch2Wrapper) pitch2Wrapper.classList.add('hidden');
 }
 
 // Get team lineup from CSV data
