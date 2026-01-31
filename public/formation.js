@@ -213,10 +213,13 @@ async function fetchTeamPlayerStats(teamName) {
         const statsMap = {};
         if (data.players) {
             data.players.forEach(p => {
-                statsMap[p.name] = p;
+                // Key by normalized name for robust matching
+                // e.g. "İsmail Yüksek" -> "ismail yuksek"
+                const normName = normalizeName(p.name);
+                statsMap[normName] = p;
 
-                // Allow lookup by "Lastname" only as fallback
-                const parts = p.name.split(' ');
+                // Also add last name as fallback key
+                const parts = normName.split(' ');
                 if (parts.length > 1) {
                     const lastName = parts[parts.length - 1];
                     // Only map if unique, otherwise conflict risk
@@ -274,6 +277,11 @@ async function getTeamLatestLineup(teamName) {
 
         // Wait for stats to load
         const statsMap = await statsPromise;
+        const normalizedStatsMap = {}; // Not used but good for debug if we wanted
+        // Actually fetchTeamPlayerStats returns a normalized map already?
+        // Wait, my previous code in fetchTeamPlayerStats was constructing a map keyed by normalized name.
+        // Let's verify that fetchTeamPlayerStats DOES that.
+        // It does: `const normName = normalizeName(p.name); statsMap[normName] = p;`
 
         // Extract players (11 players)
         const players = [];
@@ -284,20 +292,25 @@ async function getTeamLatestLineup(teamName) {
 
             // Try to find in stats DB
             if (statsMap) {
-                // 1. Try exact match
-                let match = statsMap[rawName];
+                // Normalize CSV name: "İsmail Yüksek" -> "ismail yuksek"
+                const normName = normalizeName(rawName);
 
-                // 2. Try partial match (CSV might have "Mauro Icardi", DB "Mauro Emanuel Icardi")
+                // 1. Try exact normalized match
+                let match = statsMap[normName];
+
+                // 2. Try partial match (normalized last name)
                 if (!match) {
-                    // Simple fuzzy: check if CSV last name is in DB
-                    const parts = rawName.split(' ');
+                    const parts = normName.split(' ');
                     const lastName = parts[parts.length - 1];
                     match = statsMap[lastName];
                 }
 
                 if (match) {
-                    if (match.stats && match.stats.rating) {
-                        rating = match.stats.rating; // Use real rating!
+                    // Only use stats rating if valid (>0), otherwise fallback to CSV rating
+                    // But if stats are 0 (like now), we prioritize CSV.
+                    // This fixes the "0.0 rating" issue.
+                    if (match.stats && match.stats.rating && match.stats.rating > 0) {
+                        rating = match.stats.rating;
                     }
                     fullStats = match.stats;
                 }
@@ -327,6 +340,12 @@ async function getTeamLatestLineup(teamName) {
             }))
         };
     }
+}
+
+// Helper: Normalize name for matching (removes accents, case, spaces)
+function normalizeName(str) {
+    if (!str) return "";
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
 }
 
 // Export functions (if using modules, otherwise they're global)
