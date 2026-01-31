@@ -2,18 +2,210 @@ window.teamData = [
   {
     "name": "Alanyaspor",
     "stats": {
-      "win_rate": 0.34285714285714286,
-      "avg_goals_scored": 1.1428571428571428,
-      "avg_goals_conceded": 1.1428571428571428,
-      "avg_shots": 11.914285714285715,
-      "avg_possession": 0.4885714285714286,
-      "avg_corners": 4.628571428571429,
-      "total_games": 35,
+      "win_rate": 0.3333333333333333,
+      "avg_goals_scored": 1.1666666666666667,
+      "avg_goals_conceded": 1.1944444444444444,
+      "avg_shots": 11.833333333333334,
+      "avg_possession": 0.48750000000000004,
+      "avg_corners": 4.666666666666667,
+      "total_games": 36,
       "wins": 12,
       "draws": 12,
-      "losses": 11
+      "losses": 12
     },
     "match_history": [
+      {
+        "opponent": "Fenerbah\u00e7e",
+        "home_away": "H",
+        "goals_for": 2,
+        "goals_against": 3,
+        "shots": 9,
+        "possession": 0.45,
+        "corners": 6,
+        "passes": 439,
+        "big_chances": 1,
+        "result": "L"
+      },
+      {
+        "opponent": "Fatih Karag\u00fcmr\u00fck",
+        "home_away": "H",
+        "goals_for": 2,
+        "goals_against": 0,
+        "shots": 11,
+        "possession": 0.44,
+        "corners": 2,
+        "passes": 422,
+        "big_chances": 1,
+        "result": "W"
+      },
+      {
+        "opponent": "Kayserispor",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 0,
+        "shots": 14,
+        "possession": 0.58,
+        "corners": 8,
+        "passes": 440,
+        "big_chances": 5,
+        "result": "D"
+      },
+      {
+        "opponent": "Antalyaspor",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 0,
+        "shots": 9,
+        "possession": 0.54,
+        "corners": 9,
+        "passes": 384,
+        "big_chances": 3,
+        "result": "D"
+      },
+      {
+        "opponent": "Samsunspor",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 10,
+        "possession": 0.48,
+        "corners": 1,
+        "passes": 420,
+        "big_chances": 1,
+        "result": "D"
+      },
+      {
+        "opponent": "Kas\u0131mpa\u015fa",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 2,
+        "shots": 17,
+        "possession": 0.68,
+        "corners": 13,
+        "passes": 589,
+        "big_chances": 2,
+        "result": "L"
+      },
+      {
+        "opponent": "Trabzonspor",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 24,
+        "possession": 0.41,
+        "corners": 7,
+        "passes": 370,
+        "big_chances": 1,
+        "result": "D"
+      },
+      {
+        "opponent": "Gaziantep FK",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 0,
+        "shots": 8,
+        "possession": 0.54,
+        "corners": 4,
+        "passes": 485,
+        "big_chances": 2,
+        "result": "D"
+      },
+      {
+        "opponent": "Kocaelispor",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 2,
+        "shots": 9,
+        "possession": 0.48,
+        "corners": 2,
+        "passes": 368,
+        "big_chances": 1,
+        "result": "L"
+      },
+      {
+        "opponent": "G\u00f6ztepe",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 0,
+        "shots": 15,
+        "possession": 0.6,
+        "corners": 8,
+        "passes": 455,
+        "big_chances": 0,
+        "result": "W"
+      },
+      {
+        "opponent": "Gen\u00e7lerbirli\u011fi",
+        "home_away": "A",
+        "goals_for": 2,
+        "goals_against": 2,
+        "shots": 12,
+        "possession": 0.45,
+        "corners": 5,
+        "passes": 332,
+        "big_chances": 2,
+        "result": "D"
+      },
+      {
+        "opponent": "Galatasaray",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 1,
+        "shots": 22,
+        "possession": 0.46,
+        "corners": 6,
+        "passes": 459,
+        "big_chances": 5,
+        "result": "L"
+      },
+      {
+        "opponent": "Ba\u015fak\u015fehir FK",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 13,
+        "possession": 0.47,
+        "corners": 4,
+        "passes": 385,
+        "big_chances": 6,
+        "result": "D"
+      },
+      {
+        "opponent": "Fenerbah\u00e7e",
+        "home_away": "A",
+        "goals_for": 2,
+        "goals_against": 2,
+        "shots": 5,
+        "possession": 0.38,
+        "corners": 0,
+        "passes": 347,
+        "big_chances": 1,
+        "result": "D"
+      },
+      {
+        "opponent": "Konyaspor",
+        "home_away": "A",
+        "goals_for": 2,
+        "goals_against": 1,
+        "shots": 7,
+        "possession": 0.34,
+        "corners": 1,
+        "passes": 265,
+        "big_chances": 3,
+        "result": "W"
+      },
+      {
+        "opponent": "Be\u015fikta\u015f JK",
+        "home_away": "H",
+        "goals_for": 2,
+        "goals_against": 0,
+        "shots": 9,
+        "possession": 0.37,
+        "corners": 2,
+        "passes": 331,
+        "big_chances": 2,
+        "result": "W"
+      },
       {
         "opponent": "Ey\u00fcpspor",
         "home_away": "A",
@@ -61,201 +253,16 @@ window.teamData = [
         "passes": 386,
         "big_chances": 1,
         "result": "D"
-      },
-      {
-        "opponent": "Gaziantep FK",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 0,
-        "shots": 8,
-        "possession": 0.4,
-        "corners": 0,
-        "passes": 358,
-        "big_chances": 4,
-        "result": "W"
-      },
-      {
-        "opponent": "Kayserispor",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 16,
-        "possession": 0.56,
-        "corners": 4,
-        "passes": 471,
-        "big_chances": 3,
-        "result": "D"
-      },
-      {
-        "opponent": "Samsunspor",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 0,
-        "shots": 6,
-        "possession": 0.36,
-        "corners": 5,
-        "passes": 283,
-        "big_chances": 1,
-        "result": "W"
-      },
-      {
-        "opponent": "Bodrum FK",
-        "home_away": "H",
-        "goals_for": 0,
-        "goals_against": 1,
-        "shots": 12,
-        "possession": 0.59,
-        "corners": 3,
-        "passes": 536,
-        "big_chances": 2,
-        "result": "L"
-      },
-      {
-        "opponent": "Antalyaspor",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 2,
-        "shots": 4,
-        "possession": 0.44,
-        "corners": 3,
-        "passes": 386,
-        "big_chances": 0,
-        "result": "L"
-      },
-      {
-        "opponent": "Kas\u0131mpa\u015fa",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 2,
-        "shots": 15,
-        "possession": 0.55,
-        "corners": 6,
-        "passes": 401,
-        "big_chances": 2,
-        "result": "L"
-      },
-      {
-        "opponent": "Galatasaray",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 2,
-        "shots": 10,
-        "possession": 0.35,
-        "corners": 3,
-        "passes": 283,
-        "big_chances": 1,
-        "result": "L"
-      },
-      {
-        "opponent": "Adana Demirspor",
-        "home_away": "H",
-        "goals_for": 3,
-        "goals_against": 2,
-        "shots": 25,
-        "possession": 0.65,
-        "corners": 10,
-        "passes": 463,
-        "big_chances": 6,
-        "result": "W"
-      },
-      {
-        "opponent": "Hatayspor",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 1,
-        "shots": 16,
-        "possession": 0.57,
-        "corners": 6,
-        "passes": 425,
-        "big_chances": 4,
-        "result": "L"
-      },
-      {
-        "opponent": "Fenerbah\u00e7e",
-        "home_away": "H",
-        "goals_for": 0,
-        "goals_against": 2,
-        "shots": 12,
-        "possession": 0.53,
-        "corners": 2,
-        "passes": 486,
-        "big_chances": 3,
-        "result": "L"
-      },
-      {
-        "opponent": "G\u00f6ztepe",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 0,
-        "shots": 8,
-        "possession": 0.44,
-        "corners": 3,
-        "passes": 289,
-        "big_chances": 1,
-        "result": "W"
-      },
-      {
-        "opponent": "Ba\u015fak\u015fehir FK",
-        "home_away": "H",
-        "goals_for": 5,
-        "goals_against": 4,
-        "shots": 14,
-        "possession": 0.5,
-        "corners": 4,
-        "passes": 334,
-        "big_chances": 4,
-        "result": "W"
-      },
-      {
-        "opponent": "Ey\u00fcpspor",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 3,
-        "shots": 11,
-        "possession": 0.39,
-        "corners": 5,
-        "passes": 273,
-        "big_chances": 1,
-        "result": "L"
-      },
-      {
-        "opponent": "Sivasspor",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 8,
-        "possession": 0.54,
-        "corners": 6,
-        "passes": 480,
-        "big_chances": 0,
-        "result": "D"
-      },
-      {
-        "opponent": "Konyaspor",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 1,
-        "shots": 12,
-        "possession": 0.48,
-        "corners": 7,
-        "passes": 392,
-        "big_chances": 4,
-        "result": "W"
-      },
-      {
-        "opponent": "Be\u015fikta\u015f JK",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 9,
-        "possession": 0.44,
-        "corners": 7,
-        "passes": 354,
-        "big_chances": 1,
-        "result": "D"
       }
     ],
     "head_to_head": {
+      "Fenerbah\u00e7e": {
+        "wins": 0,
+        "draws": 1,
+        "losses": 2,
+        "goals_for": 4,
+        "goals_against": 7
+      },
       "Fatih Karag\u00fcmr\u00fck": {
         "wins": 1,
         "draws": 0,
@@ -340,13 +347,6 @@ window.teamData = [
         "goals_for": 6,
         "goals_against": 5
       },
-      "Fenerbah\u00e7e": {
-        "wins": 0,
-        "draws": 1,
-        "losses": 1,
-        "goals_for": 2,
-        "goals_against": 4
-      },
       "Konyaspor": {
         "wins": 3,
         "draws": 0,
@@ -401,260 +401,267 @@ window.teamData = [
   {
     "name": "Antalyaspor",
     "stats": {
-      "win_rate": 0.2608695652173913,
-      "avg_goals_scored": 0.9347826086956522,
-      "avg_goals_conceded": 1.826086956521739,
-      "avg_shots": 9.804347826086957,
-      "avg_possession": 0.48760869565217396,
-      "avg_corners": 3.891304347826087,
-      "total_games": 46,
+      "win_rate": 0.2553191489361702,
+      "avg_goals_scored": 0.9148936170212766,
+      "avg_goals_conceded": 1.7872340425531914,
+      "avg_shots": 9.72340425531915,
+      "avg_possession": 0.4859574468085107,
+      "avg_corners": 3.893617021276596,
+      "total_games": 47,
       "wins": 12,
-      "draws": 9,
+      "draws": 10,
       "losses": 25
     },
     "match_history": [
       {
-        "opponent": "Fenerbah\u00e7e",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 3,
-        "shots": 4,
-        "possession": 0.51,
-        "corners": 5,
-        "passes": 464,
-        "big_chances": 0,
-        "result": "L"
-      },
-      {
         "opponent": "Kas\u0131mpa\u015fa",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 1,
-        "shots": 9,
-        "possession": 0.43,
-        "corners": 4,
-        "passes": 321,
-        "big_chances": 4,
-        "result": "W"
-      },
-      {
-        "opponent": "Adana Demirspor",
         "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 17,
-        "possession": 0.61,
-        "corners": 9,
-        "passes": 429,
-        "big_chances": 9,
-        "result": "D"
-      },
-      {
-        "opponent": "Ba\u015fak\u015fehir FK",
-        "home_away": "H",
         "goals_for": 0,
         "goals_against": 0,
-        "shots": 14,
-        "possession": 0.49,
-        "corners": 3,
-        "passes": 414,
-        "big_chances": 3,
+        "shots": 6,
+        "possession": 0.41,
+        "corners": 4,
+        "passes": 303,
+        "big_chances": 1,
         "result": "D"
       },
       {
-        "opponent": "Hatayspor",
+        "opponent": "Kocaelispor",
         "home_away": "A",
-        "goals_for": 3,
+        "goals_for": 1,
         "goals_against": 2,
-        "shots": 14,
-        "possession": 0.44,
-        "corners": 2,
-        "passes": 374,
-        "big_chances": 4,
-        "result": "W"
-      },
-      {
-        "opponent": "G\u00f6ztepe",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 1,
         "shots": 6,
-        "possession": 0.59,
-        "corners": 4,
-        "passes": 440,
+        "possession": 0.54,
+        "corners": 2,
+        "passes": 413,
         "big_chances": 1,
         "result": "L"
       },
       {
-        "opponent": "Trabzonspor",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 5,
-        "shots": 10,
-        "possession": 0.51,
-        "corners": 5,
-        "passes": 405,
-        "big_chances": 1,
-        "result": "L"
-      },
-      {
-        "opponent": "Ey\u00fcpspor",
+        "opponent": "Galatasaray",
         "home_away": "H",
         "goals_for": 1,
         "goals_against": 4,
-        "shots": 22,
-        "possession": 0.52,
-        "corners": 11,
-        "passes": 429,
-        "big_chances": 3,
-        "result": "L"
-      },
-      {
-        "opponent": "Gaziantep FK",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 2,
-        "shots": 8,
-        "possession": 0.55,
-        "corners": 3,
-        "passes": 423,
-        "big_chances": 3,
-        "result": "L"
-      },
-      {
-        "opponent": "Kayserispor",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 0,
-        "shots": 10,
-        "possession": 0.51,
-        "corners": 4,
-        "passes": 455,
-        "big_chances": 4,
-        "result": "W"
-      },
-      {
-        "opponent": "Konyaspor",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 1,
         "shots": 11,
-        "possession": 0.6,
-        "corners": 3,
-        "passes": 496,
-        "big_chances": 1,
-        "result": "D"
-      },
-      {
-        "opponent": "Sivasspor",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 1,
-        "shots": 16,
-        "possession": 0.58,
-        "corners": 9,
-        "passes": 454,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "Bodrum FK",
-        "home_away": "H",
-        "goals_for": 3,
-        "goals_against": 2,
-        "shots": 13,
-        "possession": 0.59,
-        "corners": 4,
-        "passes": 486,
-        "big_chances": 5,
-        "result": "W"
-      },
-      {
-        "opponent": "Samsunspor",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 2,
-        "shots": 10,
-        "possession": 0.57,
-        "corners": 2,
-        "passes": 488,
+        "possession": 0.37,
+        "corners": 5,
+        "passes": 330,
         "big_chances": 1,
         "result": "L"
       },
       {
         "opponent": "Alanyaspor",
         "home_away": "A",
-        "goals_for": 2,
-        "goals_against": 1,
+        "goals_for": 0,
+        "goals_against": 0,
         "shots": 6,
-        "possession": 0.47,
-        "corners": 3,
-        "passes": 394,
-        "big_chances": 2,
-        "result": "W"
+        "possession": 0.46,
+        "corners": 4,
+        "passes": 335,
+        "big_chances": 0,
+        "result": "D"
       },
       {
-        "opponent": "Galatasaray",
+        "opponent": "G\u00f6ztepe",
         "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 2,
+        "shots": 8,
+        "possession": 0.5,
+        "corners": 1,
+        "passes": 312,
+        "big_chances": 0,
+        "result": "L"
+      },
+      {
+        "opponent": "Konyaspor",
+        "home_away": "A",
         "goals_for": 0,
+        "goals_against": 0,
+        "shots": 4,
+        "possession": 0.41,
+        "corners": 2,
+        "passes": 319,
+        "big_chances": 1,
+        "result": "D"
+      },
+      {
+        "opponent": "Be\u015fikta\u015f JK",
+        "home_away": "H",
+        "goals_for": 1,
         "goals_against": 3,
-        "shots": 12,
-        "possession": 0.49,
-        "corners": 5,
-        "passes": 406,
+        "shots": 5,
+        "possession": 0.46,
+        "corners": 3,
+        "passes": 394,
         "big_chances": 1,
         "result": "L"
       },
       {
-        "opponent": "\u00c7aykur Rizespor",
+        "opponent": "Ey\u00fcpspor",
         "home_away": "A",
         "goals_for": 1,
-        "goals_against": 2,
-        "shots": 16,
-        "possession": 0.67,
+        "goals_against": 0,
+        "shots": 7,
+        "possession": 0.4,
+        "corners": 2,
+        "passes": 336,
+        "big_chances": 2,
+        "result": "W"
+      },
+      {
+        "opponent": "Ba\u015fak\u015fehir FK",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 4,
+        "shots": 10,
+        "possession": 0.34,
         "corners": 3,
-        "passes": 574,
+        "passes": 302,
+        "big_chances": 1,
+        "result": "L"
+      },
+      {
+        "opponent": "Gaziantep FK",
+        "home_away": "A",
+        "goals_for": 2,
+        "goals_against": 3,
+        "shots": 7,
+        "possession": 0.3,
+        "corners": 5,
+        "passes": 265,
+        "big_chances": 2,
+        "result": "L"
+      },
+      {
+        "opponent": "\u00c7aykur Rizespor",
+        "home_away": "H",
+        "goals_for": 2,
+        "goals_against": 5,
+        "shots": 15,
+        "possession": 0.51,
+        "corners": 6,
+        "passes": 453,
         "big_chances": 2,
         "result": "L"
       },
       {
         "opponent": "Fenerbah\u00e7e",
-        "home_away": "H",
+        "home_away": "A",
         "goals_for": 0,
         "goals_against": 2,
-        "shots": 10,
-        "possession": 0.51,
+        "shots": 4,
+        "possession": 0.33,
+        "corners": 3,
+        "passes": 292,
+        "big_chances": 1,
+        "result": "L"
+      },
+      {
+        "opponent": "Kayserispor",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 13,
+        "possession": 0.53,
+        "corners": 10,
+        "passes": 405,
+        "big_chances": 2,
+        "result": "D"
+      },
+      {
+        "opponent": "Samsunspor",
+        "home_away": "A",
+        "goals_for": 2,
+        "goals_against": 1,
+        "shots": 6,
+        "possession": 0.37,
         "corners": 2,
+        "passes": 306,
+        "big_chances": 1,
+        "result": "W"
+      },
+      {
+        "opponent": "Fatih Karag\u00fcmr\u00fck",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 2,
+        "shots": 8,
+        "possession": 0.49,
+        "corners": 7,
+        "passes": 362,
+        "big_chances": 2,
+        "result": "L"
+      },
+      {
+        "opponent": "Trabzonspor",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 1,
+        "shots": 7,
+        "possession": 0.5,
+        "corners": 5,
         "passes": 415,
-        "big_chances": 0,
+        "big_chances": 1,
         "result": "L"
       },
       {
         "opponent": "Kas\u0131mpa\u015fa",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 0,
-        "shots": 4,
-        "possession": 0.43,
-        "corners": 1,
-        "passes": 348,
-        "big_chances": 0,
-        "result": "D"
+        "home_away": "H",
+        "goals_for": 2,
+        "goals_against": 1,
+        "shots": 16,
+        "possession": 0.37,
+        "corners": 3,
+        "passes": 252,
+        "big_chances": 2,
+        "result": "W"
       },
       {
-        "opponent": "Be\u015fikta\u015f JK",
-        "home_away": "A",
-        "goals_for": 2,
-        "goals_against": 4,
-        "shots": 7,
-        "possession": 0.44,
-        "corners": 0,
-        "passes": 324,
-        "big_chances": 3,
+        "opponent": "Trabzonspor",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 2,
+        "shots": 9,
+        "possession": 0.46,
+        "corners": 2,
+        "passes": 481,
+        "big_chances": 0,
         "result": "L"
+      },
+      {
+        "opponent": "Ey\u00fcpspor",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 2,
+        "shots": 12,
+        "possession": 0.41,
+        "corners": 6,
+        "passes": 366,
+        "big_chances": 2,
+        "result": "L"
+      },
+      {
+        "opponent": "Gaziantep FK",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 0,
+        "shots": 11,
+        "possession": 0.57,
+        "corners": 5,
+        "passes": 448,
+        "big_chances": 2,
+        "result": "D"
       }
     ],
     "head_to_head": {
+      "Kas\u0131mpa\u015fa": {
+        "wins": 2,
+        "draws": 2,
+        "losses": 0,
+        "goals_for": 4,
+        "goals_against": 2
+      },
       "Kocaelispor": {
         "wins": 0,
         "draws": 0,
@@ -760,13 +767,6 @@ window.teamData = [
         "goals_for": 0,
         "goals_against": 8
       },
-      "Kas\u0131mpa\u015fa": {
-        "wins": 2,
-        "draws": 1,
-        "losses": 0,
-        "goals_for": 4,
-        "goals_against": 2
-      },
       "Sivasspor": {
         "wins": 1,
         "draws": 0,
@@ -813,244 +813,244 @@ window.teamData = [
     },
     "match_history": [
       {
-        "opponent": "Hatayspor",
+        "opponent": "Gen\u00e7lerbirli\u011fi",
         "home_away": "A",
-        "goals_for": 4,
+        "goals_for": 1,
         "goals_against": 2,
-        "shots": 18,
-        "possession": 0.54,
-        "corners": 7,
-        "passes": 442,
-        "big_chances": 4,
-        "result": "W"
-      },
-      {
-        "opponent": "G\u00f6ztepe",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 4,
-        "shots": 12,
-        "possession": 0.57,
-        "corners": 4,
-        "passes": 370,
+        "shots": 19,
+        "possession": 0.72,
+        "corners": 9,
+        "passes": 534,
         "big_chances": 3,
         "result": "L"
       },
       {
-        "opponent": "Gaziantep FK",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 1,
-        "shots": 9,
-        "possession": 0.55,
-        "corners": 5,
-        "passes": 389,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "Be\u015fikta\u015f JK",
-        "home_away": "A",
-        "goals_for": 2,
-        "goals_against": 0,
-        "shots": 8,
-        "possession": 0.44,
-        "corners": 6,
-        "passes": 365,
-        "big_chances": 1,
-        "result": "W"
-      },
-      {
-        "opponent": "Konyaspor",
+        "opponent": "Kocaelispor",
         "home_away": "H",
         "goals_for": 1,
         "goals_against": 0,
-        "shots": 7,
+        "shots": 16,
         "possession": 0.59,
-        "corners": 0,
-        "passes": 515,
-        "big_chances": 2,
-        "result": "W"
-      },
-      {
-        "opponent": "Ey\u00fcpspor",
-        "home_away": "A",
-        "goals_for": 3,
-        "goals_against": 1,
-        "shots": 12,
-        "possession": 0.49,
-        "corners": 3,
-        "passes": 369,
-        "big_chances": 2,
-        "result": "W"
-      },
-      {
-        "opponent": "Sivasspor",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 0,
-        "shots": 11,
-        "possession": 0.62,
         "corners": 6,
-        "passes": 523,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "Bodrum FK",
-        "home_away": "H",
-        "goals_for": 0,
-        "goals_against": 1,
-        "shots": 14,
-        "possession": 0.66,
-        "corners": 1,
-        "passes": 567,
+        "passes": 445,
         "big_chances": 1,
-        "result": "L"
+        "result": "W"
       },
       {
         "opponent": "Antalyaspor",
         "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 0,
-        "shots": 5,
-        "possession": 0.51,
-        "corners": 2,
-        "passes": 447,
-        "big_chances": 1,
-        "result": "D"
-      },
-      {
-        "opponent": "Samsunspor",
-        "home_away": "H",
         "goals_for": 4,
         "goals_against": 0,
-        "shots": 16,
-        "possession": 0.44,
-        "corners": 4,
-        "passes": 366,
-        "big_chances": 3,
+        "shots": 19,
+        "possession": 0.66,
+        "corners": 8,
+        "passes": 585,
+        "big_chances": 6,
         "result": "W"
-      },
-      {
-        "opponent": "Alanyaspor",
-        "home_away": "A",
-        "goals_for": 4,
-        "goals_against": 5,
-        "shots": 12,
-        "possession": 0.5,
-        "corners": 4,
-        "passes": 334,
-        "big_chances": 4,
-        "result": "L"
       },
       {
         "opponent": "\u00c7aykur Rizespor",
-        "home_away": "H",
-        "goals_for": 2,
+        "home_away": "A",
+        "goals_for": 0,
         "goals_against": 0,
-        "shots": 7,
-        "possession": 0.43,
-        "corners": 2,
-        "passes": 330,
-        "big_chances": 2,
-        "result": "W"
+        "shots": 15,
+        "possession": 0.53,
+        "corners": 5,
+        "passes": 424,
+        "big_chances": 1,
+        "result": "D"
       },
       {
         "opponent": "Galatasaray",
         "home_away": "H",
         "goals_for": 1,
         "goals_against": 2,
-        "shots": 7,
-        "possession": 0.52,
-        "corners": 7,
-        "passes": 357,
-        "big_chances": 1,
+        "shots": 5,
+        "possession": 0.45,
+        "corners": 2,
+        "passes": 374,
+        "big_chances": 3,
         "result": "L"
       },
       {
-        "opponent": "Adana Demirspor",
+        "opponent": "G\u00f6ztepe",
         "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 0,
-        "shots": 11,
-        "possession": 0.6,
-        "corners": 3,
-        "passes": 567,
-        "big_chances": 4,
-        "result": "W"
-      },
-      {
-        "opponent": "Kas\u0131mpa\u015fa",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 2,
-        "shots": 19,
-        "possession": 0.49,
-        "corners": 4,
-        "passes": 408,
-        "big_chances": 6,
-        "result": "D"
-      },
-      {
-        "opponent": "Cercle Brugge",
-        "home_away": "A",
-        "goals_for": 1,
+        "goals_for": 0,
         "goals_against": 1,
-        "shots": 12,
-        "possession": 0.58,
-        "corners": 3,
-        "passes": 401,
-        "big_chances": 4,
-        "result": "D"
-      },
-      {
-        "opponent": "Fenerbah\u00e7e",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 3,
-        "shots": 2,
-        "possession": 0.37,
-        "corners": 0,
-        "passes": 271,
+        "shots": 11,
+        "possession": 0.72,
+        "corners": 5,
+        "passes": 562,
         "big_chances": 2,
         "result": "L"
       },
       {
-        "opponent": "1. FC Heidenheim",
+        "opponent": "Konyaspor",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 2,
+        "shots": 17,
+        "possession": 0.7,
+        "corners": 11,
+        "passes": 536,
+        "big_chances": 2,
+        "result": "L"
+      },
+      {
+        "opponent": "Alanyaspor",
         "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 13,
+        "possession": 0.53,
+        "corners": 7,
+        "passes": 424,
+        "big_chances": 3,
+        "result": "D"
+      },
+      {
+        "opponent": "Fatih Karag\u00fcmr\u00fck",
+        "home_away": "A",
+        "goals_for": 2,
+        "goals_against": 0,
+        "shots": 4,
+        "possession": 0.52,
+        "corners": 4,
+        "passes": 409,
+        "big_chances": 0,
+        "result": "W"
+      },
+      {
+        "opponent": "Be\u015fikta\u015f JK",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 2,
+        "shots": 11,
+        "possession": 0.47,
+        "corners": 5,
+        "passes": 377,
+        "big_chances": 0,
+        "result": "L"
+      },
+      {
+        "opponent": "Ey\u00fcpspor",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 0,
+        "shots": 10,
+        "possession": 0.51,
+        "corners": 5,
+        "passes": 384,
+        "big_chances": 1,
+        "result": "D"
+      },
+      {
+        "opponent": "Universitatea Craiova",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 3,
+        "shots": 10,
+        "possession": 0.57,
+        "corners": 5,
+        "passes": 434,
+        "big_chances": 1,
+        "result": "L"
+      },
+      {
+        "opponent": "Universitatea Craiova",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 2,
+        "shots": 14,
+        "possession": 0.72,
+        "corners": 7,
+        "passes": 566,
+        "big_chances": 3,
+        "result": "L"
+      },
+      {
+        "opponent": "Viking FK",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 8,
+        "possession": 0.45,
+        "corners": 2,
+        "passes": 353,
+        "big_chances": 2,
+        "result": "D"
+      },
+      {
+        "opponent": "Viking FK",
+        "home_away": "A",
         "goals_for": 3,
         "goals_against": 1,
-        "shots": 10,
-        "possession": 0.41,
-        "corners": 9,
-        "passes": 335,
-        "big_chances": 4,
+        "shots": 8,
+        "possession": 0.44,
+        "corners": 2,
+        "passes": 361,
+        "big_chances": 3,
         "result": "W"
       },
       {
-        "opponent": "Hatayspor",
-        "home_away": "H",
-        "goals_for": 3,
-        "goals_against": 0,
-        "shots": 20,
-        "possession": 0.51,
-        "corners": 7,
-        "passes": 368,
-        "big_chances": 6,
-        "result": "W"
-      },
-      {
-        "opponent": "G\u00f6ztepe",
+        "opponent": "Cherno More Varna",
         "home_away": "H",
         "goals_for": 4,
-        "goals_against": 1,
-        "shots": 14,
-        "possession": 0.56,
-        "corners": 5,
-        "passes": 467,
+        "goals_against": 0,
+        "shots": 13,
+        "possession": 0.7,
+        "corners": 4,
+        "passes": 615,
+        "big_chances": 5,
+        "result": "W"
+      },
+      {
+        "opponent": "Galatasaray",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 2,
+        "shots": 9,
+        "possession": 0.41,
+        "corners": 3,
+        "passes": 316,
+        "big_chances": 3,
+        "result": "L"
+      },
+      {
+        "opponent": "Adana Demirspor",
+        "home_away": "H",
+        "goals_for": 2,
+        "goals_against": 3,
+        "shots": 31,
+        "possession": 0.72,
+        "corners": 10,
+        "passes": 563,
+        "big_chances": 7,
+        "result": "L"
+      },
+      {
+        "opponent": "Kas\u0131mpa\u015fa",
+        "home_away": "A",
+        "goals_for": 3,
+        "goals_against": 2,
+        "shots": 10,
+        "possession": 0.45,
+        "corners": 2,
+        "passes": 321,
         "big_chances": 4,
         "result": "W"
+      },
+      {
+        "opponent": "Fenerbah\u00e7e",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 4,
+        "shots": 14,
+        "possession": 0.5,
+        "corners": 5,
+        "passes": 442,
+        "big_chances": 2,
+        "result": "L"
       }
     ],
     "head_to_head": {
@@ -1227,64 +1227,112 @@ window.teamData = [
   {
     "name": "Be\u015fikta\u015f",
     "stats": {
-      "win_rate": 0.4666666666666667,
-      "avg_goals_scored": 1.7555555555555555,
-      "avg_goals_conceded": 1.1777777777777778,
-      "avg_shots": 14.466666666666667,
-      "avg_possession": 0.542222222222222,
-      "avg_corners": 5.155555555555556,
-      "total_games": 45,
-      "wins": 21,
+      "win_rate": 0.4782608695652174,
+      "avg_goals_scored": 1.7391304347826086,
+      "avg_goals_conceded": 1.1521739130434783,
+      "avg_shots": 14.826086956521738,
+      "avg_possession": 0.5454347826086954,
+      "avg_corners": 5.239130434782608,
+      "total_games": 46,
+      "wins": 22,
       "draws": 12,
       "losses": 12
     },
     "match_history": [
       {
-        "opponent": "Fenerbah\u00e7e",
-        "home_away": "A",
+        "opponent": "Kayserispor",
+        "home_away": "H",
         "goals_for": 1,
         "goals_against": 0,
-        "shots": 8,
-        "possession": 0.39,
-        "corners": 5,
-        "passes": 303,
-        "big_chances": 3,
+        "shots": 31,
+        "possession": 0.69,
+        "corners": 9,
+        "passes": 637,
+        "big_chances": 1,
         "result": "W"
       },
       {
-        "opponent": "Hatayspor",
+        "opponent": "\u00c7aykur Rizespor",
         "home_away": "H",
-        "goals_for": 5,
-        "goals_against": 1,
+        "goals_for": 1,
+        "goals_against": 0,
         "shots": 16,
-        "possession": 0.52,
+        "possession": 0.61,
         "corners": 4,
-        "passes": 435,
-        "big_chances": 6,
+        "passes": 450,
+        "big_chances": 4,
         "result": "W"
       },
       {
-        "opponent": "G\u00f6ztepe",
+        "opponent": "Trabzonspor",
         "home_away": "A",
+        "goals_for": 3,
+        "goals_against": 3,
+        "shots": 9,
+        "possession": 0.24,
+        "corners": 1,
+        "passes": 195,
+        "big_chances": 4,
+        "result": "D"
+      },
+      {
+        "opponent": "Gaziantep FK",
+        "home_away": "H",
+        "goals_for": 2,
+        "goals_against": 2,
+        "shots": 29,
+        "possession": 0.58,
+        "corners": 10,
+        "passes": 426,
+        "big_chances": 6,
+        "result": "D"
+      },
+      {
+        "opponent": "Fatih Karag\u00fcmr\u00fck",
+        "home_away": "A",
+        "goals_for": 2,
+        "goals_against": 0,
+        "shots": 27,
+        "possession": 0.62,
+        "corners": 9,
+        "passes": 455,
+        "big_chances": 4,
+        "result": "W"
+      },
+      {
+        "opponent": "Samsunspor",
+        "home_away": "H",
         "goals_for": 1,
         "goals_against": 1,
-        "shots": 7,
-        "possession": 0.55,
-        "corners": 3,
-        "passes": 409,
+        "shots": 14,
+        "possession": 0.62,
+        "corners": 4,
+        "passes": 522,
         "big_chances": 2,
         "result": "D"
       },
       {
-        "opponent": "Ba\u015fak\u015fehir FK",
-        "home_away": "H",
-        "goals_for": 0,
-        "goals_against": 2,
-        "shots": 12,
-        "possession": 0.56,
+        "opponent": "Antalyaspor",
+        "home_away": "A",
+        "goals_for": 3,
+        "goals_against": 1,
+        "shots": 13,
+        "possession": 0.54,
         "corners": 3,
-        "passes": 460,
-        "big_chances": 0,
+        "passes": 479,
+        "big_chances": 3,
+        "result": "W"
+      },
+      {
+        "opponent": "Fenerbah\u00e7e",
+        "home_away": "H",
+        "goals_for": 2,
+        "goals_against": 3,
+        "shots": 9,
+        "possession": 0.32,
+        "corners": 1,
+        "passes": 277,
+        "big_chances": 1,
         "result": "L"
       },
       {
@@ -1292,195 +1340,154 @@ window.teamData = [
         "home_away": "A",
         "goals_for": 1,
         "goals_against": 1,
-        "shots": 8,
-        "possession": 0.47,
-        "corners": 5,
-        "passes": 481,
-        "big_chances": 5,
-        "result": "D"
-      },
-      {
-        "opponent": "G\u00f6ztepe",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 3,
-        "shots": 18,
-        "possession": 0.52,
-        "corners": 6,
-        "passes": 406,
-        "big_chances": 2,
-        "result": "L"
-      },
-      {
-        "opponent": "Galatasaray",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 1,
         "shots": 20,
-        "possession": 0.54,
-        "corners": 9,
-        "passes": 350,
-        "big_chances": 3,
-        "result": "W"
+        "possession": 0.66,
+        "corners": 0,
+        "passes": 502,
+        "big_chances": 6,
+        "result": "D"
       },
       {
         "opponent": "Konyaspor",
         "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 1,
-        "shots": 26,
-        "possession": 0.66,
-        "corners": 12,
-        "passes": 505,
+        "goals_for": 2,
+        "goals_against": 0,
+        "shots": 9,
+        "possession": 0.29,
+        "corners": 3,
+        "passes": 229,
+        "big_chances": 4,
+        "result": "W"
+      },
+      {
+        "opponent": "Gen\u00e7lerbirli\u011fi",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 2,
+        "shots": 11,
+        "possession": 0.62,
+        "corners": 5,
+        "passes": 529,
         "big_chances": 4,
         "result": "L"
       },
       {
-        "opponent": "Gaziantep FK",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 2,
-        "shots": 18,
-        "possession": 0.59,
-        "corners": 5,
-        "passes": 466,
-        "big_chances": 1,
-        "result": "L"
-      },
-      {
-        "opponent": "Kayserispor",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 0,
-        "shots": 13,
-        "possession": 0.49,
-        "corners": 4,
-        "passes": 448,
-        "big_chances": 1,
-        "result": "W"
-      },
-      {
-        "opponent": "Ey\u00fcpspor",
+        "opponent": "Galatasaray",
         "home_away": "A",
-        "goals_for": 3,
+        "goals_for": 1,
         "goals_against": 1,
-        "shots": 18,
-        "possession": 0.54,
-        "corners": 2,
-        "passes": 472,
-        "big_chances": 6,
-        "result": "W"
-      },
-      {
-        "opponent": "Trabzonspor",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 1,
-        "shots": 12,
-        "possession": 0.49,
+        "shots": 11,
+        "possession": 0.46,
         "corners": 8,
-        "passes": 434,
-        "big_chances": 2,
-        "result": "W"
-      },
-      {
-        "opponent": "Sivasspor",
-        "home_away": "A",
-        "goals_for": 2,
-        "goals_against": 0,
-        "shots": 13,
-        "possession": 0.49,
-        "corners": 5,
-        "passes": 445,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "FC Twente",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 1,
-        "shots": 8,
-        "possession": 0.51,
-        "corners": 5,
-        "passes": 472,
-        "big_chances": 0,
-        "result": "L"
-      },
-      {
-        "opponent": "Antalyaspor",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 8,
-        "possession": 0.54,
-        "corners": 5,
-        "passes": 478,
+        "passes": 329,
         "big_chances": 2,
         "result": "D"
       },
       {
-        "opponent": "Athletic Club",
+        "opponent": "Kocaelispor",
         "home_away": "H",
-        "goals_for": 4,
+        "goals_for": 3,
         "goals_against": 1,
-        "shots": 11,
-        "possession": 0.47,
-        "corners": 4,
-        "passes": 428,
-        "big_chances": 6,
+        "shots": 13,
+        "possession": 0.42,
+        "corners": 3,
+        "passes": 348,
+        "big_chances": 3,
         "result": "W"
       },
       {
-        "opponent": "Bodrum FK",
+        "opponent": "Kayserispor",
+        "home_away": "A",
+        "goals_for": 4,
+        "goals_against": 0,
+        "shots": 13,
+        "possession": 0.49,
+        "corners": 5,
+        "passes": 392,
+        "big_chances": 5,
+        "result": "W"
+      },
+      {
+        "opponent": "G\u00f6ztepe",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 3,
+        "shots": 13,
+        "possession": 0.7,
+        "corners": 5,
+        "passes": 464,
+        "big_chances": 0,
+        "result": "L"
+      },
+      {
+        "opponent": "Ba\u015fak\u015fehir FK",
         "home_away": "H",
         "goals_for": 2,
         "goals_against": 1,
-        "shots": 8,
-        "possession": 0.52,
-        "corners": 4,
-        "passes": 458,
-        "big_chances": 2,
+        "shots": 21,
+        "possession": 0.53,
+        "corners": 10,
+        "passes": 413,
+        "big_chances": 3,
         "result": "W"
       },
       {
-        "opponent": "\u00c7aykur Rizespor",
+        "opponent": "Alanyaspor",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 2,
+        "shots": 15,
+        "possession": 0.63,
+        "corners": 6,
+        "passes": 568,
+        "big_chances": 4,
+        "result": "L"
+      },
+      {
+        "opponent": "FC Lausanne-Sport",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 1,
+        "shots": 12,
+        "possession": 0.55,
+        "corners": 4,
+        "passes": 465,
+        "big_chances": 4,
+        "result": "L"
+      },
+      {
+        "opponent": "FC Lausanne-Sport",
         "home_away": "A",
         "goals_for": 1,
         "goals_against": 1,
         "shots": 9,
-        "possession": 0.53,
+        "possession": 0.63,
         "corners": 2,
-        "passes": 460,
-        "big_chances": 0,
+        "passes": 618,
+        "big_chances": 1,
         "result": "D"
       },
       {
-        "opponent": "Alanyaspor",
+        "opponent": "Ey\u00fcpspor",
         "home_away": "H",
-        "goals_for": 1,
+        "goals_for": 2,
         "goals_against": 1,
-        "shots": 12,
-        "possession": 0.56,
-        "corners": 6,
-        "passes": 464,
-        "big_chances": 3,
-        "result": "D"
-      },
-      {
-        "opponent": "Adana Demirspor",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 2,
-        "shots": 17,
-        "possession": 0.65,
-        "corners": 14,
-        "passes": 485,
-        "big_chances": 2,
-        "result": "L"
+        "shots": 18,
+        "possession": 0.54,
+        "corners": 10,
+        "passes": 429,
+        "big_chances": 5,
+        "result": "W"
       }
     ],
     "head_to_head": {
+      "Kayserispor": {
+        "wins": 3,
+        "draws": 0,
+        "losses": 0,
+        "goals_for": 7,
+        "goals_against": 0
+      },
       "\u00c7aykur Rizespor": {
         "wins": 1,
         "draws": 1,
@@ -1564,13 +1571,6 @@ window.teamData = [
         "losses": 0,
         "goals_for": 3,
         "goals_against": 1
-      },
-      "Kayserispor": {
-        "wins": 2,
-        "draws": 0,
-        "losses": 0,
-        "goals_for": 6,
-        "goals_against": 0
       },
       "G\u00f6ztepe": {
         "wins": 0,
@@ -1661,18 +1661,198 @@ window.teamData = [
   {
     "name": "Ey\u00fcpspor",
     "stats": {
-      "win_rate": 0.3235294117647059,
-      "avg_goals_scored": 1.0294117647058822,
-      "avg_goals_conceded": 1.3529411764705883,
-      "avg_shots": 10.941176470588236,
-      "avg_possession": 0.5294117647058825,
-      "avg_corners": 4.029411764705882,
-      "total_games": 34,
+      "win_rate": 0.3142857142857143,
+      "avg_goals_scored": 1.0285714285714285,
+      "avg_goals_conceded": 1.3428571428571427,
+      "avg_shots": 10.914285714285715,
+      "avg_possession": 0.5228571428571429,
+      "avg_corners": 3.9714285714285715,
+      "total_games": 35,
       "wins": 11,
-      "draws": 6,
+      "draws": 7,
       "losses": 17
     },
     "match_history": [
+      {
+        "opponent": "Konyaspor",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 10,
+        "possession": 0.3,
+        "corners": 2,
+        "passes": 251,
+        "big_chances": 3,
+        "result": "D"
+      },
+      {
+        "opponent": "Fenerbah\u00e7e",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 3,
+        "shots": 8,
+        "possession": 0.43,
+        "corners": 4,
+        "passes": 356,
+        "big_chances": 2,
+        "result": "L"
+      },
+      {
+        "opponent": "\u00c7aykur Rizespor",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 3,
+        "shots": 7,
+        "possession": 0.55,
+        "corners": 3,
+        "passes": 424,
+        "big_chances": 0,
+        "result": "L"
+      },
+      {
+        "opponent": "Gaziantep FK",
+        "home_away": "A",
+        "goals_for": 2,
+        "goals_against": 1,
+        "shots": 17,
+        "possession": 0.41,
+        "corners": 6,
+        "passes": 284,
+        "big_chances": 5,
+        "result": "W"
+      },
+      {
+        "opponent": "Kayserispor",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 16,
+        "possession": 0.59,
+        "corners": 3,
+        "passes": 468,
+        "big_chances": 1,
+        "result": "D"
+      },
+      {
+        "opponent": "Karag\u00fcmr\u00fck",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 12,
+        "possession": 0.55,
+        "corners": 5,
+        "passes": 448,
+        "big_chances": 4,
+        "result": "D"
+      },
+      {
+        "opponent": "Samsunspor",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 1,
+        "shots": 2,
+        "possession": 0.37,
+        "corners": 0,
+        "passes": 296,
+        "big_chances": 0,
+        "result": "L"
+      },
+      {
+        "opponent": "Antalyaspor",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 1,
+        "shots": 15,
+        "possession": 0.6,
+        "corners": 5,
+        "passes": 478,
+        "big_chances": 3,
+        "result": "L"
+      },
+      {
+        "opponent": "Trabzonspor",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 2,
+        "shots": 10,
+        "possession": 0.44,
+        "corners": 3,
+        "passes": 356,
+        "big_chances": 2,
+        "result": "L"
+      },
+      {
+        "opponent": "Kas\u0131mpa\u015fa",
+        "home_away": "H",
+        "goals_for": 2,
+        "goals_against": 0,
+        "shots": 18,
+        "possession": 0.56,
+        "corners": 8,
+        "passes": 517,
+        "big_chances": 8,
+        "result": "W"
+      },
+      {
+        "opponent": "Kocaelispor",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 1,
+        "shots": 12,
+        "possession": 0.54,
+        "corners": 3,
+        "passes": 353,
+        "big_chances": 0,
+        "result": "L"
+      },
+      {
+        "opponent": "G\u00f6ztepe",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 0,
+        "shots": 6,
+        "possession": 0.58,
+        "corners": 6,
+        "passes": 386,
+        "big_chances": 2,
+        "result": "D"
+      },
+      {
+        "opponent": "Gen\u00e7lerbirli\u011fi",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 1,
+        "shots": 20,
+        "possession": 0.66,
+        "corners": 4,
+        "passes": 420,
+        "big_chances": 2,
+        "result": "L"
+      },
+      {
+        "opponent": "Galatasaray",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 2,
+        "shots": 9,
+        "possession": 0.35,
+        "corners": 6,
+        "passes": 304,
+        "big_chances": 0,
+        "result": "L"
+      },
+      {
+        "opponent": "Ba\u015fak\u015fehir FK",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 0,
+        "shots": 12,
+        "possession": 0.49,
+        "corners": 4,
+        "passes": 372,
+        "big_chances": 2,
+        "result": "D"
+      },
       {
         "opponent": "Alanyaspor",
         "home_away": "H",
@@ -1732,189 +1912,16 @@ window.teamData = [
         "passes": 417,
         "big_chances": 1,
         "result": "L"
-      },
-      {
-        "opponent": "Samsunspor",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 3,
-        "shots": 9,
-        "possession": 0.65,
-        "corners": 3,
-        "passes": 522,
-        "big_chances": 1,
-        "result": "L"
-      },
-      {
-        "opponent": "Galatasaray",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 5,
-        "shots": 8,
-        "possession": 0.5,
-        "corners": 3,
-        "passes": 378,
-        "big_chances": 2,
-        "result": "L"
-      },
-      {
-        "opponent": "\u00c7aykur Rizespor",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 1,
-        "shots": 7,
-        "possession": 0.64,
-        "corners": 6,
-        "passes": 487,
-        "big_chances": 0,
-        "result": "L"
-      },
-      {
-        "opponent": "Adana Demirspor",
-        "home_away": "H",
-        "goals_for": 6,
-        "goals_against": 0,
-        "shots": 20,
-        "possession": 0.59,
-        "corners": 5,
-        "passes": 484,
-        "big_chances": 11,
-        "result": "W"
-      },
-      {
-        "opponent": "Hatayspor",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 0,
-        "shots": 21,
-        "possession": 0.6,
-        "corners": 5,
-        "passes": 434,
-        "big_chances": 2,
-        "result": "W"
-      },
-      {
-        "opponent": "Ba\u015fak\u015fehir FK",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 3,
-        "shots": 11,
-        "possession": 0.51,
-        "corners": 4,
-        "passes": 375,
-        "big_chances": 2,
-        "result": "L"
-      },
-      {
-        "opponent": "G\u00f6ztepe",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 7,
-        "possession": 0.54,
-        "corners": 4,
-        "passes": 334,
-        "big_chances": 2,
-        "result": "D"
-      },
-      {
-        "opponent": "Konyaspor",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 1,
-        "shots": 7,
-        "possession": 0.48,
-        "corners": 5,
-        "passes": 419,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "Be\u015fikta\u015f JK",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 3,
-        "shots": 8,
-        "possession": 0.46,
-        "corners": 4,
-        "passes": 385,
-        "big_chances": 2,
-        "result": "L"
-      },
-      {
-        "opponent": "Kayserispor",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 6,
-        "possession": 0.61,
-        "corners": 4,
-        "passes": 478,
-        "big_chances": 0,
-        "result": "D"
-      },
-      {
-        "opponent": "Trabzonspor",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 1,
-        "shots": 14,
-        "possession": 0.49,
-        "corners": 4,
-        "passes": 428,
-        "big_chances": 3,
-        "result": "L"
-      },
-      {
-        "opponent": "Sivasspor",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 0,
-        "shots": 13,
-        "possession": 0.65,
-        "corners": 4,
-        "passes": 479,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "Bodrum FK",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 0,
-        "shots": 5,
-        "possession": 0.46,
-        "corners": 2,
-        "passes": 323,
-        "big_chances": 1,
-        "result": "W"
-      },
-      {
-        "opponent": "Alanyaspor",
-        "home_away": "H",
-        "goals_for": 3,
-        "goals_against": 0,
-        "shots": 17,
-        "possession": 0.61,
-        "corners": 11,
-        "passes": 437,
-        "big_chances": 6,
-        "result": "W"
-      },
-      {
-        "opponent": "Antalyaspor",
-        "home_away": "A",
-        "goals_for": 4,
-        "goals_against": 1,
-        "shots": 15,
-        "possession": 0.48,
-        "corners": 4,
-        "passes": 421,
-        "big_chances": 4,
-        "result": "W"
       }
     ],
     "head_to_head": {
+      "Konyaspor": {
+        "wins": 1,
+        "draws": 1,
+        "losses": 0,
+        "goals_for": 3,
+        "goals_against": 2
+      },
       "Fenerbah\u00e7e": {
         "wins": 0,
         "draws": 0,
@@ -2041,13 +2048,6 @@ window.teamData = [
         "goals_for": 1,
         "goals_against": 0
       },
-      "Konyaspor": {
-        "wins": 1,
-        "draws": 0,
-        "losses": 0,
-        "goals_for": 2,
-        "goals_against": 1
-      },
       "Sivasspor": {
         "wins": 1,
         "draws": 0,
@@ -2067,260 +2067,274 @@ window.teamData = [
   {
     "name": "Fenerbah\u00e7e",
     "stats": {
-      "win_rate": 0.6,
-      "avg_goals_scored": 2.14,
-      "avg_goals_conceded": 1.02,
-      "avg_shots": 16.9,
-      "avg_possession": 0.5542,
-      "avg_corners": 5.68,
-      "total_games": 50,
-      "wins": 30,
+      "win_rate": 0.5961538461538461,
+      "avg_goals_scored": 2.1153846153846154,
+      "avg_goals_conceded": 1.0384615384615385,
+      "avg_shots": 16.73076923076923,
+      "avg_possession": 0.5555769230769232,
+      "avg_corners": 5.673076923076923,
+      "total_games": 52,
+      "wins": 31,
       "draws": 13,
-      "losses": 7
+      "losses": 8
     },
     "match_history": [
       {
-        "opponent": "Konyaspor",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 1,
-        "shots": 19,
-        "possession": 0.61,
-        "corners": 6,
-        "passes": 520,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "Hatayspor",
-        "home_away": "A",
-        "goals_for": 2,
-        "goals_against": 4,
-        "shots": 20,
-        "possession": 0.47,
-        "corners": 8,
-        "passes": 389,
-        "big_chances": 4,
-        "result": "L"
-      },
-      {
-        "opponent": "Ey\u00fcpspor",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 1,
-        "shots": 21,
-        "possession": 0.39,
-        "corners": 7,
-        "passes": 359,
-        "big_chances": 4,
-        "result": "W"
-      },
-      {
-        "opponent": "Ba\u015fak\u015fehir FK",
-        "home_away": "A",
-        "goals_for": 4,
-        "goals_against": 1,
-        "shots": 19,
-        "possession": 0.5,
-        "corners": 5,
-        "passes": 442,
-        "big_chances": 5,
-        "result": "W"
-      },
-      {
-        "opponent": "Be\u015fikta\u015f JK",
+        "opponent": "Aston Villa",
         "home_away": "H",
         "goals_for": 0,
         "goals_against": 1,
-        "shots": 17,
-        "possession": 0.61,
-        "corners": 8,
-        "passes": 464,
+        "shots": 13,
+        "possession": 0.63,
+        "corners": 5,
+        "passes": 510,
         "big_chances": 2,
         "result": "L"
       },
       {
-        "opponent": "Gaziantep FK",
+        "opponent": "Alanyaspor",
         "home_away": "A",
         "goals_for": 3,
-        "goals_against": 1,
-        "shots": 13,
-        "possession": 0.6,
-        "corners": 8,
-        "passes": 469,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "Kayserispor",
-        "home_away": "H",
-        "goals_for": 3,
-        "goals_against": 3,
-        "shots": 27,
-        "possession": 0.72,
-        "corners": 12,
-        "passes": 532,
-        "big_chances": 7,
-        "result": "D"
-      },
-      {
-        "opponent": "Sivasspor",
-        "home_away": "A",
-        "goals_for": 3,
-        "goals_against": 1,
-        "shots": 17,
+        "goals_against": 2,
+        "shots": 12,
         "possession": 0.55,
         "corners": 6,
-        "passes": 459,
-        "big_chances": 2,
-        "result": "W"
-      },
-      {
-        "opponent": "Trabzonspor",
-        "home_away": "H",
-        "goals_for": 4,
-        "goals_against": 1,
-        "shots": 21,
-        "possession": 0.51,
-        "corners": 2,
-        "passes": 431,
-        "big_chances": 1,
+        "passes": 545,
+        "big_chances": 4,
         "result": "W"
       },
       {
         "opponent": "Galatasaray",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 2,
-        "shots": 16,
-        "possession": 0.51,
-        "corners": 2,
-        "passes": 349,
-        "big_chances": 4,
-        "result": "L"
-      },
-      {
-        "opponent": "Bodrum FK",
         "home_away": "A",
-        "goals_for": 4,
-        "goals_against": 2,
-        "shots": 16,
-        "possession": 0.71,
-        "corners": 1,
-        "passes": 707,
-        "big_chances": 5,
+        "goals_for": 2,
+        "goals_against": 0,
+        "shots": 12,
+        "possession": 0.36,
+        "corners": 6,
+        "passes": 242,
+        "big_chances": 0,
         "result": "W"
       },
       {
         "opponent": "Samsunspor",
         "home_away": "H",
-        "goals_for": 0,
+        "goals_for": 2,
         "goals_against": 0,
-        "shots": 28,
-        "possession": 0.65,
-        "corners": 10,
-        "passes": 556,
-        "big_chances": 4,
-        "result": "D"
-      },
-      {
-        "opponent": "Rangers",
-        "home_away": "A",
-        "goals_for": 4,
-        "goals_against": 3,
-        "shots": 21,
-        "possession": 0.6,
-        "corners": 1,
-        "passes": 765,
+        "shots": 17,
+        "possession": 0.49,
+        "corners": 7,
+        "passes": 473,
         "big_chances": 3,
         "result": "W"
       },
       {
-        "opponent": "Rangers",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 3,
-        "shots": 23,
-        "possession": 0.64,
-        "corners": 11,
-        "passes": 572,
-        "big_chances": 0,
-        "result": "L"
-      },
-      {
-        "opponent": "Antalyaspor",
-        "home_away": "H",
+        "opponent": "Ey\u00fcpspor",
+        "home_away": "A",
         "goals_for": 3,
         "goals_against": 0,
-        "shots": 15,
-        "possession": 0.49,
-        "corners": 8,
-        "passes": 431,
-        "big_chances": 6,
+        "shots": 23,
+        "possession": 0.57,
+        "corners": 5,
+        "passes": 481,
+        "big_chances": 4,
         "result": "W"
       },
       {
-        "opponent": "Galatasaray",
+        "opponent": "Ey\u00fcpspor",
         "home_away": "A",
-        "goals_for": 0,
+        "goals_for": 3,
         "goals_against": 0,
-        "shots": 10,
-        "possession": 0.4,
+        "shots": 23,
+        "possession": 0.57,
         "corners": 5,
-        "passes": 274,
+        "passes": 479,
+        "big_chances": 4,
+        "result": "W"
+      },
+      {
+        "opponent": "Konyaspor",
+        "home_away": "H",
+        "goals_for": 4,
+        "goals_against": 0,
+        "shots": 17,
+        "possession": 0.53,
+        "corners": 4,
+        "passes": 462,
+        "big_chances": 4,
+        "result": "W"
+      },
+      {
+        "opponent": "SK Brann",
+        "home_away": "A",
+        "goals_for": 4,
+        "goals_against": 0,
+        "shots": 20,
+        "possession": 0.69,
+        "corners": 10,
+        "passes": 595,
+        "big_chances": 7,
+        "result": "W"
+      },
+      {
+        "opponent": "Ba\u015fak\u015fehir FK",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 10,
+        "possession": 0.48,
+        "corners": 8,
+        "passes": 347,
+        "big_chances": 3,
+        "result": "D"
+      },
+      {
+        "opponent": "Galatasaray",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 17,
+        "possession": 0.56,
+        "corners": 7,
+        "passes": 427,
         "big_chances": 1,
         "result": "D"
       },
       {
-        "opponent": "RSC Anderlecht",
+        "opponent": "Ferencvaros",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 19,
+        "possession": 0.66,
+        "corners": 7,
+        "passes": 587,
+        "big_chances": 1,
+        "result": "D"
+      },
+      {
+        "opponent": "\u00c7aykur Rizespor",
         "home_away": "A",
-        "goals_for": 2,
+        "goals_for": 5,
         "goals_against": 2,
-        "shots": 8,
-        "possession": 0.42,
+        "shots": 28,
+        "possession": 0.59,
+        "corners": 9,
+        "passes": 457,
+        "big_chances": 5,
+        "result": "W"
+      },
+      {
+        "opponent": "Kayserispor",
+        "home_away": "H",
+        "goals_for": 4,
+        "goals_against": 2,
+        "shots": 28,
+        "possession": 0.62,
+        "corners": 8,
+        "passes": 532,
+        "big_chances": 5,
+        "result": "W"
+      },
+      {
+        "opponent": "Viktoria Plze\u0148",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 0,
+        "shots": 10,
+        "possession": 0.6,
         "corners": 2,
-        "passes": 426,
+        "passes": 447,
         "big_chances": 2,
         "result": "D"
       },
       {
-        "opponent": "Kas\u0131mpa\u015fa",
-        "home_away": "H",
-        "goals_for": 3,
-        "goals_against": 1,
-        "shots": 13,
-        "possession": 0.45,
-        "corners": 1,
-        "passes": 464,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "RSC Anderlecht",
-        "home_away": "H",
-        "goals_for": 3,
-        "goals_against": 0,
-        "shots": 13,
-        "possession": 0.48,
-        "corners": 6,
-        "passes": 462,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "Alanyaspor",
+        "opponent": "Be\u015fikta\u015f JK",
         "home_away": "A",
-        "goals_for": 2,
+        "goals_for": 3,
+        "goals_against": 2,
+        "shots": 23,
+        "possession": 0.68,
+        "corners": 6,
+        "passes": 613,
+        "big_chances": 1,
+        "result": "W"
+      },
+      {
+        "opponent": "Gaziantep FK",
+        "home_away": "A",
+        "goals_for": 4,
         "goals_against": 0,
-        "shots": 8,
-        "possession": 0.47,
-        "corners": 3,
-        "passes": 440,
+        "shots": 20,
+        "possession": 0.41,
+        "corners": 4,
+        "passes": 295,
+        "big_chances": 7,
+        "result": "W"
+      },
+      {
+        "opponent": "VfB Stuttgart",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 0,
+        "shots": 19,
+        "possession": 0.35,
+        "corners": 4,
+        "passes": 261,
+        "big_chances": 1,
+        "result": "W"
+      },
+      {
+        "opponent": "Fatih Karag\u00fcmr\u00fck",
+        "home_away": "H",
+        "goals_for": 2,
+        "goals_against": 1,
+        "shots": 21,
+        "possession": 0.59,
+        "corners": 6,
+        "passes": 448,
         "big_chances": 3,
+        "result": "W"
+      },
+      {
+        "opponent": "Samsunspor",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 0,
+        "shots": 6,
+        "possession": 0.53,
+        "corners": 5,
+        "passes": 422,
+        "big_chances": 0,
+        "result": "D"
+      },
+      {
+        "opponent": "Nice",
+        "home_away": "H",
+        "goals_for": 2,
+        "goals_against": 1,
+        "shots": 17,
+        "possession": 0.59,
+        "corners": 3,
+        "passes": 498,
+        "big_chances": 2,
         "result": "W"
       }
     ],
     "head_to_head": {
+      "Aston Villa": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 1,
+        "goals_for": 0,
+        "goals_against": 1
+      },
+      "Alanyaspor": {
+        "wins": 2,
+        "draws": 1,
+        "losses": 0,
+        "goals_for": 7,
+        "goals_against": 4
+      },
       "Galatasaray": {
         "wins": 1,
         "draws": 2,
@@ -2447,13 +2461,6 @@ window.teamData = [
         "goals_for": 4,
         "goals_against": 2
       },
-      "Alanyaspor": {
-        "wins": 1,
-        "draws": 1,
-        "losses": 0,
-        "goals_for": 4,
-        "goals_against": 2
-      },
       "Trabzonspor": {
         "wins": 2,
         "draws": 0,
@@ -2536,260 +2543,274 @@ window.teamData = [
   {
     "name": "Galatasaray",
     "stats": {
-      "win_rate": 0.68,
-      "avg_goals_scored": 2.14,
-      "avg_goals_conceded": 0.92,
-      "avg_shots": 17.58,
-      "avg_possession": 0.586,
-      "avg_corners": 5.42,
-      "total_games": 50,
+      "win_rate": 0.6538461538461539,
+      "avg_goals_scored": 2.0961538461538463,
+      "avg_goals_conceded": 0.9230769230769231,
+      "avg_shots": 17.365384615384617,
+      "avg_possession": 0.5853846153846154,
+      "avg_corners": 5.480769230769231,
+      "total_games": 52,
       "wins": 34,
-      "draws": 8,
+      "draws": 10,
       "losses": 8
     },
     "match_history": [
       {
-        "opponent": "Sivasspor",
+        "opponent": "Atl\u00e9tico Madrid",
         "home_away": "H",
-        "goals_for": 4,
+        "goals_for": 1,
         "goals_against": 1,
-        "shots": 26,
-        "possession": 0.72,
-        "corners": 3,
-        "passes": 634,
-        "big_chances": 5,
-        "result": "W"
+        "shots": 7,
+        "possession": 0.46,
+        "corners": 4,
+        "passes": 443,
+        "big_chances": 2,
+        "result": "D"
       },
       {
-        "opponent": "Ey\u00fcpspor",
-        "home_away": "A",
-        "goals_for": 5,
+        "opponent": "Gaziantep FK",
+        "home_away": "H",
+        "goals_for": 1,
         "goals_against": 1,
         "shots": 17,
-        "possession": 0.5,
-        "corners": 5,
-        "passes": 382,
-        "big_chances": 7,
-        "result": "W"
-      },
-      {
-        "opponent": "Konyaspor",
-        "home_away": "A",
-        "goals_for": 5,
-        "goals_against": 1,
-        "shots": 18,
-        "possession": 0.6,
-        "corners": 6,
-        "passes": 481,
-        "big_chances": 5,
-        "result": "W"
-      },
-      {
-        "opponent": "Bodrum FK",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 0,
-        "shots": 35,
-        "possession": 0.71,
-        "corners": 16,
-        "passes": 586,
-        "big_chances": 7,
-        "result": "W"
-      },
-      {
-        "opponent": "Samsunspor",
-        "home_away": "A",
-        "goals_for": 2,
-        "goals_against": 0,
-        "shots": 11,
-        "possession": 0.64,
-        "corners": 6,
-        "passes": 600,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "Fenerbah\u00e7e",
-        "home_away": "A",
-        "goals_for": 2,
-        "goals_against": 1,
-        "shots": 23,
-        "possession": 0.49,
-        "corners": 11,
-        "passes": 332,
-        "big_chances": 5,
-        "result": "W"
-      },
-      {
-        "opponent": "Be\u015fikta\u015f JK",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 2,
-        "shots": 9,
-        "possession": 0.46,
-        "corners": 3,
-        "passes": 304,
-        "big_chances": 0,
-        "result": "L"
-      },
-      {
-        "opponent": "Antalyaspor",
-        "home_away": "H",
-        "goals_for": 4,
-        "goals_against": 0,
-        "shots": 23,
-        "possession": 0.61,
-        "corners": 7,
-        "passes": 460,
-        "big_chances": 7,
-        "result": "W"
-      },
-      {
-        "opponent": "Alanyaspor",
-        "home_away": "A",
-        "goals_for": 2,
-        "goals_against": 1,
-        "shots": 18,
-        "possession": 0.65,
-        "corners": 4,
-        "passes": 552,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "Kas\u0131mpa\u015fa",
-        "home_away": "A",
-        "goals_for": 3,
-        "goals_against": 3,
-        "shots": 18,
-        "possession": 0.53,
-        "corners": 3,
-        "passes": 369,
-        "big_chances": 7,
+        "possession": 0.68,
+        "corners": 10,
+        "passes": 563,
+        "big_chances": 4,
         "result": "D"
       },
       {
         "opponent": "Fenerbah\u00e7e",
         "home_away": "H",
         "goals_for": 0,
-        "goals_against": 0,
-        "shots": 4,
-        "possession": 0.6,
-        "corners": 0,
-        "passes": 426,
-        "big_chances": 0,
-        "result": "D"
-      },
-      {
-        "opponent": "AZ Alkmaar",
-        "home_away": "H",
-        "goals_for": 2,
         "goals_against": 2,
-        "shots": 20,
-        "possession": 0.65,
-        "corners": 5,
-        "passes": 564,
-        "big_chances": 0,
-        "result": "D"
-      },
-      {
-        "opponent": "\u00c7aykur Rizespor",
-        "home_away": "A",
-        "goals_for": 2,
-        "goals_against": 1,
-        "shots": 18,
-        "possession": 0.54,
-        "corners": 7,
-        "passes": 415,
-        "big_chances": 2,
-        "result": "W"
-      },
-      {
-        "opponent": "AZ Alkmaar",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 4,
-        "shots": 8,
-        "possession": 0.45,
-        "corners": 1,
-        "passes": 388,
+        "shots": 7,
+        "possession": 0.64,
+        "corners": 2,
+        "passes": 448,
         "big_chances": 1,
         "result": "L"
       },
       {
-        "opponent": "Gaziantep FK",
-        "home_away": "A",
-        "goals_for": 1,
+        "opponent": "Trabzonspor",
+        "home_away": "H",
+        "goals_for": 4,
+        "goals_against": 1,
+        "shots": 15,
+        "possession": 0.64,
+        "corners": 7,
+        "passes": 547,
+        "big_chances": 7,
+        "result": "W"
+      },
+      {
+        "opponent": "Kas\u0131mpa\u015fa",
+        "home_away": "H",
+        "goals_for": 3,
         "goals_against": 0,
-        "shots": 16,
-        "possession": 0.52,
-        "corners": 8,
-        "passes": 350,
+        "shots": 27,
+        "possession": 0.71,
+        "corners": 10,
+        "passes": 550,
+        "big_chances": 2,
+        "result": "W"
+      },
+      {
+        "opponent": "Antalyaspor",
+        "home_away": "A",
+        "goals_for": 4,
+        "goals_against": 1,
+        "shots": 13,
+        "possession": 0.63,
+        "corners": 3,
+        "passes": 579,
         "big_chances": 4,
         "result": "W"
+      },
+      {
+        "opponent": "AS Monaco",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 1,
+        "shots": 13,
+        "possession": 0.58,
+        "corners": 3,
+        "passes": 466,
+        "big_chances": 2,
+        "result": "L"
+      },
+      {
+        "opponent": "Fenerbah\u00e7e",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 6,
+        "possession": 0.44,
+        "corners": 3,
+        "passes": 343,
+        "big_chances": 0,
+        "result": "D"
+      },
+      {
+        "opponent": "Samsunspor",
+        "home_away": "H",
+        "goals_for": 3,
+        "goals_against": 2,
+        "shots": 13,
+        "possession": 0.57,
+        "corners": 1,
+        "passes": 516,
+        "big_chances": 1,
+        "result": "W"
+      },
+      {
+        "opponent": "USG",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 1,
+        "shots": 15,
+        "possession": 0.66,
+        "corners": 4,
+        "passes": 548,
+        "big_chances": 2,
+        "result": "L"
+      },
+      {
+        "opponent": "Gen\u00e7lerbirli\u011fi",
+        "home_away": "H",
+        "goals_for": 3,
+        "goals_against": 2,
+        "shots": 28,
+        "possession": 0.73,
+        "corners": 4,
+        "passes": 606,
+        "big_chances": 6,
+        "result": "W"
+      },
+      {
+        "opponent": "Kocaelispor",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 1,
+        "shots": 12,
+        "possession": 0.66,
+        "corners": 7,
+        "passes": 504,
+        "big_chances": 0,
+        "result": "L"
       },
       {
         "opponent": "AFC Ajax",
         "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 2,
-        "shots": 28,
-        "possession": 0.61,
-        "corners": 10,
-        "passes": 566,
-        "big_chances": 4,
-        "result": "L"
-      },
-      {
-        "opponent": "Konyaspor",
-        "home_away": "H",
-        "goals_for": 1,
+        "goals_for": 3,
         "goals_against": 0,
-        "shots": 18,
-        "possession": 0.58,
-        "corners": 6,
-        "passes": 411,
+        "shots": 14,
+        "possession": 0.52,
+        "corners": 2,
+        "passes": 503,
         "big_chances": 4,
         "result": "W"
       },
       {
-        "opponent": "Dynamo Kyiv",
+        "opponent": "Trabzonspor",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 0,
+        "shots": 23,
+        "possession": 0.58,
+        "corners": 8,
+        "passes": 397,
+        "big_chances": 3,
+        "result": "D"
+      },
+      {
+        "opponent": "G\u00f6ztepe",
         "home_away": "H",
         "goals_for": 3,
-        "goals_against": 3,
-        "shots": 24,
-        "possession": 0.48,
+        "goals_against": 1,
+        "shots": 27,
+        "possession": 0.8,
         "corners": 8,
-        "passes": 396,
+        "passes": 587,
         "big_chances": 6,
-        "result": "D"
+        "result": "W"
       },
       {
-        "opponent": "Hatayspor",
+        "opponent": "Bod\u00f8/Glimt",
+        "home_away": "H",
+        "goals_for": 3,
+        "goals_against": 1,
+        "shots": 23,
+        "possession": 0.38,
+        "corners": 7,
+        "passes": 351,
+        "big_chances": 9,
+        "result": "W"
+      },
+      {
+        "opponent": "Ba\u015fak\u015fehir FK",
         "home_away": "A",
+        "goals_for": 2,
+        "goals_against": 1,
+        "shots": 16,
+        "possession": 0.55,
+        "corners": 4,
+        "passes": 448,
+        "big_chances": 5,
+        "result": "W"
+      },
+      {
+        "opponent": "Be\u015fikta\u015f JK",
+        "home_away": "H",
         "goals_for": 1,
         "goals_against": 1,
-        "shots": 26,
-        "possession": 0.61,
-        "corners": 9,
-        "passes": 475,
-        "big_chances": 8,
+        "shots": 14,
+        "possession": 0.54,
+        "corners": 4,
+        "passes": 380,
+        "big_chances": 2,
         "result": "D"
       },
       {
-        "opponent": "Eintracht Frankfurt",
+        "opponent": "Liverpool",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 0,
+        "shots": 9,
+        "possession": 0.33,
+        "corners": 3,
+        "passes": 271,
+        "big_chances": 3,
+        "result": "W"
+      },
+      {
+        "opponent": "Alanyaspor",
         "home_away": "A",
         "goals_for": 1,
-        "goals_against": 5,
-        "shots": 14,
-        "possession": 0.62,
-        "corners": 3,
-        "passes": 555,
-        "big_chances": 3,
-        "result": "L"
+        "goals_against": 0,
+        "shots": 7,
+        "possession": 0.54,
+        "corners": 0,
+        "passes": 563,
+        "big_chances": 2,
+        "result": "W"
       }
     ],
     "head_to_head": {
+      "Atl\u00e9tico Madrid": {
+        "wins": 0,
+        "draws": 1,
+        "losses": 0,
+        "goals_for": 1,
+        "goals_against": 1
+      },
+      "Gaziantep FK": {
+        "wins": 2,
+        "draws": 1,
+        "losses": 0,
+        "goals_for": 5,
+        "goals_against": 1
+      },
       "Fenerbah\u00e7e": {
         "wins": 1,
         "draws": 2,
@@ -2937,13 +2958,6 @@ window.teamData = [
         "goals_for": 3,
         "goals_against": 0
       },
-      "Gaziantep FK": {
-        "wins": 2,
-        "draws": 0,
-        "losses": 0,
-        "goals_for": 4,
-        "goals_against": 0
-      },
       "Sivasspor": {
         "wins": 1,
         "draws": 0,
@@ -2991,260 +3005,267 @@ window.teamData = [
   {
     "name": "Gaziantep",
     "stats": {
-      "win_rate": 0.34782608695652173,
-      "avg_goals_scored": 1.3695652173913044,
-      "avg_goals_conceded": 1.565217391304348,
-      "avg_shots": 12.804347826086957,
-      "avg_possession": 0.4902173913043478,
-      "avg_corners": 4.173913043478261,
-      "total_games": 46,
+      "win_rate": 0.3404255319148936,
+      "avg_goals_scored": 1.3617021276595744,
+      "avg_goals_conceded": 1.553191489361702,
+      "avg_shots": 12.74468085106383,
+      "avg_possession": 0.4865957446808511,
+      "avg_corners": 4.127659574468085,
+      "total_games": 47,
       "wins": 16,
-      "draws": 13,
+      "draws": 14,
       "losses": 17
     },
     "match_history": [
       {
-        "opponent": "Be\u015fikta\u015f JK",
+        "opponent": "Galatasaray",
         "home_away": "A",
-        "goals_for": 2,
+        "goals_for": 1,
         "goals_against": 1,
         "shots": 10,
-        "possession": 0.41,
-        "corners": 3,
-        "passes": 329,
+        "possession": 0.32,
+        "corners": 2,
+        "passes": 272,
         "big_chances": 2,
-        "result": "W"
-      },
-      {
-        "opponent": "Ey\u00fcpspor",
-        "home_away": "H",
-        "goals_for": 3,
-        "goals_against": 1,
-        "shots": 20,
-        "possession": 0.51,
-        "corners": 4,
-        "passes": 341,
-        "big_chances": 5,
-        "result": "W"
-      },
-      {
-        "opponent": "Trabzonspor",
-        "home_away": "A",
-        "goals_for": 2,
-        "goals_against": 3,
-        "shots": 17,
-        "possession": 0.48,
-        "corners": 6,
-        "passes": 408,
-        "big_chances": 3,
-        "result": "L"
-      },
-      {
-        "opponent": "Sivasspor",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 1,
-        "shots": 12,
-        "possession": 0.55,
-        "corners": 6,
-        "passes": 395,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "Samsunspor",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 2,
-        "shots": 12,
-        "possession": 0.39,
-        "corners": 2,
-        "passes": 320,
-        "big_chances": 1,
-        "result": "L"
-      },
-      {
-        "opponent": "Bodrum FK",
-        "home_away": "H",
-        "goals_for": 0,
-        "goals_against": 0,
-        "shots": 10,
-        "possession": 0.58,
-        "corners": 5,
-        "passes": 484,
-        "big_chances": 1,
         "result": "D"
-      },
-      {
-        "opponent": "Adana Demirspor",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 0,
-        "shots": 10,
-        "possession": 0.51,
-        "corners": 2,
-        "passes": 495,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "Kas\u0131mpa\u015fa",
-        "home_away": "A",
-        "goals_for": 2,
-        "goals_against": 2,
-        "shots": 10,
-        "possession": 0.39,
-        "corners": 2,
-        "passes": 295,
-        "big_chances": 4,
-        "result": "D"
-      },
-      {
-        "opponent": "Antalyaspor",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 0,
-        "shots": 19,
-        "possession": 0.45,
-        "corners": 4,
-        "passes": 350,
-        "big_chances": 5,
-        "result": "W"
-      },
-      {
-        "opponent": "Alanyaspor",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 3,
-        "shots": 8,
-        "possession": 0.43,
-        "corners": 1,
-        "passes": 333,
-        "big_chances": 1,
-        "result": "L"
-      },
-      {
-        "opponent": "\u00c7aykur Rizespor",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 0,
-        "shots": 7,
-        "possession": 0.34,
-        "corners": 3,
-        "passes": 247,
-        "big_chances": 1,
-        "result": "W"
-      },
-      {
-        "opponent": "Fenerbah\u00e7e",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 3,
-        "shots": 6,
-        "possession": 0.45,
-        "corners": 3,
-        "passes": 392,
-        "big_chances": 2,
-        "result": "L"
       },
       {
         "opponent": "Ba\u015fak\u015fehir FK",
-        "home_away": "H",
-        "goals_for": 3,
-        "goals_against": 0,
-        "shots": 15,
-        "possession": 0.4,
-        "corners": 2,
-        "passes": 304,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "Hatayspor",
         "home_away": "A",
         "goals_for": 1,
-        "goals_against": 3,
-        "shots": 10,
-        "possession": 0.57,
-        "corners": 6,
-        "passes": 433,
-        "big_chances": 1,
+        "goals_against": 5,
+        "shots": 14,
+        "possession": 0.42,
+        "corners": 3,
+        "passes": 372,
+        "big_chances": 2,
         "result": "L"
       },
       {
         "opponent": "G\u00f6ztepe",
         "home_away": "H",
-        "goals_for": 2,
+        "goals_for": 0,
         "goals_against": 1,
-        "shots": 15,
-        "possession": 0.53,
-        "corners": 1,
-        "passes": 321,
-        "big_chances": 1,
-        "result": "W"
+        "shots": 19,
+        "possession": 0.58,
+        "corners": 8,
+        "passes": 331,
+        "big_chances": 3,
+        "result": "L"
       },
       {
-        "opponent": "Konyaspor",
-        "home_away": "H",
-        "goals_for": 3,
-        "goals_against": 1,
-        "shots": 13,
-        "possession": 0.54,
-        "corners": 8,
-        "passes": 442,
+        "opponent": "Be\u015fikta\u015f JK",
+        "home_away": "A",
+        "goals_for": 2,
+        "goals_against": 2,
+        "shots": 9,
+        "possession": 0.42,
+        "corners": 1,
+        "passes": 323,
         "big_chances": 2,
-        "result": "W"
+        "result": "D"
+      },
+      {
+        "opponent": "Ey\u00fcpspor",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 2,
+        "shots": 13,
+        "possession": 0.59,
+        "corners": 13,
+        "passes": 383,
+        "big_chances": 1,
+        "result": "L"
       },
       {
         "opponent": "Kayserispor",
         "home_away": "A",
+        "goals_for": 3,
+        "goals_against": 0,
+        "shots": 6,
+        "possession": 0.43,
+        "corners": 0,
+        "passes": 328,
+        "big_chances": 3,
+        "result": "W"
+      },
+      {
+        "opponent": "\u00c7aykur Rizespor",
+        "home_away": "H",
         "goals_for": 2,
         "goals_against": 2,
-        "shots": 7,
-        "possession": 0.39,
-        "corners": 0,
-        "passes": 322,
+        "shots": 15,
+        "possession": 0.6,
+        "corners": 3,
+        "passes": 481,
+        "big_chances": 7,
+        "result": "D"
+      },
+      {
+        "opponent": "Alanyaspor",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 0,
+        "shots": 13,
+        "possession": 0.46,
+        "corners": 4,
+        "passes": 406,
+        "big_chances": 2,
+        "result": "D"
+      },
+      {
+        "opponent": "Fenerbah\u00e7e",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 4,
+        "shots": 8,
+        "possession": 0.59,
+        "corners": 6,
+        "passes": 423,
         "big_chances": 1,
+        "result": "L"
+      },
+      {
+        "opponent": "Antalyaspor",
+        "home_away": "H",
+        "goals_for": 3,
+        "goals_against": 2,
+        "shots": 22,
+        "possession": 0.7,
+        "corners": 6,
+        "passes": 638,
+        "big_chances": 4,
+        "result": "W"
+      },
+      {
+        "opponent": "Fatih Karag\u00fcmr\u00fck",
+        "home_away": "A",
+        "goals_for": 2,
+        "goals_against": 0,
+        "shots": 17,
+        "possession": 0.56,
+        "corners": 2,
+        "passes": 403,
+        "big_chances": 3,
+        "result": "W"
+      },
+      {
+        "opponent": "Samsunspor",
+        "home_away": "H",
+        "goals_for": 2,
+        "goals_against": 2,
+        "shots": 30,
+        "possession": 0.7,
+        "corners": 13,
+        "passes": 515,
+        "big_chances": 2,
         "result": "D"
       },
       {
         "opponent": "Trabzonspor",
-        "home_away": "H",
-        "goals_for": 0,
-        "goals_against": 0,
-        "shots": 12,
-        "possession": 0.36,
-        "corners": 9,
-        "passes": 244,
-        "big_chances": 2,
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 4,
+        "possession": 0.51,
+        "corners": 5,
+        "passes": 419,
+        "big_chances": 0,
         "result": "D"
       },
       {
-        "opponent": "Galatasaray",
+        "opponent": "Kocaelispor",
+        "home_away": "H",
+        "goals_for": 2,
+        "goals_against": 0,
+        "shots": 14,
+        "possession": 0.48,
+        "corners": 3,
+        "passes": 324,
+        "big_chances": 4,
+        "result": "W"
+      },
+      {
+        "opponent": "Kas\u0131mpa\u015fa",
         "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 3,
-        "shots": 6,
-        "possession": 0.37,
+        "goals_for": 3,
+        "goals_against": 2,
+        "shots": 9,
+        "possession": 0.39,
         "corners": 4,
-        "passes": 340,
+        "passes": 300,
         "big_chances": 2,
+        "result": "W"
+      },
+      {
+        "opponent": "Gen\u00e7lerbirli\u011fi",
+        "home_away": "H",
+        "goals_for": 2,
+        "goals_against": 1,
+        "shots": 25,
+        "possession": 0.71,
+        "corners": 10,
+        "passes": 502,
+        "big_chances": 3,
+        "result": "W"
+      },
+      {
+        "opponent": "Konyaspor",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 3,
+        "shots": 17,
+        "possession": 0.5,
+        "corners": 6,
+        "passes": 384,
+        "big_chances": 0,
         "result": "L"
       },
       {
-        "opponent": "Sivasspor",
+        "opponent": "Galatasaray",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 3,
+        "shots": 5,
+        "possession": 0.4,
+        "corners": 1,
+        "passes": 322,
+        "big_chances": 0,
+        "result": "L"
+      },
+      {
+        "opponent": "Adana Demirspor",
         "home_away": "A",
         "goals_for": 2,
-        "goals_against": 3,
-        "shots": 14,
-        "possession": 0.53,
-        "corners": 5,
-        "passes": 353,
-        "big_chances": 4,
-        "result": "L"
+        "goals_against": 2,
+        "shots": 20,
+        "possession": 0.54,
+        "corners": 2,
+        "passes": 378,
+        "big_chances": 6,
+        "result": "D"
+      },
+      {
+        "opponent": "Kas\u0131mpa\u015fa",
+        "home_away": "H",
+        "goals_for": 2,
+        "goals_against": 2,
+        "shots": 10,
+        "possession": 0.36,
+        "corners": 3,
+        "passes": 249,
+        "big_chances": 3,
+        "result": "D"
       }
     ],
     "head_to_head": {
+      "Galatasaray": {
+        "wins": 0,
+        "draws": 1,
+        "losses": 2,
+        "goals_for": 2,
+        "goals_against": 7
+      },
       "Ba\u015fak\u015fehir FK": {
         "wins": 1,
         "draws": 0,
@@ -3357,13 +3378,6 @@ window.teamData = [
         "goals_for": 3,
         "goals_against": 5
       },
-      "Galatasaray": {
-        "wins": 0,
-        "draws": 0,
-        "losses": 2,
-        "goals_for": 1,
-        "goals_against": 6
-      },
       "Adana Demirspor": {
         "wins": 1,
         "draws": 1,
@@ -3397,260 +3411,267 @@ window.teamData = [
   {
     "name": "Gen\u00e7lerbirli\u011fi",
     "stats": {
-      "win_rate": 0.46511627906976744,
-      "avg_goals_scored": 1.5813953488372092,
-      "avg_goals_conceded": 1.069767441860465,
-      "avg_shots": 12.883720930232558,
-      "avg_possession": 0.4606976744186046,
-      "avg_corners": 4.5813953488372094,
-      "total_games": 43,
+      "win_rate": 0.45454545454545453,
+      "avg_goals_scored": 1.5681818181818181,
+      "avg_goals_conceded": 1.0681818181818181,
+      "avg_shots": 12.75,
+      "avg_possession": 0.4620454545454545,
+      "avg_corners": 4.568181818181818,
+      "total_games": 44,
       "wins": 20,
-      "draws": 11,
+      "draws": 12,
       "losses": 12
     },
     "match_history": [
       {
-        "opponent": "MKE Ankarag\u00fcc\u00fc",
-        "home_away": "A",
-        "goals_for": 3,
-        "goals_against": 0,
-        "shots": 13,
-        "possession": 0.43,
-        "corners": 7,
-        "passes": 341,
-        "big_chances": 6,
-        "result": "W"
-      },
-      {
-        "opponent": "\u015eanl\u0131urfaspor",
+        "opponent": "Samsunspor",
         "home_away": "H",
         "goals_for": 1,
-        "goals_against": 0,
-        "shots": 16,
-        "possession": 0.55,
-        "corners": 4,
-        "passes": 474,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "\u0130stanbulspor",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 5,
+        "goals_against": 1,
         "shots": 7,
-        "possession": 0.55,
-        "corners": 3,
-        "passes": 485,
-        "big_chances": 0,
-        "result": "L"
-      },
-      {
-        "opponent": "\u00c7orum FK",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 2,
-        "shots": 19,
-        "possession": 0.6,
-        "corners": 9,
-        "passes": 438,
-        "big_chances": 0,
-        "result": "L"
-      },
-      {
-        "opponent": "Amed Sportif Faaliyetler",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 10,
-        "possession": 0.36,
-        "corners": 1,
-        "passes": 248,
-        "big_chances": 1,
+        "possession": 0.52,
+        "corners": 4,
+        "passes": 417,
+        "big_chances": 3,
         "result": "D"
       },
       {
-        "opponent": "Manisa FK",
+        "opponent": "Trabzonspor",
         "home_away": "H",
-        "goals_for": 3,
-        "goals_against": 0,
-        "shots": 11,
-        "possession": 0.48,
-        "corners": 4,
-        "passes": 414,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "Ke\u00e7i\u00f6reng\u00fcc\u00fc",
-        "home_away": "A",
-        "goals_for": 3,
+        "goals_for": 4,
         "goals_against": 3,
-        "shots": 8,
-        "possession": 0.41,
-        "corners": 4,
-        "passes": 296,
-        "big_chances": 4,
-        "result": "D"
-      },
-      {
-        "opponent": "Pendikspor",
-        "home_away": "H",
-        "goals_for": 3,
-        "goals_against": 0,
-        "shots": 20,
-        "possession": 0.68,
-        "corners": 3,
-        "passes": 541,
-        "big_chances": 5,
-        "result": "W"
-      },
-      {
-        "opponent": "Erzurumspor FK",
-        "home_away": "A",
-        "goals_for": 2,
-        "goals_against": 1,
-        "shots": 12,
+        "shots": 18,
         "possession": 0.37,
-        "corners": 4,
-        "passes": 231,
-        "big_chances": 1,
-        "result": "W"
-      },
-      {
-        "opponent": "Esenler Erokspor",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 17,
-        "possession": 0.66,
-        "corners": 9,
-        "passes": 466,
-        "big_chances": 2,
-        "result": "D"
-      },
-      {
-        "opponent": "I\u011fd\u0131r FK",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 0,
-        "shots": 11,
-        "possession": 0.27,
         "corners": 6,
-        "passes": 225,
-        "big_chances": 2,
-        "result": "W"
-      },
-      {
-        "opponent": "Boluspor",
-        "home_away": "A",
-        "goals_for": 2,
-        "goals_against": 0,
-        "shots": 11,
-        "possession": 0.39,
-        "corners": 2,
-        "passes": 321,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "Kocaelispor",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 0,
-        "shots": 10,
-        "possession": 0.41,
-        "corners": 3,
-        "passes": 327,
-        "big_chances": 1,
-        "result": "W"
-      },
-      {
-        "opponent": "Yeni Malatyaspor",
-        "home_away": "H",
-        "goals_for": 3,
-        "goals_against": 0,
-        "shots": 26,
-        "possession": 0.77,
-        "corners": 5,
-        "passes": 665,
+        "passes": 261,
         "big_chances": 4,
         "result": "W"
       },
       {
-        "opponent": "Sakaryaspor",
+        "opponent": "Kas\u0131mpa\u015fa",
         "home_away": "A",
         "goals_for": 0,
         "goals_against": 0,
-        "shots": 4,
-        "possession": 0.48,
-        "corners": 3,
-        "passes": 354,
-        "big_chances": 0,
-        "result": "D"
-      },
-      {
-        "opponent": "Adanaspor",
-        "home_away": "H",
-        "goals_for": 0,
-        "goals_against": 2,
-        "shots": 16,
-        "possession": 0.65,
-        "corners": 7,
-        "passes": 433,
-        "big_chances": 0,
-        "result": "L"
-      },
-      {
-        "opponent": "Band\u0131rmaspor",
-        "home_away": "A",
-        "goals_for": 2,
-        "goals_against": 2,
-        "shots": 12,
-        "possession": 0.46,
+        "shots": 6,
+        "possession": 0.51,
         "corners": 2,
-        "passes": 364,
-        "big_chances": 0,
+        "passes": 412,
+        "big_chances": 1,
         "result": "D"
       },
       {
         "opponent": "Fatih Karag\u00fcmr\u00fck",
         "home_away": "H",
-        "goals_for": 1,
+        "goals_for": 3,
         "goals_against": 0,
-        "shots": 18,
-        "possession": 0.47,
-        "corners": 6,
-        "passes": 376,
-        "big_chances": 4,
+        "shots": 19,
+        "possession": 0.4,
+        "corners": 7,
+        "passes": 264,
+        "big_chances": 6,
         "result": "W"
       },
       {
-        "opponent": "\u00dcmraniyespor",
+        "opponent": "Kocaelispor",
         "home_away": "A",
-        "goals_for": 3,
+        "goals_for": 0,
+        "goals_against": 1,
+        "shots": 5,
+        "possession": 0.47,
+        "corners": 1,
+        "passes": 435,
+        "big_chances": 0,
+        "result": "L"
+      },
+      {
+        "opponent": "Galatasaray",
+        "home_away": "A",
+        "goals_for": 2,
         "goals_against": 3,
         "shots": 11,
-        "possession": 0.48,
-        "corners": 1,
-        "passes": 395,
+        "possession": 0.27,
+        "corners": 2,
+        "passes": 230,
+        "big_chances": 4,
+        "result": "L"
+      },
+      {
+        "opponent": "Ba\u015fak\u015fehir FK",
+        "home_away": "H",
+        "goals_for": 2,
+        "goals_against": 1,
+        "shots": 15,
+        "possession": 0.28,
+        "corners": 4,
+        "passes": 206,
         "big_chances": 2,
+        "result": "W"
+      },
+      {
+        "opponent": "G\u00f6ztepe",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 1,
+        "shots": 13,
+        "possession": 0.49,
+        "corners": 3,
+        "passes": 296,
+        "big_chances": 1,
+        "result": "L"
+      },
+      {
+        "opponent": "Konyaspor",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 2,
+        "shots": 15,
+        "possession": 0.52,
+        "corners": 6,
+        "passes": 393,
+        "big_chances": 2,
+        "result": "L"
+      },
+      {
+        "opponent": "Be\u015fikta\u015f JK",
+        "home_away": "A",
+        "goals_for": 2,
+        "goals_against": 1,
+        "shots": 5,
+        "possession": 0.38,
+        "corners": 4,
+        "passes": 321,
+        "big_chances": 1,
+        "result": "W"
+      },
+      {
+        "opponent": "Alanyaspor",
+        "home_away": "H",
+        "goals_for": 2,
+        "goals_against": 2,
+        "shots": 11,
+        "possession": 0.55,
+        "corners": 7,
+        "passes": 394,
+        "big_chances": 3,
         "result": "D"
       },
       {
-        "opponent": "MKE Ankarag\u00fcc\u00fc",
+        "opponent": "Kayserispor",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 2,
+        "possession": 0.28,
+        "corners": 0,
+        "passes": 182,
+        "big_chances": 1,
+        "result": "D"
+      },
+      {
+        "opponent": "Ey\u00fcpspor",
         "home_away": "H",
         "goals_for": 1,
         "goals_against": 0,
-        "shots": 7,
-        "possession": 0.38,
-        "corners": 4,
-        "passes": 342,
+        "shots": 11,
+        "possession": 0.34,
+        "corners": 2,
+        "passes": 220,
         "big_chances": 0,
+        "result": "W"
+      },
+      {
+        "opponent": "\u00c7aykur Rizespor",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 1,
+        "shots": 15,
+        "possession": 0.51,
+        "corners": 7,
+        "passes": 377,
+        "big_chances": 1,
+        "result": "L"
+      },
+      {
+        "opponent": "Fenerbah\u00e7e",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 3,
+        "shots": 9,
+        "possession": 0.38,
+        "corners": 3,
+        "passes": 361,
+        "big_chances": 2,
+        "result": "L"
+      },
+      {
+        "opponent": "Gaziantep FK",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 2,
+        "shots": 7,
+        "possession": 0.29,
+        "corners": 4,
+        "passes": 211,
+        "big_chances": 1,
+        "result": "L"
+      },
+      {
+        "opponent": "Antalyaspor",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 1,
+        "shots": 14,
+        "possession": 0.45,
+        "corners": 8,
+        "passes": 366,
+        "big_chances": 3,
+        "result": "L"
+      },
+      {
+        "opponent": "Samsunspor",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 2,
+        "shots": 8,
+        "possession": 0.38,
+        "corners": 3,
+        "passes": 314,
+        "big_chances": 0,
+        "result": "L"
+      },
+      {
+        "opponent": "Yeni Malatyaspor",
+        "home_away": "A",
+        "goals_for": 5,
+        "goals_against": 0,
+        "shots": 25,
+        "possession": 0.61,
+        "corners": 10,
+        "passes": 564,
+        "big_chances": 9,
+        "result": "W"
+      },
+      {
+        "opponent": "Sakaryaspor",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 0,
+        "shots": 12,
+        "possession": 0.46,
+        "corners": 8,
+        "passes": 318,
+        "big_chances": 3,
         "result": "W"
       }
     ],
     "head_to_head": {
+      "Samsunspor": {
+        "wins": 0,
+        "draws": 1,
+        "losses": 1,
+        "goals_for": 2,
+        "goals_against": 3
+      },
       "Trabzonspor": {
         "wins": 1,
         "draws": 0,
@@ -3762,13 +3783,6 @@ window.teamData = [
         "losses": 1,
         "goals_for": 0,
         "goals_against": 1
-      },
-      "Samsunspor": {
-        "wins": 0,
-        "draws": 0,
-        "losses": 1,
-        "goals_for": 1,
-        "goals_against": 2
       },
       "Yeni Malatyaspor": {
         "wins": 2,
@@ -3894,18 +3908,198 @@ window.teamData = [
   {
     "name": "G\u00f6ztepe",
     "stats": {
-      "win_rate": 0.38235294117647056,
-      "avg_goals_scored": 1.2647058823529411,
-      "avg_goals_conceded": 1.0294117647058822,
-      "avg_shots": 15.088235294117647,
-      "avg_possession": 0.42411764705882354,
-      "avg_corners": 4.705882352941177,
-      "total_games": 34,
-      "wins": 13,
+      "win_rate": 0.4,
+      "avg_goals_scored": 1.3142857142857143,
+      "avg_goals_conceded": 1.0285714285714285,
+      "avg_shots": 15.028571428571428,
+      "avg_possession": 0.42142857142857143,
+      "avg_corners": 4.6571428571428575,
+      "total_games": 35,
+      "wins": 14,
       "draws": 12,
       "losses": 9
     },
     "match_history": [
+      {
+        "opponent": "\u00c7aykur Rizespor",
+        "home_away": "H",
+        "goals_for": 3,
+        "goals_against": 1,
+        "shots": 13,
+        "possession": 0.33,
+        "corners": 3,
+        "passes": 208,
+        "big_chances": 3,
+        "result": "W"
+      },
+      {
+        "opponent": "Samsunspor",
+        "home_away": "H",
+        "goals_for": 2,
+        "goals_against": 0,
+        "shots": 10,
+        "possession": 0.36,
+        "corners": 4,
+        "passes": 270,
+        "big_chances": 3,
+        "result": "W"
+      },
+      {
+        "opponent": "Gaziantep FK",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 0,
+        "shots": 15,
+        "possession": 0.42,
+        "corners": 6,
+        "passes": 246,
+        "big_chances": 2,
+        "result": "W"
+      },
+      {
+        "opponent": "Trabzonspor",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 2,
+        "shots": 21,
+        "possession": 0.38,
+        "corners": 7,
+        "passes": 227,
+        "big_chances": 3,
+        "result": "L"
+      },
+      {
+        "opponent": "Antalyaspor",
+        "home_away": "A",
+        "goals_for": 2,
+        "goals_against": 1,
+        "shots": 16,
+        "possession": 0.5,
+        "corners": 4,
+        "passes": 296,
+        "big_chances": 1,
+        "result": "W"
+      },
+      {
+        "opponent": "Kocaelispor",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 0,
+        "shots": 8,
+        "possession": 0.42,
+        "corners": 4,
+        "passes": 260,
+        "big_chances": 0,
+        "result": "D"
+      },
+      {
+        "opponent": "Kas\u0131mpa\u015fa",
+        "home_away": "A",
+        "goals_for": 2,
+        "goals_against": 0,
+        "shots": 15,
+        "possession": 0.32,
+        "corners": 2,
+        "passes": 201,
+        "big_chances": 3,
+        "result": "W"
+      },
+      {
+        "opponent": "Gen\u00e7lerbirli\u011fi",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 0,
+        "shots": 15,
+        "possession": 0.51,
+        "corners": 6,
+        "passes": 308,
+        "big_chances": 3,
+        "result": "W"
+      },
+      {
+        "opponent": "Galatasaray",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 3,
+        "shots": 5,
+        "possession": 0.2,
+        "corners": 2,
+        "passes": 155,
+        "big_chances": 3,
+        "result": "L"
+      },
+      {
+        "opponent": "Alanyaspor",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 1,
+        "shots": 10,
+        "possession": 0.4,
+        "corners": 4,
+        "passes": 309,
+        "big_chances": 1,
+        "result": "L"
+      },
+      {
+        "opponent": "Ba\u015fak\u015fehir FK",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 0,
+        "shots": 9,
+        "possession": 0.28,
+        "corners": 6,
+        "passes": 213,
+        "big_chances": 1,
+        "result": "W"
+      },
+      {
+        "opponent": "Ey\u00fcpspor",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 0,
+        "shots": 16,
+        "possession": 0.42,
+        "corners": 3,
+        "passes": 276,
+        "big_chances": 2,
+        "result": "D"
+      },
+      {
+        "opponent": "Be\u015fikta\u015f JK",
+        "home_away": "H",
+        "goals_for": 3,
+        "goals_against": 0,
+        "shots": 13,
+        "possession": 0.3,
+        "corners": 6,
+        "passes": 204,
+        "big_chances": 6,
+        "result": "W"
+      },
+      {
+        "opponent": "Kayserispor",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 13,
+        "possession": 0.47,
+        "corners": 7,
+        "passes": 301,
+        "big_chances": 0,
+        "result": "D"
+      },
+      {
+        "opponent": "Konyaspor",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 18,
+        "possession": 0.34,
+        "corners": 5,
+        "passes": 238,
+        "big_chances": 4,
+        "result": "D"
+      },
       {
         "opponent": "Fatih Karag\u00fcmr\u00fck",
         "home_away": "A",
@@ -3965,189 +4159,16 @@ window.teamData = [
         "passes": 236,
         "big_chances": 5,
         "result": "L"
-      },
-      {
-        "opponent": "\u00c7aykur Rizespor",
-        "home_away": "A",
-        "goals_for": 3,
-        "goals_against": 6,
-        "shots": 20,
-        "possession": 0.58,
-        "corners": 2,
-        "passes": 391,
-        "big_chances": 2,
-        "result": "L"
-      },
-      {
-        "opponent": "Hatayspor",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 22,
-        "possession": 0.63,
-        "corners": 9,
-        "passes": 435,
-        "big_chances": 5,
-        "result": "D"
-      },
-      {
-        "opponent": "Adana Demirspor",
-        "home_away": "A",
-        "goals_for": 2,
-        "goals_against": 1,
-        "shots": 15,
-        "possession": 0.45,
-        "corners": 4,
-        "passes": 350,
-        "big_chances": 5,
-        "result": "W"
-      },
-      {
-        "opponent": "Ba\u015fak\u015fehir FK",
-        "home_away": "H",
-        "goals_for": 4,
-        "goals_against": 1,
-        "shots": 29,
-        "possession": 0.43,
-        "corners": 7,
-        "passes": 283,
-        "big_chances": 5,
-        "result": "W"
-      },
-      {
-        "opponent": "Trabzonspor",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 2,
-        "shots": 15,
-        "possession": 0.39,
-        "corners": 5,
-        "passes": 231,
-        "big_chances": 0,
-        "result": "L"
-      },
-      {
-        "opponent": "Be\u015fikta\u015f JK",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 16,
-        "possession": 0.45,
-        "corners": 5,
-        "passes": 314,
-        "big_chances": 2,
-        "result": "D"
-      },
-      {
-        "opponent": "Konyaspor",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 1,
-        "shots": 18,
-        "possession": 0.59,
-        "corners": 6,
-        "passes": 396,
-        "big_chances": 1,
-        "result": "L"
-      },
-      {
-        "opponent": "Gaziantep FK",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 20,
-        "possession": 0.59,
-        "corners": 6,
-        "passes": 445,
-        "big_chances": 3,
-        "result": "D"
-      },
-      {
-        "opponent": "Be\u015fikta\u015f JK",
-        "home_away": "A",
-        "goals_for": 3,
-        "goals_against": 1,
-        "shots": 23,
-        "possession": 0.48,
-        "corners": 5,
-        "passes": 378,
-        "big_chances": 2,
-        "result": "W"
-      },
-      {
-        "opponent": "Trabzonspor",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 6,
-        "possession": 0.33,
-        "corners": 1,
-        "passes": 262,
-        "big_chances": 2,
-        "result": "D"
-      },
-      {
-        "opponent": "Ey\u00fcpspor",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 13,
-        "possession": 0.46,
-        "corners": 4,
-        "passes": 272,
-        "big_chances": 2,
-        "result": "D"
-      },
-      {
-        "opponent": "Sivasspor",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 3,
-        "shots": 10,
-        "possession": 0.35,
-        "corners": 5,
-        "passes": 236,
-        "big_chances": 1,
-        "result": "L"
-      },
-      {
-        "opponent": "Samsunspor",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 2,
-        "shots": 13,
-        "possession": 0.41,
-        "corners": 1,
-        "passes": 332,
-        "big_chances": 5,
-        "result": "D"
-      },
-      {
-        "opponent": "Kayserispor",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 1,
-        "shots": 15,
-        "possession": 0.5,
-        "corners": 3,
-        "passes": 361,
-        "big_chances": 2,
-        "result": "L"
-      },
-      {
-        "opponent": "Bodrum FK",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 0,
-        "shots": 14,
-        "possession": 0.57,
-        "corners": 5,
-        "passes": 441,
-        "big_chances": 0,
-        "result": "D"
       }
     ],
     "head_to_head": {
+      "\u00c7aykur Rizespor": {
+        "wins": 2,
+        "draws": 0,
+        "losses": 1,
+        "goals_for": 9,
+        "goals_against": 7
+      },
       "Samsunspor": {
         "wins": 1,
         "draws": 1,
@@ -4260,13 +4281,6 @@ window.teamData = [
         "goals_for": 0,
         "goals_against": 0
       },
-      "\u00c7aykur Rizespor": {
-        "wins": 1,
-        "draws": 0,
-        "losses": 1,
-        "goals_for": 6,
-        "goals_against": 6
-      },
       "Hatayspor": {
         "wins": 0,
         "draws": 1,
@@ -4313,243 +4327,243 @@ window.teamData = [
     },
     "match_history": [
       {
-        "opponent": "Esenler Erokspor",
+        "opponent": "Gen\u00e7lerbirli\u011fi",
         "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 2,
-        "shots": 22,
-        "possession": 0.54,
-        "corners": 8,
-        "passes": 431,
-        "big_chances": 2,
+        "goals_for": 0,
+        "goals_against": 3,
+        "shots": 8,
+        "possession": 0.6,
+        "corners": 4,
+        "passes": 400,
+        "big_chances": 3,
         "result": "L"
       },
       {
-        "opponent": "Erzurumspor FK",
+        "opponent": "Be\u015fikta\u015f JK",
         "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 0,
-        "shots": 11,
-        "possession": 0.61,
-        "corners": 6,
-        "passes": 367,
-        "big_chances": 1,
-        "result": "W"
+        "goals_for": 0,
+        "goals_against": 2,
+        "shots": 7,
+        "possession": 0.38,
+        "corners": 2,
+        "passes": 277,
+        "big_chances": 0,
+        "result": "L"
       },
       {
-        "opponent": "Yeni Malatyaspor",
+        "opponent": "Ey\u00fcpspor",
         "home_away": "A",
-        "goals_for": 2,
-        "goals_against": 0,
-        "shots": 23,
-        "possession": 0.64,
-        "corners": 7,
-        "passes": 508,
-        "big_chances": 5,
-        "result": "W"
-      },
-      {
-        "opponent": "Kocaelispor",
-        "home_away": "H",
         "goals_for": 1,
         "goals_against": 1,
-        "shots": 7,
-        "possession": 0.59,
-        "corners": 5,
-        "passes": 390,
+        "shots": 9,
+        "possession": 0.45,
+        "corners": 6,
+        "passes": 370,
         "big_chances": 2,
         "result": "D"
       },
       {
-        "opponent": "Adanaspor",
+        "opponent": "Konyaspor",
+        "home_away": "H",
+        "goals_for": 2,
+        "goals_against": 0,
+        "shots": 10,
+        "possession": 0.43,
+        "corners": 4,
+        "passes": 368,
+        "big_chances": 2,
+        "result": "W"
+      },
+      {
+        "opponent": "\u00c7aykur Rizespor",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 1,
+        "shots": 14,
+        "possession": 0.38,
+        "corners": 4,
+        "passes": 327,
+        "big_chances": 0,
+        "result": "L"
+      },
+      {
+        "opponent": "Kayserispor",
+        "home_away": "H",
+        "goals_for": 2,
+        "goals_against": 2,
+        "shots": 10,
+        "possession": 0.47,
+        "corners": 1,
+        "passes": 365,
+        "big_chances": 3,
+        "result": "D"
+      },
+      {
+        "opponent": "Fenerbah\u00e7e",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 2,
+        "shots": 16,
+        "possession": 0.41,
+        "corners": 6,
+        "passes": 311,
+        "big_chances": 1,
+        "result": "L"
+      },
+      {
+        "opponent": "Gaziantep FK",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 2,
+        "shots": 13,
+        "possession": 0.44,
+        "corners": 5,
+        "passes": 308,
+        "big_chances": 3,
+        "result": "L"
+      },
+      {
+        "opponent": "Trabzonspor",
+        "home_away": "H",
+        "goals_for": 3,
+        "goals_against": 4,
+        "shots": 13,
+        "possession": 0.44,
+        "corners": 1,
+        "passes": 348,
+        "big_chances": 5,
+        "result": "L"
+      },
+      {
+        "opponent": "Samsunspor",
+        "home_away": "A",
+        "goals_for": 2,
+        "goals_against": 3,
+        "shots": 11,
+        "possession": 0.51,
+        "corners": 5,
+        "passes": 364,
+        "big_chances": 0,
+        "result": "L"
+      },
+      {
+        "opponent": "Ba\u015fak\u015fehir FK",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 2,
+        "shots": 6,
+        "possession": 0.48,
+        "corners": 3,
+        "passes": 381,
+        "big_chances": 0,
+        "result": "L"
+      },
+      {
+        "opponent": "Kas\u0131mpa\u015fa",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 1,
+        "shots": 14,
+        "possession": 0.72,
+        "corners": 6,
+        "passes": 586,
+        "big_chances": 0,
+        "result": "L"
+      },
+      {
+        "opponent": "Antalyaspor",
         "home_away": "A",
         "goals_for": 2,
         "goals_against": 1,
-        "shots": 7,
-        "possession": 0.45,
-        "corners": 3,
-        "passes": 338,
-        "big_chances": 4,
+        "shots": 17,
+        "possession": 0.51,
+        "corners": 4,
+        "passes": 392,
+        "big_chances": 5,
         "result": "W"
+      },
+      {
+        "opponent": "G\u00f6ztepe",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 2,
+        "shots": 11,
+        "possession": 0.65,
+        "corners": 4,
+        "passes": 440,
+        "big_chances": 0,
+        "result": "L"
+      },
+      {
+        "opponent": "Galatasaray",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 3,
+        "shots": 6,
+        "possession": 0.28,
+        "corners": 3,
+        "passes": 225,
+        "big_chances": 1,
+        "result": "L"
       },
       {
         "opponent": "Band\u0131rmaspor",
         "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 2,
-        "shots": 10,
-        "possession": 0.67,
-        "corners": 6,
-        "passes": 496,
-        "big_chances": 0,
-        "result": "L"
-      },
-      {
-        "opponent": "Sakaryaspor",
-        "home_away": "A",
         "goals_for": 3,
         "goals_against": 1,
-        "shots": 14,
-        "possession": 0.51,
-        "corners": 4,
-        "passes": 377,
+        "shots": 16,
+        "possession": 0.53,
+        "corners": 7,
+        "passes": 446,
         "big_chances": 3,
         "result": "W"
       },
       {
-        "opponent": "\u0130skenderun A.\u015e.",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 2,
-        "shots": 0,
-        "possession": 0.0,
-        "corners": 0,
-        "passes": 0,
-        "big_chances": 0,
-        "result": "L"
-      },
-      {
-        "opponent": "\u0130stanbulspor",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 2,
-        "shots": 10,
-        "possession": 0.48,
-        "corners": 4,
-        "passes": 458,
-        "big_chances": 0,
-        "result": "L"
-      },
-      {
-        "opponent": "\u015eanl\u0131urfaspor",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 14,
-        "possession": 0.57,
-        "corners": 4,
-        "passes": 489,
-        "big_chances": 2,
-        "result": "D"
-      },
-      {
-        "opponent": "MKE Ankarag\u00fcc\u00fc",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 0,
-        "shots": 10,
-        "possession": 0.49,
-        "corners": 5,
-        "passes": 397,
-        "big_chances": 5,
-        "result": "W"
-      },
-      {
-        "opponent": "\u00dcmraniyespor",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 0,
-        "shots": 7,
-        "possession": 0.55,
-        "corners": 2,
-        "passes": 453,
-        "big_chances": 2,
-        "result": "W"
-      },
-      {
-        "opponent": "Manisa FK",
-        "home_away": "A",
-        "goals_for": 2,
-        "goals_against": 2,
-        "shots": 11,
-        "possession": 0.53,
-        "corners": 9,
-        "passes": 463,
-        "big_chances": 1,
-        "result": "D"
-      },
-      {
-        "opponent": "\u00c7orum FK",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 0,
-        "shots": 8,
-        "possession": 0.34,
-        "corners": 4,
-        "passes": 257,
-        "big_chances": 0,
-        "result": "W"
-      },
-      {
-        "opponent": "Amed Sportif Faaliyetler",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 6,
-        "possession": 0.31,
-        "corners": 1,
-        "passes": 223,
-        "big_chances": 2,
-        "result": "D"
-      },
-      {
         "opponent": "I\u011fd\u0131r FK",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 0,
+        "home_away": "H",
+        "goals_for": 2,
+        "goals_against": 1,
         "shots": 9,
-        "possession": 0.29,
-        "corners": 4,
-        "passes": 237,
-        "big_chances": 1,
+        "possession": 0.27,
+        "corners": 2,
+        "passes": 193,
+        "big_chances": 2,
         "result": "W"
       },
       {
         "opponent": "Pendikspor",
-        "home_away": "H",
+        "home_away": "A",
         "goals_for": 0,
         "goals_against": 2,
-        "shots": 10,
-        "possession": 0.66,
-        "corners": 9,
-        "passes": 607,
+        "shots": 9,
+        "possession": 0.57,
+        "corners": 7,
+        "passes": 394,
         "big_chances": 0,
         "result": "L"
       },
       {
         "opponent": "Ke\u00e7i\u00f6reng\u00fcc\u00fc",
-        "home_away": "A",
+        "home_away": "H",
         "goals_for": 1,
         "goals_against": 0,
-        "shots": 8,
-        "possession": 0.45,
-        "corners": 4,
-        "passes": 370,
-        "big_chances": 3,
+        "shots": 15,
+        "possession": 0.42,
+        "corners": 6,
+        "passes": 291,
+        "big_chances": 4,
         "result": "W"
       },
       {
         "opponent": "Boluspor",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 2,
-        "shots": 15,
-        "possession": 0.6,
-        "corners": 7,
-        "passes": 480,
-        "big_chances": 2,
-        "result": "D"
-      },
-      {
-        "opponent": "Gen\u00e7lerbirli\u011fi",
         "home_away": "A",
         "goals_for": 0,
         "goals_against": 1,
-        "shots": 11,
-        "possession": 0.53,
-        "corners": 1,
-        "passes": 436,
-        "big_chances": 1,
+        "shots": 10,
+        "possession": 0.49,
+        "corners": 8,
+        "passes": 400,
+        "big_chances": 2,
         "result": "L"
       }
     ],
@@ -4797,18 +4811,174 @@ window.teamData = [
   {
     "name": "Kas\u0131mpa\u015fa",
     "stats": {
-      "win_rate": 0.25,
-      "avg_goals_scored": 1.3125,
-      "avg_goals_conceded": 1.53125,
-      "avg_shots": 12.21875,
-      "avg_possession": 0.4900000000000001,
-      "avg_corners": 5.375,
-      "total_games": 32,
+      "win_rate": 0.24242424242424243,
+      "avg_goals_scored": 1.2727272727272727,
+      "avg_goals_conceded": 1.4848484848484849,
+      "avg_shots": 12.181818181818182,
+      "avg_possession": 0.49303030303030315,
+      "avg_corners": 5.515151515151516,
+      "total_games": 33,
       "wins": 8,
-      "draws": 10,
+      "draws": 11,
       "losses": 14
     },
     "match_history": [
+      {
+        "opponent": "Antalyaspor",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 0,
+        "shots": 11,
+        "possession": 0.59,
+        "corners": 10,
+        "passes": 426,
+        "big_chances": 3,
+        "result": "D"
+      },
+      {
+        "opponent": "Galatasaray",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 3,
+        "shots": 1,
+        "possession": 0.29,
+        "corners": 1,
+        "passes": 227,
+        "big_chances": 0,
+        "result": "L"
+      },
+      {
+        "opponent": "Gen\u00e7lerbirli\u011fi",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 0,
+        "shots": 10,
+        "possession": 0.49,
+        "corners": 3,
+        "passes": 393,
+        "big_chances": 2,
+        "result": "D"
+      },
+      {
+        "opponent": "Kocaelispor",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 0,
+        "shots": 4,
+        "possession": 0.33,
+        "corners": 3,
+        "passes": 223,
+        "big_chances": 0,
+        "result": "D"
+      },
+      {
+        "opponent": "Ba\u015fak\u015fehir FK",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 3,
+        "shots": 16,
+        "possession": 0.51,
+        "corners": 12,
+        "passes": 347,
+        "big_chances": 2,
+        "result": "L"
+      },
+      {
+        "opponent": "Alanyaspor",
+        "home_away": "A",
+        "goals_for": 2,
+        "goals_against": 1,
+        "shots": 8,
+        "possession": 0.32,
+        "corners": 1,
+        "passes": 273,
+        "big_chances": 1,
+        "result": "W"
+      },
+      {
+        "opponent": "G\u00f6ztepe",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 2,
+        "shots": 12,
+        "possession": 0.68,
+        "corners": 5,
+        "passes": 426,
+        "big_chances": 0,
+        "result": "L"
+      },
+      {
+        "opponent": "Kayserispor",
+        "home_away": "A",
+        "goals_for": 2,
+        "goals_against": 3,
+        "shots": 11,
+        "possession": 0.57,
+        "corners": 6,
+        "passes": 403,
+        "big_chances": 1,
+        "result": "L"
+      },
+      {
+        "opponent": "Be\u015fikta\u015f JK",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 12,
+        "possession": 0.34,
+        "corners": 8,
+        "passes": 252,
+        "big_chances": 1,
+        "result": "D"
+      },
+      {
+        "opponent": "Ey\u00fcpspor",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 2,
+        "shots": 9,
+        "possession": 0.44,
+        "corners": 10,
+        "passes": 380,
+        "big_chances": 1,
+        "result": "L"
+      },
+      {
+        "opponent": "Konyaspor",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 10,
+        "possession": 0.5,
+        "corners": 5,
+        "passes": 380,
+        "big_chances": 2,
+        "result": "D"
+      },
+      {
+        "opponent": "\u00c7aykur Rizespor",
+        "home_away": "A",
+        "goals_for": 2,
+        "goals_against": 1,
+        "shots": 8,
+        "possession": 0.38,
+        "corners": 4,
+        "passes": 288,
+        "big_chances": 0,
+        "result": "W"
+      },
+      {
+        "opponent": "Fenerbah\u00e7e",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 17,
+        "possession": 0.34,
+        "corners": 5,
+        "passes": 280,
+        "big_chances": 2,
+        "result": "D"
+      },
       {
         "opponent": "Samsunspor",
         "home_away": "A",
@@ -4892,165 +5062,16 @@ window.teamData = [
         "passes": 442,
         "big_chances": 3,
         "result": "D"
-      },
-      {
-        "opponent": "Ba\u015fak\u015fehir FK",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 3,
-        "shots": 19,
-        "possession": 0.55,
-        "corners": 6,
-        "passes": 375,
-        "big_chances": 2,
-        "result": "L"
-      },
-      {
-        "opponent": "Ey\u00fcpspor",
-        "home_away": "A",
-        "goals_for": 3,
-        "goals_against": 0,
-        "shots": 9,
-        "possession": 0.49,
-        "corners": 2,
-        "passes": 385,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "Trabzonspor",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 14,
-        "possession": 0.53,
-        "corners": 12,
-        "passes": 419,
-        "big_chances": 2,
-        "result": "D"
-      },
-      {
-        "opponent": "Sivasspor",
-        "home_away": "H",
-        "goals_for": 3,
-        "goals_against": 1,
-        "shots": 22,
-        "possession": 0.51,
-        "corners": 12,
-        "passes": 437,
-        "big_chances": 8,
-        "result": "W"
-      },
-      {
-        "opponent": "Kayserispor",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 1,
-        "shots": 10,
-        "possession": 0.52,
-        "corners": 8,
-        "passes": 374,
-        "big_chances": 1,
-        "result": "L"
-      },
-      {
-        "opponent": "Be\u015fikta\u015f JK",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 18,
-        "possession": 0.53,
-        "corners": 4,
-        "passes": 546,
-        "big_chances": 1,
-        "result": "D"
-      },
-      {
-        "opponent": "Samsunspor",
-        "home_away": "A",
-        "goals_for": 2,
-        "goals_against": 0,
-        "shots": 9,
-        "possession": 0.32,
-        "corners": 2,
-        "passes": 268,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "Bodrum FK",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 1,
-        "shots": 13,
-        "possession": 0.65,
-        "corners": 4,
-        "passes": 450,
-        "big_chances": 2,
-        "result": "L"
-      },
-      {
-        "opponent": "Galatasaray",
-        "home_away": "H",
-        "goals_for": 3,
-        "goals_against": 3,
-        "shots": 14,
-        "possession": 0.47,
-        "corners": 10,
-        "passes": 321,
-        "big_chances": 2,
-        "result": "D"
-      },
-      {
-        "opponent": "Antalyaspor",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 2,
-        "shots": 11,
-        "possession": 0.57,
-        "corners": 6,
-        "passes": 418,
-        "big_chances": 1,
-        "result": "L"
-      },
-      {
-        "opponent": "Fenerbah\u00e7e",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 3,
-        "shots": 13,
-        "possession": 0.55,
-        "corners": 3,
-        "passes": 566,
-        "big_chances": 2,
-        "result": "L"
-      },
-      {
-        "opponent": "\u00c7aykur Rizespor",
-        "home_away": "H",
-        "goals_for": 3,
-        "goals_against": 2,
-        "shots": 12,
-        "possession": 0.54,
-        "corners": 4,
-        "passes": 461,
-        "big_chances": 1,
-        "result": "W"
-      },
-      {
-        "opponent": "Adana Demirspor",
-        "home_away": "A",
-        "goals_for": 5,
-        "goals_against": 3,
-        "shots": 14,
-        "possession": 0.59,
-        "corners": 4,
-        "passes": 450,
-        "big_chances": 6,
-        "result": "W"
       }
     ],
     "head_to_head": {
+      "Antalyaspor": {
+        "wins": 0,
+        "draws": 1,
+        "losses": 2,
+        "goals_for": 2,
+        "goals_against": 4
+      },
       "Galatasaray": {
         "wins": 0,
         "draws": 1,
@@ -5163,13 +5184,6 @@ window.teamData = [
         "goals_for": 1,
         "goals_against": 2
       },
-      "Antalyaspor": {
-        "wins": 0,
-        "draws": 0,
-        "losses": 2,
-        "goals_for": 2,
-        "goals_against": 4
-      },
       "Sivasspor": {
         "wins": 1,
         "draws": 0,
@@ -5196,88 +5210,64 @@ window.teamData = [
   {
     "name": "Kayserispor",
     "stats": {
-      "win_rate": 0.28888888888888886,
-      "avg_goals_scored": 1.1777777777777778,
-      "avg_goals_conceded": 1.6666666666666667,
-      "avg_shots": 10.933333333333334,
-      "avg_possession": 0.46511111111111103,
-      "avg_corners": 5.044444444444444,
-      "total_games": 45,
+      "win_rate": 0.2826086956521739,
+      "avg_goals_scored": 1.1521739130434783,
+      "avg_goals_conceded": 1.6521739130434783,
+      "avg_shots": 10.891304347826088,
+      "avg_possession": 0.4617391304347826,
+      "avg_corners": 4.978260869565218,
+      "total_games": 46,
       "wins": 13,
       "draws": 16,
-      "losses": 16
+      "losses": 17
     },
     "match_history": [
-      {
-        "opponent": "Adana Demirspor",
-        "home_away": "A",
-        "goals_for": 2,
-        "goals_against": 0,
-        "shots": 10,
-        "possession": 0.54,
-        "corners": 7,
-        "passes": 502,
-        "big_chances": 2,
-        "result": "W"
-      },
-      {
-        "opponent": "Hatayspor",
-        "home_away": "H",
-        "goals_for": 5,
-        "goals_against": 0,
-        "shots": 20,
-        "possession": 0.44,
-        "corners": 8,
-        "passes": 302,
-        "big_chances": 9,
-        "result": "W"
-      },
-      {
-        "opponent": "Gaziantep FK",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 1,
-        "shots": 15,
-        "possession": 0.57,
-        "corners": 4,
-        "passes": 371,
-        "big_chances": 6,
-        "result": "L"
-      },
-      {
-        "opponent": "Ba\u015fak\u015fehir FK",
-        "home_away": "H",
-        "goals_for": 3,
-        "goals_against": 1,
-        "shots": 11,
-        "possession": 0.39,
-        "corners": 4,
-        "passes": 313,
-        "big_chances": 2,
-        "result": "W"
-      },
       {
         "opponent": "Be\u015fikta\u015f JK",
         "home_away": "A",
         "goals_for": 0,
-        "goals_against": 2,
-        "shots": 8,
-        "possession": 0.51,
-        "corners": 5,
-        "passes": 450,
-        "big_chances": 0,
+        "goals_against": 1,
+        "shots": 9,
+        "possession": 0.31,
+        "corners": 2,
+        "passes": 290,
+        "big_chances": 1,
         "result": "L"
       },
       {
-        "opponent": "G\u00f6ztepe",
+        "opponent": "Konyaspor",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 13,
+        "possession": 0.43,
+        "corners": 2,
+        "passes": 367,
+        "big_chances": 3,
+        "result": "D"
+      },
+      {
+        "opponent": "Alanyaspor",
         "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 0,
+        "shots": 10,
+        "possession": 0.42,
+        "corners": 3,
+        "passes": 323,
+        "big_chances": 2,
+        "result": "D"
+      },
+      {
+        "opponent": "\u00c7aykur Rizespor",
+        "home_away": "A",
         "goals_for": 1,
         "goals_against": 0,
         "shots": 10,
-        "possession": 0.5,
+        "possession": 0.41,
         "corners": 5,
-        "passes": 351,
-        "big_chances": 4,
+        "passes": 364,
+        "big_chances": 1,
         "result": "W"
       },
       {
@@ -5286,170 +5276,201 @@ window.teamData = [
         "goals_for": 1,
         "goals_against": 1,
         "shots": 8,
-        "possession": 0.39,
-        "corners": 6,
-        "passes": 295,
-        "big_chances": 1,
+        "possession": 0.41,
+        "corners": 1,
+        "passes": 321,
+        "big_chances": 0,
         "result": "D"
       },
       {
-        "opponent": "Konyaspor",
+        "opponent": "Gaziantep FK",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 3,
+        "shots": 15,
+        "possession": 0.57,
+        "corners": 3,
+        "passes": 425,
+        "big_chances": 0,
+        "result": "L"
+      },
+      {
+        "opponent": "Fenerbah\u00e7e",
+        "home_away": "A",
+        "goals_for": 2,
+        "goals_against": 4,
+        "shots": 5,
+        "possession": 0.38,
+        "corners": 2,
+        "passes": 327,
+        "big_chances": 4,
+        "result": "L"
+      },
+      {
+        "opponent": "Kas\u0131mpa\u015fa",
         "home_away": "H",
         "goals_for": 3,
         "goals_against": 2,
-        "shots": 14,
-        "possession": 0.41,
+        "shots": 11,
+        "possession": 0.43,
         "corners": 4,
-        "passes": 312,
-        "big_chances": 3,
+        "passes": 313,
+        "big_chances": 4,
         "result": "W"
       },
       {
-        "opponent": "Trabzonspor",
-        "home_away": "H",
-        "goals_for": 0,
-        "goals_against": 0,
-        "shots": 11,
-        "possession": 0.36,
-        "corners": 4,
-        "passes": 264,
-        "big_chances": 2,
-        "result": "D"
-      },
-      {
-        "opponent": "Sivasspor",
+        "opponent": "Fatih Karag\u00fcmr\u00fck",
         "home_away": "A",
         "goals_for": 2,
-        "goals_against": 5,
-        "shots": 15,
-        "possession": 0.43,
-        "corners": 6,
-        "passes": 361,
-        "big_chances": 6,
-        "result": "L"
+        "goals_against": 2,
+        "shots": 13,
+        "possession": 0.53,
+        "corners": 7,
+        "passes": 407,
+        "big_chances": 4,
+        "result": "D"
       },
       {
         "opponent": "Samsunspor",
         "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 3,
+        "shots": 14,
+        "possession": 0.54,
+        "corners": 6,
+        "passes": 406,
+        "big_chances": 3,
+        "result": "L"
+      },
+      {
+        "opponent": "Trabzonspor",
+        "home_away": "A",
         "goals_for": 0,
+        "goals_against": 4,
+        "shots": 17,
+        "possession": 0.48,
+        "corners": 2,
+        "passes": 397,
+        "big_chances": 2,
+        "result": "L"
+      },
+      {
+        "opponent": "Gen\u00e7lerbirli\u011fi",
+        "home_away": "H",
+        "goals_for": 1,
         "goals_against": 1,
-        "shots": 8,
-        "possession": 0.61,
-        "corners": 5,
-        "passes": 485,
+        "shots": 23,
+        "possession": 0.72,
+        "corners": 10,
+        "passes": 438,
+        "big_chances": 4,
+        "result": "D"
+      },
+      {
+        "opponent": "Be\u015fikta\u015f JK",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 4,
+        "shots": 6,
+        "possession": 0.51,
+        "corners": 4,
+        "passes": 401,
         "big_chances": 1,
         "result": "L"
       },
       {
-        "opponent": "Bodrum FK",
+        "opponent": "Antalyaspor",
         "home_away": "A",
         "goals_for": 1,
         "goals_against": 1,
+        "shots": 14,
+        "possession": 0.47,
+        "corners": 4,
+        "passes": 359,
+        "big_chances": 2,
+        "result": "D"
+      },
+      {
+        "opponent": "G\u00f6ztepe",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 1,
         "shots": 8,
-        "possession": 0.5,
-        "corners": 6,
-        "passes": 333,
+        "possession": 0.53,
+        "corners": 3,
+        "passes": 328,
+        "big_chances": 2,
+        "result": "D"
+      },
+      {
+        "opponent": "Kocaelispor",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 12,
+        "possession": 0.57,
+        "corners": 7,
+        "passes": 424,
         "big_chances": 1,
         "result": "D"
       },
       {
         "opponent": "Galatasaray",
         "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 5,
-        "shots": 15,
-        "possession": 0.5,
-        "corners": 7,
-        "passes": 355,
-        "big_chances": 3,
-        "result": "L"
-      },
-      {
-        "opponent": "Antalyaspor",
-        "home_away": "A",
         "goals_for": 0,
-        "goals_against": 2,
-        "shots": 6,
-        "possession": 0.49,
-        "corners": 9,
-        "passes": 430,
-        "big_chances": 1,
-        "result": "L"
-      },
-      {
-        "opponent": "Alanyaspor",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 0,
-        "shots": 11,
-        "possession": 0.39,
-        "corners": 5,
-        "passes": 260,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "\u00c7aykur Rizespor",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 3,
+        "goals_against": 4,
         "shots": 8,
-        "possession": 0.45,
-        "corners": 8,
-        "passes": 423,
+        "possession": 0.34,
+        "corners": 6,
+        "passes": 254,
         "big_chances": 1,
         "result": "L"
       },
       {
-        "opponent": "Fenerbah\u00e7e",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 6,
-        "shots": 16,
-        "possession": 0.49,
-        "corners": 10,
-        "passes": 377,
-        "big_chances": 2,
-        "result": "L"
-      },
-      {
-        "opponent": "Kas\u0131mpa\u015fa",
+        "opponent": "Ba\u015fak\u015fehir FK",
         "home_away": "A",
-        "goals_for": 2,
+        "goals_for": 1,
         "goals_against": 1,
-        "shots": 10,
-        "possession": 0.32,
-        "corners": 4,
-        "passes": 284,
-        "big_chances": 1,
-        "result": "W"
-      },
-      {
-        "opponent": "Adana Demirspor",
-        "home_away": "H",
-        "goals_for": 0,
-        "goals_against": 0,
-        "shots": 14,
-        "possession": 0.59,
+        "shots": 9,
+        "possession": 0.43,
         "corners": 7,
-        "passes": 469,
-        "big_chances": 2,
+        "passes": 354,
+        "big_chances": 0,
         "result": "D"
       },
       {
-        "opponent": "Hatayspor",
+        "opponent": "Samsunspor",
         "home_away": "A",
         "goals_for": 1,
-        "goals_against": 0,
-        "shots": 14,
-        "possession": 0.46,
-        "corners": 6,
-        "passes": 368,
-        "big_chances": 3,
-        "result": "W"
+        "goals_against": 2,
+        "shots": 8,
+        "possession": 0.27,
+        "corners": 4,
+        "passes": 231,
+        "big_chances": 0,
+        "result": "L"
+      },
+      {
+        "opponent": "Bodrum FK",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 10,
+        "possession": 0.56,
+        "corners": 8,
+        "passes": 381,
+        "big_chances": 1,
+        "result": "D"
       }
     ],
     "head_to_head": {
+      "Be\u015fikta\u015f JK": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 3,
+        "goals_for": 0,
+        "goals_against": 7
+      },
       "Konyaspor": {
         "wins": 1,
         "draws": 1,
@@ -5527,13 +5548,6 @@ window.teamData = [
         "goals_for": 1,
         "goals_against": 1
       },
-      "Be\u015fikta\u015f JK": {
-        "wins": 0,
-        "draws": 0,
-        "losses": 2,
-        "goals_for": 0,
-        "goals_against": 6
-      },
       "Antalyaspor": {
         "wins": 1,
         "draws": 1,
@@ -5602,260 +5616,267 @@ window.teamData = [
   {
     "name": "Kocaelispor",
     "stats": {
-      "win_rate": 0.45652173913043476,
-      "avg_goals_scored": 1.5434782608695652,
-      "avg_goals_conceded": 1.108695652173913,
-      "avg_shots": 13.23913043478261,
-      "avg_possession": 0.5106521739130435,
-      "avg_corners": 4.869565217391305,
-      "total_games": 46,
+      "win_rate": 0.44680851063829785,
+      "avg_goals_scored": 1.5319148936170213,
+      "avg_goals_conceded": 1.127659574468085,
+      "avg_shots": 13.319148936170214,
+      "avg_possession": 0.5091489361702128,
+      "avg_corners": 4.851063829787234,
+      "total_games": 47,
       "wins": 21,
       "draws": 13,
-      "losses": 12
+      "losses": 13
     },
     "match_history": [
       {
-        "opponent": "MKE Ankarag\u00fcc\u00fc",
+        "opponent": "Trabzonspor",
         "home_away": "H",
         "goals_for": 1,
-        "goals_against": 1,
-        "shots": 19,
-        "possession": 0.63,
-        "corners": 2,
-        "passes": 516,
+        "goals_against": 2,
+        "shots": 17,
+        "possession": 0.44,
+        "corners": 4,
+        "passes": 350,
         "big_chances": 1,
-        "result": "D"
+        "result": "L"
       },
       {
-        "opponent": "\u00dcmraniyespor",
+        "opponent": "Antalyaspor",
+        "home_away": "H",
+        "goals_for": 2,
+        "goals_against": 1,
+        "shots": 7,
+        "possession": 0.46,
+        "corners": 4,
+        "passes": 353,
+        "big_chances": 2,
+        "result": "W"
+      },
+      {
+        "opponent": "Fatih Karag\u00fcmr\u00fck",
         "home_away": "A",
         "goals_for": 1,
         "goals_against": 1,
-        "shots": 21,
-        "possession": 0.47,
-        "corners": 11,
-        "passes": 377,
+        "shots": 16,
+        "possession": 0.65,
+        "corners": 6,
+        "passes": 547,
         "big_chances": 3,
         "result": "D"
       },
       {
-        "opponent": "\u0130stanbulspor",
+        "opponent": "Kas\u0131mpa\u015fa",
         "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 18,
-        "possession": 0.44,
+        "goals_for": 0,
+        "goals_against": 0,
+        "shots": 9,
+        "possession": 0.67,
         "corners": 5,
-        "passes": 329,
+        "passes": 456,
         "big_chances": 2,
         "result": "D"
       },
       {
-        "opponent": "\u015eanl\u0131urfaspor",
+        "opponent": "Gen\u00e7lerbirli\u011fi",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 0,
+        "shots": 15,
+        "possession": 0.53,
+        "corners": 6,
+        "passes": 479,
+        "big_chances": 2,
+        "result": "W"
+      },
+      {
+        "opponent": "G\u00f6ztepe",
         "home_away": "A",
         "goals_for": 0,
         "goals_against": 0,
-        "shots": 8,
-        "possession": 0.53,
+        "shots": 10,
+        "possession": 0.58,
         "corners": 6,
-        "passes": 446,
-        "big_chances": 1,
+        "passes": 362,
+        "big_chances": 0,
         "result": "D"
       },
       {
-        "opponent": "\u00c7orum FK",
+        "opponent": "Galatasaray",
         "home_away": "H",
-        "goals_for": 2,
+        "goals_for": 1,
         "goals_against": 0,
-        "shots": 11,
-        "possession": 0.44,
-        "corners": 2,
-        "passes": 360,
+        "shots": 9,
+        "possession": 0.34,
+        "corners": 1,
+        "passes": 277,
         "big_chances": 2,
         "result": "W"
       },
       {
-        "opponent": "Manisa FK",
+        "opponent": "Ba\u015fak\u015fehir FK",
         "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 1,
+        "shots": 11,
+        "possession": 0.41,
+        "corners": 5,
+        "passes": 318,
+        "big_chances": 3,
+        "result": "L"
+      },
+      {
+        "opponent": "Alanyaspor",
+        "home_away": "H",
         "goals_for": 2,
         "goals_against": 0,
-        "shots": 20,
-        "possession": 0.55,
-        "corners": 8,
-        "passes": 465,
-        "big_chances": 5,
+        "shots": 14,
+        "possession": 0.52,
+        "corners": 4,
+        "passes": 409,
+        "big_chances": 3,
         "result": "W"
       },
       {
-        "opponent": "Amed Sportif Faaliyetler",
+        "opponent": "Konyaspor",
+        "home_away": "A",
+        "goals_for": 3,
+        "goals_against": 2,
+        "shots": 7,
+        "possession": 0.44,
+        "corners": 4,
+        "passes": 302,
+        "big_chances": 2,
+        "result": "W"
+      },
+      {
+        "opponent": "Ey\u00fcpspor",
         "home_away": "H",
         "goals_for": 1,
         "goals_against": 0,
         "shots": 9,
         "possession": 0.46,
         "corners": 3,
-        "passes": 399,
-        "big_chances": 2,
+        "passes": 311,
+        "big_chances": 1,
         "result": "W"
       },
       {
-        "opponent": "Erzurumspor FK",
+        "opponent": "Be\u015fikta\u015f JK",
         "home_away": "A",
         "goals_for": 1,
-        "goals_against": 1,
-        "shots": 3,
-        "possession": 0.41,
-        "corners": 1,
-        "passes": 231,
+        "goals_against": 3,
+        "shots": 7,
+        "possession": 0.58,
+        "corners": 6,
+        "passes": 482,
         "big_chances": 0,
+        "result": "L"
+      },
+      {
+        "opponent": "\u00c7aykur Rizespor",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 16,
+        "possession": 0.58,
+        "corners": 8,
+        "passes": 392,
+        "big_chances": 1,
         "result": "D"
       },
       {
-        "opponent": "Pendikspor",
-        "home_away": "H",
-        "goals_for": 3,
-        "goals_against": 0,
-        "shots": 15,
-        "possession": 0.59,
-        "corners": 4,
-        "passes": 450,
-        "big_chances": 3,
-        "result": "W"
+        "opponent": "Gaziantep FK",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 2,
+        "shots": 3,
+        "possession": 0.52,
+        "corners": 6,
+        "passes": 338,
+        "big_chances": 1,
+        "result": "L"
       },
       {
-        "opponent": "Gen\u00e7lerbirli\u011fi",
+        "opponent": "Kayserispor",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 10,
+        "possession": 0.43,
+        "corners": 4,
+        "passes": 326,
+        "big_chances": 4,
+        "result": "D"
+      },
+      {
+        "opponent": "Fenerbah\u00e7e",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 3,
+        "shots": 7,
+        "possession": 0.43,
+        "corners": 0,
+        "passes": 296,
+        "big_chances": 0,
+        "result": "L"
+      },
+      {
+        "opponent": "Samsunspor",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 1,
+        "shots": 13,
+        "possession": 0.39,
+        "corners": 4,
+        "passes": 241,
+        "big_chances": 2,
+        "result": "L"
+      },
+      {
+        "opponent": "Trabzonspor",
         "home_away": "A",
         "goals_for": 0,
         "goals_against": 1,
-        "shots": 16,
-        "possession": 0.59,
-        "corners": 7,
-        "passes": 462,
+        "shots": 12,
+        "possession": 0.44,
+        "corners": 5,
+        "passes": 339,
         "big_chances": 2,
         "result": "L"
       },
       {
         "opponent": "Ke\u00e7i\u00f6reng\u00fcc\u00fc",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 0,
+        "home_away": "H",
+        "goals_for": 4,
+        "goals_against": 1,
         "shots": 14,
-        "possession": 0.44,
-        "corners": 7,
-        "passes": 392,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "I\u011fd\u0131r FK",
-        "home_away": "H",
-        "goals_for": 3,
-        "goals_against": 0,
-        "shots": 11,
-        "possession": 0.32,
-        "corners": 3,
-        "passes": 259,
-        "big_chances": 1,
-        "result": "W"
-      },
-      {
-        "opponent": "Boluspor",
-        "home_away": "A",
-        "goals_for": 3,
-        "goals_against": 1,
-        "shots": 22,
-        "possession": 0.55,
-        "corners": 10,
-        "passes": 447,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "Esenler Erokspor",
-        "home_away": "H",
-        "goals_for": 0,
-        "goals_against": 2,
-        "shots": 16,
-        "possession": 0.57,
-        "corners": 5,
-        "passes": 444,
-        "big_chances": 0,
-        "result": "L"
-      },
-      {
-        "opponent": "Yeni Malatyaspor",
-        "home_away": "A",
-        "goals_for": 3,
-        "goals_against": 1,
-        "shots": 13,
-        "possession": 0.71,
-        "corners": 7,
-        "passes": 613,
-        "big_chances": 2,
-        "result": "W"
-      },
-      {
-        "opponent": "Adanaspor",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 0,
-        "shots": 18,
-        "possession": 0.58,
-        "corners": 3,
-        "passes": 537,
-        "big_chances": 2,
-        "result": "W"
-      },
-      {
-        "opponent": "Band\u0131rmaspor",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 2,
-        "shots": 15,
-        "possession": 0.65,
+        "possession": 0.54,
         "corners": 6,
-        "passes": 547,
-        "big_chances": 0,
-        "result": "D"
-      },
-      {
-        "opponent": "Sakaryaspor",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 0,
-        "shots": 9,
-        "possession": 0.48,
-        "corners": 1,
-        "passes": 371,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "Fatih Karag\u00fcmr\u00fck",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 1,
-        "shots": 19,
-        "possession": 0.63,
-        "corners": 7,
-        "passes": 503,
+        "passes": 455,
         "big_chances": 4,
         "result": "W"
       },
       {
-        "opponent": "MKE Ankarag\u00fcc\u00fc",
+        "opponent": "I\u011fd\u0131r FK",
         "home_away": "A",
-        "goals_for": 2,
+        "goals_for": 0,
         "goals_against": 4,
-        "shots": 11,
-        "possession": 0.51,
+        "shots": 6,
+        "possession": 0.34,
         "corners": 3,
-        "passes": 415,
-        "big_chances": 3,
+        "passes": 305,
+        "big_chances": 0,
         "result": "L"
       }
     ],
     "head_to_head": {
+      "Trabzonspor": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 2,
+        "goals_for": 1,
+        "goals_against": 3
+      },
       "Antalyaspor": {
         "wins": 1,
         "draws": 0,
@@ -5962,13 +5983,6 @@ window.teamData = [
         "goals_against": 3
       },
       "Samsunspor": {
-        "wins": 0,
-        "draws": 0,
-        "losses": 1,
-        "goals_for": 0,
-        "goals_against": 1
-      },
-      "Trabzonspor": {
         "wins": 0,
         "draws": 0,
         "losses": 1,
@@ -6099,260 +6113,267 @@ window.teamData = [
   {
     "name": "Konyaspor",
     "stats": {
-      "win_rate": 0.32608695652173914,
-      "avg_goals_scored": 1.2608695652173914,
-      "avg_goals_conceded": 1.5869565217391304,
-      "avg_shots": 13.043478260869565,
-      "avg_possession": 0.47978260869565226,
-      "avg_corners": 5.043478260869565,
-      "total_games": 46,
+      "win_rate": 0.3191489361702128,
+      "avg_goals_scored": 1.2553191489361701,
+      "avg_goals_conceded": 1.574468085106383,
+      "avg_shots": 13.148936170212766,
+      "avg_possession": 0.48446808510638295,
+      "avg_corners": 5.042553191489362,
+      "total_games": 47,
       "wins": 15,
-      "draws": 9,
+      "draws": 10,
       "losses": 22
     },
     "match_history": [
       {
-        "opponent": "Gaziantep FK",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 0,
-        "shots": 13,
-        "possession": 0.53,
-        "corners": 2,
-        "passes": 371,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "Be\u015fikta\u015f JK",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 0,
-        "shots": 7,
-        "possession": 0.34,
-        "corners": 4,
-        "passes": 277,
-        "big_chances": 2,
-        "result": "W"
-      },
-      {
         "opponent": "Ey\u00fcpspor",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 2,
-        "shots": 10,
-        "possession": 0.52,
-        "corners": 5,
-        "passes": 435,
-        "big_chances": 1,
-        "result": "L"
-      },
-      {
-        "opponent": "Trabzonspor",
         "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 0,
-        "shots": 13,
-        "possession": 0.38,
-        "corners": 5,
-        "passes": 303,
-        "big_chances": 1,
-        "result": "W"
-      },
-      {
-        "opponent": "Sivasspor",
-        "home_away": "A",
         "goals_for": 1,
         "goals_against": 1,
-        "shots": 9,
-        "possession": 0.46,
-        "corners": 2,
-        "passes": 401,
-        "big_chances": 0,
+        "shots": 18,
+        "possession": 0.7,
+        "corners": 5,
+        "passes": 562,
+        "big_chances": 4,
         "result": "D"
       },
       {
-        "opponent": "Samsunspor",
+        "opponent": "Kayserispor",
         "home_away": "H",
-        "goals_for": 0,
+        "goals_for": 1,
         "goals_against": 1,
-        "shots": 9,
-        "possession": 0.55,
-        "corners": 7,
-        "passes": 371,
-        "big_chances": 2,
-        "result": "L"
-      },
-      {
-        "opponent": "Bodrum FK",
-        "home_away": "H",
-        "goals_for": 3,
-        "goals_against": 1,
-        "shots": 12,
-        "possession": 0.43,
-        "corners": 5,
-        "passes": 287,
-        "big_chances": 5,
-        "result": "W"
-      },
-      {
-        "opponent": "Galatasaray",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 1,
-        "shots": 7,
-        "possession": 0.42,
-        "corners": 2,
-        "passes": 284,
-        "big_chances": 0,
-        "result": "L"
-      },
-      {
-        "opponent": "Kas\u0131mpa\u015fa",
-        "home_away": "H",
-        "goals_for": 3,
-        "goals_against": 3,
         "shots": 16,
-        "possession": 0.5,
-        "corners": 12,
-        "passes": 317,
-        "big_chances": 6,
+        "possession": 0.57,
+        "corners": 3,
+        "passes": 507,
+        "big_chances": 1,
         "result": "D"
       },
       {
         "opponent": "Fenerbah\u00e7e",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 3,
-        "shots": 11,
-        "possession": 0.54,
-        "corners": 2,
-        "passes": 409,
-        "big_chances": 2,
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 4,
+        "shots": 17,
+        "possession": 0.47,
+        "corners": 4,
+        "passes": 405,
+        "big_chances": 0,
         "result": "L"
       },
       {
-        "opponent": "Alanyaspor",
+        "opponent": "\u00c7aykur Rizespor",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 11,
+        "possession": 0.48,
+        "corners": 4,
+        "passes": 427,
+        "big_chances": 1,
+        "result": "D"
+      },
+      {
+        "opponent": "Trabzonspor",
         "home_away": "A",
         "goals_for": 1,
-        "goals_against": 2,
-        "shots": 8,
-        "possession": 0.52,
-        "corners": 2,
-        "passes": 425,
-        "big_chances": 1,
+        "goals_against": 3,
+        "shots": 16,
+        "possession": 0.47,
+        "corners": 3,
+        "passes": 399,
+        "big_chances": 4,
         "result": "L"
       },
       {
         "opponent": "Antalyaspor",
         "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 17,
-        "possession": 0.4,
-        "corners": 5,
-        "passes": 319,
-        "big_chances": 4,
-        "result": "D"
-      },
-      {
-        "opponent": "Adana Demirspor",
-        "home_away": "A",
-        "goals_for": 1,
+        "goals_for": 0,
         "goals_against": 0,
-        "shots": 15,
-        "possession": 0.54,
+        "shots": 12,
+        "possession": 0.59,
         "corners": 10,
-        "passes": 410,
-        "big_chances": 0,
-        "result": "W"
-      },
-      {
-        "opponent": "Hatayspor",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 10,
-        "possession": 0.44,
-        "corners": 2,
-        "passes": 363,
-        "big_chances": 0,
+        "passes": 444,
+        "big_chances": 1,
         "result": "D"
       },
       {
-        "opponent": "G\u00f6ztepe",
+        "opponent": "Fatih Karag\u00fcmr\u00fck",
         "home_away": "A",
         "goals_for": 0,
         "goals_against": 2,
-        "shots": 12,
-        "possession": 0.5,
-        "corners": 6,
-        "passes": 308,
-        "big_chances": 1,
-        "result": "L"
-      },
-      {
-        "opponent": "Ba\u015fak\u015fehir FK",
-        "home_away": "H",
-        "goals_for": 3,
-        "goals_against": 2,
-        "shots": 13,
-        "possession": 0.39,
-        "corners": 2,
-        "passes": 284,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "Gaziantep FK",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 3,
-        "shots": 9,
-        "possession": 0.46,
-        "corners": 3,
-        "passes": 381,
-        "big_chances": 1,
-        "result": "L"
-      },
-      {
-        "opponent": "Be\u015fikta\u015f JK",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 2,
-        "shots": 14,
-        "possession": 0.44,
-        "corners": 5,
-        "passes": 406,
+        "shots": 11,
+        "possession": 0.57,
+        "corners": 7,
+        "passes": 490,
         "big_chances": 2,
         "result": "L"
       },
       {
-        "opponent": "Ey\u00fcpspor",
+        "opponent": "Samsunspor",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 3,
+        "shots": 23,
+        "possession": 0.6,
+        "corners": 9,
+        "passes": 420,
+        "big_chances": 3,
+        "result": "L"
+      },
+      {
+        "opponent": "Gen\u00e7lerbirli\u011fi",
+        "home_away": "A",
+        "goals_for": 2,
+        "goals_against": 1,
+        "shots": 16,
+        "possession": 0.48,
+        "corners": 5,
+        "passes": 360,
+        "big_chances": 2,
+        "result": "W"
+      },
+      {
+        "opponent": "Be\u015fikta\u015f JK",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 2,
+        "shots": 22,
+        "possession": 0.71,
+        "corners": 17,
+        "passes": 539,
+        "big_chances": 0,
+        "result": "L"
+      },
+      {
+        "opponent": "Kocaelispor",
+        "home_away": "H",
+        "goals_for": 2,
+        "goals_against": 3,
+        "shots": 12,
+        "possession": 0.56,
+        "corners": 3,
+        "passes": 382,
+        "big_chances": 2,
+        "result": "L"
+      },
+      {
+        "opponent": "Kas\u0131mpa\u015fa",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 7,
+        "possession": 0.5,
+        "corners": 3,
+        "passes": 384,
+        "big_chances": 2,
+        "result": "D"
+      },
+      {
+        "opponent": "Ba\u015fak\u015fehir FK",
         "home_away": "H",
         "goals_for": 2,
         "goals_against": 1,
-        "shots": 15,
-        "possession": 0.29,
-        "corners": 5,
-        "passes": 223,
+        "shots": 13,
+        "possession": 0.3,
+        "corners": 2,
+        "passes": 231,
         "big_chances": 1,
         "result": "W"
       },
       {
-        "opponent": "Trabzonspor",
+        "opponent": "Galatasaray",
         "home_away": "A",
-        "goals_for": 2,
+        "goals_for": 1,
         "goals_against": 3,
-        "shots": 12,
-        "possession": 0.34,
+        "shots": 14,
+        "possession": 0.48,
+        "corners": 6,
+        "passes": 386,
+        "big_chances": 1,
+        "result": "L"
+      },
+      {
+        "opponent": "Alanyaspor",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 2,
+        "shots": 13,
+        "possession": 0.66,
+        "corners": 6,
+        "passes": 498,
+        "big_chances": 2,
+        "result": "L"
+      },
+      {
+        "opponent": "G\u00f6ztepe",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 10,
+        "possession": 0.66,
+        "corners": 6,
+        "passes": 472,
+        "big_chances": 0,
+        "result": "D"
+      },
+      {
+        "opponent": "Gaziantep FK",
+        "home_away": "H",
+        "goals_for": 3,
+        "goals_against": 0,
+        "shots": 15,
+        "possession": 0.5,
         "corners": 2,
-        "passes": 252,
+        "passes": 396,
         "big_chances": 4,
+        "result": "W"
+      },
+      {
+        "opponent": "Ey\u00fcpspor",
+        "home_away": "A",
+        "goals_for": 4,
+        "goals_against": 1,
+        "shots": 16,
+        "possession": 0.37,
+        "corners": 7,
+        "passes": 258,
+        "big_chances": 4,
+        "result": "W"
+      },
+      {
+        "opponent": "Fenerbah\u00e7e",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 2,
+        "shots": 4,
+        "possession": 0.39,
+        "corners": 2,
+        "passes": 335,
+        "big_chances": 1,
+        "result": "L"
+      },
+      {
+        "opponent": "Alanyaspor",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 2,
+        "shots": 12,
+        "possession": 0.53,
+        "corners": 6,
+        "passes": 436,
+        "big_chances": 1,
         "result": "L"
       }
     ],
     "head_to_head": {
+      "Ey\u00fcpspor": {
+        "wins": 2,
+        "draws": 1,
+        "losses": 1,
+        "goals_for": 8,
+        "goals_against": 5
+      },
       "Kayserispor": {
         "wins": 0,
         "draws": 1,
@@ -6465,13 +6486,6 @@ window.teamData = [
         "goals_for": 5,
         "goals_against": 3
       },
-      "Ey\u00fcpspor": {
-        "wins": 2,
-        "draws": 0,
-        "losses": 1,
-        "goals_for": 7,
-        "goals_against": 4
-      },
       "Adana Demirspor": {
         "wins": 2,
         "draws": 0,
@@ -6505,260 +6519,267 @@ window.teamData = [
   {
     "name": "Samsunspor",
     "stats": {
-      "win_rate": 0.4375,
-      "avg_goals_scored": 1.375,
-      "avg_goals_conceded": 1.1458333333333333,
-      "avg_shots": 12.229166666666666,
-      "avg_possession": 0.4941666666666666,
-      "avg_corners": 4.625,
-      "total_games": 48,
+      "win_rate": 0.42857142857142855,
+      "avg_goals_scored": 1.3673469387755102,
+      "avg_goals_conceded": 1.1428571428571428,
+      "avg_shots": 12.346938775510203,
+      "avg_possession": 0.49387755102040815,
+      "avg_corners": 4.653061224489796,
+      "total_games": 49,
       "wins": 21,
-      "draws": 13,
+      "draws": 14,
       "losses": 14
     },
     "match_history": [
       {
-        "opponent": "Antalyaspor",
+        "opponent": "Gen\u00e7lerbirli\u011fi",
         "home_away": "A",
         "goals_for": 1,
-        "goals_against": 2,
-        "shots": 13,
+        "goals_against": 1,
+        "shots": 18,
         "possession": 0.48,
-        "corners": 1,
-        "passes": 399,
+        "corners": 6,
+        "passes": 376,
         "big_chances": 2,
-        "result": "L"
-      },
-      {
-        "opponent": "Kas\u0131mpa\u015fa",
-        "home_away": "H",
-        "goals_for": 0,
-        "goals_against": 2,
-        "shots": 13,
-        "possession": 0.68,
-        "corners": 2,
-        "passes": 573,
-        "big_chances": 1,
-        "result": "L"
+        "result": "D"
       },
       {
         "opponent": "Fenerbah\u00e7e",
         "home_away": "A",
         "goals_for": 0,
-        "goals_against": 0,
-        "shots": 2,
-        "possession": 0.35,
-        "corners": 2,
-        "passes": 318,
-        "big_chances": 0,
-        "result": "D"
-      },
-      {
-        "opponent": "Adana Demirspor",
-        "home_away": "H",
-        "goals_for": 3,
         "goals_against": 2,
-        "shots": 20,
-        "possession": 0.61,
-        "corners": 8,
-        "passes": 528,
-        "big_chances": 6,
-        "result": "W"
+        "shots": 6,
+        "possession": 0.51,
+        "corners": 6,
+        "passes": 485,
+        "big_chances": 0,
+        "result": "L"
       },
       {
         "opponent": "G\u00f6ztepe",
         "home_away": "A",
-        "goals_for": 2,
+        "goals_for": 0,
         "goals_against": 2,
-        "shots": 8,
-        "possession": 0.59,
-        "corners": 2,
-        "passes": 474,
-        "big_chances": 3,
-        "result": "D"
-      },
-      {
-        "opponent": "\u00c7aykur Rizespor",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 3,
-        "shots": 9,
-        "possession": 0.47,
-        "corners": 1,
-        "passes": 359,
-        "big_chances": 2,
+        "shots": 5,
+        "possession": 0.64,
+        "corners": 3,
+        "passes": 480,
+        "big_chances": 1,
         "result": "L"
       },
       {
-        "opponent": "Konyaspor",
+        "opponent": "1. FSV Mainz 05",
         "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 0,
-        "shots": 10,
-        "possession": 0.45,
-        "corners": 5,
-        "passes": 321,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "Hatayspor",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 0,
-        "shots": 16,
-        "possession": 0.46,
-        "corners": 4,
-        "passes": 399,
-        "big_chances": 2,
-        "result": "W"
+        "goals_for": 0,
+        "goals_against": 2,
+        "shots": 7,
+        "possession": 0.54,
+        "corners": 3,
+        "passes": 475,
+        "big_chances": 1,
+        "result": "L"
       },
       {
         "opponent": "Ba\u015fak\u015fehir FK",
-        "home_away": "A",
+        "home_away": "H",
         "goals_for": 0,
-        "goals_against": 4,
-        "shots": 8,
-        "possession": 0.56,
-        "corners": 6,
-        "passes": 460,
+        "goals_against": 2,
+        "shots": 15,
+        "possession": 0.53,
+        "corners": 7,
+        "passes": 459,
         "big_chances": 0,
         "result": "L"
       },
       {
-        "opponent": "Gaziantep FK",
+        "opponent": "AEK Athens",
         "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 1,
-        "shots": 15,
-        "possession": 0.61,
-        "corners": 7,
-        "passes": 499,
-        "big_chances": 2,
-        "result": "W"
-      },
-      {
-        "opponent": "Be\u015fikta\u015f JK",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 0,
-        "shots": 4,
-        "possession": 0.34,
-        "corners": 4,
-        "passes": 311,
-        "big_chances": 1,
-        "result": "D"
-      },
-      {
-        "opponent": "Kayserispor",
-        "home_away": "A",
         "goals_for": 1,
-        "goals_against": 0,
-        "shots": 11,
-        "possession": 0.39,
-        "corners": 3,
-        "passes": 309,
-        "big_chances": 2,
-        "result": "W"
-      },
-      {
-        "opponent": "Trabzonspor",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 1,
-        "shots": 9,
-        "possession": 0.36,
-        "corners": 2,
-        "passes": 273,
-        "big_chances": 6,
-        "result": "W"
-      },
-      {
-        "opponent": "Sivasspor",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 0,
+        "goals_against": 2,
         "shots": 17,
-        "possession": 0.54,
-        "corners": 10,
-        "passes": 451,
-        "big_chances": 3,
-        "result": "D"
-      },
-      {
-        "opponent": "Ey\u00fcpspor",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 3,
-        "shots": 12,
-        "possession": 0.42,
-        "corners": 3,
-        "passes": 292,
-        "big_chances": 4,
+        "possession": 0.53,
+        "corners": 7,
+        "passes": 491,
+        "big_chances": 2,
         "result": "L"
-      },
-      {
-        "opponent": "Bodrum FK",
-        "home_away": "H",
-        "goals_for": 4,
-        "goals_against": 0,
-        "shots": 15,
-        "possession": 0.48,
-        "corners": 3,
-        "passes": 411,
-        "big_chances": 4,
-        "result": "W"
       },
       {
         "opponent": "Alanyaspor",
         "home_away": "H",
         "goals_for": 1,
         "goals_against": 1,
-        "shots": 11,
-        "possession": 0.5,
-        "corners": 1,
-        "passes": 420,
-        "big_chances": 2,
+        "shots": 7,
+        "possession": 0.52,
+        "corners": 3,
+        "passes": 454,
+        "big_chances": 1,
         "result": "D"
       },
       {
-        "opponent": "Galatasaray",
+        "opponent": "Be\u015fiktas\u015f",
         "home_away": "A",
-        "goals_for": 2,
-        "goals_against": 3,
-        "shots": 10,
-        "possession": 0.41,
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 14,
+        "possession": 0.38,
         "corners": 3,
-        "passes": 277,
+        "passes": 334,
         "big_chances": 3,
-        "result": "L"
+        "result": "D"
       },
       {
-        "opponent": "Antalyaspor",
+        "opponent": "Ey\u00fcpspor",
         "home_away": "H",
-        "goals_for": 2,
+        "goals_for": 1,
         "goals_against": 0,
-        "shots": 16,
-        "possession": 0.43,
+        "shots": 17,
+        "possession": 0.63,
+        "corners": 14,
+        "passes": 472,
+        "big_chances": 2,
+        "result": "W"
+      },
+      {
+        "opponent": "\u0126amrun Spartans FC",
+        "home_away": "H",
+        "goals_for": 3,
+        "goals_against": 0,
+        "shots": 15,
+        "possession": 0.52,
+        "corners": 3,
+        "passes": 415,
+        "big_chances": 3,
+        "result": "W"
+      },
+      {
+        "opponent": "Konyaspor",
+        "home_away": "A",
+        "goals_for": 3,
+        "goals_against": 1,
+        "shots": 12,
+        "possession": 0.4,
         "corners": 5,
-        "passes": 364,
-        "big_chances": 6,
+        "passes": 300,
+        "big_chances": 4,
+        "result": "W"
+      },
+      {
+        "opponent": "\u00c7aykur Rizespor",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 27,
+        "possession": 0.55,
+        "corners": 7,
+        "passes": 462,
+        "big_chances": 5,
+        "result": "D"
+      },
+      {
+        "opponent": "Dynamo Kyiv",
+        "home_away": "H",
+        "goals_for": 3,
+        "goals_against": 0,
+        "shots": 14,
+        "possession": 0.49,
+        "corners": 4,
+        "passes": 432,
+        "big_chances": 4,
+        "result": "W"
+      },
+      {
+        "opponent": "Kayserispor",
+        "home_away": "A",
+        "goals_for": 3,
+        "goals_against": 1,
+        "shots": 13,
+        "possession": 0.46,
+        "corners": 5,
+        "passes": 350,
+        "big_chances": 8,
+        "result": "W"
+      },
+      {
+        "opponent": "Fenerbah\u00e7e",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 0,
+        "shots": 12,
+        "possession": 0.47,
+        "corners": 6,
+        "passes": 373,
+        "big_chances": 4,
+        "result": "D"
+      },
+      {
+        "opponent": "Legia Warszawa",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 0,
+        "shots": 6,
+        "possession": 0.37,
+        "corners": 2,
+        "passes": 321,
+        "big_chances": 3,
+        "result": "W"
+      },
+      {
+        "opponent": "Gaziantep FK",
+        "home_away": "A",
+        "goals_for": 2,
+        "goals_against": 2,
+        "shots": 9,
+        "possession": 0.3,
+        "corners": 7,
+        "passes": 226,
+        "big_chances": 1,
+        "result": "D"
+      },
+      {
+        "opponent": "Fatih Karag\u00fcmr\u00fck",
+        "home_away": "H",
+        "goals_for": 3,
+        "goals_against": 2,
+        "shots": 14,
+        "possession": 0.49,
+        "corners": 6,
+        "passes": 352,
+        "big_chances": 4,
         "result": "W"
       },
       {
         "opponent": "Kas\u0131mpa\u015fa",
-        "home_away": "A",
-        "goals_for": 4,
-        "goals_against": 1,
-        "shots": 15,
-        "possession": 0.45,
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 0,
+        "shots": 10,
+        "possession": 0.6,
         "corners": 5,
-        "passes": 326,
+        "passes": 516,
         "big_chances": 3,
-        "result": "W"
+        "result": "D"
+      },
+      {
+        "opponent": "Antalyaspor",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 2,
+        "shots": 16,
+        "possession": 0.63,
+        "corners": 6,
+        "passes": 508,
+        "big_chances": 2,
+        "result": "L"
       }
     ],
     "head_to_head": {
+      "Gen\u00e7lerbirli\u011fi": {
+        "wins": 1,
+        "draws": 1,
+        "losses": 0,
+        "goals_for": 3,
+        "goals_against": 2
+      },
       "Fenerbah\u00e7e": {
         "wins": 0,
         "draws": 2,
@@ -6892,13 +6913,6 @@ window.teamData = [
         "goals_for": 5,
         "goals_against": 4
       },
-      "Gen\u00e7lerbirli\u011fi": {
-        "wins": 1,
-        "draws": 0,
-        "losses": 0,
-        "goals_for": 2,
-        "goals_against": 1
-      },
       "Sivasspor": {
         "wins": 1,
         "draws": 1,
@@ -6946,18 +6960,234 @@ window.teamData = [
   {
     "name": "Trabzonspor",
     "stats": {
-      "win_rate": 0.5135135135135135,
-      "avg_goals_scored": 1.7297297297297298,
-      "avg_goals_conceded": 1.2702702702702702,
-      "avg_shots": 14.837837837837839,
-      "avg_possession": 0.545675675675676,
-      "avg_corners": 4.1891891891891895,
-      "total_games": 37,
-      "wins": 19,
+      "win_rate": 0.5263157894736842,
+      "avg_goals_scored": 1.736842105263158,
+      "avg_goals_conceded": 1.263157894736842,
+      "avg_shots": 14.710526315789474,
+      "avg_possession": 0.5460526315789477,
+      "avg_corners": 4.157894736842105,
+      "total_games": 38,
+      "wins": 20,
       "draws": 10,
       "losses": 8
     },
     "match_history": [
+      {
+        "opponent": "Kocaelispor",
+        "home_away": "A",
+        "goals_for": 2,
+        "goals_against": 1,
+        "shots": 10,
+        "possession": 0.56,
+        "corners": 3,
+        "passes": 465,
+        "big_chances": 2,
+        "result": "W"
+      },
+      {
+        "opponent": "Galatasaray",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 4,
+        "shots": 12,
+        "possession": 0.36,
+        "corners": 4,
+        "passes": 307,
+        "big_chances": 2,
+        "result": "L"
+      },
+      {
+        "opponent": "Gen\u00e7lerbirli\u011fi",
+        "home_away": "A",
+        "goals_for": 3,
+        "goals_against": 4,
+        "shots": 14,
+        "possession": 0.63,
+        "corners": 6,
+        "passes": 458,
+        "big_chances": 3,
+        "result": "L"
+      },
+      {
+        "opponent": "Be\u015fikta\u015f JK",
+        "home_away": "H",
+        "goals_for": 3,
+        "goals_against": 3,
+        "shots": 34,
+        "possession": 0.76,
+        "corners": 7,
+        "passes": 601,
+        "big_chances": 1,
+        "result": "D"
+      },
+      {
+        "opponent": "G\u00f6ztepe",
+        "home_away": "A",
+        "goals_for": 2,
+        "goals_against": 1,
+        "shots": 18,
+        "possession": 0.62,
+        "corners": 4,
+        "passes": 396,
+        "big_chances": 2,
+        "result": "W"
+      },
+      {
+        "opponent": "Konyaspor",
+        "home_away": "H",
+        "goals_for": 3,
+        "goals_against": 1,
+        "shots": 19,
+        "possession": 0.53,
+        "corners": 3,
+        "passes": 446,
+        "big_chances": 4,
+        "result": "W"
+      },
+      {
+        "opponent": "Ba\u015fak\u015fehir FK",
+        "home_away": "A",
+        "goals_for": 4,
+        "goals_against": 3,
+        "shots": 22,
+        "possession": 0.64,
+        "corners": 10,
+        "passes": 433,
+        "big_chances": 5,
+        "result": "W"
+      },
+      {
+        "opponent": "Alanyaspor",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 16,
+        "possession": 0.59,
+        "corners": 1,
+        "passes": 536,
+        "big_chances": 4,
+        "result": "D"
+      },
+      {
+        "opponent": "Galatasaray",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 0,
+        "shots": 9,
+        "possession": 0.42,
+        "corners": 4,
+        "passes": 289,
+        "big_chances": 0,
+        "result": "D"
+      },
+      {
+        "opponent": "Ey\u00fcpspor",
+        "home_away": "H",
+        "goals_for": 2,
+        "goals_against": 0,
+        "shots": 14,
+        "possession": 0.56,
+        "corners": 8,
+        "passes": 460,
+        "big_chances": 3,
+        "result": "W"
+      },
+      {
+        "opponent": "\u00c7aykur Rizespor",
+        "home_away": "A",
+        "goals_for": 2,
+        "goals_against": 1,
+        "shots": 8,
+        "possession": 0.45,
+        "corners": 0,
+        "passes": 400,
+        "big_chances": 1,
+        "result": "W"
+      },
+      {
+        "opponent": "Kayserispor",
+        "home_away": "H",
+        "goals_for": 4,
+        "goals_against": 0,
+        "shots": 25,
+        "possession": 0.52,
+        "corners": 6,
+        "passes": 430,
+        "big_chances": 8,
+        "result": "W"
+      },
+      {
+        "opponent": "Fatih Karag\u00fcmr\u00fck",
+        "home_away": "A",
+        "goals_for": 4,
+        "goals_against": 3,
+        "shots": 22,
+        "possession": 0.56,
+        "corners": 7,
+        "passes": 436,
+        "big_chances": 4,
+        "result": "W"
+      },
+      {
+        "opponent": "Gaziantep FK",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 27,
+        "possession": 0.49,
+        "corners": 4,
+        "passes": 391,
+        "big_chances": 4,
+        "result": "D"
+      },
+      {
+        "opponent": "Fenerbah\u00e7e",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 1,
+        "shots": 1,
+        "possession": 0.27,
+        "corners": 0,
+        "passes": 230,
+        "big_chances": 0,
+        "result": "L"
+      },
+      {
+        "opponent": "Samsunspor",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 9,
+        "possession": 0.55,
+        "corners": 2,
+        "passes": 438,
+        "big_chances": 1,
+        "result": "D"
+      },
+      {
+        "opponent": "Antalyaspor",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 0,
+        "shots": 17,
+        "possession": 0.5,
+        "corners": 5,
+        "passes": 410,
+        "big_chances": 2,
+        "result": "W"
+      },
+      {
+        "opponent": "Kas\u0131mpa\u015fa",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 0,
+        "shots": 11,
+        "possession": 0.56,
+        "corners": 4,
+        "passes": 409,
+        "big_chances": 1,
+        "result": "W"
+      },
       {
         "opponent": "Kocaelispor",
         "home_away": "H",
@@ -6981,225 +7211,16 @@ window.teamData = [
         "passes": 571,
         "big_chances": 2,
         "result": "W"
-      },
-      {
-        "opponent": "Samsunspor",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 2,
-        "shots": 22,
-        "possession": 0.63,
-        "corners": 11,
-        "passes": 566,
-        "big_chances": 6,
-        "result": "D"
-      },
-      {
-        "opponent": "Bodrum FK",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 9,
-        "possession": 0.66,
-        "corners": 4,
-        "passes": 582,
-        "big_chances": 4,
-        "result": "D"
-      },
-      {
-        "opponent": "Galatasaray",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 3,
-        "shots": 13,
-        "possession": 0.54,
-        "corners": 6,
-        "passes": 360,
-        "big_chances": 5,
-        "result": "L"
-      },
-      {
-        "opponent": "Galatasaray",
-        "home_away": "H",
-        "goals_for": 0,
-        "goals_against": 2,
-        "shots": 13,
-        "possession": 0.42,
-        "corners": 1,
-        "passes": 321,
-        "big_chances": 3,
-        "result": "L"
-      },
-      {
-        "opponent": "Kas\u0131mpa\u015fa",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 9,
-        "possession": 0.47,
-        "corners": 1,
-        "passes": 385,
-        "big_chances": 0,
-        "result": "D"
-      },
-      {
-        "opponent": "Alanyaspor",
-        "home_away": "H",
-        "goals_for": 4,
-        "goals_against": 3,
-        "shots": 15,
-        "possession": 0.49,
-        "corners": 2,
-        "passes": 450,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "G\u00f6ztepe",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 0,
-        "shots": 25,
-        "possession": 0.61,
-        "corners": 4,
-        "passes": 375,
-        "big_chances": 9,
-        "result": "W"
-      },
-      {
-        "opponent": "Adana Demirspor",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 0,
-        "shots": 9,
-        "possession": 0.63,
-        "corners": 4,
-        "passes": 558,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "\u00c7aykur Rizespor",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 0,
-        "shots": 17,
-        "possession": 0.69,
-        "corners": 4,
-        "passes": 598,
-        "big_chances": 6,
-        "result": "W"
-      },
-      {
-        "opponent": "Fenerbah\u00e7e",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 4,
-        "shots": 13,
-        "possession": 0.49,
-        "corners": 3,
-        "passes": 413,
-        "big_chances": 2,
-        "result": "L"
-      },
-      {
-        "opponent": "G\u00f6ztepe",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 11,
-        "possession": 0.67,
-        "corners": 7,
-        "passes": 537,
-        "big_chances": 1,
-        "result": "D"
-      },
-      {
-        "opponent": "Ba\u015fak\u015fehir FK",
-        "home_away": "A",
-        "goals_for": 3,
-        "goals_against": 0,
-        "shots": 9,
-        "possession": 0.46,
-        "corners": 2,
-        "passes": 379,
-        "big_chances": 2,
-        "result": "W"
-      },
-      {
-        "opponent": "Hatayspor",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 2,
-        "shots": 23,
-        "possession": 0.61,
-        "corners": 7,
-        "passes": 500,
-        "big_chances": 6,
-        "result": "L"
-      },
-      {
-        "opponent": "Gaziantep FK",
-        "home_away": "H",
-        "goals_for": 3,
-        "goals_against": 2,
-        "shots": 20,
-        "possession": 0.52,
-        "corners": 1,
-        "passes": 447,
-        "big_chances": 2,
-        "result": "W"
-      },
-      {
-        "opponent": "Be\u015fikta\u015f JK",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 2,
-        "shots": 6,
-        "possession": 0.51,
-        "corners": 1,
-        "passes": 470,
-        "big_chances": 2,
-        "result": "L"
-      },
-      {
-        "opponent": "Ey\u00fcpspor",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 0,
-        "shots": 13,
-        "possession": 0.51,
-        "corners": 6,
-        "passes": 448,
-        "big_chances": 1,
-        "result": "W"
-      },
-      {
-        "opponent": "Kayserispor",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 0,
-        "shots": 9,
-        "possession": 0.64,
-        "corners": 4,
-        "passes": 496,
-        "big_chances": 3,
-        "result": "D"
-      },
-      {
-        "opponent": "Sivasspor",
-        "home_away": "H",
-        "goals_for": 4,
-        "goals_against": 0,
-        "shots": 14,
-        "possession": 0.53,
-        "corners": 7,
-        "passes": 532,
-        "big_chances": 4,
-        "result": "W"
       }
     ],
     "head_to_head": {
+      "Kocaelispor": {
+        "wins": 2,
+        "draws": 0,
+        "losses": 0,
+        "goals_for": 3,
+        "goals_against": 1
+      },
       "Galatasaray": {
         "wins": 0,
         "draws": 1,
@@ -7312,13 +7333,6 @@ window.teamData = [
         "goals_for": 2,
         "goals_against": 1
       },
-      "Kocaelispor": {
-        "wins": 1,
-        "draws": 0,
-        "losses": 0,
-        "goals_for": 1,
-        "goals_against": 0
-      },
       "Bodrum FK": {
         "wins": 0,
         "draws": 1,
@@ -7352,18 +7366,138 @@ window.teamData = [
   {
     "name": "\u00c7aykur Rizespor",
     "stats": {
-      "win_rate": 0.3448275862068966,
-      "avg_goals_scored": 1.4482758620689655,
-      "avg_goals_conceded": 1.4137931034482758,
-      "avg_shots": 12.0,
-      "avg_possession": 0.4806896551724138,
-      "avg_corners": 4.586206896551724,
-      "total_games": 29,
+      "win_rate": 0.3333333333333333,
+      "avg_goals_scored": 1.4333333333333333,
+      "avg_goals_conceded": 1.4666666666666666,
+      "avg_shots": 12.133333333333333,
+      "avg_possession": 0.48699999999999993,
+      "avg_corners": 4.733333333333333,
+      "total_games": 30,
       "wins": 10,
       "draws": 7,
-      "losses": 12
+      "losses": 13
     },
     "match_history": [
+      {
+        "opponent": "G\u00f6ztepe",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 3,
+        "shots": 16,
+        "possession": 0.67,
+        "corners": 9,
+        "passes": 422,
+        "big_chances": 2,
+        "result": "L"
+      },
+      {
+        "opponent": "Be\u015fikta\u015f JK",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 1,
+        "shots": 17,
+        "possession": 0.39,
+        "corners": 6,
+        "passes": 275,
+        "big_chances": 1,
+        "result": "L"
+      },
+      {
+        "opponent": "Ey\u00fcpspor",
+        "home_away": "H",
+        "goals_for": 3,
+        "goals_against": 0,
+        "shots": 14,
+        "possession": 0.45,
+        "corners": 3,
+        "passes": 337,
+        "big_chances": 4,
+        "result": "W"
+      },
+      {
+        "opponent": "Konyaspor",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 11,
+        "possession": 0.52,
+        "corners": 2,
+        "passes": 465,
+        "big_chances": 3,
+        "result": "D"
+      },
+      {
+        "opponent": "Kayserispor",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 1,
+        "shots": 16,
+        "possession": 0.59,
+        "corners": 5,
+        "passes": 519,
+        "big_chances": 0,
+        "result": "L"
+      },
+      {
+        "opponent": "Fenerbah\u00e7e",
+        "home_away": "H",
+        "goals_for": 2,
+        "goals_against": 5,
+        "shots": 6,
+        "possession": 0.41,
+        "corners": 5,
+        "passes": 307,
+        "big_chances": 1,
+        "result": "L"
+      },
+      {
+        "opponent": "Gaziantep FK",
+        "home_away": "A",
+        "goals_for": 2,
+        "goals_against": 2,
+        "shots": 11,
+        "possession": 0.4,
+        "corners": 2,
+        "passes": 328,
+        "big_chances": 1,
+        "result": "D"
+      },
+      {
+        "opponent": "Fatih Karag\u00fcmr\u00fck",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 0,
+        "shots": 13,
+        "possession": 0.62,
+        "corners": 4,
+        "passes": 532,
+        "big_chances": 2,
+        "result": "W"
+      },
+      {
+        "opponent": "Samsunspor",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 1,
+        "shots": 8,
+        "possession": 0.45,
+        "corners": 4,
+        "passes": 374,
+        "big_chances": 1,
+        "result": "D"
+      },
+      {
+        "opponent": "Ba\u015fak\u015fehir FK",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 0,
+        "shots": 14,
+        "possession": 0.47,
+        "corners": 5,
+        "passes": 364,
+        "big_chances": 0,
+        "result": "D"
+      },
       {
         "opponent": "Trabzonspor",
         "home_away": "H",
@@ -7483,129 +7617,16 @@ window.teamData = [
         "passes": 341,
         "big_chances": 1,
         "result": "W"
-      },
-      {
-        "opponent": "G\u00f6ztepe",
-        "home_away": "H",
-        "goals_for": 6,
-        "goals_against": 3,
-        "shots": 11,
-        "possession": 0.42,
-        "corners": 2,
-        "passes": 298,
-        "big_chances": 4,
-        "result": "W"
-      },
-      {
-        "opponent": "Konyaspor",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 2,
-        "shots": 12,
-        "possession": 0.6,
-        "corners": 5,
-        "passes": 457,
-        "big_chances": 1,
-        "result": "L"
-      },
-      {
-        "opponent": "Gaziantep FK",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 0,
-        "shots": 20,
-        "possession": 0.44,
-        "corners": 12,
-        "passes": 325,
-        "big_chances": 5,
-        "result": "W"
-      },
-      {
-        "opponent": "Kayserispor",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 1,
-        "shots": 15,
-        "possession": 0.52,
-        "corners": 7,
-        "passes": 378,
-        "big_chances": 1,
-        "result": "L"
-      },
-      {
-        "opponent": "Ey\u00fcpspor",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 0,
-        "shots": 10,
-        "possession": 0.36,
-        "corners": 9,
-        "passes": 269,
-        "big_chances": 2,
-        "result": "W"
-      },
-      {
-        "opponent": "Trabzonspor",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 2,
-        "shots": 5,
-        "possession": 0.31,
-        "corners": 5,
-        "passes": 257,
-        "big_chances": 1,
-        "result": "L"
-      },
-      {
-        "opponent": "Sivasspor",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 9,
-        "possession": 0.48,
-        "corners": 9,
-        "passes": 363,
-        "big_chances": 2,
-        "result": "D"
-      },
-      {
-        "opponent": "Bodrum FK",
-        "home_away": "H",
-        "goals_for": 0,
-        "goals_against": 2,
-        "shots": 6,
-        "possession": 0.6,
-        "corners": 5,
-        "passes": 483,
-        "big_chances": 1,
-        "result": "L"
-      },
-      {
-        "opponent": "Antalyaspor",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 2,
-        "shots": 8,
-        "possession": 0.42,
-        "corners": 1,
-        "passes": 348,
-        "big_chances": 4,
-        "result": "L"
-      },
-      {
-        "opponent": "Alanyaspor",
-        "home_away": "H",
-        "goals_for": 3,
-        "goals_against": 1,
-        "shots": 10,
-        "possession": 0.52,
-        "corners": 5,
-        "passes": 374,
-        "big_chances": 4,
-        "result": "W"
       }
     ],
     "head_to_head": {
+      "G\u00f6ztepe": {
+        "wins": 1,
+        "draws": 0,
+        "losses": 2,
+        "goals_for": 7,
+        "goals_against": 9
+      },
       "Be\u015fikta\u015f JK": {
         "wins": 1,
         "draws": 0,
@@ -7717,13 +7738,6 @@ window.teamData = [
         "losses": 0,
         "goals_for": 3,
         "goals_against": 1
-      },
-      "G\u00f6ztepe": {
-        "wins": 1,
-        "draws": 0,
-        "losses": 1,
-        "goals_for": 6,
-        "goals_against": 6
       },
       "Hatayspor": {
         "wins": 1,
@@ -7954,9 +7968,13 @@ window.playerData = [
   {
     "name": "Aaron Opoku",
     "team": "Kayserispor",
-    "avg_rating": 6.69,
-    "games": 10,
+    "avg_rating": 6.67,
+    "games": 11,
     "ratings": [
+      {
+        "rating": 6.5,
+        "opponent": "Be\u015fikta\u015f JK"
+      },
       {
         "rating": 7.1,
         "opponent": "Konyaspor"
@@ -8154,9 +8172,13 @@ window.playerData = [
   {
     "name": "Abd\u00fclkadir \u00d6m\u00fcr",
     "team": "\u00c7aykur Rizespor",
-    "avg_rating": 6.52,
-    "games": 12,
+    "avg_rating": 6.53,
+    "games": 13,
     "ratings": [
+      {
+        "rating": 6.6,
+        "opponent": "Kas\u0131mpa\u015fa"
+      },
       {
         "rating": 6.6,
         "opponent": "G\u00f6ztepe"
@@ -8210,9 +8232,17 @@ window.playerData = [
   {
     "name": "Abd\u00fclkerim Bardakc\u0131",
     "team": "Galatasaray",
-    "avg_rating": 7.21,
-    "games": 45,
+    "avg_rating": 7.24,
+    "games": 47,
     "ratings": [
+      {
+        "rating": 8.1,
+        "opponent": "Atl\u00e9tico Madrid"
+      },
+      {
+        "rating": 7.6,
+        "opponent": "Gaziantep FK"
+      },
       {
         "rating": 6.9,
         "opponent": "Fenerbah\u00e7e"
@@ -8414,9 +8444,13 @@ window.playerData = [
   {
     "name": "Adem Arous",
     "team": "Kas\u0131mpa\u015fa",
-    "avg_rating": 7.22,
-    "games": 5,
+    "avg_rating": 7.2,
+    "games": 6,
     "ratings": [
+      {
+        "rating": 7.1,
+        "opponent": "Antalyaspor"
+      },
       {
         "rating": 7.1,
         "opponent": "Gen\u00e7lerbirli\u011fi"
@@ -8502,9 +8536,13 @@ window.playerData = [
   {
     "name": "Adil Demirba\u011f",
     "team": "Konyaspor",
-    "avg_rating": 7.02,
-    "games": 36,
+    "avg_rating": 7.03,
+    "games": 37,
     "ratings": [
+      {
+        "rating": 7.5,
+        "opponent": "Ey\u00fcpspor"
+      },
       {
         "rating": 6.5,
         "opponent": "Samsunspor"
@@ -8786,9 +8824,13 @@ window.playerData = [
   {
     "name": "Ahmet O\u011fuz",
     "team": "Kocaelispor",
-    "avg_rating": 7.2,
-    "games": 34,
+    "avg_rating": 7.18,
+    "games": 35,
     "ratings": [
+      {
+        "rating": 6.6,
+        "opponent": "Trabzonspor"
+      },
       {
         "rating": 7.6,
         "opponent": "Antalyaspor"
@@ -9102,9 +9144,13 @@ window.playerData = [
   {
     "name": "Aleksandar Jovanovi\u0107",
     "team": "Kocaelispor",
-    "avg_rating": 6.78,
-    "games": 16,
+    "avg_rating": 6.79,
+    "games": 17,
     "ratings": [
+      {
+        "rating": 6.9,
+        "opponent": "Trabzonspor"
+      },
       {
         "rating": 6.5,
         "opponent": "Antalyaspor"
@@ -9266,9 +9312,13 @@ window.playerData = [
   {
     "name": "Alexandru Maxim",
     "team": "Gaziantep",
-    "avg_rating": 7.21,
-    "games": 41,
+    "avg_rating": 7.19,
+    "games": 42,
     "ratings": [
+      {
+        "rating": 6.4,
+        "opponent": "Galatasaray"
+      },
       {
         "rating": 7.0,
         "opponent": "Ba\u015fak\u015fehir FK"
@@ -9436,6 +9486,18 @@ window.playerData = [
     ]
   },
   {
+    "name": "Ali Diabat\u00e9",
+    "team": "Samsunspor",
+    "avg_rating": 7.4,
+    "games": 1,
+    "ratings": [
+      {
+        "rating": 7.4,
+        "opponent": "Gen\u00e7lerbirli\u011fi"
+      }
+    ]
+  },
+  {
     "name": "Ali Emre Yanar",
     "team": "Kas\u0131mpa\u015fa",
     "avg_rating": 6.2,
@@ -9530,9 +9592,13 @@ window.playerData = [
   {
     "name": "Ali Sowe",
     "team": "\u00c7aykur Rizespor",
-    "avg_rating": 6.86,
-    "games": 24,
+    "avg_rating": 6.84,
+    "games": 25,
     "ratings": [
+      {
+        "rating": 6.4,
+        "opponent": "G\u00f6ztepe"
+      },
       {
         "rating": 6.0,
         "opponent": "Be\u015fikta\u015f JK"
@@ -9974,9 +10040,13 @@ window.playerData = [
   {
     "name": "Amine Cherni",
     "team": "G\u00f6ztepe",
-    "avg_rating": 6.71,
-    "games": 16,
+    "avg_rating": 6.72,
+    "games": 17,
     "ratings": [
+      {
+        "rating": 7.0,
+        "opponent": "\u00c7aykur Rizespor"
+      },
       {
         "rating": 6.5,
         "opponent": "Samsunspor"
@@ -10102,9 +10172,13 @@ window.playerData = [
   {
     "name": "Anderson Talisca",
     "team": "Fenerbah\u00e7e",
-    "avg_rating": 7.21,
-    "games": 31,
+    "avg_rating": 7.27,
+    "games": 32,
     "ratings": [
+      {
+        "rating": 9.2,
+        "opponent": "Alanyaspor"
+      },
       {
         "rating": 7.9,
         "opponent": "Ey\u00fcpspor"
@@ -10314,9 +10388,13 @@ window.playerData = [
   {
     "name": "Andreas Gianniotis",
     "team": "Kas\u0131mpa\u015fa",
-    "avg_rating": 6.89,
-    "games": 28,
+    "avg_rating": 6.9,
+    "games": 29,
     "ratings": [
+      {
+        "rating": 7.1,
+        "opponent": "Antalyaspor"
+      },
       {
         "rating": 6.2,
         "opponent": "Galatasaray"
@@ -10434,9 +10512,13 @@ window.playerData = [
   {
     "name": "Andri Baldursson",
     "team": "Kas\u0131mpa\u015fa",
-    "avg_rating": 6.89,
-    "games": 15,
+    "avg_rating": 6.88,
+    "games": 16,
     "ratings": [
+      {
+        "rating": 6.7,
+        "opponent": "Antalyaspor"
+      },
       {
         "rating": 7.0,
         "opponent": "Gen\u00e7lerbirli\u011fi"
@@ -10530,9 +10612,13 @@ window.playerData = [
   {
     "name": "Andr\u00e9 Onana",
     "team": "Trabzonspor",
-    "avg_rating": 7.22,
-    "games": 13,
+    "avg_rating": 7.16,
+    "games": 14,
     "ratings": [
+      {
+        "rating": 6.5,
+        "opponent": "Kocaelispor"
+      },
       {
         "rating": 7.2,
         "opponent": "Galatasaray"
@@ -10642,9 +10728,13 @@ window.playerData = [
   {
     "name": "Anfernee Dijksteel",
     "team": "Kocaelispor",
-    "avg_rating": 6.9,
-    "games": 12,
+    "avg_rating": 6.86,
+    "games": 13,
     "ratings": [
+      {
+        "rating": 6.4,
+        "opponent": "Trabzonspor"
+      },
       {
         "rating": 7.6,
         "opponent": "Fatih Karag\u00fcmr\u00fck"
@@ -10698,9 +10788,13 @@ window.playerData = [
   {
     "name": "Anthony Junior Dennis",
     "team": "G\u00f6ztepe",
-    "avg_rating": 6.84,
-    "games": 31,
+    "avg_rating": 6.83,
+    "games": 32,
     "ratings": [
+      {
+        "rating": 6.6,
+        "opponent": "\u00c7aykur Rizespor"
+      },
       {
         "rating": 7.1,
         "opponent": "Samsunspor"
@@ -10830,9 +10924,13 @@ window.playerData = [
   {
     "name": "Anthony Musaba",
     "team": "Samsunspor",
-    "avg_rating": 7.04,
-    "games": 19,
+    "avg_rating": 7.05,
+    "games": 20,
     "ratings": [
+      {
+        "rating": 7.2,
+        "opponent": "Alanyaspor"
+      },
       {
         "rating": 6.3,
         "opponent": "Galatasaray"
@@ -11202,9 +11300,13 @@ window.playerData = [
   {
     "name": "Arda Kurtulan",
     "team": "G\u00f6ztepe",
-    "avg_rating": 7.01,
-    "games": 16,
+    "avg_rating": 7.06,
+    "games": 17,
     "ratings": [
+      {
+        "rating": 8.0,
+        "opponent": "\u00c7aykur Rizespor"
+      },
       {
         "rating": 8.3,
         "opponent": "Samsunspor"
@@ -11275,8 +11377,12 @@ window.playerData = [
     "name": "Arda K\u0131z\u0131lda\u011f",
     "team": "Gaziantep",
     "avg_rating": 6.94,
-    "games": 29,
+    "games": 30,
     "ratings": [
+      {
+        "rating": 6.7,
+        "opponent": "Galatasaray"
+      },
       {
         "rating": 5.7,
         "opponent": "Ba\u015fak\u015fehir FK"
@@ -11408,6 +11514,18 @@ window.playerData = [
     ]
   },
   {
+    "name": "Arda Yavuz",
+    "team": "Ey\u00fcpspor",
+    "avg_rating": 7.1,
+    "games": 1,
+    "ratings": [
+      {
+        "rating": 7.1,
+        "opponent": "Konyaspor"
+      }
+    ]
+  },
+  {
     "name": "Arda \u00d6z\u00e7imen",
     "team": "G\u00f6ztepe",
     "avg_rating": 6.7,
@@ -11498,9 +11616,13 @@ window.playerData = [
   {
     "name": "Arseniy Batagov",
     "team": "Trabzonspor",
-    "avg_rating": 7.08,
-    "games": 30,
+    "avg_rating": 7.09,
+    "games": 31,
     "ratings": [
+      {
+        "rating": 7.4,
+        "opponent": "Kocaelispor"
+      },
       {
         "rating": 5.7,
         "opponent": "Galatasaray"
@@ -12262,9 +12384,13 @@ window.playerData = [
   {
     "name": "Bahad\u0131r Han G\u00fcng\u00f6rd\u00fc",
     "team": "Konyaspor",
-    "avg_rating": 6.54,
-    "games": 8,
+    "avg_rating": 6.61,
+    "games": 9,
     "ratings": [
+      {
+        "rating": 7.2,
+        "opponent": "Ey\u00fcpspor"
+      },
       {
         "rating": 6.9,
         "opponent": "Kayserispor"
@@ -12370,9 +12496,13 @@ window.playerData = [
   {
     "name": "Baran Ali Gezek",
     "team": "Kayserispor",
-    "avg_rating": 6.64,
-    "games": 9,
+    "avg_rating": 6.69,
+    "games": 10,
     "ratings": [
+      {
+        "rating": 7.1,
+        "opponent": "Konyaspor"
+      },
       {
         "rating": 7.1,
         "opponent": "Samsunspor"
@@ -12451,8 +12581,16 @@ window.playerData = [
     "name": "Bar\u0131\u015f Alper Y\u0131lmaz",
     "team": "Galatasaray",
     "avg_rating": 7.05,
-    "games": 39,
+    "games": 41,
     "ratings": [
+      {
+        "rating": 6.4,
+        "opponent": "Atl\u00e9tico Madrid"
+      },
+      {
+        "rating": 7.7,
+        "opponent": "Gaziantep FK"
+      },
       {
         "rating": 6.5,
         "opponent": "Fenerbah\u00e7e"
@@ -13078,9 +13216,13 @@ window.playerData = [
   {
     "name": "Bilal Bayazit",
     "team": "Kayserispor",
-    "avg_rating": 7.05,
-    "games": 32,
+    "avg_rating": 7.04,
+    "games": 33,
     "ratings": [
+      {
+        "rating": 6.6,
+        "opponent": "Be\u015fikta\u015f JK"
+      },
       {
         "rating": 6.7,
         "opponent": "Konyaspor"
@@ -13494,9 +13636,13 @@ window.playerData = [
   {
     "name": "Bruno Petkovi\u0107",
     "team": "Kocaelispor",
-    "avg_rating": 6.9,
-    "games": 9,
+    "avg_rating": 7.05,
+    "games": 10,
     "ratings": [
+      {
+        "rating": 8.4,
+        "opponent": "Trabzonspor"
+      },
       {
         "rating": 6.5,
         "opponent": "Antalyaspor"
@@ -13670,9 +13816,13 @@ window.playerData = [
   {
     "name": "B\u00fcnyamin Balc\u0131",
     "team": "Antalyaspor",
-    "avg_rating": 6.75,
-    "games": 28,
+    "avg_rating": 6.78,
+    "games": 29,
     "ratings": [
+      {
+        "rating": 7.5,
+        "opponent": "Kas\u0131mpa\u015fa"
+      },
       {
         "rating": 6.7,
         "opponent": "Kocaelispor"
@@ -14307,8 +14457,12 @@ window.playerData = [
     "name": "Carlos Man\u00e9",
     "team": "Kayserispor",
     "avg_rating": 6.73,
-    "games": 23,
+    "games": 24,
     "ratings": [
+      {
+        "rating": 6.7,
+        "opponent": "Be\u015fikta\u015f JK"
+      },
       {
         "rating": 6.3,
         "opponent": "Konyaspor"
@@ -14406,9 +14560,13 @@ window.playerData = [
   {
     "name": "Casper H\u00f8jer",
     "team": "\u00c7aykur Rizespor",
-    "avg_rating": 6.98,
-    "games": 28,
+    "avg_rating": 6.95,
+    "games": 29,
     "ratings": [
+      {
+        "rating": 6.1,
+        "opponent": "G\u00f6ztepe"
+      },
       {
         "rating": 6.7,
         "opponent": "Be\u015fikta\u015f JK"
@@ -14526,9 +14684,13 @@ window.playerData = [
   {
     "name": "Celil Y\u00fcksel",
     "team": "Samsunspor",
-    "avg_rating": 6.99,
-    "games": 17,
+    "avg_rating": 6.97,
+    "games": 18,
     "ratings": [
+      {
+        "rating": 6.5,
+        "opponent": "Gen\u00e7lerbirli\u011fi"
+      },
       {
         "rating": 6.8,
         "opponent": "Fenerbah\u00e7e"
@@ -14720,11 +14882,27 @@ window.playerData = [
     ]
   },
   {
+    "name": "Chibuike Nwaiwu",
+    "team": "Trabzonspor",
+    "avg_rating": 7.7,
+    "games": 1,
+    "ratings": [
+      {
+        "rating": 7.7,
+        "opponent": "Kocaelispor"
+      }
+    ]
+  },
+  {
     "name": "Christ Inao Oula\u00ef",
     "team": "Trabzonspor",
     "avg_rating": 7.2,
-    "games": 8,
+    "games": 9,
     "ratings": [
+      {
+        "rating": 7.2,
+        "opponent": "Kocaelispor"
+      },
       {
         "rating": 7.6,
         "opponent": "Be\u015fikta\u015f JK"
@@ -15131,8 +15309,12 @@ window.playerData = [
     "name": "Cl\u00e1udio Winck",
     "team": "Kas\u0131mpa\u015fa",
     "avg_rating": 6.87,
-    "games": 22,
+    "games": 23,
     "ratings": [
+      {
+        "rating": 6.8,
+        "opponent": "Antalyaspor"
+      },
       {
         "rating": 6.6,
         "opponent": "Galatasaray"
@@ -15306,9 +15488,13 @@ window.playerData = [
   {
     "name": "Daniel Agyei",
     "team": "Kocaelispor",
-    "avg_rating": 6.89,
-    "games": 7,
+    "avg_rating": 6.79,
+    "games": 8,
     "ratings": [
+      {
+        "rating": 6.1,
+        "opponent": "Trabzonspor"
+      },
       {
         "rating": 6.5,
         "opponent": "Antalyaspor"
@@ -15650,9 +15836,13 @@ window.playerData = [
   {
     "name": "Dario \u0160ari\u0107",
     "team": "Antalyaspor",
-    "avg_rating": 6.95,
-    "games": 4,
+    "avg_rating": 6.82,
+    "games": 5,
     "ratings": [
+      {
+        "rating": 6.3,
+        "opponent": "Kas\u0131mpa\u015fa"
+      },
       {
         "rating": 7.3,
         "opponent": "Kocaelispor"
@@ -15674,9 +15864,13 @@ window.playerData = [
   {
     "name": "Darko Churlinov",
     "team": "Kocaelispor",
-    "avg_rating": 6.5,
-    "games": 6,
+    "avg_rating": 6.47,
+    "games": 7,
     "ratings": [
+      {
+        "rating": 6.3,
+        "opponent": "Trabzonspor"
+      },
       {
         "rating": 6.4,
         "opponent": "Antalyaspor"
@@ -15978,9 +16172,17 @@ window.playerData = [
   {
     "name": "Davinson S\u00e1nchez",
     "team": "Galatasaray",
-    "avg_rating": 7.23,
-    "games": 44,
+    "avg_rating": 7.22,
+    "games": 46,
     "ratings": [
+      {
+        "rating": 6.8,
+        "opponent": "Atl\u00e9tico Madrid"
+      },
+      {
+        "rating": 6.9,
+        "opponent": "Gaziantep FK"
+      },
       {
         "rating": 6.4,
         "opponent": "Fenerbah\u00e7e"
@@ -16330,8 +16532,8 @@ window.playerData = [
   {
     "name": "Denis Dr\u0103gu\u015f",
     "team": "Trabzonspor",
-    "avg_rating": 6.56,
-    "games": 12,
+    "avg_rating": 6.55,
+    "games": 13,
     "ratings": [
       {
         "rating": 6.6,
@@ -16368,6 +16570,10 @@ window.playerData = [
       {
         "rating": 6.7,
         "opponent": "Be\u015fikta\u015f JK"
+      },
+      {
+        "rating": 6.5,
+        "opponent": "Galatasaray"
       },
       {
         "rating": 6.4,
@@ -16497,9 +16703,9 @@ window.playerData = [
   },
   {
     "name": "Deniz T\u00fcr\u00fc\u00e7",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 7.26,
-    "games": 20,
+    "team": "Konyaspor",
+    "avg_rating": 7.31,
+    "games": 21,
     "ratings": [
       {
         "rating": 6.7,
@@ -16580,6 +16786,10 @@ window.playerData = [
       {
         "rating": 9.2,
         "opponent": "G\u00f6ztepe"
+      },
+      {
+        "rating": 8.3,
+        "opponent": "Ey\u00fcpspor"
       }
     ]
   },
@@ -16646,9 +16856,13 @@ window.playerData = [
   {
     "name": "Dimitris Goutas",
     "team": "Gen\u00e7lerbirli\u011fi",
-    "avg_rating": 6.97,
-    "games": 16,
+    "avg_rating": 6.94,
+    "games": 17,
     "ratings": [
+      {
+        "rating": 6.5,
+        "opponent": "Samsunspor"
+      },
       {
         "rating": 7.5,
         "opponent": "Trabzonspor"
@@ -16850,9 +17064,13 @@ window.playerData = [
   {
     "name": "Dorgeles Nene",
     "team": "Fenerbah\u00e7e",
-    "avg_rating": 6.99,
-    "games": 10,
+    "avg_rating": 6.97,
+    "games": 11,
     "ratings": [
+      {
+        "rating": 6.8,
+        "opponent": "Aston Villa"
+      },
       {
         "rating": 6.6,
         "opponent": "SK Brann"
@@ -17230,9 +17448,17 @@ window.playerData = [
   {
     "name": "Ederson",
     "team": "Fenerbah\u00e7e",
-    "avg_rating": 7.25,
-    "games": 17,
+    "avg_rating": 7.18,
+    "games": 19,
     "ratings": [
+      {
+        "rating": 7.0,
+        "opponent": "Aston Villa"
+      },
+      {
+        "rating": 6.1,
+        "opponent": "Alanyaspor"
+      },
       {
         "rating": 6.9,
         "opponent": "Galatasaray"
@@ -17470,9 +17696,13 @@ window.playerData = [
   {
     "name": "Efecan Karaca",
     "team": "Alanyaspor",
-    "avg_rating": 6.69,
-    "games": 11,
+    "avg_rating": 6.72,
+    "games": 12,
     "ratings": [
+      {
+        "rating": 7.0,
+        "opponent": "Fenerbah\u00e7e"
+      },
       {
         "rating": 6.4,
         "opponent": "Fatih Karag\u00fcmr\u00fck"
@@ -17562,9 +17792,13 @@ window.playerData = [
   {
     "name": "El Bilal Tour\u00e9",
     "team": "Be\u015fikta\u015f",
-    "avg_rating": 6.97,
-    "games": 10,
+    "avg_rating": 7.0,
+    "games": 11,
     "ratings": [
+      {
+        "rating": 7.3,
+        "opponent": "Kayserispor"
+      },
       {
         "rating": 5.9,
         "opponent": "Trabzonspor"
@@ -17734,9 +17968,13 @@ window.playerData = [
   {
     "name": "Emir Ortakaya",
     "team": "Ey\u00fcpspor",
-    "avg_rating": 6.42,
-    "games": 5,
+    "avg_rating": 6.5,
+    "games": 6,
     "ratings": [
+      {
+        "rating": 6.9,
+        "opponent": "Konyaspor"
+      },
       {
         "rating": 6.1,
         "opponent": "Fenerbah\u00e7e"
@@ -17790,9 +18028,13 @@ window.playerData = [
   {
     "name": "Emirhan Top\u00e7u",
     "team": "Be\u015fikta\u015f",
-    "avg_rating": 7.0,
-    "games": 29,
+    "avg_rating": 7.04,
+    "games": 30,
     "ratings": [
+      {
+        "rating": 8.2,
+        "opponent": "Kayserispor"
+      },
       {
         "rating": 6.1,
         "opponent": "Trabzonspor"
@@ -18790,9 +19032,17 @@ window.playerData = [
   {
     "name": "Eren Elmal\u0131",
     "team": "Trabzonspor",
-    "avg_rating": 7.09,
-    "games": 25,
+    "avg_rating": 7.06,
+    "games": 27,
     "ratings": [
+      {
+        "rating": 6.4,
+        "opponent": "Atl\u00e9tico Madrid"
+      },
+      {
+        "rating": 6.9,
+        "opponent": "Gaziantep FK"
+      },
       {
         "rating": 6.1,
         "opponent": "Fenerbah\u00e7e"
@@ -19038,8 +19288,8 @@ window.playerData = [
   {
     "name": "Ernest Mu\u00e7i",
     "team": "Trabzonspor",
-    "avg_rating": 6.88,
-    "games": 23,
+    "avg_rating": 6.91,
+    "games": 24,
     "ratings": [
       {
         "rating": 6.3,
@@ -19098,6 +19348,10 @@ window.playerData = [
         "opponent": "Alanyaspor"
       },
       {
+        "rating": 7.6,
+        "opponent": "Kocaelispor"
+      },
+      {
         "rating": 6.4,
         "opponent": "Galatasaray"
       },
@@ -19138,9 +19392,13 @@ window.playerData = [
   {
     "name": "Ersin Destano\u011flu",
     "team": "Be\u015fikta\u015f",
-    "avg_rating": 6.89,
-    "games": 11,
+    "avg_rating": 6.94,
+    "games": 12,
     "ratings": [
+      {
+        "rating": 7.5,
+        "opponent": "Kayserispor"
+      },
       {
         "rating": 7.1,
         "opponent": "\u00c7aykur Rizespor"
@@ -19234,9 +19492,13 @@ window.playerData = [
   {
     "name": "Ertu\u011frul Ta\u015fk\u0131ran",
     "team": "Alanyaspor",
-    "avg_rating": 7.23,
-    "games": 32,
+    "avg_rating": 7.22,
+    "games": 33,
     "ratings": [
+      {
+        "rating": 6.6,
+        "opponent": "Fenerbah\u00e7e"
+      },
       {
         "rating": 8.1,
         "opponent": "Fatih Karag\u00fcmr\u00fck"
@@ -19483,8 +19745,12 @@ window.playerData = [
     "name": "Felipe Augusto",
     "team": "Trabzonspor",
     "avg_rating": 7.1,
-    "games": 12,
+    "games": 13,
     "ratings": [
+      {
+        "rating": 7.1,
+        "opponent": "Kocaelispor"
+      },
       {
         "rating": 7.8,
         "opponent": "Galatasaray"
@@ -19538,9 +19804,13 @@ window.playerData = [
   {
     "name": "Felix Uduokhai",
     "team": "Be\u015fikta\u015f",
-    "avg_rating": 6.85,
-    "games": 23,
+    "avg_rating": 6.88,
+    "games": 24,
     "ratings": [
+      {
+        "rating": 7.6,
+        "opponent": "Kayserispor"
+      },
       {
         "rating": 6.9,
         "opponent": "Kayserispor"
@@ -19766,9 +20036,13 @@ window.playerData = [
   {
     "name": "Fidan Aliti",
     "team": "Alanyaspor",
-    "avg_rating": 6.9,
-    "games": 32,
+    "avg_rating": 6.87,
+    "games": 33,
     "ratings": [
+      {
+        "rating": 6.0,
+        "opponent": "Fenerbah\u00e7e"
+      },
       {
         "rating": 7.1,
         "opponent": "Fatih Karag\u00fcmr\u00fck"
@@ -20042,9 +20316,13 @@ window.playerData = [
   {
     "name": "Florent Hadergjonaj",
     "team": "Alanyaspor",
-    "avg_rating": 7.05,
-    "games": 23,
+    "avg_rating": 7.11,
+    "games": 24,
     "ratings": [
+      {
+        "rating": 8.5,
+        "opponent": "Fenerbah\u00e7e"
+      },
       {
         "rating": 6.8,
         "opponent": "Fatih Karag\u00fcmr\u00fck"
@@ -20142,9 +20420,13 @@ window.playerData = [
   {
     "name": "Fousseni Diabat\u00e9",
     "team": "Kas\u0131mpa\u015fa",
-    "avg_rating": 6.85,
-    "games": 6,
+    "avg_rating": 6.81,
+    "games": 7,
     "ratings": [
+      {
+        "rating": 6.6,
+        "opponent": "Antalyaspor"
+      },
       {
         "rating": 6.0,
         "opponent": "Galatasaray"
@@ -20174,9 +20456,13 @@ window.playerData = [
   {
     "name": "Franco Tongya",
     "team": "Gen\u00e7lerbirli\u011fi",
-    "avg_rating": 6.94,
-    "games": 11,
+    "avg_rating": 6.92,
+    "games": 12,
     "ratings": [
+      {
+        "rating": 6.7,
+        "opponent": "Samsunspor"
+      },
       {
         "rating": 7.3,
         "opponent": "Trabzonspor"
@@ -20226,9 +20512,13 @@ window.playerData = [
   {
     "name": "Fred",
     "team": "Fenerbah\u00e7e",
-    "avg_rating": 7.22,
-    "games": 33,
+    "avg_rating": 7.23,
+    "games": 34,
     "ratings": [
+      {
+        "rating": 7.6,
+        "opponent": "Aston Villa"
+      },
       {
         "rating": 7.6,
         "opponent": "Ey\u00fcpspor"
@@ -20514,9 +20804,13 @@ window.playerData = [
   {
     "name": "Furkan Soyalp",
     "team": "Gaziantep",
-    "avg_rating": 6.84,
-    "games": 13,
+    "avg_rating": 6.88,
+    "games": 14,
     "ratings": [
+      {
+        "rating": 7.4,
+        "opponent": "Be\u015fikta\u015f JK"
+      },
       {
         "rating": 6.7,
         "opponent": "Konyaspor"
@@ -20814,9 +21108,13 @@ window.playerData = [
   {
     "name": "Gaius Makouta",
     "team": "Alanyaspor",
-    "avg_rating": 6.68,
-    "games": 26,
+    "avg_rating": 6.72,
+    "games": 27,
     "ratings": [
+      {
+        "rating": 7.8,
+        "opponent": "Fenerbah\u00e7e"
+      },
       {
         "rating": 6.3,
         "opponent": "Kayserispor"
@@ -21082,9 +21380,13 @@ window.playerData = [
   {
     "name": "German Onugkha",
     "team": "Kayserispor",
-    "avg_rating": 7.03,
-    "games": 11,
+    "avg_rating": 6.96,
+    "games": 12,
     "ratings": [
+      {
+        "rating": 6.2,
+        "opponent": "Be\u015fikta\u015f JK"
+      },
       {
         "rating": 8.0,
         "opponent": "Konyaspor"
@@ -21134,9 +21436,13 @@ window.playerData = [
   {
     "name": "Giannis Papanikolaou",
     "team": "\u00c7aykur Rizespor",
-    "avg_rating": 6.81,
-    "games": 16,
+    "avg_rating": 6.78,
+    "games": 17,
     "ratings": [
+      {
+        "rating": 6.3,
+        "opponent": "G\u00f6ztepe"
+      },
       {
         "rating": 6.9,
         "opponent": "Be\u015fikta\u015f JK"
@@ -21258,9 +21564,13 @@ window.playerData = [
   {
     "name": "Godfried Frimpong",
     "team": "Kas\u0131mpa\u015fa",
-    "avg_rating": 6.51,
-    "games": 14,
+    "avg_rating": 6.55,
+    "games": 15,
     "ratings": [
+      {
+        "rating": 7.2,
+        "opponent": "Antalyaspor"
+      },
       {
         "rating": 5.8,
         "opponent": "Galatasaray"
@@ -21322,9 +21632,13 @@ window.playerData = [
   {
     "name": "Guilherme Haubert Sity\u00e1",
     "team": "Konyaspor",
-    "avg_rating": 6.9,
-    "games": 43,
+    "avg_rating": 6.89,
+    "games": 44,
     "ratings": [
+      {
+        "rating": 6.1,
+        "opponent": "Ey\u00fcpspor"
+      },
       {
         "rating": 7.0,
         "opponent": "Kayserispor"
@@ -21658,9 +21972,13 @@ window.playerData = [
   {
     "name": "G\u00f6khan Sazda\u011f\u0131",
     "team": "Kayserispor",
-    "avg_rating": 6.93,
-    "games": 36,
+    "avg_rating": 6.95,
+    "games": 37,
     "ratings": [
+      {
+        "rating": 7.9,
+        "opponent": "Kayserispor"
+      },
       {
         "rating": 5.8,
         "opponent": "Trabzonspor"
@@ -21811,7 +22129,7 @@ window.playerData = [
     "name": "G\u00f6ktan G\u00fcrp\u00fcz",
     "team": "Gen\u00e7lerbirli\u011fi",
     "avg_rating": 6.78,
-    "games": 35,
+    "games": 36,
     "ratings": [
       {
         "rating": 6.9,
@@ -21896,6 +22214,10 @@ window.playerData = [
       {
         "rating": 6.8,
         "opponent": "Gen\u00e7lerbirli\u011fi"
+      },
+      {
+        "rating": 6.8,
+        "opponent": "Samsunspor"
       },
       {
         "rating": 8.0,
@@ -22602,9 +22924,13 @@ window.playerData = [
   {
     "name": "Hrvoje Smol\u010di\u0107",
     "team": "Kocaelispor",
-    "avg_rating": 7.12,
-    "games": 11,
+    "avg_rating": 7.1,
+    "games": 12,
     "ratings": [
+      {
+        "rating": 6.9,
+        "opponent": "Trabzonspor"
+      },
       {
         "rating": 8.0,
         "opponent": "Antalyaspor"
@@ -22654,9 +22980,13 @@ window.playerData = [
   {
     "name": "Husniddin Alikulov",
     "team": "\u00c7aykur Rizespor",
-    "avg_rating": 7.0,
-    "games": 13,
+    "avg_rating": 6.95,
+    "games": 14,
     "ratings": [
+      {
+        "rating": 6.3,
+        "opponent": "G\u00f6ztepe"
+      },
       {
         "rating": 5.8,
         "opponent": "Konyaspor"
@@ -22714,9 +23044,13 @@ window.playerData = [
   {
     "name": "H\u00e9liton",
     "team": "G\u00f6ztepe",
-    "avg_rating": 6.88,
-    "games": 30,
+    "avg_rating": 6.87,
+    "games": 31,
     "ratings": [
+      {
+        "rating": 6.6,
+        "opponent": "\u00c7aykur Rizespor"
+      },
       {
         "rating": 6.9,
         "opponent": "Samsunspor"
@@ -22842,9 +23176,13 @@ window.playerData = [
   {
     "name": "H\u00fcseyin T\u00fcrkmen",
     "team": "Trabzonspor",
-    "avg_rating": 6.94,
-    "games": 5,
+    "avg_rating": 6.97,
+    "games": 6,
     "ratings": [
+      {
+        "rating": 7.1,
+        "opponent": "Kas\u0131mpa\u015fa"
+      },
       {
         "rating": 6.1,
         "opponent": "Galatasaray"
@@ -22954,9 +23292,13 @@ window.playerData = [
   {
     "name": "Ibrahim Olawoyin",
     "team": "\u00c7aykur Rizespor",
-    "avg_rating": 7.11,
-    "games": 19,
+    "avg_rating": 7.07,
+    "games": 20,
     "ratings": [
+      {
+        "rating": 6.5,
+        "opponent": "G\u00f6ztepe"
+      },
       {
         "rating": 6.4,
         "opponent": "Be\u015fikta\u015f JK"
@@ -23298,9 +23640,13 @@ window.playerData = [
   {
     "name": "Jackson Muleka",
     "team": "Konyaspor",
-    "avg_rating": 6.67,
-    "games": 11,
+    "avg_rating": 6.79,
+    "games": 12,
     "ratings": [
+      {
+        "rating": 8.1,
+        "opponent": "Ey\u00fcpspor"
+      },
       {
         "rating": 6.3,
         "opponent": "Kayserispor"
@@ -23542,9 +23888,13 @@ window.playerData = [
   {
     "name": "Janderson",
     "team": "G\u00f6ztepe",
-    "avg_rating": 6.61,
-    "games": 15,
+    "avg_rating": 6.59,
+    "games": 16,
     "ratings": [
+      {
+        "rating": 6.3,
+        "opponent": "\u00c7aykur Rizespor"
+      },
       {
         "rating": 7.1,
         "opponent": "Gaziantep FK"
@@ -23608,11 +23958,31 @@ window.playerData = [
     ]
   },
   {
+    "name": "Jankat Y\u0131lmaz",
+    "team": "Ey\u00fcpspor",
+    "avg_rating": 6.6,
+    "games": 1,
+    "ratings": [
+      {
+        "rating": 6.6,
+        "opponent": "Konyaspor"
+      }
+    ]
+  },
+  {
     "name": "Jayden Oosterwolde",
     "team": "Fenerbah\u00e7e",
-    "avg_rating": 6.98,
-    "games": 24,
+    "avg_rating": 6.93,
+    "games": 26,
     "ratings": [
+      {
+        "rating": 6.3,
+        "opponent": "Aston Villa"
+      },
+      {
+        "rating": 6.5,
+        "opponent": "Alanyaspor"
+      },
       {
         "rating": 7.9,
         "opponent": "Galatasaray"
@@ -23839,8 +24209,12 @@ window.playerData = [
     "name": "Jesper Ceesay",
     "team": "Antalyaspor",
     "avg_rating": 6.94,
-    "games": 9,
+    "games": 10,
     "ratings": [
+      {
+        "rating": 6.9,
+        "opponent": "Kas\u0131mpa\u015fa"
+      },
       {
         "rating": 7.2,
         "opponent": "Galatasaray"
@@ -23930,9 +24304,13 @@ window.playerData = [
   {
     "name": "Jhon Dur\u00e1n",
     "team": "Fenerbah\u00e7e",
-    "avg_rating": 6.99,
-    "games": 10,
+    "avg_rating": 6.94,
+    "games": 11,
     "ratings": [
+      {
+        "rating": 6.4,
+        "opponent": "Aston Villa"
+      },
       {
         "rating": 6.2,
         "opponent": "Galatasaray"
@@ -24290,9 +24668,13 @@ window.playerData = [
   {
     "name": "Josafat Mendes",
     "team": "Samsunspor",
-    "avg_rating": 7.3,
-    "games": 1,
+    "avg_rating": 6.9,
+    "games": 2,
     "ratings": [
+      {
+        "rating": 6.5,
+        "opponent": "Gen\u00e7lerbirli\u011fi"
+      },
       {
         "rating": 7.3,
         "opponent": "Kas\u0131mpa\u015fa"
@@ -24731,8 +25113,12 @@ window.playerData = [
     "name": "Jo\u00e3o Mendes",
     "team": "Kayserispor",
     "avg_rating": 7.0,
-    "games": 9,
+    "games": 10,
     "ratings": [
+      {
+        "rating": 7.0,
+        "opponent": "Be\u015fikta\u015f JK"
+      },
       {
         "rating": 6.8,
         "opponent": "Konyaspor"
@@ -24846,9 +25232,13 @@ window.playerData = [
   {
     "name": "Juan Santos da Silva",
     "team": "G\u00f6ztepe",
-    "avg_rating": 6.94,
-    "games": 22,
+    "avg_rating": 6.95,
+    "games": 23,
     "ratings": [
+      {
+        "rating": 7.1,
+        "opponent": "\u00c7aykur Rizespor"
+      },
       {
         "rating": 8.0,
         "opponent": "Samsunspor"
@@ -24982,9 +25372,13 @@ window.playerData = [
   {
     "name": "Juli\u00e1n Cuesta",
     "team": "Antalyaspor",
-    "avg_rating": 6.97,
-    "games": 6,
+    "avg_rating": 7.09,
+    "games": 7,
     "ratings": [
+      {
+        "rating": 7.8,
+        "opponent": "Kas\u0131mpa\u015fa"
+      },
       {
         "rating": 7.9,
         "opponent": "Gaziantep FK"
@@ -25030,9 +25424,13 @@ window.playerData = [
   {
     "name": "Junior Olaitan",
     "team": "G\u00f6ztepe",
-    "avg_rating": 7.16,
-    "games": 7,
+    "avg_rating": 7.11,
+    "games": 8,
     "ratings": [
+      {
+        "rating": 6.8,
+        "opponent": "\u00c7aykur Rizespor"
+      },
       {
         "rating": 6.7,
         "opponent": "Gaziantep FK"
@@ -25148,6 +25546,18 @@ window.playerData = [
       {
         "rating": 6.1,
         "opponent": "Ba\u015fak\u015fehir FK"
+      }
+    ]
+  },
+  {
+    "name": "J\u00e9r\u00f4me Onguene",
+    "team": "Ey\u00fcpspor",
+    "avg_rating": 6.3,
+    "games": 1,
+    "ratings": [
+      {
+        "rating": 6.3,
+        "opponent": "Konyaspor"
       }
     ]
   },
@@ -25406,9 +25816,13 @@ window.playerData = [
   {
     "name": "Karol Linetty",
     "team": "Kocaelispor",
-    "avg_rating": 6.86,
-    "games": 9,
+    "avg_rating": 6.77,
+    "games": 10,
     "ratings": [
+      {
+        "rating": 6.0,
+        "opponent": "Trabzonspor"
+      },
       {
         "rating": 7.2,
         "opponent": "Antalyaspor"
@@ -25450,9 +25864,13 @@ window.playerData = [
   {
     "name": "Kartal Kayra Y\u0131lmaz",
     "team": "Kayserispor",
-    "avg_rating": 7.21,
-    "games": 27,
+    "avg_rating": 7.23,
+    "games": 28,
     "ratings": [
+      {
+        "rating": 7.7,
+        "opponent": "Kayserispor"
+      },
       {
         "rating": 7.1,
         "opponent": "\u00c7aykur Rizespor"
@@ -25583,8 +26001,12 @@ window.playerData = [
     "name": "Kazeem Olaigbe",
     "team": "Trabzonspor",
     "avg_rating": 6.59,
-    "games": 13,
+    "games": 14,
     "ratings": [
+      {
+        "rating": 6.6,
+        "opponent": "Kocaelispor"
+      },
       {
         "rating": 6.6,
         "opponent": "Galatasaray"
@@ -25794,9 +26216,13 @@ window.playerData = [
   {
     "name": "Kenneth Paal",
     "team": "Antalyaspor",
-    "avg_rating": 6.4,
-    "games": 14,
+    "avg_rating": 6.43,
+    "games": 15,
     "ratings": [
+      {
+        "rating": 6.9,
+        "opponent": "Kas\u0131mpa\u015fa"
+      },
       {
         "rating": 6.7,
         "opponent": "Kocaelispor"
@@ -25874,9 +26300,17 @@ window.playerData = [
   {
     "name": "Kerem Akt\u00fcrko\u011flu",
     "team": "Fenerbah\u00e7e",
-    "avg_rating": 7.19,
-    "games": 17,
+    "avg_rating": 7.12,
+    "games": 19,
     "ratings": [
+      {
+        "rating": 6.4,
+        "opponent": "Aston Villa"
+      },
+      {
+        "rating": 6.6,
+        "opponent": "Alanyaspor"
+      },
       {
         "rating": 6.4,
         "opponent": "Galatasaray"
@@ -25950,8 +26384,8 @@ window.playerData = [
   {
     "name": "Kerem Demirbay",
     "team": "Galatasaray",
-    "avg_rating": 7.07,
-    "games": 15,
+    "avg_rating": 7.09,
+    "games": 16,
     "ratings": [
       {
         "rating": 6.9,
@@ -26008,6 +26442,10 @@ window.playerData = [
       {
         "rating": 7.6,
         "opponent": "Be\u015fikta\u015f JK"
+      },
+      {
+        "rating": 7.4,
+        "opponent": "Antalyaspor"
       },
       {
         "rating": 6.9,
@@ -26226,9 +26664,13 @@ window.playerData = [
   {
     "name": "Kubilay Kanats\u0131zku\u015f",
     "team": "G\u00f6ztepe",
-    "avg_rating": 6.99,
-    "games": 11,
+    "avg_rating": 6.93,
+    "games": 12,
     "ratings": [
+      {
+        "rating": 6.3,
+        "opponent": "Antalyaspor"
+      },
       {
         "rating": 6.8,
         "opponent": "G\u00f6ztepe"
@@ -26600,11 +27042,31 @@ window.playerData = [
     ]
   },
   {
+    "name": "Lenny Pintor",
+    "team": "Ey\u00fcpspor",
+    "avg_rating": 6.6,
+    "games": 1,
+    "ratings": [
+      {
+        "rating": 6.6,
+        "opponent": "Konyaspor"
+      }
+    ]
+  },
+  {
     "name": "Leroy San\u00e9",
     "team": "Galatasaray",
-    "avg_rating": 7.29,
-    "games": 21,
+    "avg_rating": 7.25,
+    "games": 23,
     "ratings": [
+      {
+        "rating": 6.5,
+        "opponent": "Atl\u00e9tico Madrid"
+      },
+      {
+        "rating": 7.3,
+        "opponent": "Gaziantep FK"
+      },
       {
         "rating": 6.8,
         "opponent": "Fenerbah\u00e7e"
@@ -26962,8 +27424,8 @@ window.playerData = [
   {
     "name": "Loide Augusto",
     "team": "\u00c7aykur Rizespor",
-    "avg_rating": 6.87,
-    "games": 12,
+    "avg_rating": 6.82,
+    "games": 13,
     "ratings": [
       {
         "rating": 7.7,
@@ -26984,6 +27446,10 @@ window.playerData = [
       {
         "rating": 6.5,
         "opponent": "Be\u015fikta\u015f JK"
+      },
+      {
+        "rating": 6.3,
+        "opponent": "G\u00f6ztepe"
       },
       {
         "rating": 6.9,
@@ -27110,9 +27576,13 @@ window.playerData = [
   {
     "name": "Lucas Torreira",
     "team": "Galatasaray",
-    "avg_rating": 7.26,
-    "games": 43,
+    "avg_rating": 7.25,
+    "games": 44,
     "ratings": [
+      {
+        "rating": 6.9,
+        "opponent": "Atl\u00e9tico Madrid"
+      },
       {
         "rating": 6.8,
         "opponent": "Fenerbah\u00e7e"
@@ -27398,9 +27868,13 @@ window.playerData = [
   {
     "name": "Luis P\u00e9rez",
     "team": "Gaziantep",
-    "avg_rating": 6.92,
-    "games": 12,
+    "avg_rating": 6.91,
+    "games": 13,
     "ratings": [
+      {
+        "rating": 6.8,
+        "opponent": "Galatasaray"
+      },
       {
         "rating": 6.8,
         "opponent": "Ba\u015fak\u015fehir FK"
@@ -27455,8 +27929,12 @@ window.playerData = [
     "name": "L\u00e1szl\u00f3 B\u00e9nes",
     "team": "Kayserispor",
     "avg_rating": 7.18,
-    "games": 13,
+    "games": 14,
     "ratings": [
+      {
+        "rating": 7.2,
+        "opponent": "Be\u015fikta\u015f JK"
+      },
       {
         "rating": 7.0,
         "opponent": "Konyaspor"
@@ -27706,9 +28184,13 @@ window.playerData = [
   {
     "name": "Maestro",
     "team": "Alanyaspor",
-    "avg_rating": 7.07,
-    "games": 10,
+    "avg_rating": 7.0,
+    "games": 11,
     "ratings": [
+      {
+        "rating": 6.3,
+        "opponent": "Fenerbah\u00e7e"
+      },
       {
         "rating": 6.8,
         "opponent": "Antalyaspor"
@@ -27810,9 +28292,13 @@ window.playerData = [
   {
     "name": "Malcom Bokele",
     "team": "G\u00f6ztepe",
-    "avg_rating": 6.85,
-    "games": 26,
+    "avg_rating": 6.83,
+    "games": 27,
     "ratings": [
+      {
+        "rating": 6.3,
+        "opponent": "\u00c7aykur Rizespor"
+      },
       {
         "rating": 6.6,
         "opponent": "Samsunspor"
@@ -28250,9 +28736,17 @@ window.playerData = [
   {
     "name": "Marco Asensio",
     "team": "Fenerbah\u00e7e",
-    "avg_rating": 7.19,
-    "games": 16,
+    "avg_rating": 7.18,
+    "games": 18,
     "ratings": [
+      {
+        "rating": 7.7,
+        "opponent": "Aston Villa"
+      },
+      {
+        "rating": 6.4,
+        "opponent": "Alanyaspor"
+      },
       {
         "rating": 7.4,
         "opponent": "Galatasaray"
@@ -28467,8 +28961,16 @@ window.playerData = [
     "name": "Mario Lemina",
     "team": "Galatasaray",
     "avg_rating": 7.06,
-    "games": 27,
+    "games": 29,
     "ratings": [
+      {
+        "rating": 6.9,
+        "opponent": "Atl\u00e9tico Madrid"
+      },
+      {
+        "rating": 7.3,
+        "opponent": "Gaziantep FK"
+      },
       {
         "rating": 7.6,
         "opponent": "Fenerbah\u00e7e"
@@ -28582,9 +29084,13 @@ window.playerData = [
   {
     "name": "Marius Mouandilmadji",
     "team": "Samsunspor",
-    "avg_rating": 6.73,
-    "games": 35,
+    "avg_rating": 6.75,
+    "games": 36,
     "ratings": [
+      {
+        "rating": 7.2,
+        "opponent": "Gen\u00e7lerbirli\u011fi"
+      },
       {
         "rating": 6.2,
         "opponent": "Fenerbah\u00e7e"
@@ -28863,8 +29369,12 @@ window.playerData = [
     "name": "Marko Jevtovi\u0107",
     "team": "Konyaspor",
     "avg_rating": 6.9,
-    "games": 27,
+    "games": 28,
     "ratings": [
+      {
+        "rating": 7.0,
+        "opponent": "Ey\u00fcpspor"
+      },
       {
         "rating": 6.5,
         "opponent": "Kas\u0131mpa\u015fa"
@@ -28978,9 +29488,13 @@ window.playerData = [
   {
     "name": "Massadio Ha\u00efdara",
     "team": "Kocaelispor",
-    "avg_rating": 6.91,
-    "games": 9,
+    "avg_rating": 6.84,
+    "games": 10,
     "ratings": [
+      {
+        "rating": 6.2,
+        "opponent": "Trabzonspor"
+      },
       {
         "rating": 6.6,
         "opponent": "Antalyaspor"
@@ -29034,9 +29548,13 @@ window.playerData = [
   {
     "name": "Mateusz Lis",
     "team": "G\u00f6ztepe",
-    "avg_rating": 7.07,
-    "games": 29,
+    "avg_rating": 7.05,
+    "games": 30,
     "ratings": [
+      {
+        "rating": 6.5,
+        "opponent": "\u00c7aykur Rizespor"
+      },
       {
         "rating": 6.2,
         "opponent": "Samsunspor"
@@ -29170,9 +29688,13 @@ window.playerData = [
   {
     "name": "Mateusz \u0141\u0119gowski",
     "team": "Ey\u00fcpspor",
-    "avg_rating": 6.68,
-    "games": 6,
+    "avg_rating": 6.76,
+    "games": 7,
     "ratings": [
+      {
+        "rating": 7.2,
+        "opponent": "Konyaspor"
+      },
       {
         "rating": 6.2,
         "opponent": "\u00c7aykur Rizespor"
@@ -29202,9 +29724,13 @@ window.playerData = [
   {
     "name": "Matt\u00e9o Guendouzi",
     "team": "Fenerbah\u00e7e",
-    "avg_rating": 8.8,
-    "games": 1,
+    "avg_rating": 7.75,
+    "games": 2,
     "ratings": [
+      {
+        "rating": 6.7,
+        "opponent": "Alanyaspor"
+      },
       {
         "rating": 8.8,
         "opponent": "Galatasaray"
@@ -29358,9 +29884,13 @@ window.playerData = [
   {
     "name": "Mauro Icardi",
     "team": "Galatasaray",
-    "avg_rating": 6.96,
-    "games": 8,
+    "avg_rating": 6.83,
+    "games": 9,
     "ratings": [
+      {
+        "rating": 5.8,
+        "opponent": "Gaziantep FK"
+      },
       {
         "rating": 6.4,
         "opponent": "Fenerbah\u00e7e"
@@ -29530,8 +30060,8 @@ window.playerData = [
   {
     "name": "Melih Kabasakal",
     "team": "Gaziantep",
-    "avg_rating": 6.88,
-    "games": 26,
+    "avg_rating": 6.87,
+    "games": 27,
     "ratings": [
       {
         "rating": 7.5,
@@ -29592,6 +30122,10 @@ window.playerData = [
       {
         "rating": 7.3,
         "opponent": "Antalyaspor"
+      },
+      {
+        "rating": 6.8,
+        "opponent": "Galatasaray"
       },
       {
         "rating": 6.1,
@@ -29930,9 +30464,17 @@ window.playerData = [
   {
     "name": "Mert M\u00fcld\u00fcr",
     "team": "Fenerbah\u00e7e",
-    "avg_rating": 7.13,
-    "games": 24,
+    "avg_rating": 7.09,
+    "games": 26,
     "ratings": [
+      {
+        "rating": 6.8,
+        "opponent": "Aston Villa"
+      },
+      {
+        "rating": 6.4,
+        "opponent": "Alanyaspor"
+      },
       {
         "rating": 6.7,
         "opponent": "Galatasaray"
@@ -30132,11 +30674,27 @@ window.playerData = [
     ]
   },
   {
+    "name": "Metehan Altunba\u015f",
+    "team": "Ey\u00fcpspor",
+    "avg_rating": 7.3,
+    "games": 1,
+    "ratings": [
+      {
+        "rating": 7.3,
+        "opponent": "Konyaspor"
+      }
+    ]
+  },
+  {
     "name": "Metehan Mimaro\u011flu",
     "team": "Gen\u00e7lerbirli\u011fi",
-    "avg_rating": 7.23,
-    "games": 33,
+    "avg_rating": 7.2,
+    "games": 34,
     "ratings": [
+      {
+        "rating": 6.2,
+        "opponent": "Samsunspor"
+      },
       {
         "rating": 6.9,
         "opponent": "Trabzonspor"
@@ -30379,8 +30937,12 @@ window.playerData = [
     "name": "Miguel Cardoso",
     "team": "Kayserispor",
     "avg_rating": 6.96,
-    "games": 40,
+    "games": 41,
     "ratings": [
+      {
+        "rating": 6.9,
+        "opponent": "Be\u015fikta\u015f JK"
+      },
       {
         "rating": 7.0,
         "opponent": "Konyaspor"
@@ -30738,9 +31300,17 @@ window.playerData = [
   {
     "name": "Milan \u0160kriniar",
     "team": "Fenerbah\u00e7e",
-    "avg_rating": 7.25,
-    "games": 46,
+    "avg_rating": 7.27,
+    "games": 48,
     "ratings": [
+      {
+        "rating": 8.9,
+        "opponent": "Aston Villa"
+      },
+      {
+        "rating": 6.4,
+        "opponent": "Alanyaspor"
+      },
       {
         "rating": 6.6,
         "opponent": "Galatasaray"
@@ -30930,9 +31500,13 @@ window.playerData = [
   {
     "name": "Milot Rashica",
     "team": "Be\u015fikta\u015f",
-    "avg_rating": 7.35,
-    "games": 24,
+    "avg_rating": 7.31,
+    "games": 25,
     "ratings": [
+      {
+        "rating": 6.4,
+        "opponent": "Kayserispor"
+      },
       {
         "rating": 7.4,
         "opponent": "\u00c7aykur Rizespor"
@@ -31106,9 +31680,13 @@ window.playerData = [
   {
     "name": "Modibo Sagnan",
     "team": "\u00c7aykur Rizespor",
-    "avg_rating": 6.7,
-    "games": 5,
+    "avg_rating": 6.62,
+    "games": 6,
     "ratings": [
+      {
+        "rating": 6.2,
+        "opponent": "G\u00f6ztepe"
+      },
       {
         "rating": 6.7,
         "opponent": "Be\u015fikta\u015f JK"
@@ -31134,9 +31712,13 @@ window.playerData = [
   {
     "name": "Mohamed Bayo",
     "team": "Gaziantep",
-    "avg_rating": 6.72,
-    "games": 10,
+    "avg_rating": 6.74,
+    "games": 11,
     "ratings": [
+      {
+        "rating": 6.9,
+        "opponent": "Galatasaray"
+      },
       {
         "rating": 6.1,
         "opponent": "Ba\u015fak\u015fehir FK"
@@ -31182,9 +31764,13 @@ window.playerData = [
   {
     "name": "Mortadha Ben Ouanes",
     "team": "Kas\u0131mpa\u015fa",
-    "avg_rating": 6.95,
-    "games": 22,
+    "avg_rating": 6.93,
+    "games": 23,
     "ratings": [
+      {
+        "rating": 6.5,
+        "opponent": "Antalyaspor"
+      },
       {
         "rating": 6.8,
         "opponent": "Gen\u00e7lerbirli\u011fi"
@@ -31318,9 +31904,13 @@ window.playerData = [
   {
     "name": "Morten Bj\u00f8rlo",
     "team": "Konyaspor",
-    "avg_rating": 7.1,
-    "games": 1,
+    "avg_rating": 6.65,
+    "games": 2,
     "ratings": [
+      {
+        "rating": 6.2,
+        "opponent": "Ey\u00fcpspor"
+      },
       {
         "rating": 7.1,
         "opponent": "Kayserispor"
@@ -31946,8 +32536,8 @@ window.playerData = [
   {
     "name": "Mustafa Eskihella\u00e7",
     "team": "Trabzonspor",
-    "avg_rating": 6.97,
-    "games": 40,
+    "avg_rating": 6.98,
+    "games": 41,
     "ratings": [
       {
         "rating": 6.7,
@@ -31992,6 +32582,10 @@ window.playerData = [
       {
         "rating": 6.7,
         "opponent": "Konyaspor"
+      },
+      {
+        "rating": 7.2,
+        "opponent": "Kocaelispor"
       },
       {
         "rating": 5.7,
@@ -32250,9 +32844,13 @@ window.playerData = [
   {
     "name": "Naz\u0131m Sangar\u00e9",
     "team": "G\u00f6ztepe",
-    "avg_rating": 6.95,
-    "games": 4,
+    "avg_rating": 7.1,
+    "games": 5,
     "ratings": [
+      {
+        "rating": 7.7,
+        "opponent": "Galatasaray"
+      },
       {
         "rating": 7.1,
         "opponent": "Alanyaspor"
@@ -32286,9 +32884,13 @@ window.playerData = [
   {
     "name": "Nicholas Opoku",
     "team": "Kas\u0131mpa\u015fa",
-    "avg_rating": 6.87,
-    "games": 24,
+    "avg_rating": 6.88,
+    "games": 25,
     "ratings": [
+      {
+        "rating": 7.2,
+        "opponent": "Antalyaspor"
+      },
       {
         "rating": 6.4,
         "opponent": "Galatasaray"
@@ -32453,9 +33055,9 @@ window.playerData = [
   },
   {
     "name": "Nihad Mujaki\u0107",
-    "team": "Ey\u00fcpspor",
-    "avg_rating": 6.62,
-    "games": 13,
+    "team": "Gaziantep",
+    "avg_rating": 6.64,
+    "games": 14,
     "ratings": [
       {
         "rating": 6.3,
@@ -32508,6 +33110,10 @@ window.playerData = [
       {
         "rating": 6.4,
         "opponent": "Be\u015fikta\u015f JK"
+      },
+      {
+        "rating": 6.9,
+        "opponent": "Galatasaray"
       }
     ]
   },
@@ -32614,9 +33220,13 @@ window.playerData = [
   {
     "name": "Nikola Storm",
     "team": "Antalyaspor",
-    "avg_rating": 6.71,
-    "games": 11,
+    "avg_rating": 6.72,
+    "games": 12,
     "ratings": [
+      {
+        "rating": 6.8,
+        "opponent": "Kas\u0131mpa\u015fa"
+      },
       {
         "rating": 6.5,
         "opponent": "Galatasaray"
@@ -32682,9 +33292,13 @@ window.playerData = [
   {
     "name": "Novatus Miroshi",
     "team": "G\u00f6ztepe",
-    "avg_rating": 7.01,
-    "games": 14,
+    "avg_rating": 7.05,
+    "games": 15,
     "ratings": [
+      {
+        "rating": 7.6,
+        "opponent": "\u00c7aykur Rizespor"
+      },
       {
         "rating": 6.9,
         "opponent": "Gaziantep FK"
@@ -32834,9 +33448,13 @@ window.playerData = [
   {
     "name": "Nuno Lima",
     "team": "Alanyaspor",
-    "avg_rating": 6.95,
-    "games": 32,
+    "avg_rating": 6.93,
+    "games": 33,
     "ratings": [
+      {
+        "rating": 6.3,
+        "opponent": "Fenerbah\u00e7e"
+      },
       {
         "rating": 7.2,
         "opponent": "Fatih Karag\u00fcmr\u00fck"
@@ -32990,9 +33608,17 @@ window.playerData = [
   {
     "name": "N\u00e9lson Semedo",
     "team": "Fenerbah\u00e7e",
-    "avg_rating": 6.94,
-    "games": 18,
+    "avg_rating": 6.9,
+    "games": 20,
     "ratings": [
+      {
+        "rating": 6.7,
+        "opponent": "Aston Villa"
+      },
+      {
+        "rating": 6.3,
+        "opponent": "Alanyaspor"
+      },
       {
         "rating": 7.0,
         "opponent": "Ba\u015fak\u015fehir FK"
@@ -33198,9 +33824,13 @@ window.playerData = [
   {
     "name": "Og\u00fcn \u00d6z\u00e7i\u00e7ek",
     "team": "Gaziantep",
-    "avg_rating": 6.73,
-    "games": 15,
+    "avg_rating": 6.74,
+    "games": 16,
     "ratings": [
+      {
+        "rating": 7.0,
+        "opponent": "Galatasaray"
+      },
       {
         "rating": 6.4,
         "opponent": "G\u00f6ztepe"
@@ -33267,8 +33897,12 @@ window.playerData = [
     "name": "Okan Kocuk",
     "team": "Samsunspor",
     "avg_rating": 6.3,
-    "games": 6,
+    "games": 7,
     "ratings": [
+      {
+        "rating": 6.3,
+        "opponent": "Gen\u00e7lerbirli\u011fi"
+      },
       {
         "rating": 5.9,
         "opponent": "Fenerbah\u00e7e"
@@ -33634,9 +34268,13 @@ window.playerData = [
   {
     "name": "Oleksandr Zubkov",
     "team": "Trabzonspor",
-    "avg_rating": 7.4,
-    "games": 28,
+    "avg_rating": 7.39,
+    "games": 29,
     "ratings": [
+      {
+        "rating": 7.0,
+        "opponent": "Kocaelispor"
+      },
       {
         "rating": 6.8,
         "opponent": "Galatasaray"
@@ -34166,9 +34804,13 @@ window.playerData = [
   {
     "name": "Orkun K\u00f6k\u00e7\u00fc",
     "team": "Be\u015fikta\u015f",
-    "avg_rating": 7.23,
-    "games": 18,
+    "avg_rating": 7.29,
+    "games": 19,
     "ratings": [
+      {
+        "rating": 8.4,
+        "opponent": "Kayserispor"
+      },
       {
         "rating": 7.1,
         "opponent": "\u00c7aykur Rizespor"
@@ -34562,9 +35204,13 @@ window.playerData = [
   {
     "name": "O\u011fulcan \u00dclg\u00fcn",
     "team": "Konyaspor",
-    "avg_rating": 6.96,
-    "games": 24,
+    "avg_rating": 6.95,
+    "games": 25,
     "ratings": [
+      {
+        "rating": 6.8,
+        "opponent": "Samsunspor"
+      },
       {
         "rating": 8.7,
         "opponent": "Trabzonspor"
@@ -35334,9 +35980,13 @@ window.playerData = [
   {
     "name": "Pedro Pereira",
     "team": "Gen\u00e7lerbirli\u011fi",
-    "avg_rating": 6.53,
-    "games": 16,
+    "avg_rating": 6.54,
+    "games": 17,
     "ratings": [
+      {
+        "rating": 6.6,
+        "opponent": "Samsunspor"
+      },
       {
         "rating": 6.1,
         "opponent": "Trabzonspor"
@@ -35594,9 +36244,13 @@ window.playerData = [
   {
     "name": "Qazim Laci",
     "team": "\u00c7aykur Rizespor",
-    "avg_rating": 6.87,
-    "games": 15,
+    "avg_rating": 6.89,
+    "games": 16,
     "ratings": [
+      {
+        "rating": 7.3,
+        "opponent": "G\u00f6ztepe"
+      },
       {
         "rating": 6.7,
         "opponent": "Be\u015fikta\u015f JK"
@@ -35878,9 +36532,13 @@ window.playerData = [
   {
     "name": "Ramazan Civelek",
     "team": "Kayserispor",
-    "avg_rating": 6.62,
-    "games": 28,
+    "avg_rating": 6.66,
+    "games": 29,
     "ratings": [
+      {
+        "rating": 7.6,
+        "opponent": "Be\u015fikta\u015f JK"
+      },
       {
         "rating": 6.2,
         "opponent": "Konyaspor"
@@ -36194,9 +36852,13 @@ window.playerData = [
   {
     "name": "Ricardo Velho",
     "team": "Gen\u00e7lerbirli\u011fi",
-    "avg_rating": 7.22,
-    "games": 5,
+    "avg_rating": 7.12,
+    "games": 6,
     "ratings": [
+      {
+        "rating": 6.6,
+        "opponent": "Samsunspor"
+      },
       {
         "rating": 6.7,
         "opponent": "Trabzonspor"
@@ -36582,9 +37244,13 @@ window.playerData = [
   {
     "name": "Rigoberto Rivas",
     "team": "Kocaelispor",
-    "avg_rating": 6.93,
-    "games": 12,
+    "avg_rating": 6.88,
+    "games": 13,
     "ratings": [
+      {
+        "rating": 6.2,
+        "opponent": "Trabzonspor"
+      },
       {
         "rating": 6.8,
         "opponent": "Ey\u00fcpspor"
@@ -36766,9 +37432,17 @@ window.playerData = [
   {
     "name": "Roland Sallai",
     "team": "Galatasaray",
-    "avg_rating": 7.19,
-    "games": 32,
+    "avg_rating": 7.15,
+    "games": 34,
     "ratings": [
+      {
+        "rating": 6.9,
+        "opponent": "Atl\u00e9tico Madrid"
+      },
+      {
+        "rating": 6.2,
+        "opponent": "Gaziantep FK"
+      },
       {
         "rating": 6.3,
         "opponent": "Fenerbah\u00e7e"
@@ -36902,9 +37576,13 @@ window.playerData = [
   {
     "name": "Ruan",
     "team": "Alanyaspor",
-    "avg_rating": 6.93,
-    "games": 10,
+    "avg_rating": 6.89,
+    "games": 11,
     "ratings": [
+      {
+        "rating": 6.5,
+        "opponent": "Fenerbah\u00e7e"
+      },
       {
         "rating": 7.8,
         "opponent": "Fatih Karag\u00fcmr\u00fck"
@@ -37194,9 +37872,13 @@ window.playerData = [
   {
     "name": "R\u0131dvan Y\u0131lmaz",
     "team": "Be\u015fikta\u015f",
-    "avg_rating": 6.64,
-    "games": 7,
+    "avg_rating": 6.76,
+    "games": 8,
     "ratings": [
+      {
+        "rating": 7.6,
+        "opponent": "Kayserispor"
+      },
       {
         "rating": 7.2,
         "opponent": "\u00c7aykur Rizespor"
@@ -37522,9 +38204,13 @@ window.playerData = [
   {
     "name": "Samet Akayd\u0131n",
     "team": "\u00c7aykur Rizespor",
-    "avg_rating": 6.98,
-    "games": 24,
+    "avg_rating": 6.94,
+    "games": 25,
     "ratings": [
+      {
+        "rating": 6.0,
+        "opponent": "G\u00f6ztepe"
+      },
       {
         "rating": 6.7,
         "opponent": "Be\u015fikta\u015f JK"
@@ -37768,11 +38454,27 @@ window.playerData = [
     ]
   },
   {
+    "name": "Sander Svendsen",
+    "team": "Konyaspor",
+    "avg_rating": 6.5,
+    "games": 1,
+    "ratings": [
+      {
+        "rating": 6.5,
+        "opponent": "Ey\u00fcpspor"
+      }
+    ]
+  },
+  {
     "name": "Sander van de Streek",
     "team": "Antalyaspor",
-    "avg_rating": 6.76,
-    "games": 30,
+    "avg_rating": 6.74,
+    "games": 31,
     "ratings": [
+      {
+        "rating": 6.2,
+        "opponent": "Kas\u0131mpa\u015fa"
+      },
       {
         "rating": 6.3,
         "opponent": "Kocaelispor"
@@ -38006,9 +38708,13 @@ window.playerData = [
   {
     "name": "Sekou Koita",
     "team": "Gen\u00e7lerbirli\u011fi",
-    "avg_rating": 7.05,
-    "games": 8,
+    "avg_rating": 7.09,
+    "games": 9,
     "ratings": [
+      {
+        "rating": 7.4,
+        "opponent": "Samsunspor"
+      },
       {
         "rating": 8.1,
         "opponent": "Trabzonspor"
@@ -38843,8 +39549,12 @@ window.playerData = [
     "name": "Soner Dikmen",
     "team": "Antalyaspor",
     "avg_rating": 6.74,
-    "games": 26,
+    "games": 27,
     "ratings": [
+      {
+        "rating": 6.8,
+        "opponent": "Kas\u0131mpa\u015fa"
+      },
       {
         "rating": 6.7,
         "opponent": "Kocaelispor"
@@ -38954,9 +39664,13 @@ window.playerData = [
   {
     "name": "Soner G\u00f6n\u00fcl",
     "team": "Samsunspor",
-    "avg_rating": 6.76,
-    "games": 5,
+    "avg_rating": 6.8,
+    "games": 6,
     "ratings": [
+      {
+        "rating": 7.0,
+        "opponent": "Gen\u00e7lerbirli\u011fi"
+      },
       {
         "rating": 6.8,
         "opponent": "G\u00f6ztepe"
@@ -39074,9 +39788,13 @@ window.playerData = [
   {
     "name": "Stefano Denswil",
     "team": "Kayserispor",
-    "avg_rating": 6.72,
-    "games": 15,
+    "avg_rating": 6.73,
+    "games": 16,
     "ratings": [
+      {
+        "rating": 6.9,
+        "opponent": "Be\u015fikta\u015f JK"
+      },
       {
         "rating": 6.7,
         "opponent": "Konyaspor"
@@ -39238,9 +39956,13 @@ window.playerData = [
   {
     "name": "Taha Alt\u0131karde\u015f",
     "team": "G\u00f6ztepe",
-    "avg_rating": 6.96,
-    "games": 14,
+    "avg_rating": 6.95,
+    "games": 15,
     "ratings": [
+      {
+        "rating": 6.7,
+        "opponent": "\u00c7aykur Rizespor"
+      },
       {
         "rating": 6.7,
         "opponent": "Samsunspor"
@@ -39302,9 +40024,13 @@ window.playerData = [
   {
     "name": "Taha \u015eahin",
     "team": "\u00c7aykur Rizespor",
-    "avg_rating": 7.02,
-    "games": 25,
+    "avg_rating": 6.97,
+    "games": 26,
     "ratings": [
+      {
+        "rating": 5.9,
+        "opponent": "G\u00f6ztepe"
+      },
       {
         "rating": 6.3,
         "opponent": "Konyaspor"
@@ -39408,6 +40134,18 @@ window.playerData = [
     ]
   },
   {
+    "name": "Tahsin B\u00fclb\u00fcl",
+    "team": "Samsunspor",
+    "avg_rating": 6.4,
+    "games": 1,
+    "ratings": [
+      {
+        "rating": 6.4,
+        "opponent": "Gen\u00e7lerbirli\u011fi"
+      }
+    ]
+  },
+  {
     "name": "Talha Sariarslan",
     "team": "Kayserispor",
     "avg_rating": 6.6,
@@ -39422,9 +40160,13 @@ window.playerData = [
   {
     "name": "Talha \u00dclvan",
     "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.98,
-    "games": 9,
+    "avg_rating": 7.09,
+    "games": 10,
     "ratings": [
+      {
+        "rating": 8.1,
+        "opponent": "Konyaspor"
+      },
       {
         "rating": 7.3,
         "opponent": "Band\u0131rmaspor"
@@ -39466,9 +40208,13 @@ window.playerData = [
   {
     "name": "Tammy Abraham",
     "team": "Be\u015fikta\u015f",
-    "avg_rating": 7.06,
-    "games": 17,
+    "avg_rating": 7.01,
+    "games": 18,
     "ratings": [
+      {
+        "rating": 6.1,
+        "opponent": "Kayserispor"
+      },
       {
         "rating": 6.3,
         "opponent": "\u00c7aykur Rizespor"
@@ -39730,8 +40476,8 @@ window.playerData = [
   {
     "name": "Tayfur Bing\u00f6l",
     "team": "Kocaelispor",
-    "avg_rating": 6.94,
-    "games": 29,
+    "avg_rating": 6.92,
+    "games": 30,
     "ratings": [
       {
         "rating": 7.2,
@@ -39796,6 +40542,10 @@ window.playerData = [
       {
         "rating": 7.3,
         "opponent": "Antalyaspor"
+      },
+      {
+        "rating": 6.3,
+        "opponent": "Trabzonspor"
       },
       {
         "rating": 7.1,
@@ -39960,10 +40710,22 @@ window.playerData = [
     ]
   },
   {
+    "name": "Ta\u015fk\u0131n Ilter",
+    "team": "Ey\u00fcpspor",
+    "avg_rating": 6.2,
+    "games": 1,
+    "ratings": [
+      {
+        "rating": 6.2,
+        "opponent": "Konyaspor"
+      }
+    ]
+  },
+  {
     "name": "Thalisson Kelven",
     "team": "Gen\u00e7lerbirli\u011fi",
     "avg_rating": 6.83,
-    "games": 37,
+    "games": 38,
     "ratings": [
       {
         "rating": 6.8,
@@ -40060,6 +40822,10 @@ window.playerData = [
       {
         "rating": 7.1,
         "opponent": "Be\u015fikta\u015f JK"
+      },
+      {
+        "rating": 6.7,
+        "opponent": "Samsunspor"
       },
       {
         "rating": 5.8,
@@ -40211,8 +40977,12 @@ window.playerData = [
     "name": "Tim Jabol-Folcarelli",
     "team": "Trabzonspor",
     "avg_rating": 6.89,
-    "games": 19,
+    "games": 20,
     "ratings": [
+      {
+        "rating": 6.9,
+        "opponent": "Kocaelispor"
+      },
       {
         "rating": 6.4,
         "opponent": "Galatasaray"
@@ -40294,9 +41064,13 @@ window.playerData = [
   {
     "name": "Tom Dele-Bashiru",
     "team": "Gen\u00e7lerbirli\u011fi",
-    "avg_rating": 6.88,
-    "games": 10,
+    "avg_rating": 6.9,
+    "games": 11,
     "ratings": [
+      {
+        "rating": 7.1,
+        "opponent": "Samsunspor"
+      },
       {
         "rating": 6.4,
         "opponent": "Trabzonspor"
@@ -40434,9 +41208,13 @@ window.playerData = [
   {
     "name": "Uchenna Ogundu",
     "team": "Alanyaspor",
-    "avg_rating": 6.76,
-    "games": 10,
+    "avg_rating": 6.73,
+    "games": 11,
     "ratings": [
+      {
+        "rating": 6.4,
+        "opponent": "Fenerbah\u00e7e"
+      },
       {
         "rating": 6.2,
         "opponent": "Kayserispor"
@@ -40483,8 +41261,12 @@ window.playerData = [
     "name": "Ui-Jo Hwang",
     "team": "Alanyaspor",
     "avg_rating": 6.64,
-    "games": 21,
+    "games": 22,
     "ratings": [
+      {
+        "rating": 6.6,
+        "opponent": "Fenerbah\u00e7e"
+      },
       {
         "rating": 7.1,
         "opponent": "Fatih Karag\u00fcmr\u00fck"
@@ -40574,9 +41356,13 @@ window.playerData = [
   {
     "name": "Umut Bozok",
     "team": "Ey\u00fcpspor",
-    "avg_rating": 6.75,
-    "games": 11,
+    "avg_rating": 6.71,
+    "games": 12,
     "ratings": [
+      {
+        "rating": 6.3,
+        "opponent": "Konyaspor"
+      },
       {
         "rating": 6.4,
         "opponent": "Fenerbah\u00e7e"
@@ -40766,9 +41552,13 @@ window.playerData = [
   {
     "name": "Umut Nayir",
     "team": "Konyaspor",
-    "avg_rating": 7.23,
-    "games": 23,
+    "avg_rating": 7.2,
+    "games": 24,
     "ratings": [
+      {
+        "rating": 6.7,
+        "opponent": "Ey\u00fcpspor"
+      },
       {
         "rating": 7.7,
         "opponent": "Kayserispor"
@@ -40866,9 +41656,13 @@ window.playerData = [
   {
     "name": "U\u011furcan Yaz\u011f\u0131l\u0131",
     "team": "Konyaspor",
-    "avg_rating": 6.86,
-    "games": 30,
+    "avg_rating": 6.87,
+    "games": 31,
     "ratings": [
+      {
+        "rating": 7.2,
+        "opponent": "Ey\u00fcpspor"
+      },
       {
         "rating": 7.1,
         "opponent": "Kayserispor"
@@ -40995,8 +41789,16 @@ window.playerData = [
     "name": "U\u011furcan \u00c7ak\u0131r",
     "team": "Trabzonspor",
     "avg_rating": 7.27,
-    "games": 35,
+    "games": 37,
     "ratings": [
+      {
+        "rating": 7.8,
+        "opponent": "Atl\u00e9tico Madrid"
+      },
+      {
+        "rating": 7.0,
+        "opponent": "Gaziantep FK"
+      },
       {
         "rating": 7.2,
         "opponent": "Trabzonspor"
@@ -41154,9 +41956,13 @@ window.playerData = [
   {
     "name": "Veysel Sar\u0131",
     "team": "Antalyaspor",
-    "avg_rating": 6.87,
-    "games": 34,
+    "avg_rating": 6.89,
+    "games": 35,
     "ratings": [
+      {
+        "rating": 7.7,
+        "opponent": "Kas\u0131mpa\u015fa"
+      },
       {
         "rating": 6.2,
         "opponent": "Kocaelispor"
@@ -41318,9 +42124,13 @@ window.playerData = [
   {
     "name": "Victor Osimhen",
     "team": "Galatasaray",
-    "avg_rating": 7.68,
-    "games": 36,
+    "avg_rating": 7.66,
+    "games": 37,
     "ratings": [
+      {
+        "rating": 6.9,
+        "opponent": "Atl\u00e9tico Madrid"
+      },
       {
         "rating": 7.4,
         "opponent": "Antalyaspor"
@@ -41526,9 +42336,13 @@ window.playerData = [
   {
     "name": "V\u00e1clav \u010cern\u00fd",
     "team": "Be\u015fikta\u015f",
-    "avg_rating": 6.92,
-    "games": 12,
+    "avg_rating": 6.91,
+    "games": 13,
     "ratings": [
+      {
+        "rating": 6.7,
+        "opponent": "Kayserispor"
+      },
       {
         "rating": 6.7,
         "opponent": "\u00c7aykur Rizespor"
@@ -41582,9 +42396,13 @@ window.playerData = [
   {
     "name": "Wagner Pina",
     "team": "Trabzonspor",
-    "avg_rating": 6.99,
-    "games": 15,
+    "avg_rating": 6.98,
+    "games": 16,
     "ratings": [
+      {
+        "rating": 6.8,
+        "opponent": "Kocaelispor"
+      },
       {
         "rating": 6.2,
         "opponent": "Galatasaray"
@@ -41846,9 +42664,13 @@ window.playerData = [
   {
     "name": "Yahia Fofana",
     "team": "\u00c7aykur Rizespor",
-    "avg_rating": 6.95,
-    "games": 10,
+    "avg_rating": 6.94,
+    "games": 11,
     "ratings": [
+      {
+        "rating": 6.8,
+        "opponent": "G\u00f6ztepe"
+      },
       {
         "rating": 6.6,
         "opponent": "Ey\u00fcpspor"
@@ -41893,9 +42715,9 @@ window.playerData = [
   },
   {
     "name": "Yal\u00e7\u0131n Kayan",
-    "team": "Ey\u00fcpspor",
-    "avg_rating": 6.73,
-    "games": 23,
+    "team": "Samsunspor",
+    "avg_rating": 6.72,
+    "games": 24,
     "ratings": [
       {
         "rating": 6.4,
@@ -41988,6 +42810,10 @@ window.playerData = [
       {
         "rating": 6.7,
         "opponent": "Trabzonspor"
+      },
+      {
+        "rating": 6.7,
+        "opponent": "Gen\u00e7lerbirli\u011fi"
       }
     ]
   },
@@ -42106,9 +42932,13 @@ window.playerData = [
   {
     "name": "Yhoan Andzouana",
     "team": "Konyaspor",
-    "avg_rating": 6.82,
-    "games": 16,
+    "avg_rating": 6.8,
+    "games": 17,
     "ratings": [
+      {
+        "rating": 6.5,
+        "opponent": "Ey\u00fcpspor"
+      },
       {
         "rating": 7.1,
         "opponent": "Kayserispor"
@@ -42322,9 +43152,13 @@ window.playerData = [
   {
     "name": "Youssef A\u00eft Bennasser",
     "team": "Samsunspor",
-    "avg_rating": 6.96,
-    "games": 27,
+    "avg_rating": 6.99,
+    "games": 28,
     "ratings": [
+      {
+        "rating": 7.8,
+        "opponent": "Be\u015fikta\u015f JK"
+      },
       {
         "rating": 7.4,
         "opponent": "Konyaspor"
@@ -42574,9 +43408,17 @@ window.playerData = [
   {
     "name": "Yunus Akg\u00fcn",
     "team": "Galatasaray",
-    "avg_rating": 7.4,
-    "games": 32,
+    "avg_rating": 7.33,
+    "games": 34,
     "ratings": [
+      {
+        "rating": 6.7,
+        "opponent": "Atl\u00e9tico Madrid"
+      },
+      {
+        "rating": 5.8,
+        "opponent": "Gaziantep FK"
+      },
       {
         "rating": 6.2,
         "opponent": "Fenerbah\u00e7e"
@@ -42710,9 +43552,13 @@ window.playerData = [
   {
     "name": "Yunus Emre \u00c7ift",
     "team": "Samsunspor",
-    "avg_rating": 6.99,
-    "games": 13,
+    "avg_rating": 6.96,
+    "games": 14,
     "ratings": [
+      {
+        "rating": 6.5,
+        "opponent": "Gen\u00e7lerbirli\u011fi"
+      },
       {
         "rating": 7.2,
         "opponent": "Fenerbah\u00e7e"
@@ -42966,9 +43812,13 @@ window.playerData = [
   {
     "name": "Yusuf Kabadayi",
     "team": "Gaziantep",
-    "avg_rating": 6.55,
-    "games": 2,
+    "avg_rating": 6.47,
+    "games": 3,
     "ratings": [
+      {
+        "rating": 6.3,
+        "opponent": "Galatasaray"
+      },
       {
         "rating": 7.0,
         "opponent": "Alanyaspor"
@@ -43202,9 +44052,13 @@ window.playerData = [
   {
     "name": "Zafer G\u00f6rgen",
     "team": "Gaziantep",
-    "avg_rating": 6.9,
-    "games": 7,
+    "avg_rating": 6.84,
+    "games": 8,
     "ratings": [
+      {
+        "rating": 6.4,
+        "opponent": "Galatasaray"
+      },
       {
         "rating": 5.8,
         "opponent": "Ba\u015fak\u015fehir FK"
@@ -43238,9 +44092,13 @@ window.playerData = [
   {
     "name": "Zeki Yavru",
     "team": "Samsunspor",
-    "avg_rating": 7.07,
-    "games": 45,
+    "avg_rating": 7.08,
+    "games": 46,
     "ratings": [
+      {
+        "rating": 7.6,
+        "opponent": "Gen\u00e7lerbirli\u011fi"
+      },
       {
         "rating": 6.5,
         "opponent": "Fenerbah\u00e7e"
@@ -43746,9 +44604,13 @@ window.playerData = [
   {
     "name": "\u00dcmit Akda\u011f",
     "team": "Alanyaspor",
-    "avg_rating": 7.1,
-    "games": 13,
+    "avg_rating": 7.07,
+    "games": 14,
     "ratings": [
+      {
+        "rating": 6.7,
+        "opponent": "Fenerbah\u00e7e"
+      },
       {
         "rating": 6.9,
         "opponent": "Fatih Karag\u00fcmr\u00fck"
@@ -43806,9 +44668,13 @@ window.playerData = [
   {
     "name": "\u0130lkay G\u00fcndo\u011fan",
     "team": "Galatasaray",
-    "avg_rating": 7.11,
-    "games": 12,
+    "avg_rating": 7.12,
+    "games": 13,
     "ratings": [
+      {
+        "rating": 7.2,
+        "opponent": "Gaziantep FK"
+      },
       {
         "rating": 7.2,
         "opponent": "Trabzonspor"
@@ -43945,9 +44811,9 @@ window.playerData = [
   },
   {
     "name": "\u0130rfan Can Kahveci",
-    "team": "Fenerbah\u00e7e",
-    "avg_rating": 7.27,
-    "games": 6,
+    "team": "Kas\u0131mpa\u015fa",
+    "avg_rating": 7.21,
+    "games": 7,
     "ratings": [
       {
         "rating": 6.5,
@@ -43972,6 +44838,10 @@ window.playerData = [
       {
         "rating": 7.5,
         "opponent": "Bodrum FK"
+      },
+      {
+        "rating": 6.9,
+        "opponent": "Antalyaspor"
       }
     ]
   },
@@ -44014,9 +44884,17 @@ window.playerData = [
   {
     "name": "\u0130smail Y\u00fcksek",
     "team": "Fenerbah\u00e7e",
-    "avg_rating": 7.17,
-    "games": 20,
+    "avg_rating": 7.22,
+    "games": 22,
     "ratings": [
+      {
+        "rating": 8.8,
+        "opponent": "Aston Villa"
+      },
+      {
+        "rating": 6.6,
+        "opponent": "Alanyaspor"
+      },
       {
         "rating": 7.2,
         "opponent": "Galatasaray"
@@ -44102,9 +44980,13 @@ window.playerData = [
   {
     "name": "\u013dubom\u00edr \u0160atka",
     "team": "Samsunspor",
-    "avg_rating": 6.85,
-    "games": 41,
+    "avg_rating": 6.84,
+    "games": 42,
     "ratings": [
+      {
+        "rating": 6.6,
+        "opponent": "Gen\u00e7lerbirli\u011fi"
+      },
       {
         "rating": 6.3,
         "opponent": "Fenerbah\u00e7e"
@@ -44274,9 +45156,13 @@ window.playerData = [
   {
     "name": "\u017dan \u017du\u017eek",
     "team": "Gen\u00e7lerbirli\u011fi",
-    "avg_rating": 7.01,
-    "games": 37,
+    "avg_rating": 7.02,
+    "games": 38,
     "ratings": [
+      {
+        "rating": 7.7,
+        "opponent": "Samsunspor"
+      },
       {
         "rating": 5.9,
         "opponent": "Trabzonspor"
