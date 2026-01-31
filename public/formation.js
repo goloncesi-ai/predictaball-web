@@ -120,32 +120,48 @@ function addPlayerTooltip(playerNode, player) {
     playerNode.appendChild(tooltip);
 }
 
-// Main render function
+// Main render function - shows pitches individually per team
 function renderPitchView(team1Data, team2Data) {
-    if (!team1Data || !team2Data) {
-        console.error('Missing team data');
-        return;
-    }
-
-    // Show pitch columns
     const pitch1Wrapper = document.getElementById('pitch-team1-wrapper');
     const pitch2Wrapper = document.getElementById('pitch-team2-wrapper');
-    if (pitch1Wrapper) pitch1Wrapper.classList.remove('hidden');
-    if (pitch2Wrapper) pitch2Wrapper.classList.remove('hidden');
 
-    // Update team info
-    document.getElementById('pitch-team1-name').textContent = team1Data.name || '-';
-    document.getElementById('pitch-team1-formation').textContent = team1Data.formation || '-';
-    document.getElementById('pitch-team2-name').textContent = team2Data.name || '-';
-    document.getElementById('pitch-team2-formation').textContent = team2Data.formation || '-';
+    // Team 1 (Home) - show if data available
+    if (team1Data && team1Data.formation) {
+        if (pitch1Wrapper) pitch1Wrapper.classList.remove('hidden');
 
-    // Get positions for each formation
-    const team1Positions = getFormationPositions(team1Data.formation);
-    const team2Positions = getFormationPositions(team2Data.formation);
+        // Update team info with logo from TEAM_LOGOS (defined in app.js)
+        const teamLogo = (typeof TEAM_LOGOS !== 'undefined' && TEAM_LOGOS[team1Data.name]) || '🏠';
+        const badgeElem = document.querySelector('#pitch-team1-wrapper .team-badge');
+        if (badgeElem) badgeElem.textContent = teamLogo;
 
-    // Render players
-    renderTeamPlayers('team1-players', team1Positions, team1Data.players, 'home', '#3b82f6');
-    renderTeamPlayers('team2-players', team2Positions, team2Data.players, 'away', '#f43f5e');
+        document.getElementById('pitch-team1-name').textContent = team1Data.name || '-';
+        document.getElementById('pitch-team1-formation').textContent = team1Data.formation || '-';
+
+        // Get positions and render
+        const team1Positions = getFormationPositions(team1Data.formation);
+        renderTeamPlayers('team1-players', team1Positions, team1Data.players, 'home', '#3b82f6');
+    } else {
+        if (pitch1Wrapper) pitch1Wrapper.classList.add('hidden');
+    }
+
+    // Team 2 (Away) - show if data available
+    if (team2Data && team2Data.formation) {
+        if (pitch2Wrapper) pitch2Wrapper.classList.remove('hidden');
+
+        // Update team info with logo from TEAM_LOGOS
+        const teamLogo = (typeof TEAM_LOGOS !== 'undefined' && TEAM_LOGOS[team2Data.name]) || '✈️';
+        const badgeElem = document.querySelector('#pitch-team2-wrapper .team-badge');
+        if (badgeElem) badgeElem.textContent = teamLogo;
+
+        document.getElementById('pitch-team2-name').textContent = team2Data.name || '-';
+        document.getElementById('pitch-team2-formation').textContent = team2Data.formation || '-';
+
+        // Get positions and render
+        const team2Positions = getFormationPositions(team2Data.formation);
+        renderTeamPlayers('team2-players', team2Positions, team2Data.players, 'away', '#f43f5e');
+    } else {
+        if (pitch2Wrapper) pitch2Wrapper.classList.add('hidden');
+    }
 }
 
 // Hide pitch view

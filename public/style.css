@@ -2712,6 +2712,7 @@ body {
         padding: 1rem;
     }
 }
+
 /* ============================================================================
 
 /* ============================================================================
@@ -2842,7 +2843,7 @@ body {
     pointer-events: none;
     user-select: none;
     font-weight: 500;
-    text-shadow: 0 0 2px rgba(0,0,0,0.8);
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
 }
 
 /* Team Info */
@@ -2870,7 +2871,7 @@ body {
     .dual-pitch-layout {
         gap: 20px;
     }
-    
+
     .single-pitch-wrapper {
         max-width: 350px;
     }
@@ -2890,7 +2891,7 @@ body {
         flex-direction: column;
         gap: 30px;
     }
-    
+
     .single-pitch-wrapper {
         max-width: 100%;
         width: 100%;
@@ -2901,7 +2902,7 @@ body {
         padding: 10px 0;
         font-size: 1.2rem;
     }
-    
+
     .player-name {
         font-size: 1.8px;
     }
@@ -2922,6 +2923,22 @@ body {
     width: 100%;
     max-width: 1600px;
     margin: 0 auto;
+}
+
+/* When both pitches hidden, center the config */
+.simulation-layout-grid:has(.pitch-column.hidden:first-child):has(.pitch-column.hidden:last-child) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+}
+
+/* When only left pitch hidden */
+.simulation-layout-grid:has(.pitch-column.hidden:first-child):not(:has(.pitch-column.hidden:last-child)) {
+    grid-template-columns: auto 1fr;
+}
+
+/* When only right pitch hidden */
+.simulation-layout-grid:has(.pitch-column.hidden:last-child):not(:has(.pitch-column.hidden:first-child)) {
+    grid-template-columns: 1fr auto;
 }
 
 .pitch-column {
@@ -2946,13 +2963,13 @@ body {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     .pitch-column {
         max-width: 100%;
     }
-    
+
     .sim-config {
-        order: -1; /* Put match setup first on mobile */
+        order: -1;
+        /* Put match setup first on mobile */
     }
 }
-
