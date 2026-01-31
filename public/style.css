@@ -2712,3 +2712,178 @@ body {
         padding: 1rem;
     }
 }
+/* ============================================================================
+   FORMATION PITCH VISUALIZATION
+   ============================================================================ */
+
+.pitch-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+.pitch-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.pitch-view {
+    width: 100%;
+    aspect-ratio: 100 / 68;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--glass-shadow);
+}
+
+#pitch-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Team Players */
+.player-node {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.player-node:hover {
+    transform: scale(1.15);
+}
+
+.player-node:hover .player-circle {
+    filter: brightness(1.3);
+}
+
+.player-circle {
+    transition: all 0.2s ease;
+}
+
+.home-team .player-circle {
+    fill: #3b82f6;
+    stroke: rgba(255, 255, 255, 0.9);
+    stroke-width: 0.4;
+}
+
+.away-team .player-circle {
+    fill: #f43f5e;
+    stroke: rgba(255, 255, 255, 0.9);
+    stroke-width: 0.4;
+}
+
+.player-number {
+    fill: white;
+    font-size: 2.8px;
+    font-weight: 700;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    pointer-events: none;
+    user-select: none;
+}
+
+.player-name {
+    fill: white;
+    font-size: 2px;
+    text-anchor: middle;
+    opacity: 0.95;
+    pointer-events: none;
+    user-select: none;
+    font-weight: 500;
+    text-shadow: 0 0 2px rgba(0,0,0,0.8);
+}
+
+/* Team Info Panels */
+.team-info-panels {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.team-panel {
+    flex: 1;
+    text-align: center;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.home-panel {
+    border-left: 3px solid #3b82f6;
+}
+
+.away-panel {
+    border-left: 3px solid #f43f5e;
+}
+
+.team-badge {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.team-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--text-main);
+}
+
+.team-formation {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    font-family: 'Courier New', monospace;
+}
+
+.vs-divider {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    padding: 0 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .pitch-container {
+        padding: 15px;
+        margin: 20px auto;
+    }
+
+    .pitch-title {
+        font-size: 1.2rem;
+    }
+
+    .team-info-panels {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .vs-divider {
+        transform: rotate(90deg);
+        padding: 10px 0;
+    }
+    
+    .player-name {
+        font-size: 1.8px;
+    }
+}
+
+/* Hidden by default */
+.pitch-container.hidden {
+    display: none;
+}
+

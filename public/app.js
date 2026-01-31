@@ -320,6 +320,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Pitch Visualization (Formation) ---
+    async function updatePitchVisualization() {
+        const t1 = simTeam1Select?.value;
+        const t2 = simTeam2Select?.value;
+
+        if (!t1 || !t2) {
+            // Hide pitch if one or both teams not selected
+            if (typeof hidePitchView === 'function') {
+                hidePitchView();
+            }
+            return;
+        }
+
+        try {
+            // Fetch lineup data for both teams
+            const team1Data = await getTeamLatestLineup(t1);
+            const team2Data = await getTeamLatestLineup(t2);
+
+            // Render pitch
+            if (typeof renderPitchView === 'function') {
+                renderPitchView(team1Data, team2Data);
+            }
+        } catch (error) {
+            console.error('Error updating pitch visualization:', error);
+        }
+    }
+
+    // Add change listeners to sim team selects
+    if (simTeam1Select) {
+        simTeam1Select.addEventListener('change', updatePitchVisualization);
+    }
+    if (simTeam2Select) {
+        simTeam2Select.addEventListener('change', updatePitchVisualization);
+    }
+
     // --- Event Listeners (Simulation) ---
     if (btnRunSim) {
         btnRunSim.addEventListener('click', async () => {

@@ -251,6 +251,76 @@ def main():
     logging.info(f"✅ Success: {success_count}")
     logging.info(f"❌ Failed: {fail_count}")
     logging.info("=" * 60)
+    
+    # Step 2: Run ingest_data.py if scraping was successful
+    if success_count > 0:
+        logging.info("")
+        logging.info("=" * 60)
+        logging.info("Step 2: Updating website data (data.js)...")
+        logging.info("=" * 60)
+        
+        try:
+            import subprocess
+            ingest_script = BASE_DIR / "scripts" / "ingest_data.py"
+            result = subprocess.run(
+                ["/Library/Frameworks/Python.framework/Versions/3.10/bin/python3.10", str(ingest_script)],
+                cwd=str(BASE_DIR),
+                capture_output=True,
+                text=True,
+                timeout=300  # 5 minute timeout
+            )
+            
+            if result.returncode == 0:
+                logging.info("✅ Successfully updated data.js")
+                logging.info(result.stdout)
+            else:
+                logging.error(f"❌ Failed to update data.js: {result.stderr}")
+                return
+                
+        except Exception as e:
+            logging.error(f"❌ Error running ingest_data.py: {e}")
+            return
+        
+        # Step 3: Commit and push to GitHub
+        logging.info("")
+        logging.info("=" * 60)
+        logging.info("Step 3: Committing and pushing to GitHub...")
+        logging.info("=" * 60)
+        
+        try:
+            # Check if there are changes
+            result = subprocess.run(
+                ["git", "status", "--porcelain"],
+                cwd=str(BASE_DIR),
+                capture_output=True,
+                text=True
+            )
+            
+            if result.stdout.strip():
+                # Add all changes
+                subprocess.run(["git", "add", "Data/", "public/data.js"], cwd=str(BASE_DIR), check=True)
+                
+                # Commit
+                from datetime import datetime
+                commit_msg = f"🤖 Auto-update: Round {schedule.get('current_round', '?')} data ({datetime.now().strftime('%Y-%m-%d')})"
+                subprocess.run(["git", "commit", "-m", commit_msg], cwd=str(BASE_DIR), check=True)
+                
+                # Push
+                subprocess.run(["git", "push"], cwd=str(BASE_DIR), check=True)
+                
+                logging.info("✅ Successfully pushed to GitHub - Website will auto-deploy!")
+            else:
+                logging.info("ℹ️  No changes to commit")
+                
+        except subprocess.CalledProcessError as e:
+            logging.error(f"❌ Git error: {e}")
+        except Exception as e:
+            logging.error(f"❌ Error during commit/push: {e}")
+    
+    logging.info("")
+    logging.info("=" * 60)
+    logging.info("🎉 Full automation complete!")
+    logging.info("=" * 60)
 
 
 if __name__ == "__main__":
