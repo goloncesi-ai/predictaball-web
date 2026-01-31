@@ -263,76 +263,102 @@
                     <!-- Formation Pitch Visualization -->
                     <div id="lineup-pitch-container" class="pitch-container hidden">
                         <h3 class="pitch-title" data-i18n="pitch_lineup">Team Lineups</h3>
-                        <div class="pitch-view">
-                            <svg id="pitch-svg" viewBox="0 0 100 68" preserveAspectRatio="xMidYMid meet">
-                                <!-- Pitch Background -->
-                                <defs>
-                                    <linearGradient id="pitch-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" style="stop-color:#1a472a;stop-opacity:1" />
-                                        <stop offset="100%" style="stop-color:#2d5a3d;stop-opacity:1" />
-                                    </linearGradient>
-                                </defs>
 
-                                <!-- Pitch Base -->
-                                <rect class="pitch-bg" x="0" y="0" width="100" height="68"
-                                    fill="url(#pitch-gradient)" />
+                        <div class="dual-pitch-layout">
+                            <!-- Home Team Pitch -->
+                            <div class="single-pitch-wrapper home-pitch">
+                                <div class="pitch-header">
+                                    <div class="team-badge">🏠</div>
+                                    <h4 id="pitch-team1-name" class="team-name">-</h4>
+                                    <p id="pitch-team1-formation" class="team-formation">-</p>
+                                </div>
 
-                                <!-- Pitch Markings -->
-                                <g class="pitch-markings">
-                                    <!-- Outer Border -->
-                                    <rect x="0.5" y="0.5" width="99" height="67" fill="none"
-                                        stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
+                                <div class="pitch-view-single">
+                                    <svg id="pitch-svg-team1" viewBox="0 0 68 100" preserveAspectRatio="xMidYMid meet">
+                                        <defs>
+                                            <linearGradient id="pitch-gradient-1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" style="stop-color:#1a472a;stop-opacity:1" />
+                                                <stop offset="100%" style="stop-color:#2d5a3d;stop-opacity:1" />
+                                            </linearGradient>
+                                        </defs>
 
-                                    <!-- Center Line -->
-                                    <line x1="50" y1="0" x2="50" y2="68" stroke="rgba(255,255,255,0.4)"
-                                        stroke-width="0.3" />
+                                        <!-- Pitch Base -->
+                                        <rect class="pitch-bg" x="0" y="0" width="68" height="100"
+                                            fill="url(#pitch-gradient-1)" />
 
-                                    <!-- Center Circle -->
-                                    <circle cx="50" cy="34" r="9.15" fill="none" stroke="rgba(255,255,255,0.4)"
-                                        stroke-width="0.3" />
-                                    <circle cx="50" cy="34" r="0.5" fill="rgba(255,255,255,0.4)" />
+                                        <!-- Pitch Markings -->
+                                        <g class="pitch-markings">
+                                            <rect x="0.5" y="0.5" width="67" height="99" fill="none"
+                                                stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
+                                            <line x1="0" y1="50" x2="68" y2="50" stroke="rgba(255,255,255,0.4)"
+                                                stroke-width="0.3" />
+                                            <circle cx="34" cy="50" r="9.15" fill="none" stroke="rgba(255,255,255,0.4)"
+                                                stroke-width="0.3" />
+                                            <circle cx="34" cy="50" r="0.5" fill="rgba(255,255,255,0.4)" />
+                                            <rect x="13.85" y="0" width="40.3" height="16.5" fill="none"
+                                                stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
+                                            <rect x="13.85" y="83.5" width="40.3" height="16.5" fill="none"
+                                                stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
+                                            <rect x="24.85" y="0" width="18.3" height="5.5" fill="none"
+                                                stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
+                                            <rect x="24.85" y="94.5" width="18.3" height="5.5" fill="none"
+                                                stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
+                                            <circle cx="34" cy="11" r="0.4" fill="rgba(255,255,255,0.4)" />
+                                            <circle cx="34" cy="89" r="0.4" fill="rgba(255,255,255,0.4)" />
+                                        </g>
 
-                                    <!-- Penalty Areas -->
-                                    <rect x="0" y="13.85" width="16.5" height="40.3" fill="none"
-                                        stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
-                                    <rect x="83.5" y="13.85" width="16.5" height="40.3" fill="none"
-                                        stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
-
-                                    <!-- Goal Areas -->
-                                    <rect x="0" y="24.85" width="5.5" height="18.3" fill="none"
-                                        stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
-                                    <rect x="94.5" y="24.85" width="5.5" height="18.3" fill="none"
-                                        stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
-
-                                    <!-- Penalty Spots -->
-                                    <circle cx="11" cy="34" r="0.4" fill="rgba(255,255,255,0.4)" />
-                                    <circle cx="89" cy="34" r="0.4" fill="rgba(255,255,255,0.4)" />
-                                </g>
-
-                                <!-- Team 1 (Home - Left Side) -->
-                                <g id="team1-players" class="team-players home-team">
-                                    <!-- Players rendered via JS -->
-                                </g>
-
-                                <!-- Team 2 (Away - Right Side) -->
-                                <g id="team2-players" class="team-players away-team">
-                                    <!-- Players rendered via JS -->
-                                </g>
-                            </svg>
-                        </div>
-
-                        <!-- Team Info Panels -->
-                        <div class="team-info-panels">
-                            <div class="team-panel home-panel">
-                                <div class="team-badge">🏠</div>
-                                <h4 id="pitch-team1-name" class="team-name">-</h4>
-                                <p id="pitch-team1-formation" class="team-formation">-</p>
+                                        <g id="team1-players" class="team-players home-team"></g>
+                                    </svg>
+                                </div>
                             </div>
-                            <div class="vs-divider">VS</div>
-                            <div class="team-panel away-panel">
-                                <div class="team-badge">✈️</div>
-                                <h4 id="pitch-team2-name" class="team-name">-</h4>
-                                <p id="pitch-team2-formation" class="team-formation">-</p>
+
+                            <div class="vs-divider-center">VS</div>
+
+                            <!-- Away Team Pitch -->
+                            <div class="single-pitch-wrapper away-pitch">
+                                <div class="pitch-header">
+                                    <div class="team-badge">✈️</div>
+                                    <h4 id="pitch-team2-name" class="team-name">-</h4>
+                                    <p id="pitch-team2-formation" class="team-formation">-</p>
+                                </div>
+
+                                <div class="pitch-view-single">
+                                    <svg id="pitch-svg-team2" viewBox="0 0 68 100" preserveAspectRatio="xMidYMid meet">
+                                        <defs>
+                                            <linearGradient id="pitch-gradient-2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" style="stop-color:#1a472a;stop-opacity:1" />
+                                                <stop offset="100%" style="stop-color:#2d5a3d;stop-opacity:1" />
+                                            </linearGradient>
+                                        </defs>
+
+                                        <!-- Pitch Base -->
+                                        <rect class="pitch-bg" x="0" y="0" width="68" height="100"
+                                            fill="url(#pitch-gradient-2)" />
+
+                                        <!-- Pitch Markings (same as team1) -->
+                                        <g class="pitch-markings">
+                                            <rect x="0.5" y="0.5" width="67" height="99" fill="none"
+                                                stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
+                                            <line x1="0" y1="50" x2="68" y2="50" stroke="rgba(255,255,255,0.4)"
+                                                stroke-width="0.3" />
+                                            <circle cx="34" cy="50" r="9.15" fill="none" stroke="rgba(255,255,255,0.4)"
+                                                stroke-width="0.3" />
+                                            <circle cx="34" cy="50" r="0.5" fill="rgba(255,255,255,0.4)" />
+                                            <rect x="13.85" y="0" width="40.3" height="16.5" fill="none"
+                                                stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
+                                            <rect x="13.85" y="83.5" width="40.3" height="16.5" fill="none"
+                                                stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
+                                            <rect x="24.85" y="0" width="18.3" height="5.5" fill="none"
+                                                stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
+                                            <rect x="24.85" y="94.5" width="18.3" height="5.5" fill="none"
+                                                stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
+                                            <circle cx="34" cy="11" r="0.4" fill="rgba(255,255,255,0.4)" />
+                                            <circle cx="34" cy="89" r="0.4" fill="rgba(255,255,255,0.4)" />
+                                        </g>
+
+                                        <g id="team2-players" class="team-players away-team"></g>
+                                    </svg>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -12,24 +12,25 @@ function parseFormation(formationString) {
 }
 
 // Calculate positions for all players in a formation
+// Vertical pitch: 68 wide x 100 tall
 function getFormationPositions(formationString) {
     const lines = parseFormation(formationString);
     const positions = [];
 
-    // GK is always first at x=10, y=34 (center of goal area)
-    positions.push({ x: 10, y: 34, role: 'GK', line: 0 });
+    // GK is always first at y=10 (top), x=34 (center horizontally)
+    positions.push({ x: 34, y: 10, role: 'GK', line: 0 });
 
     // Calculate positions for outfield players
-    const pitchHeight = 68;
-    const startX = 18; // Where defenders start
-    const lineSpacing = 22; // Space between defensive lines
+    const pitchWidth = 68;
+    const startY = 18; // Where defenders start (from top)
+    const lineSpacing = 22; // Space between lines vertically
 
     lines.forEach((playersInLine, lineIndex) => {
-        const xPos = startX + (lineIndex * lineSpacing);
-        const ySpacing = pitchHeight / (playersInLine + 1);
+        const yPos = startY + (lineIndex * lineSpacing);
+        const xSpacing = pitchWidth / (playersInLine + 1);
 
         for (let i = 0; i < playersInLine; i++) {
-            const yPos = ySpacing * (i + 1);
+            const xPos = xSpacing * (i + 1);
             const role = lineIndex === 0 ? 'DEF' :
                 lineIndex === lines.length - 1 ? 'FWD' : 'MID';
 
@@ -45,7 +46,7 @@ function getFormationPositions(formationString) {
     return positions;
 }
 
-// Render players for one team on the pitch
+// Render players for one team on their own vertical pitch
 function renderTeamPlayers(containerId, positions, players, side, teamColor) {
     const container = document.getElementById(containerId);
     if (!container) return;
@@ -57,7 +58,8 @@ function renderTeamPlayers(containerId, positions, players, side, teamColor) {
         if (idx >= players.length) return;
 
         const player = players[idx];
-        const x = side === 'home' ? pos.x : (100 - pos.x); // Mirror for away team
+        // No mirroring needed - each team has their own pitch
+        const x = pos.x;
         const y = pos.y;
 
         // Create player node group
