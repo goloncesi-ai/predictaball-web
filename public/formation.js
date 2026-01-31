@@ -194,9 +194,13 @@ async function fetchTeamPlayerStats(teamName) {
     if (PLAYER_STATS_DB[teamName]) return PLAYER_STATS_DB[teamName];
 
     try {
-        // Normalize name for filename: "Galatasaray" -> "galatasaray"
-        const cleanName = teamName.toLowerCase().replace(/ /g, "").replace(/-/g, "");
-        const response = await fetch(`/data/players/${cleanName}.json`);
+        // Normalize name to match python script: remove accents, spaces, lowercase
+        // e.g. "Fenerbahçe" -> "fenerbahce", "Galatasaray" -> "galatasaray"
+        const cleanName = teamName.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+            .toLowerCase().replace(/ /g, "").replace(/-/g, "");
+
+        console.log(`[Stats] Fetching DB for ${teamName} -> /data/players/${cleanName}.json`);
+        const response = await fetch(`/data/players/${cleanName}.json?v=2`);
 
         if (!response.ok) {
             console.warn(`No stats DB found for ${teamName} (checked /data/players/${cleanName}.json)`);
