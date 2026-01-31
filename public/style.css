@@ -2925,6 +2925,12 @@ body {
     margin: 0 auto;
 }
 
+/* When both pitches are hidden, center the entire grid layout */
+.simulation-layout-grid:has(.pitch-column.hidden:nth-child(1)):has(.pitch-column.hidden:nth-child(3)) {
+    justify-content: center;
+    grid-template-columns: auto;
+}
+
 .pitch-column {
     width: 100%;
     max-width: 300px;
@@ -2960,10 +2966,10 @@ body {
         /* Put match setup first on mobile */
     }
 }
+
 /* Team logo in pitch header */
 .pitch-team-logo {
     width: 40px;
     height: 40px;
     object-fit: contain;
 }
-
