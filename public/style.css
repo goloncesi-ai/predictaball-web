@@ -2925,22 +2925,6 @@ body {
     margin: 0 auto;
 }
 
-/* When both pitches hidden, center the config */
-.simulation-layout-grid:has(.pitch-column.hidden:first-child):has(.pitch-column.hidden:last-child) {
-    grid-template-columns: 1fr;
-    justify-items: center;
-}
-
-/* When only left pitch hidden */
-.simulation-layout-grid:has(.pitch-column.hidden:first-child):not(:has(.pitch-column.hidden:last-child)) {
-    grid-template-columns: auto 1fr;
-}
-
-/* When only right pitch hidden */
-.simulation-layout-grid:has(.pitch-column.hidden:last-child):not(:has(.pitch-column.hidden:first-child)) {
-    grid-template-columns: 1fr auto;
-}
-
 .pitch-column {
     width: 100%;
     max-width: 300px;
@@ -2976,3 +2960,10 @@ body {
         /* Put match setup first on mobile */
     }
 }
+/* Team logo in pitch header */
+.pitch-team-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+

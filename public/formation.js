@@ -129,10 +129,11 @@ function renderPitchView(team1Data, team2Data) {
     if (team1Data && team1Data.formation) {
         if (pitch1Wrapper) pitch1Wrapper.classList.remove('hidden');
 
-        // Update team info with logo from TEAM_LOGOS (defined in app.js)
-        const teamLogo = (typeof TEAM_LOGOS !== 'undefined' && TEAM_LOGOS[team1Data.name]) || '🏠';
+        // Update team info with logo image (same as Analysis tab)
         const badgeElem = document.querySelector('#pitch-team1-wrapper .team-badge');
-        if (badgeElem) badgeElem.textContent = teamLogo;
+        if (badgeElem) {
+            badgeElem.innerHTML = `<img src="/logos/${team1Data.name}.png" alt="${team1Data.name}" class="pitch-team-logo" onerror="this.style.display='none'">`;
+        }
 
         document.getElementById('pitch-team1-name').textContent = team1Data.name || '-';
         document.getElementById('pitch-team1-formation').textContent = team1Data.formation || '-';
@@ -148,10 +149,11 @@ function renderPitchView(team1Data, team2Data) {
     if (team2Data && team2Data.formation) {
         if (pitch2Wrapper) pitch2Wrapper.classList.remove('hidden');
 
-        // Update team info with logo from TEAM_LOGOS
-        const teamLogo = (typeof TEAM_LOGOS !== 'undefined' && TEAM_LOGOS[team2Data.name]) || '✈️';
+        // Update team info with logo image (same as Analysis tab)
         const badgeElem = document.querySelector('#pitch-team2-wrapper .team-badge');
-        if (badgeElem) badgeElem.textContent = teamLogo;
+        if (badgeElem) {
+            badgeElem.innerHTML = `<img src="/logos/${team2Data.name}.png" alt="${team2Data.name}" class="pitch-team-logo" onerror="this.style.display='none'">`;
+        }
 
         document.getElementById('pitch-team2-name').textContent = team2Data.name || '-';
         document.getElementById('pitch-team2-formation').textContent = team2Data.formation || '-';
