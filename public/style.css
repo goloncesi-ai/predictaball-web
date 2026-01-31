@@ -2943,12 +2943,15 @@ body {
 
 .pitch-column {
     width: 100%;
-    max-width: 350px;
+    max-width: 300px;
+    /* Reduced from 350px to give more space */
     justify-self: center;
 }
 
 .sim-config {
     width: 100%;
+    min-width: 400px;
+    /* Ensure minimum width */
     max-width: 450px;
     justify-self: center;
 }

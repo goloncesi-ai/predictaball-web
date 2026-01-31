@@ -1,3 +1,27 @@
+// Team logos mapping
+const TEAM_LOGOS = {
+    'Galatasaray': '⭐',
+    'Fenerbahçe': '🐤',
+    'Beşiktaş': '🦅',
+    'Trabzonspor': '⚡',
+    'Başakşehir': '🍊',
+    'Alanyaspor': '🍀',
+    'Adana Demirspor': '⚔️',
+    'Ankaragücü': '💛',
+    'Antalyaspor': '🔴',
+    'Çaykur Rizespor': '💚',
+    'Eyüpspor': '🟣',
+    'Fatih Karagümrük': '🔴',
+    'Gaziantep FK': '🔷',
+    'Göztepe': '💛',
+    'Hatayspor': '🌙',
+    'Kasımpaşa': '🔵',
+    'Kayserispor': '🔴',
+    'Konyaspor': '💚',
+    'Samsunspor': '🔴',
+    'Sivasspor': '❤️',
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     // --- Globals ---
     // Comparison Tab Elements
@@ -325,25 +349,29 @@ document.addEventListener('DOMContentLoaded', () => {
         const t1 = simTeam1Select?.value;
         const t2 = simTeam2Select?.value;
 
-        if (!t1 || !t2) {
-            // Hide pitch if one or both teams not selected
-            if (typeof hidePitchView === 'function') {
-                hidePitchView();
+        // Fetch data for each team independently
+        let team1Data = null;
+        let team2Data = null;
+
+        try {
+            if (t1) {
+                team1Data = await getTeamLatestLineup(t1);
             }
-            return;
+        } catch (error) {
+            console.error('Error loading team 1:', error);
         }
 
         try {
-            // Fetch lineup data for both teams
-            const team1Data = await getTeamLatestLineup(t1);
-            const team2Data = await getTeamLatestLineup(t2);
-
-            // Render pitch
-            if (typeof renderPitchView === 'function') {
-                renderPitchView(team1Data, team2Data);
+            if (t2) {
+                team2Data = await getTeamLatestLineup(t2);
             }
         } catch (error) {
-            console.error('Error updating pitch visualization:', error);
+            console.error('Error loading team 2:', error);
+        }
+
+        // Render pitch with whatever data we have (can be one or both teams)
+        if (typeof renderPitchView === 'function') {
+            renderPitchView(team1Data, team2Data);
         }
     }
 
