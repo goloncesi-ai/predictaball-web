@@ -135,6 +135,12 @@ def serve_logo(filename):
     logo_dir = os.path.join(ASSETS_DIR, "Logos")
     return send_from_directory(logo_dir, filename)
 
+@app.route('/Data/<path:filepath>')
+def serve_data_files(filepath):
+    """Serve CSV and other data files from the Data directory."""
+    data_dir = os.path.join(BASE_DIR, "Data")
+    return send_from_directory(data_dir, filepath)
+
 @app.route('/api/current-round', methods=['GET'])
 def get_current_round():
     """Get the current round number based on today's date."""
