@@ -13,20 +13,27 @@ function parseFormation(formationString) {
 
 // Calculate positions for all players in a formation
 // Vertical pitch: 68 wide x 100 tall
+// Orientation: GK at bottom (y=90), strikers at top (y=10)
 function getFormationPositions(formationString) {
     const lines = parseFormation(formationString);
     const positions = [];
 
-    // GK is always first at y=10 (top), x=34 (center horizontally)
-    positions.push({ x: 34, y: 10, role: 'GK', line: 0 });
+    // GK at bottom: y=90, x=34 (center)
+    positions.push({ x: 34, y: 90, role: 'GK', line: 0 });
 
-    // Calculate positions for outfield players
+    // Calculate spacing to use full pitch
     const pitchWidth = 68;
-    const startY = 18; // Where defenders start (from top)
-    const lineSpacing = 22; // Space between lines vertically
+    const pitchHeight = 100;
+    const usableHeight = 75; // From y=10 (top) to y=85 (just above GK)
+    const topY = 12; // Start strikers near top
+    const bottomY = 85; // End defenders just above GK
+
+    // Calculate Y positions for each line
+    const lineSpacing = lines.length > 1 ? (bottomY - topY) / (lines.length - 1) : 0;
 
     lines.forEach((playersInLine, lineIndex) => {
-        const yPos = startY + (lineIndex * lineSpacing);
+        // Y position: strikers at top (low Y), defenders at bottom (high Y)
+        const yPos = topY + (lineIndex * lineSpacing);
         const xSpacing = pitchWidth / (playersInLine + 1);
 
         for (let i = 0; i < playersInLine; i++) {
