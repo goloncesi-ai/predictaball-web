@@ -59,15 +59,23 @@ def process_team(team_folder_name):
                 # Check for HasTournamentStats flag (added in recent scraper fix)
                 has_stats = row.get("HasTournamentStats", True)
                 
+                # Case-insensitive lookup helper
+                def get_col(row, keys):
+                    # keys is a list of possible column names (e.g. ["Appearances", "appearances"])
+                    for k in keys:
+                        if k in row:
+                            return row[k]
+                    return 0
+
                 stats_obj = {
                     "hasStats": bool(has_stats),
-                    "appearances": get_val(row, "appearances"),
-                    "goals": get_val(row, "goals"),
-                    "assists": get_val(row, "assists"),
-                    "minutesPlayed": get_val(row, "minutesPlayed"),
-                    "rating": get_val(row, "rating"),
-                    "yellowCards": get_val(row, "yellowCards"),
-                    "redCards": get_val(row, "redCards")
+                    "appearances": get_col(row, ["Appearances", "appearances"]),
+                    "goals": get_col(row, ["Goals", "goals"]),
+                    "assists": get_col(row, ["Assists", "assists"]),
+                    "minutesPlayed": get_col(row, ["MinutesPlayed", "minutesPlayed"]),
+                    "rating": get_col(row, ["Rating", "rating"]),
+                    "yellowCards": get_col(row, ["YellowCards", "yellowCards"]),
+                    "redCards": get_col(row, ["RedCards", "redCards"])
                 }
                 stats_map[name] = stats_obj
 
