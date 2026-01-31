@@ -7,7 +7,7 @@
     
     <key>ProgramArguments</key>
     <array>
-        <string>/usr/bin/python3</string>
+        <string>/Library/Frameworks/Python.framework/Versions/3.10/bin/python3.10</string>
         <string>/Users/erdilsen/Library/Mobile Documents/com~apple~CloudDocs/Gol Oncesi/scripts/auto_weekly_scraper.py</string>
     </array>
     
