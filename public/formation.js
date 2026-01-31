@@ -116,7 +116,20 @@ function renderTeamPlayers(containerId, positions, players, side, teamColor) {
 // Add tooltip on player hover
 function addPlayerTooltip(playerNode, player) {
     const tooltip = document.createElement('title');
-    tooltip.textContent = `${player.name || 'Unknown'}\nRating: ${player.rating ? player.rating.toFixed(2) : 'N/A'}`;
+    let text = `${player.name || 'Unknown'}`;
+
+    if (player.stats && player.stats.hasStats) {
+        // Show detailed stats if available
+        text += `\nRating: ${player.stats.rating ? parseFloat(player.stats.rating).toFixed(1) : 'N/A'}`;
+        text += `\nGoals: ${player.stats.goals}`;
+        text += `\nAssists: ${player.stats.assists}`;
+        text += `\nApps: ${player.stats.appearances}`;
+    } else {
+        // Fallback to simple rating
+        text += `\nRating: ${player.rating ? parseFloat(player.rating).toFixed(1) : 'N/A'}`;
+    }
+
+    tooltip.textContent = text;
     playerNode.appendChild(tooltip);
 }
 
@@ -174,11 +187,55 @@ function hidePitchView() {
     if (pitch2Wrapper) pitch2Wrapper.classList.add('hidden');
 }
 
+// Cache for player stats
+const PLAYER_STATS_DB = {};
+
+async function fetchTeamPlayerStats(teamName) {
+    if (PLAYER_STATS_DB[teamName]) return PLAYER_STATS_DB[teamName];
+
+    try {
+        // Normalize name for filename: "Galatasaray" -> "galatasaray"
+        const cleanName = teamName.toLowerCase().replace(/ /g, "").replace(/-/g, "");
+        const response = await fetch(`/data/players/${cleanName}.json`);
+
+        if (!response.ok) {
+            console.warn(`No stats DB found for ${teamName} (checked /data/players/${cleanName}.json)`);
+            return null;
+        }
+
+        const data = await response.json();
+
+        // Create a map by player name for easy lookup
+        const statsMap = {};
+        if (data.players) {
+            data.players.forEach(p => {
+                statsMap[p.name] = p;
+
+                // Allow lookup by "Lastname" only as fallback
+                const parts = p.name.split(' ');
+                if (parts.length > 1) {
+                    const lastName = parts[parts.length - 1];
+                    // Only map if unique, otherwise conflict risk
+                    if (!statsMap[lastName]) statsMap[lastName] = p;
+                }
+            });
+        }
+
+        PLAYER_STATS_DB[teamName] = statsMap;
+        return statsMap;
+    } catch (e) {
+        console.warn(`Could not load stats for ${teamName}:`, e);
+        return null;
+    }
+}
+
 // Get team lineup from CSV data
 async function getTeamLatestLineup(teamName) {
     try {
-        // For now, we'll need to fetch and parse CSV
-        // In Phase 2, we'll pre-process this into data.js
+        // 1. Start fetching stats in parallel
+        const statsPromise = fetchTeamPlayerStats(teamName);
+
+        // 2. Fetch and parse CSV
         const csvPath = `/Data/Turkish Super League/${teamName}/mixed-seasons/${teamName}_Games_Input.csv`;
         const response = await fetch(csvPath);
 
@@ -211,12 +268,42 @@ async function getTeamLatestLineup(teamName) {
         // Extract formation
         const formation = data[`${prefix}Formation`] || '4-4-2';
 
+        // Wait for stats to load
+        const statsMap = await statsPromise;
+
         // Extract players (11 players)
         const players = [];
         for (let i = 1; i <= 11; i++) {
-            const name = data[`${prefix}Player${i}Name`] || `Player ${i}`;
-            const rating = parseFloat(data[`${prefix}Player${i}`]) || 6.0;
-            players.push({ name, rating });
+            const rawName = data[`${prefix}Player${i}Name`] || `Player ${i}`;
+            let rating = parseFloat(data[`${prefix}Player${i}`]) || 6.0;
+            let fullStats = null;
+
+            // Try to find in stats DB
+            if (statsMap) {
+                // 1. Try exact match
+                let match = statsMap[rawName];
+
+                // 2. Try partial match (CSV might have "Mauro Icardi", DB "Mauro Emanuel Icardi")
+                if (!match) {
+                    // Simple fuzzy: check if CSV last name is in DB
+                    const parts = rawName.split(' ');
+                    const lastName = parts[parts.length - 1];
+                    match = statsMap[lastName];
+                }
+
+                if (match) {
+                    if (match.stats && match.stats.rating) {
+                        rating = match.stats.rating; // Use real rating!
+                    }
+                    fullStats = match.stats;
+                }
+            }
+
+            players.push({
+                name: rawName,
+                rating: rating,
+                stats: fullStats // Attach full stats for tooltip
+            });
         }
 
         return {

@@ -1,0 +1,490 @@
+{
+  "teamName": "Fenerbahçe",
+  "generatedAt": "2026-01-31T13:35:17.541343",
+  "playerCount": 23,
+  "players": [
+    {
+      "id": "19_youssefennesyri",
+      "name": "Youssef En-Nesyri",
+      "position": "ST",
+      "shirtNumber": 19,
+      "nationality": "Morocco",
+      "age": 28,
+      "height": 190,
+      "preferredFoot": "Left",
+      "team": "Fenerbahçe",
+      "stats": {
+        "hasStats": true,
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "minutesPlayed": 0,
+        "rating": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
+    },
+    {
+      "id": "10_jhonduran",
+      "name": "Jhon Durán",
+      "position": "ST",
+      "shirtNumber": 10,
+      "nationality": "Colombia",
+      "age": 22,
+      "height": 185,
+      "preferredFoot": "Left",
+      "team": "Fenerbahçe",
+      "stats": {
+        "hasStats": true,
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "minutesPlayed": 0,
+        "rating": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
+    },
+    {
+      "id": "21_marcoasensio",
+      "name": "Marco Asensio",
+      "position": "RW, AM, ST",
+      "shirtNumber": 21,
+      "nationality": "Spain",
+      "age": 29,
+      "height": 182,
+      "preferredFoot": "Left",
+      "team": "Fenerbahçe",
+      "stats": {
+        "hasStats": true,
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "minutesPlayed": 0,
+        "rating": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
+    },
+    {
+      "id": "7_keremakturkoglu",
+      "name": "Kerem Aktürkoğlu",
+      "position": "LW",
+      "shirtNumber": 7,
+      "nationality": "Türkiye",
+      "age": 27,
+      "height": 173,
+      "preferredFoot": "Right",
+      "team": "Fenerbahçe",
+      "stats": {
+        "hasStats": true,
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "minutesPlayed": 0,
+        "rating": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
+    },
+    {
+      "id": "45_dorgelesnene",
+      "name": "Dorgeles Nene",
+      "position": "LW, RW, ST",
+      "shirtNumber": 45,
+      "nationality": "Mali",
+      "age": 22,
+      "height": 174,
+      "preferredFoot": "Right",
+      "team": "Fenerbahçe",
+      "stats": {
+        "hasStats": true,
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "minutesPlayed": 0,
+        "rating": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
+    },
+    {
+      "id": "94_andersontalisca",
+      "name": "Anderson Talisca",
+      "position": "AM, RW, ST",
+      "shirtNumber": 94,
+      "nationality": "Brazil",
+      "age": 31,
+      "height": 191,
+      "preferredFoot": "Left",
+      "team": "Fenerbahçe",
+      "stats": {
+        "hasStats": true,
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "minutesPlayed": 0,
+        "rating": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
+    },
+    {
+      "id": "13_fred",
+      "name": "Fred",
+      "position": "DM",
+      "shirtNumber": 13,
+      "nationality": "Brazil",
+      "age": 32,
+      "height": 169,
+      "preferredFoot": "Left",
+      "team": "Fenerbahçe",
+      "stats": {
+        "hasStats": true,
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "minutesPlayed": 0,
+        "rating": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
+    },
+    {
+      "id": "53_sebastianszymanski",
+      "name": "Sebastian Szymański",
+      "position": "AM",
+      "shirtNumber": 53,
+      "nationality": "Poland",
+      "age": 26,
+      "height": 174,
+      "preferredFoot": "Left",
+      "team": "Fenerbahçe",
+      "stats": {
+        "hasStats": true,
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "minutesPlayed": 0,
+        "rating": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
+    },
+    {
+      "id": "4_edsonalvarez",
+      "name": "Edson Álvarez",
+      "position": "DM",
+      "shirtNumber": 4,
+      "nationality": "Mexico",
+      "age": 28,
+      "height": 190,
+      "preferredFoot": "Right",
+      "team": "Fenerbahçe",
+      "stats": {
+        "hasStats": true,
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "minutesPlayed": 0,
+        "rating": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
+    },
+    {
+      "id": "27_nelsonsemedo",
+      "name": "Nélson Semedo",
+      "position": "M",
+      "shirtNumber": 27,
+      "nationality": "Portugal",
+      "age": 32,
+      "height": 177,
+      "preferredFoot": "Right",
+      "team": "Fenerbahçe",
+      "stats": {
+        "hasStats": true,
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "minutesPlayed": 0,
+        "rating": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
+    },
+    {
+      "id": "5_ismailyuksek",
+      "name": "İsmail Yüksek",
+      "position": "DM",
+      "shirtNumber": 5,
+      "nationality": "Türkiye",
+      "age": 26,
+      "height": 183,
+      "preferredFoot": "Right",
+      "team": "Fenerbahçe",
+      "stats": {
+        "hasStats": true,
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "minutesPlayed": 0,
+        "rating": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
+    },
+    {
+      "id": "28_bartugelmaz",
+      "name": "Bartuğ Elmaz",
+      "position": "DM",
+      "shirtNumber": 28,
+      "nationality": "Türkiye",
+      "age": 22,
+      "height": 179,
+      "preferredFoot": "Right",
+      "team": "Fenerbahçe",
+      "stats": {
+        "hasStats": true,
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "minutesPlayed": 0,
+        "rating": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
+    },
+    {
+      "id": "37_milanskriniar",
+      "name": "Milan Škriniar",
+      "position": "M",
+      "shirtNumber": 37,
+      "nationality": "Slovakia",
+      "age": 30,
+      "height": 187,
+      "preferredFoot": "Right",
+      "team": "Fenerbahçe",
+      "stats": {
+        "hasStats": true,
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "minutesPlayed": 0,
+        "rating": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
+    },
+    {
+      "id": "4_caglarsoyuncu",
+      "name": "Çağlar Söyüncü",
+      "position": "M",
+      "shirtNumber": 4,
+      "nationality": "Türkiye",
+      "age": 29,
+      "height": 187,
+      "preferredFoot": "Right",
+      "team": "Fenerbahçe",
+      "stats": {
+        "hasStats": true,
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "minutesPlayed": 0,
+        "rating": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
+    },
+    {
+      "id": "33_archiebrown",
+      "name": "Archie Brown",
+      "position": "M",
+      "shirtNumber": 33,
+      "nationality": "England",
+      "age": 23,
+      "height": 190,
+      "preferredFoot": "Left",
+      "team": "Fenerbahçe",
+      "stats": {
+        "hasStats": true,
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "minutesPlayed": 0,
+        "rating": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
+    },
+    {
+      "id": "24_jaydenoosterwolde",
+      "name": "Jayden Oosterwolde",
+      "position": "M",
+      "shirtNumber": 24,
+      "nationality": "Netherlands",
+      "age": 24,
+      "height": 189,
+      "preferredFoot": "Left",
+      "team": "Fenerbahçe",
+      "stats": {
+        "hasStats": true,
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "minutesPlayed": 0,
+        "rating": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
+    },
+    {
+      "id": "16_mertmuldur",
+      "name": "Mert Müldür",
+      "position": "M",
+      "shirtNumber": 16,
+      "nationality": "Türkiye",
+      "age": 26,
+      "height": 184,
+      "preferredFoot": "Right",
+      "team": "Fenerbahçe",
+      "stats": {
+        "hasStats": true,
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "minutesPlayed": 0,
+        "rating": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
+    },
+    {
+      "id": "50_rodrigobecao",
+      "name": "Rodrigo Becão",
+      "position": "M",
+      "shirtNumber": 50,
+      "nationality": "Brazil",
+      "age": 29,
+      "height": 191,
+      "preferredFoot": "Right",
+      "team": "Fenerbahçe",
+      "stats": {
+        "hasStats": true,
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "minutesPlayed": 0,
+        "rating": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
+    },
+    {
+      "id": "22_leventmercan",
+      "name": "Levent Mercan",
+      "position": "M",
+      "shirtNumber": 22,
+      "nationality": "Türkiye",
+      "age": 25,
+      "height": 176,
+      "preferredFoot": "Both",
+      "team": "Fenerbahçe",
+      "stats": {
+        "hasStats": true,
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "minutesPlayed": 0,
+        "rating": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
+    },
+    {
+      "id": "14_yigitefedemir",
+      "name": "Yiğit Efe Demir",
+      "position": "M",
+      "shirtNumber": 14,
+      "nationality": "Türkiye",
+      "age": 21,
+      "height": 194,
+      "preferredFoot": "Right",
+      "team": "Fenerbahçe",
+      "stats": {
+        "hasStats": true,
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "minutesPlayed": 0,
+        "rating": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
+    },
+    {
+      "id": "31_ederson",
+      "name": "Ederson",
+      "position": "GK",
+      "shirtNumber": 31,
+      "nationality": "Brazil",
+      "age": 32,
+      "height": 188,
+      "preferredFoot": "Left",
+      "team": "Fenerbahçe",
+      "stats": {
+        "hasStats": true,
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "minutesPlayed": 0,
+        "rating": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
+    },
+    {
+      "id": "1_irfancanegribayat",
+      "name": "İrfan Can Eğribayat",
+      "position": "GK",
+      "shirtNumber": 1,
+      "nationality": "Türkiye",
+      "age": 27,
+      "height": 193,
+      "preferredFoot": "Right",
+      "team": "Fenerbahçe",
+      "stats": {
+        "hasStats": true,
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "minutesPlayed": 0,
+        "rating": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
+    },
+    {
+      "id": "25_tarkcetin",
+      "name": "Tarık Çetin",
+      "position": "GK",
+      "shirtNumber": 25,
+      "nationality": "Türkiye",
+      "age": 28,
+      "height": 193,
+      "preferredFoot": "Right",
+      "team": "Fenerbahçe",
+      "stats": {
+        "hasStats": true,
+        "appearances": 0,
+        "goals": 0,
+        "assists": 0,
+        "minutesPlayed": 0,
+        "rating": 0,
+        "yellowCards": 0,
+        "redCards": 0
+      }
+    }
+  ]
+}

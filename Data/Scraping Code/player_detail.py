@@ -86,6 +86,8 @@ def fetch_team_players(team_id):
                     if isinstance(team.get(key), list) and team.get(key):
                         return team.get(key)
 
+        except ChallengeBlocked:
+            raise
         except Exception as e:
             last_err = e
             continue
@@ -193,9 +195,16 @@ def scrape_one_player(player_id, tournament_id, season_id):
     Run the existing pipeline for ONE player and return:
       (profile_row_df, summary_row_df, stats_row_df, player_name)
     Any per-player exceptions should be raised to caller.
+    
+    Note: tournament_id is still accepted for backward compatibility and used as
+    primary tournament, but stats are aggregated from ALL tournaments the player
+    participated in during this season.
     """
     profile_json = fetch_player_profile(player_id)
-    stats_payload = fetch_season_stats(player_id, tournament_id, season_id)
+    
+    # NEW: Fetch stats from all tournaments, not just the specified one
+    # This allows new transfers to show stats from their previous team
+    stats_payload = fetch_all_season_stats(player_id, season_id, tournament_id)
 
     avg12, month_map = last_12_month_avg_ratings(player_id)
 
@@ -243,29 +252,59 @@ def scrape_one_player(player_id, tournament_id, season_id):
     }
     df_profile = pd.DataFrame([profile_row])
 
+    # Check if we have tournament stats (new transfers may not have any)
     overall_stats = (stats_payload.get("overall") or {})
     summary = overall_stats.get("statistics", {})
     if not isinstance(summary, dict):
         summary = {}
+    
+    has_tournament_stats = bool(summary or stats_payload.get("groups"))
+    
+    if has_tournament_stats:
+        # Normal case: player has tournament stats
+        summary_row = {
+            "Name": p.get("name"),
+            "Appearances": summary.get("appearances", summary.get("matches")),
+            "MinutesPlayed": summary.get("minutesPlayed"),
+            "Rating": summary.get("rating"),
+            "Goals": summary.get("goals"),
+            "Assists": summary.get("assists"),
+            "YellowCards": summary.get("yellowCards"),
+            "RedCards": summary.get("redCards"),
+            "AvgRating_Last12Months": avg12,
+        }
+        for mk, val in month_map.items():
+            summary_row[f"AvgRating_{mk}"] = val
 
-    summary_row = {
-        "Name": p.get("name"),
-        "Appearances": summary.get("appearances", summary.get("matches")),
-        "MinutesPlayed": summary.get("minutesPlayed"),
-        "Rating": summary.get("rating"),
-        "Goals": summary.get("goals"),
-        "Assists": summary.get("assists"),
-        "YellowCards": summary.get("yellowCards"),
-        "RedCards": summary.get("redCards"),
-        "AvgRating_Last12Months": avg12,
-    }
-    for mk, val in month_map.items():
-        summary_row[f"AvgRating_{mk}"] = val
+        df_summary = pd.DataFrame([summary_row])
 
-    df_summary = pd.DataFrame([summary_row])
-
-    df_stats = build_stats_tab(stats_payload)
-    df_stats["Name"] = p.get("name")
+        df_stats = build_stats_tab(stats_payload)
+        df_stats["Name"] = p.get("name")
+    else:
+        # Player has no tournament stats (new transfer, bench player, etc.)
+        # Return minimal data with a flag
+        summary_row = {
+            "Name": p.get("name"),
+            "Appearances": 0,
+            "MinutesPlayed": 0,
+            "Rating": None,
+            "Goals": 0,
+            "Assists": 0,
+            "YellowCards": 0,
+            "RedCards": 0,
+            "AvgRating_Last12Months": avg12,
+            "HasTournamentStats": False,
+        }
+        for mk, val in month_map.items():
+            summary_row[f"AvgRating_{mk}"] = val
+        
+        df_summary = pd.DataFrame([summary_row])
+        
+        # Create minimal stats row
+        df_stats = pd.DataFrame([{
+            "Name": p.get("name"),
+            "HasTournamentStats": False,
+        }])
 
     return df_profile, df_summary, df_stats, p.get("name")
 
@@ -274,6 +313,7 @@ import os
 import time
 import requests
 import pandas as pd
+import unicodedata
 from datetime import datetime, timezone, date
 
 
@@ -290,6 +330,43 @@ SESSION.headers.update({
     "Accept": "application/json, text/plain, */*",
     "Referer": "https://www.sofascore.com/",
 })
+
+# -------------------- HELPER FUNCTIONS --------------------
+def normalize_name(name):
+    """Normalize string: lowercase, remove accents/diacritics."""
+    if not name: return ""
+    n = unicodedata.normalize('NFKD', str(name)).encode('ASCII', 'ignore').decode('utf-8')
+    return n.lower().replace(" ", "")
+
+def find_team_folder(scraped_name, base_path):
+    """Find matching folder in base_path for scraped_name."""
+    scraped_norm = normalize_name(scraped_name)
+    
+    if not os.path.exists(base_path):
+        return None
+        
+    try:
+        candidates = [d for d in os.listdir(base_path) if os.path.isdir(os.path.join(base_path, d))]
+    except OSError:
+        return None
+    
+    # 1. Exact match
+    if scraped_name in candidates:
+        return scraped_name
+        
+    # 2. Normalized match
+    for cand in candidates:
+        if normalize_name(cand) == scraped_norm:
+            return cand
+            
+    # 3. Fuzzy/Contains match (fallback)
+    # e.g. "Fatih Karagumruk" vs "Karagumruk" or "Fenerbahce" vs "Fenerbahçe"
+    for cand in candidates:
+        c_norm = normalize_name(cand)
+        if c_norm in scraped_norm or scraped_norm in c_norm:
+            return cand
+            
+    return None
 
 # -------------------- HTTP --------------------
 def get_json(url, retries=3, backoff=1.3):
@@ -419,10 +496,143 @@ def fetch_season_stats(pid, tid, sid):
     if js_plain:
         out["groups"]["plain"] = js_plain
 
-    # If nothing worked, raise a clearer error
+    # If nothing worked, return empty structure for new transfers/players without stats
     if out["overall"] is None and not out["groups"]:
-        raise RuntimeError("No stats returned. Check tournament/season ids.")
+        # Return empty but valid structure - allows profile data to still be collected
+        return {"overall": None, "groups": {}, "statistics": {}}
     return out
+
+def fetch_all_season_stats(player_id, season_id, primary_tournament_id=52):
+    """
+    Fetch and aggregate stats from ALL tournaments the player participated in during the season.
+    This allows new transfers to show stats from their previous team.
+    
+    Args:
+        player_id: SofaScore player ID
+        season_id: Season ID (e.g., 77805 for 2025/26)
+        primary_tournament_id: Tournament to try first (default 52 = Turkish Super League)
+    
+    Returns:
+        Aggregated stats dict with combined statistics from all tournaments
+    """
+    # Major European + Turkish tournaments to try
+    TOURNAMENTS_TO_TRY = [
+        primary_tournament_id,  # Try primary first (Turkish league)
+        17,   # Premier League (England)
+        8,    # LaLiga (Spain)
+        35,   # Bundesliga (Germany)
+        23,   # Serie A (Italy)
+        34,   # Ligue 1 (France)
+        203,  # Eredivisie (Netherlands) - for transfers like Noa Lang
+        52,   # Turkish Super League
+        7,    # UEFA Champions League
+        679,  # UEFA Europa League
+        871,  # UEFA Conference League
+        325,  # Portuguese Primeira Liga
+        218,  # Belgian Pro League
+        66,   # Scottish Premiership
+        242,  # Championship (England)
+        # Add more as needed
+    ]
+    
+    # Remove duplicates while preserving order
+    seen = set()
+    unique_tournaments = []
+    for tid in TOURNAMENTS_TO_TRY:
+        if tid not in seen:
+            seen.add(tid)
+            unique_tournaments.append(tid)
+    
+    collected_stats = []
+    
+    for tid in unique_tournaments:
+        try:
+            stats = fetch_season_stats(player_id, tid, season_id)
+            # Only collect if has actual data
+            if stats.get("overall") or stats.get("groups"):
+                collected_stats.append({
+                    "tournament_id": tid,
+                    "stats": stats
+                })
+        except Exception:
+            # Tournament fetch failed, continue to next
+            continue
+    
+    if not collected_stats:
+        # No stats found in any tournament
+        return {"overall": None, "groups": {}, "statistics": {}}
+    
+    # If only one tournament has stats, return it directly
+    if len(collected_stats) == 1:
+        return collected_stats[0]["stats"]
+    
+    # Aggregate stats from multiple tournaments
+    return aggregate_tournament_stats(collected_stats)
+
+def aggregate_tournament_stats(stats_list):
+    """
+    Aggregate statistics from multiple tournaments into a single summary.
+    
+    Args:
+        stats_list: List of dicts, each with {"tournament_id": int, "stats": dict}
+    
+    Returns:
+        Aggregated stats dict
+    """
+    # Initialize aggregated totals
+    aggregated = {
+        "appearances": 0,
+        "minutesPlayed": 0,
+        "goals": 0,
+        "assists": 0,
+        "yellowCards": 0,
+        "redCards": 0,
+        "totalRatingSum": 0,  # For weighted average
+        "matchesWithRating": 0,
+    }
+    
+    # Collect all stats
+    for item in stats_list:
+        stats = item["stats"]
+        overall = stats.get("overall", {})
+        summary = overall.get("statistics", {})
+        
+        if not isinstance(summary, dict):
+            continue
+        
+        # Aggregate counting stats
+        aggregated["appearances"] += summary.get("appearances", summary.get("matches", 0)) or 0
+        aggregated["minutesPlayed"] += summary.get("minutesPlayed", 0) or 0
+        aggregated["goals"] += summary.get("goals", 0) or 0
+        aggregated["assists"] += summary.get("assists", 0) or 0
+        aggregated["yellowCards"] += summary.get("yellowCards", 0) or 0
+        aggregated["redCards"] += summary.get("redCards", 0) or 0
+        
+        # For rating: calculate weighted average by appearances
+        rating = summary.get("rating")
+        appearances = summary.get("appearances", summary.get("matches", 0)) or 0
+        if rating and appearances:
+            aggregated["totalRatingSum"] += rating * appearances
+            aggregated["matchesWithRating"] += appearances
+    
+    # Calculate weighted average rating
+    if aggregated["matchesWithRating"] > 0:
+        aggregated["rating"] = aggregated["totalRatingSum"] / aggregated["matchesWithRating"]
+    else:
+        aggregated["rating"] = None
+    
+    # Clean up temporary fields
+    del aggregated["totalRatingSum"]
+    del aggregated["matchesWithRating"]
+    
+    # Return in same format as fetch_season_stats
+    return {
+        "overall": {
+            "statistics": aggregated
+        },
+        "groups": {},  # Don't aggregate detailed group stats
+        "statistics": aggregated
+    }
 
 def fetch_player_last_events_page(pid, page=0):
     """
@@ -1760,7 +1970,15 @@ def main():
                 all_profile.append(df_p)
                 all_summary.append(df_s)
                 all_stats.append(df_st)
-                print("  ✓ OK")
+                
+                # Check if player has tournament stats
+                has_stats = True
+                if len(df_s) > 0 and "HasTournamentStats" in df_s.columns:
+                    has_stats = df_s["HasTournamentStats"].iloc[0]
+                if has_stats is False:
+                    print("  ⚠ OK (Profile only - no tournament stats)")
+                else:
+                    print("  ✓ OK")
             except Exception as e:
                 print(f"  ✗ ERROR: {e}")
             time.sleep(0.4)
@@ -1775,7 +1993,28 @@ def main():
         # filename: <TeamName>_PlayerDetail_<tournamentId>_<seasonId>.xlsx
         safe_team = str(team_name).replace(" ", "_")
         out_base = f"{safe_team}_PlayerDetail_{tournament_id}_{season_id}"
-        xlsx_path = os.path.abspath(out_base + ".xlsx")
+        
+        # Resolve target folder automatically
+        target_folder = "."
+        base_tsl_path = "/Users/erdilsen/Library/Mobile Documents/com~apple~CloudDocs/Gol Oncesi/Data/Turkish Super League"
+        
+        matched_folder = find_team_folder(team_name, base_tsl_path)
+        if matched_folder:
+            players_path = os.path.join(base_tsl_path, matched_folder, "Players")
+            # Create Players folder if it doesn't exist (though user said it does)
+            if not os.path.exists(players_path):
+                try:
+                    os.makedirs(players_path)
+                except OSError:
+                    pass
+            
+            if os.path.exists(players_path):
+                target_folder = players_path
+                print(f"📂 Resolved save path: {target_folder}")
+        else:
+            print(f"⚠️ Could not find team folder for '{team_name}' in TSL directory. Saving to current folder.")
+
+        xlsx_path = os.path.abspath(os.path.join(target_folder, out_base + ".xlsx"))
 
         with pd.ExcelWriter(xlsx_path, engine="openpyxl") as writer:
             df_profile.to_excel(writer, sheet_name="Profile", index=False)
