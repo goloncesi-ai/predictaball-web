@@ -1463,37 +1463,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Deep Player Analysis Tab ---
-    const compareMetricKeys = [
-        'Rating',
-        'Appearances',
-        'MinutesPlayed',
-        'Goals',
-        'Assists',
-        'YellowCards',
-        'RedCards',
-        'Expected goals (xG)',
-        'Goals per game',
-        'Total shots',
-        'Shots on target per game',
-        'Expected assists (xA)',
-        'Key passes',
-        'Interceptions',
-        'Tackles per game',
-        'Possession lost'
+    const playerLabChartInstances = new Map();
+
+    const snapshotMetricConfigs = [
+        { label: 'Form', source: 'summary', key: 'Rating' },
+        { label: 'Scoring', source: 'detailed', key: 'Goals per game' },
+        { label: 'Shooting', source: 'detailed', key: 'Shots on target per game' },
+        { label: 'Creation', source: 'detailed', key: 'Key passes' },
+        { label: 'Ball Wins', source: 'detailed', key: 'Interceptions' },
+        { label: 'Discipline', source: 'detailed', key: 'Fouls per game', lowerIsBetter: true }
     ];
 
-    const lowerIsBetterMetrics = new Set([
-        'YellowCards',
-        'RedCards',
-        'Big chances missed',
-        'Errors leading to shot',
-        'Errors leading to goal',
-        'Penalties committed',
-        'Dribbled past per game',
-        'Possession lost',
-        'Offsides',
-        'Fouls per game'
-    ]);
+    const outputMetricConfigs = [
+        { label: 'Goals', source: 'summary', key: 'Goals' },
+        { label: 'Assists', source: 'summary', key: 'Assists' },
+        { label: 'Apps', source: 'summary', key: 'Appearances' },
+        { label: 'Minutes/90', source: 'summary', key: 'MinutesPlayed', transform: (v) => v / 90 },
+        { label: 'xG', source: 'detailed', key: 'Expected goals (xG)' },
+        { label: 'xA', source: 'detailed', key: 'Expected assists (xA)' }
+    ];
 
     function initPlayerAnalysisTab() {
         if (!playerAnalysisTab) return;
@@ -1641,6 +1629,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderPlayerAnalysis() {
         if (!paContent || !paCards || !paCompare) return;
+        destroyPlayerLabCharts();
 
         const playerA = getPlayerById(paPlayerA?.value);
         const compareEnabled = Boolean(paEnableCompare?.checked);
@@ -1657,10 +1646,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const cardB = playerB ? renderPlayerCard(playerB, 'B') : '';
         paCards.classList.toggle('single', !playerB);
         paCards.innerHTML = cardA + cardB;
+        renderPlayerCardCharts(playerA, 'A');
+        if (playerB) {
+            renderPlayerCardCharts(playerB, 'B');
+        }
 
         if (compareEnabled && playerB) {
             paCompare.classList.remove('hidden');
             paCompare.innerHTML = renderComparisonPanel(playerA, playerB);
+            renderComparisonCharts(playerA, playerB);
             setPlayerAnalysisStatus(`Comparing ${playerA.name} vs ${playerB.name}`);
         } else if (compareEnabled && !playerB) {
             paCompare.classList.add('hidden');
@@ -1676,8 +1670,22 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderPlayerCard(player, slotLabel) {
         const profile = player.profile || {};
         const summaryMetrics = player.seasonSummary?.metrics || {};
-        const monthlyRatings = player.seasonSummary?.monthlyRatings || {};
         const detailedMetrics = player.detailedStats?.metrics || {};
+
+        const kpis = [
+            { label: 'Rating', value: summaryMetrics.Rating },
+            { label: 'Goals', value: summaryMetrics.Goals },
+            { label: 'Assists', value: summaryMetrics.Assists },
+            { label: 'Apps', value: summaryMetrics.Appearances },
+            { label: 'Minutes', value: summaryMetrics.MinutesPlayed }
+        ];
+
+        const kpiHtml = kpis.map(kpi => `
+            <div class="pa-kpi">
+                <span class="pa-kpi-label">${kpi.label}</span>
+                <span class="pa-kpi-value">${formatValue(kpi.value)}</span>
+            </div>
+        `).join('');
 
         return `
             <article class="pa-player-card">
@@ -1690,9 +1698,37 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="pa-chip">${formatValue(profile.Position) || '-'}</div>
                 </div>
 
-                <div class="pa-section">
-                    <h4>Profile</h4>
-                    ${renderKeyValueGrid({
+                <div class="pa-kpi-strip">
+                    ${kpiHtml}
+                </div>
+
+                <div class="pa-chart-grid">
+                    <div class="pa-chart-card">
+                        <h4>Rating Trend</h4>
+                        <div class="pa-chart-wrap">
+                            <canvas id="pa-trend-${slotLabel}"></canvas>
+                        </div>
+                    </div>
+                    <div class="pa-chart-card">
+                        <h4>Team Relative Snapshot</h4>
+                        <div class="pa-chart-wrap">
+                            <canvas id="pa-snapshot-${slotLabel}"></canvas>
+                        </div>
+                    </div>
+                    <div class="pa-chart-card pa-chart-card-wide">
+                        <h4>Season Output</h4>
+                        <div class="pa-chart-wrap">
+                            <canvas id="pa-output-${slotLabel}"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <details class="pa-raw-details">
+                    <summary>View Raw Data</summary>
+                    <div class="pa-raw-grid">
+                        <div class="pa-section">
+                            <h4>Profile</h4>
+                            ${renderKeyValueGrid({
             Age: profile.Age,
             DateOfBirth: profile.DateOfBirth,
             Height: profile.Height_cm ? `${profile.Height_cm} cm` : null,
@@ -1701,43 +1737,21 @@ document.addEventListener('DOMContentLoaded', () => {
             ShirtNumber: profile.ShirtNumber,
             Nationality: profile.Nationality
         })}
-                </div>
+                        </div>
 
-                <div class="pa-section">
-                    <h4>Season Summary</h4>
-                    ${renderKeyValueGrid(summaryMetrics)}
-                </div>
+                        <div class="pa-section">
+                            <h4>Season Summary</h4>
+                            ${renderKeyValueGrid(summaryMetrics)}
+                        </div>
 
-                <div class="pa-section">
-                    <h4>Monthly Ratings</h4>
-                    ${renderMonthlyRatings(monthlyRatings)}
-                </div>
-
-                <div class="pa-section">
-                    <h4>Detailed Statistics</h4>
-                    ${renderKeyValueGrid(detailedMetrics)}
-                </div>
+                        <div class="pa-section">
+                            <h4>Detailed Statistics</h4>
+                            ${renderKeyValueGrid(detailedMetrics)}
+                        </div>
+                    </div>
+                </details>
             </article>
         `;
-    }
-
-    function renderMonthlyRatings(monthlyRatings) {
-        const entries = Object.entries(monthlyRatings || {})
-            .filter(([, value]) => value !== null && value !== undefined && value !== '');
-
-        if (!entries.length) {
-            return '<p class="pa-empty">No monthly rating data.</p>';
-        }
-
-        const sorted = entries.sort((a, b) => a[0].localeCompare(b[0]));
-        const chips = sorted.map(([key, value]) => `
-            <div class="pa-month-chip">
-                <span class="pa-month">${formatMonthLabel(key)}</span>
-                <span class="pa-month-value">${formatValue(value)}</span>
-            </div>
-        `).join('');
-
-        return `<div class="pa-month-grid">${chips}</div>`;
     }
 
     function renderKeyValueGrid(metricsObj) {
@@ -1759,72 +1773,430 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderComparisonPanel(playerA, playerB) {
-        const rows = compareMetricKeys.map(metricKey => {
-            const rawA = getPlayerMetricValue(playerA, metricKey);
-            const rawB = getPlayerMetricValue(playerB, metricKey);
-            const numA = toComparableNumber(rawA);
-            const numB = toComparableNumber(rawB);
-
-            if (numA === null && numB === null) {
-                return '';
-            }
-
-            const maxVal = Math.max(Math.abs(numA || 0), Math.abs(numB || 0), 1);
-            const leftPct = Math.max(6, ((Math.abs(numA || 0) / maxVal) * 100));
-            const rightPct = Math.max(6, ((Math.abs(numB || 0) / maxVal) * 100));
-
-            const lowerIsBetter = lowerIsBetterMetrics.has(metricKey);
-            let winner = '';
-            if (numA !== null && numB !== null && Math.abs(numA - numB) > 0.0001) {
-                if (lowerIsBetter) {
-                    winner = numA < numB ? 'left' : 'right';
-                } else {
-                    winner = numA > numB ? 'left' : 'right';
-                }
-            }
-
-            return `
-                <div class="pa-compare-row">
-                    <div class="pa-compare-value ${winner === 'left' ? 'winner' : ''}">
-                        ${formatValue(rawA)}
-                    </div>
-                    <div class="pa-compare-bars">
-                        <div class="pa-compare-metric">${prettifyMetricKey(metricKey)}</div>
-                        <div class="pa-bars-track">
-                            <div class="pa-bar left ${winner === 'left' ? 'winner' : ''}" style="width:${leftPct}%"></div>
-                            <div class="pa-bar right ${winner === 'right' ? 'winner' : ''}" style="width:${rightPct}%"></div>
-                        </div>
-                    </div>
-                    <div class="pa-compare-value ${winner === 'right' ? 'winner' : ''}">
-                        ${formatValue(rawB)}
-                    </div>
-                </div>
-            `;
-        }).filter(Boolean).join('');
-
-        if (!rows) {
-            return '<p class="pa-empty">No common comparable metrics found for these players.</p>';
-        }
+        const callouts = buildComparisonCallouts(playerA, playerB).map(item => `
+            <div class="pa-callout">
+                <span class="pa-callout-metric">${item.metric}</span>
+                <span class="pa-callout-winner">${item.winner}</span>
+                <span class="pa-callout-values">${item.left} vs ${item.right}</span>
+            </div>
+        `).join('');
 
         return `
             <div class="pa-compare-panel">
-                <h3>Head-to-Head Comparison</h3>
+                <h3>Head-to-Head Snapshot</h3>
                 <p class="pa-subtitle">${playerA.name} vs ${playerB.name}</p>
-                <div class="pa-compare-grid">${rows}</div>
+                <div class="pa-callout-grid">${callouts || '<p class="pa-empty">No comparable callouts available.</p>'}</div>
+                <div class="pa-compare-chart-grid">
+                    <div class="pa-chart-card">
+                        <h4>Relative Performance Radar</h4>
+                        <div class="pa-chart-wrap">
+                            <canvas id="pa-compare-radar"></canvas>
+                        </div>
+                    </div>
+                    <div class="pa-chart-card">
+                        <h4>Output Comparison</h4>
+                        <div class="pa-chart-wrap">
+                            <canvas id="pa-compare-output"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="pa-chart-card pa-chart-card-wide">
+                    <h4>Monthly Rating Trend</h4>
+                    <div class="pa-chart-wrap">
+                        <canvas id="pa-compare-trend"></canvas>
+                    </div>
+                </div>
             </div>
         `;
     }
 
-    function getPlayerMetricValue(player, metricKey) {
-        const summary = player.seasonSummary?.metrics || {};
-        const details = player.detailedStats?.metrics || {};
-        if (Object.prototype.hasOwnProperty.call(summary, metricKey)) {
-            return summary[metricKey];
+    function renderPlayerCardCharts(player, slotLabel) {
+        renderPlayerTrendChart(player, `pa-trend-${slotLabel}`);
+        renderPlayerSnapshotChart(player, `pa-snapshot-${slotLabel}`);
+        renderPlayerOutputChart(player, `pa-output-${slotLabel}`);
+    }
+
+    function renderComparisonCharts(playerA, playerB) {
+        renderCompareRadarChart(playerA, playerB, 'pa-compare-radar');
+        renderCompareOutputChart(playerA, playerB, 'pa-compare-output');
+        renderCompareTrendChart(playerA, playerB, 'pa-compare-trend');
+    }
+
+    function renderPlayerTrendChart(player, canvasId) {
+        const series = getMonthlyRatingSeries(player);
+        if (!series.labels.length) return;
+
+        const overall = getMetricByConfig(player, { source: 'summary', key: 'Rating' });
+        const datasets = [{
+            label: `${player.name} Rating`,
+            data: series.values,
+            borderColor: '#38bdf8',
+            backgroundColor: 'rgba(56, 189, 248, 0.2)',
+            pointBackgroundColor: '#bae6fd',
+            fill: true,
+            tension: 0.35
+        }];
+
+        if (overall !== null) {
+            datasets.push({
+                label: 'Season Avg',
+                data: series.values.map(() => overall),
+                borderColor: 'rgba(248, 250, 252, 0.55)',
+                borderDash: [6, 5],
+                pointRadius: 0,
+                fill: false,
+                tension: 0
+            });
         }
-        if (Object.prototype.hasOwnProperty.call(details, metricKey)) {
-            return details[metricKey];
+
+        createPlayerLabChart(canvasId, {
+            type: 'line',
+            data: {
+                labels: series.labels,
+                datasets: datasets
+            },
+            options: getPlayerLabChartOptions({
+                yMin: 5,
+                yMax: 10,
+                showLegend: true
+            })
+        });
+    }
+
+    function renderPlayerSnapshotChart(player, canvasId) {
+        const snapshot = buildSnapshotScores(player);
+        if (!snapshot.labels.length) return;
+
+        createPlayerLabChart(canvasId, {
+            type: 'radar',
+            data: {
+                labels: snapshot.labels,
+                datasets: [{
+                    label: `${player.name} (Team Percentile)`,
+                    data: snapshot.values,
+                    backgroundColor: 'rgba(34, 211, 238, 0.22)',
+                    borderColor: '#22d3ee',
+                    pointBackgroundColor: '#67e8f9',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: { color: '#e2e8f0' }
+                    }
+                },
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100,
+                        grid: { color: 'rgba(148, 163, 184, 0.22)' },
+                        angleLines: { color: 'rgba(148, 163, 184, 0.22)' },
+                        pointLabels: { color: '#cbd5e1', font: { size: 11 } },
+                        ticks: { color: '#94a3b8', backdropColor: 'transparent', stepSize: 20 }
+                    }
+                }
+            }
+        });
+    }
+
+    function renderPlayerOutputChart(player, canvasId) {
+        const output = getOutputValues(player);
+        if (!output.labels.length) return;
+
+        createPlayerLabChart(canvasId, {
+            type: 'bar',
+            data: {
+                labels: output.labels,
+                datasets: [{
+                    label: player.name,
+                    data: output.values,
+                    borderRadius: 8,
+                    backgroundColor: [
+                        '#22d3ee',
+                        '#38bdf8',
+                        '#0ea5e9',
+                        '#3b82f6',
+                        '#60a5fa',
+                        '#93c5fd'
+                    ]
+                }]
+            },
+            options: getPlayerLabChartOptions({
+                yMin: 0,
+                showLegend: false
+            })
+        });
+    }
+
+    function renderCompareRadarChart(playerA, playerB, canvasId) {
+        const a = buildSnapshotScores(playerA);
+        const b = buildSnapshotScores(playerB);
+        if (!a.labels.length || !b.labels.length) return;
+
+        createPlayerLabChart(canvasId, {
+            type: 'radar',
+            data: {
+                labels: a.labels,
+                datasets: [
+                    {
+                        label: playerA.name,
+                        data: a.values,
+                        backgroundColor: 'rgba(56, 189, 248, 0.2)',
+                        borderColor: '#38bdf8',
+                        pointBackgroundColor: '#38bdf8',
+                        borderWidth: 2
+                    },
+                    {
+                        label: playerB.name,
+                        data: b.values,
+                        backgroundColor: 'rgba(244, 114, 182, 0.2)',
+                        borderColor: '#f472b6',
+                        pointBackgroundColor: '#f472b6',
+                        borderWidth: 2
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { labels: { color: '#e2e8f0' } }
+                },
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100,
+                        grid: { color: 'rgba(148, 163, 184, 0.22)' },
+                        angleLines: { color: 'rgba(148, 163, 184, 0.22)' },
+                        pointLabels: { color: '#cbd5e1', font: { size: 11 } },
+                        ticks: { color: '#94a3b8', backdropColor: 'transparent', stepSize: 20 }
+                    }
+                }
+            }
+        });
+    }
+
+    function renderCompareOutputChart(playerA, playerB, canvasId) {
+        const a = getOutputValues(playerA);
+        const b = getOutputValues(playerB);
+        if (!a.labels.length || !b.labels.length) return;
+
+        createPlayerLabChart(canvasId, {
+            type: 'bar',
+            data: {
+                labels: a.labels,
+                datasets: [
+                    {
+                        label: playerA.name,
+                        data: a.values,
+                        backgroundColor: 'rgba(56, 189, 248, 0.78)',
+                        borderRadius: 8
+                    },
+                    {
+                        label: playerB.name,
+                        data: b.values,
+                        backgroundColor: 'rgba(244, 114, 182, 0.75)',
+                        borderRadius: 8
+                    }
+                ]
+            },
+            options: getPlayerLabChartOptions({
+                yMin: 0,
+                showLegend: true
+            })
+        });
+    }
+
+    function renderCompareTrendChart(playerA, playerB, canvasId) {
+        const a = getMonthlyRatingSeries(playerA);
+        const b = getMonthlyRatingSeries(playerB);
+        const labels = Array.from(new Set([...a.labels, ...b.labels])).sort();
+        if (!labels.length) return;
+
+        const toSeries = (series) => {
+            const map = Object.fromEntries(series.labels.map((label, idx) => [label, series.values[idx]]));
+            return labels.map(label => map[label] ?? null);
+        };
+
+        createPlayerLabChart(canvasId, {
+            type: 'line',
+            data: {
+                labels: labels.map(formatMonthLabel),
+                datasets: [
+                    {
+                        label: playerA.name,
+                        data: toSeries(a),
+                        borderColor: '#38bdf8',
+                        backgroundColor: 'rgba(56, 189, 248, 0.15)',
+                        pointBackgroundColor: '#bae6fd',
+                        fill: false,
+                        spanGaps: true,
+                        tension: 0.3
+                    },
+                    {
+                        label: playerB.name,
+                        data: toSeries(b),
+                        borderColor: '#f472b6',
+                        backgroundColor: 'rgba(244, 114, 182, 0.15)',
+                        pointBackgroundColor: '#fbcfe8',
+                        fill: false,
+                        spanGaps: true,
+                        tension: 0.3
+                    }
+                ]
+            },
+            options: getPlayerLabChartOptions({
+                yMin: 5,
+                yMax: 10,
+                showLegend: true
+            })
+        });
+    }
+
+    function createPlayerLabChart(canvasId, config) {
+        const canvas = document.getElementById(canvasId);
+        if (!canvas || typeof Chart === 'undefined') return;
+
+        if (playerLabChartInstances.has(canvasId)) {
+            playerLabChartInstances.get(canvasId).destroy();
+            playerLabChartInstances.delete(canvasId);
         }
-        return null;
+
+        const chart = new Chart(canvas, config);
+        playerLabChartInstances.set(canvasId, chart);
+    }
+
+    function destroyPlayerLabCharts() {
+        playerLabChartInstances.forEach(chart => chart.destroy());
+        playerLabChartInstances.clear();
+    }
+
+    function getPlayerLabChartOptions({ yMin = undefined, yMax = undefined, showLegend = false }) {
+        return {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: showLegend,
+                    labels: { color: '#e2e8f0' }
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                    titleColor: '#f8fafc',
+                    bodyColor: '#cbd5e1',
+                    borderColor: 'rgba(148, 163, 184, 0.3)',
+                    borderWidth: 1
+                }
+            },
+            scales: {
+                x: {
+                    grid: { color: 'rgba(148, 163, 184, 0.12)' },
+                    ticks: { color: '#cbd5e1' }
+                },
+                y: {
+                    min: yMin,
+                    max: yMax,
+                    grid: { color: 'rgba(148, 163, 184, 0.12)' },
+                    ticks: { color: '#cbd5e1' }
+                }
+            }
+        };
+    }
+
+    function buildSnapshotScores(player) {
+        const labels = [];
+        const values = [];
+        const peers = (playerAnalysisData?.players || []).filter(p => p.team === player.team);
+
+        snapshotMetricConfigs.forEach(metric => {
+            const ownValue = getMetricByConfig(player, metric);
+            if (ownValue === null) return;
+
+            const peerValues = peers
+                .map(peer => getMetricByConfig(peer, metric))
+                .filter(v => v !== null);
+
+            let percentile = 50;
+            if (peerValues.length) {
+                const betterOrEqual = peerValues.filter(v => metric.lowerIsBetter ? v >= ownValue : v <= ownValue).length;
+                percentile = Math.round((betterOrEqual / peerValues.length) * 100);
+            }
+
+            labels.push(metric.label);
+            values.push(percentile);
+        });
+
+        return { labels, values };
+    }
+
+    function getOutputValues(player) {
+        const labels = [];
+        const values = [];
+
+        outputMetricConfigs.forEach(metric => {
+            let value = getMetricByConfig(player, metric);
+            if (value === null) return;
+            if (typeof metric.transform === 'function') {
+                value = metric.transform(value);
+            }
+            if (!Number.isFinite(value)) return;
+
+            labels.push(metric.label);
+            values.push(Number(value.toFixed(2)));
+        });
+
+        return { labels, values };
+    }
+
+    function getMonthlyRatingSeries(player) {
+        const monthly = player.seasonSummary?.monthlyRatings || {};
+        const entries = Object.entries(monthly)
+            .filter(([key, value]) => /^\d{4}-\d{2}$/.test(key) && toComparableNumber(value) !== null)
+            .sort((a, b) => a[0].localeCompare(b[0]));
+
+        return {
+            labels: entries.map(([key]) => formatMonthLabel(key)),
+            values: entries.map(([, value]) => toComparableNumber(value))
+        };
+    }
+
+    function buildComparisonCallouts(playerA, playerB) {
+        const calloutMetrics = [
+            { metric: 'Rating', source: 'summary', key: 'Rating' },
+            { metric: 'Goals', source: 'summary', key: 'Goals' },
+            { metric: 'Assists', source: 'summary', key: 'Assists' },
+            { metric: 'xG', source: 'detailed', key: 'Expected goals (xG)' }
+        ];
+
+        return calloutMetrics.map(metric => {
+            const left = getMetricByConfig(playerA, metric);
+            const right = getMetricByConfig(playerB, metric);
+            if (left === null && right === null) return null;
+
+            let winner = 'Even';
+            if ((left ?? -Infinity) > (right ?? -Infinity)) winner = playerA.name;
+            if ((right ?? -Infinity) > (left ?? -Infinity)) winner = playerB.name;
+
+            return {
+                metric: metric.metric,
+                winner: winner,
+                left: formatValue(left),
+                right: formatValue(right)
+            };
+        }).filter(Boolean);
+    }
+
+    function getMetricByConfig(player, metric) {
+        const source = metric.source === 'summary'
+            ? (player.seasonSummary?.metrics || {})
+            : (player.detailedStats?.metrics || {});
+        const raw = source[metric.key];
+
+        if (raw === null || raw === undefined || raw === '') return null;
+        return toComparableNumber(raw, Boolean(metric.preferPercent));
     }
 
     function formatValue(value) {
@@ -1835,12 +2207,17 @@ document.addEventListener('DOMContentLoaded', () => {
         return `${value}`;
     }
 
-    function toComparableNumber(value) {
+    function toComparableNumber(value, preferPercent = false) {
         if (value === null || value === undefined || value === '') return null;
         if (typeof value === 'number') return Number.isFinite(value) ? value : null;
 
         const str = `${value}`.replace(',', '.').trim();
         if (!str) return null;
+
+        if (preferPercent) {
+            const pct = extractPercentNumber(str);
+            if (pct !== null) return pct;
+        }
 
         const ratioMatch = str.match(/(-?\d+(?:\.\d+)?)\s*\/\s*(-?\d+(?:\.\d+)?)/);
         if (ratioMatch) {
@@ -1855,6 +2232,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!numMatch) return null;
 
         const parsed = parseFloat(numMatch[0]);
+        return Number.isFinite(parsed) ? parsed : null;
+    }
+
+    function extractPercentNumber(value) {
+        const str = `${value}`;
+        const match = str.match(/(-?\d+(?:\.\d+)?)\s*%/);
+        if (!match) return null;
+        const parsed = parseFloat(match[1]);
         return Number.isFinite(parsed) ? parsed : null;
     }
 
