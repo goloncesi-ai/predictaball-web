@@ -48,6 +48,23 @@ cd "/Users/erdilsen/Library/Mobile Documents/com~apple~CloudDocs/Gol Oncesi"
 python3 scripts/auto_weekly_scraper.py
 ```
 
+## Manual Round Override
+
+If you need to manually scrape a specific round (e.g., if you missed Round 20):
+
+```bash
+cd "/Users/erdilsen/Library/Mobile Documents/com~apple~CloudDocs/Gol Oncesi"
+python3 scripts/auto_weekly_scraper.py --round 20
+```
+
+This will:
+- Still refresh the schedule from the API (to get latest statuses)
+- Override the automatic round detection
+- Scrape all finished matches from the specified round
+- Update data.js and push to GitHub
+
+**Note:** This is intended for one-time manual corrections. The automated scheduler will continue to use automatic round detection.
+
 ## Logs
 
 Check logs to see if the automation is working:

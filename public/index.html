@@ -85,6 +85,9 @@
                 <button class="nav-btn" data-tab="tab-recent-games">
                     <span class="icon">⚽</span> <span data-i18n="nav_recent_games">Recent Games</span>
                 </button>
+                <button class="nav-btn" data-tab="tab-player-analysis">
+                    <span class="icon">🧬</span> <span data-i18n="nav_player_analysis">Player Lab</span>
+                </button>
                 <!-- 
                 <button class="nav-btn" data-tab="tab-players">
                     <span class="icon">👤</span> <span data-i18n="nav_scout">Scout</span>
@@ -578,6 +581,52 @@
             </section>
              -->
 
+    <!-- Tab 4: Player Analysis -->
+    <section id="tab-player-analysis" class="view-section hidden">
+        <div class="section-header">
+            <h2 data-i18n="player_analysis_title">Deep Player Analysis</h2>
+            <p data-i18n="player_analysis_desc">Profile, season summary, and detailed statistics with instant player
+                comparison.</p>
+        </div>
+
+        <div class="player-analysis-shell">
+            <div class="player-analysis-toolbar">
+                <div class="pa-field">
+                    <label for="pa-team-filter" data-i18n="pa_team_filter_label">Team Filter</label>
+                    <select id="pa-team-filter" class="modern-select">
+                        <option value="all" data-i18n="pa_team_filter_all">All Teams</option>
+                    </select>
+                </div>
+
+                <div class="pa-field">
+                    <label for="pa-player-a" data-i18n="pa_player_a_label">Player A</label>
+                    <select id="pa-player-a" class="modern-select">
+                        <option value="" disabled selected data-i18n="pa_choose_player">Choose a player...</option>
+                    </select>
+                </div>
+
+                <div class="pa-field pa-compare-toggle">
+                    <label for="pa-enable-compare" data-i18n="pa_compare_toggle_label">Compare Mode</label>
+                    <input id="pa-enable-compare" type="checkbox" />
+                </div>
+
+                <div class="pa-field">
+                    <label for="pa-player-b" data-i18n="pa_player_b_label">Player B</label>
+                    <select id="pa-player-b" class="modern-select" disabled>
+                        <option value="" disabled selected data-i18n="pa_choose_player">Choose a player...</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="pa-status" class="pa-status">Loading player analysis data...</div>
+
+            <div id="pa-content" class="pa-content hidden">
+                <div id="pa-cards" class="pa-cards"></div>
+                <div id="pa-compare" class="pa-compare hidden"></div>
+            </div>
+        </div>
+    </section>
+
     <!-- Tab 5: Recent Games -->
     <section id="tab-recent-games" class="view-section hidden">
         <div class="section-header">
@@ -623,7 +672,7 @@
     <script src="data.js?v=4"></script>
     <script src="players_data.js?v=1"></script>
     <script src="formation.js?v=6"></script>
-    <script src="app.js?v=6"></script>
+    <script src="app.js?v=7"></script>
 </body>
 
 </html>

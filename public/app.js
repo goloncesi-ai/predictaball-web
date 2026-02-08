@@ -57,12 +57,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const radarChartCanvas = document.getElementById('player-radar-chart');
     let radarChartInstance = null;
 
+    // Deep Player Analysis Tab Elements
+    const playerAnalysisTab = document.getElementById('tab-player-analysis');
+    const paTeamFilter = document.getElementById('pa-team-filter');
+    const paPlayerA = document.getElementById('pa-player-a');
+    const paEnableCompare = document.getElementById('pa-enable-compare');
+    const paPlayerB = document.getElementById('pa-player-b');
+    const paStatus = document.getElementById('pa-status');
+    const paContent = document.getElementById('pa-content');
+    const paCards = document.getElementById('pa-cards');
+    const paCompare = document.getElementById('pa-compare');
+
     // Tab Navigation
     const tabBtns = document.querySelectorAll('.nav-btn');
     const tabContents = document.querySelectorAll('.view-section');
 
     let selectedTeam1 = null;
     let selectedTeam2 = null;
+    let playerAnalysisData = null;
+    let playerAnalysisLoaded = false;
 
     // --- Initialization moved to after declarations ---
 
@@ -73,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
             nav_analysis: "Analysis",
             nav_simulation: "Simulation",
             nav_recent_games: "Recent Games",
+            nav_player_analysis: "Player Lab",
             nav_scout: "Scout",
             nav_explore: "Explore",
             analysis_title: "Pre-Match Analysis",
@@ -122,6 +136,14 @@ document.addEventListener('DOMContentLoaded', () => {
             radar_title: "Performance Radar",
             recent_games_title: "Weekly Predictions",
             recent_games_desc: "AI-powered predictions for upcoming Turkish Super League matches.",
+            player_analysis_title: "Deep Player Analysis",
+            player_analysis_desc: "Profile, season summary, and detailed statistics with instant player comparison.",
+            pa_team_filter_label: "Team Filter",
+            pa_team_filter_all: "All Teams",
+            pa_player_a_label: "Player A",
+            pa_player_b_label: "Player B",
+            pa_compare_toggle_label: "Compare Mode",
+            pa_choose_player: "Choose a player...",
             round_label: "Round",
             loading_matches: "Loading matches...",
             confidence_high: "High Confidence",
@@ -133,6 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
             nav_analysis: "Analiz",
             nav_simulation: "Simülasyon",
             nav_recent_games: "Son Maçlar",
+            nav_player_analysis: "Oyuncu Laboratuvarı",
             nav_scout: "Gözlemci",
             nav_explore: "Keşfet",
             analysis_title: "Maç Öncesi Analiz",
@@ -182,6 +205,14 @@ document.addEventListener('DOMContentLoaded', () => {
             radar_title: "Performans Radarı",
             recent_games_title: "Haftalık Tahminler",
             recent_games_desc: "Süper Lig maçları için yapay zeka destekli tahminler.",
+            player_analysis_title: "Derin Oyuncu Analizi",
+            player_analysis_desc: "Profil, sezon özeti ve detaylı istatistikleri anında oyuncu karşılaştırmasıyla inceleyin.",
+            pa_team_filter_label: "Takım Filtresi",
+            pa_team_filter_all: "Tüm Takımlar",
+            pa_player_a_label: "Oyuncu A",
+            pa_player_b_label: "Oyuncu B",
+            pa_compare_toggle_label: "Karşılaştırma Modu",
+            pa_choose_player: "Oyuncu seçin...",
             round_label: "Hafta",
             loading_matches: "Maçlar yükleniyor...",
             confidence_high: "Yüksek Güven",
@@ -260,6 +291,12 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.lang-option').forEach(opt => {
             opt.classList.toggle('active', opt.getAttribute('data-lang') === lang);
         });
+
+        if (playerAnalysisLoaded) {
+            populateTeamFilter();
+            populatePlayerSelectors();
+            renderPlayerAnalysis();
+        }
     }
 
     // --- Initialization ---
@@ -267,6 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
         populateAllSelectors();
         initTabs();
         initExploreTab();
+        initPlayerAnalysisTab();
         initLanguage();
     } else {
         console.error("No data found. Ensure data.js is loaded.");
@@ -1422,6 +1460,415 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
+    }
+
+    // --- Deep Player Analysis Tab ---
+    const compareMetricKeys = [
+        'Rating',
+        'Appearances',
+        'MinutesPlayed',
+        'Goals',
+        'Assists',
+        'YellowCards',
+        'RedCards',
+        'Expected goals (xG)',
+        'Goals per game',
+        'Total shots',
+        'Shots on target per game',
+        'Expected assists (xA)',
+        'Key passes',
+        'Interceptions',
+        'Tackles per game',
+        'Possession lost'
+    ];
+
+    const lowerIsBetterMetrics = new Set([
+        'YellowCards',
+        'RedCards',
+        'Big chances missed',
+        'Errors leading to shot',
+        'Errors leading to goal',
+        'Penalties committed',
+        'Dribbled past per game',
+        'Possession lost',
+        'Offsides',
+        'Fouls per game'
+    ]);
+
+    function initPlayerAnalysisTab() {
+        if (!playerAnalysisTab) return;
+
+        const playerAnalysisBtn = document.querySelector('.nav-btn[data-tab="tab-player-analysis"]');
+        if (playerAnalysisBtn) {
+            playerAnalysisBtn.addEventListener('click', async () => {
+                if (!playerAnalysisLoaded) {
+                    await loadPlayerAnalysisData();
+                } else {
+                    renderPlayerAnalysis();
+                }
+            });
+        }
+
+        if (paTeamFilter) {
+            paTeamFilter.addEventListener('change', () => {
+                populatePlayerSelectors();
+                renderPlayerAnalysis();
+            });
+        }
+
+        if (paPlayerA) {
+            paPlayerA.addEventListener('change', () => {
+                renderPlayerAnalysis();
+            });
+        }
+
+        if (paEnableCompare) {
+            paEnableCompare.addEventListener('change', () => {
+                if (paPlayerB) {
+                    paPlayerB.disabled = !paEnableCompare.checked;
+                    if (!paEnableCompare.checked) {
+                        paPlayerB.value = '';
+                    }
+                }
+                renderPlayerAnalysis();
+            });
+        }
+
+        if (paPlayerB) {
+            paPlayerB.addEventListener('change', () => {
+                renderPlayerAnalysis();
+            });
+        }
+    }
+
+    async function loadPlayerAnalysisData() {
+        if (!paStatus) return;
+
+        setPlayerAnalysisStatus('Loading player analysis data...');
+
+        try {
+            const response = await fetch('/api/player-analysis?limit=2');
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
+
+            playerAnalysisData = await response.json();
+            playerAnalysisLoaded = true;
+
+            populateTeamFilter();
+            populatePlayerSelectors();
+
+            const playersCount = playerAnalysisData?.playerCount || 0;
+            const teamsCount = playerAnalysisData?.teamCount || 0;
+            setPlayerAnalysisStatus(`Loaded ${playersCount} players from ${teamsCount} teams. Select Player A to begin.`);
+
+            if (paPlayerA && paPlayerA.options.length > 1) {
+                paPlayerA.selectedIndex = 1;
+                renderPlayerAnalysis();
+            }
+        } catch (error) {
+            console.error('Failed to load player analysis:', error);
+            setPlayerAnalysisStatus(`Failed to load player data: ${error.message}`, 'error');
+        }
+    }
+
+    function setPlayerAnalysisStatus(message, type = 'info') {
+        if (!paStatus) return;
+        paStatus.textContent = message;
+        paStatus.classList.remove('error');
+        if (type === 'error') {
+            paStatus.classList.add('error');
+        }
+    }
+
+    function populateTeamFilter() {
+        if (!paTeamFilter || !playerAnalysisData) return;
+
+        const previous = paTeamFilter.value || 'all';
+        paTeamFilter.innerHTML = '';
+
+        const allOpt = new Option(translations[currentLang].pa_team_filter_all || 'All Teams', 'all');
+        paTeamFilter.add(allOpt);
+
+        (playerAnalysisData.teams || []).forEach(team => {
+            const count = team.playerCount || 0;
+            paTeamFilter.add(new Option(`${team.name} (${count})`, team.name));
+        });
+
+        const values = Array.from(paTeamFilter.options).map(opt => opt.value);
+        paTeamFilter.value = values.includes(previous) ? previous : 'all';
+    }
+
+    function getFilteredPlayers() {
+        if (!playerAnalysisData || !Array.isArray(playerAnalysisData.players)) return [];
+        const selectedTeam = paTeamFilter?.value || 'all';
+        const allPlayers = playerAnalysisData.players;
+
+        if (selectedTeam === 'all') {
+            return allPlayers;
+        }
+        return allPlayers.filter(player => player.team === selectedTeam);
+    }
+
+    function populatePlayerSelectors() {
+        if (!paPlayerA || !paPlayerB) return;
+
+        const players = getFilteredPlayers();
+        const previousA = paPlayerA.value;
+        const previousB = paPlayerB.value;
+
+        paPlayerA.innerHTML = '';
+        paPlayerB.innerHTML = '';
+
+        const placeholder = translations[currentLang].pa_choose_player || 'Choose a player...';
+        paPlayerA.add(new Option(placeholder, ''));
+        paPlayerB.add(new Option(placeholder, ''));
+
+        players.forEach(player => {
+            const label = `${player.name} (${player.team})`;
+            paPlayerA.add(new Option(label, player.id));
+            paPlayerB.add(new Option(label, player.id));
+        });
+
+        paPlayerA.value = players.some(player => player.id === previousA) ? previousA : '';
+        paPlayerB.value = players.some(player => player.id === previousB) ? previousB : '';
+    }
+
+    function getPlayerById(playerId) {
+        if (!playerId || !playerAnalysisData || !Array.isArray(playerAnalysisData.players)) return null;
+        return playerAnalysisData.players.find(player => player.id === playerId) || null;
+    }
+
+    function renderPlayerAnalysis() {
+        if (!paContent || !paCards || !paCompare) return;
+
+        const playerA = getPlayerById(paPlayerA?.value);
+        const compareEnabled = Boolean(paEnableCompare?.checked);
+        const playerB = compareEnabled ? getPlayerById(paPlayerB?.value) : null;
+
+        if (!playerA) {
+            paContent.classList.add('hidden');
+            setPlayerAnalysisStatus('Select Player A to view full profile, season summary, and detailed stats.');
+            return;
+        }
+
+        paContent.classList.remove('hidden');
+        const cardA = renderPlayerCard(playerA, 'A');
+        const cardB = playerB ? renderPlayerCard(playerB, 'B') : '';
+        paCards.classList.toggle('single', !playerB);
+        paCards.innerHTML = cardA + cardB;
+
+        if (compareEnabled && playerB) {
+            paCompare.classList.remove('hidden');
+            paCompare.innerHTML = renderComparisonPanel(playerA, playerB);
+            setPlayerAnalysisStatus(`Comparing ${playerA.name} vs ${playerB.name}`);
+        } else if (compareEnabled && !playerB) {
+            paCompare.classList.add('hidden');
+            paCompare.innerHTML = '';
+            setPlayerAnalysisStatus(`Viewing ${playerA.name}. Select Player B to compare.`);
+        } else {
+            paCompare.classList.add('hidden');
+            paCompare.innerHTML = '';
+            setPlayerAnalysisStatus(`Viewing ${playerA.name}`);
+        }
+    }
+
+    function renderPlayerCard(player, slotLabel) {
+        const profile = player.profile || {};
+        const summaryMetrics = player.seasonSummary?.metrics || {};
+        const monthlyRatings = player.seasonSummary?.monthlyRatings || {};
+        const detailedMetrics = player.detailedStats?.metrics || {};
+
+        return `
+            <article class="pa-player-card">
+                <div class="pa-card-header">
+                    <div>
+                        <div class="pa-slot">Player ${slotLabel}</div>
+                        <h3>${player.name}</h3>
+                        <p class="pa-subtitle">${player.team}</p>
+                    </div>
+                    <div class="pa-chip">${formatValue(profile.Position) || '-'}</div>
+                </div>
+
+                <div class="pa-section">
+                    <h4>Profile</h4>
+                    ${renderKeyValueGrid({
+            Age: profile.Age,
+            DateOfBirth: profile.DateOfBirth,
+            Height: profile.Height_cm ? `${profile.Height_cm} cm` : null,
+            PreferredFoot: profile.PreferredFoot,
+            Position: profile.Position,
+            ShirtNumber: profile.ShirtNumber,
+            Nationality: profile.Nationality
+        })}
+                </div>
+
+                <div class="pa-section">
+                    <h4>Season Summary</h4>
+                    ${renderKeyValueGrid(summaryMetrics)}
+                </div>
+
+                <div class="pa-section">
+                    <h4>Monthly Ratings</h4>
+                    ${renderMonthlyRatings(monthlyRatings)}
+                </div>
+
+                <div class="pa-section">
+                    <h4>Detailed Statistics</h4>
+                    ${renderKeyValueGrid(detailedMetrics)}
+                </div>
+            </article>
+        `;
+    }
+
+    function renderMonthlyRatings(monthlyRatings) {
+        const entries = Object.entries(monthlyRatings || {})
+            .filter(([, value]) => value !== null && value !== undefined && value !== '');
+
+        if (!entries.length) {
+            return '<p class="pa-empty">No monthly rating data.</p>';
+        }
+
+        const sorted = entries.sort((a, b) => a[0].localeCompare(b[0]));
+        const chips = sorted.map(([key, value]) => `
+            <div class="pa-month-chip">
+                <span class="pa-month">${formatMonthLabel(key)}</span>
+                <span class="pa-month-value">${formatValue(value)}</span>
+            </div>
+        `).join('');
+
+        return `<div class="pa-month-grid">${chips}</div>`;
+    }
+
+    function renderKeyValueGrid(metricsObj) {
+        const entries = Object.entries(metricsObj || {})
+            .filter(([, value]) => value !== null && value !== undefined && value !== '');
+
+        if (!entries.length) {
+            return '<p class="pa-empty">No data available.</p>';
+        }
+
+        const html = entries.map(([key, value]) => `
+            <div class="pa-kv-item">
+                <span class="pa-kv-key">${prettifyMetricKey(key)}</span>
+                <span class="pa-kv-value">${formatValue(value)}</span>
+            </div>
+        `).join('');
+
+        return `<div class="pa-kv-grid">${html}</div>`;
+    }
+
+    function renderComparisonPanel(playerA, playerB) {
+        const rows = compareMetricKeys.map(metricKey => {
+            const rawA = getPlayerMetricValue(playerA, metricKey);
+            const rawB = getPlayerMetricValue(playerB, metricKey);
+            const numA = toComparableNumber(rawA);
+            const numB = toComparableNumber(rawB);
+
+            if (numA === null && numB === null) {
+                return '';
+            }
+
+            const maxVal = Math.max(Math.abs(numA || 0), Math.abs(numB || 0), 1);
+            const leftPct = Math.max(6, ((Math.abs(numA || 0) / maxVal) * 100));
+            const rightPct = Math.max(6, ((Math.abs(numB || 0) / maxVal) * 100));
+
+            const lowerIsBetter = lowerIsBetterMetrics.has(metricKey);
+            let winner = '';
+            if (numA !== null && numB !== null && Math.abs(numA - numB) > 0.0001) {
+                if (lowerIsBetter) {
+                    winner = numA < numB ? 'left' : 'right';
+                } else {
+                    winner = numA > numB ? 'left' : 'right';
+                }
+            }
+
+            return `
+                <div class="pa-compare-row">
+                    <div class="pa-compare-value ${winner === 'left' ? 'winner' : ''}">
+                        ${formatValue(rawA)}
+                    </div>
+                    <div class="pa-compare-bars">
+                        <div class="pa-compare-metric">${prettifyMetricKey(metricKey)}</div>
+                        <div class="pa-bars-track">
+                            <div class="pa-bar left ${winner === 'left' ? 'winner' : ''}" style="width:${leftPct}%"></div>
+                            <div class="pa-bar right ${winner === 'right' ? 'winner' : ''}" style="width:${rightPct}%"></div>
+                        </div>
+                    </div>
+                    <div class="pa-compare-value ${winner === 'right' ? 'winner' : ''}">
+                        ${formatValue(rawB)}
+                    </div>
+                </div>
+            `;
+        }).filter(Boolean).join('');
+
+        if (!rows) {
+            return '<p class="pa-empty">No common comparable metrics found for these players.</p>';
+        }
+
+        return `
+            <div class="pa-compare-panel">
+                <h3>Head-to-Head Comparison</h3>
+                <p class="pa-subtitle">${playerA.name} vs ${playerB.name}</p>
+                <div class="pa-compare-grid">${rows}</div>
+            </div>
+        `;
+    }
+
+    function getPlayerMetricValue(player, metricKey) {
+        const summary = player.seasonSummary?.metrics || {};
+        const details = player.detailedStats?.metrics || {};
+        if (Object.prototype.hasOwnProperty.call(summary, metricKey)) {
+            return summary[metricKey];
+        }
+        if (Object.prototype.hasOwnProperty.call(details, metricKey)) {
+            return details[metricKey];
+        }
+        return null;
+    }
+
+    function formatValue(value) {
+        if (value === null || value === undefined || value === '') return '-';
+        if (typeof value === 'number') {
+            return Number.isInteger(value) ? `${value}` : value.toFixed(2).replace(/\.00$/, '');
+        }
+        return `${value}`;
+    }
+
+    function toComparableNumber(value) {
+        if (value === null || value === undefined || value === '') return null;
+        if (typeof value === 'number') return Number.isFinite(value) ? value : null;
+
+        const str = `${value}`.replace(',', '.').trim();
+        if (!str) return null;
+
+        const ratioMatch = str.match(/(-?\d+(?:\.\d+)?)\s*\/\s*(-?\d+(?:\.\d+)?)/);
+        if (ratioMatch) {
+            const numerator = parseFloat(ratioMatch[1]);
+            const denominator = parseFloat(ratioMatch[2]);
+            if (Number.isFinite(numerator) && Number.isFinite(denominator) && denominator !== 0) {
+                return numerator / denominator;
+            }
+        }
+
+        const numMatch = str.match(/-?\d+(?:\.\d+)?/);
+        if (!numMatch) return null;
+
+        const parsed = parseFloat(numMatch[0]);
+        return Number.isFinite(parsed) ? parsed : null;
+    }
+
+    function prettifyMetricKey(key) {
+        if (!key) return '';
+        return key
+            .replace(/_/g, ' ')
+            .replace(/\bcm\b/gi, 'cm')
+            .trim();
+    }
+
+    function formatMonthLabel(key) {
+        if (key === 'Last12Months') return 'Last 12M';
+        return key;
     }
 
     // --- Recent Games Tab ---

@@ -12,9 +12,11 @@ import json
 import time
 import random
 import logging
+import argparse
 import pandas as pd
 from pathlib import Path
 from datetime import datetime
+import requests
 
 # Setup logging
 logging.basicConfig(
@@ -78,6 +80,88 @@ TEAM_PATHS = {
 # ============================================================================
 # Automation Logic
 # ============================================================================
+
+def refresh_schedule():
+    """Update season_schedule.json with latest results and current round from Sofascore."""
+    logging.info("Refreshing schedule from Sofascore API...")
+    
+    API_BASE = "https://www.sofascore.com/api/v1"
+    TOURNAMENT_ID = 52
+    SEASON_ID = 77805
+    
+    try:
+        # 1. Fetch rounds to get current round
+        rounds_url = f"{API_BASE}/unique-tournament/{TOURNAMENT_ID}/season/{SEASON_ID}/rounds"
+        r = requests.get(rounds_url, timeout=25)
+        r.raise_for_status()
+        rounds_data = r.json()
+        
+        current_round = rounds_data.get('currentRound', {}).get('round', 19)
+        logging.info(f"API says current round is: {current_round}")
+        
+        # 2. Load existing schedule
+        with open(SCHEDULE_FILE, 'r', encoding='utf-8') as f:
+            schedule = json.load(f)
+        
+        # 3. Update current_round if it changed
+        old_round = schedule.get('current_round')
+        schedule['current_round'] = current_round
+        if old_round != current_round:
+            logging.info(f"Updated current_round from {old_round} to {current_round}")
+        
+        # 4. Refresh match statuses for the current round (and maybe the previous one just in case)
+        # We'll update the current round and the one before it
+        rounds_to_refresh = [current_round]
+        if current_round > 1:
+            rounds_to_refresh.append(current_round - 1)
+            
+        for rnd_num in rounds_to_refresh:
+            logging.info(f"Refreshing statuses for Round {rnd_num}...")
+            matches_url = f"{API_BASE}/unique-tournament/{TOURNAMENT_ID}/season/{SEASON_ID}/events/round/{rnd_num}"
+            r = requests.get(matches_url, timeout=25)
+            r.raise_for_status()
+            events = r.json().get('events', [])
+            
+            # Find the round in our local schedule
+            local_round = next((r for r in schedule.get('rounds', []) if r['round'] == rnd_num), None)
+            if not local_round:
+                logging.warning(f"Round {rnd_num} not found in local schedule.json")
+                continue
+                
+            for event in events:
+                match_id = event.get('id')
+                status_code = event.get('status', {}).get('code')
+                
+                # Find matching match in local schedule
+                local_match = next((m for m in local_round['matches'] if m['match_id'] == match_id), None)
+                if local_match:
+                    # Update status
+                    if status_code == 100:
+                        local_match['status'] = 'finished'
+                        # Also update score if available
+                        home_score = event.get('homeScore', {}).get('current')
+                        away_score = event.get('awayScore', {}).get('current')
+                        if home_score is not None and away_score is not None:
+                            local_match['actual_score'] = f"{home_score}-{away_score}"
+                    elif status_code == 0:
+                        local_match['status'] = 'scheduled'
+                    else:
+                        local_match['status'] = 'in_progress'
+        
+        # 5. Save updated schedule
+        schedule['scraped_at'] = datetime.now().isoformat()
+        with open(SCHEDULE_FILE, 'w', encoding='utf-8') as f:
+            json.dump(schedule, f, indent=2, ensure_ascii=False)
+            
+        logging.info("✅ Schedule refreshed successfully.")
+        return schedule
+        
+    except Exception as e:
+        logging.error(f"❌ Failed to refresh schedule: {e}")
+        # Return existing schedule as fallback
+        with open(SCHEDULE_FILE, 'r', encoding='utf-8') as f:
+            return json.load(f)
+
 
 def load_schedule():
     """Load the season schedule JSON."""
@@ -197,14 +281,25 @@ def scrape_and_append(match_id, team_name, team_path):
         return False
 
 
-def main():
-    """Main automation logic."""
+
+def main(force_round=None):
+    """Main automation logic.
+    
+    Args:
+        force_round: If provided, override the automatically detected round and scrape this round instead.
+    """
     logging.info("=" * 60)
     logging.info("Starting Automated Weekly Scraper")
     logging.info("=" * 60)
     
-    # Load schedule
-    schedule = load_schedule()
+    # Refresh schedule first to get latest round and statuses
+    schedule = refresh_schedule()
+    
+    # Allow manual override of round (for missed rounds)
+    if force_round is not None:
+        logging.info(f"⚠️  MANUAL OVERRIDE: Forcing round to {force_round}")
+        schedule['current_round'] = force_round
+    
     matches = get_current_round_matches(schedule)
     
     if not matches:
@@ -324,4 +419,23 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(
+        description='Automated weekly scraper for Turkish Super League',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  # Normal automatic run (uses current round from API)
+  python3 auto_weekly_scraper.py
+  
+  # Manual override to scrape a specific round
+  python3 auto_weekly_scraper.py --round 20
+        """
+    )
+    parser.add_argument(
+        '--round',
+        type=int,
+        help='Override automatic round detection and scrape a specific round'
+    )
+    
+    args = parser.parse_args()
+    main(force_round=args.round)

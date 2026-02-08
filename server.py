@@ -1,8 +1,11 @@
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
+from datetime import datetime
+import math
 import os
 import sys
 from pathlib import Path
+import unicodedata
 
 # Dynamic Base Path
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -20,6 +23,197 @@ OUTPUT_DIR = os.path.join(BASE_DIR, "outputs")
 
 # Ensure output dir exists
 os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+_PLAYER_ANALYSIS_CACHE = {
+    "signature": None,
+    "payload": None
+}
+
+
+def _slugify(value):
+    normalized = unicodedata.normalize("NFKD", str(value)).encode("ascii", "ignore").decode("utf-8")
+    return normalized.lower().replace(" ", "").replace("-", "")
+
+
+def _json_safe(value):
+    if value is None:
+        return None
+
+    if hasattr(value, "item"):
+        try:
+            value = value.item()
+        except Exception:
+            pass
+
+    if isinstance(value, float):
+        if math.isnan(value):
+            return None
+        if math.isinf(value):
+            return None
+
+    if hasattr(value, "isoformat"):
+        try:
+            return value.isoformat()
+        except Exception:
+            pass
+
+    if isinstance(value, str):
+        stripped = value.strip()
+        return stripped if stripped else None
+
+    return value
+
+
+def _row_to_dict(row_dict):
+    return {str(k): _json_safe(v) for k, v in row_dict.items()}
+
+
+def _discover_player_detail_files():
+    sources = []
+    if not os.path.exists(BASE_DATA_DIR):
+        return sources
+
+    for team_folder in sorted(os.listdir(BASE_DATA_DIR)):
+        team_path = os.path.join(BASE_DATA_DIR, team_folder)
+        if not os.path.isdir(team_path):
+            continue
+
+        players_path = os.path.join(team_path, "Players")
+        if not os.path.isdir(players_path):
+            continue
+
+        xlsx_files = sorted(
+            f for f in os.listdir(players_path)
+            if f.endswith(".xlsx") and "PlayerDetail" in f
+        )
+        if not xlsx_files:
+            continue
+
+        # Use the first matching workbook for this team folder.
+        sources.append({
+            "team_folder": team_folder,
+            "file_path": os.path.join(players_path, xlsx_files[0]),
+            "file_name": xlsx_files[0]
+        })
+
+    return sources
+
+
+def _load_player_analysis_payload(limit=None, force_refresh=False):
+    import pandas as pd
+
+    sources = _discover_player_detail_files()
+    if limit:
+        sources = sources[:max(limit, 0)]
+
+    signature = []
+    for source in sources:
+        mtime = os.path.getmtime(source["file_path"])
+        signature.append((source["file_path"], mtime))
+
+    signature = tuple(signature)
+    if (not force_refresh and
+            _PLAYER_ANALYSIS_CACHE["payload"] is not None and
+            _PLAYER_ANALYSIS_CACHE["signature"] == signature):
+        return _PLAYER_ANALYSIS_CACHE["payload"]
+
+    players = []
+    teams = []
+
+    for source in sources:
+        file_path = source["file_path"]
+        team_folder = source["team_folder"]
+
+        df_profile = pd.read_excel(file_path, sheet_name="Profile")
+        df_summary = pd.read_excel(file_path, sheet_name="Season_Summary")
+        df_stats = pd.read_excel(file_path, sheet_name="Stats")
+
+        summary_map = {
+            _json_safe(row.get("Name")): _row_to_dict(row.to_dict())
+            for _, row in df_summary.iterrows()
+            if _json_safe(row.get("Name"))
+        }
+        stats_map = {
+            _json_safe(row.get("Name")): _row_to_dict(row.to_dict())
+            for _, row in df_stats.iterrows()
+            if _json_safe(row.get("Name"))
+        }
+
+        team_players = 0
+        team_label = None
+
+        for _, row in df_profile.iterrows():
+            row_dict = _row_to_dict(row.to_dict())
+            name = row_dict.get("Name")
+            if not name:
+                continue
+
+            team_players += 1
+            team_name = row_dict.get("Team") or team_folder
+            if team_label is None:
+                team_label = team_name
+
+            summary_row = summary_map.get(name, {})
+            stats_row = stats_map.get(name, {})
+
+            summary_metrics = {}
+            monthly_ratings = {}
+            for key, value in summary_row.items():
+                if key in ("Name", "HasTournamentStats"):
+                    continue
+                if key.startswith("AvgRating_"):
+                    monthly_key = key.replace("AvgRating_", "")
+                    monthly_ratings[monthly_key] = value
+                else:
+                    summary_metrics[key] = value
+
+            detailed_stats = {
+                key: value
+                for key, value in stats_row.items()
+                if key not in ("Name", "HasTournamentStats")
+            }
+
+            players.append({
+                "id": f"{_slugify(team_name)}_{_slugify(name)}",
+                "name": name,
+                "team": team_name,
+                "teamFolder": team_folder,
+                "profile": {
+                    key: value for key, value in row_dict.items() if key != "Name"
+                },
+                "seasonSummary": {
+                    "hasTournamentStats": summary_row.get("HasTournamentStats"),
+                    "metrics": summary_metrics,
+                    "monthlyRatings": monthly_ratings
+                },
+                "detailedStats": {
+                    "hasTournamentStats": stats_row.get("HasTournamentStats"),
+                    "metrics": detailed_stats
+                }
+            })
+
+        teams.append({
+            "id": _slugify(team_folder),
+            "name": team_label or team_folder,
+            "folder": team_folder,
+            "playerCount": team_players,
+            "fileName": source["file_name"]
+        })
+
+    players.sort(key=lambda p: (p["team"], p["name"]))
+
+    payload = {
+        "generatedAt": datetime.utcnow().isoformat() + "Z",
+        "teamCount": len(teams),
+        "playerCount": len(players),
+        "sourceCount": len(sources),
+        "teams": teams,
+        "players": players
+    }
+
+    _PLAYER_ANALYSIS_CACHE["signature"] = signature
+    _PLAYER_ANALYSIS_CACHE["payload"] = payload
+    return payload
 
 @app.route('/')
 def serve_index():
@@ -125,6 +319,20 @@ def get_player(player_id):
         
         return jsonify({"error": f"Player with ID {player_id} not found"}), 404
     
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route('/api/player-analysis', methods=['GET'])
+def get_player_analysis():
+    """Return merged player data from PlayerDetail Excel files."""
+    try:
+        limit = request.args.get('limit', type=int)
+        refresh = request.args.get('refresh', '0') == '1'
+        payload = _load_player_analysis_payload(limit=limit, force_refresh=refresh)
+        return jsonify(payload)
     except Exception as e:
         import traceback
         traceback.print_exc()
