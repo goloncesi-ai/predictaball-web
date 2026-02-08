@@ -408,18 +408,30 @@ window.teamData = [
   {
     "name": "Antalyaspor",
     "stats": {
-      "win_rate": 0.2857142857142857,
-      "avg_goals_scored": 0.9591836734693877,
-      "avg_goals_conceded": 1.7551020408163265,
-      "avg_shots": 9.775510204081632,
-      "avg_possession": 0.4857142857142859,
-      "avg_corners": 4.061224489795919,
-      "total_games": 49,
+      "win_rate": 0.28,
+      "avg_goals_scored": 0.94,
+      "avg_goals_conceded": 1.74,
+      "avg_shots": 9.76,
+      "avg_possession": 0.48760000000000014,
+      "avg_corners": 4.06,
+      "total_games": 50,
       "wins": 14,
       "draws": 10,
-      "losses": 25
+      "losses": 26
     },
     "match_history": [
+      {
+        "opponent": "Fatih Karag\u00fcmr\u00fck",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 1,
+        "shots": 9,
+        "possession": 0.58,
+        "corners": 4,
+        "passes": 423,
+        "big_chances": 1,
+        "result": "L"
+      },
       {
         "opponent": "Gen\u00e7lerbirli\u011fi",
         "home_away": "H",
@@ -647,21 +659,16 @@ window.teamData = [
         "passes": 252,
         "big_chances": 2,
         "result": "W"
-      },
-      {
-        "opponent": "Trabzonspor",
-        "home_away": "H",
-        "goals_for": 0,
-        "goals_against": 2,
-        "shots": 9,
-        "possession": 0.46,
-        "corners": 2,
-        "passes": 481,
-        "big_chances": 0,
-        "result": "L"
       }
     ],
     "head_to_head": {
+      "Fatih Karag\u00fcmr\u00fck": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 2,
+        "goals_for": 1,
+        "goals_against": 3
+      },
       "Gen\u00e7lerbirli\u011fi": {
         "wins": 2,
         "draws": 0,
@@ -766,13 +773,6 @@ window.teamData = [
         "losses": 1,
         "goals_for": 4,
         "goals_against": 4
-      },
-      "Fatih Karag\u00fcmr\u00fck": {
-        "wins": 0,
-        "draws": 0,
-        "losses": 1,
-        "goals_for": 1,
-        "goals_against": 2
       },
       "Trabzonspor": {
         "wins": 0,
@@ -6547,18 +6547,30 @@ window.teamData = [
   {
     "name": "Samsunspor",
     "stats": {
-      "win_rate": 0.4117647058823529,
-      "avg_goals_scored": 1.3137254901960784,
-      "avg_goals_conceded": 1.0980392156862746,
-      "avg_shots": 12.490196078431373,
-      "avg_possession": 0.49921568627450974,
-      "avg_corners": 4.823529411764706,
-      "total_games": 51,
+      "win_rate": 0.40384615384615385,
+      "avg_goals_scored": 1.2884615384615385,
+      "avg_goals_conceded": 1.1346153846153846,
+      "avg_shots": 12.461538461538462,
+      "avg_possession": 0.4996153846153846,
+      "avg_corners": 4.884615384615385,
+      "total_games": 52,
       "wins": 21,
       "draws": 16,
-      "losses": 14
+      "losses": 15
     },
     "match_history": [
+      {
+        "opponent": "Trabzonspor",
+        "home_away": "H",
+        "goals_for": 0,
+        "goals_against": 3,
+        "shots": 11,
+        "possession": 0.52,
+        "corners": 8,
+        "passes": 450,
+        "big_chances": 0,
+        "result": "L"
+      },
       {
         "opponent": "Kocaelispor",
         "home_away": "H",
@@ -6786,21 +6798,16 @@ window.teamData = [
         "passes": 226,
         "big_chances": 1,
         "result": "D"
-      },
-      {
-        "opponent": "Fatih Karag\u00fcmr\u00fck",
-        "home_away": "H",
-        "goals_for": 3,
-        "goals_against": 2,
-        "shots": 14,
-        "possession": 0.49,
-        "corners": 6,
-        "passes": 352,
-        "big_chances": 4,
-        "result": "W"
       }
     ],
     "head_to_head": {
+      "Trabzonspor": {
+        "wins": 1,
+        "draws": 2,
+        "losses": 1,
+        "goals_for": 5,
+        "goals_against": 7
+      },
       "Kocaelispor": {
         "wins": 0,
         "draws": 2,
@@ -6941,13 +6948,6 @@ window.teamData = [
         "goals_for": 4,
         "goals_against": 4
       },
-      "Trabzonspor": {
-        "wins": 1,
-        "draws": 2,
-        "losses": 0,
-        "goals_for": 5,
-        "goals_against": 4
-      },
       "Sivasspor": {
         "wins": 1,
         "draws": 1,
@@ -6995,18 +6995,30 @@ window.teamData = [
   {
     "name": "Trabzonspor",
     "stats": {
-      "win_rate": 0.55,
-      "avg_goals_scored": 1.75,
-      "avg_goals_conceded": 1.25,
-      "avg_shots": 14.725,
-      "avg_possession": 0.5472500000000002,
-      "avg_corners": 4.1,
-      "total_games": 40,
-      "wins": 22,
+      "win_rate": 0.5609756097560976,
+      "avg_goals_scored": 1.7804878048780488,
+      "avg_goals_conceded": 1.2195121951219512,
+      "avg_shots": 14.78048780487805,
+      "avg_possession": 0.5456097560975612,
+      "avg_corners": 4.024390243902439,
+      "total_games": 41,
+      "wins": 23,
       "draws": 10,
       "losses": 8
     },
     "match_history": [
+      {
+        "opponent": "Samsunspor",
+        "home_away": "A",
+        "goals_for": 3,
+        "goals_against": 0,
+        "shots": 17,
+        "possession": 0.48,
+        "corners": 1,
+        "passes": 420,
+        "big_chances": 3,
+        "result": "W"
+      },
       {
         "opponent": "Kas\u0131mpa\u015fa",
         "home_away": "H",
@@ -7234,21 +7246,16 @@ window.teamData = [
         "passes": 410,
         "big_chances": 2,
         "result": "W"
-      },
-      {
-        "opponent": "Kas\u0131mpa\u015fa",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 0,
-        "shots": 11,
-        "possession": 0.56,
-        "corners": 4,
-        "passes": 409,
-        "big_chances": 1,
-        "result": "W"
       }
     ],
     "head_to_head": {
+      "Samsunspor": {
+        "wins": 1,
+        "draws": 2,
+        "losses": 0,
+        "goals_for": 6,
+        "goals_against": 3
+      },
       "Kas\u0131mpa\u015fa": {
         "wins": 3,
         "draws": 1,
@@ -7353,13 +7360,6 @@ window.teamData = [
         "losses": 2,
         "goals_for": 1,
         "goals_against": 5
-      },
-      "Samsunspor": {
-        "wins": 0,
-        "draws": 2,
-        "losses": 0,
-        "goals_for": 3,
-        "goals_against": 3
       },
       "Antalyaspor": {
         "wins": 2,
@@ -10743,9 +10743,13 @@ window.playerData = [
   {
     "name": "Andr\u00e9 Onana",
     "team": "Trabzonspor",
-    "avg_rating": 7.14,
-    "games": 16,
+    "avg_rating": 7.15,
+    "games": 17,
     "ratings": [
+      {
+        "rating": 7.2,
+        "opponent": "Samsunspor"
+      },
       {
         "rating": 7.0,
         "opponent": "Kas\u0131mpa\u015fa"
@@ -11224,8 +11228,12 @@ window.playerData = [
     "name": "Antoine Makoumbou",
     "team": "Samsunspor",
     "avg_rating": 6.91,
-    "games": 17,
+    "games": 18,
     "ratings": [
+      {
+        "rating": 6.9,
+        "opponent": "Trabzonspor"
+      },
       {
         "rating": 7.6,
         "opponent": "Kocaelispor"
@@ -11803,9 +11811,13 @@ window.playerData = [
   {
     "name": "Arseniy Batagov",
     "team": "Trabzonspor",
-    "avg_rating": 7.15,
-    "games": 33,
+    "avg_rating": 7.18,
+    "games": 34,
     "ratings": [
+      {
+        "rating": 8.2,
+        "opponent": "Samsunspor"
+      },
       {
         "rating": 8.0,
         "opponent": "Kas\u0131mpa\u015fa"
@@ -14088,8 +14100,12 @@ window.playerData = [
     "name": "B\u00fcnyamin Balc\u0131",
     "team": "Antalyaspor",
     "avg_rating": 6.76,
-    "games": 31,
+    "games": 32,
     "ratings": [
+      {
+        "rating": 6.5,
+        "opponent": "Fatih Karag\u00fcmr\u00fck"
+      },
       {
         "rating": 6.6,
         "opponent": "Gen\u00e7lerbirli\u011fi"
@@ -14523,9 +14539,13 @@ window.playerData = [
   {
     "name": "Carlo Holse",
     "team": "Samsunspor",
-    "avg_rating": 7.0,
-    "games": 44,
+    "avg_rating": 6.99,
+    "games": 45,
     "ratings": [
+      {
+        "rating": 6.7,
+        "opponent": "Trabzonspor"
+      },
       {
         "rating": 6.5,
         "opponent": "Fenerbah\u00e7e"
@@ -14971,9 +14991,13 @@ window.playerData = [
   {
     "name": "Celil Y\u00fcksel",
     "team": "Samsunspor",
-    "avg_rating": 6.91,
-    "games": 20,
+    "avg_rating": 6.89,
+    "games": 21,
     "ratings": [
+      {
+        "rating": 6.4,
+        "opponent": "Trabzonspor"
+      },
       {
         "rating": 6.4,
         "opponent": "Kocaelispor"
@@ -15147,9 +15171,13 @@ window.playerData = [
   {
     "name": "Cherif Ndiaye",
     "team": "Samsunspor",
-    "avg_rating": 6.83,
-    "games": 6,
+    "avg_rating": 6.77,
+    "games": 7,
     "ratings": [
+      {
+        "rating": 6.4,
+        "opponent": "Trabzonspor"
+      },
       {
         "rating": 7.2,
         "opponent": "Ba\u015fak\u015fehir FK"
@@ -15179,9 +15207,13 @@ window.playerData = [
   {
     "name": "Chibuike Nwaiwu",
     "team": "Trabzonspor",
-    "avg_rating": 7.5,
-    "games": 3,
+    "avg_rating": 7.42,
+    "games": 4,
     "ratings": [
+      {
+        "rating": 7.2,
+        "opponent": "Samsunspor"
+      },
       {
         "rating": 7.4,
         "opponent": "Kas\u0131mpa\u015fa"
@@ -15199,9 +15231,13 @@ window.playerData = [
   {
     "name": "Christ Inao Oula\u00ef",
     "team": "Trabzonspor",
-    "avg_rating": 7.29,
-    "games": 11,
+    "avg_rating": 7.31,
+    "games": 12,
     "ratings": [
+      {
+        "rating": 7.5,
+        "opponent": "Samsunspor"
+      },
       {
         "rating": 7.7,
         "opponent": "Kas\u0131mpa\u015fa"
@@ -16163,9 +16199,13 @@ window.playerData = [
   {
     "name": "Dario \u0160ari\u0107",
     "team": "Antalyaspor",
-    "avg_rating": 7.04,
-    "games": 7,
+    "avg_rating": 7.0,
+    "games": 8,
     "ratings": [
+      {
+        "rating": 6.7,
+        "opponent": "Fatih Karag\u00fcmr\u00fck"
+      },
       {
         "rating": 7.6,
         "opponent": "Gen\u00e7lerbirli\u011fi"
@@ -19755,8 +19795,8 @@ window.playerData = [
   {
     "name": "Ernest Mu\u00e7i",
     "team": "Trabzonspor",
-    "avg_rating": 6.83,
-    "games": 26,
+    "avg_rating": 6.87,
+    "games": 27,
     "ratings": [
       {
         "rating": 6.3,
@@ -19813,6 +19853,10 @@ window.playerData = [
       {
         "rating": 6.9,
         "opponent": "Alanyaspor"
+      },
+      {
+        "rating": 7.9,
+        "opponent": "Samsunspor"
       },
       {
         "rating": 5.9,
@@ -20235,9 +20279,13 @@ window.playerData = [
   {
     "name": "Felipe Augusto",
     "team": "Trabzonspor",
-    "avg_rating": 6.98,
-    "games": 15,
+    "avg_rating": 6.96,
+    "games": 16,
     "ratings": [
+      {
+        "rating": 6.7,
+        "opponent": "Samsunspor"
+      },
       {
         "rating": 6.2,
         "opponent": "Kas\u0131mpa\u015fa"
@@ -23795,9 +23843,13 @@ window.playerData = [
   {
     "name": "H\u00fcseyin T\u00fcrkmen",
     "team": "Trabzonspor",
-    "avg_rating": 6.78,
-    "games": 8,
+    "avg_rating": 6.84,
+    "games": 9,
     "ratings": [
+      {
+        "rating": 7.4,
+        "opponent": "Fatih Karag\u00fcmr\u00fck"
+      },
       {
         "rating": 6.2,
         "opponent": "Gen\u00e7lerbirli\u011fi"
@@ -24643,9 +24695,13 @@ window.playerData = [
   {
     "name": "Jaures Assoumou",
     "team": "Samsunspor",
-    "avg_rating": 6.7,
-    "games": 2,
+    "avg_rating": 6.53,
+    "games": 3,
     "ratings": [
+      {
+        "rating": 6.2,
+        "opponent": "Trabzonspor"
+      },
       {
         "rating": 6.7,
         "opponent": "Kocaelispor"
@@ -26095,9 +26151,13 @@ window.playerData = [
   {
     "name": "Juli\u00e1n Cuesta",
     "team": "Antalyaspor",
-    "avg_rating": 6.98,
-    "games": 9,
+    "avg_rating": 6.99,
+    "games": 10,
     "ratings": [
+      {
+        "rating": 7.1,
+        "opponent": "Fatih Karag\u00fcmr\u00fck"
+      },
       {
         "rating": 6.6,
         "opponent": "Gen\u00e7lerbirli\u011fi"
@@ -26987,9 +27047,13 @@ window.playerData = [
   {
     "name": "Kenneth Paal",
     "team": "Antalyaspor",
-    "avg_rating": 6.44,
-    "games": 17,
+    "avg_rating": 6.51,
+    "games": 18,
     "ratings": [
+      {
+        "rating": 7.7,
+        "opponent": "Fatih Karag\u00fcmr\u00fck"
+      },
       {
         "rating": 6.5,
         "opponent": "Gen\u00e7lerbirli\u011fi"
@@ -28163,9 +28227,13 @@ window.playerData = [
   {
     "name": "Logi Tomasson",
     "team": "Samsunspor",
-    "avg_rating": 6.83,
-    "games": 18,
+    "avg_rating": 6.81,
+    "games": 19,
     "ratings": [
+      {
+        "rating": 6.5,
+        "opponent": "Trabzonspor"
+      },
       {
         "rating": 6.8,
         "opponent": "Fenerbah\u00e7e"
@@ -30635,9 +30703,13 @@ window.playerData = [
   {
     "name": "Mathias L\u00f8vik",
     "team": "Trabzonspor",
-    "avg_rating": 6.6,
-    "games": 2,
+    "avg_rating": 6.63,
+    "games": 3,
     "ratings": [
+      {
+        "rating": 6.7,
+        "opponent": "Samsunspor"
+      },
       {
         "rating": 6.6,
         "opponent": "Kas\u0131mpa\u015fa"
@@ -33547,8 +33619,8 @@ window.playerData = [
   {
     "name": "Mustafa Eskihella\u00e7",
     "team": "Trabzonspor",
-    "avg_rating": 6.98,
-    "games": 41,
+    "avg_rating": 7.0,
+    "games": 42,
     "ratings": [
       {
         "rating": 6.7,
@@ -33593,6 +33665,10 @@ window.playerData = [
       {
         "rating": 6.7,
         "opponent": "Konyaspor"
+      },
+      {
+        "rating": 7.7,
+        "opponent": "Samsunspor"
       },
       {
         "rating": 7.2,
@@ -34983,9 +35059,13 @@ window.playerData = [
   {
     "name": "Okan Kocuk",
     "team": "Samsunspor",
-    "avg_rating": 6.43,
-    "games": 9,
+    "avg_rating": 6.54,
+    "games": 10,
     "ratings": [
+      {
+        "rating": 7.5,
+        "opponent": "Trabzonspor"
+      },
       {
         "rating": 6.9,
         "opponent": "Kocaelispor"
@@ -35607,9 +35687,13 @@ window.playerData = [
   {
     "name": "Olivier Ntcham",
     "team": "Samsunspor",
-    "avg_rating": 7.02,
-    "games": 31,
+    "avg_rating": 7.01,
+    "games": 32,
     "ratings": [
+      {
+        "rating": 6.7,
+        "opponent": "Trabzonspor"
+      },
       {
         "rating": 6.5,
         "opponent": "1. FSV Mainz 05"
@@ -36731,9 +36815,13 @@ window.playerData = [
   {
     "name": "Paul Onuachu",
     "team": "Trabzonspor",
-    "avg_rating": 7.11,
-    "games": 14,
+    "avg_rating": 7.21,
+    "games": 15,
     "ratings": [
+      {
+        "rating": 8.5,
+        "opponent": "Samsunspor"
+      },
       {
         "rating": 7.5,
         "opponent": "G\u00f6ztepe"
@@ -37799,9 +37887,13 @@ window.playerData = [
   {
     "name": "Ramzi Safuri",
     "team": "Antalyaspor",
-    "avg_rating": 6.86,
-    "games": 25,
+    "avg_rating": 6.88,
+    "games": 26,
     "ratings": [
+      {
+        "rating": 7.5,
+        "opponent": "Fatih Karag\u00fcmr\u00fck"
+      },
       {
         "rating": 7.0,
         "opponent": "Gen\u00e7lerbirli\u011fi"
@@ -38111,9 +38203,13 @@ window.playerData = [
   {
     "name": "Rick Van Drongelen",
     "team": "Samsunspor",
-    "avg_rating": 7.14,
-    "games": 45,
+    "avg_rating": 7.13,
+    "games": 46,
     "ratings": [
+      {
+        "rating": 6.4,
+        "opponent": "Trabzonspor"
+      },
       {
         "rating": 7.0,
         "opponent": "Kocaelispor"
@@ -39531,9 +39627,13 @@ window.playerData = [
   {
     "name": "Samet Karakoc",
     "team": "Antalyaspor",
-    "avg_rating": 6.85,
-    "games": 4,
+    "avg_rating": 6.7,
+    "games": 5,
     "ratings": [
+      {
+        "rating": 6.1,
+        "opponent": "Fatih Karag\u00fcmr\u00fck"
+      },
       {
         "rating": 7.4,
         "opponent": "Gen\u00e7lerbirli\u011fi"
@@ -39659,9 +39759,13 @@ window.playerData = [
   {
     "name": "Samuel Ballet",
     "team": "Antalyaspor",
-    "avg_rating": 6.47,
-    "games": 4,
+    "avg_rating": 6.36,
+    "games": 5,
     "ratings": [
+      {
+        "rating": 5.9,
+        "opponent": "Fatih Karag\u00fcmr\u00fck"
+      },
       {
         "rating": 6.3,
         "opponent": "Kocaelispor"
@@ -39704,8 +39808,12 @@ window.playerData = [
     "name": "Sander van de Streek",
     "team": "Antalyaspor",
     "avg_rating": 6.79,
-    "games": 33,
+    "games": 34,
     "ratings": [
+      {
+        "rating": 6.8,
+        "opponent": "Fatih Karag\u00fcmr\u00fck"
+      },
       {
         "rating": 7.6,
         "opponent": "Gen\u00e7lerbirli\u011fi"
@@ -40807,9 +40915,13 @@ window.playerData = [
   {
     "name": "Soner Dikmen",
     "team": "Antalyaspor",
-    "avg_rating": 6.76,
-    "games": 29,
+    "avg_rating": 6.75,
+    "games": 30,
     "ratings": [
+      {
+        "rating": 6.5,
+        "opponent": "Fatih Karag\u00fcmr\u00fck"
+      },
       {
         "rating": 6.9,
         "opponent": "Gen\u00e7lerbirli\u011fi"
@@ -42323,9 +42435,13 @@ window.playerData = [
   {
     "name": "Tim Jabol-Folcarelli",
     "team": "Trabzonspor",
-    "avg_rating": 6.91,
-    "games": 22,
+    "avg_rating": 6.9,
+    "games": 23,
     "ratings": [
+      {
+        "rating": 6.7,
+        "opponent": "Samsunspor"
+      },
       {
         "rating": 7.1,
         "opponent": "Kas\u0131mpa\u015fa"
@@ -43371,9 +43487,13 @@ window.playerData = [
   {
     "name": "Veysel Sar\u0131",
     "team": "Antalyaspor",
-    "avg_rating": 6.88,
-    "games": 37,
+    "avg_rating": 6.9,
+    "games": 38,
     "ratings": [
+      {
+        "rating": 7.8,
+        "opponent": "Fatih Karag\u00fcmr\u00fck"
+      },
       {
         "rating": 6.6,
         "opponent": "Gen\u00e7lerbirli\u011fi"
@@ -43839,9 +43959,13 @@ window.playerData = [
   {
     "name": "Wagner Pina",
     "team": "Trabzonspor",
-    "avg_rating": 6.93,
-    "games": 18,
+    "avg_rating": 6.95,
+    "games": 19,
     "ratings": [
+      {
+        "rating": 7.3,
+        "opponent": "Samsunspor"
+      },
       {
         "rating": 6.6,
         "opponent": "Kas\u0131mpa\u015fa"
@@ -45603,9 +45727,13 @@ window.playerData = [
   {
     "name": "Zeki Yavru",
     "team": "Samsunspor",
-    "avg_rating": 7.07,
-    "games": 48,
+    "avg_rating": 7.04,
+    "games": 49,
     "ratings": [
+      {
+        "rating": 5.8,
+        "opponent": "Trabzonspor"
+      },
       {
         "rating": 6.9,
         "opponent": "Kocaelispor"
@@ -46543,9 +46671,13 @@ window.playerData = [
   {
     "name": "\u013dubom\u00edr \u0160atka",
     "team": "Samsunspor",
-    "avg_rating": 6.85,
-    "games": 44,
+    "avg_rating": 6.86,
+    "games": 45,
     "ratings": [
+      {
+        "rating": 6.9,
+        "opponent": "Trabzonspor"
+      },
       {
         "rating": 7.1,
         "opponent": "Kocaelispor"
