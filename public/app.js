@@ -1671,6 +1671,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const profile = player.profile || {};
         const summaryMetrics = player.seasonSummary?.metrics || {};
         const detailedMetrics = player.detailedStats?.metrics || {};
+        const profileRow = [
+            { label: 'Age', value: profile.Age },
+            { label: 'Date of Birth', value: formatDateOfBirth(profile.DateOfBirth) },
+            { label: 'Height', value: profile.Height_cm ? `${profile.Height_cm} cm` : null },
+            { label: 'Preferred Foot', value: profile.PreferredFoot },
+            { label: 'Shirt', value: profile.ShirtNumber },
+            { label: 'Nationality', value: profile.Nationality }
+        ];
 
         const kpis = [
             { label: 'Rating', value: summaryMetrics.Rating },
@@ -1696,6 +1704,21 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p class="pa-subtitle">${player.team}</p>
                     </div>
                     <div class="pa-chip">${formatValue(profile.Position) || '-'}</div>
+                </div>
+
+                <div class="pa-profile-row">
+                    ${profileRow.map(item => `
+                        <div class="pa-profile-pill">
+                            <span class="pa-profile-label">${item.label}</span>
+                            <span class="pa-profile-value">${formatValue(item.value)}</span>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="pa-position-strip">
+                    <div class="pa-position-pitch">
+                        ${renderPositionPitch(profile.Position)}
+                    </div>
                 </div>
 
                 <div class="pa-kpi-strip">
@@ -2254,6 +2277,70 @@ document.addEventListener('DOMContentLoaded', () => {
     function formatMonthLabel(key) {
         if (key === 'Last12Months') return 'Last 12M';
         return key;
+    }
+
+    function formatDateOfBirth(value) {
+        if (!value) return null;
+        const date = new Date(value);
+        if (Number.isNaN(date.getTime())) return value;
+        return date.toLocaleDateString('en-GB', {
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric'
+        });
+    }
+
+    function renderPositionPitch(positionRaw) {
+        const active = parsePositionTokens(positionRaw);
+        const spots = [
+            { key: 'st', label: 'ST' },
+            { key: 'rw', label: 'RW' },
+            { key: 'lw', label: 'LW' },
+            { key: 'am', label: 'AM' },
+            { key: 'cm', label: 'CM' },
+            { key: 'dm', label: 'DM' },
+            { key: 'rb', label: 'RB' },
+            { key: 'cb', label: 'CB' },
+            { key: 'lb', label: 'LB' },
+            { key: 'gk', label: 'GK' }
+        ];
+
+        return `
+            <div class="mini-pitch">
+                <div class="mini-pitch-lines"></div>
+                ${spots.map(spot => `
+                    <div class="mini-pos mini-pos-${spot.key} ${active.has(spot.key) ? 'active' : ''}">${spot.label}</div>
+                `).join('')}
+            </div>
+        `;
+    }
+
+    function parsePositionTokens(positionRaw) {
+        const set = new Set();
+        const raw = `${positionRaw || ''}`
+            .toUpperCase()
+            .replace(/\./g, '')
+            .split(/[,/|]/)
+            .map(token => token.trim())
+            .filter(Boolean);
+
+        raw.forEach(token => {
+            if (['ST', 'CF', 'F', 'FW'].includes(token)) set.add('st');
+            if (['RW', 'RM', 'RF'].includes(token)) set.add('rw');
+            if (['LW', 'LM', 'LF'].includes(token)) set.add('lw');
+            if (['AM', 'CAM', 'OMF', 'SS'].includes(token)) set.add('am');
+            if (['CM', 'M', 'MC'].includes(token)) set.add('cm');
+            if (['DM', 'CDM'].includes(token)) set.add('dm');
+            if (['RB', 'RWB'].includes(token)) set.add('rb');
+            if (['LB', 'LWB'].includes(token)) set.add('lb');
+            if (['CB', 'SW', 'D'].includes(token)) set.add('cb');
+            if (['GK'].includes(token)) set.add('gk');
+        });
+
+        if (!set.size) {
+            set.add('cm');
+        }
+        return set;
     }
 
     // --- Recent Games Tab ---
