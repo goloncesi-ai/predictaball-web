@@ -2973,3 +2973,233 @@ body {
     height: 40px;
     object-fit: contain;
 }
+/* ============================================================================
+   COMPREHENSIVE MOBILE OPTIMIZATIONS - Phase 1
+   ============================================================================ */
+
+/* Mobile-First Typography System */
+@media (max-width: 600px) {
+    body {
+        font-size: 14px;
+        -webkit-text-size-adjust: 100%;
+    }
+    
+    /* Header Optimizations */
+    .main-header {
+        padding: 2rem 0.75rem 1.5rem;
+    }
+    
+    .main-header h1 {
+        font-size: 2rem !important;
+        letter-spacing: -1px;
+    }
+    
+    .logo-area img {
+        height: 40px !important;
+        margin-right: 10px !important;
+    }
+    
+    .badge {
+        font-size: 0.65rem;
+        padding: 0.2rem 0.6rem;
+    }
+    
+    .subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+        padding: 0 1rem;
+        line-height: 1.4;
+    }
+    
+    /* Navigation - Stack Icons */
+    .main-nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0.4rem;
+        border-radius: 16px;
+        gap: 0.4rem;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .nav-btn {
+        flex-direction: column;
+        padding: 0.6rem 1rem;
+        gap: 0.25rem;
+        font-size: 0.8rem;
+        min-height: 44px;
+    }
+    
+    .nav-btn .icon {
+        font-size: 1.25rem;
+    }
+    
+    /* Header Controls */
+    .header-controls {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+    }
+    
+    .lang-btn {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 0.5rem 0.75rem;
+    }
+    
+    /* Content Container */
+    .content-container {
+        padding: 15px;
+    }
+    
+    /* Section Headers */
+    .section-header {
+        margin-bottom: 2rem;
+    }
+    
+    .section-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .section-header p {
+        font-size: 0.9rem;
+        padding: 0 1rem;
+    }
+    
+    /* Comparison Interface - Fix VS Badge Overlap */
+    .comparison-interface {
+        flex-direction: column;
+        gap: 1.5rem;
+        margin: 2rem 0;
+    }
+    
+    .vs-badge {
+        margin: 0;
+        width: 70px;
+        height: 70px;
+        order: 2;
+    }
+    
+    .vs-badge span {
+        font-size: 1.25rem;
+    }
+    
+    .team-card.home {
+        order: 1;
+    }
+    
+    .team-card.away {
+        order: 3;
+    }
+    
+    .team-card {
+        width: 100%;
+        max-width: 100%;
+        aspect-ratio: 5/6;
+    }
+    
+    .card-content {
+        padding: 1.25rem;
+    }
+    
+    .team-card label {
+        font-size: 0.65rem;
+    }
+    
+    /* Improved Select Touch Targets */
+    .team-select,
+    .modern-select {
+        padding: 1rem;
+        font-size: 1rem;
+        min-height: 44px;
+    }
+    
+    /* Simulation Layout */
+    .simulation-layout-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    /* Hide Pitch Visualizations on Mobile */
+    .pitch-column {
+        display: none !important;
+    }
+    
+    .sim-config {
+        min-width: 0;
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .config-card {
+        padding: 1.5rem;
+    }
+    
+    .config-card h3 {
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Improved Slider Touch Targets */
+    .adjustment-slider {
+        height: 12px;
+        margin: 1rem 0;
+    }
+    
+    .adjustment-slider::-webkit-slider-thumb {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .adjustment-slider::-moz-range-thumb {
+        width: 30px;
+        height: 30px;
+    }
+    
+    /* Button Touch Targets */
+    .btn-action {
+        padding: 1.25rem 1.5rem;
+        font-size: 1.05rem;
+        min-height: 56px;
+    }
+    
+    /* Analysis Charts */
+    .analysis-charts {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .analysis-panel {
+        padding: 1.25rem;
+    }
+    
+    .chart-wrapper {
+        height: 250px;
+    }
+    
+    /* Prevent Horizontal Scroll */
+    .main-wrapper,
+    .content-container,
+    .view-section {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+}
+
+/* Tablet Adjustments (601px - 768px) */
+@media (min-width: 601px) and (max-width: 768px) {
+    .main-header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .nav-btn {
+        flex-direction: row;
+        gap: 0.5rem;
+    }
+    
+    .vs-badge {
+        width: 75px;
+        height: 75px;
+    }
+}
