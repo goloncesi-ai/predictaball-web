@@ -1,8 +1,8 @@
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
-LOGO_FOLDER = Path("/Users/kagancalikoglu/Documents/PredictaBall/Logos")
-OUTPUT_FOLDER = Path("/Users/kagancalikoglu/Documents/PredictaBall/Posts")
+LOGO_FOLDER = Path("/Users/erdilsen/Documents/PredictaBall/Logos")
+OUTPUT_FOLDER = Path("/Users/erdilsen/Documents/PredictaBall/Posts")
 OUTPUT_FOLDER.mkdir(parents=True, exist_ok=True)
 
 TEMPLATE_PATH = LOGO_FOLDER / "tahmini_skor.png"

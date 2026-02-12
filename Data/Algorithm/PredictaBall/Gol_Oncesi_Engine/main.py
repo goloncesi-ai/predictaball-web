@@ -14,9 +14,9 @@ from gol_oncesi_engine.formations import available_formations
 def main():
     # TODO: update these 3 paths to your machine
     paths = PathsConfig(
-        main_folder=Path("/Users/kagancalikoglu/Library/Mobile Documents/com~apple~CloudDocs/Gol Oncesi/Data/Turkish Super League"),
-        output_folder=Path("/Users/kagancalikoglu/Documents/PredictaBall/Outputs"),
-        logo_folder=Path("/Users/kagancalikoglu/Documents/PredictaBall/Logos"),
+        main_folder=Path("/Users/erdilsen/Library/Mobile Documents/com~apple~CloudDocs/Gol Oncesi/Data/Turkish Super League"),
+        output_folder=Path("/Users/erdilsen/Library/Mobile Documents/com~apple~CloudDocs/Gol Oncesi/Data/Algorithm/PredictaBall/Outputs"),
+        logo_folder=Path("/Users/erdilsen/Library/Mobile Documents/com~apple~CloudDocs/Gol Oncesi/Data/Algorithm/PredictaBall/Logos"),
     )
     cfg = SimulationConfig(n_sims_home_perspective=500, n_sims_away_perspective=500)
 
