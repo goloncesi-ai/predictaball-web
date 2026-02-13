@@ -10,8 +10,12 @@ from .formations import parse_formation, available_formations, coords_team1, coo
 from .clusters import main_clusters, strip_clusters
 from .simulation import Simulator, PerspectiveSimResult
 from .hmm_trend import compute_hmm_efficiency_change
-from .heatmaps import HeatmapPlotter
 from .images import ImageGenerator
+
+try:
+    from .heatmaps import HeatmapPlotter
+except Exception:
+    HeatmapPlotter = None
 
 def _parse_score_str(s: str) -> Tuple[int, int]:
     try:
@@ -104,7 +108,7 @@ class GolOncesiEngine:
         self.paths.ensure()
 
         self.simulator = Simulator(main_folder=self.paths.main_folder, cfg=self.cfg, verbose=verbose)
-        self.heatmaps = HeatmapPlotter(self.cfg)
+        self.heatmaps = HeatmapPlotter(self.cfg) if HeatmapPlotter is not None else None
         self.image_gen = ImageGenerator(self.paths.logo_folder)
 
     def suggest_adjustments_hmm(self, team_name: str) -> Dict[str, float]:
@@ -151,7 +155,7 @@ class GolOncesiEngine:
         combined = combine_perspectives(home_sim, away_sim)
 
         heatmap_paths: Dict[str, Path] = {}
-        if draw_heatmaps:
+        if draw_heatmaps and self.heatmaps is not None:
             t1_avgs = home_sim.avg_player_ratings["team1_players"]
             t2_avgs = home_sim.avg_player_ratings["team2_players"]
 
@@ -190,6 +194,8 @@ class GolOncesiEngine:
                 title="Strip Cluster Heatmap",
                 output_path=strip_cluster_path,
             )
+        elif draw_heatmaps and self.verbose:
+            print("Heatmaps skipped: matplotlib dependency is not available.")
 
         if generate_images:
             self.image_gen.generate(m.home_team, m.away_team, combined)
