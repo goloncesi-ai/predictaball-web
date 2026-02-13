@@ -3,6 +3,7 @@ from flask_cors import CORS
 from datetime import datetime
 import math
 import os
+import re
 import sys
 from pathlib import Path
 import unicodedata
@@ -25,6 +26,11 @@ OUTPUT_DIR = os.path.join(BASE_DIR, "outputs")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 _PLAYER_ANALYSIS_CACHE = {
+    "signature": None,
+    "payload": None
+}
+
+_ANALYSIS_TEAMS_CACHE = {
     "signature": None,
     "payload": None
 }
@@ -66,6 +72,268 @@ def _json_safe(value):
 
 def _row_to_dict(row_dict):
     return {str(k): _json_safe(v) for k, v in row_dict.items()}
+
+
+def _normalize_text(value):
+    return unicodedata.normalize("NFC", str(value or "")).strip()
+
+
+def _team_key(value):
+    text = _normalize_text(value)
+    text = unicodedata.normalize("NFD", text)
+    text = "".join(c for c in text if unicodedata.category(c) != "Mn")
+    return re.sub(r"[\W_]+", "", text.lower())
+
+
+def _fuzzy_team_match(target, candidate):
+    t = _team_key(target)
+    c = _team_key(candidate)
+    if not t or not c:
+        return False
+    return t in c or c in t
+
+
+def _to_float(value, default=0.0):
+    if value is None:
+        return default
+    if hasattr(value, "item"):
+        try:
+            value = value.item()
+        except Exception:
+            pass
+    try:
+        if isinstance(value, str):
+            value = value.strip().replace("%", "")
+        f = float(value)
+        if math.isnan(f) or math.isinf(f):
+            return default
+        return f
+    except Exception:
+        return default
+
+
+def _to_int(value, default=0):
+    return int(round(_to_float(value, default)))
+
+
+def _discover_analysis_sources():
+    sources = []
+    if not os.path.exists(BASE_DATA_DIR):
+        return sources
+
+    for team_folder in sorted(os.listdir(BASE_DATA_DIR)):
+        team_path = os.path.join(BASE_DATA_DIR, team_folder)
+        if not os.path.isdir(team_path):
+            continue
+
+        mixed_path = os.path.join(team_path, "mixed-seasons")
+        if not os.path.isdir(mixed_path):
+            continue
+
+        entries = sorted(os.listdir(mixed_path))
+        csv_candidates = [f for f in entries if f.endswith(".csv") and "_Games_Input" in f]
+        xlsx_candidates = [f for f in entries if f.endswith(".xlsx") and "_Games_Input" in f]
+
+        file_name = csv_candidates[0] if csv_candidates else (xlsx_candidates[0] if xlsx_candidates else None)
+        if not file_name:
+            continue
+
+        file_path = os.path.join(mixed_path, file_name)
+        try:
+            stat = os.stat(file_path)
+            mtime = stat.st_mtime
+            size = stat.st_size
+        except Exception:
+            mtime = 0
+            size = 0
+
+        sources.append({
+            "team_folder": team_folder,
+            "team_name": _normalize_text(team_folder),
+            "file_name": file_name,
+            "file_path": file_path,
+            "mtime": mtime,
+            "size": size,
+        })
+
+    return sources
+
+
+def _read_analysis_df(file_path):
+    import pandas as pd
+
+    if file_path.endswith(".csv"):
+        df = pd.read_csv(file_path)
+    else:
+        try:
+            df = pd.read_excel(file_path, sheet_name="Sheet1")
+        except Exception:
+            df = pd.read_excel(file_path)
+    return df.drop_duplicates()
+
+
+def _build_team_analysis_entry(df, team_name):
+    numeric_cols = [
+        "Team1_Goals", "Team2_Goals",
+        "Team1_TotalShots", "Team2_TotalShots",
+        "Team1_BallPosses", "Team2_BallPosses",
+        "Team1_Corners", "Team2_Corners",
+        "Team1_Passes", "Team2_Passes",
+        "Team1_BigChances", "Team2_BigChances",
+    ]
+    for col in numeric_cols:
+        if col in df.columns:
+            df[col] = df[col].apply(_to_float)
+
+    acc = {
+        "games": 0,
+        "goals_scored": 0.0,
+        "goals_conceded": 0.0,
+        "shots": 0.0,
+        "possession_sum": 0.0,
+        "corners": 0.0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+    }
+    history = []
+    h2h = {}
+
+    for _, row in df.iterrows():
+        t1 = _normalize_text(row.get("Team1"))
+        t2 = _normalize_text(row.get("Team2"))
+
+        is_team1 = _fuzzy_team_match(team_name, t1)
+        is_team2 = _fuzzy_team_match(team_name, t2)
+        if not is_team1 and not is_team2:
+            continue
+
+        acc["games"] += 1
+
+        if is_team1:
+            my_goals = _to_float(row.get("Team1_Goals"))
+            op_goals = _to_float(row.get("Team2_Goals"))
+            my_shots = _to_float(row.get("Team1_TotalShots"))
+            my_poss = _to_float(row.get("Team1_BallPosses"))
+            my_corners = _to_float(row.get("Team1_Corners"))
+            my_passes = _to_float(row.get("Team1_Passes"))
+            my_big = _to_float(row.get("Team1_BigChances"))
+            opponent = t2
+            home_away = _normalize_text(row.get("Team1H_A")) or "H"
+        else:
+            my_goals = _to_float(row.get("Team2_Goals"))
+            op_goals = _to_float(row.get("Team1_Goals"))
+            my_shots = _to_float(row.get("Team2_TotalShots"))
+            my_poss = _to_float(row.get("Team2_BallPosses"))
+            my_corners = _to_float(row.get("Team2_Corners"))
+            my_passes = _to_float(row.get("Team2_Passes"))
+            my_big = _to_float(row.get("Team2_BigChances"))
+            opponent = t1
+            original_ha = _normalize_text(row.get("Team1H_A")) or "H"
+            home_away = "A" if original_ha == "H" else "H"
+
+        acc["goals_scored"] += my_goals
+        acc["goals_conceded"] += op_goals
+        acc["shots"] += my_shots
+        acc["possession_sum"] += my_poss
+        acc["corners"] += my_corners
+
+        if my_goals > op_goals:
+            acc["wins"] += 1
+            result = "W"
+        elif my_goals == op_goals:
+            acc["draws"] += 1
+            result = "D"
+        else:
+            acc["losses"] += 1
+            result = "L"
+
+        history.append({
+            "opponent": opponent,
+            "home_away": home_away,
+            "goals_for": _to_int(my_goals),
+            "goals_against": _to_int(op_goals),
+            "shots": _to_int(my_shots),
+            "possession": round(_to_float(my_poss), 2),
+            "corners": _to_int(my_corners),
+            "passes": _to_int(my_passes),
+            "big_chances": _to_int(my_big),
+            "result": result,
+        })
+
+        if opponent not in h2h:
+            h2h[opponent] = {
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goals_for": 0,
+                "goals_against": 0,
+            }
+
+        h2h[opponent]["goals_for"] += _to_int(my_goals)
+        h2h[opponent]["goals_against"] += _to_int(op_goals)
+        if result == "W":
+            h2h[opponent]["wins"] += 1
+        elif result == "D":
+            h2h[opponent]["draws"] += 1
+        else:
+            h2h[opponent]["losses"] += 1
+
+    if acc["games"] == 0:
+        return None
+
+    g = acc["games"]
+    return {
+        "name": team_name,
+        "stats": {
+            "win_rate": acc["wins"] / g,
+            "avg_goals_scored": acc["goals_scored"] / g,
+            "avg_goals_conceded": acc["goals_conceded"] / g,
+            "avg_shots": acc["shots"] / g,
+            "avg_possession": acc["possession_sum"] / g,
+            "avg_corners": acc["corners"] / g,
+            "total_games": g,
+            "wins": acc["wins"],
+            "draws": acc["draws"],
+            "losses": acc["losses"],
+        },
+        "match_history": history[:20],
+        "head_to_head": h2h,
+    }
+
+
+def _load_analysis_teams_payload(limit=None, force_refresh=False):
+    sources = _discover_analysis_sources()
+    if limit:
+        sources = sources[:max(limit, 0)]
+
+    signature = tuple((s["file_path"], s["mtime"], s["size"]) for s in sources)
+    if (not force_refresh and
+            _ANALYSIS_TEAMS_CACHE["payload"] is not None and
+            _ANALYSIS_TEAMS_CACHE["signature"] == signature):
+        return _ANALYSIS_TEAMS_CACHE["payload"]
+
+    teams = []
+    for source in sources:
+        try:
+            df = _read_analysis_df(source["file_path"])
+            team_entry = _build_team_analysis_entry(df, source["team_name"])
+            if team_entry:
+                teams.append(team_entry)
+        except Exception as exc:
+            print(f"Analysis source failed for {source['team_name']}: {exc}")
+
+    teams.sort(key=lambda t: t["name"])
+
+    payload = {
+        "generatedAt": datetime.utcnow().isoformat() + "Z",
+        "teamCount": len(teams),
+        "sourceCount": len(sources),
+        "teams": teams,
+    }
+    _ANALYSIS_TEAMS_CACHE["signature"] = signature
+    _ANALYSIS_TEAMS_CACHE["payload"] = payload
+    return payload
 
 
 def _discover_player_detail_files():
@@ -336,6 +604,19 @@ def get_player_analysis():
         limit = request.args.get('limit', type=int)
         refresh = request.args.get('refresh', '0') == '1'
         payload = _load_player_analysis_payload(limit=limit, force_refresh=refresh)
+        return jsonify(payload)
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/analysis-data', methods=['GET'])
+def get_analysis_data():
+    """Return live team analysis data built from mixed-seasons game files."""
+    try:
+        limit = request.args.get('limit', type=int)
+        refresh = request.args.get('refresh', '0') == '1'
+        payload = _load_analysis_teams_payload(limit=limit, force_refresh=refresh)
         return jsonify(payload)
     except Exception as e:
         import traceback

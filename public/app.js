@@ -22,7 +22,7 @@ const TEAM_LOGOS = {
     'Sivasspor': '❤️',
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     // --- Globals ---
     // Comparison Tab Elements
     const team1Select = document.getElementById('team1-select');
@@ -80,6 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let playerAnalysisLoaded = false;
     let lastSimTeam1 = '';
     let lastSimTeam2 = '';
+    let teamData = Array.isArray(window.teamData) ? window.teamData : [];
 
     const SIM_FORMATIONS = [
         '3-1-4-2', '3-2-4-1', '3-3-3-1', '3-4-1-2', '3-4-2-1', '3-4-3', '3-5-1-1', '3-5-2',
@@ -315,8 +316,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    async function loadLiveAnalysisData(forceRefresh = false) {
+        try {
+            const url = `/api/analysis-data?refresh=${forceRefresh ? 1 : 0}&t=${Date.now()}`;
+            const response = await fetch(url, { cache: 'no-store' });
+            if (!response.ok) {
+                throw new Error(`analysis data request failed (${response.status})`);
+            }
+            const payload = await response.json();
+            if (Array.isArray(payload?.teams) && payload.teams.length > 0) {
+                teamData = payload.teams;
+                window.teamData = payload.teams;
+            }
+        } catch (error) {
+            console.warn('Using fallback analysis dataset from public/data.js:', error.message);
+        }
+    }
+
     // --- Initialization ---
-    if (typeof teamData !== 'undefined' && teamData.length > 0) {
+    await loadLiveAnalysisData(true);
+    if (teamData.length > 0) {
         populateAllSelectors();
         initTabs();
         initExploreTab();
@@ -334,12 +353,28 @@ document.addEventListener('DOMContentLoaded', () => {
         // Helper to populate a specific select element
         const fillSelect = (select) => {
             if (!select) return;
+            const placeholder = select.querySelector('option[value=""]');
+            const placeholderOption = placeholder
+                ? placeholder.cloneNode(true)
+                : new Option('Select...', '');
+            placeholderOption.disabled = true;
+            placeholderOption.selected = true;
+            select.innerHTML = '';
+            select.add(placeholderOption);
             teamNames.forEach(name => {
                 select.add(new Option(name, name));
             });
         };
         const fillFormationSelect = (select) => {
             if (!select) return;
+            const placeholder = select.querySelector('option[value=""]');
+            const placeholderOption = placeholder
+                ? placeholder.cloneNode(true)
+                : new Option('Formation...', '');
+            placeholderOption.disabled = true;
+            placeholderOption.selected = true;
+            select.innerHTML = '';
+            select.add(placeholderOption);
             SIM_FORMATIONS.forEach(formation => {
                 select.add(new Option(formation, formation));
             });
@@ -377,13 +412,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Event Listeners (Comparison) ---
-    team1Select.addEventListener('change', (e) => {
+    team1Select.addEventListener('change', async (e) => {
+        await loadLiveAnalysisData(true);
         selectedTeam1 = teamData.find(t => t.name === e.target.value);
+        if (selectedTeam2?.name) {
+            selectedTeam2 = teamData.find(t => t.name === selectedTeam2.name) || selectedTeam2;
+        }
         updateComparisonInterface();
     });
 
-    team2Select.addEventListener('change', (e) => {
+    team2Select.addEventListener('change', async (e) => {
+        await loadLiveAnalysisData(true);
         selectedTeam2 = teamData.find(t => t.name === e.target.value);
+        if (selectedTeam1?.name) {
+            selectedTeam1 = teamData.find(t => t.name === selectedTeam1.name) || selectedTeam1;
+        }
         updateComparisonInterface();
     });
 
@@ -1259,10 +1302,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Calculate rankings among all teams
         const rankings = {
-            'Goals Scored': teamData.sort((a, b) => b.stats.avg_goals_scored - a.stats.avg_goals_scored).map(t => t.name),
-            'Goals Conceded': teamData.sort((a, b) => a.stats.avg_goals_conceded - b.stats.avg_goals_conceded).map(t => t.name),
-            'Win Rate': teamData.sort((a, b) => b.stats.win_rate - a.stats.win_rate).map(t => t.name),
-            'Possession': teamData.sort((a, b) => b.stats.avg_possession - a.stats.avg_possession).map(t => t.name)
+            'Goals Scored': [...teamData].sort((a, b) => b.stats.avg_goals_scored - a.stats.avg_goals_scored).map(t => t.name),
+            'Goals Conceded': [...teamData].sort((a, b) => a.stats.avg_goals_conceded - b.stats.avg_goals_conceded).map(t => t.name),
+            'Win Rate': [...teamData].sort((a, b) => b.stats.win_rate - a.stats.win_rate).map(t => t.name),
+            'Possession': [...teamData].sort((a, b) => b.stats.avg_possession - a.stats.avg_possession).map(t => t.name)
         };
 
         const html = Object.entries(rankings).map(([metric, order]) => {
