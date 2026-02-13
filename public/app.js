@@ -34,6 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Simulation Tab Elements
     const simTeam1Select = document.getElementById('sim-team1');
     const simTeam2Select = document.getElementById('sim-team2');
+    const simTeam1FormationSelect = document.getElementById('sim-team1-formation');
+    const simTeam2FormationSelect = document.getElementById('sim-team2-formation');
     const btnRunSim = document.getElementById('btn-run-sim');
     const simResults = document.getElementById('sim-results');
 
@@ -76,6 +78,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let selectedTeam2 = null;
     let playerAnalysisData = null;
     let playerAnalysisLoaded = false;
+    let lastSimTeam1 = '';
+    let lastSimTeam2 = '';
+
+    const SIM_FORMATIONS = [
+        '3-1-4-2', '3-2-4-1', '3-3-3-1', '3-4-1-2', '3-4-2-1', '3-4-3', '3-5-1-1', '3-5-2',
+        '4-1-3-2', '4-1-4-1', '4-2-2-2', '4-2-3-1', '4-3-1-2', '4-3-3', '4-4-1-1', '4-4-2',
+        '4-5-1', '5-3-2', '5-4-1'
+    ];
 
     // --- Initialization moved to after declarations ---
 
@@ -104,6 +114,9 @@ document.addEventListener('DOMContentLoaded', () => {
             sim_desc: "Run 1000+ Monte Carlo simulations to predict the outcome.",
             match_setup: "Match Setup",
             select_short: "Select...",
+            label_home_formation: "Home Formation",
+            label_away_formation: "Away Formation",
+            select_formation_short: "Formation...",
             home_adj: "Home Team Adjustment",
             away_adj: "Away Team Adjustment",
             btn_run_sim: "Run Prediction",
@@ -173,6 +186,9 @@ document.addEventListener('DOMContentLoaded', () => {
             sim_desc: "Maç sonucunu tahmin etmek için 1000+ Monte Carlo simülasyonu çalıştırın.",
             match_setup: "Maç Kurulumu",
             select_short: "Seç...",
+            label_home_formation: "Ev Sahibi Dizilişi",
+            label_away_formation: "Deplasman Dizilişi",
+            select_formation_short: "Diziliş...",
             home_adj: "Ev Sahibi Ayarı",
             away_adj: "Deplasman Ayarı",
             btn_run_sim: "Tahmin Yürüt",
@@ -317,8 +333,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Helper to populate a specific select element
         const fillSelect = (select) => {
+            if (!select) return;
             teamNames.forEach(name => {
                 select.add(new Option(name, name));
+            });
+        };
+        const fillFormationSelect = (select) => {
+            if (!select) return;
+            SIM_FORMATIONS.forEach(formation => {
+                select.add(new Option(formation, formation));
             });
         };
 
@@ -326,6 +349,8 @@ document.addEventListener('DOMContentLoaded', () => {
         fillSelect(team2Select);
         fillSelect(simTeam1Select);
         fillSelect(simTeam2Select);
+        fillFormationSelect(simTeam1FormationSelect);
+        fillFormationSelect(simTeam2FormationSelect);
     }
 
     function initTabs() {
@@ -383,6 +408,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Pitch Visualization (Formation) ---
+    function getSafeFormation(formation, fallback = '4-2-3-1') {
+        if (!formation || typeof formation !== 'string') return fallback;
+        const normalized = formation.trim();
+        return SIM_FORMATIONS.includes(normalized) ? normalized : fallback;
+    }
+
+    function applyDefaultFormation(selectElement, formation) {
+        if (!selectElement) return;
+        const safeFormation = getSafeFormation(formation);
+        const optionExists = Array.from(selectElement.options).some(opt => opt.value === safeFormation);
+        if (optionExists) {
+            selectElement.value = safeFormation;
+        }
+    }
+
     async function updatePitchVisualization() {
         const t1 = simTeam1Select?.value;
         const t2 = simTeam2Select?.value;
@@ -394,6 +434,12 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             if (t1) {
                 team1Data = await getTeamLatestLineup(t1);
+                if (t1 !== lastSimTeam1 || !simTeam1FormationSelect?.value) {
+                    applyDefaultFormation(simTeam1FormationSelect, team1Data?.formation);
+                }
+                if (team1Data) {
+                    team1Data.formation = getSafeFormation(simTeam1FormationSelect?.value || team1Data.formation);
+                }
             }
         } catch (error) {
             console.error('Error loading team 1:', error);
@@ -402,10 +448,19 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             if (t2) {
                 team2Data = await getTeamLatestLineup(t2);
+                if (t2 !== lastSimTeam2 || !simTeam2FormationSelect?.value) {
+                    applyDefaultFormation(simTeam2FormationSelect, team2Data?.formation);
+                }
+                if (team2Data) {
+                    team2Data.formation = getSafeFormation(simTeam2FormationSelect?.value || team2Data.formation);
+                }
             }
         } catch (error) {
             console.error('Error loading team 2:', error);
         }
+
+        lastSimTeam1 = t1 || '';
+        lastSimTeam2 = t2 || '';
 
         // Render pitch with whatever data we have (can be one or both teams)
         if (typeof renderPitchView === 'function') {
@@ -419,6 +474,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (simTeam2Select) {
         simTeam2Select.addEventListener('change', updatePitchVisualization);
+    }
+    if (simTeam1FormationSelect) {
+        simTeam1FormationSelect.addEventListener('change', updatePitchVisualization);
+    }
+    if (simTeam2FormationSelect) {
+        simTeam2FormationSelect.addEventListener('change', updatePitchVisualization);
     }
 
     // --- Event Listeners (Simulation) ---
@@ -489,6 +550,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Get adjustment values
                 const team1Adj = parseFloat(team1AdjSlider?.value || 0);
                 const team2Adj = parseFloat(team2AdjSlider?.value || 0);
+                const team1Formation = getSafeFormation(simTeam1FormationSelect?.value || '');
+                const team2Formation = getSafeFormation(simTeam2FormationSelect?.value || '');
 
                 const response = await fetch('/api/simulate', {
                     method: 'POST',
@@ -496,6 +559,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     body: JSON.stringify({
                         team1: t1,
                         team2: t2,
+                        team1_formation: team1Formation,
+                        team2_formation: team2Formation,
                         team1_adj: team1Adj,
                         team2_adj: team2Adj
                     })

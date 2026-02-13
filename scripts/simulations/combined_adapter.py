@@ -203,7 +203,18 @@ def _build_top5_scores(top5_df):
     return top5_list
 
 
-def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_type=None, team1_adj=0, team2_adj=0):
+def simulate_match(
+    team1,
+    team2,
+    assets_path,
+    base_data_dir,
+    output_dir,
+    sim_type=None,
+    team1_adj=0,
+    team2_adj=0,
+    team1_formation=None,
+    team2_formation=None,
+):
     print(f"Starting Combined Simulation (new engine): {team1} vs {team2}")
     print(f"Adjustments: {team1}={team1_adj:+.1f}%, {team2}={team2_adj:+.1f}%")
 
@@ -214,8 +225,8 @@ def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_typ
     if team2_resolved != team2:
         print(f"Resolved Team2 '{team2}' -> '{team2_resolved}'")
 
-    home_form = _detect_team_formation(base_data_dir, team1_resolved)
-    away_form = _detect_team_formation(base_data_dir, team2_resolved)
+    home_form = parse_formation(team1_formation) if team1_formation else _detect_team_formation(base_data_dir, team1_resolved)
+    away_form = parse_formation(team2_formation) if team2_formation else _detect_team_formation(base_data_dir, team2_resolved)
 
     logo_dir = Path(assets_path) / "Logos"
     engine = _get_engine(base_data_dir, output_dir, logo_dir)
@@ -257,6 +268,8 @@ def simulate_match(team1, team2, assets_path, base_data_dir, output_dir, sim_typ
         "team2": team2_resolved,
         "team1_logo_url": f"/logos/{team1_resolved}.png",
         "team2_logo_url": f"/logos/{team2_resolved}.png",
+        "team1_formation": home_form,
+        "team2_formation": away_form,
         "win_prob": percent(clean_val(combined["home_win"])),
         "draw_prob": percent(clean_val(combined["draw"])),
         "lose_prob": percent(clean_val(combined["home_loss"])),

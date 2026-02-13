@@ -226,6 +226,8 @@ def run_simulation():
         team1 = data.get('team1')
         team2 = data.get('team2')
         sim_type = data.get('type')
+        team1_formation = data.get('team1_formation')
+        team2_formation = data.get('team2_formation')
         team1_adj = data.get('team1_adj', 0)
         team2_adj = data.get('team2_adj', 0)
 
@@ -246,7 +248,9 @@ def run_simulation():
             OUTPUT_DIR,
             sim_type,
             team1_adj,
-            team2_adj
+            team2_adj,
+            team1_formation=team1_formation,
+            team2_formation=team2_formation
         )
         
         return jsonify(results)
