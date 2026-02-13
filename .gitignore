@@ -3,6 +3,8 @@ __pycache__/
 *.pyc
 outputs/
 .env
+.email.env
+scripts/.email.env
 venv/
 .idea/
 .vscode/

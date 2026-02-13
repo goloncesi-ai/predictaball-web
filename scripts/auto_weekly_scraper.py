@@ -235,6 +235,39 @@ def run_weekly_predictions(schedule):
         return False, target_round
 
 
+def send_prediction_emails(round_number):
+    """Send one email per predicted match for the selected round."""
+    logging.info("")
+    logging.info("=" * 60)
+    logging.info(f"Step 4: Sending prediction emails for Round {round_number}...")
+    logging.info("=" * 60)
+
+    email_script = BASE_DIR / "scripts" / "prediction_emailer.py"
+    try:
+        result = subprocess.run(
+            [PYTHON_BIN, str(email_script), "--round", str(round_number)],
+            cwd=str(BASE_DIR),
+            capture_output=True,
+            text=True,
+            timeout=1200  # up to 20 min for SMTP retries and per-email delays
+        )
+        if result.returncode == 0:
+            logging.info("✅ Prediction emails sent successfully.")
+            if result.stdout:
+                logging.info(result.stdout)
+            return True
+
+        logging.error("❌ prediction_emailer.py failed.")
+        if result.stdout:
+            logging.error(result.stdout)
+        if result.stderr:
+            logging.error(result.stderr)
+        return False
+    except Exception as e:
+        logging.error(f"❌ Error running prediction_emailer.py: {e}")
+        return False
+
+
 def scrape_and_append(match_id, team_name, team_path):
     """Scrape match data and append to team's Excel file."""
     try:
@@ -426,11 +459,18 @@ def main(force_round=None):
     # Step 3: Always generate upcoming round predictions
     pred_ok, pred_round = run_weekly_predictions(schedule)
 
-    # Step 4: Commit and push to GitHub
+    # Step 4: Send prediction emails for next round
+    email_ok = False
+    if pred_ok:
+        email_ok = send_prediction_emails(pred_round)
+    else:
+        logging.warning("Skipping prediction emails because prediction generation failed.")
+
+    # Step 5: Commit and push to GitHub
     if success_count > 0 or pred_ok:
         logging.info("")
         logging.info("=" * 60)
-        logging.info("Step 4: Committing and pushing to GitHub...")
+        logging.info("Step 5: Committing and pushing to GitHub...")
         logging.info("=" * 60)
 
         try:
@@ -467,6 +507,9 @@ def main(force_round=None):
             logging.error(f"❌ Error during commit/push: {e}")
     else:
         logging.info("ℹ️  Nothing scraped and predictions not generated; skipping commit/push.")
+
+    if pred_ok and not email_ok:
+        logging.warning("⚠️ Predictions were generated but one or more emails were not sent.")
     
     logging.info("")
     logging.info("=" * 60)
