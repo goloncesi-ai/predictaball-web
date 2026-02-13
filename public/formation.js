@@ -149,7 +149,10 @@ function renderPitchView(team1Data, team2Data) {
         }
 
         document.getElementById('pitch-team1-name').textContent = team1Data.name || '-';
-        document.getElementById('pitch-team1-formation').textContent = team1Data.formation || '-';
+        const homeFormationSelect = document.getElementById('sim-team1-formation');
+        if (homeFormationSelect && team1Data.formation) {
+            homeFormationSelect.value = team1Data.formation;
+        }
 
         // Get positions and render
         const team1Positions = getFormationPositions(team1Data.formation);
@@ -169,7 +172,10 @@ function renderPitchView(team1Data, team2Data) {
         }
 
         document.getElementById('pitch-team2-name').textContent = team2Data.name || '-';
-        document.getElementById('pitch-team2-formation').textContent = team2Data.formation || '-';
+        const awayFormationSelect = document.getElementById('sim-team2-formation');
+        if (awayFormationSelect && team2Data.formation) {
+            awayFormationSelect.value = team2Data.formation;
+        }
 
         // Get positions and render
         const team2Positions = getFormationPositions(team2Data.formation);

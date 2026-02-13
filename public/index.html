@@ -222,7 +222,9 @@
                             <div class="pitch-header">
                                 <div class="team-badge">🏠</div>
                                 <h4 id="pitch-team1-name" class="team-name">-</h4>
-                                <p id="pitch-team1-formation" class="team-formation">-</p>
+                                <select id="sim-team1-formation" class="modern-select pitch-formation-select">
+                                    <option value="" disabled selected data-i18n="select_formation_short">Formation...</option>
+                                </select>
                             </div>
 
                             <div class="pitch-view-single">
@@ -279,18 +281,6 @@
                                     <option value="" disabled selected data-i18n="select_short">Select...</option>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label data-i18n="label_home_formation">Home Formation</label>
-                                <select id="sim-team1-formation" class="modern-select">
-                                    <option value="" disabled selected data-i18n="select_formation_short">Formation...</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label data-i18n="label_away_formation">Away Formation</label>
-                                <select id="sim-team2-formation" class="modern-select">
-                                    <option value="" disabled selected data-i18n="select_formation_short">Formation...</option>
-                                </select>
-                            </div>
 
                             <!-- Team Adjustments -->
                             <div class="form-group">
@@ -330,7 +320,9 @@
                             <div class="pitch-header">
                                 <div class="team-badge">✈️</div>
                                 <h4 id="pitch-team2-name" class="team-name">-</h4>
-                                <p id="pitch-team2-formation" class="team-formation">-</p>
+                                <select id="sim-team2-formation" class="modern-select pitch-formation-select">
+                                    <option value="" disabled selected data-i18n="select_formation_short">Formation...</option>
+                                </select>
                             </div>
 
                             <div class="pitch-view-single">
