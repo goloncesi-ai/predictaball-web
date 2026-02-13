@@ -257,7 +257,10 @@ async function getTeamLatestLineup(teamName) {
         }
 
         const csvText = await response.text();
-        const lines = csvText.trim().split('\n');
+        const lines = csvText
+            .split(/\r?\n/)
+            .map(line => line.trim())
+            .filter(line => line.length > 0);
 
         if (lines.length < 2) {
             throw new Error('CSV file is empty or invalid');
@@ -265,13 +268,13 @@ async function getTeamLatestLineup(teamName) {
 
         // Parse header
         const headers = lines[0].split(',');
-        // Get most recent match (last line)
-        const lastMatch = lines[lines.length - 1].split(',');
+        // Newest match is stored on first data row (line right after header)
+        const latestMatch = lines[1].split(',');
 
         // Build data object
         const data = {};
         headers.forEach((header, idx) => {
-            data[header.trim()] = lastMatch[idx]?.trim();
+            data[header.trim()] = latestMatch[idx]?.trim();
         });
 
         // Determine if team is Team1 or Team2 in this match
