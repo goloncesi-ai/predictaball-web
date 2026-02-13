@@ -1,0 +1,924 @@
+{
+  "round": 22,
+  "generated_at": "2026-02-13T22:36:07.399715",
+  "matches": [
+    {
+      "match_id": 14109804,
+      "date": "2026-02-13",
+      "time": "18:00",
+      "datetime_iso": "2026-02-13T18:00:00",
+      "home_team": "Antalyaspor",
+      "away_team": "Samsunspor",
+      "predicted_score": "1-1",
+      "probabilities": {
+        "home_win": 37.0,
+        "draw": 33.0,
+        "away_win": 30.0
+      },
+      "confidence": "low",
+      "expected_goals": {
+        "home": 1.4,
+        "away": 1.06
+      },
+      "score_distribution": [
+        [
+          2,
+          1,
+          44.1
+        ],
+        [
+          0,
+          1,
+          14.7
+        ],
+        [
+          0,
+          2,
+          14.7
+        ],
+        [
+          1,
+          2,
+          14.7
+        ],
+        [
+          2,
+          0,
+          11.8
+        ]
+      ],
+      "heatmap_data": [],
+      "top5_scores": [
+        {
+          "score": "2-1",
+          "count": 15,
+          "percentage": 44.1
+        },
+        {
+          "score": "0-1",
+          "count": 5,
+          "percentage": 14.7
+        },
+        {
+          "score": "0-2",
+          "count": 5,
+          "percentage": 14.7
+        },
+        {
+          "score": "1-2",
+          "count": 5,
+          "percentage": 14.7
+        },
+        {
+          "score": "2-0",
+          "count": 4,
+          "percentage": 11.8
+        }
+      ],
+      "markov_form": {
+        "team1": {
+          "name": "Antalyaspor",
+          "next_win_prob": 13.6,
+          "next_draw_prob": 9.7,
+          "next_loss_prob": 76.6,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 50,
+          "hidden_states": 0,
+          "state_profiles": []
+        },
+        "team2": {
+          "name": "Samsunspor",
+          "next_win_prob": 40.0,
+          "next_draw_prob": 29.8,
+          "next_loss_prob": 30.1,
+          "form_label": "Neutral ⚖️",
+          "matches_analyzed": 52,
+          "hidden_states": 0,
+          "state_profiles": []
+        }
+      },
+      "avg_ratings": {
+        "team1": 6.81,
+        "team2": 6.73
+      },
+      "team1_logo_url": "/logos/Antalyaspor.png",
+      "team2_logo_url": "/logos/Samsunspor.png"
+    },
+    {
+      "match_id": 14109800,
+      "date": "2026-02-13",
+      "time": "18:00",
+      "datetime_iso": "2026-02-13T18:00:00",
+      "home_team": "Galatasaray",
+      "away_team": "Eyüpspor",
+      "predicted_score": "2-0",
+      "probabilities": {
+        "home_win": 70.0,
+        "draw": 21.0,
+        "away_win": 9.0
+      },
+      "confidence": "high",
+      "expected_goals": {
+        "home": 2.24,
+        "away": 0.44
+      },
+      "score_distribution": [
+        [
+          3,
+          0,
+          29.0
+        ],
+        [
+          2,
+          2,
+          22.6
+        ],
+        [
+          2,
+          0,
+          19.4
+        ],
+        [
+          1,
+          1,
+          16.1
+        ],
+        [
+          3,
+          1,
+          12.9
+        ]
+      ],
+      "heatmap_data": [],
+      "top5_scores": [
+        {
+          "score": "3-0",
+          "count": 9,
+          "percentage": 29.0
+        },
+        {
+          "score": "2-2",
+          "count": 7,
+          "percentage": 22.6
+        },
+        {
+          "score": "2-0",
+          "count": 6,
+          "percentage": 19.4
+        },
+        {
+          "score": "1-1",
+          "count": 5,
+          "percentage": 16.1
+        },
+        {
+          "score": "3-1",
+          "count": 4,
+          "percentage": 12.9
+        }
+      ],
+      "markov_form": {
+        "team1": {
+          "name": "Galatasaray",
+          "next_win_prob": 71.5,
+          "next_draw_prob": 16.5,
+          "next_loss_prob": 12.0,
+          "form_label": "Hot 🔥",
+          "matches_analyzed": 56,
+          "hidden_states": 0,
+          "state_profiles": []
+        },
+        "team2": {
+          "name": "Eyüpspor",
+          "next_win_prob": 25.3,
+          "next_draw_prob": 21.6,
+          "next_loss_prob": 53.1,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 38,
+          "hidden_states": 0,
+          "state_profiles": []
+        }
+      },
+      "avg_ratings": {
+        "team1": 7.06,
+        "team2": 6.76
+      },
+      "team1_logo_url": "/logos/Galatasaray.png",
+      "team2_logo_url": "/logos/Eyüpspor.png"
+    },
+    {
+      "match_id": 14109808,
+      "date": "2026-02-14",
+      "time": "12:30",
+      "datetime_iso": "2026-02-14T12:30:00",
+      "home_team": "Gençlerbirliği",
+      "away_team": "Çaykur Rizespor",
+      "predicted_score": "2-1",
+      "probabilities": {
+        "home_win": 76.0,
+        "draw": 12.0,
+        "away_win": 12.0
+      },
+      "confidence": "high",
+      "expected_goals": {
+        "home": 2.28,
+        "away": 0.54
+      },
+      "score_distribution": [
+        [
+          2,
+          0,
+          32.4
+        ],
+        [
+          2,
+          1,
+          21.6
+        ],
+        [
+          1,
+          1,
+          18.9
+        ],
+        [
+          3,
+          1,
+          13.5
+        ],
+        [
+          3,
+          0,
+          13.5
+        ]
+      ],
+      "heatmap_data": [],
+      "top5_scores": [
+        {
+          "score": "2-0",
+          "count": 12,
+          "percentage": 32.4
+        },
+        {
+          "score": "2-1",
+          "count": 8,
+          "percentage": 21.6
+        },
+        {
+          "score": "1-1",
+          "count": 7,
+          "percentage": 18.9
+        },
+        {
+          "score": "3-1",
+          "count": 5,
+          "percentage": 13.5
+        },
+        {
+          "score": "3-0",
+          "count": 5,
+          "percentage": 13.5
+        }
+      ],
+      "markov_form": {
+        "team1": {
+          "name": "Gençlerbirliği",
+          "next_win_prob": 34.2,
+          "next_draw_prob": 30.9,
+          "next_loss_prob": 34.9,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 47,
+          "hidden_states": 0,
+          "state_profiles": []
+        },
+        "team2": {
+          "name": "Çaykur Rizespor",
+          "next_win_prob": 26.9,
+          "next_draw_prob": 26.9,
+          "next_loss_prob": 46.2,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 33,
+          "hidden_states": 0,
+          "state_profiles": []
+        }
+      },
+      "avg_ratings": {
+        "team1": 6.81,
+        "team2": 6.69
+      },
+      "team1_logo_url": "/logos/Gençlerbirliği.png",
+      "team2_logo_url": "/logos/Çaykur Rizespor.png"
+    },
+    {
+      "match_id": 14109801,
+      "date": "2026-02-14",
+      "time": "15:00",
+      "datetime_iso": "2026-02-14T15:00:00",
+      "home_team": "Alanyaspor",
+      "away_team": "Konyaspor",
+      "predicted_score": "2-0",
+      "probabilities": {
+        "home_win": 52.0,
+        "draw": 42.0,
+        "away_win": 6.0
+      },
+      "confidence": "medium",
+      "expected_goals": {
+        "home": 1.55,
+        "away": 0.46
+      },
+      "score_distribution": [
+        [
+          1,
+          1,
+          40.4
+        ],
+        [
+          2,
+          0,
+          21.3
+        ],
+        [
+          1,
+          0,
+          17.0
+        ],
+        [
+          0,
+          0,
+          12.8
+        ],
+        [
+          0,
+          1,
+          8.5
+        ]
+      ],
+      "heatmap_data": [],
+      "top5_scores": [
+        {
+          "score": "1-1",
+          "count": 19,
+          "percentage": 40.4
+        },
+        {
+          "score": "2-0",
+          "count": 10,
+          "percentage": 21.3
+        },
+        {
+          "score": "1-0",
+          "count": 8,
+          "percentage": 17.0
+        },
+        {
+          "score": "0-0",
+          "count": 6,
+          "percentage": 12.8
+        },
+        {
+          "score": "0-1",
+          "count": 4,
+          "percentage": 8.5
+        }
+      ],
+      "markov_form": {
+        "team1": {
+          "name": "Alanyaspor",
+          "next_win_prob": 31.2,
+          "next_draw_prob": 36.2,
+          "next_loss_prob": 32.7,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 39,
+          "hidden_states": 0,
+          "state_profiles": []
+        },
+        "team2": {
+          "name": "Konyaspor",
+          "next_win_prob": 7.8,
+          "next_draw_prob": 37.2,
+          "next_loss_prob": 55.0,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 50,
+          "hidden_states": 0,
+          "state_profiles": []
+        }
+      },
+      "avg_ratings": {
+        "team1": 6.9,
+        "team2": 6.68
+      },
+      "team1_logo_url": "/logos/Alanyaspor.png",
+      "team2_logo_url": "/logos/Konyaspor.png"
+    },
+    {
+      "match_id": 14109807,
+      "date": "2026-02-14",
+      "time": "18:00",
+      "datetime_iso": "2026-02-14T18:00:00",
+      "home_team": "Trabzonspor",
+      "away_team": "Fenerbahçe",
+      "predicted_score": "0-3",
+      "probabilities": {
+        "home_win": 3.0,
+        "draw": 25.0,
+        "away_win": 72.0
+      },
+      "confidence": "high",
+      "expected_goals": {
+        "home": 0.46,
+        "away": 2.69
+      },
+      "score_distribution": [
+        [
+          1,
+          3,
+          31.6
+        ],
+        [
+          0,
+          3,
+          26.3
+        ],
+        [
+          1,
+          2,
+          15.8
+        ],
+        [
+          2,
+          2,
+          13.2
+        ],
+        [
+          1,
+          1,
+          13.2
+        ]
+      ],
+      "heatmap_data": [],
+      "top5_scores": [
+        {
+          "score": "1-3",
+          "count": 12,
+          "percentage": 31.6
+        },
+        {
+          "score": "0-3",
+          "count": 10,
+          "percentage": 26.3
+        },
+        {
+          "score": "1-2",
+          "count": 6,
+          "percentage": 15.8
+        },
+        {
+          "score": "2-2",
+          "count": 5,
+          "percentage": 13.2
+        },
+        {
+          "score": "1-1",
+          "count": 5,
+          "percentage": 13.2
+        }
+      ],
+      "markov_form": {
+        "team1": {
+          "name": "Trabzonspor",
+          "next_win_prob": 52.4,
+          "next_draw_prob": 26.9,
+          "next_loss_prob": 20.6,
+          "form_label": "Neutral ⚖️",
+          "matches_analyzed": 41,
+          "hidden_states": 0,
+          "state_profiles": []
+        },
+        "team2": {
+          "name": "Fenerbahçe",
+          "next_win_prob": 50.0,
+          "next_draw_prob": 32.6,
+          "next_loss_prob": 17.4,
+          "form_label": "Neutral ⚖️",
+          "matches_analyzed": 56,
+          "hidden_states": 0,
+          "state_profiles": []
+        }
+      },
+      "avg_ratings": {
+        "team1": 6.86,
+        "team2": 7.18
+      },
+      "team1_logo_url": "/logos/Trabzonspor.png",
+      "team2_logo_url": "/logos/Fenerbahçe.png"
+    },
+    {
+      "match_id": 14109806,
+      "date": "2026-02-15",
+      "time": "12:30",
+      "datetime_iso": "2026-02-15T12:30:00",
+      "home_team": "Kocaelispor",
+      "away_team": "Gaziantep FK",
+      "predicted_score": "2-1",
+      "probabilities": {
+        "home_win": 48.0,
+        "draw": 40.0,
+        "away_win": 12.0
+      },
+      "confidence": "medium",
+      "expected_goals": {
+        "home": 1.54,
+        "away": 0.73
+      },
+      "score_distribution": [
+        [
+          1,
+          1,
+          35.0
+        ],
+        [
+          2,
+          0,
+          20.0
+        ],
+        [
+          2,
+          1,
+          20.0
+        ],
+        [
+          2,
+          2,
+          12.5
+        ],
+        [
+          1,
+          0,
+          12.5
+        ]
+      ],
+      "heatmap_data": [],
+      "top5_scores": [
+        {
+          "score": "1-1",
+          "count": 14,
+          "percentage": 35.0
+        },
+        {
+          "score": "2-0",
+          "count": 8,
+          "percentage": 20.0
+        },
+        {
+          "score": "2-1",
+          "count": 8,
+          "percentage": 20.0
+        },
+        {
+          "score": "2-2",
+          "count": 5,
+          "percentage": 12.5
+        },
+        {
+          "score": "1-0",
+          "count": 5,
+          "percentage": 12.5
+        }
+      ],
+      "markov_form": {
+        "team1": {
+          "name": "Kocaelispor",
+          "next_win_prob": 43.4,
+          "next_draw_prob": 28.8,
+          "next_loss_prob": 27.8,
+          "form_label": "Neutral ⚖️",
+          "matches_analyzed": 50,
+          "hidden_states": 0,
+          "state_profiles": []
+        },
+        "team2": {
+          "name": "Gaziantep",
+          "next_win_prob": 34.8,
+          "next_draw_prob": 29.9,
+          "next_loss_prob": 35.3,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 50,
+          "hidden_states": 0,
+          "state_profiles": []
+        }
+      },
+      "avg_ratings": {
+        "team1": 6.88,
+        "team2": 6.79
+      },
+      "team1_logo_url": "/logos/Kocaelispor.png",
+      "team2_logo_url": "/logos/Gaziantep.png"
+    },
+    {
+      "match_id": 14109809,
+      "date": "2026-02-15",
+      "time": "15:00",
+      "datetime_iso": "2026-02-15T15:00:00",
+      "home_team": "Göztepe",
+      "away_team": "Kayserispor",
+      "predicted_score": "2-1",
+      "probabilities": {
+        "home_win": 50.0,
+        "draw": 42.0,
+        "away_win": 8.0
+      },
+      "confidence": "medium",
+      "expected_goals": {
+        "home": 1.59,
+        "away": 0.56
+      },
+      "score_distribution": [
+        [
+          2,
+          0,
+          63.4
+        ],
+        [
+          3,
+          0,
+          17.1
+        ],
+        [
+          1,
+          1,
+          7.3
+        ],
+        [
+          0,
+          0,
+          7.3
+        ],
+        [
+          0,
+          1,
+          4.9
+        ]
+      ],
+      "heatmap_data": [],
+      "top5_scores": [
+        {
+          "score": "2-0",
+          "count": 26,
+          "percentage": 63.4
+        },
+        {
+          "score": "3-0",
+          "count": 7,
+          "percentage": 17.1
+        },
+        {
+          "score": "1-1",
+          "count": 3,
+          "percentage": 7.3
+        },
+        {
+          "score": "0-0",
+          "count": 3,
+          "percentage": 7.3
+        },
+        {
+          "score": "0-1",
+          "count": 2,
+          "percentage": 4.9
+        }
+      ],
+      "markov_form": {
+        "team1": {
+          "name": "Göztepe",
+          "next_win_prob": 45.2,
+          "next_draw_prob": 34.4,
+          "next_loss_prob": 20.4,
+          "form_label": "Neutral ⚖️",
+          "matches_analyzed": 38,
+          "hidden_states": 0,
+          "state_profiles": []
+        },
+        "team2": {
+          "name": "Kayserispor",
+          "next_win_prob": 25.8,
+          "next_draw_prob": 32.4,
+          "next_loss_prob": 41.7,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 52,
+          "hidden_states": 0,
+          "state_profiles": []
+        }
+      },
+      "avg_ratings": {
+        "team1": 6.94,
+        "team2": 6.79
+      },
+      "team1_logo_url": "/logos/Göztepe.png",
+      "team2_logo_url": "/logos/Kayserispor.png"
+    },
+    {
+      "match_id": 14109803,
+      "date": "2026-02-15",
+      "time": "18:00",
+      "datetime_iso": "2026-02-15T18:00:00",
+      "home_team": "Başakşehir FK",
+      "away_team": "Beşiktaş JK",
+      "predicted_score": "1-1",
+      "probabilities": {
+        "home_win": 42.0,
+        "draw": 24.0,
+        "away_win": 34.0
+      },
+      "confidence": "low",
+      "expected_goals": {
+        "home": 1.42,
+        "away": 1.42
+      },
+      "score_distribution": [
+        [
+          2,
+          0,
+          33.3
+        ],
+        [
+          1,
+          3,
+          30.3
+        ],
+        [
+          1,
+          1,
+          12.1
+        ],
+        [
+          1,
+          2,
+          12.1
+        ],
+        [
+          2,
+          2,
+          12.1
+        ]
+      ],
+      "heatmap_data": [],
+      "top5_scores": [
+        {
+          "score": "2-0",
+          "count": 11,
+          "percentage": 33.3
+        },
+        {
+          "score": "1-3",
+          "count": 10,
+          "percentage": 30.3
+        },
+        {
+          "score": "1-1",
+          "count": 4,
+          "percentage": 12.1
+        },
+        {
+          "score": "1-2",
+          "count": 4,
+          "percentage": 12.1
+        },
+        {
+          "score": "2-2",
+          "count": 4,
+          "percentage": 12.1
+        }
+      ],
+      "markov_form": {
+        "team1": {
+          "name": "Başakşehir",
+          "next_win_prob": 35.9,
+          "next_draw_prob": 18.3,
+          "next_loss_prob": 45.7,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 50,
+          "hidden_states": 0,
+          "state_profiles": []
+        },
+        "team2": {
+          "name": "Beşiktaş",
+          "next_win_prob": 45.8,
+          "next_draw_prob": 28.5,
+          "next_loss_prob": 25.7,
+          "form_label": "Neutral ⚖️",
+          "matches_analyzed": 48,
+          "hidden_states": 0,
+          "state_profiles": []
+        }
+      },
+      "avg_ratings": {
+        "team1": 6.97,
+        "team2": 6.99
+      },
+      "team1_logo_url": "/logos/Başakşehir.png",
+      "team2_logo_url": "/logos/Beşiktaş.png"
+    },
+    {
+      "match_id": 14109805,
+      "date": "2026-02-16",
+      "time": "18:00",
+      "datetime_iso": "2026-02-16T18:00:00",
+      "home_team": "Kasımpaşa",
+      "away_team": "Fatih Karagümrük",
+      "predicted_score": "1-1",
+      "probabilities": {
+        "home_win": 37.0,
+        "draw": 29.0,
+        "away_win": 34.0
+      },
+      "confidence": "low",
+      "expected_goals": {
+        "home": 1.34,
+        "away": 0.92
+      },
+      "score_distribution": [
+        [
+          1,
+          1,
+          42.1
+        ],
+        [
+          2,
+          1,
+          18.4
+        ],
+        [
+          1,
+          0,
+          15.8
+        ],
+        [
+          1,
+          2,
+          15.8
+        ],
+        [
+          0,
+          2,
+          7.9
+        ]
+      ],
+      "heatmap_data": [],
+      "top5_scores": [
+        {
+          "score": "1-1",
+          "count": 16,
+          "percentage": 42.1
+        },
+        {
+          "score": "2-1",
+          "count": 7,
+          "percentage": 18.4
+        },
+        {
+          "score": "1-0",
+          "count": 6,
+          "percentage": 15.8
+        },
+        {
+          "score": "1-2",
+          "count": 6,
+          "percentage": 15.8
+        },
+        {
+          "score": "0-2",
+          "count": 3,
+          "percentage": 7.9
+        }
+      ],
+      "markov_form": {
+        "team1": {
+          "name": "Kasımpaşa",
+          "next_win_prob": 23.1,
+          "next_draw_prob": 29.3,
+          "next_loss_prob": 47.6,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 36,
+          "hidden_states": 0,
+          "state_profiles": []
+        },
+        "team2": {
+          "name": "Karagümrük",
+          "next_win_prob": 36.1,
+          "next_draw_prob": 20.8,
+          "next_loss_prob": 43.0,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 47,
+          "hidden_states": 0,
+          "state_profiles": []
+        }
+      },
+      "avg_ratings": {
+        "team1": 6.73,
+        "team2": 6.75
+      },
+      "team1_logo_url": "/logos/Kasımpaşa.png",
+      "team2_logo_url": "/logos/Karagümrük.png"
+    }
+  ]
+}

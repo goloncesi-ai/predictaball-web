@@ -1,7 +1,7 @@
 # Setup Instructions for Automated Weekly Scraping
 
 ## Overview
-This guide will help you set up automated weekly scraping of Turkish Super League match data from Sofascore. The automation runs every Tuesday at 10 PM.
+This guide will help you set up automated weekly scraping of Turkish Super League match data from Sofascore. The automation runs every Tuesday at 11 PM.
 
 ## Files Created
 1. `scripts/auto_weekly_scraper.py` - The automated scraping script
@@ -9,12 +9,14 @@ This guide will help you set up automated weekly scraping of Turkish Super Leagu
 3. `scripts/AUTOMATION_SETUP.md` - This file
 
 ## How It Works
-1. Every Tuesday at 10 PM, the script automatically runs
+1. Every Tuesday at 11 PM, the script automatically runs
 2. It reads `Data/schedule/season_schedule.json` to find the current round
 3. For each finished match in that round:
    - Fetches data from Sofascore API
    - Updates both home and away team Excel files
    - Saves both XLSX and CSV versions
+4. Generates predictions for the next scheduled round using `scripts/weekly_predictions.py`
+5. Commits and pushes updated data/predictions so the Recent Games tab refreshes
 
 ## Setup (macOS - launchd)
 
@@ -134,8 +136,8 @@ If you want cloud-based scheduling instead of running on your Mac, let me know a
 
 ## Next Steps After Scraping
 
-After the weekly scraping completes, you should:
-1. Run `python3 scripts/ingest_data.py` to regenerate `public/data.js`
-2. Push changes to GitHub to deploy to your live website
-
-This can also be automated if needed!
+All steps are now automated:
+1. Scrape + update team files
+2. Regenerate `public/data.js`
+3. Generate upcoming round predictions JSON
+4. Commit + push to GitHub

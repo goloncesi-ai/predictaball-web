@@ -13,6 +13,7 @@ import time
 import random
 import logging
 import argparse
+import subprocess
 import pandas as pd
 from pathlib import Path
 from datetime import datetime
@@ -32,6 +33,7 @@ logging.basicConfig(
 BASE_DIR = Path(__file__).parent.parent
 DATA_DIR = BASE_DIR / "Data" / "Turkish Super League"
 SCHEDULE_FILE = BASE_DIR / "Data" / "schedule" / "season_schedule.json"
+PYTHON_BIN = "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3.10"
 
 # Import from the WORKING manual scraper
 scraper_path = BASE_DIR / "Data" / "Scraping Code"
@@ -187,6 +189,52 @@ def get_current_round_matches(schedule):
     return []
 
 
+def get_next_scheduled_round(schedule):
+    """Pick the next round that still has scheduled matches."""
+    rounds = sorted(schedule.get('rounds', []), key=lambda r: int(r.get('round', 0)))
+    for round_data in rounds:
+        matches = round_data.get('matches', [])
+        if any((m.get('status') == 'scheduled') for m in matches):
+            return int(round_data['round'])
+
+    # Fallback if all rounds are finished/unknown
+    return int(schedule.get('current_round', 1))
+
+
+def run_weekly_predictions(schedule):
+    """Generate prediction JSON for the next scheduled round."""
+    target_round = get_next_scheduled_round(schedule)
+    logging.info("")
+    logging.info("=" * 60)
+    logging.info(f"Step 3: Generating predictions for Round {target_round}...")
+    logging.info("=" * 60)
+
+    predictions_script = BASE_DIR / "scripts" / "weekly_predictions.py"
+    try:
+        result = subprocess.run(
+            [PYTHON_BIN, str(predictions_script), "--round", str(target_round)],
+            cwd=str(BASE_DIR),
+            capture_output=True,
+            text=True,
+            timeout=3600  # up to 1 hour for full-round simulation
+        )
+        if result.returncode == 0:
+            logging.info("✅ Weekly predictions generated successfully.")
+            if result.stdout:
+                logging.info(result.stdout)
+            return True, target_round
+
+        logging.error("❌ weekly_predictions.py failed.")
+        if result.stdout:
+            logging.error(result.stdout)
+        if result.stderr:
+            logging.error(result.stderr)
+        return False, target_round
+    except Exception as e:
+        logging.error(f"❌ Error running weekly_predictions.py: {e}")
+        return False, target_round
+
+
 def scrape_and_append(match_id, team_name, team_path):
     """Scrape match data and append to team's Excel file."""
     try:
@@ -301,45 +349,44 @@ def main(force_round=None):
         schedule['current_round'] = force_round
     
     matches = get_current_round_matches(schedule)
-    
-    if not matches:
-        logging.warning("No matches to process. Exiting.")
-        return
-    
+
     # Track processed matches to avoid duplicates
     processed = set()
     success_count = 0
     fail_count = 0
-    
-    for match in matches:
-        match_id = match['match_id']
-        home_team = match['home_team']
-        away_team = match['away_team']
-        
-        # Process both teams
-        for team_name in [home_team, away_team]:
-            if team_name not in TEAM_PATHS:
-                logging.warning(f"⚠️  No path mapping for team: {team_name}")
-                continue
-            
-            # Create unique key to avoid processing same match+team twice
-            key = f"{match_id}_{team_name}"
-            if key in processed:
-                continue
-            
-            team_path = TEAM_PATHS[team_name]
-            
-            # Scrape and append
-            success = scrape_and_append(match_id, team_name, team_path)
-            processed.add(key)
-            
-            if success:
-                success_count += 1
-            else:
-                fail_count += 1
-            
-            # Longer, randomized delay between requests (2-4 seconds)
-            time.sleep(2.0 + random.random() * 2.0)
+
+    if not matches:
+        logging.warning("No finished matches found in current round. Skipping scrape step.")
+    else:
+        for match in matches:
+            match_id = match['match_id']
+            home_team = match['home_team']
+            away_team = match['away_team']
+
+            # Process both teams
+            for team_name in [home_team, away_team]:
+                if team_name not in TEAM_PATHS:
+                    logging.warning(f"⚠️  No path mapping for team: {team_name}")
+                    continue
+
+                # Create unique key to avoid processing same match+team twice
+                key = f"{match_id}_{team_name}"
+                if key in processed:
+                    continue
+
+                team_path = TEAM_PATHS[team_name]
+
+                # Scrape and append
+                success = scrape_and_append(match_id, team_name, team_path)
+                processed.add(key)
+
+                if success:
+                    success_count += 1
+                else:
+                    fail_count += 1
+
+                # Longer, randomized delay between requests (2-4 seconds)
+                time.sleep(2.0 + random.random() * 2.0)
     
     logging.info("=" * 60)
     logging.info(f"Scraping complete!")
@@ -358,7 +405,7 @@ def main(force_round=None):
             import subprocess
             ingest_script = BASE_DIR / "scripts" / "ingest_data.py"
             result = subprocess.run(
-                ["/Library/Frameworks/Python.framework/Versions/3.10/bin/python3.10", str(ingest_script)],
+                [PYTHON_BIN, str(ingest_script)],
                 cwd=str(BASE_DIR),
                 capture_output=True,
                 text=True,
@@ -376,12 +423,16 @@ def main(force_round=None):
             logging.error(f"❌ Error running ingest_data.py: {e}")
             return
         
-        # Step 3: Commit and push to GitHub
+    # Step 3: Always generate upcoming round predictions
+    pred_ok, pred_round = run_weekly_predictions(schedule)
+
+    # Step 4: Commit and push to GitHub
+    if success_count > 0 or pred_ok:
         logging.info("")
         logging.info("=" * 60)
-        logging.info("Step 3: Committing and pushing to GitHub...")
+        logging.info("Step 4: Committing and pushing to GitHub...")
         logging.info("=" * 60)
-        
+
         try:
             # Check if there are changes
             result = subprocess.run(
@@ -397,7 +448,10 @@ def main(force_round=None):
                 
                 # Commit
                 from datetime import datetime
-                commit_msg = f"🤖 Auto-update: Round {schedule.get('current_round', '?')} data ({datetime.now().strftime('%Y-%m-%d')})"
+                commit_msg = (
+                    f"🤖 Auto-update: scraped R{schedule.get('current_round', '?')} + "
+                    f"predictions R{pred_round} ({datetime.now().strftime('%Y-%m-%d')})"
+                )
                 subprocess.run(["git", "commit", "-m", commit_msg], cwd=str(BASE_DIR), check=True)
                 
                 # Push
@@ -411,6 +465,8 @@ def main(force_round=None):
             logging.error(f"❌ Git error: {e}")
         except Exception as e:
             logging.error(f"❌ Error during commit/push: {e}")
+    else:
+        logging.info("ℹ️  Nothing scraped and predictions not generated; skipping commit/push.")
     
     logging.info("")
     logging.info("=" * 60)
