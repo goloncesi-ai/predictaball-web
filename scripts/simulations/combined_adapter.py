@@ -244,7 +244,7 @@ def simulate_match(
 
     result = engine.run_match(
         match_cfg,
-        draw_heatmaps=False,
+        draw_heatmaps=True,
         generate_images=can_generate_images,
     )
 
@@ -262,6 +262,12 @@ def simulate_match(
 
     import time
     ts = int(time.time())
+    heatmap_urls = {}
+    for k, p in (result.heatmaps or {}).items():
+        try:
+            heatmap_urls[k] = f"/outputs/{Path(p).name}?v={ts}"
+        except Exception:
+            continue
 
     return {
         "team1": team1_resolved,
@@ -280,6 +286,10 @@ def simulate_match(
         "score_image_url": f"/outputs/{score_image_name}?v={ts}",
         "image_url": f"/outputs/{prob_image_name}?v={ts}",
         "secondary_image_url": f"/outputs/{score_image_name}?v={ts}",
+        "heatmaps": heatmap_urls,
+        "player_heatmap_url": heatmap_urls.get("player"),
+        "main_cluster_heatmap_url": heatmap_urls.get("main_clusters"),
+        "strip_cluster_heatmap_url": heatmap_urls.get("strip_clusters"),
         "top5_scores": top5_list,
         "markov_form": markov_data,
         "avg_ratings": avg_ratings,
