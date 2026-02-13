@@ -225,6 +225,10 @@ def generate_round_predictions(round_number, team1_adj=0, team2_adj=0):
                 },
                 'score_distribution': score_dist,
                 'heatmap_data': sim_results.get('heatmap_data', []),
+                'heatmaps': sim_results.get('heatmaps', {}),
+                'player_heatmap_url': sim_results.get('player_heatmap_url'),
+                'main_cluster_heatmap_url': sim_results.get('main_cluster_heatmap_url'),
+                'strip_cluster_heatmap_url': sim_results.get('strip_cluster_heatmap_url'),
                 # Pass through advanced fields for expanded UI
                 'top5_scores': top5_scores,
                 'markov_form': sim_results.get('markov_form'),

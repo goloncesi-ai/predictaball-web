@@ -2878,6 +2878,47 @@ document.addEventListener('DOMContentLoaded', async () => {
             `;
         }
 
+        // Build heatmaps HTML
+        let heatmapsHtml = '';
+        const playerHeatmapUrl = pred.player_heatmap_url || pred.heatmaps?.player;
+        const mainClusterHeatmapUrl = pred.main_cluster_heatmap_url || pred.heatmaps?.main_clusters;
+        const stripClusterHeatmapUrl = pred.strip_cluster_heatmap_url || pred.heatmaps?.strip_clusters;
+        if (playerHeatmapUrl || mainClusterHeatmapUrl || stripClusterHeatmapUrl) {
+            const cards = [];
+            if (playerHeatmapUrl) {
+                cards.push(`
+                    <div class="heatmap-card">
+                        <div class="heatmap-title">Player Ratings</div>
+                        <img src="${playerHeatmapUrl}" alt="Player rating heatmap" class="heatmap-img">
+                    </div>
+                `);
+            }
+            if (mainClusterHeatmapUrl) {
+                cards.push(`
+                    <div class="heatmap-card">
+                        <div class="heatmap-title">Main Clusters</div>
+                        <img src="${mainClusterHeatmapUrl}" alt="Main cluster heatmap" class="heatmap-img">
+                    </div>
+                `);
+            }
+            if (stripClusterHeatmapUrl) {
+                cards.push(`
+                    <div class="heatmap-card">
+                        <div class="heatmap-title">Strip Clusters</div>
+                        <img src="${stripClusterHeatmapUrl}" alt="Strip cluster heatmap" class="heatmap-img">
+                    </div>
+                `);
+            }
+            heatmapsHtml = `
+                <div class="insights-panel">
+                    <h4><span class="icon">🗺️</span> Tactical Heatmaps</h4>
+                    <div class="heatmaps-grid">
+                        ${cards.join('')}
+                    </div>
+                </div>
+            `;
+        }
+
         return `
             <div class="match-card" data-match-id="${match.match_id}">
                 <div class="match-header">
@@ -2929,6 +2970,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         ${formHtml}
                         ${stateProfilesHtml}
                         ${ratingsHtml}
+                        ${heatmapsHtml}
                     </div>
                 </div>
             </div>
