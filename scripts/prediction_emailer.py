@@ -26,8 +26,8 @@ PREDICTIONS_DIR = BASE_DIR / "Data" / "predictions"
 DEFAULT_TO_ADDRESS = "goloncesi@gmail.com"
 
 
-def _load_env_file(path):
-    """Load KEY=VALUE pairs into os.environ without overriding existing values."""
+def _load_env_file(path, override=False):
+    """Load KEY=VALUE pairs into os.environ."""
     env_path = Path(path)
     if not env_path.exists() or not env_path.is_file():
         return False
@@ -41,7 +41,9 @@ def _load_env_file(path):
             key, value = line.split("=", 1)
             key = key.strip()
             value = value.strip().strip("'").strip('"')
-            if key and key not in os.environ:
+            if not key:
+                continue
+            if override or key not in os.environ:
                 os.environ[key] = value
                 loaded = True
     return loaded
@@ -56,8 +58,11 @@ def load_email_env():
     candidate_files.append(str(BASE_DIR / "scripts" / ".email.env"))
     candidate_files.append(str(BASE_DIR / ".env"))
 
+    # Priority order:
+    # 1) existing process env
+    # 2) .env files for GOLO_EMAIL_* keys (override for predictability)
     for path in candidate_files:
-        _load_env_file(path)
+        _load_env_file(path, override=True)
 
 
 def _env_bool(name, default=False):
