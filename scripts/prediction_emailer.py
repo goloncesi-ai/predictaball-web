@@ -318,7 +318,8 @@ def send_round_emails(
         return True
 
     from_address = os.getenv("GOLO_EMAIL_FROM", "").strip()
-    smtp_password = os.getenv("GOLO_EMAIL_PASSWORD", "").strip()
+    raw_smtp_password = os.getenv("GOLO_EMAIL_PASSWORD", "").strip()
+    smtp_password = "".join(raw_smtp_password.split())
     smtp_host = os.getenv("GOLO_EMAIL_SMTP_HOST", "smtp.gmail.com").strip()
     smtp_port = _env_int("GOLO_EMAIL_SMTP_PORT", 465)
     smtp_user = os.getenv("GOLO_EMAIL_SMTP_USER", from_address).strip()
@@ -346,6 +347,15 @@ def send_round_emails(
                 + ", ".join(missing)
             )
             return False
+
+        if raw_smtp_password != smtp_password:
+            print("Note: removed whitespace from GOLO_EMAIL_PASSWORD before SMTP login.")
+
+        if "gmail.com" in smtp_host.lower() and len(smtp_password) != 16:
+            print(
+                "Warning: Gmail SMTP usually requires a 16-character App Password "
+                "(Google Account -> Security -> App passwords)."
+            )
 
     sent_count = 0
     failed_count = 0
