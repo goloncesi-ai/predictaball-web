@@ -2,8 +2,8 @@
   "season": "2024-25",
   "season_id": 77805,
   "tournament_id": 52,
-  "current_round": 21,
-  "scraped_at": "2026-02-10T22:00:13.363482",
+  "current_round": 22,
+  "scraped_at": "2026-02-17T23:12:10.247329",
   "rounds": [
     {
       "round": 1,
@@ -2658,8 +2658,8 @@
           "home_team_id": 3056,
           "away_team": "Samsunspor",
           "away_team_id": 3053,
-          "actual_score": null,
-          "status": "scheduled"
+          "actual_score": "3-1",
+          "status": "finished"
         },
         {
           "match_id": 14109800,
@@ -2671,8 +2671,8 @@
           "home_team_id": 3061,
           "away_team": "Eyüpspor",
           "away_team_id": 7040,
-          "actual_score": null,
-          "status": "scheduled"
+          "actual_score": "5-1",
+          "status": "finished"
         },
         {
           "match_id": 14109808,
@@ -2684,8 +2684,8 @@
           "home_team_id": 7802,
           "away_team": "Çaykur Rizespor",
           "away_team_id": 3064,
-          "actual_score": null,
-          "status": "scheduled"
+          "actual_score": "2-2",
+          "status": "finished"
         },
         {
           "match_id": 14109801,
@@ -2697,8 +2697,8 @@
           "home_team_id": 6362,
           "away_team": "Konyaspor",
           "away_team_id": 3085,
-          "actual_score": null,
-          "status": "scheduled"
+          "actual_score": "2-1",
+          "status": "finished"
         },
         {
           "match_id": 14109807,
@@ -2710,8 +2710,8 @@
           "home_team_id": 3051,
           "away_team": "Fenerbahçe",
           "away_team_id": 3052,
-          "actual_score": null,
-          "status": "scheduled"
+          "actual_score": "2-3",
+          "status": "finished"
         },
         {
           "match_id": 14109806,
@@ -2723,8 +2723,8 @@
           "home_team_id": 3065,
           "away_team": "Gaziantep FK",
           "away_team_id": 5138,
-          "actual_score": null,
-          "status": "scheduled"
+          "actual_score": "3-0",
+          "status": "finished"
         },
         {
           "match_id": 14109809,
@@ -2736,8 +2736,8 @@
           "home_team_id": 3054,
           "away_team": "Kayserispor",
           "away_team_id": 3072,
-          "actual_score": null,
-          "status": "scheduled"
+          "actual_score": "0-0",
+          "status": "finished"
         },
         {
           "match_id": 14109803,
@@ -2749,8 +2749,8 @@
           "home_team_id": 3086,
           "away_team": "Beşiktaş JK",
           "away_team_id": 3050,
-          "actual_score": null,
-          "status": "scheduled"
+          "actual_score": "2-3",
+          "status": "finished"
         },
         {
           "match_id": 14109805,
@@ -2762,8 +2762,8 @@
           "home_team_id": 6063,
           "away_team": "Fatih Karagümrük",
           "away_team_id": 4954,
-          "actual_score": null,
-          "status": "scheduled"
+          "actual_score": "3-2",
+          "status": "finished"
         }
       ]
     },
