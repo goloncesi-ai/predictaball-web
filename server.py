@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from datetime import datetime
 import math
+import json
 import os
 import re
 import sys
@@ -34,6 +35,232 @@ _ANALYSIS_TEAMS_CACHE = {
     "signature": None,
     "payload": None
 }
+
+_PRECOMPUTED_HMM_CACHE = {
+    "file_path": None,
+    "mtime": None,
+    "round": None,
+    "team_values": {},
+    "team_names": {},
+}
+
+
+def _get_schedule_current_round(default_round=19):
+    schedule_file = os.path.join(BASE_DIR, 'Data', 'schedule', 'season_schedule.json')
+    if not os.path.exists(schedule_file):
+        return default_round
+
+    try:
+        with open(schedule_file, 'r', encoding='utf-8') as f:
+            schedule = json.load(f)
+        round_num = schedule.get('current_round', default_round)
+        return int(round_num) if round_num is not None else default_round
+    except Exception:
+        return default_round
+
+
+def _extract_round_from_filename(file_path):
+    match = re.search(r'round_(\d+)', os.path.basename(str(file_path or '')))
+    if not match:
+        return None
+    try:
+        return int(match.group(1))
+    except Exception:
+        return None
+
+
+def _resolve_predictions_file(round_num=None):
+    predictions_dir = os.path.join(BASE_DIR, 'Data', 'predictions')
+    if not os.path.isdir(predictions_dir):
+        return None, None
+
+    candidates = []
+    seen = set()
+
+    def _add_candidate(file_path, round_hint=None):
+        if not file_path:
+            return
+        normalized = os.path.normpath(file_path)
+        if normalized in seen:
+            return
+        seen.add(normalized)
+        candidates.append((normalized, round_hint))
+
+    if isinstance(round_num, int):
+        _add_candidate(os.path.join(predictions_dir, f'round_{round_num:02d}.json'), round_num)
+        _add_candidate(os.path.join(predictions_dir, f'round_{round_num:02d}_sample.json'), round_num)
+    else:
+        schedule_round = _get_schedule_current_round()
+        _add_candidate(os.path.join(predictions_dir, f'round_{schedule_round:02d}.json'), schedule_round)
+        _add_candidate(os.path.join(predictions_dir, f'round_{schedule_round:02d}_sample.json'), schedule_round)
+
+        discovered = []
+        for fname in os.listdir(predictions_dir):
+            if not fname.startswith('round_') or not fname.endswith('.json'):
+                continue
+            if '_sample' in fname:
+                continue
+            fpath = os.path.join(predictions_dir, fname)
+            if not os.path.isfile(fpath):
+                continue
+            try:
+                mtime = os.path.getmtime(fpath)
+            except Exception:
+                mtime = 0
+            discovered.append((mtime, fpath, _extract_round_from_filename(fname)))
+
+        discovered.sort(key=lambda row: row[0], reverse=True)
+        for _, fpath, round_hint in discovered:
+            _add_candidate(fpath, round_hint)
+
+    for file_path, round_hint in candidates:
+        if os.path.exists(file_path):
+            return file_path, round_hint
+    return None, None
+
+
+def _list_prediction_files_by_mtime(include_sample=False):
+    predictions_dir = os.path.join(BASE_DIR, 'Data', 'predictions')
+    if not os.path.isdir(predictions_dir):
+        return []
+
+    rows = []
+    for fname in os.listdir(predictions_dir):
+        if not fname.startswith('round_') or not fname.endswith('.json'):
+            continue
+        if not include_sample and '_sample' in fname:
+            continue
+        fpath = os.path.join(predictions_dir, fname)
+        if not os.path.isfile(fpath):
+            continue
+        try:
+            mtime = os.path.getmtime(fpath)
+        except Exception:
+            mtime = 0
+        rows.append((mtime, fpath, _extract_round_from_filename(fname)))
+
+    rows.sort(key=lambda row: row[0], reverse=True)
+    return rows
+
+
+def _extract_hmm_team_maps(predictions):
+    team_values = {}
+    team_names = {}
+
+    for match in predictions.get('matches', []):
+        adjustments = match.get('adjustments') or {}
+        rows = [
+            (match.get('home_team'), adjustments.get('hmm_team1')),
+            (match.get('away_team'), adjustments.get('hmm_team2')),
+        ]
+        for team_name_raw, hmm_raw in rows:
+            team_name = _normalize_text(team_name_raw)
+            if not team_name or hmm_raw is None:
+                continue
+            team_key = _team_key(team_name)
+            if not team_key:
+                continue
+            team_values[team_key] = round(_to_float(hmm_raw, 0.0), 2)
+            team_names[team_key] = team_name
+
+    return team_values, team_names
+
+
+def _load_precomputed_hmm_values(round_num=None):
+    predictions_file, round_hint = _resolve_predictions_file(round_num)
+    if not predictions_file:
+        return {
+            "round": round_hint,
+            "source_file": None,
+            "team_values": {},
+            "team_names": {},
+        }
+
+    try:
+        mtime = os.path.getmtime(predictions_file)
+    except Exception:
+        mtime = 0
+
+    cache_eligible = round_num is None
+    if (
+        cache_eligible and
+        _PRECOMPUTED_HMM_CACHE["file_path"] == predictions_file and
+        _PRECOMPUTED_HMM_CACHE["mtime"] == mtime and
+        bool(_PRECOMPUTED_HMM_CACHE["team_values"])
+    ):
+        return {
+            "round": _PRECOMPUTED_HMM_CACHE["round"],
+            "source_file": predictions_file,
+            "team_values": dict(_PRECOMPUTED_HMM_CACHE["team_values"]),
+            "team_names": dict(_PRECOMPUTED_HMM_CACHE["team_names"]),
+        }
+
+    with open(predictions_file, 'r', encoding='utf-8') as f:
+        predictions = json.load(f)
+
+    resolved_round = predictions.get('round')
+    if resolved_round is None:
+        resolved_round = round_hint if round_hint is not None else _extract_round_from_filename(predictions_file)
+
+    team_values, team_names = _extract_hmm_team_maps(predictions)
+
+    # Some rounds may not have adjustments yet. In that case, use the newest
+    # generated predictions file that includes precomputed HMM adjustments.
+    if round_num is None and not team_values:
+        for _, fallback_file, fallback_round in _list_prediction_files_by_mtime(include_sample=False):
+            if os.path.normpath(fallback_file) == os.path.normpath(predictions_file):
+                continue
+            try:
+                with open(fallback_file, 'r', encoding='utf-8') as f:
+                    fallback_predictions = json.load(f)
+            except Exception:
+                continue
+
+            fallback_values, fallback_names = _extract_hmm_team_maps(fallback_predictions)
+            if not fallback_values:
+                continue
+
+            predictions_file = fallback_file
+            team_values = fallback_values
+            team_names = fallback_names
+            resolved_round = fallback_predictions.get('round')
+            if resolved_round is None:
+                resolved_round = fallback_round if fallback_round is not None else _extract_round_from_filename(fallback_file)
+            try:
+                mtime = os.path.getmtime(predictions_file)
+            except Exception:
+                mtime = 0
+            break
+
+    if cache_eligible:
+        _PRECOMPUTED_HMM_CACHE["file_path"] = predictions_file
+        _PRECOMPUTED_HMM_CACHE["mtime"] = mtime
+        _PRECOMPUTED_HMM_CACHE["round"] = resolved_round
+        _PRECOMPUTED_HMM_CACHE["team_values"] = dict(team_values)
+        _PRECOMPUTED_HMM_CACHE["team_names"] = dict(team_names)
+
+    return {
+        "round": resolved_round,
+        "source_file": predictions_file,
+        "team_values": team_values,
+        "team_names": team_names,
+    }
+
+
+def _lookup_precomputed_hmm(team_name, team_values, team_names):
+    name = _normalize_text(team_name)
+    if not name:
+        return 0.0, None
+
+    target_key = _team_key(name)
+    if target_key in team_values:
+        return team_values[target_key], team_names.get(target_key) or name
+
+    for key, value in team_values.items():
+        if target_key in key or key in target_key:
+            return value, team_names.get(key) or name
+
+    return 0.0, None
 
 
 def _slugify(value):
@@ -80,6 +307,14 @@ def _normalize_text(value):
 
 def _team_key(value):
     text = _normalize_text(value)
+    text = text.translate(str.maketrans({
+        "ı": "i", "İ": "i",
+        "ş": "s", "Ş": "s",
+        "ğ": "g", "Ğ": "g",
+        "ç": "c", "Ç": "c",
+        "ö": "o", "Ö": "o",
+        "ü": "u", "Ü": "u",
+    }))
     text = unicodedata.normalize("NFD", text)
     text = "".join(c for c in text if unicodedata.category(c) != "Mn")
     return re.sub(r"[\W_]+", "", text.lower())
@@ -578,18 +813,61 @@ def run_simulation():
 def get_hmm_adjustment():
     try:
         team = request.args.get('team', '').strip()
+        round_num = request.args.get('round', type=int)
         if not team:
             return jsonify({"error": "Team parameter required"}), 400
 
-        import combined_adapter
-
-        result = combined_adapter.get_hmm_adjustment(
+        hmm_payload = _load_precomputed_hmm_values(round_num=round_num)
+        value, matched_team = _lookup_precomputed_hmm(
             team,
-            ASSETS_DIR,
-            BASE_DATA_DIR,
-            OUTPUT_DIR,
+            hmm_payload["team_values"],
+            hmm_payload["team_names"],
         )
-        return jsonify(result)
+        return jsonify({
+            "team": team,
+            "matched_team": matched_team,
+            "hmm_adjustment": round(float(value), 2),
+            "round": hmm_payload.get("round"),
+            "source": "predictions_precomputed",
+            "source_file": os.path.basename(hmm_payload["source_file"]) if hmm_payload.get("source_file") else None
+        })
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/hmm-adjustments', methods=['GET'])
+def get_hmm_adjustments():
+    try:
+        home_team = request.args.get('home_team', '').strip()
+        away_team = request.args.get('away_team', '').strip()
+        round_num = request.args.get('round', type=int)
+        if not home_team and not away_team:
+            return jsonify({"error": "At least one of home_team or away_team is required"}), 400
+
+        hmm_payload = _load_precomputed_hmm_values(round_num=round_num)
+        home_value, home_matched = _lookup_precomputed_hmm(
+            home_team,
+            hmm_payload["team_values"],
+            hmm_payload["team_names"],
+        ) if home_team else (0.0, None)
+        away_value, away_matched = _lookup_precomputed_hmm(
+            away_team,
+            hmm_payload["team_values"],
+            hmm_payload["team_names"],
+        ) if away_team else (0.0, None)
+
+        return jsonify({
+            "home_team": home_team,
+            "away_team": away_team,
+            "home_hmm_adjustment": round(float(home_value), 2),
+            "away_hmm_adjustment": round(float(away_value), 2),
+            "home_matched_team": home_matched,
+            "away_matched_team": away_matched,
+            "source": "predictions_precomputed",
+            "round": hmm_payload.get("round"),
+            "source_file": os.path.basename(hmm_payload["source_file"]) if hmm_payload.get("source_file") else None
+        })
     except Exception as e:
         import traceback
         traceback.print_exc()

@@ -459,14 +459,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     const team2AdjSlider = document.getElementById('team2-adjustment');
     const team1AdjValue = document.getElementById('team1-adj-value');
     const team2AdjValue = document.getElementById('team2-adj-value');
-    const hmmAdjustmentCache = new Map();
     let formationHelpersReady = false;
     let formationHelpersLoadPromise = null;
     let pitchUpdateToken = 0;
     let selectionSyncToken = 0;
-    let lastSelectionSyncKey = '';
-    let team1HmmRequestToken = 0;
-    let team2HmmRequestToken = 0;
+    let hmmSyncToken = 0;
 
     function formatSliderAdjustment(value) {
         const num = Number(value);
@@ -491,47 +488,57 @@ document.addEventListener('DOMContentLoaded', async () => {
         valueLabel.textContent = formatSliderAdjustment(clamped);
     }
 
-    async function fetchHmmAdjustment(teamName) {
-        const cacheKey = `${teamName || ''}`.trim();
-        if (!cacheKey) return 0;
-        if (hmmAdjustmentCache.has(cacheKey)) {
-            return hmmAdjustmentCache.get(cacheKey);
+    async function fetchPairHmmAdjustments(homeTeam, awayTeam) {
+        const home = `${homeTeam || ''}`.trim();
+        const away = `${awayTeam || ''}`.trim();
+        if (!home && !away) {
+            return { homeAdjustment: 0, awayAdjustment: 0 };
         }
 
-        const response = await fetch(`/api/hmm-adjustment?team=${encodeURIComponent(cacheKey)}`);
+        const params = new URLSearchParams();
+        if (home) params.set('home_team', home);
+        if (away) params.set('away_team', away);
+
+        const response = await fetch(`/api/hmm-adjustments?${params.toString()}`);
         if (!response.ok) {
             const errorText = await response.text();
-            throw new Error(`HMM adjustment fetch failed (${response.status}): ${errorText}`);
+            throw new Error(`HMM adjustments fetch failed (${response.status}): ${errorText}`);
         }
+
         const payload = await response.json();
-        const hmmAdj = Number(payload?.hmm_adjustment);
-        const safeAdj = Number.isFinite(hmmAdj) ? hmmAdj : 0;
-        hmmAdjustmentCache.set(cacheKey, safeAdj);
-        return safeAdj;
+        const homeAdj = Number(payload?.home_hmm_adjustment);
+        const awayAdj = Number(payload?.away_hmm_adjustment);
+        return {
+            homeAdjustment: Number.isFinite(homeAdj) ? homeAdj : 0,
+            awayAdjustment: Number.isFinite(awayAdj) ? awayAdj : 0,
+        };
     }
 
-    async function updateSliderFromHmm(teamName, slider, valueLabel, side) {
-        const requestToken = side === 'home' ? ++team1HmmRequestToken : ++team2HmmRequestToken;
-        const team = `${teamName || ''}`.trim();
-        if (!team) {
-            applySliderValue(slider, valueLabel, 0);
-            return;
-        }
+    async function updateSlidersFromHmm(homeTeam, awayTeam) {
+        const token = ++hmmSyncToken;
+        const selectedHomeTeam = `${homeTeam || ''}`.trim();
+        const selectedAwayTeam = `${awayTeam || ''}`.trim();
 
         try {
-            const hmmAdj = await fetchHmmAdjustment(team);
-            const stillLatest = side === 'home'
-                ? requestToken === team1HmmRequestToken && simTeam1Select?.value === team
-                : requestToken === team2HmmRequestToken && simTeam2Select?.value === team;
+            const adjustments = await fetchPairHmmAdjustments(selectedHomeTeam, selectedAwayTeam);
+            const stillLatest =
+                token === hmmSyncToken &&
+                (simTeam1Select?.value || '') === selectedHomeTeam &&
+                (simTeam2Select?.value || '') === selectedAwayTeam;
             if (!stillLatest) return;
-            applySliderValue(slider, valueLabel, hmmAdj);
+
+            applySliderValue(team1AdjSlider, team1AdjValue, selectedHomeTeam ? adjustments.homeAdjustment : 0);
+            applySliderValue(team2AdjSlider, team2AdjValue, selectedAwayTeam ? adjustments.awayAdjustment : 0);
         } catch (error) {
-            console.warn(`Failed to load HMM adjustment for ${team}:`, error.message);
-            const stillLatest = side === 'home'
-                ? requestToken === team1HmmRequestToken && simTeam1Select?.value === team
-                : requestToken === team2HmmRequestToken && simTeam2Select?.value === team;
+            console.warn(`Failed to load HMM adjustments for ${selectedHomeTeam} vs ${selectedAwayTeam}:`, error.message);
+            const stillLatest =
+                token === hmmSyncToken &&
+                (simTeam1Select?.value || '') === selectedHomeTeam &&
+                (simTeam2Select?.value || '') === selectedAwayTeam;
             if (!stillLatest) return;
-            applySliderValue(slider, valueLabel, 0);
+
+            applySliderValue(team1AdjSlider, team1AdjValue, 0);
+            applySliderValue(team2AdjSlider, team2AdjValue, 0);
         }
     }
 
@@ -649,17 +656,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     async function syncSimulationSelectionEffects(force = false) {
         const selectedHomeTeam = simTeam1Select?.value || '';
         const selectedAwayTeam = simTeam2Select?.value || '';
-        const selectionKey = `${selectedHomeTeam}::${selectedAwayTeam}`;
-        if (!force && selectionKey === lastSelectionSyncKey) {
-            return;
-        }
-        lastSelectionSyncKey = selectionKey;
         const token = ++selectionSyncToken;
 
         await Promise.allSettled([
             updatePitchVisualization(),
-            updateSliderFromHmm(selectedHomeTeam, team1AdjSlider, team1AdjValue, 'home'),
-            updateSliderFromHmm(selectedAwayTeam, team2AdjSlider, team2AdjValue, 'away'),
+            updateSlidersFromHmm(selectedHomeTeam, selectedAwayTeam),
         ]);
 
         if (token !== selectionSyncToken) return;
