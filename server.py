@@ -93,6 +93,51 @@ def _fuzzy_team_match(target, candidate):
     return t in c or c in t
 
 
+def _logo_match_keys(value):
+    base = _team_key(value)
+    keys = {base}
+    for suffix in ("fk", "jk"):
+        if base.endswith(suffix) and len(base) > len(suffix):
+            keys.add(base[:-len(suffix)])
+    return {k for k in keys if k}
+
+
+def _resolve_logo_filename(logo_dir, requested_name):
+    requested = os.path.basename(str(requested_name or "")).strip()
+    if not requested:
+        return None
+
+    direct_path = os.path.join(logo_dir, requested)
+    if os.path.exists(direct_path):
+        return requested
+
+    stem, ext = os.path.splitext(requested)
+    ext = (ext or ".png").lower()
+    request_keys = _logo_match_keys(stem)
+
+    candidates = []
+    try:
+        for fname in os.listdir(logo_dir):
+            fpath = os.path.join(logo_dir, fname)
+            if not os.path.isfile(fpath):
+                continue
+            fstem, fext = os.path.splitext(fname)
+            if fext.lower() != ext:
+                continue
+            fkey = _team_key(fstem)
+            candidates.append((fname, fkey))
+            if fkey in request_keys:
+                return fname
+
+        for fname, fkey in candidates:
+            if any(rk in fkey or fkey in rk for rk in request_keys):
+                return fname
+    except Exception:
+        return None
+
+    return None
+
+
 def _to_float(value, default=0.0):
     if value is None:
         return default
@@ -626,7 +671,8 @@ def get_analysis_data():
 @app.route('/logos/<path:filename>')
 def serve_logo(filename):
     logo_dir = os.path.join(ASSETS_DIR, "Logos")
-    return send_from_directory(logo_dir, filename)
+    resolved = _resolve_logo_filename(logo_dir, filename) or filename
+    return send_from_directory(logo_dir, resolved)
 
 @app.route('/Data/<path:filepath>')
 def serve_data_files(filepath):
@@ -759,6 +805,7 @@ def get_recent_games():
                         "strip_cluster_heatmap_url": pred_match.get('strip_cluster_heatmap_url'),
                         "top5_scores": pred_match.get('top5_scores', []),
                         "markov_form": pred_match.get('markov_form'),
+                        "adjustments": pred_match.get('adjustments'),
                         "avg_ratings": pred_match.get('avg_ratings'),
                         "team1_logo_url": pred_match.get('team1_logo_url'),
                         "team2_logo_url": pred_match.get('team2_logo_url')

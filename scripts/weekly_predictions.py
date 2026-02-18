@@ -232,6 +232,7 @@ def generate_round_predictions(round_number, team1_adj=0, team2_adj=0):
                 # Pass through advanced fields for expanded UI
                 'top5_scores': top5_scores,
                 'markov_form': sim_results.get('markov_form'),
+                'adjustments': sim_results.get('adjustments'),
                 'avg_ratings': sim_results.get('avg_ratings'),
                 'team1_logo_url': sim_results.get('team1_logo_url'),
                 'team2_logo_url': sim_results.get('team2_logo_url')

@@ -170,7 +170,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             loading_matches: "Loading matches...",
             confidence_high: "High Confidence",
             confidence_medium: "Medium Confidence",
-            confidence_low: "Low Confidence"
+            confidence_low: "Low Confidence",
+            hmm_adjustments: "HMM Adjustment"
         },
         tr: {
             subtitle: "Yeni Nesil Futbol Analizi ve Simülasyonu",
@@ -242,7 +243,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             loading_matches: "Maçlar yükleniyor...",
             confidence_high: "Yüksek Güven",
             confidence_medium: "Orta Güven",
-            confidence_low: "Düşük Güven"
+            confidence_low: "Düşük Güven",
+            hmm_adjustments: "HMM Ayarı"
         }
     };
 
@@ -2626,6 +2628,40 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
+    function encodeAssetUrl(url) {
+        if (!url || typeof url !== 'string') return '';
+        const qIndex = url.indexOf('?');
+        const pathPart = qIndex >= 0 ? url.slice(0, qIndex) : url;
+        const queryPart = qIndex >= 0 ? url.slice(qIndex) : '';
+        try {
+            return encodeURI(pathPart) + queryPart;
+        } catch (error) {
+            return url;
+        }
+    }
+
+    function formatSignedPercent(value) {
+        const num = Number(value);
+        if (!Number.isFinite(num)) return '0.0%';
+        return `${num >= 0 ? '+' : ''}${num.toFixed(1)}%`;
+    }
+
+    function renderTeamLogo(teamName, logoUrl) {
+        const fallbackIcon = TEAM_LOGOS[teamName] || '⚽';
+        if (!logoUrl) {
+            return `<span class="team-logo-fallback visible" aria-hidden="true">${fallbackIcon}</span>`;
+        }
+
+        const safeUrl = encodeAssetUrl(logoUrl);
+        return `
+            <span class="team-logo-wrap">
+                <img src="${safeUrl}" alt="${teamName} Logo" class="team-logo" loading="lazy"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
+                <span class="team-logo-fallback" style="display:none;" aria-hidden="true">${fallbackIcon}</span>
+            </span>
+        `;
+    }
+
     function renderMatchCard(match) {
         const pred = match.prediction;
         if (!pred) {
@@ -2645,6 +2681,17 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const confClass = pred.confidence;
         const confLabel = translations[currentLang][`confidence_${pred.confidence}`] || pred.confidence;
+        const hmmAdjustments = pred.adjustments;
+        const hasHmmAdjustments = Boolean(hmmAdjustments && hmmAdjustments.hmm_applied);
+        const hmmAdjustmentsHtml = hasHmmAdjustments ? `
+            <div class="hmm-adjust-summary">
+                <div class="hmm-adjust-label">${translations[currentLang].hmm_adjustments}</div>
+                <div class="hmm-adjust-values">
+                    <span>${match.home_team}: <strong>${formatSignedPercent(hmmAdjustments.hmm_team1)}</strong></span>
+                    <span>${match.away_team}: <strong>${formatSignedPercent(hmmAdjustments.hmm_team2)}</strong></span>
+                </div>
+            </div>
+        ` : '';
 
         // Calculate confidence metrics for explanation
         const maxProb = Math.max(pred.probabilities.home_win, pred.probabilities.draw, pred.probabilities.away_win);
@@ -2923,7 +2970,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <div class="match-header">
                     <div class="team home">
                         <span class="team-name">${match.home_team}</span>
-                        ${pred.team1_logo_url ? `<img src="${pred.team1_logo_url}" alt="${match.home_team} Logo" class="team-logo">` : ''}
+                        ${renderTeamLogo(match.home_team, pred.team1_logo_url)}
                     </div>
                     <div class="match-center">
                         <div class="predicted-score">${pred.predicted_score}</div>
@@ -2931,7 +2978,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <div class="confidence-badge ${confClass}">${confLabel}</div>
                     </div>
                     <div class="team away">
-                        ${pred.team2_logo_url ? `<img src="${pred.team2_logo_url}" alt="${match.away_team} Logo" class="team-logo">` : ''}
+                        ${renderTeamLogo(match.away_team, pred.team2_logo_url)}
                         <span class="team-name">${match.away_team}</span>
                     </div>
                     <button class="expand-btn">▼</button>
@@ -2948,6 +2995,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         ${pred.probabilities.away_win}%
                     </div>
                 </div>
+                ${hmmAdjustmentsHtml}
 
                 <div class="match-details">
                     ${confidenceHtml}

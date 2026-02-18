@@ -1,6 +1,6 @@
 {
   "round": 23,
-  "generated_at": "2026-02-18T18:35:13.741253",
+  "generated_at": "2026-02-18T19:14:50.052793",
   "matches": [
     {
       "match_id": 14109816,
@@ -49,13 +49,13 @@
       ],
       "heatmap_data": [],
       "heatmaps": {
-        "player": "/outputs/player_heatmap.png?v=1771436118",
-        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771436118",
-        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771436118"
+        "player": "/outputs/player_heatmap.png?v=1771438495",
+        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771438495",
+        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771438495"
       },
-      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771436118",
-      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771436118",
-      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771436118",
+      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771438495",
+      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771438495",
+      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771438495",
       "top5_scores": [
         {
           "score": "0-2",
@@ -104,6 +104,15 @@
           "hidden_states": 0,
           "state_profiles": []
         }
+      },
+      "adjustments": {
+        "team1": 10.0,
+        "team2": 10.0,
+        "manual_team1": 0.0,
+        "manual_team2": 0.0,
+        "hmm_team1": 10.0,
+        "hmm_team2": 10.0,
+        "hmm_applied": true
       },
       "avg_ratings": {
         "team1": 6.96,
@@ -159,13 +168,13 @@
       ],
       "heatmap_data": [],
       "heatmaps": {
-        "player": "/outputs/player_heatmap.png?v=1771436122",
-        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771436122",
-        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771436122"
+        "player": "/outputs/player_heatmap.png?v=1771438499",
+        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771438499",
+        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771438499"
       },
-      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771436122",
-      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771436122",
-      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771436122",
+      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771438499",
+      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771438499",
+      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771438499",
       "top5_scores": [
         {
           "score": "3-1",
@@ -214,6 +223,15 @@
           "hidden_states": 0,
           "state_profiles": []
         }
+      },
+      "adjustments": {
+        "team1": 1.5149960809791783,
+        "team2": 1.9684064061605797,
+        "manual_team1": 0.0,
+        "manual_team2": 0.0,
+        "hmm_team1": 1.5149960809791783,
+        "hmm_team2": 1.9684064061605797,
+        "hmm_applied": true
       },
       "avg_ratings": {
         "team1": 7.01,
@@ -269,13 +287,13 @@
       ],
       "heatmap_data": [],
       "heatmaps": {
-        "player": "/outputs/player_heatmap.png?v=1771436126",
-        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771436126",
-        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771436126"
+        "player": "/outputs/player_heatmap.png?v=1771438503",
+        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771438503",
+        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771438503"
       },
-      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771436126",
-      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771436126",
-      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771436126",
+      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771438503",
+      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771438503",
+      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771438503",
       "top5_scores": [
         {
           "score": "0-3",
@@ -324,6 +342,15 @@
           "hidden_states": 0,
           "state_profiles": []
         }
+      },
+      "adjustments": {
+        "team1": 8.157953316607069,
+        "team2": 5.709507995403933,
+        "manual_team1": 0.0,
+        "manual_team2": 0.0,
+        "hmm_team1": 8.157953316607069,
+        "hmm_team2": 5.709507995403933,
+        "hmm_applied": true
       },
       "avg_ratings": {
         "team1": 6.7,
@@ -379,13 +406,13 @@
       ],
       "heatmap_data": [],
       "heatmaps": {
-        "player": "/outputs/player_heatmap.png?v=1771436130",
-        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771436130",
-        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771436130"
+        "player": "/outputs/player_heatmap.png?v=1771438507",
+        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771438507",
+        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771438507"
       },
-      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771436130",
-      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771436130",
-      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771436130",
+      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771438507",
+      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771438507",
+      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771438507",
       "top5_scores": [
         {
           "score": "2-0",
@@ -434,6 +461,15 @@
           "hidden_states": 0,
           "state_profiles": []
         }
+      },
+      "adjustments": {
+        "team1": -9.823051076781772,
+        "team2": -5.373913926599087,
+        "manual_team1": 0.0,
+        "manual_team2": 0.0,
+        "hmm_team1": -9.823051076781772,
+        "hmm_team2": -5.373913926599087,
+        "hmm_applied": true
       },
       "avg_ratings": {
         "team1": 6.67,
@@ -489,13 +525,13 @@
       ],
       "heatmap_data": [],
       "heatmaps": {
-        "player": "/outputs/player_heatmap.png?v=1771436135",
-        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771436135",
-        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771436135"
+        "player": "/outputs/player_heatmap.png?v=1771438511",
+        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771438511",
+        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771438511"
       },
-      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771436135",
-      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771436135",
-      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771436135",
+      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771438511",
+      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771438511",
+      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771438511",
       "top5_scores": [
         {
           "score": "0-2",
@@ -544,6 +580,15 @@
           "hidden_states": 0,
           "state_profiles": []
         }
+      },
+      "adjustments": {
+        "team1": -7.65618980848593,
+        "team2": -5.591837014791988,
+        "manual_team1": 0.0,
+        "manual_team2": 0.0,
+        "hmm_team1": -7.65618980848593,
+        "hmm_team2": -5.591837014791988,
+        "hmm_applied": true
       },
       "avg_ratings": {
         "team1": 6.6,
@@ -599,13 +644,13 @@
       ],
       "heatmap_data": [],
       "heatmaps": {
-        "player": "/outputs/player_heatmap.png?v=1771436139",
-        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771436139",
-        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771436139"
+        "player": "/outputs/player_heatmap.png?v=1771438515",
+        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771438515",
+        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771438515"
       },
-      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771436139",
-      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771436139",
-      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771436139",
+      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771438515",
+      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771438515",
+      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771438515",
       "top5_scores": [
         {
           "score": "3-1",
@@ -654,6 +699,15 @@
           "hidden_states": 0,
           "state_profiles": []
         }
+      },
+      "adjustments": {
+        "team1": 7.38718867287738,
+        "team2": -2.213449563276971,
+        "manual_team1": 0.0,
+        "manual_team2": 0.0,
+        "hmm_team1": 7.38718867287738,
+        "hmm_team2": -2.213449563276971,
+        "hmm_applied": true
       },
       "avg_ratings": {
         "team1": 7.13,
@@ -709,13 +763,13 @@
       ],
       "heatmap_data": [],
       "heatmaps": {
-        "player": "/outputs/player_heatmap.png?v=1771436144",
-        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771436144",
-        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771436144"
+        "player": "/outputs/player_heatmap.png?v=1771438520",
+        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771438520",
+        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771438520"
       },
-      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771436144",
-      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771436144",
-      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771436144",
+      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771438520",
+      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771438520",
+      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771438520",
       "top5_scores": [
         {
           "score": "0-2",
@@ -764,6 +818,15 @@
           "hidden_states": 0,
           "state_profiles": []
         }
+      },
+      "adjustments": {
+        "team1": 0.1263876291540965,
+        "team2": 2.9272476297713745,
+        "manual_team1": 0.0,
+        "manual_team2": 0.0,
+        "hmm_team1": 0.1263876291540965,
+        "hmm_team2": 2.9272476297713745,
+        "hmm_applied": true
       },
       "avg_ratings": {
         "team1": 6.74,
@@ -819,13 +882,13 @@
       ],
       "heatmap_data": [],
       "heatmaps": {
-        "player": "/outputs/player_heatmap.png?v=1771436148",
-        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771436148",
-        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771436148"
+        "player": "/outputs/player_heatmap.png?v=1771438524",
+        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771438524",
+        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771438524"
       },
-      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771436148",
-      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771436148",
-      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771436148",
+      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771438524",
+      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771438524",
+      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771438524",
       "top5_scores": [
         {
           "score": "1-1",
@@ -874,6 +937,15 @@
           "hidden_states": 0,
           "state_profiles": []
         }
+      },
+      "adjustments": {
+        "team1": -0.5073192414220787,
+        "team2": -5.129508355111146,
+        "manual_team1": 0.0,
+        "manual_team2": 0.0,
+        "hmm_team1": -0.5073192414220787,
+        "hmm_team2": -5.129508355111146,
+        "hmm_applied": true
       },
       "avg_ratings": {
         "team1": 6.79,
@@ -929,13 +1001,13 @@
       ],
       "heatmap_data": [],
       "heatmaps": {
-        "player": "/outputs/player_heatmap.png?v=1771436152",
-        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771436152",
-        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771436152"
+        "player": "/outputs/player_heatmap.png?v=1771438528",
+        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771438528",
+        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771438528"
       },
-      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771436152",
-      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771436152",
-      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771436152",
+      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771438528",
+      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771438528",
+      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771438528",
       "top5_scores": [
         {
           "score": "0-2",
@@ -984,6 +1056,15 @@
           "hidden_states": 0,
           "state_profiles": []
         }
+      },
+      "adjustments": {
+        "team1": 10.0,
+        "team2": 1.4307299842114671,
+        "manual_team1": 0.0,
+        "manual_team2": 0.0,
+        "hmm_team1": 10.0,
+        "hmm_team2": 1.4307299842114671,
+        "hmm_applied": true
       },
       "avg_ratings": {
         "team1": 6.87,
