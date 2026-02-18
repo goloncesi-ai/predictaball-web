@@ -400,6 +400,18 @@ document.addEventListener('DOMContentLoaded', async () => {
         fillFormationSelect(simTeam2FormationSelect);
     }
 
+    async function ensureSimulationSelectorsPopulated(forceRefresh = false) {
+        if (!simTeam1Select || !simTeam2Select) return;
+        const hasHomeOptions = simTeam1Select.options.length > 1;
+        const hasAwayOptions = simTeam2Select.options.length > 1;
+        if (!forceRefresh && hasHomeOptions && hasAwayOptions) return;
+
+        await loadLiveAnalysisData(forceRefresh);
+        if (teamData.length > 0) {
+            populateAllSelectors();
+        }
+    }
+
     function initTabs() {
         tabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -612,6 +624,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (simTeam2FormationSelect) {
         simTeam2FormationSelect.addEventListener('change', updatePitchVisualization);
     }
+
+    tabBtns.forEach(btn => {
+        if (btn.getAttribute('data-tab') === 'tab-simulation') {
+            btn.addEventListener('click', () => {
+                ensureSimulationSelectorsPopulated(false);
+            });
+        }
+    });
 
     // --- Event Listeners (Simulation) ---
     if (btnRunSim) {
