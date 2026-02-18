@@ -83,6 +83,9 @@ export GOLO_EMAIL_SMTP_PORT="465"
 export GOLO_EMAIL_USE_SSL="true"
 export GOLO_EMAIL_DELAY_SECONDS="1.0"
 export GOLO_EMAIL_PUBLIC_BASE_URL="https://your-site-domain.com"
+export GOLO_EMAIL_CA_BUNDLE="/path/to/cacert.pem"
+# Last-resort only (disables TLS cert verification):
+# export GOLO_EMAIL_INSECURE_SKIP_VERIFY="true"
 ```
 
 Notes:

@@ -92,6 +92,30 @@ def _env_int(name, default=0):
         return int(default)
 
 
+def _build_ssl_context():
+    """
+    Build TLS context for SMTP.
+    Uses certifi bundle when available to avoid macOS framework cert issues.
+    """
+    insecure = _env_bool("GOLO_EMAIL_INSECURE_SKIP_VERIFY", False)
+    if insecure:
+        context = ssl.create_default_context()
+        context.check_hostname = False
+        context.verify_mode = ssl.CERT_NONE
+        return context
+
+    ca_bundle = os.getenv("GOLO_EMAIL_CA_BUNDLE", "").strip()
+    if ca_bundle:
+        return ssl.create_default_context(cafile=ca_bundle)
+
+    try:
+        import certifi  # type: ignore
+
+        return ssl.create_default_context(cafile=certifi.where())
+    except Exception:
+        return ssl.create_default_context()
+
+
 def _format_pct(value):
     try:
         return f"{float(value):.1f}%"
@@ -369,18 +393,25 @@ def send_round_emails(
     smtp_client = None
     if not dry_run:
         try:
+            tls_context = _build_ssl_context()
             if use_ssl:
-                context = ssl.create_default_context()
                 smtp_client = smtplib.SMTP_SSL(
-                    smtp_host, smtp_port, timeout=smtp_timeout, context=context
+                    smtp_host, smtp_port, timeout=smtp_timeout, context=tls_context
                 )
             else:
                 smtp_client = smtplib.SMTP(smtp_host, smtp_port, timeout=smtp_timeout)
                 smtp_client.ehlo()
-                smtp_client.starttls(context=ssl.create_default_context())
+                smtp_client.starttls(context=tls_context)
                 smtp_client.ehlo()
             smtp_client.login(smtp_user, smtp_password)
             print(f"SMTP connection established to {smtp_host}:{smtp_port}.")
+        except ssl.SSLCertVerificationError as exc:
+            print(f"TLS certificate verification failed: {exc}")
+            print(
+                "Try setting GOLO_EMAIL_CA_BUNDLE to a valid CA PEM, "
+                "or as a last resort set GOLO_EMAIL_INSECURE_SKIP_VERIFY=true."
+            )
+            return False
         except Exception as exc:
             print(f"Failed to connect/login to SMTP: {exc}")
             return False
