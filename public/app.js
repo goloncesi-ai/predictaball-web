@@ -462,6 +462,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     const hmmAdjustmentCache = new Map();
     let formationHelpersReady = false;
     let formationHelpersLoadPromise = null;
+    let pitchUpdateToken = 0;
+    let selectionSyncToken = 0;
+    let lastSelectionSyncKey = '';
     let team1HmmRequestToken = 0;
     let team2HmmRequestToken = 0;
 
@@ -595,67 +598,79 @@ document.addEventListener('DOMContentLoaded', async () => {
         const canRenderPitch = await ensureFormationHelpers();
         if (!canRenderPitch) return;
 
-        const t1 = simTeam1Select?.value;
-        const t2 = simTeam2Select?.value;
+        const token = ++pitchUpdateToken;
+        const selectedHomeTeam = simTeam1Select?.value || '';
+        const selectedAwayTeam = simTeam2Select?.value || '';
 
-        // Fetch data for each team independently
-        let team1Data = null;
-        let team2Data = null;
+        // Fetch both teams in parallel and discard stale completions.
+        const [homeResult, awayResult] = await Promise.all([
+            selectedHomeTeam
+                ? getTeamLatestLineup(selectedHomeTeam).catch((error) => {
+                    console.error('Error loading team 1:', error);
+                    return null;
+                })
+                : Promise.resolve(null),
+            selectedAwayTeam
+                ? getTeamLatestLineup(selectedAwayTeam).catch((error) => {
+                    console.error('Error loading team 2:', error);
+                    return null;
+                })
+                : Promise.resolve(null),
+        ]);
 
-        try {
-            if (t1) {
-                team1Data = await getTeamLatestLineup(t1);
-                if (t1 !== lastSimTeam1 || !simTeam1FormationSelect?.value) {
-                    applyDefaultFormation(simTeam1FormationSelect, team1Data?.formation);
-                }
-                if (team1Data) {
-                    team1Data.formation = getSafeFormation(simTeam1FormationSelect?.value || team1Data.formation);
-                }
+        const stillLatest =
+            token === pitchUpdateToken &&
+            (simTeam1Select?.value || '') === selectedHomeTeam &&
+            (simTeam2Select?.value || '') === selectedAwayTeam;
+        if (!stillLatest) return;
+
+        const team1Data = homeResult;
+        const team2Data = awayResult;
+
+        if (team1Data) {
+            if (selectedHomeTeam !== lastSimTeam1 || !simTeam1FormationSelect?.value) {
+                applyDefaultFormation(simTeam1FormationSelect, team1Data.formation);
             }
-        } catch (error) {
-            console.error('Error loading team 1:', error);
+            team1Data.formation = getSafeFormation(simTeam1FormationSelect?.value || team1Data.formation);
         }
 
-        try {
-            if (t2) {
-                team2Data = await getTeamLatestLineup(t2);
-                if (t2 !== lastSimTeam2 || !simTeam2FormationSelect?.value) {
-                    applyDefaultFormation(simTeam2FormationSelect, team2Data?.formation);
-                }
-                if (team2Data) {
-                    team2Data.formation = getSafeFormation(simTeam2FormationSelect?.value || team2Data.formation);
-                }
+        if (team2Data) {
+            if (selectedAwayTeam !== lastSimTeam2 || !simTeam2FormationSelect?.value) {
+                applyDefaultFormation(simTeam2FormationSelect, team2Data.formation);
             }
-        } catch (error) {
-            console.error('Error loading team 2:', error);
+            team2Data.formation = getSafeFormation(simTeam2FormationSelect?.value || team2Data.formation);
         }
 
-        lastSimTeam1 = t1 || '';
-        lastSimTeam2 = t2 || '';
-
-        // Render pitch with whatever data we have (can be one or both teams)
+        lastSimTeam1 = selectedHomeTeam;
+        lastSimTeam2 = selectedAwayTeam;
         renderPitchView(team1Data, team2Data);
     }
 
-    async function syncSimulationSelectionEffects() {
+    async function syncSimulationSelectionEffects(force = false) {
         const selectedHomeTeam = simTeam1Select?.value || '';
         const selectedAwayTeam = simTeam2Select?.value || '';
+        const selectionKey = `${selectedHomeTeam}::${selectedAwayTeam}`;
+        if (!force && selectionKey === lastSelectionSyncKey) {
+            return;
+        }
+        lastSelectionSyncKey = selectionKey;
+        const token = ++selectionSyncToken;
 
         await Promise.allSettled([
             updatePitchVisualization(),
             updateSliderFromHmm(selectedHomeTeam, team1AdjSlider, team1AdjValue, 'home'),
             updateSliderFromHmm(selectedAwayTeam, team2AdjSlider, team2AdjValue, 'away'),
         ]);
+
+        if (token !== selectionSyncToken) return;
     }
 
     // Add change listeners to sim team selects
     if (simTeam1Select) {
-        simTeam1Select.addEventListener('change', syncSimulationSelectionEffects);
-        simTeam1Select.addEventListener('input', syncSimulationSelectionEffects);
+        simTeam1Select.addEventListener('change', () => syncSimulationSelectionEffects(false));
     }
     if (simTeam2Select) {
-        simTeam2Select.addEventListener('change', syncSimulationSelectionEffects);
-        simTeam2Select.addEventListener('input', syncSimulationSelectionEffects);
+        simTeam2Select.addEventListener('change', () => syncSimulationSelectionEffects(false));
     }
     if (simTeam1FormationSelect) {
         simTeam1FormationSelect.addEventListener('change', updatePitchVisualization);
@@ -668,7 +683,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (btn.getAttribute('data-tab') === 'tab-simulation') {
             btn.addEventListener('click', async () => {
                 await ensureSimulationSelectorsPopulated(false);
-                await syncSimulationSelectionEffects();
+                await syncSimulationSelectionEffects(true);
             });
         }
     });
