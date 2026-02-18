@@ -185,6 +185,16 @@ def _build_markov_form(base_data_dir, team1, team2, random_state):
         return None
 
 
+def _safe_hmm_adjustment(engine, team_name):
+    """Return HMM-suggested adjustment pct for a team, defaulting to 0 on failure."""
+    try:
+        suggestion = engine.suggest_adjustments_hmm(team_name) or {}
+        return float(suggestion.get("suggested_adj_pct", 0.0))
+    except Exception as e:
+        print(f"HMM adjustment fallback for {team_name}: {e}")
+        return 0.0
+
+
 def _build_top5_scores(top5_df):
     top5_list = []
     if top5_df is None or top5_df.empty:
@@ -214,6 +224,7 @@ def simulate_match(
     team2_adj=0,
     team1_formation=None,
     team2_formation=None,
+    apply_hmm_adjustments=True,
 ):
     print(f"Starting Combined Simulation (new engine): {team1} vs {team2}")
     print(f"Adjustments: {team1}={team1_adj:+.1f}%, {team2}={team2_adj:+.1f}%")
@@ -233,13 +244,26 @@ def simulate_match(
 
     can_generate_images = _configure_image_modules(output_dir, logo_dir)
 
+    manual_team1_adj = float(team1_adj)
+    manual_team2_adj = float(team2_adj)
+    hmm_team1_adj = _safe_hmm_adjustment(engine, team1_resolved) if apply_hmm_adjustments else 0.0
+    hmm_team2_adj = _safe_hmm_adjustment(engine, team2_resolved) if apply_hmm_adjustments else 0.0
+    final_team1_adj = manual_team1_adj + hmm_team1_adj
+    final_team2_adj = manual_team2_adj + hmm_team2_adj
+
+    print(
+        "Applied adjustments: "
+        f"{team1_resolved} manual={manual_team1_adj:+.2f}% hmm={hmm_team1_adj:+.2f}% final={final_team1_adj:+.2f}% | "
+        f"{team2_resolved} manual={manual_team2_adj:+.2f}% hmm={hmm_team2_adj:+.2f}% final={final_team2_adj:+.2f}%"
+    )
+
     match_cfg = MatchConfig(
         home_team=team1_resolved,
         away_team=team2_resolved,
         home_formation=home_form,
         away_formation=away_form,
-        home_adj_pct=float(team1_adj),
-        away_adj_pct=float(team2_adj),
+        home_adj_pct=final_team1_adj,
+        away_adj_pct=final_team2_adj,
     )
 
     result = engine.run_match(
@@ -295,7 +319,12 @@ def simulate_match(
         "avg_ratings": avg_ratings,
         "simulated_matches": int(result.home_sim.simulated_matches + result.away_sim.simulated_matches),
         "adjustments": {
-            "team1": float(team1_adj),
-            "team2": float(team2_adj),
+            "team1": final_team1_adj,
+            "team2": final_team2_adj,
+            "manual_team1": manual_team1_adj,
+            "manual_team2": manual_team2_adj,
+            "hmm_team1": hmm_team1_adj,
+            "hmm_team2": hmm_team2_adj,
+            "hmm_applied": bool(apply_hmm_adjustments),
         },
     }
