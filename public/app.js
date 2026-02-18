@@ -73,6 +73,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Tab Navigation
     const tabBtns = document.querySelectorAll('.nav-btn');
     const tabContents = document.querySelectorAll('.view-section');
+    const MIN_ROUND_NUM = 1;
+    const MAX_ROUND_NUM = 34;
+    const roundDisplayText = document.getElementById('round-display-text');
+    const prevRoundBtn = document.getElementById('prev-round');
+    const nextRoundBtn = document.getElementById('next-round');
+    const matchesContainer = document.getElementById('matches-container');
 
     let selectedTeam1 = null;
     let selectedTeam2 = null;
@@ -80,6 +86,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     let playerAnalysisLoaded = false;
     let lastSimTeam1 = '';
     let lastSimTeam2 = '';
+    let currentRoundNum = 19;
+    let recentGamesInitialized = false;
     let teamData = Array.isArray(window.teamData) ? window.teamData : [];
 
     const SIM_FORMATIONS = [
@@ -96,7 +104,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             subtitle: "Next-Gen Football Analytics & Simulation",
             nav_analysis: "Analysis",
             nav_simulation: "Simulation",
-            nav_recent_games: "Recent Games",
+            nav_recent_games: "Upcoming Games",
             nav_player_analysis: "Player Lab",
             nav_scout: "Scout",
             nav_explore: "Explore",
@@ -168,7 +176,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             subtitle: "Yeni Nesil Futbol Analizi ve Simülasyonu",
             nav_analysis: "Analiz",
             nav_simulation: "Simülasyon",
-            nav_recent_games: "Son Maçlar",
+            nav_recent_games: "Yaklaşan Maçlar",
             nav_player_analysis: "Oyuncu Laboratuvarı",
             nav_scout: "Gözlemci",
             nav_explore: "Keşfet",
@@ -308,6 +316,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.querySelectorAll('.lang-option').forEach(opt => {
             opt.classList.toggle('active', opt.getAttribute('data-lang') === lang);
         });
+
+        updateRoundDisplay();
 
         if (playerAnalysisLoaded) {
             populateTeamFilter();
@@ -2494,19 +2504,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         return set;
     }
 
-    // --- Recent Games Tab ---
-    let currentRoundNum = 19;
-    const recentGamesTab = document.getElementById('tab-recent-games');
-    const roundDropdown = document.getElementById('round-dropdown');
-    const prevRoundBtn = document.getElementById('prev-round');
-    const nextRoundBtn = document.getElementById('next-round');
-    const matchesContainer = document.getElementById('matches-container');
+    // --- Upcoming Games Tab ---
+    function updateRoundDisplay() {
+        if (!roundDisplayText) return;
+        roundDisplayText.textContent = `${translations[currentLang].round_label} ${currentRoundNum}`;
+    }
 
-    // Initialize Recent Games when tab is clicked
+    // Initialize Upcoming Games when tab is clicked
     tabBtns.forEach(btn => {
         if (btn.getAttribute('data-tab') === 'tab-recent-games') {
             btn.addEventListener('click', () => {
-                if (!roundDropdown.options.length) {
+                if (!recentGamesInitialized) {
                     initRecentGamesTab();
                 }
             });
@@ -2518,41 +2526,34 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Fetch current round
             const roundResponse = await fetch('/api/current-round');
             const roundData = await roundResponse.json();
-            currentRoundNum = roundData.current_round;
-
-            // Populate round dropdown (1-34)
-            for (let i = 1; i <= 34; i++) {
-                const option = new Option(`${translations[currentLang].round_label} ${i}`, i);
-                roundDropdown.add(option);
-            }
-            roundDropdown.value = currentRoundNum;
+            currentRoundNum = Math.min(
+                MAX_ROUND_NUM,
+                Math.max(MIN_ROUND_NUM, Number(roundData.current_round) || MIN_ROUND_NUM)
+            );
+            updateRoundDisplay();
 
             // Load matches for current round
             await loadRoundMatches(currentRoundNum);
 
             // Set up round navigation
-            roundDropdown.addEventListener('change', (e) => {
-                loadRoundMatches(parseInt(e.target.value));
-            });
-
             prevRoundBtn.addEventListener('click', () => {
-                if (currentRoundNum > 1) {
+                if (currentRoundNum > MIN_ROUND_NUM) {
                     currentRoundNum--;
-                    roundDropdown.value = currentRoundNum;
                     loadRoundMatches(currentRoundNum);
                 }
             });
 
             nextRoundBtn.addEventListener('click', () => {
-                if (currentRoundNum < 34) {
+                if (currentRoundNum < MAX_ROUND_NUM) {
                     currentRoundNum++;
-                    roundDropdown.value = currentRoundNum;
                     loadRoundMatches(currentRoundNum);
                 }
             });
 
+            recentGamesInitialized = true;
+
         } catch (error) {
-            console.error('Error initializing Recent Games:', error);
+            console.error('Error initializing Upcoming Games:', error);
             matchesContainer.innerHTML = `<div class="error">Error loading data: ${error.message}</div>`;
         }
     }
@@ -2565,6 +2566,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const data = await response.json();
 
             currentRoundNum = roundNum;
+            updateRoundDisplay();
             renderMatches(data.matches);
 
         } catch (error) {
