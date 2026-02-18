@@ -3206,9 +3206,10 @@ body {
         gap: 1.5rem;
     }
     
-    /* Hide Pitch Visualizations on Mobile */
+    /* Keep pitch visualizations visible on mobile (stacked under setup card) */
     .pitch-column {
-        display: none !important;
+        display: block;
+        max-width: 100%;
     }
     
     .sim-config {

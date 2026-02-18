@@ -460,6 +460,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const team1AdjValue = document.getElementById('team1-adj-value');
     const team2AdjValue = document.getElementById('team2-adj-value');
     const hmmAdjustmentCache = new Map();
+    let formationHelpersReady = false;
+    let formationHelpersLoadPromise = null;
     let team1HmmRequestToken = 0;
     let team2HmmRequestToken = 0;
 
@@ -530,6 +532,35 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
+    async function ensureFormationHelpers() {
+        const helpersPresent = typeof getTeamLatestLineup === 'function' && typeof renderPitchView === 'function';
+        if (helpersPresent) {
+            formationHelpersReady = true;
+            return true;
+        }
+        if (formationHelpersReady) return true;
+        if (!formationHelpersLoadPromise) {
+            formationHelpersLoadPromise = new Promise((resolve) => {
+                const script = document.createElement('script');
+                script.src = 'formation.js?v=6';
+                script.async = true;
+                script.onload = () => resolve(true);
+                script.onerror = () => resolve(false);
+                document.head.appendChild(script);
+            });
+        }
+
+        const loaded = await formationHelpersLoadPromise;
+        formationHelpersLoadPromise = null;
+        formationHelpersReady = loaded &&
+            typeof getTeamLatestLineup === 'function' &&
+            typeof renderPitchView === 'function';
+        if (!formationHelpersReady) {
+            console.warn('Formation helpers are unavailable. Pitch visualization disabled.');
+        }
+        return formationHelpersReady;
+    }
+
     if (team1AdjSlider && team1AdjValue) {
         applySliderValue(team1AdjSlider, team1AdjValue, team1AdjSlider.value);
         team1AdjSlider.addEventListener('input', (e) => {
@@ -561,6 +592,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     async function updatePitchVisualization() {
+        const canRenderPitch = await ensureFormationHelpers();
+        if (!canRenderPitch) return;
+
         const t1 = simTeam1Select?.value;
         const t2 = simTeam2Select?.value;
 
@@ -600,23 +634,28 @@ document.addEventListener('DOMContentLoaded', async () => {
         lastSimTeam2 = t2 || '';
 
         // Render pitch with whatever data we have (can be one or both teams)
-        if (typeof renderPitchView === 'function') {
-            renderPitchView(team1Data, team2Data);
-        }
+        renderPitchView(team1Data, team2Data);
+    }
+
+    async function syncSimulationSelectionEffects() {
+        const selectedHomeTeam = simTeam1Select?.value || '';
+        const selectedAwayTeam = simTeam2Select?.value || '';
+
+        await Promise.allSettled([
+            updatePitchVisualization(),
+            updateSliderFromHmm(selectedHomeTeam, team1AdjSlider, team1AdjValue, 'home'),
+            updateSliderFromHmm(selectedAwayTeam, team2AdjSlider, team2AdjValue, 'away'),
+        ]);
     }
 
     // Add change listeners to sim team selects
     if (simTeam1Select) {
-        simTeam1Select.addEventListener('change', async () => {
-            updatePitchVisualization();
-            await updateSliderFromHmm(simTeam1Select.value, team1AdjSlider, team1AdjValue, 'home');
-        });
+        simTeam1Select.addEventListener('change', syncSimulationSelectionEffects);
+        simTeam1Select.addEventListener('input', syncSimulationSelectionEffects);
     }
     if (simTeam2Select) {
-        simTeam2Select.addEventListener('change', async () => {
-            updatePitchVisualization();
-            await updateSliderFromHmm(simTeam2Select.value, team2AdjSlider, team2AdjValue, 'away');
-        });
+        simTeam2Select.addEventListener('change', syncSimulationSelectionEffects);
+        simTeam2Select.addEventListener('input', syncSimulationSelectionEffects);
     }
     if (simTeam1FormationSelect) {
         simTeam1FormationSelect.addEventListener('change', updatePitchVisualization);
@@ -627,8 +666,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     tabBtns.forEach(btn => {
         if (btn.getAttribute('data-tab') === 'tab-simulation') {
-            btn.addEventListener('click', () => {
-                ensureSimulationSelectorsPopulated(false);
+            btn.addEventListener('click', async () => {
+                await ensureSimulationSelectorsPopulated(false);
+                await syncSimulationSelectionEffects();
             });
         }
     });
