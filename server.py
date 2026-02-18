@@ -563,11 +563,33 @@ def run_simulation():
             team1_adj,
             team2_adj,
             team1_formation=team1_formation,
-            team2_formation=team2_formation
+            team2_formation=team2_formation,
+            apply_hmm_adjustments=False
         )
         
         return jsonify(results)
 
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/hmm-adjustment', methods=['GET'])
+def get_hmm_adjustment():
+    try:
+        team = request.args.get('team', '').strip()
+        if not team:
+            return jsonify({"error": "Team parameter required"}), 400
+
+        import combined_adapter
+
+        result = combined_adapter.get_hmm_adjustment(
+            team,
+            ASSETS_DIR,
+            BASE_DATA_DIR,
+            OUTPUT_DIR,
+        )
+        return jsonify(result)
     except Exception as e:
         import traceback
         traceback.print_exc()

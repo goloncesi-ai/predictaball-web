@@ -213,6 +213,23 @@ def _build_top5_scores(top5_df):
     return top5_list
 
 
+def get_hmm_adjustment(
+    team_name,
+    assets_path,
+    base_data_dir,
+    output_dir,
+):
+    """Return resolved team name and HMM-suggested adjustment percentage."""
+    logo_dir = Path(assets_path) / "Logos"
+    engine = _get_engine(base_data_dir, output_dir, logo_dir)
+    team_resolved = _resolve_team_for_disk(base_data_dir, team_name)
+    hmm_adj = _safe_hmm_adjustment(engine, team_resolved)
+    return {
+        "team": team_resolved,
+        "hmm_adjustment": round(float(hmm_adj), 2),
+    }
+
+
 def simulate_match(
     team1,
     team2,

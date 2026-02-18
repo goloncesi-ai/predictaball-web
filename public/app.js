@@ -447,18 +447,88 @@ document.addEventListener('DOMContentLoaded', async () => {
     const team2AdjSlider = document.getElementById('team2-adjustment');
     const team1AdjValue = document.getElementById('team1-adj-value');
     const team2AdjValue = document.getElementById('team2-adj-value');
+    const hmmAdjustmentCache = new Map();
+    let team1HmmRequestToken = 0;
+    let team2HmmRequestToken = 0;
+
+    function formatSliderAdjustment(value) {
+        const num = Number(value);
+        if (!Number.isFinite(num)) return '0';
+        const rounded = Math.round(num * 10) / 10;
+        const formatted = Number.isInteger(rounded) ? `${rounded}` : rounded.toFixed(1);
+        return rounded > 0 ? `+${formatted}` : formatted;
+    }
+
+    function clampSliderValue(slider, value) {
+        const num = Number(value);
+        const min = Number(slider?.min ?? -10);
+        const max = Number(slider?.max ?? 10);
+        if (!Number.isFinite(num)) return 0;
+        return Math.min(max, Math.max(min, num));
+    }
+
+    function applySliderValue(slider, valueLabel, value) {
+        if (!slider || !valueLabel) return;
+        const clamped = clampSliderValue(slider, value);
+        slider.value = String(clamped);
+        valueLabel.textContent = formatSliderAdjustment(clamped);
+    }
+
+    async function fetchHmmAdjustment(teamName) {
+        const cacheKey = `${teamName || ''}`.trim();
+        if (!cacheKey) return 0;
+        if (hmmAdjustmentCache.has(cacheKey)) {
+            return hmmAdjustmentCache.get(cacheKey);
+        }
+
+        const response = await fetch(`/api/hmm-adjustment?team=${encodeURIComponent(cacheKey)}`);
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`HMM adjustment fetch failed (${response.status}): ${errorText}`);
+        }
+        const payload = await response.json();
+        const hmmAdj = Number(payload?.hmm_adjustment);
+        const safeAdj = Number.isFinite(hmmAdj) ? hmmAdj : 0;
+        hmmAdjustmentCache.set(cacheKey, safeAdj);
+        return safeAdj;
+    }
+
+    async function updateSliderFromHmm(teamName, slider, valueLabel, side) {
+        const requestToken = side === 'home' ? ++team1HmmRequestToken : ++team2HmmRequestToken;
+        const team = `${teamName || ''}`.trim();
+        if (!team) {
+            applySliderValue(slider, valueLabel, 0);
+            return;
+        }
+
+        try {
+            const hmmAdj = await fetchHmmAdjustment(team);
+            const stillLatest = side === 'home'
+                ? requestToken === team1HmmRequestToken && simTeam1Select?.value === team
+                : requestToken === team2HmmRequestToken && simTeam2Select?.value === team;
+            if (!stillLatest) return;
+            applySliderValue(slider, valueLabel, hmmAdj);
+        } catch (error) {
+            console.warn(`Failed to load HMM adjustment for ${team}:`, error.message);
+            const stillLatest = side === 'home'
+                ? requestToken === team1HmmRequestToken && simTeam1Select?.value === team
+                : requestToken === team2HmmRequestToken && simTeam2Select?.value === team;
+            if (!stillLatest) return;
+            applySliderValue(slider, valueLabel, 0);
+        }
+    }
 
     if (team1AdjSlider && team1AdjValue) {
+        applySliderValue(team1AdjSlider, team1AdjValue, team1AdjSlider.value);
         team1AdjSlider.addEventListener('input', (e) => {
-            const val = e.target.value;
-            team1AdjValue.textContent = val > 0 ? `+${val}` : val;
+            applySliderValue(team1AdjSlider, team1AdjValue, e.target.value);
         });
     }
 
     if (team2AdjSlider && team2AdjValue) {
+        applySliderValue(team2AdjSlider, team2AdjValue, team2AdjSlider.value);
         team2AdjSlider.addEventListener('input', (e) => {
-            const val = e.target.value;
-            team2AdjValue.textContent = val > 0 ? `+${val}` : val;
+            applySliderValue(team2AdjSlider, team2AdjValue, e.target.value);
         });
     }
 
@@ -525,10 +595,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Add change listeners to sim team selects
     if (simTeam1Select) {
-        simTeam1Select.addEventListener('change', updatePitchVisualization);
+        simTeam1Select.addEventListener('change', async () => {
+            updatePitchVisualization();
+            await updateSliderFromHmm(simTeam1Select.value, team1AdjSlider, team1AdjValue, 'home');
+        });
     }
     if (simTeam2Select) {
-        simTeam2Select.addEventListener('change', updatePitchVisualization);
+        simTeam2Select.addEventListener('change', async () => {
+            updatePitchVisualization();
+            await updateSliderFromHmm(simTeam2Select.value, team2AdjSlider, team2AdjValue, 'away');
+        });
     }
     if (simTeam1FormationSelect) {
         simTeam1FormationSelect.addEventListener('change', updatePitchVisualization);
@@ -902,11 +978,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 ${data.adjustments ? `
                                 <div class="sim-meta-item">
                                     <span class="meta-label">${t1} Adj.</span>
-                                    <span class="meta-value">${data.adjustments.team1 >= 0 ? '+' : ''}${data.adjustments.team1}%</span>
+                                    <span class="meta-value">${formatSliderAdjustment(data.adjustments.team1)}%</span>
                                 </div>
                                 <div class="sim-meta-item">
                                     <span class="meta-label">${t2} Adj.</span>
-                                    <span class="meta-value">${data.adjustments.team2 >= 0 ? '+' : ''}${data.adjustments.team2}%</span>
+                                    <span class="meta-value">${formatSliderAdjustment(data.adjustments.team2)}%</span>
                                 </div>
                                 ` : ''}
                             </div>
