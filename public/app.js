@@ -2523,17 +2523,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     async function initRecentGamesTab() {
         try {
-            // Fetch current round
-            const roundResponse = await fetch('/api/current-round');
-            const roundData = await roundResponse.json();
-            currentRoundNum = Math.min(
-                MAX_ROUND_NUM,
-                Math.max(MIN_ROUND_NUM, Number(roundData.current_round) || MIN_ROUND_NUM)
-            );
-            updateRoundDisplay();
-
-            // Load matches for current round
-            await loadRoundMatches(currentRoundNum);
+            // Load default/current round directly from API.
+            await loadRoundMatches();
 
             // Set up round navigation
             prevRoundBtn.addEventListener('click', () => {
@@ -2558,14 +2549,20 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    async function loadRoundMatches(roundNum) {
+    async function loadRoundMatches(roundNum = null) {
         try {
             matchesContainer.innerHTML = '<div class="loading-state"><div class="spinner"></div><p>Loading matches...</p></div>';
 
-            const response = await fetch(`/api/recent-games?round=${roundNum}`);
+            const requestUrl = Number.isInteger(roundNum)
+                ? `/api/recent-games?round=${roundNum}`
+                : '/api/recent-games';
+            const response = await fetch(requestUrl);
             const data = await response.json();
 
-            currentRoundNum = roundNum;
+            currentRoundNum = Math.min(
+                MAX_ROUND_NUM,
+                Math.max(MIN_ROUND_NUM, Number(data.round) || Number(roundNum) || MIN_ROUND_NUM)
+            );
             updateRoundDisplay();
             renderMatches(data.matches);
 

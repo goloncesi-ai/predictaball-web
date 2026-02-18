@@ -722,9 +722,6 @@ def get_recent_games():
             with open(predictions_file, 'r', encoding='utf-8') as f:
                 predictions_data = json.load(f)
         
-        # Import combined_adapter to get enriched match analysis
-        import combined_adapter
-        
         # Merge schedule matches with predictions
         matches = []
         for match in round_data.get('matches', []):
