@@ -2845,46 +2845,91 @@ document.addEventListener('DOMContentLoaded', async () => {
             </div>
         ` : '';
 
-        // Calculate confidence metrics for explanation
-        const maxProb = Math.max(pred.probabilities.home_win, pred.probabilities.draw, pred.probabilities.away_win);
-        const minProb = Math.min(pred.probabilities.home_win, pred.probabilities.draw, pred.probabilities.away_win);
-        const spread = maxProb - minProb;
+        // Build clearer confidence metrics for explanation
+        const homeWinProb = Number(pred.probabilities?.home_win) || 0;
+        const drawProb = Number(pred.probabilities?.draw) || 0;
+        const awayWinProb = Number(pred.probabilities?.away_win) || 0;
+        const outcomes = [
+            { key: 'home_win', label: `${match.home_team} win`, value: homeWinProb },
+            { key: 'draw', label: 'draw', value: drawProb },
+            { key: 'away_win', label: `${match.away_team} win`, value: awayWinProb },
+        ];
+        const sortedOutcomes = [...outcomes].sort((a, b) => b.value - a.value);
+        const favorite = sortedOutcomes[0] || { key: 'draw', label: 'draw', value: 0 };
+        const runnerUp = sortedOutcomes[1] || { key: 'draw', label: 'draw', value: 0 };
 
-        // Build confidence explanation HTML
+        const favoriteChance = Math.max(0, favorite.value);
+        const leadGap = Math.max(0, favorite.value - runnerUp.value);
+        const probsNormalized = outcomes
+            .map(o => Math.max(0, o.value) / 100)
+            .filter(v => v > 0);
+        const entropy = probsNormalized.reduce((sum, p) => sum - (p * Math.log(p)), 0);
+        const maxEntropy = Math.log(3);
+        const clarityScore = Math.max(0, Math.min(100, (1 - (entropy / maxEntropy)) * 100));
+
+        const favoriteOutcomeText = favorite.key === 'draw'
+            ? 'a draw'
+            : (favorite.key === 'home_win' ? `${match.home_team} to win` : `${match.away_team} to win`);
+
+        const getMetricStatus = (metric, value) => {
+            if (metric === 'favorite') {
+                if (value >= 58) return 'good';
+                if (value >= 45) return 'ok';
+                return 'warn';
+            }
+            if (metric === 'lead') {
+                if (value >= 18) return 'good';
+                if (value >= 10) return 'ok';
+                return 'warn';
+            }
+            if (metric === 'clarity') {
+                if (value >= 45) return 'good';
+                if (value >= 28) return 'ok';
+                return 'warn';
+            }
+            return 'ok';
+        };
+
+        const confidenceIndicators = [
+            {
+                label: 'Favorite Chance',
+                value: `${favoriteChance.toFixed(1)}%`,
+                status: getMetricStatus('favorite', favoriteChance),
+                help: `Chance of the most likely result (${favorite.label}). Higher means a clearer favorite.`
+            },
+            {
+                label: 'Lead over 2nd Option',
+                value: `+${leadGap.toFixed(1)} pts`,
+                status: getMetricStatus('lead', leadGap),
+                help: 'Difference between the top result and the second most likely result. Bigger gap means less uncertainty.'
+            },
+            {
+                label: 'Clarity Score',
+                value: `${clarityScore.toFixed(0)}/100`,
+                status: getMetricStatus('clarity', clarityScore),
+                help: 'How concentrated the three probabilities are. 100 = one clear direction, 0 = outcomes are almost evenly split.'
+            },
+        ];
+
         const confidenceExplanations = {
             high: {
                 icon: '🟢',
                 title: 'High Confidence Prediction',
-                reason: `Our model shows a <strong>clear favorite</strong> with ${maxProb.toFixed(1)}% probability and a significant ${spread.toFixed(1)}% spread between outcomes. This indicates strong predictive signals from our analysis.`,
-                indicators: [
-                    { label: 'Max Probability', value: `${maxProb.toFixed(1)}%`, status: maxProb >= 60 ? 'good' : 'ok' },
-                    { label: 'Outcome Spread', value: `${spread.toFixed(1)}%`, status: spread >= 40 ? 'good' : 'ok' },
-                    { label: 'Model Agreement', value: 'Strong', status: 'good' }
-                ]
+                reason: `The model sees a <strong>clear direction</strong>: <strong>${favoriteOutcomeText}</strong>. The top outcome is ${favoriteChance.toFixed(1)}%, with a ${leadGap.toFixed(1)} point lead over the next option.`
             },
             medium: {
                 icon: '🟡',
                 title: 'Medium Confidence Prediction',
-                reason: `Our model identifies a <strong>moderate favorite</strong> with ${maxProb.toFixed(1)}% probability. While the prediction is reliable, there's more uncertainty compared to high confidence matches.`,
-                indicators: [
-                    { label: 'Max Probability', value: `${maxProb.toFixed(1)}%`, status: maxProb >= 45 ? 'ok' : 'warn' },
-                    { label: 'Outcome Spread', value: `${spread.toFixed(1)}%`, status: spread >= 25 ? 'ok' : 'warn' },
-                    { label: 'Model Agreement', value: 'Moderate', status: 'ok' }
-                ]
+                reason: `The model has a <strong>preferred outcome</strong> (${favoriteOutcomeText}), but alternative outcomes are still realistic. The lead over the second option is ${leadGap.toFixed(1)} points.`
             },
             low: {
                 icon: '🔴',
                 title: 'Low Confidence Prediction',
-                reason: `This is a <strong>highly competitive match</strong> with close probabilities (max: ${maxProb.toFixed(1)}%, spread: ${spread.toFixed(1)}%). Multiple outcomes are nearly equally likely, making this prediction less certain.`,
-                indicators: [
-                    { label: 'Max Probability', value: `${maxProb.toFixed(1)}%`, status: 'warn' },
-                    { label: 'Outcome Spread', value: `${spread.toFixed(1)}%`, status: 'warn' },
-                    { label: 'Model Agreement', value: 'Uncertain', status: 'warn' }
-                ]
+                reason: `This match is <strong>hard to separate</strong>. The top outcome (${favoriteOutcomeText}) is only ${favoriteChance.toFixed(1)}%, and probabilities are relatively close.`
             }
         };
 
-        const currentConfidence = confidenceExplanations[confClass];
+        const currentConfidence = confidenceExplanations[confClass] || confidenceExplanations.medium;
         const confidenceHtml = `
             <div class="confidence-explanation-panel">
                 <div class="confidence-header">
@@ -2893,9 +2938,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </div>
                 <p class="confidence-reason">${currentConfidence.reason}</p>
                 <div class="confidence-indicators">
-                    ${currentConfidence.indicators.map(ind => `
+                    ${confidenceIndicators.map(ind => `
                         <div class="confidence-indicator">
-                            <span class="indicator-label">${ind.label}</span>
+                            <div class="indicator-header">
+                                <span class="indicator-label">${ind.label}</span>
+                                <span class="indicator-help-wrap">
+                                    <button type="button" class="indicator-help" aria-label="What does ${ind.label} mean?">?</button>
+                                    <span class="indicator-tooltip">${ind.help}</span>
+                                </span>
+                            </div>
                             <div class="indicator-value-wrapper">
                                 <span class="indicator-value ${ind.status}">${ind.value}</span>
                                 <div class="indicator-status ${ind.status}">
