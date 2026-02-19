@@ -15,6 +15,16 @@
     --liquid-sheen: rgba(255, 255, 255, 0.18);
     --liquid-specular: rgba(187, 228, 255, 0.28);
     --liquid-shadow: 0 16px 44px -24px rgba(2, 8, 20, 0.88);
+    --bg-focus-x: 12%;
+    --bg-focus-y: 18%;
+    --bg-drift-x: 0%;
+    --bg-drift-y: 0%;
+    --bg-parallax-x: 0px;
+    --bg-parallax-y: 0px;
+    --overlay-shift-x: 0px;
+    --overlay-shift-y: 0px;
+    --overlay-shift-x-inv: 0px;
+    --overlay-shift-y-inv: 0px;
 }
 
 * {
@@ -41,10 +51,13 @@ body {
     width: 100vw;
     height: 100vh;
     background:
-        radial-gradient(60% 45% at 12% 18%, rgba(28, 163, 255, 0.22), transparent 60%),
-        radial-gradient(40% 30% at 86% 14%, rgba(20, 198, 163, 0.2), transparent 70%),
-        radial-gradient(38% 34% at 80% 78%, rgba(245, 158, 11, 0.14), transparent 72%),
+        radial-gradient(60% 45% at var(--bg-focus-x) var(--bg-focus-y), rgba(28, 163, 255, 0.22), transparent 60%),
+        radial-gradient(40% 30% at calc(86% + var(--bg-drift-x)) calc(14% + var(--bg-drift-y)), rgba(20, 198, 163, 0.2), transparent 70%),
+        radial-gradient(38% 34% at calc(80% - var(--bg-drift-x)) calc(78% - var(--bg-drift-y)), rgba(245, 158, 11, 0.14), transparent 72%),
         linear-gradient(155deg, #060f1d 0%, #0b1d34 47%, #071423 100%);
+    transform: translate3d(var(--bg-parallax-x), var(--bg-parallax-y), 0) scale(1.03);
+    will-change: transform;
+    transition: transform 150ms linear;
     z-index: -2;
 }
 
@@ -59,6 +72,11 @@ body {
         linear-gradient(0deg, rgba(124, 164, 212, 0.02) 1px, transparent 1px),
         url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
     background-size: 36px 36px, 36px 36px, auto;
+    background-position:
+        var(--overlay-shift-x) var(--overlay-shift-y),
+        var(--overlay-shift-x-inv) var(--overlay-shift-y-inv),
+        center;
+    will-change: background-position;
     pointer-events: none;
     z-index: -1;
 }
@@ -161,32 +179,32 @@ body {
     gap: 0.5rem;
 }
 
-@keyframes liquidDrift {
-    0% {
-        transform: translate3d(-6%, -4%, 0) scale(1.04);
-    }
-
-    50% {
-        transform: translate3d(4%, 3%, 0) scale(1.08);
-    }
-
-    100% {
-        transform: translate3d(-3%, 5%, 0) scale(1.05);
-    }
-}
-
 .main-nav,
 .config-card,
 .match-card,
 .insights-panel,
 .result-card,
 .round-selector,
-.lang-btn {
+.lang-btn,
+.analysis-panel,
+.team-card,
+.scoreline-perspective-card,
+.confidence-indicator {
     isolation: isolate;
     overflow: hidden;
     box-shadow: var(--liquid-shadow), inset 0 1px 0 var(--liquid-sheen);
     backdrop-filter: blur(18px) saturate(150%);
     -webkit-backdrop-filter: blur(18px) saturate(150%);
+    --lg-local-x: 50%;
+    --lg-local-y: 34%;
+    --lg-pointer-x: 70%;
+    --lg-pointer-y: 24%;
+    --lg-shift-x: 0px;
+    --lg-shift-y: 0px;
+    --lg-scale: 1.05;
+    --lg-blur: 7px;
+    --lg-tilt: 156deg;
+    --lg-gloss-opacity: 0.48;
 }
 
 .main-nav::after,
@@ -195,19 +213,26 @@ body {
 .insights-panel::after,
 .result-card::after,
 .round-selector::after,
-.lang-btn::after {
+.lang-btn::after,
+.analysis-panel::after,
+.team-card::after,
+.scoreline-perspective-card::after,
+.confidence-indicator::after {
     content: '';
     position: absolute;
     inset: -40% -22%;
     border-radius: inherit;
     background:
-        radial-gradient(46% 34% at 26% 18%, var(--liquid-specular), transparent 74%),
-        radial-gradient(28% 22% at 78% 76%, rgba(20, 198, 163, 0.18), transparent 78%),
-        linear-gradient(170deg, rgba(255, 255, 255, 0.06), transparent 56%);
-    opacity: 0.52;
+        radial-gradient(52% 40% at var(--lg-local-x) var(--lg-local-y), rgba(255, 255, 255, 0.24), transparent 72%),
+        radial-gradient(34% 26% at var(--lg-pointer-x) var(--lg-pointer-y), var(--liquid-specular), transparent 78%),
+        radial-gradient(30% 24% at calc(100% - var(--lg-local-x)) calc(100% - var(--lg-local-y)), rgba(20, 198, 163, 0.18), transparent 80%),
+        linear-gradient(var(--lg-tilt), rgba(255, 255, 255, 0.14), transparent 56%);
+    opacity: var(--lg-gloss-opacity);
     pointer-events: none;
     z-index: 0;
-    animation: liquidDrift 18s ease-in-out infinite alternate;
+    transform: translate3d(var(--lg-shift-x), var(--lg-shift-y), 0) scale(var(--lg-scale));
+    filter: blur(var(--lg-blur));
+    transition: transform 220ms ease, filter 220ms ease, opacity 220ms ease;
 }
 
 .main-nav>*,
@@ -216,9 +241,40 @@ body {
 .insights-panel>*,
 .result-card>*,
 .round-selector>*,
-.lang-btn>* {
+.lang-btn>*,
+.analysis-panel>*,
+.team-card>*,
+.scoreline-perspective-card>*,
+.confidence-indicator>* {
     position: relative;
     z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .app-background {
+        transform: none;
+        transition: none;
+    }
+
+    .overlay {
+        background-position: center, center, center;
+    }
+
+    .main-nav::after,
+    .config-card::after,
+    .match-card::after,
+    .insights-panel::after,
+    .result-card::after,
+    .round-selector::after,
+    .lang-btn::after,
+    .analysis-panel::after,
+    .team-card::after,
+    .scoreline-perspective-card::after,
+    .confidence-indicator::after {
+        transform: none;
+        filter: none;
+        transition: none;
+    }
 }
 
 .nav-btn {

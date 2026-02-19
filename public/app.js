@@ -89,6 +89,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     let currentRoundNum = 19;
     let recentGamesInitialized = false;
     let teamData = Array.isArray(window.teamData) ? window.teamData : [];
+    const LIQUID_SURFACE_SELECTOR = '.main-nav, .config-card, .match-card, .insights-panel, .result-card, .round-selector, .lang-btn, .analysis-panel, .team-card, .scoreline-perspective-card, .confidence-indicator';
+    let liquidSurfaceEls = [];
+    let liquidFrameToken = null;
+    let liquidPointerX = window.innerWidth * 0.5;
+    let liquidPointerY = window.innerHeight * 0.35;
+    let liquidScrollY = window.scrollY || 0;
+    let liquidGlassInitialized = false;
+    const reduceMotionMedia = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     const SIM_FORMATIONS = [
         '3-1-4-2', '3-2-4-1', '3-3-3-1', '3-4-1-2', '3-4-2-1', '3-4-3', '3-5-1-1', '3-5-2',
@@ -328,6 +336,117 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
+    function initLiquidGlass() {
+        if (liquidGlassInitialized) return;
+        liquidGlassInitialized = true;
+
+        const onPointerMove = (event) => {
+            liquidPointerX = event.clientX;
+            liquidPointerY = event.clientY;
+            queueLiquidGlassUpdate();
+        };
+
+        const onScroll = () => {
+            liquidScrollY = window.scrollY || window.pageYOffset || 0;
+            queueLiquidGlassUpdate();
+        };
+
+        const onResize = () => {
+            liquidPointerX = Math.min(liquidPointerX, window.innerWidth);
+            liquidPointerY = Math.min(liquidPointerY, window.innerHeight);
+            queueLiquidGlassUpdate();
+        };
+
+        window.addEventListener('pointermove', onPointerMove, { passive: true });
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onResize, { passive: true });
+
+        if (typeof reduceMotionMedia.addEventListener === 'function') {
+            reduceMotionMedia.addEventListener('change', queueLiquidGlassUpdate);
+        } else if (typeof reduceMotionMedia.addListener === 'function') {
+            reduceMotionMedia.addListener(queueLiquidGlassUpdate);
+        }
+
+        refreshLiquidGlassTargets();
+    }
+
+    function refreshLiquidGlassTargets() {
+        liquidSurfaceEls = Array.from(document.querySelectorAll(LIQUID_SURFACE_SELECTOR));
+        queueLiquidGlassUpdate();
+    }
+
+    function queueLiquidGlassUpdate() {
+        if (liquidFrameToken) return;
+        liquidFrameToken = requestAnimationFrame(updateLiquidGlassFrame);
+    }
+
+    function updateLiquidGlassFrame() {
+        liquidFrameToken = null;
+
+        const rootStyle = document.documentElement.style;
+        if (reduceMotionMedia.matches) {
+            rootStyle.setProperty('--bg-focus-x', '12%');
+            rootStyle.setProperty('--bg-focus-y', '18%');
+            rootStyle.setProperty('--bg-drift-x', '0%');
+            rootStyle.setProperty('--bg-drift-y', '0%');
+            rootStyle.setProperty('--bg-parallax-x', '0px');
+            rootStyle.setProperty('--bg-parallax-y', '0px');
+            rootStyle.setProperty('--overlay-shift-x', '0px');
+            rootStyle.setProperty('--overlay-shift-y', '0px');
+            rootStyle.setProperty('--overlay-shift-x-inv', '0px');
+            rootStyle.setProperty('--overlay-shift-y-inv', '0px');
+            return;
+        }
+
+        const viewportW = Math.max(1, window.innerWidth);
+        const viewportH = Math.max(1, window.innerHeight);
+        const pointerXNorm = Math.min(1, Math.max(0, liquidPointerX / viewportW));
+        const pointerYNorm = Math.min(1, Math.max(0, liquidPointerY / viewportH));
+        const limitedScroll = Math.max(-28, Math.min(28, liquidScrollY * 0.015));
+
+        rootStyle.setProperty('--bg-focus-x', `${(8 + pointerXNorm * 18).toFixed(2)}%`);
+        rootStyle.setProperty('--bg-focus-y', `${(10 + pointerYNorm * 22).toFixed(2)}%`);
+        rootStyle.setProperty('--bg-drift-x', `${((pointerXNorm - 0.5) * 12).toFixed(2)}%`);
+        rootStyle.setProperty('--bg-drift-y', `${((pointerYNorm - 0.5) * 13 + Math.sin(liquidScrollY * 0.0022) * 2).toFixed(2)}%`);
+        rootStyle.setProperty('--bg-parallax-x', `${((pointerXNorm - 0.5) * -16).toFixed(2)}px`);
+        rootStyle.setProperty('--bg-parallax-y', `${((pointerYNorm - 0.5) * -11 - limitedScroll).toFixed(2)}px`);
+        const overlayShiftX = ((pointerXNorm - 0.5) * 20);
+        const overlayShiftY = ((pointerYNorm - 0.5) * 20 + limitedScroll);
+        rootStyle.setProperty('--overlay-shift-x', `${overlayShiftX.toFixed(2)}px`);
+        rootStyle.setProperty('--overlay-shift-y', `${overlayShiftY.toFixed(2)}px`);
+        rootStyle.setProperty('--overlay-shift-x-inv', `${(overlayShiftX * -0.65).toFixed(2)}px`);
+        rootStyle.setProperty('--overlay-shift-y-inv', `${(overlayShiftY * -0.65).toFixed(2)}px`);
+
+        liquidSurfaceEls.forEach((el) => {
+            const rect = el.getBoundingClientRect();
+            if (rect.width < 24 || rect.height < 24) return;
+            if (rect.bottom < -140 || rect.top > viewportH + 140) return;
+
+            const localX = Math.min(1, Math.max(0, (liquidPointerX - rect.left) / rect.width));
+            const localY = Math.min(1, Math.max(0, (liquidPointerY - rect.top) / rect.height));
+            const centerY = rect.top + (rect.height * 0.5);
+            const depth = Math.max(0, Math.min(1, 1 - (Math.abs(centerY - (viewportH * 0.5)) / (viewportH * 0.8))));
+            const wave = Math.sin((liquidScrollY + centerY) * 0.01) * 2.6;
+            const shiftX = ((localX - 0.5) * 18).toFixed(2);
+            const shiftY = (((localY - 0.5) * 14) + wave).toFixed(2);
+            const tilt = (146 + ((localX - 0.5) * 34) - ((localY - 0.5) * 16)).toFixed(2);
+            const scale = (1.03 + (depth * 0.08)).toFixed(3);
+            const blur = (5 + (depth * 7)).toFixed(2);
+            const glossOpacity = (0.30 + (depth * 0.34)).toFixed(3);
+
+            el.style.setProperty('--lg-local-x', `${(localX * 100).toFixed(1)}%`);
+            el.style.setProperty('--lg-local-y', `${(localY * 100).toFixed(1)}%`);
+            el.style.setProperty('--lg-pointer-x', `${(100 - (localX * 100)).toFixed(1)}%`);
+            el.style.setProperty('--lg-pointer-y', `${(100 - (localY * 100)).toFixed(1)}%`);
+            el.style.setProperty('--lg-shift-x', `${shiftX}px`);
+            el.style.setProperty('--lg-shift-y', `${shiftY}px`);
+            el.style.setProperty('--lg-scale', scale);
+            el.style.setProperty('--lg-blur', `${blur}px`);
+            el.style.setProperty('--lg-tilt', `${tilt}deg`);
+            el.style.setProperty('--lg-gloss-opacity', glossOpacity);
+        });
+    }
+
     async function loadLiveAnalysisData(forceRefresh = false) {
         try {
             const url = `/api/analysis-data?refresh=${forceRefresh ? 1 : 0}&t=${Date.now()}`;
@@ -353,6 +472,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         initExploreTab();
         initPlayerAnalysisTab();
         initLanguage();
+        initLiquidGlass();
     } else {
         console.error("No data found. Ensure data.js is loaded.");
         alert("Data not found. Please run the ingestion script.");
@@ -431,6 +551,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                         content.classList.remove('active');
                     }
                 });
+
+                queueLiquidGlassUpdate();
             });
         });
     }
@@ -1053,6 +1175,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         </div>
                     </div>
                 `;
+                refreshLiquidGlassTargets();
 
                 // Complete the progress animation
                 clearInterval(progressInterval);
@@ -1076,6 +1199,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                 simResults.innerHTML = `<div class="error">Error: ${error.message}. Is server.py running?</div>`;
                 simResults.classList.remove('hidden');
+                refreshLiquidGlassTargets();
             } finally {
                 btnRunSim.disabled = false;
                 btnRunSim.innerText = "Run Simulation";
@@ -2717,6 +2841,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     function renderMatches(matches) {
         if (!matches || matches.length === 0) {
             matchesContainer.innerHTML = '<div class="no-matches">No matches found for this round.</div>';
+            refreshLiquidGlassTargets();
             return;
         }
 
@@ -2766,6 +2891,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 });
             }
         });
+        refreshLiquidGlassTargets();
     }
 
     function encodeAssetUrl(url) {
