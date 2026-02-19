@@ -97,6 +97,36 @@ class Simulator:
         coords_team1_fn=None,
         coords_team2_fn=None,
     ) -> PerspectiveSimResult:
+        def sanitize_inference_features(
+            X_test: pd.DataFrame,
+            X_train_reference: pd.DataFrame,
+        ) -> pd.DataFrame:
+            """
+            Ensure inference matrices are finite for sklearn estimators.
+            Fill strategy:
+            1) train medians per feature
+            2) sensible defaults by feature family
+            3) final global zero fallback
+            """
+            X = X_test.copy().replace([np.inf, -np.inf], np.nan)
+            X_ref = X_train_reference.copy().replace([np.inf, -np.inf], np.nan)
+
+            medians = X_ref.median(numeric_only=True)
+            X = X.fillna(medians)
+
+            for col in X.columns:
+                if col.startswith("Comp_"):
+                    X[col] = X[col].fillna(1.0)
+                elif col.endswith("_Cluster_Goalkeeper_Zone_Avg"):
+                    X[col] = X[col].fillna(5.0)
+                elif col.endswith("_Cnt"):
+                    X[col] = X[col].fillna(0.0)
+                elif col.endswith("_Avg"):
+                    X[col] = X[col].fillna(5.0)
+
+            X = X.fillna(0.0)
+            return X
+
         team1_df = read_team_df(self.main_folder, team1_name)
         team2_df = read_team_df(self.main_folder, team2_name)
 
@@ -121,6 +151,7 @@ class Simulator:
             raise ValueError("coords_team1_fn and coords_team2_fn must be provided")
 
         eng_train = engineer_dataset(team1_df, coords_team1_fn, coords_team2_fn)
+        eng_train = make_unique_columns(eng_train)
         eng_train = ensure_feature_columns(eng_train)
         models = self.trainer.fit(eng_train)
 
@@ -128,10 +159,15 @@ class Simulator:
         eng_test = ensure_feature_columns(eng_test)
         eng_test = make_unique_columns(eng_test)
 
-        X_all_test = eng_test[FEATURES_ALL]
-        X_t1_goal_test = eng_test[FEATURES_GOALS_T1]
-        X_t2_goal_test = eng_test[FEATURES_GOALS_T2]
-        X_outcome_test = eng_test[OUTCOME_BASE_FEATURES].copy()
+        X_all_train = eng_train[FEATURES_ALL]
+        X_t1_goal_train = eng_train[FEATURES_GOALS_T1]
+        X_t2_goal_train = eng_train[FEATURES_GOALS_T2]
+        X_outcome_train = eng_train[OUTCOME_BASE_FEATURES].copy()
+
+        X_all_test = sanitize_inference_features(eng_test[FEATURES_ALL], X_all_train)
+        X_t1_goal_test = sanitize_inference_features(eng_test[FEATURES_GOALS_T1], X_t1_goal_train)
+        X_t2_goal_test = sanitize_inference_features(eng_test[FEATURES_GOALS_T2], X_t2_goal_train)
+        X_outcome_test = sanitize_inference_features(eng_test[OUTCOME_BASE_FEATURES].copy(), X_outcome_train)
 
         if models.outcome_model is not None:
             proba = models.outcome_model.predict_proba(X_outcome_test)
