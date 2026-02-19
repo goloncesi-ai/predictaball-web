@@ -2786,26 +2786,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         return `${num >= 0 ? '+' : ''}${num.toFixed(1)}%`;
     }
 
-    function swapScorePerspective(scoreText) {
-        const score = `${scoreText || ''}`.trim();
-        const match = score.match(/^(\d+)\s*-\s*(\d+)$/);
-        if (!match) return score || '0-0';
-        return `${match[2]}-${match[1]}`;
-    }
-
     function sanitizeScoreLabel(scoreText) {
         const score = `${scoreText || ''}`.trim();
         const match = score.match(/^(\d+)\s*-\s*(\d+)$/);
         if (!match) return '0-0';
         return `${match[1]}-${match[2]}`;
-    }
-
-    function buildMirroredScorelines(scores) {
-        if (!Array.isArray(scores)) return [];
-        return scores.map(item => ({
-            ...item,
-            score: swapScorePerspective(item?.score),
-        }));
     }
 
     function renderScorelineRows(scores) {
@@ -2829,9 +2814,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const homeScores = Array.isArray(homeScoresRaw) ? homeScoresRaw : [];
         if (homeScores.length === 0) return '';
 
-        const awayScores = Array.isArray(awayScoresRaw) && awayScoresRaw.length > 0
-            ? awayScoresRaw
-            : buildMirroredScorelines(homeScores);
+        const awayScores = Array.isArray(awayScoresRaw) ? awayScoresRaw : [];
 
         return `
             <div class="insights-panel">

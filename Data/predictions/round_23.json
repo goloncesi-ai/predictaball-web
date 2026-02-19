@@ -1,6 +1,6 @@
 {
   "round": 23,
-  "generated_at": "2026-02-18T19:14:50.052793",
+  "generated_at": "2026-02-19T14:25:42.431537",
   "matches": [
     {
       "match_id": 14109816,
@@ -49,13 +49,13 @@
       ],
       "heatmap_data": [],
       "heatmaps": {
-        "player": "/outputs/player_heatmap.png?v=1771438495",
-        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771438495",
-        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771438495"
+        "player": "/outputs/player_heatmap.png?v=1771507547",
+        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771507547",
+        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771507547"
       },
-      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771438495",
-      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771438495",
-      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771438495",
+      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771507547",
+      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771507547",
+      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771507547",
       "top5_scores": [
         {
           "score": "0-2",
@@ -81,6 +81,60 @@
           "score": "1-0",
           "count": 3,
           "percentage": 6.7
+        }
+      ],
+      "top5_scores_home_perspective": [
+        {
+          "score": "0-2",
+          "count": 20,
+          "percentage": 44.4
+        },
+        {
+          "score": "0-1",
+          "count": 12,
+          "percentage": 26.7
+        },
+        {
+          "score": "1-1",
+          "count": 6,
+          "percentage": 13.3
+        },
+        {
+          "score": "0-3",
+          "count": 4,
+          "percentage": 8.9
+        },
+        {
+          "score": "1-0",
+          "count": 3,
+          "percentage": 6.7
+        }
+      ],
+      "top5_scores_away_perspective": [
+        {
+          "score": "1-2",
+          "count": 9,
+          "percentage": 28.1
+        },
+        {
+          "score": "3-0",
+          "count": 7,
+          "percentage": 21.9
+        },
+        {
+          "score": "2-0",
+          "count": 6,
+          "percentage": 18.8
+        },
+        {
+          "score": "2-2",
+          "count": 5,
+          "percentage": 15.6
+        },
+        {
+          "score": "3-1",
+          "count": 5,
+          "percentage": 15.6
         }
       ],
       "markov_form": {
@@ -168,13 +222,13 @@
       ],
       "heatmap_data": [],
       "heatmaps": {
-        "player": "/outputs/player_heatmap.png?v=1771438499",
-        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771438499",
-        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771438499"
+        "player": "/outputs/player_heatmap.png?v=1771507551",
+        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771507551",
+        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771507551"
       },
-      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771438499",
-      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771438499",
-      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771438499",
+      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771507551",
+      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771507551",
+      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771507551",
       "top5_scores": [
         {
           "score": "3-1",
@@ -200,6 +254,60 @@
           "score": "4-1",
           "count": 3,
           "percentage": 8.3
+        }
+      ],
+      "top5_scores_home_perspective": [
+        {
+          "score": "3-1",
+          "count": 11,
+          "percentage": 30.6
+        },
+        {
+          "score": "2-1",
+          "count": 10,
+          "percentage": 27.8
+        },
+        {
+          "score": "2-0",
+          "count": 7,
+          "percentage": 19.4
+        },
+        {
+          "score": "0-2",
+          "count": 5,
+          "percentage": 13.9
+        },
+        {
+          "score": "4-1",
+          "count": 3,
+          "percentage": 8.3
+        }
+      ],
+      "top5_scores_away_perspective": [
+        {
+          "score": "0-0",
+          "count": 13,
+          "percentage": 31.7
+        },
+        {
+          "score": "1-0",
+          "count": 10,
+          "percentage": 24.4
+        },
+        {
+          "score": "2-0",
+          "count": 9,
+          "percentage": 22.0
+        },
+        {
+          "score": "2-1",
+          "count": 6,
+          "percentage": 14.6
+        },
+        {
+          "score": "2-2",
+          "count": 3,
+          "percentage": 7.3
         }
       ],
       "markov_form": {
@@ -287,13 +395,13 @@
       ],
       "heatmap_data": [],
       "heatmaps": {
-        "player": "/outputs/player_heatmap.png?v=1771438503",
-        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771438503",
-        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771438503"
+        "player": "/outputs/player_heatmap.png?v=1771507555",
+        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771507555",
+        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771507555"
       },
-      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771438503",
-      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771438503",
-      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771438503",
+      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771507555",
+      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771507555",
+      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771507555",
       "top5_scores": [
         {
           "score": "0-3",
@@ -319,6 +427,60 @@
           "score": "0-2",
           "count": 4,
           "percentage": 10.3
+        }
+      ],
+      "top5_scores_home_perspective": [
+        {
+          "score": "0-3",
+          "count": 11,
+          "percentage": 28.2
+        },
+        {
+          "score": "1-2",
+          "count": 9,
+          "percentage": 23.1
+        },
+        {
+          "score": "1-3",
+          "count": 8,
+          "percentage": 20.5
+        },
+        {
+          "score": "1-1",
+          "count": 7,
+          "percentage": 17.9
+        },
+        {
+          "score": "0-2",
+          "count": 4,
+          "percentage": 10.3
+        }
+      ],
+      "top5_scores_away_perspective": [
+        {
+          "score": "2-0",
+          "count": 11,
+          "percentage": 27.5
+        },
+        {
+          "score": "2-1",
+          "count": 9,
+          "percentage": 22.5
+        },
+        {
+          "score": "1-0",
+          "count": 8,
+          "percentage": 20.0
+        },
+        {
+          "score": "1-1",
+          "count": 6,
+          "percentage": 15.0
+        },
+        {
+          "score": "0-2",
+          "count": 6,
+          "percentage": 15.0
         }
       ],
       "markov_form": {
@@ -406,13 +568,13 @@
       ],
       "heatmap_data": [],
       "heatmaps": {
-        "player": "/outputs/player_heatmap.png?v=1771438507",
-        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771438507",
-        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771438507"
+        "player": "/outputs/player_heatmap.png?v=1771507559",
+        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771507559",
+        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771507559"
       },
-      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771438507",
-      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771438507",
-      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771438507",
+      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771507559",
+      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771507559",
+      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771507559",
       "top5_scores": [
         {
           "score": "2-0",
@@ -438,6 +600,60 @@
           "score": "1-1",
           "count": 4,
           "percentage": 12.1
+        }
+      ],
+      "top5_scores_home_perspective": [
+        {
+          "score": "2-0",
+          "count": 8,
+          "percentage": 24.2
+        },
+        {
+          "score": "1-2",
+          "count": 7,
+          "percentage": 21.2
+        },
+        {
+          "score": "0-3",
+          "count": 7,
+          "percentage": 21.2
+        },
+        {
+          "score": "0-2",
+          "count": 7,
+          "percentage": 21.2
+        },
+        {
+          "score": "1-1",
+          "count": 4,
+          "percentage": 12.1
+        }
+      ],
+      "top5_scores_away_perspective": [
+        {
+          "score": "2-0",
+          "count": 10,
+          "percentage": 26.3
+        },
+        {
+          "score": "1-1",
+          "count": 9,
+          "percentage": 23.7
+        },
+        {
+          "score": "3-0",
+          "count": 7,
+          "percentage": 18.4
+        },
+        {
+          "score": "2-1",
+          "count": 6,
+          "percentage": 15.8
+        },
+        {
+          "score": "3-1",
+          "count": 6,
+          "percentage": 15.8
         }
       ],
       "markov_form": {
@@ -525,13 +741,13 @@
       ],
       "heatmap_data": [],
       "heatmaps": {
-        "player": "/outputs/player_heatmap.png?v=1771438511",
-        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771438511",
-        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771438511"
+        "player": "/outputs/player_heatmap.png?v=1771507563",
+        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771507563",
+        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771507563"
       },
-      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771438511",
-      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771438511",
-      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771438511",
+      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771507563",
+      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771507563",
+      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771507563",
       "top5_scores": [
         {
           "score": "0-2",
@@ -557,6 +773,60 @@
           "score": "0-3",
           "count": 5,
           "percentage": 11.6
+        }
+      ],
+      "top5_scores_home_perspective": [
+        {
+          "score": "0-2",
+          "count": 13,
+          "percentage": 30.2
+        },
+        {
+          "score": "1-2",
+          "count": 9,
+          "percentage": 20.9
+        },
+        {
+          "score": "2-0",
+          "count": 9,
+          "percentage": 20.9
+        },
+        {
+          "score": "2-1",
+          "count": 7,
+          "percentage": 16.3
+        },
+        {
+          "score": "0-3",
+          "count": 5,
+          "percentage": 11.6
+        }
+      ],
+      "top5_scores_away_perspective": [
+        {
+          "score": "2-1",
+          "count": 16,
+          "percentage": 39.0
+        },
+        {
+          "score": "2-0",
+          "count": 9,
+          "percentage": 22.0
+        },
+        {
+          "score": "3-1",
+          "count": 9,
+          "percentage": 22.0
+        },
+        {
+          "score": "0-2",
+          "count": 5,
+          "percentage": 12.2
+        },
+        {
+          "score": "1-2",
+          "count": 2,
+          "percentage": 4.9
         }
       ],
       "markov_form": {
@@ -644,13 +914,13 @@
       ],
       "heatmap_data": [],
       "heatmaps": {
-        "player": "/outputs/player_heatmap.png?v=1771438515",
-        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771438515",
-        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771438515"
+        "player": "/outputs/player_heatmap.png?v=1771507567",
+        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771507567",
+        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771507567"
       },
-      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771438515",
-      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771438515",
-      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771438515",
+      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771507567",
+      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771507567",
+      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771507567",
       "top5_scores": [
         {
           "score": "3-1",
@@ -676,6 +946,60 @@
           "score": "4-0",
           "count": 3,
           "percentage": 7.0
+        }
+      ],
+      "top5_scores_home_perspective": [
+        {
+          "score": "3-1",
+          "count": 17,
+          "percentage": 39.5
+        },
+        {
+          "score": "3-0",
+          "count": 14,
+          "percentage": 32.6
+        },
+        {
+          "score": "4-1",
+          "count": 5,
+          "percentage": 11.6
+        },
+        {
+          "score": "2-1",
+          "count": 4,
+          "percentage": 9.3
+        },
+        {
+          "score": "4-0",
+          "count": 3,
+          "percentage": 7.0
+        }
+      ],
+      "top5_scores_away_perspective": [
+        {
+          "score": "0-2",
+          "count": 18,
+          "percentage": 41.9
+        },
+        {
+          "score": "1-1",
+          "count": 8,
+          "percentage": 18.6
+        },
+        {
+          "score": "0-3",
+          "count": 7,
+          "percentage": 16.3
+        },
+        {
+          "score": "0-1",
+          "count": 5,
+          "percentage": 11.6
+        },
+        {
+          "score": "1-2",
+          "count": 5,
+          "percentage": 11.6
         }
       ],
       "markov_form": {
@@ -763,13 +1087,13 @@
       ],
       "heatmap_data": [],
       "heatmaps": {
-        "player": "/outputs/player_heatmap.png?v=1771438520",
-        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771438520",
-        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771438520"
+        "player": "/outputs/player_heatmap.png?v=1771507572",
+        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771507572",
+        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771507572"
       },
-      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771438520",
-      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771438520",
-      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771438520",
+      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771507572",
+      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771507572",
+      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771507572",
       "top5_scores": [
         {
           "score": "0-2",
@@ -795,6 +1119,60 @@
           "score": "1-3",
           "count": 2,
           "percentage": 4.7
+        }
+      ],
+      "top5_scores_home_perspective": [
+        {
+          "score": "0-2",
+          "count": 17,
+          "percentage": 39.5
+        },
+        {
+          "score": "1-1",
+          "count": 14,
+          "percentage": 32.6
+        },
+        {
+          "score": "2-1",
+          "count": 6,
+          "percentage": 14.0
+        },
+        {
+          "score": "1-2",
+          "count": 4,
+          "percentage": 9.3
+        },
+        {
+          "score": "1-3",
+          "count": 2,
+          "percentage": 4.7
+        }
+      ],
+      "top5_scores_away_perspective": [
+        {
+          "score": "2-1",
+          "count": 10,
+          "percentage": 29.4
+        },
+        {
+          "score": "3-1",
+          "count": 8,
+          "percentage": 23.5
+        },
+        {
+          "score": "2-0",
+          "count": 6,
+          "percentage": 17.6
+        },
+        {
+          "score": "3-2",
+          "count": 6,
+          "percentage": 17.6
+        },
+        {
+          "score": "2-2",
+          "count": 4,
+          "percentage": 11.8
         }
       ],
       "markov_form": {
@@ -882,13 +1260,13 @@
       ],
       "heatmap_data": [],
       "heatmaps": {
-        "player": "/outputs/player_heatmap.png?v=1771438524",
-        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771438524",
-        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771438524"
+        "player": "/outputs/player_heatmap.png?v=1771507576",
+        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771507576",
+        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771507576"
       },
-      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771438524",
-      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771438524",
-      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771438524",
+      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771507576",
+      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771507576",
+      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771507576",
       "top5_scores": [
         {
           "score": "1-1",
@@ -914,6 +1292,60 @@
           "score": "0-1",
           "count": 3,
           "percentage": 7.9
+        }
+      ],
+      "top5_scores_home_perspective": [
+        {
+          "score": "1-1",
+          "count": 21,
+          "percentage": 55.3
+        },
+        {
+          "score": "2-1",
+          "count": 6,
+          "percentage": 15.8
+        },
+        {
+          "score": "2-0",
+          "count": 5,
+          "percentage": 13.2
+        },
+        {
+          "score": "1-0",
+          "count": 3,
+          "percentage": 7.9
+        },
+        {
+          "score": "0-1",
+          "count": 3,
+          "percentage": 7.9
+        }
+      ],
+      "top5_scores_away_perspective": [
+        {
+          "score": "1-1",
+          "count": 17,
+          "percentage": 48.6
+        },
+        {
+          "score": "2-1",
+          "count": 5,
+          "percentage": 14.3
+        },
+        {
+          "score": "0-2",
+          "count": 5,
+          "percentage": 14.3
+        },
+        {
+          "score": "1-0",
+          "count": 4,
+          "percentage": 11.4
+        },
+        {
+          "score": "0-1",
+          "count": 4,
+          "percentage": 11.4
         }
       ],
       "markov_form": {
@@ -1001,13 +1433,13 @@
       ],
       "heatmap_data": [],
       "heatmaps": {
-        "player": "/outputs/player_heatmap.png?v=1771438528",
-        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771438528",
-        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771438528"
+        "player": "/outputs/player_heatmap.png?v=1771507581",
+        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1771507581",
+        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1771507581"
       },
-      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771438528",
-      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771438528",
-      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771438528",
+      "player_heatmap_url": "/outputs/player_heatmap.png?v=1771507581",
+      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1771507581",
+      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1771507581",
       "top5_scores": [
         {
           "score": "0-2",
@@ -1033,6 +1465,60 @@
           "score": "2-0",
           "count": 4,
           "percentage": 11.1
+        }
+      ],
+      "top5_scores_home_perspective": [
+        {
+          "score": "0-2",
+          "count": 10,
+          "percentage": 27.8
+        },
+        {
+          "score": "1-3",
+          "count": 8,
+          "percentage": 22.2
+        },
+        {
+          "score": "0-3",
+          "count": 8,
+          "percentage": 22.2
+        },
+        {
+          "score": "1-1",
+          "count": 6,
+          "percentage": 16.7
+        },
+        {
+          "score": "2-0",
+          "count": 4,
+          "percentage": 11.1
+        }
+      ],
+      "top5_scores_away_perspective": [
+        {
+          "score": "2-0",
+          "count": 12,
+          "percentage": 37.5
+        },
+        {
+          "score": "1-1",
+          "count": 5,
+          "percentage": 15.6
+        },
+        {
+          "score": "3-0",
+          "count": 5,
+          "percentage": 15.6
+        },
+        {
+          "score": "3-1",
+          "count": 5,
+          "percentage": 15.6
+        },
+        {
+          "score": "0-1",
+          "count": 5,
+          "percentage": 15.6
         }
       ],
       "markov_form": {
