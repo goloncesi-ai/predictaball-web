@@ -269,9 +269,27 @@
                     <div class="sim-config">
                         <div class="config-card">
                             <h3 data-i18n="match_setup">Match Setup</h3>
-                            <div class="form-group">
+                            <div class="form-group" id="sim-single-league-group">
                                 <label for="sim-league" data-i18n="label_league">League</label>
                                 <select id="sim-league" class="modern-select">
+                                    <option value="" disabled selected data-i18n="choose_league_placeholder">Select League</option>
+                                </select>
+                            </div>
+                            <div class="form-group sim-toggle-group">
+                                <label class="sim-toggle-label" for="sim-cross-league">
+                                    <span data-i18n="cross_league_toggle">Cross-League Match</span>
+                                    <input id="sim-cross-league" type="checkbox">
+                                </label>
+                            </div>
+                            <div class="form-group hidden" id="sim-home-league-group">
+                                <label for="sim-team1-league" data-i18n="label_home_league">Home League</label>
+                                <select id="sim-team1-league" class="modern-select">
+                                    <option value="" disabled selected data-i18n="choose_league_placeholder">Select League</option>
+                                </select>
+                            </div>
+                            <div class="form-group hidden" id="sim-away-league-group">
+                                <label for="sim-team2-league" data-i18n="label_away_league">Away League</label>
+                                <select id="sim-team2-league" class="modern-select">
                                     <option value="" disabled selected data-i18n="choose_league_placeholder">Select League</option>
                                 </select>
                             </div>
@@ -491,7 +509,7 @@
     <script src="data.js?v=4"></script>
     <script src="players_data.js?v=1"></script>
     <script src="formation.js?v=7"></script>
-    <script src="app.js?v=20"></script>
+    <script src="app.js?v=21"></script>
 </body>
 
 </html>

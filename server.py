@@ -444,6 +444,78 @@ def _ensure_team_mixed_seasons_layout(league_folder, team_folder):
     return paths
 
 
+def _resolve_team_folder_in_league(league_folder, requested_team):
+    league_dir = _get_simulation_league_dir(league_folder)
+    requested = _normalize_text(requested_team)
+    if not requested or not os.path.isdir(league_dir):
+        return requested
+
+    requested_key = _team_key(requested)
+    exact_match = None
+    fuzzy_match = None
+
+    for team_folder in sorted(os.listdir(league_dir)):
+        team_dir = os.path.join(league_dir, team_folder)
+        if not os.path.isdir(team_dir):
+            continue
+        team_key = _team_key(team_folder)
+        if requested_key and team_key == requested_key:
+            exact_match = team_folder
+            break
+        if requested_key and (requested_key in team_key or team_key in requested_key):
+            fuzzy_match = fuzzy_match or team_folder
+
+    return exact_match or fuzzy_match or requested
+
+
+def _link_or_copy_dir(src_dir, dst_dir):
+    if os.path.lexists(dst_dir):
+        if os.path.islink(dst_dir) or os.path.isfile(dst_dir):
+            os.unlink(dst_dir)
+        else:
+            shutil.rmtree(dst_dir, ignore_errors=True)
+    try:
+        os.symlink(src_dir, dst_dir, target_is_directory=True)
+    except Exception:
+        shutil.copytree(src_dir, dst_dir, dirs_exist_ok=True)
+
+
+def _build_cross_league_base_dir(home_league, home_team, away_league, away_team):
+    home_team_key = _team_key(home_team)
+    away_team_key = _team_key(away_team)
+    if home_team_key and away_team_key and home_team_key == away_team_key:
+        raise ValueError("Cross-league simulation requires different team folders for home and away teams.")
+
+    home_src = os.path.join(_get_simulation_league_dir(home_league), home_team)
+    away_src = os.path.join(_get_simulation_league_dir(away_league), away_team)
+    if not os.path.isdir(home_src):
+        raise FileNotFoundError(f"Home team folder not found: {home_team} in {home_league}")
+    if not os.path.isdir(away_src):
+        raise FileNotFoundError(f"Away team folder not found: {away_team} in {away_league}")
+
+    cross_root = os.path.join(OUTPUT_DIR, "_cross_league_data")
+    os.makedirs(cross_root, exist_ok=True)
+    key = "__".join([
+        _team_key(home_league) or "homeleague",
+        _team_key(home_team) or "hometeam",
+        "vs",
+        _team_key(away_league) or "awayleague",
+        _team_key(away_team) or "awayteam",
+    ])
+    base_dir = os.path.join(cross_root, key)
+
+    if os.path.lexists(base_dir):
+        if os.path.islink(base_dir) or os.path.isfile(base_dir):
+            os.unlink(base_dir)
+        else:
+            shutil.rmtree(base_dir, ignore_errors=True)
+    os.makedirs(base_dir, exist_ok=True)
+
+    _link_or_copy_dir(home_src, os.path.join(base_dir, home_team))
+    _link_or_copy_dir(away_src, os.path.join(base_dir, away_team))
+    return base_dir
+
+
 def _paths_have_games_input(paths):
     if not isinstance(paths, dict):
         return False
@@ -952,9 +1024,11 @@ def serve_index():
 def run_simulation():
     try:
         data = request.json
-        team1 = data.get('team1')
-        team2 = data.get('team2')
+        team1 = _normalize_text(data.get('team1'))
+        team2 = _normalize_text(data.get('team2'))
         league = data.get('league')
+        home_league = data.get('home_league') or league
+        away_league = data.get('away_league') or league
         sim_type = data.get('type')
         team1_formation = data.get('team1_formation')
         team2_formation = data.get('team2_formation')
@@ -965,27 +1039,43 @@ def run_simulation():
             return jsonify({"error": "Missing teams"}), 400
 
         results = {}
-        league_folder = _resolve_simulation_league_folder(league)
-        base_data_dir = _get_simulation_league_dir(league_folder)
-        if not os.path.isdir(base_data_dir):
-            return jsonify({"error": f"League data folder not found: {league_folder}"}), 400
+        home_league_folder = _resolve_simulation_league_folder(home_league)
+        away_league_folder = _resolve_simulation_league_folder(away_league)
+        if not os.path.isdir(_get_simulation_league_dir(home_league_folder)):
+            return jsonify({"error": f"League data folder not found: {home_league_folder}"}), 400
+        if not os.path.isdir(_get_simulation_league_dir(away_league_folder)):
+            return jsonify({"error": f"League data folder not found: {away_league_folder}"}), 400
 
-        team1_paths = _ensure_team_mixed_seasons_layout(league_folder, team1)
-        team2_paths = _ensure_team_mixed_seasons_layout(league_folder, team2)
+        team1_folder = _resolve_team_folder_in_league(home_league_folder, team1)
+        team2_folder = _resolve_team_folder_in_league(away_league_folder, team2)
+
+        team1_paths = _ensure_team_mixed_seasons_layout(home_league_folder, team1_folder)
+        team2_paths = _ensure_team_mixed_seasons_layout(away_league_folder, team2_folder)
         if not _paths_have_games_input(team1_paths):
-            return jsonify({"error": f"No *_Games_Input file found for {team1} in {league_folder}"}), 400
+            return jsonify({"error": f"No *_Games_Input file found for {team1_folder} in {home_league_folder}"}), 400
         if not _paths_have_games_input(team2_paths):
-            return jsonify({"error": f"No *_Games_Input file found for {team2} in {league_folder}"}), 400
-        _ensure_team_logo_asset(team1)
-        _ensure_team_logo_asset(team2)
+            return jsonify({"error": f"No *_Games_Input file found for {team2_folder} in {away_league_folder}"}), 400
+
+        if home_league_folder == away_league_folder:
+            base_data_dir = _get_simulation_league_dir(home_league_folder)
+        else:
+            base_data_dir = _build_cross_league_base_dir(
+                home_league_folder,
+                team1_folder,
+                away_league_folder,
+                team2_folder,
+            )
+
+        _ensure_team_logo_asset(team1_folder)
+        _ensure_team_logo_asset(team2_folder)
 
         # Import combined adapter (it should be found via sys.path)
         import combined_adapter
     
         # Run the Combined Simulation
         results = combined_adapter.simulate_match(
-            team1, 
-            team2, 
+            team1_folder, 
+            team2_folder, 
             ASSETS_DIR, 
             base_data_dir,
             OUTPUT_DIR,
@@ -998,7 +1088,10 @@ def run_simulation():
         )
 
         if isinstance(results, dict):
-            results["league"] = league_folder
+            results["league"] = home_league_folder
+            results["home_league"] = home_league_folder
+            results["away_league"] = away_league_folder
+            results["cross_league"] = home_league_folder != away_league_folder
         
         return jsonify(results)
 

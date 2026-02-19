@@ -33,10 +33,20 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Simulation Tab Elements
     const simLeagueSelect = document.getElementById('sim-league');
+    const simCrossLeagueToggle = document.getElementById('sim-cross-league');
+    const simTeam1LeagueSelect = document.getElementById('sim-team1-league');
+    const simTeam2LeagueSelect = document.getElementById('sim-team2-league');
+    const simSingleLeagueGroup = document.getElementById('sim-single-league-group');
+    const simHomeLeagueGroup = document.getElementById('sim-home-league-group');
+    const simAwayLeagueGroup = document.getElementById('sim-away-league-group');
     const simTeam1Select = document.getElementById('sim-team1');
     const simTeam2Select = document.getElementById('sim-team2');
     const simTeam1FormationSelect = document.getElementById('sim-team1-formation');
     const simTeam2FormationSelect = document.getElementById('sim-team2-formation');
+    const team1AdjSlider = document.getElementById('team1-adjustment');
+    const team2AdjSlider = document.getElementById('team2-adjustment');
+    const team1AdjValue = document.getElementById('team1-adj-value');
+    const team2AdjValue = document.getElementById('team2-adj-value');
     const btnRunSim = document.getElementById('btn-run-sim');
     const simResults = document.getElementById('sim-results');
 
@@ -93,6 +103,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     let simulationLeagues = [];
     let simulationTeamsByLeague = new Map();
     let currentSimulationLeague = '';
+    let currentSimulationHomeLeague = '';
+    let currentSimulationAwayLeague = '';
+    let simulationCrossLeagueEnabled = false;
+    let formationHelpersReady = false;
+    let formationHelpersLoadPromise = null;
+    let pitchUpdateToken = 0;
+    let selectionSyncToken = 0;
+    let hmmSyncToken = 0;
     const LIQUID_SURFACE_SELECTOR = '.main-nav, .config-card, .match-card, .insights-panel, .result-card, .round-selector, .lang-btn, .analysis-panel, .team-card, .scoreline-perspective-card, .confidence-indicator';
     let liquidSurfaceEls = [];
     let liquidFrameToken = null;
@@ -135,6 +153,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             sim_desc: "Run 1000+ Monte Carlo simulations to predict the outcome.",
             match_setup: "Match Setup",
             label_league: "League",
+            label_home_league: "Home League",
+            label_away_league: "Away League",
+            cross_league_toggle: "Cross-League Match",
             select_short: "Select...",
             choose_league_placeholder: "Select League",
             label_home_formation: "Home Formation",
@@ -210,6 +231,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             sim_desc: "Maç sonucunu tahmin etmek için 1000+ Monte Carlo simülasyonu çalıştırın.",
             match_setup: "Maç Kurulumu",
             label_league: "Lig",
+            label_home_league: "Ev Sahibi Ligi",
+            label_away_league: "Deplasman Ligi",
+            cross_league_toggle: "Ligler Arası Maç",
             select_short: "Seç...",
             choose_league_placeholder: "Lig seçin...",
             label_home_formation: "Ev Sahibi Dizilişi",
@@ -527,37 +551,108 @@ document.addEventListener('DOMContentLoaded', async () => {
         fillFormationSelect(simTeam2FormationSelect);
     }
 
-    function populateSimulationLeagueSelect() {
-        if (!simLeagueSelect) return;
+    function getSimulationTeamMeta(leagueFolder, teamFolder) {
+        const leagueTeams = simulationTeamsByLeague.get(leagueFolder) || [];
+        const target = `${teamFolder || ''}`.trim();
+        if (!target) return null;
+        return leagueTeams.find((team) => `${team?.folder || team?.name || ''}`.trim() === target) || null;
+    }
 
-        const previousLeague = simulationTeamsByLeague.has(currentSimulationLeague) ? currentSimulationLeague : '';
-        const placeholderOption = buildPlaceholderOption(simLeagueSelect, 'Select League');
-        simLeagueSelect.innerHTML = '';
-        simLeagueSelect.add(placeholderOption);
+    function getTeamsForLeague(leagueFolder) {
+        return simulationTeamsByLeague.has(leagueFolder)
+            ? (simulationTeamsByLeague.get(leagueFolder) || [])
+            : [];
+    }
 
+    function getEffectiveSimulationHomeLeague() {
+        return simulationCrossLeagueEnabled ? currentSimulationHomeLeague : currentSimulationLeague;
+    }
+
+    function getEffectiveSimulationAwayLeague() {
+        return simulationCrossLeagueEnabled ? currentSimulationAwayLeague : currentSimulationLeague;
+    }
+
+    function getSimulationSelectionState() {
+        return {
+            homeLeague: getEffectiveSimulationHomeLeague(),
+            awayLeague: getEffectiveSimulationAwayLeague(),
+            homeTeam: simTeam1Select?.value || '',
+            awayTeam: simTeam2Select?.value || '',
+        };
+    }
+
+    function fillSimulationLeagueSelect(select) {
+        if (!select) return;
+        const placeholderOption = buildPlaceholderOption(select, 'Select League');
+        select.innerHTML = '';
+        select.add(placeholderOption);
         simulationLeagues.forEach((league) => {
-            simLeagueSelect.add(new Option(league.name, league.folder));
+            select.add(new Option(league.name, league.folder));
         });
+    }
 
-        if (previousLeague) {
-            simLeagueSelect.value = previousLeague;
-            currentSimulationLeague = previousLeague;
-            populateSimulationTeamSelectors(previousLeague);
-        } else {
-            currentSimulationLeague = '';
-            populateSimulationTeamSelectors('');
+    function applyCrossLeagueModeUI() {
+        if (simSingleLeagueGroup) {
+            simSingleLeagueGroup.classList.toggle('hidden', simulationCrossLeagueEnabled);
+        }
+        if (simHomeLeagueGroup) {
+            simHomeLeagueGroup.classList.toggle('hidden', !simulationCrossLeagueEnabled);
+        }
+        if (simAwayLeagueGroup) {
+            simAwayLeagueGroup.classList.toggle('hidden', !simulationCrossLeagueEnabled);
+        }
+        if (simLeagueSelect) {
+            simLeagueSelect.disabled = simulationCrossLeagueEnabled;
+        }
+        if (simCrossLeagueToggle) {
+            simCrossLeagueToggle.checked = simulationCrossLeagueEnabled;
         }
     }
 
-    function populateSimulationTeamSelectors(leagueFolder) {
+    function populateSimulationLeagueSelects() {
+        fillSimulationLeagueSelect(simLeagueSelect);
+        fillSimulationLeagueSelect(simTeam1LeagueSelect);
+        fillSimulationLeagueSelect(simTeam2LeagueSelect);
+
+        if (simulationTeamsByLeague.has(currentSimulationLeague) && simLeagueSelect) {
+            simLeagueSelect.value = currentSimulationLeague;
+        } else {
+            currentSimulationLeague = '';
+        }
+
+        if (simulationTeamsByLeague.has(currentSimulationHomeLeague) && simTeam1LeagueSelect) {
+            simTeam1LeagueSelect.value = currentSimulationHomeLeague;
+        } else {
+            currentSimulationHomeLeague = '';
+        }
+
+        if (simulationTeamsByLeague.has(currentSimulationAwayLeague) && simTeam2LeagueSelect) {
+            simTeam2LeagueSelect.value = currentSimulationAwayLeague;
+        } else {
+            currentSimulationAwayLeague = '';
+        }
+
+        if (!simulationCrossLeagueEnabled && currentSimulationLeague) {
+            currentSimulationHomeLeague = currentSimulationLeague;
+            currentSimulationAwayLeague = currentSimulationLeague;
+            if (simTeam1LeagueSelect) simTeam1LeagueSelect.value = currentSimulationHomeLeague;
+            if (simTeam2LeagueSelect) simTeam2LeagueSelect.value = currentSimulationAwayLeague;
+        }
+
+        applyCrossLeagueModeUI();
+    }
+
+    function populateSimulationTeamSelectors() {
         if (!simTeam1Select || !simTeam2Select) return;
 
-        const selectedLeague = simulationTeamsByLeague.has(leagueFolder) ? leagueFolder : '';
-        const teams = selectedLeague ? (simulationTeamsByLeague.get(selectedLeague) || []) : [];
+        const homeLeague = getEffectiveSimulationHomeLeague();
+        const awayLeague = getEffectiveSimulationAwayLeague();
+        const homeTeams = getTeamsForLeague(homeLeague);
+        const awayTeams = getTeamsForLeague(awayLeague);
         const previousHome = simTeam1Select.value;
         const previousAway = simTeam2Select.value;
 
-        const fillTeamSelect = (select) => {
+        const fillTeamSelect = (select, teams, league) => {
             const placeholderOption = buildPlaceholderOption(select, 'Select...');
             select.innerHTML = '';
             select.add(placeholderOption);
@@ -565,40 +660,28 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const teamFolder = `${team?.folder || team?.name || ''}`.trim();
                 if (!teamFolder) return;
                 const teamLabel = `${team?.name || teamFolder}`.trim();
-                const option = new Option(teamLabel, teamFolder);
-                if (team?.has_games_input === false) {
-                    option.disabled = true;
-                }
-                select.add(option);
+                select.add(new Option(teamLabel, teamFolder));
             });
-            const hasEnabledTeams = teams.some(team => team?.has_games_input !== false);
-            select.disabled = !selectedLeague || !hasEnabledTeams;
+            select.disabled = !league || teams.length === 0;
         };
 
-        fillTeamSelect(simTeam1Select);
-        fillTeamSelect(simTeam2Select);
+        fillTeamSelect(simTeam1Select, homeTeams, homeLeague);
+        fillTeamSelect(simTeam2Select, awayTeams, awayLeague);
 
-        if (teams.some(team => `${team?.folder || team?.name || ''}` === previousHome)) {
+        if (homeTeams.some(team => `${team?.folder || team?.name || ''}` === previousHome)) {
             simTeam1Select.value = previousHome;
         }
-        if (teams.some(team => `${team?.folder || team?.name || ''}` === previousAway)) {
+        if (awayTeams.some(team => `${team?.folder || team?.name || ''}` === previousAway)) {
             simTeam2Select.value = previousAway;
         }
 
-        if (!selectedLeague) {
+        if (!homeLeague || !awayLeague) {
             applySliderValue(team1AdjSlider, team1AdjValue, 0);
             applySliderValue(team2AdjSlider, team2AdjValue, 0);
             if (typeof hidePitchView === 'function') hidePitchView();
             lastSimTeam1 = '';
             lastSimTeam2 = '';
         }
-    }
-
-    function getSimulationTeamMeta(leagueFolder, teamFolder) {
-        const leagueTeams = simulationTeamsByLeague.get(leagueFolder) || [];
-        const target = `${teamFolder || ''}`.trim();
-        if (!target) return null;
-        return leagueTeams.find((team) => `${team?.folder || team?.name || ''}`.trim() === target) || null;
     }
 
     async function loadSimulationOptions(forceRefresh = false) {
@@ -644,7 +727,17 @@ document.addEventListener('DOMContentLoaded', async () => {
             ]);
         }
 
-        populateSimulationLeagueSelect();
+        const defaultLeague = simulationLeagues[0]?.folder || '';
+        if (!currentSimulationLeague) currentSimulationLeague = defaultLeague;
+        if (!currentSimulationHomeLeague) currentSimulationHomeLeague = currentSimulationLeague || defaultLeague;
+        if (!currentSimulationAwayLeague) currentSimulationAwayLeague = currentSimulationLeague || defaultLeague;
+        simulationCrossLeagueEnabled = Boolean(simCrossLeagueToggle?.checked);
+        if (!simulationCrossLeagueEnabled) {
+            currentSimulationHomeLeague = currentSimulationLeague;
+            currentSimulationAwayLeague = currentSimulationLeague;
+        }
+        populateSimulationLeagueSelects();
+        populateSimulationTeamSelectors();
     }
 
     function initTabs() {
@@ -692,15 +785,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     // --- Slider Event Listeners ---
-    const team1AdjSlider = document.getElementById('team1-adjustment');
-    const team2AdjSlider = document.getElementById('team2-adjustment');
-    const team1AdjValue = document.getElementById('team1-adj-value');
-    const team2AdjValue = document.getElementById('team2-adj-value');
-    let formationHelpersReady = false;
-    let formationHelpersLoadPromise = null;
-    let pitchUpdateToken = 0;
-    let selectionSyncToken = 0;
-    let hmmSyncToken = 0;
 
     function formatSliderAdjustment(value) {
         const num = Number(value);
@@ -752,30 +836,70 @@ document.addEventListener('DOMContentLoaded', async () => {
         };
     }
 
-    async function updateSlidersFromHmm(homeTeam, awayTeam, league) {
+    async function fetchSingleHmmAdjustment(team, league) {
+        const selectedTeam = `${team || ''}`.trim();
+        const selectedLeague = `${league || ''}`.trim();
+        if (!selectedTeam || !selectedLeague) return 0;
+
+        const params = new URLSearchParams();
+        params.set('team', selectedTeam);
+        params.set('league', selectedLeague);
+        const response = await fetch(`/api/hmm-adjustment?${params.toString()}`);
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`HMM adjustment fetch failed (${response.status}): ${errorText}`);
+        }
+        const payload = await response.json();
+        const adjustment = Number(payload?.hmm_adjustment);
+        return Number.isFinite(adjustment) ? adjustment : 0;
+    }
+
+    async function updateSlidersFromHmm(homeTeam, awayTeam, homeLeague, awayLeague) {
         const token = ++hmmSyncToken;
         const selectedHomeTeam = `${homeTeam || ''}`.trim();
         const selectedAwayTeam = `${awayTeam || ''}`.trim();
-        const selectedLeague = `${league || ''}`.trim();
+        const selectedHomeLeague = `${homeLeague || ''}`.trim();
+        const selectedAwayLeague = `${awayLeague || ''}`.trim();
 
         try {
-            const adjustments = await fetchPairHmmAdjustments(selectedHomeTeam, selectedAwayTeam, selectedLeague);
+            let homeAdjustment = 0;
+            let awayAdjustment = 0;
+
+            if (selectedHomeLeague && selectedHomeLeague === selectedAwayLeague) {
+                const adjustments = await fetchPairHmmAdjustments(
+                    selectedHomeTeam,
+                    selectedAwayTeam,
+                    selectedHomeLeague
+                );
+                homeAdjustment = selectedHomeTeam ? adjustments.homeAdjustment : 0;
+                awayAdjustment = selectedAwayTeam ? adjustments.awayAdjustment : 0;
+            } else {
+                const [homeValue, awayValue] = await Promise.all([
+                    fetchSingleHmmAdjustment(selectedHomeTeam, selectedHomeLeague),
+                    fetchSingleHmmAdjustment(selectedAwayTeam, selectedAwayLeague),
+                ]);
+                homeAdjustment = selectedHomeTeam ? homeValue : 0;
+                awayAdjustment = selectedAwayTeam ? awayValue : 0;
+            }
+
             const stillLatest =
                 token === hmmSyncToken &&
                 (simTeam1Select?.value || '') === selectedHomeTeam &&
                 (simTeam2Select?.value || '') === selectedAwayTeam &&
-                currentSimulationLeague === selectedLeague;
+                getEffectiveSimulationHomeLeague() === selectedHomeLeague &&
+                getEffectiveSimulationAwayLeague() === selectedAwayLeague;
             if (!stillLatest) return;
 
-            applySliderValue(team1AdjSlider, team1AdjValue, selectedHomeTeam ? adjustments.homeAdjustment : 0);
-            applySliderValue(team2AdjSlider, team2AdjValue, selectedAwayTeam ? adjustments.awayAdjustment : 0);
+            applySliderValue(team1AdjSlider, team1AdjValue, homeAdjustment);
+            applySliderValue(team2AdjSlider, team2AdjValue, awayAdjustment);
         } catch (error) {
             console.warn(`Failed to load HMM adjustments for ${selectedHomeTeam} vs ${selectedAwayTeam}:`, error.message);
             const stillLatest =
                 token === hmmSyncToken &&
                 (simTeam1Select?.value || '') === selectedHomeTeam &&
                 (simTeam2Select?.value || '') === selectedAwayTeam &&
-                currentSimulationLeague === selectedLeague;
+                getEffectiveSimulationHomeLeague() === selectedHomeLeague &&
+                getEffectiveSimulationAwayLeague() === selectedAwayLeague;
             if (!stillLatest) return;
 
             applySliderValue(team1AdjSlider, team1AdjValue, 0);
@@ -847,26 +971,27 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (!canRenderPitch) return;
 
         const token = ++pitchUpdateToken;
-        const selectedLeague = currentSimulationLeague;
+        const selectedHomeLeague = getEffectiveSimulationHomeLeague();
+        const selectedAwayLeague = getEffectiveSimulationAwayLeague();
         const selectedHomeTeam = simTeam1Select?.value || '';
         const selectedAwayTeam = simTeam2Select?.value || '';
-        const homeTeamMeta = getSimulationTeamMeta(selectedLeague, selectedHomeTeam);
-        const awayTeamMeta = getSimulationTeamMeta(selectedLeague, selectedAwayTeam);
-        if (!selectedLeague) {
+        const homeTeamMeta = getSimulationTeamMeta(selectedHomeLeague, selectedHomeTeam);
+        const awayTeamMeta = getSimulationTeamMeta(selectedAwayLeague, selectedAwayTeam);
+        if (!selectedHomeLeague && !selectedAwayLeague) {
             if (typeof hidePitchView === 'function') hidePitchView();
             return;
         }
 
         // Fetch both teams in parallel and discard stale completions.
         const [homeResult, awayResult] = await Promise.all([
-            selectedHomeTeam
-                ? getTeamLatestLineup(selectedHomeTeam, selectedLeague, homeTeamMeta?.lineup_csv_path || '').catch((error) => {
+            selectedHomeTeam && selectedHomeLeague
+                ? getTeamLatestLineup(selectedHomeTeam, selectedHomeLeague, homeTeamMeta?.lineup_csv_path || '').catch((error) => {
                     console.error('Error loading team 1:', error);
                     return null;
                 })
                 : Promise.resolve(null),
-            selectedAwayTeam
-                ? getTeamLatestLineup(selectedAwayTeam, selectedLeague, awayTeamMeta?.lineup_csv_path || '').catch((error) => {
+            selectedAwayTeam && selectedAwayLeague
+                ? getTeamLatestLineup(selectedAwayTeam, selectedAwayLeague, awayTeamMeta?.lineup_csv_path || '').catch((error) => {
                     console.error('Error loading team 2:', error);
                     return null;
                 })
@@ -875,7 +1000,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const stillLatest =
             token === pitchUpdateToken &&
-            currentSimulationLeague === selectedLeague &&
+            getEffectiveSimulationHomeLeague() === selectedHomeLeague &&
+            getEffectiveSimulationAwayLeague() === selectedAwayLeague &&
             (simTeam1Select?.value || '') === selectedHomeTeam &&
             (simTeam2Select?.value || '') === selectedAwayTeam;
         if (!stillLatest) return;
@@ -903,12 +1029,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     async function syncSimulationSelectionEffects(force = false) {
-        const selectedLeague = currentSimulationLeague;
-        const selectedHomeTeam = simTeam1Select?.value || '';
-        const selectedAwayTeam = simTeam2Select?.value || '';
+        const { homeLeague, awayLeague, homeTeam, awayTeam } = getSimulationSelectionState();
         const token = ++selectionSyncToken;
 
-        if (!selectedLeague) {
+        if (!homeLeague && !awayLeague) {
             applySliderValue(team1AdjSlider, team1AdjValue, 0);
             applySliderValue(team2AdjSlider, team2AdjValue, 0);
             if (typeof hidePitchView === 'function') hidePitchView();
@@ -917,7 +1041,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         await Promise.allSettled([
             updatePitchVisualization(),
-            updateSlidersFromHmm(selectedHomeTeam, selectedAwayTeam, selectedLeague),
+            updateSlidersFromHmm(homeTeam, awayTeam, homeLeague, awayLeague),
         ]);
 
         if (token !== selectionSyncToken) return;
@@ -926,7 +1050,59 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (simLeagueSelect) {
         simLeagueSelect.addEventListener('change', async (e) => {
             currentSimulationLeague = `${e.target?.value || ''}`.trim();
-            populateSimulationTeamSelectors(currentSimulationLeague);
+            if (!simulationCrossLeagueEnabled) {
+                currentSimulationHomeLeague = currentSimulationLeague;
+                currentSimulationAwayLeague = currentSimulationLeague;
+            }
+            populateSimulationTeamSelectors();
+            await syncSimulationSelectionEffects(true);
+        });
+    }
+
+    if (simCrossLeagueToggle) {
+        simCrossLeagueToggle.addEventListener('change', async (e) => {
+            simulationCrossLeagueEnabled = Boolean(e.target?.checked);
+            if (simulationCrossLeagueEnabled) {
+                const fallbackLeague = currentSimulationLeague || simulationLeagues[0]?.folder || '';
+                currentSimulationHomeLeague = currentSimulationHomeLeague || simTeam1LeagueSelect?.value || fallbackLeague;
+                currentSimulationAwayLeague = currentSimulationAwayLeague || simTeam2LeagueSelect?.value || fallbackLeague;
+                if (simTeam1LeagueSelect && currentSimulationHomeLeague) simTeam1LeagueSelect.value = currentSimulationHomeLeague;
+                if (simTeam2LeagueSelect && currentSimulationAwayLeague) simTeam2LeagueSelect.value = currentSimulationAwayLeague;
+            } else {
+                const singleLeague = `${currentSimulationHomeLeague || currentSimulationAwayLeague || simLeagueSelect?.value || currentSimulationLeague || simulationLeagues[0]?.folder || ''}`.trim();
+                currentSimulationLeague = singleLeague;
+                currentSimulationHomeLeague = singleLeague;
+                currentSimulationAwayLeague = singleLeague;
+                if (simLeagueSelect && singleLeague) simLeagueSelect.value = singleLeague;
+            }
+            applyCrossLeagueModeUI();
+            populateSimulationTeamSelectors();
+            await syncSimulationSelectionEffects(true);
+        });
+    }
+
+    if (simTeam1LeagueSelect) {
+        simTeam1LeagueSelect.addEventListener('change', async (e) => {
+            currentSimulationHomeLeague = `${e.target?.value || ''}`.trim();
+            if (!simulationCrossLeagueEnabled) {
+                currentSimulationLeague = currentSimulationHomeLeague;
+                currentSimulationAwayLeague = currentSimulationHomeLeague;
+                if (simLeagueSelect) simLeagueSelect.value = currentSimulationLeague;
+            }
+            populateSimulationTeamSelectors();
+            await syncSimulationSelectionEffects(true);
+        });
+    }
+
+    if (simTeam2LeagueSelect) {
+        simTeam2LeagueSelect.addEventListener('change', async (e) => {
+            currentSimulationAwayLeague = `${e.target?.value || ''}`.trim();
+            if (!simulationCrossLeagueEnabled) {
+                currentSimulationLeague = currentSimulationAwayLeague;
+                currentSimulationHomeLeague = currentSimulationAwayLeague;
+                if (simLeagueSelect) simLeagueSelect.value = currentSimulationLeague;
+            }
+            populateSimulationTeamSelectors();
             await syncSimulationSelectionEffects(true);
         });
     }
@@ -957,13 +1133,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     // --- Event Listeners (Simulation) ---
     if (btnRunSim) {
         btnRunSim.addEventListener('click', async () => {
-            const selectedLeague = currentSimulationLeague || simLeagueSelect?.value || '';
+            const selectedHomeLeague = getEffectiveSimulationHomeLeague();
+            const selectedAwayLeague = getEffectiveSimulationAwayLeague();
+            const selectedLeague = selectedHomeLeague || selectedAwayLeague || currentSimulationLeague || simLeagueSelect?.value || '';
             const t1 = simTeam1Select.value;
             const t2 = simTeam2Select.value;
             // Combined script doesn't need type
 
-            if (!selectedLeague) {
-                alert("Please select a league first.");
+            if (!selectedHomeLeague || !selectedAwayLeague) {
+                alert("Please select league(s) first.");
                 return;
             }
 
@@ -1036,6 +1214,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         league: selectedLeague,
+                        home_league: selectedHomeLeague,
+                        away_league: selectedAwayLeague,
                         team1: t1,
                         team2: t2,
                         team1_formation: team1Formation,
