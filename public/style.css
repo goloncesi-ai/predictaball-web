@@ -12,6 +12,9 @@
     --glass-shadow: 0 14px 38px -14px rgba(1, 9, 20, 0.8);
     --gradient-1: linear-gradient(128deg, #1ca3ff 0%, #14c6a3 62%, #f59e0b 100%);
     --gradient-text: linear-gradient(115deg, #f8fbff 0%, #d6e4f5 100%);
+    --liquid-sheen: rgba(255, 255, 255, 0.18);
+    --liquid-specular: rgba(187, 228, 255, 0.28);
+    --liquid-shadow: 0 16px 44px -24px rgba(2, 8, 20, 0.88);
 }
 
 * {
@@ -156,6 +159,66 @@ body {
     backdrop-filter: blur(12px);
     box-shadow: 0 10px 24px -14px rgba(0, 0, 0, 0.6);
     gap: 0.5rem;
+}
+
+@keyframes liquidDrift {
+    0% {
+        transform: translate3d(-6%, -4%, 0) scale(1.04);
+    }
+
+    50% {
+        transform: translate3d(4%, 3%, 0) scale(1.08);
+    }
+
+    100% {
+        transform: translate3d(-3%, 5%, 0) scale(1.05);
+    }
+}
+
+.main-nav,
+.config-card,
+.match-card,
+.insights-panel,
+.result-card,
+.round-selector,
+.lang-btn {
+    isolation: isolate;
+    overflow: hidden;
+    box-shadow: var(--liquid-shadow), inset 0 1px 0 var(--liquid-sheen);
+    backdrop-filter: blur(18px) saturate(150%);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+}
+
+.main-nav::after,
+.config-card::after,
+.match-card::after,
+.insights-panel::after,
+.result-card::after,
+.round-selector::after,
+.lang-btn::after {
+    content: '';
+    position: absolute;
+    inset: -40% -22%;
+    border-radius: inherit;
+    background:
+        radial-gradient(46% 34% at 26% 18%, var(--liquid-specular), transparent 74%),
+        radial-gradient(28% 22% at 78% 76%, rgba(20, 198, 163, 0.18), transparent 78%),
+        linear-gradient(170deg, rgba(255, 255, 255, 0.06), transparent 56%);
+    opacity: 0.52;
+    pointer-events: none;
+    z-index: 0;
+    animation: liquidDrift 18s ease-in-out infinite alternate;
+}
+
+.main-nav>*,
+.config-card>*,
+.match-card>*,
+.insights-panel>*,
+.result-card>*,
+.round-selector>*,
+.lang-btn>* {
+    position: relative;
+    z-index: 1;
 }
 
 .nav-btn {
@@ -513,12 +576,19 @@ body {
 .modern-select {
     width: 100%;
     padding: 1rem;
-    background: rgba(15, 23, 42, 0.6);
+    background: linear-gradient(160deg, rgba(12, 28, 47, 0.76), rgba(10, 23, 39, 0.62));
     border: 1px solid var(--glass-border);
     border-radius: 12px;
     color: #fff;
     appearance: none;
     font-size: 1rem;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.modern-select:focus {
+    border-color: rgba(103, 193, 255, 0.7);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(28, 163, 255, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 /* Adjustment Sliders */
