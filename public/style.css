@@ -2690,6 +2690,13 @@ body {
     font-size: 0.95rem;
 }
 
+.confidence-evidence {
+    color: rgba(255, 255, 255, 0.82);
+    line-height: 1.55;
+    margin: -0.35rem 0 1.1rem;
+    font-size: 0.9rem;
+}
+
 .confidence-indicators {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));

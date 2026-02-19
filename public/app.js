@@ -2798,6 +2798,117 @@ document.addEventListener('DOMContentLoaded', async () => {
         return `${num >= 0 ? '+' : ''}${num.toFixed(1)}%`;
     }
 
+    function normalizeTeamKey(value) {
+        return `${value || ''}`
+            .trim()
+            .toLowerCase()
+            .replace(/ı/g, 'i')
+            .replace(/İ/g, 'i')
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/[^a-z0-9]/g, '');
+    }
+
+    function findTeamSnapshot(teamName) {
+        if (!Array.isArray(teamData) || teamData.length === 0) return null;
+        const targetKey = normalizeTeamKey(teamName);
+        if (!targetKey) return null;
+
+        const exact = teamData.find(team => normalizeTeamKey(team?.name) === targetKey);
+        if (exact) return exact;
+
+        return teamData.find(team => {
+            const teamKey = normalizeTeamKey(team?.name);
+            if (!teamKey) return false;
+            return (
+                teamKey.includes(targetKey) ||
+                targetKey.includes(teamKey) ||
+                teamKey.replace(/(fk|jk)$/, '') === targetKey.replace(/(fk|jk)$/, '')
+            );
+        }) || null;
+    }
+
+    function pointsFromResult(result) {
+        const value = `${result || ''}`.trim().toUpperCase();
+        if (value === 'W') return 3;
+        if (value === 'D') return 1;
+        return 0;
+    }
+
+    function getRecentFormPoints(teamSnapshot, windowSize = 5) {
+        const history = Array.isArray(teamSnapshot?.match_history) ? teamSnapshot.match_history : [];
+        if (history.length === 0) return null;
+        const recent = history.slice(0, windowSize);
+        const points = recent.reduce((sum, row) => sum + pointsFromResult(row?.result), 0);
+        return {
+            points,
+            matches: recent.length,
+            maxPoints: recent.length * 3,
+        };
+    }
+
+    function formatPercent(value, decimals = 1) {
+        const num = Number(value);
+        if (!Number.isFinite(num)) return null;
+        return `${(num * 100).toFixed(decimals)}%`;
+    }
+
+    function formatDecimal(value, decimals = 2) {
+        const num = Number(value);
+        if (!Number.isFinite(num)) return null;
+        return num.toFixed(decimals);
+    }
+
+    function buildConfidenceDataEvidence(match, pred) {
+        const homeSnapshot = findTeamSnapshot(match.home_team);
+        const awaySnapshot = findTeamSnapshot(match.away_team);
+        const evidenceParts = [];
+
+        if (homeSnapshot?.stats && awaySnapshot?.stats) {
+            const homeStats = homeSnapshot.stats;
+            const awayStats = awaySnapshot.stats;
+            const sampleSize = Math.min(
+                Number(homeStats.total_games) || 0,
+                Number(awayStats.total_games) || 0
+            );
+            const homeWinRate = formatPercent(homeStats.win_rate);
+            const awayWinRate = formatPercent(awayStats.win_rate);
+            const homeScored = formatDecimal(homeStats.avg_goals_scored);
+            const homeConceded = formatDecimal(homeStats.avg_goals_conceded);
+            const awayScored = formatDecimal(awayStats.avg_goals_scored);
+            const awayConceded = formatDecimal(awayStats.avg_goals_conceded);
+
+            if (sampleSize > 0 && homeWinRate && awayWinRate && homeScored && awayScored && homeConceded && awayConceded) {
+                evidenceParts.push(
+                    `Season dataset (${sampleSize} matches): ${match.home_team} win rate ${homeWinRate}, ${homeScored} scored / ${homeConceded} conceded per match; ${match.away_team} win rate ${awayWinRate}, ${awayScored} scored / ${awayConceded} conceded.`
+                );
+            }
+        }
+
+        const homeRecent = getRecentFormPoints(homeSnapshot, 5);
+        const awayRecent = getRecentFormPoints(awaySnapshot, 5);
+        if (homeRecent && awayRecent) {
+            evidenceParts.push(
+                `Recent form (last ${homeRecent.matches}): ${match.home_team} ${homeRecent.points}/${homeRecent.maxPoints} points, ${match.away_team} ${awayRecent.points}/${awayRecent.maxPoints}.`
+            );
+        }
+
+        const homeXg = formatDecimal(pred?.expected_goals?.home);
+        const awayXg = formatDecimal(pred?.expected_goals?.away);
+        if (homeXg && awayXg) {
+            evidenceParts.push(`Model xG projection: ${match.home_team} ${homeXg} vs ${match.away_team} ${awayXg}.`);
+        }
+
+        const homeRating = formatDecimal(pred?.avg_ratings?.team1, 2);
+        const awayRating = formatDecimal(pred?.avg_ratings?.team2, 2);
+        if (homeRating && awayRating) {
+            evidenceParts.push(`Projected lineup ratings: ${homeRating} vs ${awayRating}.`);
+        }
+
+        if (evidenceParts.length === 0) return '';
+        return evidenceParts.slice(0, 3).join(' ');
+    }
+
     function renderTeamLogo(teamName, logoUrl) {
         const fallbackIcon = TEAM_LOGOS[teamName] || '⚽';
         if (!logoUrl) {
@@ -2930,6 +3041,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         };
 
         const currentConfidence = confidenceExplanations[confClass] || confidenceExplanations.medium;
+        const confidenceEvidence = buildConfidenceDataEvidence(match, pred);
         const confidenceHtml = `
             <div class="confidence-explanation-panel">
                 <div class="confidence-header">
@@ -2937,6 +3049,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <h4>${currentConfidence.title}</h4>
                 </div>
                 <p class="confidence-reason">${currentConfidence.reason}</p>
+                ${confidenceEvidence ? `<p class="confidence-evidence">${confidenceEvidence}</p>` : ''}
                 <div class="confidence-indicators">
                     ${confidenceIndicators.map(ind => `
                         <div class="confidence-indicator">
