@@ -786,20 +786,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                 const data = await response.json();
 
-                // Build Top 5 Scores HTML
-                let top5Html = '';
-                if (data.top5_scores && data.top5_scores.length > 0) {
-                    top5Html = data.top5_scores.map(s => `
-                        <div class="scoreline-row">
-                            <span class="scoreline-label">${s.score}</span>
-                            <div class="scoreline-bar-wrapper">
-                                <div class="scoreline-bar" style="width: ${s.percentage}%">
-                                    <span class="scoreline-pct">${s.percentage}%</span>
-                                </div>
-                            </div>
-                        </div>
-                    `).join('');
-                }
+                // Build scoreline panel with both perspectives.
+                const top5HomePerspective = data.top5_scores_home_perspective || data.top5_scores || [];
+                const top5AwayPerspective = data.top5_scores_away_perspective || [];
+                const scorelinesPanelHtml = buildDualScorelinesPanel(
+                    top5HomePerspective,
+                    top5AwayPerspective,
+                    t1,
+                    t2
+                );
 
                 // Build Form Indicators HTML
                 let formHtml = '';
@@ -1009,14 +1004,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                         <!-- Enhanced Insights Section -->
                         <div class="insights-container">
-                            ${top5Html ? `
-                            <div class="insights-panel">
-                                <h4><span class="icon">📊</span> Most Likely Scorelines</h4>
-                                <div class="score-probabilities">
-                                    ${top5Html}
-                                </div>
-                            </div>
-                            ` : ''}
+                            ${scorelinesPanelHtml}
 
                             ${formHtml ? `
                             <div class="insights-panel">
@@ -2798,6 +2786,74 @@ document.addEventListener('DOMContentLoaded', async () => {
         return `${num >= 0 ? '+' : ''}${num.toFixed(1)}%`;
     }
 
+    function swapScorePerspective(scoreText) {
+        const score = `${scoreText || ''}`.trim();
+        const match = score.match(/^(\d+)\s*-\s*(\d+)$/);
+        if (!match) return score || '0-0';
+        return `${match[2]}-${match[1]}`;
+    }
+
+    function sanitizeScoreLabel(scoreText) {
+        const score = `${scoreText || ''}`.trim();
+        const match = score.match(/^(\d+)\s*-\s*(\d+)$/);
+        if (!match) return '0-0';
+        return `${match[1]}-${match[2]}`;
+    }
+
+    function buildMirroredScorelines(scores) {
+        if (!Array.isArray(scores)) return [];
+        return scores.map(item => ({
+            ...item,
+            score: swapScorePerspective(item?.score),
+        }));
+    }
+
+    function renderScorelineRows(scores) {
+        if (!Array.isArray(scores) || scores.length === 0) {
+            return '<div class="scoreline-empty">No scoreline distribution available.</div>';
+        }
+
+        return scores.map(s => `
+            <div class="scoreline-row">
+                <span class="scoreline-label">${sanitizeScoreLabel(s?.score)}</span>
+                <div class="scoreline-bar-wrapper">
+                    <div class="scoreline-bar" style="width: ${Number.isFinite(Number(s?.percentage)) ? Number(s.percentage) : 0}%">
+                        <span class="scoreline-pct">${Number.isFinite(Number(s?.percentage)) ? Number(s.percentage).toFixed(1) : '0.0'}%</span>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function buildDualScorelinesPanel(homeScoresRaw, awayScoresRaw, homeTeamName, awayTeamName) {
+        const homeScores = Array.isArray(homeScoresRaw) ? homeScoresRaw : [];
+        if (homeScores.length === 0) return '';
+
+        const awayScores = Array.isArray(awayScoresRaw) && awayScoresRaw.length > 0
+            ? awayScoresRaw
+            : buildMirroredScorelines(homeScores);
+
+        return `
+            <div class="insights-panel">
+                <h4><span class="icon">📊</span> Most Likely Scorelines</h4>
+                <div class="scoreline-perspective-grid">
+                    <div class="scoreline-perspective-card">
+                        <div class="scoreline-perspective-title">${homeTeamName} Perspective</div>
+                        <div class="score-probabilities">
+                            ${renderScorelineRows(homeScores)}
+                        </div>
+                    </div>
+                    <div class="scoreline-perspective-card">
+                        <div class="scoreline-perspective-title">${awayTeamName} Perspective</div>
+                        <div class="score-probabilities">
+                            ${renderScorelineRows(awayScores)}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
     function normalizeTeamKey(value) {
         return `${value || ''}`
             .trim()
@@ -3075,25 +3131,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // Build scorelines HTML
         let scorelinesHtml = '';
-        if (pred.top5_scores && pred.top5_scores.length > 0) {
-            scorelinesHtml = `
-                <div class="insights-panel">
-                    <h4><span class="icon">📊</span> Most Likely Scorelines</h4>
-                    <div class="score-probabilities">
-                        ${pred.top5_scores.map(s => `
-                            <div class="scoreline-row">
-                                <span class="scoreline-label">${s.score}</span>
-                                <div class="scoreline-bar-wrapper">
-                                    <div class="scoreline-bar" style="width: ${s.percentage}%">
-                                        <span class="scoreline-pct">${s.percentage}%</span>
-                                    </div>
-                                </div>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-        }
+        scorelinesHtml = buildDualScorelinesPanel(
+            pred.top5_scores_home_perspective || pred.top5_scores || [],
+            pred.top5_scores_away_perspective || [],
+            match.home_team,
+            match.away_team
+        );
 
         // Build Markov form HTML
         let formHtml = '';

@@ -290,7 +290,8 @@ def simulate_match(
     )
 
     combined = result.combined
-    top5_list = _build_top5_scores(result.home_sim.top5_scores)
+    top5_home_list = _build_top5_scores(result.home_sim.top5_scores)
+    top5_away_list = _build_top5_scores(result.away_sim.top5_scores)
     markov_data = _build_markov_form(base_data_dir, team1_resolved, team2_resolved, engine.cfg.random_seed)
 
     avg_ratings = {
@@ -331,7 +332,11 @@ def simulate_match(
         "player_heatmap_url": heatmap_urls.get("player"),
         "main_cluster_heatmap_url": heatmap_urls.get("main_clusters"),
         "strip_cluster_heatmap_url": heatmap_urls.get("strip_clusters"),
-        "top5_scores": top5_list,
+        # Backward compatible field (home perspective).
+        "top5_scores": top5_home_list,
+        # Explicit perspective fields for dual scoreline views.
+        "top5_scores_home_perspective": top5_home_list,
+        "top5_scores_away_perspective": top5_away_list,
         "markov_form": markov_data,
         "avg_ratings": avg_ratings,
         "simulated_matches": int(result.home_sim.simulated_matches + result.away_sim.simulated_matches),

@@ -1104,6 +1104,8 @@ def get_recent_games():
                         "main_cluster_heatmap_url": pred_match.get('main_cluster_heatmap_url'),
                         "strip_cluster_heatmap_url": pred_match.get('strip_cluster_heatmap_url'),
                         "top5_scores": pred_match.get('top5_scores', []),
+                        "top5_scores_home_perspective": pred_match.get('top5_scores_home_perspective', pred_match.get('top5_scores', [])),
+                        "top5_scores_away_perspective": pred_match.get('top5_scores_away_perspective', []),
                         "markov_form": pred_match.get('markov_form'),
                         "adjustments": pred_match.get('adjustments'),
                         "avg_ratings": pred_match.get('avg_ratings'),

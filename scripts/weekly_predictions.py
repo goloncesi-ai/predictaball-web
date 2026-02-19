@@ -195,6 +195,8 @@ def generate_round_predictions(round_number, team1_adj=0, team2_adj=0):
             # Get score distribution from top5_scores
             score_dist = []
             top5_scores = sim_results.get('top5_scores', [])
+            top5_scores_home = sim_results.get('top5_scores_home_perspective', top5_scores)
+            top5_scores_away = sim_results.get('top5_scores_away_perspective', [])
             for score_data in top5_scores:
                 # Parse score string like "2-1"
                 score_str = score_data.get('score', '0-0')
@@ -231,6 +233,8 @@ def generate_round_predictions(round_number, team1_adj=0, team2_adj=0):
                 'strip_cluster_heatmap_url': sim_results.get('strip_cluster_heatmap_url'),
                 # Pass through advanced fields for expanded UI
                 'top5_scores': top5_scores,
+                'top5_scores_home_perspective': top5_scores_home,
+                'top5_scores_away_perspective': top5_scores_away,
                 'markov_form': sim_results.get('markov_form'),
                 'adjustments': sim_results.get('adjustments'),
                 'avg_ratings': sim_results.get('avg_ratings'),
