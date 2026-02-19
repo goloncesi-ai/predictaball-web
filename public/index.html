@@ -39,7 +39,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=6">
+    <link rel="stylesheet" href="style.css?v=7">
     <!-- Chart.js for Player Stats -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -270,14 +270,20 @@
                         <div class="config-card">
                             <h3 data-i18n="match_setup">Match Setup</h3>
                             <div class="form-group">
+                                <label for="sim-league" data-i18n="label_league">League</label>
+                                <select id="sim-league" class="modern-select">
+                                    <option value="" disabled selected data-i18n="choose_league_placeholder">Select League</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label data-i18n="label_home_team">Home Team</label>
-                                <select id="sim-team1" class="modern-select">
+                                <select id="sim-team1" class="modern-select" disabled>
                                     <option value="" disabled selected data-i18n="select_short">Select...</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label data-i18n="label_away_team">Away Team</label>
-                                <select id="sim-team2" class="modern-select">
+                                <select id="sim-team2" class="modern-select" disabled>
                                     <option value="" disabled selected data-i18n="select_short">Select...</option>
                                 </select>
                             </div>
@@ -484,8 +490,8 @@
     <!-- Data & App Logic -->
     <script src="data.js?v=4"></script>
     <script src="players_data.js?v=1"></script>
-    <script src="formation.js?v=6"></script>
-    <script src="app.js?v=19"></script>
+    <script src="formation.js?v=7"></script>
+    <script src="app.js?v=20"></script>
 </body>
 
 </html>

@@ -243,14 +243,19 @@ async function fetchTeamPlayerStats(teamName) {
 }
 
 // Get team lineup from CSV data
-async function getTeamLatestLineup(teamName) {
+function encodePathSegment(value) {
+    return encodeURIComponent(`${value || ''}`);
+}
+
+async function getTeamLatestLineup(teamName, leagueName = 'Turkish Super League', explicitCsvPath = '') {
     try {
         // 1. Start fetching stats in parallel
         const statsPromise = fetchTeamPlayerStats(teamName);
 
         // 2. Fetch and parse CSV
-        const csvPath = `/Data/Turkish Super League/${teamName}/mixed-seasons/${teamName}_Games_Input.csv`;
-        const response = await fetch(csvPath);
+        const defaultCsvPath = `/Data/${encodePathSegment(leagueName)}/${encodePathSegment(teamName)}/mixed-seasons/${encodePathSegment(`${teamName}_Games_Input.csv`)}`;
+        const csvPath = explicitCsvPath || defaultCsvPath;
+        const response = await fetch(encodeURI(csvPath));
 
         if (!response.ok) {
             throw new Error(`Failed to fetch CSV: ${response.status}`);

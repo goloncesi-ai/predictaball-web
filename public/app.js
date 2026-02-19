@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const team2Display = document.getElementById('team2-display');
 
     // Simulation Tab Elements
+    const simLeagueSelect = document.getElementById('sim-league');
     const simTeam1Select = document.getElementById('sim-team1');
     const simTeam2Select = document.getElementById('sim-team2');
     const simTeam1FormationSelect = document.getElementById('sim-team1-formation');
@@ -89,6 +90,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     let currentRoundNum = 19;
     let recentGamesInitialized = false;
     let teamData = Array.isArray(window.teamData) ? window.teamData : [];
+    let simulationLeagues = [];
+    let simulationTeamsByLeague = new Map();
+    let currentSimulationLeague = '';
     const LIQUID_SURFACE_SELECTOR = '.main-nav, .config-card, .match-card, .insights-panel, .result-card, .round-selector, .lang-btn, .analysis-panel, .team-card, .scoreline-perspective-card, .confidence-indicator';
     let liquidSurfaceEls = [];
     let liquidFrameToken = null;
@@ -130,7 +134,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             sim_title: "AI Match Engine",
             sim_desc: "Run 1000+ Monte Carlo simulations to predict the outcome.",
             match_setup: "Match Setup",
+            label_league: "League",
             select_short: "Select...",
+            choose_league_placeholder: "Select League",
             label_home_formation: "Home Formation",
             label_away_formation: "Away Formation",
             select_formation_short: "Formation...",
@@ -203,7 +209,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             sim_title: "Yapay Zeka Maç Motoru",
             sim_desc: "Maç sonucunu tahmin etmek için 1000+ Monte Carlo simülasyonu çalıştırın.",
             match_setup: "Maç Kurulumu",
+            label_league: "Lig",
             select_short: "Seç...",
+            choose_league_placeholder: "Lig seçin...",
             label_home_formation: "Ev Sahibi Dizilişi",
             label_away_formation: "Deplasman Dizilişi",
             select_formation_short: "Diziliş...",
@@ -472,6 +480,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         initExploreTab();
         initPlayerAnalysisTab();
         initLanguage();
+        await ensureSimulationSelectorsPopulated(true);
         initLiquidGlass();
     } else {
         console.error("No data found. Ensure data.js is loaded.");
@@ -479,32 +488,32 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // --- Functions ---
+    function buildPlaceholderOption(select, fallbackText = 'Select...') {
+        const placeholder = select?.querySelector('option[value=""]');
+        const option = placeholder ? placeholder.cloneNode(true) : new Option(fallbackText, '');
+        option.disabled = true;
+        option.selected = true;
+        if (!option.value) option.value = '';
+        return option;
+    }
+
     function populateAllSelectors() {
         const teamNames = teamData.map(t => t.name).sort();
 
         // Helper to populate a specific select element
         const fillSelect = (select) => {
             if (!select) return;
-            const placeholder = select.querySelector('option[value=""]');
-            const placeholderOption = placeholder
-                ? placeholder.cloneNode(true)
-                : new Option('Select...', '');
-            placeholderOption.disabled = true;
-            placeholderOption.selected = true;
+            const placeholderOption = buildPlaceholderOption(select, 'Select...');
             select.innerHTML = '';
             select.add(placeholderOption);
             teamNames.forEach(name => {
                 select.add(new Option(name, name));
             });
         };
+
         const fillFormationSelect = (select) => {
             if (!select) return;
-            const placeholder = select.querySelector('option[value=""]');
-            const placeholderOption = placeholder
-                ? placeholder.cloneNode(true)
-                : new Option('Formation...', '');
-            placeholderOption.disabled = true;
-            placeholderOption.selected = true;
+            const placeholderOption = buildPlaceholderOption(select, 'Formation...');
             select.innerHTML = '';
             select.add(placeholderOption);
             SIM_FORMATIONS.forEach(formation => {
@@ -514,22 +523,128 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         fillSelect(team1Select);
         fillSelect(team2Select);
-        fillSelect(simTeam1Select);
-        fillSelect(simTeam2Select);
         fillFormationSelect(simTeam1FormationSelect);
         fillFormationSelect(simTeam2FormationSelect);
     }
 
-    async function ensureSimulationSelectorsPopulated(forceRefresh = false) {
-        if (!simTeam1Select || !simTeam2Select) return;
-        const hasHomeOptions = simTeam1Select.options.length > 1;
-        const hasAwayOptions = simTeam2Select.options.length > 1;
-        if (!forceRefresh && hasHomeOptions && hasAwayOptions) return;
+    function populateSimulationLeagueSelect() {
+        if (!simLeagueSelect) return;
 
-        await loadLiveAnalysisData(forceRefresh);
-        if (teamData.length > 0) {
-            populateAllSelectors();
+        const previousLeague = simulationTeamsByLeague.has(currentSimulationLeague) ? currentSimulationLeague : '';
+        const placeholderOption = buildPlaceholderOption(simLeagueSelect, 'Select League');
+        simLeagueSelect.innerHTML = '';
+        simLeagueSelect.add(placeholderOption);
+
+        simulationLeagues.forEach((league) => {
+            simLeagueSelect.add(new Option(league.name, league.folder));
+        });
+
+        if (previousLeague) {
+            simLeagueSelect.value = previousLeague;
+            currentSimulationLeague = previousLeague;
+            populateSimulationTeamSelectors(previousLeague);
+        } else {
+            currentSimulationLeague = '';
+            populateSimulationTeamSelectors('');
         }
+    }
+
+    function populateSimulationTeamSelectors(leagueFolder) {
+        if (!simTeam1Select || !simTeam2Select) return;
+
+        const selectedLeague = simulationTeamsByLeague.has(leagueFolder) ? leagueFolder : '';
+        const teams = selectedLeague ? (simulationTeamsByLeague.get(selectedLeague) || []) : [];
+        const previousHome = simTeam1Select.value;
+        const previousAway = simTeam2Select.value;
+
+        const fillTeamSelect = (select) => {
+            const placeholderOption = buildPlaceholderOption(select, 'Select...');
+            select.innerHTML = '';
+            select.add(placeholderOption);
+            teams.forEach((team) => {
+                const teamFolder = `${team?.folder || team?.name || ''}`.trim();
+                if (!teamFolder) return;
+                const teamLabel = `${team?.name || teamFolder}`.trim();
+                const option = new Option(teamLabel, teamFolder);
+                if (team?.has_games_input === false) {
+                    option.disabled = true;
+                }
+                select.add(option);
+            });
+            const hasEnabledTeams = teams.some(team => team?.has_games_input !== false);
+            select.disabled = !selectedLeague || !hasEnabledTeams;
+        };
+
+        fillTeamSelect(simTeam1Select);
+        fillTeamSelect(simTeam2Select);
+
+        if (teams.some(team => `${team?.folder || team?.name || ''}` === previousHome)) {
+            simTeam1Select.value = previousHome;
+        }
+        if (teams.some(team => `${team?.folder || team?.name || ''}` === previousAway)) {
+            simTeam2Select.value = previousAway;
+        }
+
+        if (!selectedLeague) {
+            applySliderValue(team1AdjSlider, team1AdjValue, 0);
+            applySliderValue(team2AdjSlider, team2AdjValue, 0);
+            if (typeof hidePitchView === 'function') hidePitchView();
+            lastSimTeam1 = '';
+            lastSimTeam2 = '';
+        }
+    }
+
+    function getSimulationTeamMeta(leagueFolder, teamFolder) {
+        const leagueTeams = simulationTeamsByLeague.get(leagueFolder) || [];
+        const target = `${teamFolder || ''}`.trim();
+        if (!target) return null;
+        return leagueTeams.find((team) => `${team?.folder || team?.name || ''}`.trim() === target) || null;
+    }
+
+    async function loadSimulationOptions(forceRefresh = false) {
+        const query = forceRefresh ? `?t=${Date.now()}` : '';
+        const response = await fetch(`/api/simulation-options${query}`);
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`simulation options request failed (${response.status}): ${errorText}`);
+        }
+
+        const payload = await response.json();
+        const leagues = Array.isArray(payload?.leagues) ? payload.leagues : [];
+        simulationLeagues = leagues.map((league) => ({
+            name: `${league?.name || league?.folder || ''}`.trim(),
+            folder: `${league?.folder || league?.name || ''}`.trim(),
+            teams: Array.isArray(league?.teams) ? league.teams : [],
+        })).filter(league => league.name && league.folder);
+
+        simulationTeamsByLeague = new Map(
+            simulationLeagues.map(league => [league.folder, league.teams])
+        );
+    }
+
+    async function ensureSimulationSelectorsPopulated(forceRefresh = false) {
+        if (!simLeagueSelect || !simTeam1Select || !simTeam2Select) return;
+        const hasLeagueOptions = simulationLeagues.length > 0 && simLeagueSelect.options.length > 1;
+        if (!forceRefresh && hasLeagueOptions) return;
+
+        try {
+            await loadSimulationOptions(forceRefresh);
+        } catch (error) {
+            console.warn('Using fallback simulation league options:', error.message);
+            simulationLeagues = [{
+                name: 'Turkish Super League',
+                folder: 'Turkish Super League',
+                teams: teamData.map(team => ({
+                    name: team.name,
+                    folder: team.name,
+                })),
+            }];
+            simulationTeamsByLeague = new Map([
+                ['Turkish Super League', simulationLeagues[0].teams]
+            ]);
+        }
+
+        populateSimulationLeagueSelect();
     }
 
     function initTabs() {
@@ -610,7 +725,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         valueLabel.textContent = formatSliderAdjustment(clamped);
     }
 
-    async function fetchPairHmmAdjustments(homeTeam, awayTeam) {
+    async function fetchPairHmmAdjustments(homeTeam, awayTeam, league) {
         const home = `${homeTeam || ''}`.trim();
         const away = `${awayTeam || ''}`.trim();
         if (!home && !away) {
@@ -620,6 +735,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const params = new URLSearchParams();
         if (home) params.set('home_team', home);
         if (away) params.set('away_team', away);
+        if (league) params.set('league', league);
 
         const response = await fetch(`/api/hmm-adjustments?${params.toString()}`);
         if (!response.ok) {
@@ -636,17 +752,19 @@ document.addEventListener('DOMContentLoaded', async () => {
         };
     }
 
-    async function updateSlidersFromHmm(homeTeam, awayTeam) {
+    async function updateSlidersFromHmm(homeTeam, awayTeam, league) {
         const token = ++hmmSyncToken;
         const selectedHomeTeam = `${homeTeam || ''}`.trim();
         const selectedAwayTeam = `${awayTeam || ''}`.trim();
+        const selectedLeague = `${league || ''}`.trim();
 
         try {
-            const adjustments = await fetchPairHmmAdjustments(selectedHomeTeam, selectedAwayTeam);
+            const adjustments = await fetchPairHmmAdjustments(selectedHomeTeam, selectedAwayTeam, selectedLeague);
             const stillLatest =
                 token === hmmSyncToken &&
                 (simTeam1Select?.value || '') === selectedHomeTeam &&
-                (simTeam2Select?.value || '') === selectedAwayTeam;
+                (simTeam2Select?.value || '') === selectedAwayTeam &&
+                currentSimulationLeague === selectedLeague;
             if (!stillLatest) return;
 
             applySliderValue(team1AdjSlider, team1AdjValue, selectedHomeTeam ? adjustments.homeAdjustment : 0);
@@ -656,7 +774,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             const stillLatest =
                 token === hmmSyncToken &&
                 (simTeam1Select?.value || '') === selectedHomeTeam &&
-                (simTeam2Select?.value || '') === selectedAwayTeam;
+                (simTeam2Select?.value || '') === selectedAwayTeam &&
+                currentSimulationLeague === selectedLeague;
             if (!stillLatest) return;
 
             applySliderValue(team1AdjSlider, team1AdjValue, 0);
@@ -674,7 +793,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (!formationHelpersLoadPromise) {
             formationHelpersLoadPromise = new Promise((resolve) => {
                 const script = document.createElement('script');
-                script.src = 'formation.js?v=6';
+                script.src = 'formation.js?v=7';
                 script.async = true;
                 script.onload = () => resolve(true);
                 script.onerror = () => resolve(false);
@@ -728,19 +847,26 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (!canRenderPitch) return;
 
         const token = ++pitchUpdateToken;
+        const selectedLeague = currentSimulationLeague;
         const selectedHomeTeam = simTeam1Select?.value || '';
         const selectedAwayTeam = simTeam2Select?.value || '';
+        const homeTeamMeta = getSimulationTeamMeta(selectedLeague, selectedHomeTeam);
+        const awayTeamMeta = getSimulationTeamMeta(selectedLeague, selectedAwayTeam);
+        if (!selectedLeague) {
+            if (typeof hidePitchView === 'function') hidePitchView();
+            return;
+        }
 
         // Fetch both teams in parallel and discard stale completions.
         const [homeResult, awayResult] = await Promise.all([
             selectedHomeTeam
-                ? getTeamLatestLineup(selectedHomeTeam).catch((error) => {
+                ? getTeamLatestLineup(selectedHomeTeam, selectedLeague, homeTeamMeta?.lineup_csv_path || '').catch((error) => {
                     console.error('Error loading team 1:', error);
                     return null;
                 })
                 : Promise.resolve(null),
             selectedAwayTeam
-                ? getTeamLatestLineup(selectedAwayTeam).catch((error) => {
+                ? getTeamLatestLineup(selectedAwayTeam, selectedLeague, awayTeamMeta?.lineup_csv_path || '').catch((error) => {
                     console.error('Error loading team 2:', error);
                     return null;
                 })
@@ -749,6 +875,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const stillLatest =
             token === pitchUpdateToken &&
+            currentSimulationLeague === selectedLeague &&
             (simTeam1Select?.value || '') === selectedHomeTeam &&
             (simTeam2Select?.value || '') === selectedAwayTeam;
         if (!stillLatest) return;
@@ -776,16 +903,32 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     async function syncSimulationSelectionEffects(force = false) {
+        const selectedLeague = currentSimulationLeague;
         const selectedHomeTeam = simTeam1Select?.value || '';
         const selectedAwayTeam = simTeam2Select?.value || '';
         const token = ++selectionSyncToken;
 
+        if (!selectedLeague) {
+            applySliderValue(team1AdjSlider, team1AdjValue, 0);
+            applySliderValue(team2AdjSlider, team2AdjValue, 0);
+            if (typeof hidePitchView === 'function') hidePitchView();
+            return;
+        }
+
         await Promise.allSettled([
             updatePitchVisualization(),
-            updateSlidersFromHmm(selectedHomeTeam, selectedAwayTeam),
+            updateSlidersFromHmm(selectedHomeTeam, selectedAwayTeam, selectedLeague),
         ]);
 
         if (token !== selectionSyncToken) return;
+    }
+
+    if (simLeagueSelect) {
+        simLeagueSelect.addEventListener('change', async (e) => {
+            currentSimulationLeague = `${e.target?.value || ''}`.trim();
+            populateSimulationTeamSelectors(currentSimulationLeague);
+            await syncSimulationSelectionEffects(true);
+        });
     }
 
     // Add change listeners to sim team selects
@@ -814,9 +957,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     // --- Event Listeners (Simulation) ---
     if (btnRunSim) {
         btnRunSim.addEventListener('click', async () => {
+            const selectedLeague = currentSimulationLeague || simLeagueSelect?.value || '';
             const t1 = simTeam1Select.value;
             const t2 = simTeam2Select.value;
             // Combined script doesn't need type
+
+            if (!selectedLeague) {
+                alert("Please select a league first.");
+                return;
+            }
 
             if (!t1 || !t2) {
                 alert("Please select both teams first.");
@@ -886,6 +1035,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
+                        league: selectedLeague,
                         team1: t1,
                         team2: t2,
                         team1_formation: team1Formation,

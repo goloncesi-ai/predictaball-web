@@ -5,6 +5,7 @@ import math
 import json
 import os
 import re
+import shutil
 import sys
 from pathlib import Path
 import unicodedata
@@ -19,9 +20,19 @@ app = Flask(__name__, static_folder='public', static_url_path='')
 CORS(app)
 
 # Dynamic Paths for Data
-BASE_DATA_DIR = os.path.join(BASE_DIR, "Data", "Turkish Super League")
+DATA_ROOT_DIR = os.path.join(BASE_DIR, "Data")
+BASE_DATA_DIR = os.path.join(DATA_ROOT_DIR, "Turkish Super League")
 ASSETS_DIR = os.path.join(BASE_DIR, "Data", "Algorithm", "PredictaBall")
 OUTPUT_DIR = os.path.join(BASE_DIR, "outputs")
+
+SIMULATION_LEAGUE_FOLDERS = [
+    "Turkish Super League",
+    "Premier League",
+    "Bundesliga",
+    "Ligue 1",
+    "Serie A",
+    "LaLiga",
+]
 
 # Ensure output dir exists
 os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -328,6 +339,146 @@ def _fuzzy_team_match(target, candidate):
     return t in c or c in t
 
 
+def _resolve_simulation_league_folder(value):
+    requested_key = _team_key(value)
+    if not requested_key:
+        return SIMULATION_LEAGUE_FOLDERS[0]
+
+    for league_folder in SIMULATION_LEAGUE_FOLDERS:
+        if _team_key(league_folder) == requested_key:
+            return league_folder
+
+    for league_folder in SIMULATION_LEAGUE_FOLDERS:
+        league_key = _team_key(league_folder)
+        if requested_key in league_key or league_key in requested_key:
+            return league_folder
+
+    return SIMULATION_LEAGUE_FOLDERS[0]
+
+
+def _get_simulation_league_dir(league_folder):
+    return os.path.join(DATA_ROOT_DIR, league_folder)
+
+
+def _relative_data_path(abs_path):
+    if not abs_path:
+        return None
+    try:
+        rel_path = os.path.relpath(abs_path, DATA_ROOT_DIR)
+    except Exception:
+        return None
+    return rel_path.replace(os.sep, "/")
+
+
+def _find_team_games_input_paths(league_folder, team_folder):
+    team_dir = os.path.join(_get_simulation_league_dir(league_folder), team_folder)
+    if not os.path.isdir(team_dir):
+        return {
+            "csv_abs": None,
+            "xlsx_abs": None,
+            "csv_rel": None,
+            "xlsx_rel": None,
+        }
+
+    team_key = _team_key(team_folder)
+    buckets = {"csv": [], "xlsx": []}
+    for root, _, files in os.walk(team_dir):
+        for file_name in files:
+            lower = file_name.lower()
+            if "_games_input" not in lower:
+                continue
+            ext = "csv" if lower.endswith(".csv") else ("xlsx" if lower.endswith(".xlsx") else None)
+            if not ext:
+                continue
+
+            abs_path = os.path.join(root, file_name)
+            stem = os.path.splitext(file_name)[0]
+            stem = re.sub(r"_games_input$", "", stem, flags=re.IGNORECASE)
+            stem_key = _team_key(stem)
+            score = 0
+            if os.path.basename(root) == "mixed-seasons":
+                score += 100
+            if stem_key and stem_key == team_key:
+                score += 80
+            elif stem_key and team_key and (stem_key in team_key or team_key in stem_key):
+                score += 40
+            try:
+                mtime = os.path.getmtime(abs_path)
+            except Exception:
+                mtime = 0
+            buckets[ext].append((score, mtime, abs_path))
+
+    def _pick_best(ext):
+        rows = buckets.get(ext) or []
+        if not rows:
+            return None
+        rows.sort(key=lambda row: (row[0], row[1]), reverse=True)
+        return rows[0][2]
+
+    csv_abs = _pick_best("csv")
+    xlsx_abs = _pick_best("xlsx")
+    return {
+        "csv_abs": csv_abs,
+        "xlsx_abs": xlsx_abs,
+        "csv_rel": _relative_data_path(csv_abs),
+        "xlsx_rel": _relative_data_path(xlsx_abs),
+    }
+
+
+def _ensure_team_mixed_seasons_layout(league_folder, team_folder):
+    paths = _find_team_games_input_paths(league_folder, team_folder)
+    team_dir = os.path.join(_get_simulation_league_dir(league_folder), team_folder)
+    mixed_dir = os.path.join(team_dir, "mixed-seasons")
+    os.makedirs(mixed_dir, exist_ok=True)
+
+    for ext in ("csv", "xlsx"):
+        src_abs = paths.get(f"{ext}_abs")
+        if not src_abs:
+            continue
+        target_abs = os.path.join(mixed_dir, f"{team_folder}_Games_Input.{ext}")
+        if os.path.normpath(src_abs) != os.path.normpath(target_abs) and not os.path.exists(target_abs):
+            shutil.copy2(src_abs, target_abs)
+        paths[f"{ext}_resolved_abs"] = target_abs if os.path.exists(target_abs) else src_abs
+        paths[f"{ext}_resolved_rel"] = _relative_data_path(paths[f"{ext}_resolved_abs"])
+
+    return paths
+
+
+def _paths_have_games_input(paths):
+    if not isinstance(paths, dict):
+        return False
+    return bool(
+        paths.get("csv_resolved_abs")
+        or paths.get("xlsx_resolved_abs")
+        or paths.get("csv_abs")
+        or paths.get("xlsx_abs")
+    )
+
+
+def _discover_simulation_teams(league_folder):
+    league_dir = _get_simulation_league_dir(league_folder)
+    if not os.path.isdir(league_dir):
+        return []
+
+    teams = []
+    for team_folder in sorted(os.listdir(league_dir)):
+        team_dir = os.path.join(league_dir, team_folder)
+        if not os.path.isdir(team_dir):
+            continue
+
+        paths = _find_team_games_input_paths(league_folder, team_folder)
+
+        teams.append({
+            "name": _normalize_text(team_folder),
+            "folder": team_folder,
+            "has_games_input": _paths_have_games_input(paths),
+            "lineup_csv_path": f"/Data/{paths['csv_rel']}" if paths.get("csv_rel") else None,
+            "lineup_xlsx_path": f"/Data/{paths['xlsx_rel']}" if paths.get("xlsx_rel") else None,
+        })
+
+    return teams
+
+
 def _logo_match_keys(value):
     base = _team_key(value)
     keys = {base}
@@ -371,6 +522,36 @@ def _resolve_logo_filename(logo_dir, requested_name):
         return None
 
     return None
+
+
+def _ensure_team_logo_asset(team_name):
+    team = _normalize_text(team_name)
+    if not team:
+        return
+
+    logo_dir = os.path.join(ASSETS_DIR, "Logos")
+    if not os.path.isdir(logo_dir):
+        return
+
+    target_name = f"{team}.png"
+    target_path = os.path.join(logo_dir, target_name)
+    if os.path.exists(target_path):
+        return
+
+    source_name = _resolve_logo_filename(logo_dir, target_name)
+    source_path = os.path.join(logo_dir, source_name) if source_name else None
+
+    if not source_path or not os.path.exists(source_path):
+        fallback_public_logo = os.path.join(BASE_DIR, "public", "logo.png")
+        if os.path.exists(fallback_public_logo):
+            source_path = fallback_public_logo
+        else:
+            return
+
+    try:
+        shutil.copy2(source_path, target_path)
+    except Exception:
+        return
 
 
 def _to_float(value, default=0.0):
@@ -773,6 +954,7 @@ def run_simulation():
         data = request.json
         team1 = data.get('team1')
         team2 = data.get('team2')
+        league = data.get('league')
         sim_type = data.get('type')
         team1_formation = data.get('team1_formation')
         team2_formation = data.get('team2_formation')
@@ -783,7 +965,20 @@ def run_simulation():
             return jsonify({"error": "Missing teams"}), 400
 
         results = {}
-        
+        league_folder = _resolve_simulation_league_folder(league)
+        base_data_dir = _get_simulation_league_dir(league_folder)
+        if not os.path.isdir(base_data_dir):
+            return jsonify({"error": f"League data folder not found: {league_folder}"}), 400
+
+        team1_paths = _ensure_team_mixed_seasons_layout(league_folder, team1)
+        team2_paths = _ensure_team_mixed_seasons_layout(league_folder, team2)
+        if not _paths_have_games_input(team1_paths):
+            return jsonify({"error": f"No *_Games_Input file found for {team1} in {league_folder}"}), 400
+        if not _paths_have_games_input(team2_paths):
+            return jsonify({"error": f"No *_Games_Input file found for {team2} in {league_folder}"}), 400
+        _ensure_team_logo_asset(team1)
+        _ensure_team_logo_asset(team2)
+
         # Import combined adapter (it should be found via sys.path)
         import combined_adapter
     
@@ -792,7 +987,7 @@ def run_simulation():
             team1, 
             team2, 
             ASSETS_DIR, 
-            BASE_DATA_DIR,
+            base_data_dir,
             OUTPUT_DIR,
             sim_type,
             team1_adj,
@@ -801,6 +996,9 @@ def run_simulation():
             team2_formation=team2_formation,
             apply_hmm_adjustments=False
         )
+
+        if isinstance(results, dict):
+            results["league"] = league_folder
         
         return jsonify(results)
 
@@ -813,23 +1011,55 @@ def run_simulation():
 def get_hmm_adjustment():
     try:
         team = request.args.get('team', '').strip()
+        league = request.args.get('league', '')
         round_num = request.args.get('round', type=int)
         if not team:
             return jsonify({"error": "Team parameter required"}), 400
 
-        hmm_payload = _load_precomputed_hmm_values(round_num=round_num)
-        value, matched_team = _lookup_precomputed_hmm(
-            team,
-            hmm_payload["team_values"],
-            hmm_payload["team_names"],
+        league_folder = _resolve_simulation_league_folder(league)
+        if league_folder == SIMULATION_LEAGUE_FOLDERS[0]:
+            hmm_payload = _load_precomputed_hmm_values(round_num=round_num)
+            value, matched_team = _lookup_precomputed_hmm(
+                team,
+                hmm_payload["team_values"],
+                hmm_payload["team_names"],
+            )
+            return jsonify({
+                "team": team,
+                "league": league_folder,
+                "matched_team": matched_team,
+                "hmm_adjustment": round(float(value), 2),
+                "round": hmm_payload.get("round"),
+                "source": "predictions_precomputed",
+                "source_file": os.path.basename(hmm_payload["source_file"]) if hmm_payload.get("source_file") else None
+            })
+
+        import combined_adapter
+        team_paths = _ensure_team_mixed_seasons_layout(league_folder, team)
+        if not _paths_have_games_input(team_paths):
+            return jsonify({
+                "team": team,
+                "league": league_folder,
+                "matched_team": None,
+                "hmm_adjustment": 0.0,
+                "round": None,
+                "source": "missing_games_input",
+                "source_file": None
+            })
+        runtime = combined_adapter.get_hmm_adjustment(
+            team_name=team,
+            assets_path=ASSETS_DIR,
+            base_data_dir=_get_simulation_league_dir(league_folder),
+            output_dir=OUTPUT_DIR,
         )
         return jsonify({
             "team": team,
-            "matched_team": matched_team,
-            "hmm_adjustment": round(float(value), 2),
-            "round": hmm_payload.get("round"),
-            "source": "predictions_precomputed",
-            "source_file": os.path.basename(hmm_payload["source_file"]) if hmm_payload.get("source_file") else None
+            "league": league_folder,
+            "matched_team": runtime.get("team"),
+            "hmm_adjustment": round(float(runtime.get("hmm_adjustment", 0.0)), 2),
+            "round": None,
+            "source": "engine_runtime",
+            "source_file": None
         })
     except Exception as e:
         import traceback
@@ -841,32 +1071,75 @@ def get_hmm_adjustments():
     try:
         home_team = request.args.get('home_team', '').strip()
         away_team = request.args.get('away_team', '').strip()
+        league = request.args.get('league', '')
         round_num = request.args.get('round', type=int)
         if not home_team and not away_team:
             return jsonify({"error": "At least one of home_team or away_team is required"}), 400
 
-        hmm_payload = _load_precomputed_hmm_values(round_num=round_num)
-        home_value, home_matched = _lookup_precomputed_hmm(
-            home_team,
-            hmm_payload["team_values"],
-            hmm_payload["team_names"],
-        ) if home_team else (0.0, None)
-        away_value, away_matched = _lookup_precomputed_hmm(
-            away_team,
-            hmm_payload["team_values"],
-            hmm_payload["team_names"],
-        ) if away_team else (0.0, None)
+        league_folder = _resolve_simulation_league_folder(league)
+
+        if league_folder == SIMULATION_LEAGUE_FOLDERS[0]:
+            hmm_payload = _load_precomputed_hmm_values(round_num=round_num)
+            home_value, home_matched = _lookup_precomputed_hmm(
+                home_team,
+                hmm_payload["team_values"],
+                hmm_payload["team_names"],
+            ) if home_team else (0.0, None)
+            away_value, away_matched = _lookup_precomputed_hmm(
+                away_team,
+                hmm_payload["team_values"],
+                hmm_payload["team_names"],
+            ) if away_team else (0.0, None)
+
+            return jsonify({
+                "home_team": home_team,
+                "away_team": away_team,
+                "league": league_folder,
+                "home_hmm_adjustment": round(float(home_value), 2),
+                "away_hmm_adjustment": round(float(away_value), 2),
+                "home_matched_team": home_matched,
+                "away_matched_team": away_matched,
+                "source": "predictions_precomputed",
+                "round": hmm_payload.get("round"),
+                "source_file": os.path.basename(hmm_payload["source_file"]) if hmm_payload.get("source_file") else None
+            })
+
+        import combined_adapter
+        base_data_dir = _get_simulation_league_dir(league_folder)
+        home_missing = False
+        away_missing = False
+        if home_team:
+            home_missing = not _paths_have_games_input(_ensure_team_mixed_seasons_layout(league_folder, home_team))
+        if away_team:
+            away_missing = not _paths_have_games_input(_ensure_team_mixed_seasons_layout(league_folder, away_team))
+        home_runtime = combined_adapter.get_hmm_adjustment(
+            team_name=home_team,
+            assets_path=ASSETS_DIR,
+            base_data_dir=base_data_dir,
+            output_dir=OUTPUT_DIR,
+        ) if home_team and not home_missing else {"team": None, "hmm_adjustment": 0.0}
+        away_runtime = combined_adapter.get_hmm_adjustment(
+            team_name=away_team,
+            assets_path=ASSETS_DIR,
+            base_data_dir=base_data_dir,
+            output_dir=OUTPUT_DIR,
+        ) if away_team and not away_missing else {"team": None, "hmm_adjustment": 0.0}
+        source_label = "engine_runtime"
+        if home_missing or away_missing:
+            has_runtime = (home_team and not home_missing) or (away_team and not away_missing)
+            source_label = "engine_runtime_partial" if has_runtime else "missing_games_input"
 
         return jsonify({
             "home_team": home_team,
             "away_team": away_team,
-            "home_hmm_adjustment": round(float(home_value), 2),
-            "away_hmm_adjustment": round(float(away_value), 2),
-            "home_matched_team": home_matched,
-            "away_matched_team": away_matched,
-            "source": "predictions_precomputed",
-            "round": hmm_payload.get("round"),
-            "source_file": os.path.basename(hmm_payload["source_file"]) if hmm_payload.get("source_file") else None
+            "league": league_folder,
+            "home_hmm_adjustment": round(float(home_runtime.get("hmm_adjustment", 0.0)), 2),
+            "away_hmm_adjustment": round(float(away_runtime.get("hmm_adjustment", 0.0)), 2),
+            "home_matched_team": home_runtime.get("team"),
+            "away_matched_team": away_runtime.get("team"),
+            "source": source_label,
+            "round": None,
+            "source_file": None
         })
     except Exception as e:
         import traceback
@@ -963,6 +1236,33 @@ def get_analysis_data():
         refresh = request.args.get('refresh', '0') == '1'
         payload = _load_analysis_teams_payload(limit=limit, force_refresh=refresh)
         return jsonify(payload)
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route('/api/simulation-options', methods=['GET'])
+def get_simulation_options():
+    """Return supported leagues and available teams for simulation."""
+    try:
+        leagues = []
+        for league_folder in SIMULATION_LEAGUE_FOLDERS:
+            teams = _discover_simulation_teams(league_folder)
+            if not teams:
+                continue
+            leagues.append({
+                "name": league_folder,
+                "folder": league_folder,
+                "team_count": len(teams),
+                "teams": teams,
+            })
+
+        return jsonify({
+            "default_league": SIMULATION_LEAGUE_FOLDERS[0],
+            "league_count": len(leagues),
+            "leagues": leagues,
+        })
     except Exception as e:
         import traceback
         traceback.print_exc()
