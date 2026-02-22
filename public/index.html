@@ -39,7 +39,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=7">
+    <link rel="stylesheet" href="style.css?v=8">
     <!-- Chart.js for Player Stats -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -81,9 +81,6 @@
                 </button>
                 <button class="nav-btn active" data-tab="tab-simulation">
                     <span class="icon">🎮</span> <span data-i18n="nav_simulation">Simulation</span>
-                </button>
-                <button class="nav-btn" data-tab="tab-drawing-board">
-                    <span class="icon">📝</span> <span data-i18n="nav_drawing_board">Drawing Board</span>
                 </button>
                 <button class="nav-btn" data-tab="tab-recent-games">
                     <span class="icon">⚽</span> <span data-i18n="nav_recent_games">Upcoming Games</span>
@@ -309,28 +306,85 @@
                                 </select>
                             </div>
 
-                            <!-- Team Adjustments -->
-                            <div class="form-group">
-                                <label><span data-i18n="home_adj">Home Team Adjustment</span>: <span
-                                        id="team1-adj-value">0</span>%</label>
-                                <input type="range" id="team1-adjustment" class="adjustment-slider" min="-10" max="10"
-                                    value="0" step="0.1">
-                                <div class="slider-labels">
-                                    <span>-10%</span>
-                                    <span>0%</span>
-                                    <span>+10%</span>
+                            <div class="form-group sim-mode-group">
+                                <label id="sim-adjustment-mode-label" data-i18n="sim_adjustment_mode">Adjustment Mode</label>
+                                <div id="sim-mode-toggle" class="sim-mode-toggle" role="group" aria-labelledby="sim-adjustment-mode-label">
+                                    <button type="button" class="sim-mode-btn active" data-sim-mode="easy">
+                                        <span data-i18n="sim_mode_easy">Easy Mode</span>
+                                    </button>
+                                    <button type="button" class="sim-mode-btn" data-sim-mode="advanced">
+                                        <span data-i18n="sim_mode_advanced">Advanced Mode</span>
+                                    </button>
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label><span data-i18n="away_adj">Away Team Adjustment</span>: <span
-                                        id="team2-adj-value">0</span>%</label>
-                                <input type="range" id="team2-adjustment" class="adjustment-slider" min="-10" max="10"
-                                    value="0" step="0.1">
-                                <div class="slider-labels">
-                                    <span>-10%</span>
-                                    <span>0%</span>
-                                    <span>+10%</span>
+                            <div id="sim-easy-adjustments">
+                                <div class="form-group">
+                                    <label><span data-i18n="home_adj">Home Team Adjustment</span>: <span
+                                            id="team1-adj-value">0</span>%</label>
+                                    <input type="range" id="team1-adjustment" class="adjustment-slider" min="-10" max="10"
+                                        value="0" step="0.1">
+                                    <div class="slider-labels">
+                                        <span>-10%</span>
+                                        <span>0%</span>
+                                        <span>+10%</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label><span data-i18n="away_adj">Away Team Adjustment</span>: <span
+                                            id="team2-adj-value">0</span>%</label>
+                                    <input type="range" id="team2-adjustment" class="adjustment-slider" min="-10" max="10"
+                                        value="0" step="0.1">
+                                    <div class="slider-labels">
+                                        <span>-10%</span>
+                                        <span>0%</span>
+                                        <span>+10%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="sim-advanced-adjustments" class="hidden">
+                                <div class="sim-advanced-columns">
+                                    <div class="sim-advanced-column">
+                                        <h4 data-i18n="db_home_adjustments">Home Unit Adjustments</h4>
+                                        <div class="sim-advanced-slider-card">
+                                            <label><span data-i18n="db_attack">Attack</span>: <span id="sim-team1-attack-value">0</span>%</label>
+                                            <input id="sim-team1-attack" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
+                                        </div>
+                                        <div class="sim-advanced-slider-card">
+                                            <label><span data-i18n="db_midfield">Midfield</span>: <span id="sim-team1-midfield-value">0</span>%</label>
+                                            <input id="sim-team1-midfield" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
+                                        </div>
+                                        <div class="sim-advanced-slider-card">
+                                            <label><span data-i18n="db_defense">Defense</span>: <span id="sim-team1-defense-value">0</span>%</label>
+                                            <input id="sim-team1-defense" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
+                                        </div>
+                                        <div class="sim-advanced-slider-card">
+                                            <label><span data-i18n="db_goalkeeper">Goalkeeper</span>: <span id="sim-team1-goalkeeper-value">0</span>%</label>
+                                            <input id="sim-team1-goalkeeper" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
+                                        </div>
+                                    </div>
+
+                                    <div class="sim-advanced-column">
+                                        <h4 data-i18n="db_away_adjustments">Away Unit Adjustments</h4>
+                                        <div class="sim-advanced-slider-card">
+                                            <label><span data-i18n="db_attack">Attack</span>: <span id="sim-team2-attack-value">0</span>%</label>
+                                            <input id="sim-team2-attack" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
+                                        </div>
+                                        <div class="sim-advanced-slider-card">
+                                            <label><span data-i18n="db_midfield">Midfield</span>: <span id="sim-team2-midfield-value">0</span>%</label>
+                                            <input id="sim-team2-midfield" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
+                                        </div>
+                                        <div class="sim-advanced-slider-card">
+                                            <label><span data-i18n="db_defense">Defense</span>: <span id="sim-team2-defense-value">0</span>%</label>
+                                            <input id="sim-team2-defense" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
+                                        </div>
+                                        <div class="sim-advanced-slider-card">
+                                            <label><span data-i18n="db_goalkeeper">Goalkeeper</span>: <span id="sim-team2-goalkeeper-value">0</span>%</label>
+                                            <input id="sim-team2-goalkeeper" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -426,165 +480,7 @@
                 </div>
             </section>
 
-            <!-- Tab 3: Drawing Board -->
-            <section id="tab-drawing-board" class="view-section hidden">
-                <div class="section-header">
-                    <h2 data-i18n="drawing_board_title">Drawing Board</h2>
-                    <p data-i18n="drawing_board_desc">Rate each team unit with separate sliders before matchday.</p>
-                </div>
-
-                <div class="drawing-board-shell">
-                    <div class="db-selector-grid">
-                        <div class="config-card db-selector-card">
-                            <h3 data-i18n="label_home_team">Home Team</h3>
-                            <div class="form-group">
-                                <label for="db-team1" data-i18n="label_home_team">Home Team</label>
-                                <select id="db-team1" class="modern-select" disabled>
-                                    <option value="" disabled selected data-i18n="select_short">Select...</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="config-card db-selector-card">
-                            <h3 data-i18n="label_league">League</h3>
-                            <div class="form-group">
-                                <label for="db-league" data-i18n="label_league">League</label>
-                                <select id="db-league" class="modern-select">
-                                    <option value="" disabled selected data-i18n="choose_league_placeholder">Select League</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="config-card db-selector-card">
-                            <h3 data-i18n="label_away_team">Away Team</h3>
-                            <div class="form-group">
-                                <label for="db-team2" data-i18n="label_away_team">Away Team</label>
-                                <select id="db-team2" class="modern-select" disabled>
-                                    <option value="" disabled selected data-i18n="select_short">Select...</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="drawing-board-main-grid">
-                        <div id="db-team1-panel" class="db-team-panel hidden">
-                            <div class="single-pitch-wrapper home-pitch">
-                                <div class="pitch-header">
-                                    <div id="db-team1-badge" class="team-badge">🏠</div>
-                                    <h4 id="db-team1-name" class="team-name">-</h4>
-                                    <select id="db-team1-formation" class="modern-select pitch-formation-select">
-                                        <option value="" disabled selected data-i18n="select_formation_short">Formation...</option>
-                                    </select>
-                                </div>
-                                <div class="pitch-view-single">
-                                    <svg id="db-pitch-svg-team1" viewBox="0 0 68 100" preserveAspectRatio="xMidYMid meet">
-                                        <defs>
-                                            <linearGradient id="db-pitch-gradient-1" x1="0%" y1="0%" x2="100%" y2="100%">
-                                                <stop offset="0%" style="stop-color:#1a472a;stop-opacity:1" />
-                                                <stop offset="100%" style="stop-color:#2d5a3d;stop-opacity:1" />
-                                            </linearGradient>
-                                        </defs>
-                                        <rect class="pitch-bg" x="0" y="0" width="68" height="100" fill="url(#db-pitch-gradient-1)" />
-                                        <g class="pitch-markings">
-                                            <rect x="0.5" y="0.5" width="67" height="99" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
-                                            <line x1="0" y1="50" x2="68" y2="50" stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
-                                            <circle cx="34" cy="50" r="9.15" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
-                                            <circle cx="34" cy="50" r="0.5" fill="rgba(255,255,255,0.4)" />
-                                            <rect x="13.85" y="0" width="40.3" height="16.5" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
-                                            <rect x="13.85" y="83.5" width="40.3" height="16.5" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
-                                            <rect x="24.85" y="0" width="18.3" height="5.5" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
-                                            <rect x="24.85" y="94.5" width="18.3" height="5.5" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
-                                            <circle cx="34" cy="11" r="0.4" fill="rgba(255,255,255,0.4)" />
-                                            <circle cx="34" cy="89" r="0.4" fill="rgba(255,255,255,0.4)" />
-                                        </g>
-                                        <g id="db-team1-players" class="team-players home-team"></g>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="db-adjustment-column home-column">
-                            <div class="config-card db-adjustment-title">
-                                <h3 data-i18n="db_home_adjustments">Home Unit Adjustments</h3>
-                            </div>
-                            <div class="config-card db-slider-card">
-                                <label><span data-i18n="db_attack">Attack</span>: <span id="db-team1-attack-value">0</span>%</label>
-                                <input id="db-team1-attack" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
-                            </div>
-                            <div class="config-card db-slider-card">
-                                <label><span data-i18n="db_midfield">Midfield</span>: <span id="db-team1-midfield-value">0</span>%</label>
-                                <input id="db-team1-midfield" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
-                            </div>
-                            <div class="config-card db-slider-card">
-                                <label><span data-i18n="db_defense">Defense</span>: <span id="db-team1-defense-value">0</span>%</label>
-                                <input id="db-team1-defense" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
-                            </div>
-                            <div class="config-card db-slider-card">
-                                <label><span data-i18n="db_goalkeeper">Goalkeeper</span>: <span id="db-team1-goalkeeper-value">0</span>%</label>
-                                <input id="db-team1-goalkeeper" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
-                            </div>
-                        </div>
-
-                        <div class="db-adjustment-column away-column">
-                            <div class="config-card db-adjustment-title">
-                                <h3 data-i18n="db_away_adjustments">Away Unit Adjustments</h3>
-                            </div>
-                            <div class="config-card db-slider-card">
-                                <label><span data-i18n="db_attack">Attack</span>: <span id="db-team2-attack-value">0</span>%</label>
-                                <input id="db-team2-attack" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
-                            </div>
-                            <div class="config-card db-slider-card">
-                                <label><span data-i18n="db_midfield">Midfield</span>: <span id="db-team2-midfield-value">0</span>%</label>
-                                <input id="db-team2-midfield" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
-                            </div>
-                            <div class="config-card db-slider-card">
-                                <label><span data-i18n="db_defense">Defense</span>: <span id="db-team2-defense-value">0</span>%</label>
-                                <input id="db-team2-defense" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
-                            </div>
-                            <div class="config-card db-slider-card">
-                                <label><span data-i18n="db_goalkeeper">Goalkeeper</span>: <span id="db-team2-goalkeeper-value">0</span>%</label>
-                                <input id="db-team2-goalkeeper" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
-                            </div>
-                        </div>
-
-                        <div id="db-team2-panel" class="db-team-panel hidden away-panel">
-                            <div class="single-pitch-wrapper away-pitch">
-                                <div class="pitch-header">
-                                    <div id="db-team2-badge" class="team-badge">✈️</div>
-                                    <h4 id="db-team2-name" class="team-name">-</h4>
-                                    <select id="db-team2-formation" class="modern-select pitch-formation-select">
-                                        <option value="" disabled selected data-i18n="select_formation_short">Formation...</option>
-                                    </select>
-                                </div>
-                                <div class="pitch-view-single">
-                                    <svg id="db-pitch-svg-team2" viewBox="0 0 68 100" preserveAspectRatio="xMidYMid meet">
-                                        <defs>
-                                            <linearGradient id="db-pitch-gradient-2" x1="0%" y1="0%" x2="100%" y2="100%">
-                                                <stop offset="0%" style="stop-color:#1a472a;stop-opacity:1" />
-                                                <stop offset="100%" style="stop-color:#2d5a3d;stop-opacity:1" />
-                                            </linearGradient>
-                                        </defs>
-                                        <rect class="pitch-bg" x="0" y="0" width="68" height="100" fill="url(#db-pitch-gradient-2)" />
-                                        <g class="pitch-markings">
-                                            <rect x="0.5" y="0.5" width="67" height="99" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
-                                            <line x1="0" y1="50" x2="68" y2="50" stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
-                                            <circle cx="34" cy="50" r="9.15" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
-                                            <circle cx="34" cy="50" r="0.5" fill="rgba(255,255,255,0.4)" />
-                                            <rect x="13.85" y="0" width="40.3" height="16.5" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
-                                            <rect x="13.85" y="83.5" width="40.3" height="16.5" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
-                                            <rect x="24.85" y="0" width="18.3" height="5.5" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
-                                            <rect x="24.85" y="94.5" width="18.3" height="5.5" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.3" />
-                                            <circle cx="34" cy="11" r="0.4" fill="rgba(255,255,255,0.4)" />
-                                            <circle cx="34" cy="89" r="0.4" fill="rgba(255,255,255,0.4)" />
-                                        </g>
-                                        <g id="db-team2-players" class="team-players away-team"></g>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-    <!-- Tab 4: Player Analysis -->
+    <!-- Tab 3: Player Analysis -->
     <section id="tab-player-analysis" class="view-section hidden">
         <div class="section-header">
             <h2 data-i18n="player_analysis_title">Deep Player Analysis</h2>
@@ -630,7 +526,7 @@
         </div>
     </section>
 
-    <!-- Tab 5: Recent Games -->
+    <!-- Tab 4: Recent Games -->
     <section id="tab-recent-games" class="view-section hidden">
         <div class="section-header">
             <h2 data-i18n="recent_games_title">Weekly Predictions</h2>
@@ -670,7 +566,7 @@
     <script src="data.js?v=4"></script>
     <script src="players_data.js?v=1"></script>
     <script src="formation.js?v=7"></script>
-    <script src="app.js?v=24"></script>
+    <script src="app.js?v=25"></script>
 </body>
 
 </html>

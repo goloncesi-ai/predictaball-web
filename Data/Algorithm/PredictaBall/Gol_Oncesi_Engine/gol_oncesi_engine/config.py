@@ -13,9 +13,9 @@ class PathsConfig:
 
 @dataclass(frozen=True)
 class SimulationConfig:
-    # perspective split: 500 + 500 = 1000 total
-    n_sims_home_perspective: int = 500
-    n_sims_away_perspective: int = 500
+    # perspective split: 25 + 25 = 50 total
+    n_sims_home_perspective: int = 25
+    n_sims_away_perspective: int = 25
 
     # rating sampling bounds
     rating_min: float = 1.0
@@ -28,14 +28,14 @@ class SimulationConfig:
     y_max: int = 9
 
     # adjustment clamps
-    manual_adj_min: float = -50.0
-    manual_adj_max: float = 50.0
+    manual_adj_min: float = -20.0
+    manual_adj_max: float = 20.0
 
     # HMM suggestion clamp (kept conservative)
     hmm_suggest_min: float = -10.0
     hmm_suggest_max: float = 10.0
 
-    # your existing scaling: mean multiplier = 1 + adj/700
-    mean_adj_denominator: float = 700.0
+    # your existing scaling: mean multiplier = 1 + adj/650
+    mean_adj_denominator: float = 650.0
 
     random_seed: int = 42

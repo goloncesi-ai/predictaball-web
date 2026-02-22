@@ -49,6 +49,27 @@ document.addEventListener('DOMContentLoaded', async () => {
     const team2AdjValue = document.getElementById('team2-adj-value');
     const btnRunSim = document.getElementById('btn-run-sim');
     const simResults = document.getElementById('sim-results');
+    const simEasyAdjustments = document.getElementById('sim-easy-adjustments');
+    const simAdvancedAdjustments = document.getElementById('sim-advanced-adjustments');
+    const simModeButtons = document.querySelectorAll('.sim-mode-btn');
+
+    const simTeam1Attack = document.getElementById('sim-team1-attack');
+    const simTeam1Midfield = document.getElementById('sim-team1-midfield');
+    const simTeam1Defense = document.getElementById('sim-team1-defense');
+    const simTeam1Goalkeeper = document.getElementById('sim-team1-goalkeeper');
+    const simTeam1AttackValue = document.getElementById('sim-team1-attack-value');
+    const simTeam1MidfieldValue = document.getElementById('sim-team1-midfield-value');
+    const simTeam1DefenseValue = document.getElementById('sim-team1-defense-value');
+    const simTeam1GoalkeeperValue = document.getElementById('sim-team1-goalkeeper-value');
+
+    const simTeam2Attack = document.getElementById('sim-team2-attack');
+    const simTeam2Midfield = document.getElementById('sim-team2-midfield');
+    const simTeam2Defense = document.getElementById('sim-team2-defense');
+    const simTeam2Goalkeeper = document.getElementById('sim-team2-goalkeeper');
+    const simTeam2AttackValue = document.getElementById('sim-team2-attack-value');
+    const simTeam2MidfieldValue = document.getElementById('sim-team2-midfield-value');
+    const simTeam2DefenseValue = document.getElementById('sim-team2-defense-value');
+    const simTeam2GoalkeeperValue = document.getElementById('sim-team2-goalkeeper-value');
 
     // Drawing Board Tab Elements
     const drawingBoardTab = document.getElementById('tab-drawing-board');
@@ -138,6 +159,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     let currentSimulationHomeLeague = '';
     let currentSimulationAwayLeague = '';
     let simulationCrossLeagueEnabled = false;
+    let simulationAdjustmentMode = 'easy';
     let drawingBoardInitialized = false;
     let drawingBoardLeague = '';
     let drawingBoardLineupTeam1 = null;
@@ -164,6 +186,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         '4-1-3-2', '4-1-4-1', '4-2-2-2', '4-2-3-1', '4-3-1-2', '4-3-3', '4-4-1-1', '4-4-2',
         '4-5-1', '5-3-2', '5-4-1'
     ];
+    const simTeam1DetailedSliders = [simTeam1Attack, simTeam1Midfield, simTeam1Defense, simTeam1Goalkeeper];
+    const simTeam2DetailedSliders = [simTeam2Attack, simTeam2Midfield, simTeam2Defense, simTeam2Goalkeeper];
 
     // --- Initialization moved to after declarations ---
 
@@ -203,6 +227,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             label_home_formation: "Home Formation",
             label_away_formation: "Away Formation",
             select_formation_short: "Formation...",
+            sim_adjustment_mode: "Adjustment Mode",
+            sim_mode_easy: "Easy Mode",
+            sim_mode_advanced: "Advanced Mode",
             home_adj: "Home Team Adjustment",
             away_adj: "Away Team Adjustment",
             db_home_adjustments: "Home Unit Adjustments",
@@ -290,6 +317,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             label_home_formation: "Ev Sahibi Dizilişi",
             label_away_formation: "Deplasman Dizilişi",
             select_formation_short: "Diziliş...",
+            sim_adjustment_mode: "Ayar Modu",
+            sim_mode_easy: "Kolay Mod",
+            sim_mode_advanced: "Gelişmiş Mod",
             home_adj: "Ev Sahibi Ayarı",
             away_adj: "Deplasman Ayarı",
             db_home_adjustments: "Ev Sahibi Birim Ayarları",
@@ -562,7 +592,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         initPlayerAnalysisTab();
         initLanguage();
         await ensureSimulationSelectorsPopulated(true);
-        initDrawingBoardTab();
         initLiquidGlass();
     } else {
         console.error("No data found. Ensure data.js is loaded.");
@@ -1101,6 +1130,90 @@ document.addEventListener('DOMContentLoaded', async () => {
         valueLabel.textContent = formatSliderAdjustment(clamped);
     }
 
+    function getNumericSliderValue(slider) {
+        const value = Number(slider?.value ?? 0);
+        return Number.isFinite(value) ? value : 0;
+    }
+
+    function applyDetailedAdjustmentValues(homeValue, awayValue) {
+        applySliderValue(simTeam1Attack, simTeam1AttackValue, homeValue);
+        applySliderValue(simTeam1Midfield, simTeam1MidfieldValue, homeValue);
+        applySliderValue(simTeam1Defense, simTeam1DefenseValue, homeValue);
+        applySliderValue(simTeam1Goalkeeper, simTeam1GoalkeeperValue, homeValue);
+
+        applySliderValue(simTeam2Attack, simTeam2AttackValue, awayValue);
+        applySliderValue(simTeam2Midfield, simTeam2MidfieldValue, awayValue);
+        applySliderValue(simTeam2Defense, simTeam2DefenseValue, awayValue);
+        applySliderValue(simTeam2Goalkeeper, simTeam2GoalkeeperValue, awayValue);
+    }
+
+    function getDetailedTeamAverage(sliders) {
+        const values = sliders.map(getNumericSliderValue);
+        if (values.length === 0) return 0;
+        const total = values.reduce((sum, value) => sum + value, 0);
+        return Number((total / values.length).toFixed(3));
+    }
+
+    function getSimulationAdjustmentValues() {
+        if (simulationAdjustmentMode === 'advanced') {
+            return {
+                team1: getDetailedTeamAverage(simTeam1DetailedSliders),
+                team2: getDetailedTeamAverage(simTeam2DetailedSliders),
+            };
+        }
+        return {
+            team1: getNumericSliderValue(team1AdjSlider),
+            team2: getNumericSliderValue(team2AdjSlider),
+        };
+    }
+
+    function areDetailedSlidersPristine() {
+        return [...simTeam1DetailedSliders, ...simTeam2DetailedSliders]
+            .every((slider) => getNumericSliderValue(slider) === 0);
+    }
+
+    function applySimulationModeUI() {
+        if (simEasyAdjustments) {
+            simEasyAdjustments.classList.toggle('hidden', simulationAdjustmentMode !== 'easy');
+        }
+        if (simAdvancedAdjustments) {
+            simAdvancedAdjustments.classList.toggle('hidden', simulationAdjustmentMode !== 'advanced');
+        }
+        simModeButtons.forEach((button) => {
+            const isActive = button.getAttribute('data-sim-mode') === simulationAdjustmentMode;
+            button.classList.toggle('active', isActive);
+            button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+    }
+
+    function setSimulationAdjustmentMode(mode, { syncFromEasy = true } = {}) {
+        const nextMode = mode === 'advanced' ? 'advanced' : 'easy';
+        const previousMode = simulationAdjustmentMode;
+        simulationAdjustmentMode = nextMode;
+
+        if (
+            nextMode === 'advanced' &&
+            previousMode !== 'advanced' &&
+            syncFromEasy &&
+            areDetailedSlidersPristine()
+        ) {
+            applyDetailedAdjustmentValues(
+                getNumericSliderValue(team1AdjSlider),
+                getNumericSliderValue(team2AdjSlider)
+            );
+        }
+
+        applySimulationModeUI();
+    }
+
+    function wireDetailedSlider(slider, valueEl) {
+        if (!slider || !valueEl) return;
+        applySliderValue(slider, valueEl, slider.value);
+        slider.addEventListener('input', (e) => {
+            applySliderValue(slider, valueEl, e.target.value);
+        });
+    }
+
     async function fetchPairHmmAdjustments(homeTeam, awayTeam, league) {
         const home = `${homeTeam || ''}`.trim();
         const away = `${awayTeam || ''}`.trim();
@@ -1184,6 +1297,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             applySliderValue(team1AdjSlider, team1AdjValue, homeAdjustment);
             applySliderValue(team2AdjSlider, team2AdjValue, awayAdjustment);
+            if (simulationAdjustmentMode === 'advanced') {
+                applyDetailedAdjustmentValues(homeAdjustment, awayAdjustment);
+            }
         } catch (error) {
             console.warn(`Failed to load HMM adjustments for ${selectedHomeTeam} vs ${selectedAwayTeam}:`, error.message);
             const stillLatest =
@@ -1196,6 +1312,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             applySliderValue(team1AdjSlider, team1AdjValue, 0);
             applySliderValue(team2AdjSlider, team2AdjValue, 0);
+            if (simulationAdjustmentMode === 'advanced') {
+                applyDetailedAdjustmentValues(0, 0);
+            }
         }
     }
 
@@ -1241,6 +1360,23 @@ document.addEventListener('DOMContentLoaded', async () => {
             applySliderValue(team2AdjSlider, team2AdjValue, e.target.value);
         });
     }
+
+    wireDetailedSlider(simTeam1Attack, simTeam1AttackValue);
+    wireDetailedSlider(simTeam1Midfield, simTeam1MidfieldValue);
+    wireDetailedSlider(simTeam1Defense, simTeam1DefenseValue);
+    wireDetailedSlider(simTeam1Goalkeeper, simTeam1GoalkeeperValue);
+    wireDetailedSlider(simTeam2Attack, simTeam2AttackValue);
+    wireDetailedSlider(simTeam2Midfield, simTeam2MidfieldValue);
+    wireDetailedSlider(simTeam2Defense, simTeam2DefenseValue);
+    wireDetailedSlider(simTeam2Goalkeeper, simTeam2GoalkeeperValue);
+
+    simModeButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const selectedMode = button.getAttribute('data-sim-mode') || 'easy';
+            setSimulationAdjustmentMode(selectedMode);
+        });
+    });
+    setSimulationAdjustmentMode('easy', { syncFromEasy: false });
 
     // --- Pitch Visualization (Formation) ---
     function getSafeFormation(formation, fallback = '4-2-3-1') {
@@ -1327,6 +1463,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (!homeLeague && !awayLeague) {
             applySliderValue(team1AdjSlider, team1AdjValue, 0);
             applySliderValue(team2AdjSlider, team2AdjValue, 0);
+            applyDetailedAdjustmentValues(0, 0);
             if (typeof hidePitchView === 'function') hidePitchView();
             return;
         }
@@ -1496,8 +1633,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             try {
                 // Get adjustment values
-                const team1Adj = parseFloat(team1AdjSlider?.value || 0);
-                const team2Adj = parseFloat(team2AdjSlider?.value || 0);
+                const adjustmentValues = getSimulationAdjustmentValues();
+                const team1Adj = adjustmentValues.team1;
+                const team2Adj = adjustmentValues.team2;
                 const team1Formation = getSafeFormation(simTeam1FormationSelect?.value || '');
                 const team2Formation = getSafeFormation(simTeam2FormationSelect?.value || '');
 
