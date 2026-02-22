@@ -58,7 +58,8 @@ class Simulator:
             if f"Team1Player{i}" in team2_df.columns
         }
 
-        mult1 = 1.0 + (team1_adj_pct / self.cfg.mean_adj_denominator)
+        home_advantage_multiplier = 5.0
+        mult1 = 1.0 + (team1_adj_pct / self.cfg.mean_adj_denominator) + (home_advantage_multiplier / self.cfg.mean_adj_denominator)
         mult2 = 1.0 + (team2_adj_pct / self.cfg.mean_adj_denominator)
 
         rows = []
@@ -71,12 +72,12 @@ class Simulator:
                 "Team2Formation": team2_formation,
             }
             for i in range(1, 12):
-                m1, s1 = team1_stats.get(f"Team1Player{i}", (5.0, 1.0))
+                m1, s1 = team1_stats.get(f"Team1Player{i}", (6.5, 1.0))
                 v = np.clip(np.random.normal(m1 * mult1, s1), self.cfg.rating_min, self.cfg.rating_max)
                 row[f"Team1Player{i}"] = round(float(v), 2)
 
             for i in range(1, 12):
-                m2, s2 = team2_stats.get(f"Team2Player{i}", (5.0, 1.0))
+                m2, s2 = team2_stats.get(f"Team2Player{i}", (6.5, 1.0))
                 v = np.clip(np.random.normal(m2 * mult2, s2), self.cfg.rating_min, self.cfg.rating_max)
                 row[f"Team2Player{i}"] = round(float(v), 2)
 

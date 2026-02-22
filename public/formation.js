@@ -3,6 +3,69 @@
  * Handles parsing formations and rendering players on pitch
  */
 
+const MAIN_PITCH_CLUSTERS = [
+    { name: 'Goalkeeper_Zone', label: 'GK', x1: 1, x2: 1, y1: 1, y2: 9, color: 'rgba(148, 163, 184, 0.24)' },
+    { name: 'Back_Left', label: 'Back L', x1: 2, x2: 3, y1: 1, y2: 3, color: 'rgba(59, 130, 246, 0.22)' },
+    { name: 'Back_Right', label: 'Back R', x1: 2, x2: 3, y1: 7, y2: 9, color: 'rgba(239, 68, 68, 0.2)' },
+    { name: 'Mid_Def', label: 'Mid Def', x1: 2, x2: 3, y1: 4, y2: 6, color: 'rgba(34, 197, 94, 0.2)' },
+    { name: 'Mid_Att', label: 'Mid Att', x1: 4, x2: 5, y1: 4, y2: 6, color: 'rgba(168, 85, 247, 0.2)' },
+    { name: 'Wing_Left', label: 'Wing L', x1: 4, x2: 5, y1: 1, y2: 3, color: 'rgba(45, 212, 191, 0.2)' },
+    { name: 'Wing_Right', label: 'Wing R', x1: 4, x2: 5, y1: 7, y2: 9, color: 'rgba(250, 204, 21, 0.22)' },
+];
+
+function clusterToPitchRect(cluster, pitchWidth = 68, pitchHeight = 100) {
+    const lengthCells = 5;
+    const widthCells = 9;
+    const cellWidth = pitchWidth / widthCells;
+    const cellHeight = pitchHeight / lengthCells;
+
+    // Engine x-axis starts at own goal; in vertical SVG own goal is bottom.
+    const x = (cluster.y1 - 1) * cellWidth;
+    const y = (lengthCells - cluster.x2) * cellHeight;
+    const width = (cluster.y2 - cluster.y1 + 1) * cellWidth;
+    const height = (cluster.x2 - cluster.x1 + 1) * cellHeight;
+    return { x, y, width, height };
+}
+
+function renderPitchClusterOverlay(svgId, overlayId) {
+    const svg = document.getElementById(svgId);
+    if (!svg) return;
+
+    const playersLayer = svg.querySelector('.team-players');
+    if (!playersLayer) return;
+
+    let overlay = document.getElementById(overlayId);
+    if (!overlay) {
+        overlay = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        overlay.setAttribute('id', overlayId);
+        overlay.setAttribute('class', 'pitch-cluster-overlay');
+        svg.insertBefore(overlay, playersLayer);
+    }
+
+    overlay.innerHTML = '';
+
+    MAIN_PITCH_CLUSTERS.forEach((cluster) => {
+        const { x, y, width, height } = clusterToPitchRect(cluster);
+
+        const zone = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        zone.setAttribute('x', String(x));
+        zone.setAttribute('y', String(y));
+        zone.setAttribute('width', String(width));
+        zone.setAttribute('height', String(height));
+        zone.setAttribute('fill', cluster.color);
+        zone.setAttribute('class', 'pitch-cluster-zone');
+        zone.setAttribute('data-cluster', cluster.name);
+        overlay.appendChild(zone);
+
+        const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        label.setAttribute('x', String(x + width / 2));
+        label.setAttribute('y', String(y + height / 2));
+        label.setAttribute('class', 'pitch-cluster-label');
+        label.textContent = cluster.label;
+        overlay.appendChild(label);
+    });
+}
+
 // Parse formation string like "4-3-3" into array [4, 3, 3]
 function parseFormation(formationString) {
     if (!formationString || typeof formationString !== 'string') {
@@ -137,6 +200,9 @@ function addPlayerTooltip(playerNode, player) {
 function renderPitchView(team1Data, team2Data) {
     const pitch1Wrapper = document.getElementById('pitch-team1-wrapper');
     const pitch2Wrapper = document.getElementById('pitch-team2-wrapper');
+
+    renderPitchClusterOverlay('pitch-svg-team1', 'team1-cluster-overlay');
+    renderPitchClusterOverlay('pitch-svg-team2', 'team2-cluster-overlay');
 
     // Team 1 (Home) - show if data available
     if (team1Data && team1Data.formation) {
@@ -368,6 +434,7 @@ if (typeof module !== 'undefined' && module.exports) {
         parseFormation,
         getFormationPositions,
         renderTeamPlayers,
+        renderPitchClusterOverlay,
         renderPitchView,
         hidePitchView,
         getTeamLatestLineup

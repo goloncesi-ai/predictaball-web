@@ -1328,7 +1328,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (!formationHelpersLoadPromise) {
             formationHelpersLoadPromise = new Promise((resolve) => {
                 const script = document.createElement('script');
-                script.src = 'formation.js?v=7';
+                script.src = 'formation.js?v=8';
                 script.async = true;
                 script.onload = () => resolve(true);
                 script.onerror = () => resolve(false);
