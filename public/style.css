@@ -1866,6 +1866,16 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+.state-profile-empty {
+    background: rgba(15, 23, 42, 0.45);
+    border: 1px dashed rgba(148, 163, 184, 0.35);
+    border-radius: 12px;
+    padding: 0.9rem;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    color: var(--text-muted);
+}
+
 .state-header {
     display: flex;
     justify-content: space-between;

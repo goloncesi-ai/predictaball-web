@@ -1260,32 +1260,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         return 'neutral';
                     };
 
-                    // Build state profiles for each team
-                    const buildStateProfiles = (team) => {
-                        if (!team.state_profiles || team.state_profiles.length === 0) return '';
-                        return team.state_profiles.map(state => `
-                            <div class="state-profile-card">
-                                <div class="state-header">
-                                    <span class="state-label">${state.label}</span>
-                                    <span class="state-matches">${state.count} matches</span>
-                                </div>
-                                <div class="state-probs">
-                                    <div class="state-prob win">
-                                        <span class="prob-bar" style="width: ${state.win_prob}%"></span>
-                                        <span class="prob-text">W ${state.win_prob}%</span>
-                                    </div>
-                                    <div class="state-prob draw">
-                                        <span class="prob-bar" style="width: ${state.draw_prob}%"></span>
-                                        <span class="prob-text">D ${state.draw_prob}%</span>
-                                    </div>
-                                    <div class="state-prob loss">
-                                        <span class="prob-bar" style="width: ${state.loss_prob}%"></span>
-                                        <span class="prob-text">L ${state.loss_prob}%</span>
-                                    </div>
-                                </div>
-                            </div>
-                        `).join('');
-                    };
+                    const buildStateProfiles = (team) => renderStateProfilesList(team);
 
                     formHtml = `
                         <div class="form-team">
@@ -3293,6 +3268,53 @@ document.addEventListener('DOMContentLoaded', async () => {
         `;
     }
 
+    function toStateProfiles(rawProfiles) {
+        if (Array.isArray(rawProfiles)) return rawProfiles;
+        if (rawProfiles && typeof rawProfiles === 'object') {
+            return Object.values(rawProfiles).filter(Boolean);
+        }
+        return [];
+    }
+
+    function toPercent(value) {
+        const num = Number(value);
+        return Number.isFinite(num) ? num.toFixed(1) : '0.0';
+    }
+
+    function renderStateProfilesList(team) {
+        const profiles = toStateProfiles(team?.state_profiles);
+        if (profiles.length === 0) {
+            return `
+                <div class="state-profile-empty">
+                    No state-level breakdown available for this team in the current round data.
+                </div>
+            `;
+        }
+
+        return profiles.map(state => `
+            <div class="state-profile-card">
+                <div class="state-header">
+                    <span class="state-label">${state?.label || 'State'}</span>
+                    <span class="state-matches">${Number.isFinite(Number(state?.count)) ? Number(state.count) : 0} matches</span>
+                </div>
+                <div class="state-probs">
+                    <div class="state-prob win">
+                        <span class="prob-bar" style="width: ${toPercent(state?.win_prob)}%"></span>
+                        <span class="prob-text">W ${toPercent(state?.win_prob)}%</span>
+                    </div>
+                    <div class="state-prob draw">
+                        <span class="prob-bar" style="width: ${toPercent(state?.draw_prob)}%"></span>
+                        <span class="prob-text">D ${toPercent(state?.draw_prob)}%</span>
+                    </div>
+                    <div class="state-prob loss">
+                        <span class="prob-bar" style="width: ${toPercent(state?.loss_prob)}%"></span>
+                        <span class="prob-text">L ${toPercent(state?.loss_prob)}%</span>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
     function normalizeTeamKey(value) {
         return `${value || ''}`
             .trim()
@@ -3645,31 +3667,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const m1 = pred.markov_form.team1;
             const m2 = pred.markov_form.team2;
 
-            const buildStateProfiles = (team) => {
-                if (!team.state_profiles || team.state_profiles.length === 0) return '';
-                return team.state_profiles.map(state => `
-                    <div class="state-profile-card">
-                        <div class="state-header">
-                            <span class="state-label">${state.label}</span>
-                            <span class="state-matches">${state.count} matches</span>
-                        </div>
-                        <div class="state-probs">
-                            <div class="state-prob win">
-                                <span class="prob-bar" style="width: ${state.win_prob}%"></span>
-                                <span class="prob-text">W ${state.win_prob}%</span>
-                            </div>
-                            <div class="state-prob draw">
-                                <span class="prob-bar" style="width: ${state.draw_prob}%"></span>
-                                <span class="prob-text">D ${state.draw_prob}%</span>
-                            </div>
-                            <div class="state-prob loss">
-                                <span class="prob-bar" style="width: ${state.loss_prob}%"></span>
-                                <span class="prob-text">L ${state.loss_prob}%</span>
-                            </div>
-                        </div>
-                    </div>
-                `).join('');
-            };
+            const buildStateProfiles = (team) => renderStateProfilesList(team);
 
             stateProfilesHtml = `
                 <div class="insights-panel">
