@@ -50,6 +50,38 @@ document.addEventListener('DOMContentLoaded', async () => {
     const btnRunSim = document.getElementById('btn-run-sim');
     const simResults = document.getElementById('sim-results');
 
+    // Drawing Board Tab Elements
+    const drawingBoardTab = document.getElementById('tab-drawing-board');
+    const dbLeagueSelect = document.getElementById('db-league');
+    const dbTeam1Select = document.getElementById('db-team1');
+    const dbTeam2Select = document.getElementById('db-team2');
+    const dbTeam1Panel = document.getElementById('db-team1-panel');
+    const dbTeam2Panel = document.getElementById('db-team2-panel');
+    const dbTeam1Name = document.getElementById('db-team1-name');
+    const dbTeam2Name = document.getElementById('db-team2-name');
+    const dbTeam1Badge = document.getElementById('db-team1-badge');
+    const dbTeam2Badge = document.getElementById('db-team2-badge');
+    const dbTeam1FormationSelect = document.getElementById('db-team1-formation');
+    const dbTeam2FormationSelect = document.getElementById('db-team2-formation');
+
+    const dbTeam1Attack = document.getElementById('db-team1-attack');
+    const dbTeam1Midfield = document.getElementById('db-team1-midfield');
+    const dbTeam1Defense = document.getElementById('db-team1-defense');
+    const dbTeam1Goalkeeper = document.getElementById('db-team1-goalkeeper');
+    const dbTeam1AttackValue = document.getElementById('db-team1-attack-value');
+    const dbTeam1MidfieldValue = document.getElementById('db-team1-midfield-value');
+    const dbTeam1DefenseValue = document.getElementById('db-team1-defense-value');
+    const dbTeam1GoalkeeperValue = document.getElementById('db-team1-goalkeeper-value');
+
+    const dbTeam2Attack = document.getElementById('db-team2-attack');
+    const dbTeam2Midfield = document.getElementById('db-team2-midfield');
+    const dbTeam2Defense = document.getElementById('db-team2-defense');
+    const dbTeam2Goalkeeper = document.getElementById('db-team2-goalkeeper');
+    const dbTeam2AttackValue = document.getElementById('db-team2-attack-value');
+    const dbTeam2MidfieldValue = document.getElementById('db-team2-midfield-value');
+    const dbTeam2DefenseValue = document.getElementById('db-team2-defense-value');
+    const dbTeam2GoalkeeperValue = document.getElementById('db-team2-goalkeeper-value');
+
     // Player Tab Elements
     const playerSearchInput = document.getElementById('player-search');
     const searchResultsList = document.getElementById('search-results');
@@ -106,6 +138,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     let currentSimulationHomeLeague = '';
     let currentSimulationAwayLeague = '';
     let simulationCrossLeagueEnabled = false;
+    let drawingBoardInitialized = false;
+    let drawingBoardLeague = '';
+    let drawingBoardLineupTeam1 = null;
+    let drawingBoardLineupTeam2 = null;
+    let drawingBoardLastTeam1 = '';
+    let drawingBoardLastTeam2 = '';
+    let drawingBoardSyncToken = 0;
     let formationHelpersReady = false;
     let formationHelpersLoadPromise = null;
     let pitchUpdateToken = 0;
@@ -134,6 +173,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             subtitle: "Next-Gen Football Analytics & Simulation",
             nav_analysis: "Analysis",
             nav_simulation: "Simulation",
+            nav_drawing_board: "Drawing Board",
             nav_recent_games: "Upcoming Games",
             nav_player_analysis: "Player Lab",
             nav_scout: "Scout",
@@ -151,6 +191,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             rankings_title: "Metric Rankings",
             sim_title: "AI Match Engine",
             sim_desc: "Run 1000+ Monte Carlo simulations to predict the outcome.",
+            drawing_board_title: "Drawing Board",
+            drawing_board_desc: "Rate each team unit with separate sliders before matchday.",
             match_setup: "Match Setup",
             label_league: "League",
             label_home_league: "Home League",
@@ -163,6 +205,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             select_formation_short: "Formation...",
             home_adj: "Home Team Adjustment",
             away_adj: "Away Team Adjustment",
+            db_home_adjustments: "Home Unit Adjustments",
+            db_away_adjustments: "Away Unit Adjustments",
+            db_attack: "Attack",
+            db_midfield: "Midfield",
+            db_defense: "Defense",
+            db_goalkeeper: "Goalkeeper",
             btn_run_sim: "Run Prediction",
             loader_title: "Analyzing Match...",
             loader_subtitle: "Running 10,000 simulations with AI predictions",
@@ -212,6 +260,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             subtitle: "Yeni Nesil Futbol Analizi ve Simülasyonu",
             nav_analysis: "Analiz",
             nav_simulation: "Simülasyon",
+            nav_drawing_board: "Çizim Tahtası",
             nav_recent_games: "Yaklaşan Maçlar",
             nav_player_analysis: "Oyuncu Laboratuvarı",
             nav_scout: "Gözlemci",
@@ -229,6 +278,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             rankings_title: "Sıralamalar",
             sim_title: "Yapay Zeka Maç Motoru",
             sim_desc: "Maç sonucunu tahmin etmek için 1000+ Monte Carlo simülasyonu çalıştırın.",
+            drawing_board_title: "Çizim Tahtası",
+            drawing_board_desc: "Maç öncesi takımın her bölümünü ayrı kaydırıcılarla puanlayın.",
             match_setup: "Maç Kurulumu",
             label_league: "Lig",
             label_home_league: "Ev Sahibi Ligi",
@@ -241,6 +292,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             select_formation_short: "Diziliş...",
             home_adj: "Ev Sahibi Ayarı",
             away_adj: "Deplasman Ayarı",
+            db_home_adjustments: "Ev Sahibi Birim Ayarları",
+            db_away_adjustments: "Deplasman Birim Ayarları",
+            db_attack: "Hücum",
+            db_midfield: "Orta Saha",
+            db_defense: "Defans",
+            db_goalkeeper: "Kaleci",
             btn_run_sim: "Tahmin Yürüt",
             loader_title: "Maç Analiz Ediliyor...",
             loader_subtitle: "10.000 simülasyon yapay zeka tahminleri ile çalışıyor",
@@ -505,6 +562,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         initPlayerAnalysisTab();
         initLanguage();
         await ensureSimulationSelectorsPopulated(true);
+        initDrawingBoardTab();
         initLiquidGlass();
     } else {
         console.error("No data found. Ensure data.js is loaded.");
@@ -549,6 +607,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         fillSelect(team2Select);
         fillFormationSelect(simTeam1FormationSelect);
         fillFormationSelect(simTeam2FormationSelect);
+        fillFormationSelect(dbTeam1FormationSelect);
+        fillFormationSelect(dbTeam2FormationSelect);
     }
 
     function getSimulationTeamMeta(leagueFolder, teamFolder) {
@@ -738,6 +798,238 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
         populateSimulationLeagueSelects();
         populateSimulationTeamSelectors();
+    }
+
+    function clearDrawingBoardPanel(panelEl, nameEl, badgeEl, playersGroupId, fallbackBadge = '🏟️') {
+        if (panelEl) panelEl.classList.add('hidden');
+        if (nameEl) nameEl.textContent = '-';
+        if (badgeEl) badgeEl.textContent = fallbackBadge;
+        const playersEl = document.getElementById(playersGroupId);
+        if (playersEl) playersEl.innerHTML = '';
+    }
+
+    function renderDrawingBoardPanel(panelEl, nameEl, badgeEl, playersGroupId, teamData, side = 'home') {
+        if (!teamData) {
+            clearDrawingBoardPanel(
+                panelEl,
+                nameEl,
+                badgeEl,
+                playersGroupId,
+                side === 'home' ? '🏠' : '✈️'
+            );
+            return;
+        }
+
+        if (panelEl) panelEl.classList.remove('hidden');
+        if (nameEl) nameEl.textContent = teamData.name || '-';
+        if (badgeEl) {
+            badgeEl.innerHTML = `<img src="/logos/${teamData.name}.png" alt="${teamData.name}" class="pitch-team-logo" onerror="this.style.display='none'">`;
+        }
+
+        const formation = getSafeFormation(teamData.formation);
+        const positions = typeof getFormationPositions === 'function' ? getFormationPositions(formation) : [];
+        if (typeof renderTeamPlayers === 'function' && positions.length > 0) {
+            renderTeamPlayers(
+                playersGroupId,
+                positions,
+                Array.isArray(teamData.players) ? teamData.players : [],
+                side,
+                side === 'home' ? '#3b82f6' : '#f43f5e'
+            );
+        }
+    }
+
+    function populateDrawingBoardLeagueSelect() {
+        if (!dbLeagueSelect) return;
+
+        fillSimulationLeagueSelect(dbLeagueSelect);
+        const preferredLeague = drawingBoardLeague || currentSimulationLeague || simulationLeagues[0]?.folder || '';
+        if (simulationTeamsByLeague.has(preferredLeague)) {
+            drawingBoardLeague = preferredLeague;
+            dbLeagueSelect.value = preferredLeague;
+        } else {
+            drawingBoardLeague = '';
+        }
+    }
+
+    function populateDrawingBoardTeamSelects() {
+        if (!dbTeam1Select || !dbTeam2Select) return;
+        const teams = getTeamsForLeague(drawingBoardLeague);
+        const prevTeam1 = dbTeam1Select.value;
+        const prevTeam2 = dbTeam2Select.value;
+
+        const fillTeamSelect = (select) => {
+            const placeholderOption = buildPlaceholderOption(select, 'Select...');
+            select.innerHTML = '';
+            select.add(placeholderOption);
+            teams.forEach((team) => {
+                const teamFolder = `${team?.folder || team?.name || ''}`.trim();
+                if (!teamFolder) return;
+                const teamLabel = `${team?.name || teamFolder}`.trim();
+                select.add(new Option(teamLabel, teamFolder));
+            });
+            select.disabled = !drawingBoardLeague || teams.length === 0;
+        };
+
+        fillTeamSelect(dbTeam1Select);
+        fillTeamSelect(dbTeam2Select);
+
+        if (teams.some(team => `${team?.folder || team?.name || ''}` === prevTeam1)) {
+            dbTeam1Select.value = prevTeam1;
+        } else {
+            drawingBoardLineupTeam1 = null;
+            drawingBoardLastTeam1 = '';
+        }
+
+        if (teams.some(team => `${team?.folder || team?.name || ''}` === prevTeam2)) {
+            dbTeam2Select.value = prevTeam2;
+        } else {
+            drawingBoardLineupTeam2 = null;
+            drawingBoardLastTeam2 = '';
+        }
+    }
+
+    function renderDrawingBoardFromCache() {
+        if (dbTeam1FormationSelect && drawingBoardLineupTeam1) {
+            drawingBoardLineupTeam1.formation = getSafeFormation(dbTeam1FormationSelect.value || drawingBoardLineupTeam1.formation);
+            dbTeam1FormationSelect.value = drawingBoardLineupTeam1.formation;
+        }
+        if (dbTeam2FormationSelect && drawingBoardLineupTeam2) {
+            drawingBoardLineupTeam2.formation = getSafeFormation(dbTeam2FormationSelect.value || drawingBoardLineupTeam2.formation);
+            dbTeam2FormationSelect.value = drawingBoardLineupTeam2.formation;
+        }
+
+        renderDrawingBoardPanel(dbTeam1Panel, dbTeam1Name, dbTeam1Badge, 'db-team1-players', drawingBoardLineupTeam1, 'home');
+        renderDrawingBoardPanel(dbTeam2Panel, dbTeam2Name, dbTeam2Badge, 'db-team2-players', drawingBoardLineupTeam2, 'away');
+    }
+
+    async function syncDrawingBoardPitches() {
+        if (!dbLeagueSelect || !dbTeam1Select || !dbTeam2Select) return;
+
+        const canRenderPitch = await ensureFormationHelpers();
+        if (!canRenderPitch) return;
+
+        const league = drawingBoardLeague;
+        const team1 = dbTeam1Select.value || '';
+        const team2 = dbTeam2Select.value || '';
+        const token = ++drawingBoardSyncToken;
+
+        if (!league) {
+            drawingBoardLineupTeam1 = null;
+            drawingBoardLineupTeam2 = null;
+            renderDrawingBoardFromCache();
+            return;
+        }
+
+        const team1Meta = getSimulationTeamMeta(league, team1);
+        const team2Meta = getSimulationTeamMeta(league, team2);
+
+        const [team1Data, team2Data] = await Promise.all([
+            team1
+                ? getTeamLatestLineup(team1, league, team1Meta?.lineup_csv_path || '').catch((error) => {
+                    console.error('Drawing Board team 1 lineup error:', error);
+                    return null;
+                })
+                : Promise.resolve(null),
+            team2
+                ? getTeamLatestLineup(team2, league, team2Meta?.lineup_csv_path || '').catch((error) => {
+                    console.error('Drawing Board team 2 lineup error:', error);
+                    return null;
+                })
+                : Promise.resolve(null),
+        ]);
+
+        const stillLatest =
+            token === drawingBoardSyncToken &&
+            drawingBoardLeague === league &&
+            (dbTeam1Select?.value || '') === team1 &&
+            (dbTeam2Select?.value || '') === team2;
+        if (!stillLatest) return;
+
+        drawingBoardLineupTeam1 = team1Data;
+        drawingBoardLineupTeam2 = team2Data;
+
+        if (drawingBoardLineupTeam1) {
+            if (team1 !== drawingBoardLastTeam1 || !dbTeam1FormationSelect?.value) {
+                applyDefaultFormation(dbTeam1FormationSelect, drawingBoardLineupTeam1.formation);
+            }
+            drawingBoardLineupTeam1.formation = getSafeFormation(dbTeam1FormationSelect?.value || drawingBoardLineupTeam1.formation);
+        }
+
+        if (drawingBoardLineupTeam2) {
+            if (team2 !== drawingBoardLastTeam2 || !dbTeam2FormationSelect?.value) {
+                applyDefaultFormation(dbTeam2FormationSelect, drawingBoardLineupTeam2.formation);
+            }
+            drawingBoardLineupTeam2.formation = getSafeFormation(dbTeam2FormationSelect?.value || drawingBoardLineupTeam2.formation);
+        }
+
+        drawingBoardLastTeam1 = team1;
+        drawingBoardLastTeam2 = team2;
+        renderDrawingBoardFromCache();
+    }
+
+    function wireDrawingBoardSlider(slider, valueEl) {
+        if (!slider || !valueEl) return;
+        applySliderValue(slider, valueEl, slider.value);
+        slider.addEventListener('input', (e) => {
+            applySliderValue(slider, valueEl, e.target.value);
+        });
+    }
+
+    function initDrawingBoardTab() {
+        if (!drawingBoardTab) return;
+
+        if (!drawingBoardInitialized) {
+            if (dbLeagueSelect) {
+                dbLeagueSelect.addEventListener('change', async (e) => {
+                    drawingBoardLeague = `${e.target?.value || ''}`.trim();
+                    populateDrawingBoardTeamSelects();
+                    await syncDrawingBoardPitches();
+                });
+            }
+
+            if (dbTeam1Select) {
+                dbTeam1Select.addEventListener('change', async () => {
+                    await syncDrawingBoardPitches();
+                });
+            }
+
+            if (dbTeam2Select) {
+                dbTeam2Select.addEventListener('change', async () => {
+                    await syncDrawingBoardPitches();
+                });
+            }
+
+            if (dbTeam1FormationSelect) {
+                dbTeam1FormationSelect.addEventListener('change', renderDrawingBoardFromCache);
+            }
+            if (dbTeam2FormationSelect) {
+                dbTeam2FormationSelect.addEventListener('change', renderDrawingBoardFromCache);
+            }
+
+            wireDrawingBoardSlider(dbTeam1Attack, dbTeam1AttackValue);
+            wireDrawingBoardSlider(dbTeam1Midfield, dbTeam1MidfieldValue);
+            wireDrawingBoardSlider(dbTeam1Defense, dbTeam1DefenseValue);
+            wireDrawingBoardSlider(dbTeam1Goalkeeper, dbTeam1GoalkeeperValue);
+            wireDrawingBoardSlider(dbTeam2Attack, dbTeam2AttackValue);
+            wireDrawingBoardSlider(dbTeam2Midfield, dbTeam2MidfieldValue);
+            wireDrawingBoardSlider(dbTeam2Defense, dbTeam2DefenseValue);
+            wireDrawingBoardSlider(dbTeam2Goalkeeper, dbTeam2GoalkeeperValue);
+
+            drawingBoardInitialized = true;
+        }
+
+        tabBtns.forEach((btn) => {
+            if (btn.getAttribute('data-tab') === 'tab-drawing-board') {
+                btn.addEventListener('click', async () => {
+                    await ensureSimulationSelectorsPopulated(false);
+                    drawingBoardLeague = drawingBoardLeague || currentSimulationLeague || simulationLeagues[0]?.folder || '';
+                    populateDrawingBoardLeagueSelect();
+                    populateDrawingBoardTeamSelects();
+                    await syncDrawingBoardPitches();
+                });
+            }
+        });
     }
 
     function initTabs() {
