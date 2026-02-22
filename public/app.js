@@ -52,24 +52,27 @@ document.addEventListener('DOMContentLoaded', async () => {
     const simEasyAdjustments = document.getElementById('sim-easy-adjustments');
     const simAdvancedAdjustments = document.getElementById('sim-advanced-adjustments');
     const simModeButtons = document.querySelectorAll('.sim-mode-btn');
-
-    const simTeam1Attack = document.getElementById('sim-team1-attack');
-    const simTeam1Midfield = document.getElementById('sim-team1-midfield');
-    const simTeam1Defense = document.getElementById('sim-team1-defense');
-    const simTeam1Goalkeeper = document.getElementById('sim-team1-goalkeeper');
-    const simTeam1AttackValue = document.getElementById('sim-team1-attack-value');
-    const simTeam1MidfieldValue = document.getElementById('sim-team1-midfield-value');
-    const simTeam1DefenseValue = document.getElementById('sim-team1-defense-value');
-    const simTeam1GoalkeeperValue = document.getElementById('sim-team1-goalkeeper-value');
-
-    const simTeam2Attack = document.getElementById('sim-team2-attack');
-    const simTeam2Midfield = document.getElementById('sim-team2-midfield');
-    const simTeam2Defense = document.getElementById('sim-team2-defense');
-    const simTeam2Goalkeeper = document.getElementById('sim-team2-goalkeeper');
-    const simTeam2AttackValue = document.getElementById('sim-team2-attack-value');
-    const simTeam2MidfieldValue = document.getElementById('sim-team2-midfield-value');
-    const simTeam2DefenseValue = document.getElementById('sim-team2-defense-value');
-    const simTeam2GoalkeeperValue = document.getElementById('sim-team2-goalkeeper-value');
+    const SIM_CLUSTER_SLUGS = [
+        'goalkeeper-zone',
+        'back-left',
+        'back-right',
+        'mid-def',
+        'mid-att',
+        'wing-left',
+        'wing-right',
+    ];
+    const simTeam1DetailedSliders = SIM_CLUSTER_SLUGS.map(
+        (slug) => document.getElementById(`sim-team1-${slug}`)
+    );
+    const simTeam1DetailedValues = SIM_CLUSTER_SLUGS.map(
+        (slug) => document.getElementById(`sim-team1-${slug}-value`)
+    );
+    const simTeam2DetailedSliders = SIM_CLUSTER_SLUGS.map(
+        (slug) => document.getElementById(`sim-team2-${slug}`)
+    );
+    const simTeam2DetailedValues = SIM_CLUSTER_SLUGS.map(
+        (slug) => document.getElementById(`sim-team2-${slug}-value`)
+    );
 
     // Drawing Board Tab Elements
     const drawingBoardTab = document.getElementById('tab-drawing-board');
@@ -186,8 +189,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         '4-1-3-2', '4-1-4-1', '4-2-2-2', '4-2-3-1', '4-3-1-2', '4-3-3', '4-4-1-1', '4-4-2',
         '4-5-1', '5-3-2', '5-4-1'
     ];
-    const simTeam1DetailedSliders = [simTeam1Attack, simTeam1Midfield, simTeam1Defense, simTeam1Goalkeeper];
-    const simTeam2DetailedSliders = [simTeam2Attack, simTeam2Midfield, simTeam2Defense, simTeam2Goalkeeper];
 
     // --- Initialization moved to after declarations ---
 
@@ -238,6 +239,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             db_midfield: "Midfield",
             db_defense: "Defense",
             db_goalkeeper: "Goalkeeper",
+            cluster_goalkeeper_zone: "Goalkeeper_Zone",
+            cluster_back_left: "Back_Left",
+            cluster_back_right: "Back_Right",
+            cluster_mid_def: "Mid_Def",
+            cluster_mid_att: "Mid_Att",
+            cluster_wing_left: "Wing_Left",
+            cluster_wing_right: "Wing_Right",
             btn_run_sim: "Run Prediction",
             loader_title: "Analyzing Match...",
             loader_subtitle: "Running 10,000 simulations with AI predictions",
@@ -328,6 +336,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             db_midfield: "Orta Saha",
             db_defense: "Defans",
             db_goalkeeper: "Kaleci",
+            cluster_goalkeeper_zone: "Goalkeeper_Zone",
+            cluster_back_left: "Back_Left",
+            cluster_back_right: "Back_Right",
+            cluster_mid_def: "Mid_Def",
+            cluster_mid_att: "Mid_Att",
+            cluster_wing_left: "Wing_Left",
+            cluster_wing_right: "Wing_Right",
             btn_run_sim: "Tahmin Yürüt",
             loader_title: "Maç Analiz Ediliyor...",
             loader_subtitle: "10.000 simülasyon yapay zeka tahminleri ile çalışıyor",
@@ -1136,15 +1151,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     function applyDetailedAdjustmentValues(homeValue, awayValue) {
-        applySliderValue(simTeam1Attack, simTeam1AttackValue, homeValue);
-        applySliderValue(simTeam1Midfield, simTeam1MidfieldValue, homeValue);
-        applySliderValue(simTeam1Defense, simTeam1DefenseValue, homeValue);
-        applySliderValue(simTeam1Goalkeeper, simTeam1GoalkeeperValue, homeValue);
-
-        applySliderValue(simTeam2Attack, simTeam2AttackValue, awayValue);
-        applySliderValue(simTeam2Midfield, simTeam2MidfieldValue, awayValue);
-        applySliderValue(simTeam2Defense, simTeam2DefenseValue, awayValue);
-        applySliderValue(simTeam2Goalkeeper, simTeam2GoalkeeperValue, awayValue);
+        simTeam1DetailedSliders.forEach((slider, index) => {
+            applySliderValue(slider, simTeam1DetailedValues[index], homeValue);
+        });
+        simTeam2DetailedSliders.forEach((slider, index) => {
+            applySliderValue(slider, simTeam2DetailedValues[index], awayValue);
+        });
     }
 
     function getDetailedTeamAverage(sliders) {
@@ -1361,14 +1373,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-    wireDetailedSlider(simTeam1Attack, simTeam1AttackValue);
-    wireDetailedSlider(simTeam1Midfield, simTeam1MidfieldValue);
-    wireDetailedSlider(simTeam1Defense, simTeam1DefenseValue);
-    wireDetailedSlider(simTeam1Goalkeeper, simTeam1GoalkeeperValue);
-    wireDetailedSlider(simTeam2Attack, simTeam2AttackValue);
-    wireDetailedSlider(simTeam2Midfield, simTeam2MidfieldValue);
-    wireDetailedSlider(simTeam2Defense, simTeam2DefenseValue);
-    wireDetailedSlider(simTeam2Goalkeeper, simTeam2GoalkeeperValue);
+    simTeam1DetailedSliders.forEach((slider, index) => {
+        wireDetailedSlider(slider, simTeam1DetailedValues[index]);
+    });
+    simTeam2DetailedSliders.forEach((slider, index) => {
+        wireDetailedSlider(slider, simTeam2DetailedValues[index]);
+    });
 
     simModeButtons.forEach((button) => {
         button.addEventListener('click', () => {
