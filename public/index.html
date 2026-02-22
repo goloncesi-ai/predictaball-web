@@ -434,21 +434,27 @@
                 </div>
 
                 <div class="drawing-board-shell">
-                    <div class="config-card db-top-controls">
-                        <h3 data-i18n="match_setup">Match Setup</h3>
-                        <div class="db-controls-grid">
-                            <div class="form-group">
-                                <label for="db-league" data-i18n="label_league">League</label>
-                                <select id="db-league" class="modern-select">
-                                    <option value="" disabled selected data-i18n="choose_league_placeholder">Select League</option>
-                                </select>
-                            </div>
+                    <div class="db-selector-grid">
+                        <div class="config-card db-selector-card">
+                            <h3 data-i18n="label_home_team">Home Team</h3>
                             <div class="form-group">
                                 <label for="db-team1" data-i18n="label_home_team">Home Team</label>
                                 <select id="db-team1" class="modern-select" disabled>
                                     <option value="" disabled selected data-i18n="select_short">Select...</option>
                                 </select>
                             </div>
+                        </div>
+                        <div class="config-card db-selector-card">
+                            <h3 data-i18n="label_league">League</h3>
+                            <div class="form-group">
+                                <label for="db-league" data-i18n="label_league">League</label>
+                                <select id="db-league" class="modern-select">
+                                    <option value="" disabled selected data-i18n="choose_league_placeholder">Select League</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="config-card db-selector-card">
+                            <h3 data-i18n="label_away_team">Away Team</h3>
                             <div class="form-group">
                                 <label for="db-team2" data-i18n="label_away_team">Away Team</label>
                                 <select id="db-team2" class="modern-select" disabled>
@@ -458,7 +464,7 @@
                         </div>
                     </div>
 
-                    <div class="drawing-board-grid">
+                    <div class="drawing-board-main-grid">
                         <div id="db-team1-panel" class="db-team-panel hidden">
                             <div class="single-pitch-wrapper home-pitch">
                                 <div class="pitch-header">
@@ -493,29 +499,53 @@
                                     </svg>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="config-card db-section-panel">
+                        <div class="db-adjustment-column home-column">
+                            <div class="config-card db-adjustment-title">
                                 <h3 data-i18n="db_home_adjustments">Home Unit Adjustments</h3>
-                                <div class="db-slider-row">
-                                    <label><span data-i18n="db_attack">Attack</span>: <span id="db-team1-attack-value">0</span>%</label>
-                                    <input id="db-team1-attack" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
-                                </div>
-                                <div class="db-slider-row">
-                                    <label><span data-i18n="db_midfield">Midfield</span>: <span id="db-team1-midfield-value">0</span>%</label>
-                                    <input id="db-team1-midfield" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
-                                </div>
-                                <div class="db-slider-row">
-                                    <label><span data-i18n="db_defense">Defense</span>: <span id="db-team1-defense-value">0</span>%</label>
-                                    <input id="db-team1-defense" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
-                                </div>
-                                <div class="db-slider-row">
-                                    <label><span data-i18n="db_goalkeeper">Goalkeeper</span>: <span id="db-team1-goalkeeper-value">0</span>%</label>
-                                    <input id="db-team1-goalkeeper" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
-                                </div>
+                            </div>
+                            <div class="config-card db-slider-card">
+                                <label><span data-i18n="db_attack">Attack</span>: <span id="db-team1-attack-value">0</span>%</label>
+                                <input id="db-team1-attack" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
+                            </div>
+                            <div class="config-card db-slider-card">
+                                <label><span data-i18n="db_midfield">Midfield</span>: <span id="db-team1-midfield-value">0</span>%</label>
+                                <input id="db-team1-midfield" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
+                            </div>
+                            <div class="config-card db-slider-card">
+                                <label><span data-i18n="db_defense">Defense</span>: <span id="db-team1-defense-value">0</span>%</label>
+                                <input id="db-team1-defense" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
+                            </div>
+                            <div class="config-card db-slider-card">
+                                <label><span data-i18n="db_goalkeeper">Goalkeeper</span>: <span id="db-team1-goalkeeper-value">0</span>%</label>
+                                <input id="db-team1-goalkeeper" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
                             </div>
                         </div>
 
-                        <div id="db-team2-panel" class="db-team-panel hidden">
+                        <div class="db-adjustment-column away-column">
+                            <div class="config-card db-adjustment-title">
+                                <h3 data-i18n="db_away_adjustments">Away Unit Adjustments</h3>
+                            </div>
+                            <div class="config-card db-slider-card">
+                                <label><span data-i18n="db_attack">Attack</span>: <span id="db-team2-attack-value">0</span>%</label>
+                                <input id="db-team2-attack" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
+                            </div>
+                            <div class="config-card db-slider-card">
+                                <label><span data-i18n="db_midfield">Midfield</span>: <span id="db-team2-midfield-value">0</span>%</label>
+                                <input id="db-team2-midfield" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
+                            </div>
+                            <div class="config-card db-slider-card">
+                                <label><span data-i18n="db_defense">Defense</span>: <span id="db-team2-defense-value">0</span>%</label>
+                                <input id="db-team2-defense" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
+                            </div>
+                            <div class="config-card db-slider-card">
+                                <label><span data-i18n="db_goalkeeper">Goalkeeper</span>: <span id="db-team2-goalkeeper-value">0</span>%</label>
+                                <input id="db-team2-goalkeeper" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
+                            </div>
+                        </div>
+
+                        <div id="db-team2-panel" class="db-team-panel hidden away-panel">
                             <div class="single-pitch-wrapper away-pitch">
                                 <div class="pitch-header">
                                     <div id="db-team2-badge" class="team-badge">✈️</div>
@@ -547,26 +577,6 @@
                                         </g>
                                         <g id="db-team2-players" class="team-players away-team"></g>
                                     </svg>
-                                </div>
-                            </div>
-
-                            <div class="config-card db-section-panel">
-                                <h3 data-i18n="db_away_adjustments">Away Unit Adjustments</h3>
-                                <div class="db-slider-row">
-                                    <label><span data-i18n="db_attack">Attack</span>: <span id="db-team2-attack-value">0</span>%</label>
-                                    <input id="db-team2-attack" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
-                                </div>
-                                <div class="db-slider-row">
-                                    <label><span data-i18n="db_midfield">Midfield</span>: <span id="db-team2-midfield-value">0</span>%</label>
-                                    <input id="db-team2-midfield" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
-                                </div>
-                                <div class="db-slider-row">
-                                    <label><span data-i18n="db_defense">Defense</span>: <span id="db-team2-defense-value">0</span>%</label>
-                                    <input id="db-team2-defense" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
-                                </div>
-                                <div class="db-slider-row">
-                                    <label><span data-i18n="db_goalkeeper">Goalkeeper</span>: <span id="db-team2-goalkeeper-value">0</span>%</label>
-                                    <input id="db-team2-goalkeeper" class="adjustment-slider" type="range" min="-10" max="10" value="0" step="0.1">
                                 </div>
                             </div>
                         </div>
@@ -660,7 +670,7 @@
     <script src="data.js?v=4"></script>
     <script src="players_data.js?v=1"></script>
     <script src="formation.js?v=7"></script>
-    <script src="app.js?v=23"></script>
+    <script src="app.js?v=24"></script>
 </body>
 
 </html>
