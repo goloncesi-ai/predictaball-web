@@ -36,9 +36,21 @@ OUTCOME_INTERACTIONS = [
 OUTCOME_INTERACTION_BASES = sorted(set([f for pair in OUTCOME_INTERACTIONS for f in pair]))
 OUTCOME_BASE_FEATURES = OUTCOME_XS_T1_MAIN + OUTCOME_INTERACTION_BASES
 
+OUTCOME_XS_T1_GOALS = [
+    "Comp_T1_Wing_Right_over_T2_Back_Left",
+    "Comp_T1_Wing_Left_over_T2_Back_Right",
+    "Comp_T1_Mid_Att_over_T2_Mid_Def"
+]
+
+OUTCOME_XS_T2_GOALS = [
+    "Comp_T1_Mid_Def_over_T2_Mid_Att",
+    "Comp_T1_Back_Left_over_T2_Wing_Right",
+    "Comp_T1_Back_Right_over_T2_Wing_Left",
+]
+
 FEATURES_ALL = OUTCOME_BASE_FEATURES
-FEATURES_GOALS_T1 = OUTCOME_BASE_FEATURES + TEAM2_GK
-FEATURES_GOALS_T2 = OUTCOME_BASE_FEATURES + TEAM1_GK
+FEATURES_GOALS_T1 = OUTCOME_XS_T1_GOALS + TEAM2_GK
+FEATURES_GOALS_T2 = OUTCOME_XS_T2_GOALS + TEAM1_GK
 
 class AddSpecifiedInteractions(BaseEstimator, TransformerMixin):
     def __init__(self, interactions: List[Tuple[str, str]]):
