@@ -1,13 +1,14 @@
 from __future__ import annotations
 from dataclasses import dataclass
 from typing import Dict, List, Tuple
+import os
 
 import numpy as np
 import pandas as pd
 
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
-from sklearn.linear_model import LogisticRegressionCV
+from sklearn.linear_model import LogisticRegressionCV, LogisticRegression
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.base import BaseEstimator, TransformerMixin
 
@@ -51,6 +52,21 @@ OUTCOME_XS_T2_GOALS = [
 FEATURES_ALL = OUTCOME_BASE_FEATURES
 FEATURES_GOALS_T1 = OUTCOME_XS_T1_GOALS + TEAM2_GK
 FEATURES_GOALS_T2 = OUTCOME_XS_T2_GOALS + TEAM1_GK
+
+
+def _env_flag(name: str, default: bool) -> bool:
+    value = os.getenv(name)
+    if value is None:
+        return default
+    return str(value).strip().lower() in {"1", "true", "yes", "on"}
+
+
+def _env_int(name: str, default: int, minimum: int = 1) -> int:
+    try:
+        value = int(float(os.getenv(name, default)))
+    except Exception:
+        value = default
+    return max(minimum, value)
 
 class AddSpecifiedInteractions(BaseEstimator, TransformerMixin):
     def __init__(self, interactions: List[Tuple[str, str]]):
@@ -114,49 +130,73 @@ class ModelTrainer:
             mask = y_outcome.notna() & X_outcome.notna().all(axis=1)
             X_tr = X_outcome.loc[mask]; y_tr = y_outcome.loc[mask]
             if len(X_tr) > 0:
-                outcome_model = Pipeline([
-                    ("add_inter", AddSpecifiedInteractions(OUTCOME_INTERACTIONS)),
-                    ("scale", StandardScaler()),
-                    ("clf", LogisticRegressionCV(
-                        Cs=np.logspace(-3, 3, 25),
-                        cv=5,
+                use_logit_cv = _env_flag("GOLO_LOGIT_USE_CV", False)
+                if use_logit_cv:
+                    clf = LogisticRegressionCV(
+                        Cs=np.logspace(-2, 2, _env_int("GOLO_LOGIT_CS", 8)),
+                        cv=_env_int("GOLO_LOGIT_CV_FOLDS", 3),
                         penalty="l2",
                         solver="saga",
                         scoring="accuracy",
-                        max_iter=5000,
-                        n_jobs=-1,
+                        max_iter=_env_int("GOLO_LOGIT_MAX_ITER", 1200),
+                        n_jobs=_env_int("GOLO_LOGIT_JOBS", 1),
                         refit=True
-                    ))
+                    )
+                else:
+                    clf = LogisticRegression(
+                        C=float(os.getenv("GOLO_LOGIT_C", 1.0)),
+                        penalty="l2",
+                        solver="lbfgs",
+                        max_iter=_env_int("GOLO_LOGIT_MAX_ITER", 1200),
+                        random_state=self.random_state,
+                        multi_class="auto"
+                    )
 
+                outcome_model = Pipeline([
+                    ("add_inter", AddSpecifiedInteractions(OUTCOME_INTERACTIONS)),
+                    ("scale", StandardScaler()),
+                    ("clf", clf),
                 ])
                 outcome_model.fit(X_tr, y_tr)
                 if self.verbose:
                     try:
-                        print(f"Ridge multinomial CV score: {outcome_model.score(X_tr, y_tr):.3f}")
+                        print(f"Outcome model score: {outcome_model.score(X_tr, y_tr):.3f}")
                     except Exception:
                         pass
 
         rf_targets: Dict[str, RandomForestRegressor] = {}
-        for t in TARGET_COLS_LINEAR:
-            if t in df_engineered.columns:
-                y = df_engineered[t]
-                X_tr, y_tr = _valid_Xy(X_all, y)
-                if len(X_tr) > 0:
-                    rf = RandomForestRegressor(
-                        n_estimators=400,
-                        max_depth=None,
-                        min_samples_leaf=2,
-                        random_state=self.random_state,
-                    )
-                    rf.fit(X_tr, y_tr)
-                    rf_targets[t] = rf
+        train_aux_targets = _env_flag("GOLO_TRAIN_AUX_TARGETS", False)
+        rf_trees = _env_int("GOLO_RF_TREES", 120)
+        rf_depth_raw = os.getenv("GOLO_RF_MAX_DEPTH", "16").strip().lower()
+        rf_depth = None if rf_depth_raw in {"none", "null", ""} else _env_int("GOLO_RF_MAX_DEPTH", 16)
+        if train_aux_targets:
+            for t in TARGET_COLS_LINEAR:
+                if t in df_engineered.columns:
+                    y = df_engineered[t]
+                    X_tr, y_tr = _valid_Xy(X_all, y)
+                    if len(X_tr) > 0:
+                        rf = RandomForestRegressor(
+                            n_estimators=rf_trees,
+                            max_depth=rf_depth,
+                            min_samples_leaf=2,
+                            random_state=self.random_state,
+                            n_jobs=_env_int("GOLO_RF_JOBS", 1),
+                        )
+                        rf.fit(X_tr, y_tr)
+                        rf_targets[t] = rf
 
         rf_goals: Dict[str, RandomForestRegressor] = {}
         if "Team1_Goals" in df_engineered.columns:
             y = df_engineered["Team1_Goals"]
             X_tr, y_tr = _valid_Xy(X_t1_goal, y)
             if len(X_tr) > 0:
-                rf = RandomForestRegressor(n_estimators=400, min_samples_leaf=2, random_state=self.random_state)
+                rf = RandomForestRegressor(
+                    n_estimators=rf_trees,
+                    max_depth=rf_depth,
+                    min_samples_leaf=2,
+                    random_state=self.random_state,
+                    n_jobs=_env_int("GOLO_RF_JOBS", 1),
+                )
                 rf.fit(X_tr, y_tr)
                 rf_goals["Team1_Goals"] = rf
 
@@ -164,7 +204,13 @@ class ModelTrainer:
             y = df_engineered["Team2_Goals"]
             X_tr, y_tr = _valid_Xy(X_t2_goal, y)
             if len(X_tr) > 0:
-                rf = RandomForestRegressor(n_estimators=400, min_samples_leaf=2, random_state=self.random_state)
+                rf = RandomForestRegressor(
+                    n_estimators=rf_trees,
+                    max_depth=rf_depth,
+                    min_samples_leaf=2,
+                    random_state=self.random_state,
+                    n_jobs=_env_int("GOLO_RF_JOBS", 1),
+                )
                 rf.fit(X_tr, y_tr)
                 rf_goals["Team2_Goals"] = rf
 

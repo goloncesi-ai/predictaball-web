@@ -34,6 +34,14 @@ SIMULATION_LEAGUE_FOLDERS = [
     "LaLiga",
 ]
 
+SIMULATION_COUNT_DEFAULT = int(os.getenv("GOLO_SIMULATION_COUNT_DEFAULT", "60"))
+SIMULATION_COUNT_MIN = int(os.getenv("GOLO_SIMULATION_COUNT_MIN", "20"))
+SIMULATION_COUNT_MAX = int(os.getenv("GOLO_SIMULATION_COUNT_MAX", "200"))
+
+SIMULATION_INCLUDE_HEATMAPS_DEFAULT = str(os.getenv("GOLO_SIM_INCLUDE_HEATMAPS", "0")).strip().lower() in {"1", "true", "yes", "on"}
+SIMULATION_INCLUDE_IMAGES_DEFAULT = str(os.getenv("GOLO_SIM_INCLUDE_IMAGES", "0")).strip().lower() in {"1", "true", "yes", "on"}
+SIMULATION_INCLUDE_MARKOV_DEFAULT = str(os.getenv("GOLO_SIM_INCLUDE_MARKOV", "1")).strip().lower() in {"1", "true", "yes", "on"}
+
 # Ensure output dir exists
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
@@ -649,6 +657,24 @@ def _to_int(value, default=0):
     return int(round(_to_float(value, default)))
 
 
+def _to_bool(value, default=False):
+    if value is None:
+        return default
+    if isinstance(value, bool):
+        return value
+    if hasattr(value, "item"):
+        try:
+            value = value.item()
+        except Exception:
+            pass
+    text = str(value).strip().lower()
+    if text in {"1", "true", "yes", "on"}:
+        return True
+    if text in {"0", "false", "no", "off"}:
+        return False
+    return default
+
+
 def _discover_analysis_sources():
     sources = []
     if not os.path.exists(BASE_DATA_DIR):
@@ -1034,6 +1060,13 @@ def run_simulation():
         team2_formation = data.get('team2_formation')
         team1_adj = data.get('team1_adj', 0)
         team2_adj = data.get('team2_adj', 0)
+        simulation_count = _to_int(data.get('simulation_count'), SIMULATION_COUNT_DEFAULT)
+        simulation_count = max(SIMULATION_COUNT_MIN, min(SIMULATION_COUNT_MAX, simulation_count))
+        n_sims_home = max(10, simulation_count // 2)
+        n_sims_away = max(10, simulation_count - n_sims_home)
+        include_heatmaps = _to_bool(data.get('include_heatmaps'), SIMULATION_INCLUDE_HEATMAPS_DEFAULT)
+        include_images = _to_bool(data.get('include_images'), SIMULATION_INCLUDE_IMAGES_DEFAULT)
+        include_markov = _to_bool(data.get('include_markov'), SIMULATION_INCLUDE_MARKOV_DEFAULT)
 
         if not team1 or not team2:
             return jsonify({"error": "Missing teams"}), 400
@@ -1084,7 +1117,12 @@ def run_simulation():
             team2_adj,
             team1_formation=team1_formation,
             team2_formation=team2_formation,
-            apply_hmm_adjustments=False
+            apply_hmm_adjustments=False,
+            n_sims_home=n_sims_home,
+            n_sims_away=n_sims_away,
+            include_heatmaps=include_heatmaps,
+            include_markov=include_markov,
+            include_images=include_images,
         )
 
         if isinstance(results, dict):
@@ -1092,6 +1130,10 @@ def run_simulation():
             results["home_league"] = home_league_folder
             results["away_league"] = away_league_folder
             results["cross_league"] = home_league_folder != away_league_folder
+            results["simulation_count_requested"] = simulation_count
+            results["include_heatmaps"] = include_heatmaps
+            results["include_images"] = include_images
+            results["include_markov"] = include_markov
         
         return jsonify(results)
 

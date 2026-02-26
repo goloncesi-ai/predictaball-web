@@ -1661,7 +1661,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                         team1_formation: team1Formation,
                         team2_formation: team2Formation,
                         team1_adj: team1Adj,
-                        team2_adj: team2Adj
+                        team2_adj: team2Adj,
+                        simulation_count: 60,
+                        include_heatmaps: false,
+                        include_images: false,
+                        include_markov: false
                     })
                 });
 

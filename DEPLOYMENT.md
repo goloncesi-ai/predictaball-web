@@ -41,6 +41,20 @@ I have reorganized your project structure to be deployment-ready:
     -   **Start Command**: `gunicorn server:app`
 5.  Click **Create Web Service**.
 
+### 3.1 Performance Tuning (Render Environment Variables)
+For faster simulation responses on low-tier instances, set these in Render:
+
+- `GOLO_SIMULATION_COUNT_DEFAULT=60`
+- `GOLO_SIMULATION_COUNT_MIN=20`
+- `GOLO_SIMULATION_COUNT_MAX=200`
+- `GOLO_SIM_INCLUDE_HEATMAPS=0`
+- `GOLO_SIM_INCLUDE_IMAGES=0`
+- `GOLO_SIM_INCLUDE_MARKOV=0` (set to `1` if you want Markov panel data returned)
+- `GOLO_LOGIT_USE_CV=0`
+- `GOLO_RF_TREES=120`
+- `GOLO_RF_MAX_DEPTH=16`
+- `GOLO_TRAIN_AUX_TARGETS=0`
+
 ### 4. Connect Domain
 1.  Once the service is live (you'll get a URL like `https://predictaball.onrender.com`), go to the **Settings** tab in Render.
 2.  Scroll to **Custom Domains** and click **Add Custom Domain**.

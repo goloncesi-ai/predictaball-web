@@ -1,4 +1,5 @@
 import importlib
+import logging
 import math
 import os
 import sys
@@ -35,6 +36,7 @@ TEAM_MAPPINGS = {
 
 _ENGINE_CACHE = {}
 _FORMATION_CACHE = {}
+LOGGER = logging.getLogger(__name__)
 
 
 def normalize_to_ascii(text):
@@ -114,8 +116,8 @@ def _detect_team_formation(base_data_dir, team_name):
     return parsed
 
 
-def _get_engine(base_data_dir, output_dir, logo_dir):
-    key = (str(base_data_dir), str(output_dir), str(logo_dir))
+def _get_engine(base_data_dir, output_dir, logo_dir, n_sims_home, n_sims_away):
+    key = (str(base_data_dir), str(output_dir), str(logo_dir), int(n_sims_home), int(n_sims_away))
     if key in _ENGINE_CACHE:
         return _ENGINE_CACHE[key]
 
@@ -125,8 +127,8 @@ def _get_engine(base_data_dir, output_dir, logo_dir):
         logo_folder=Path(logo_dir),
     )
     cfg = SimulationConfig(
-        n_sims_home_perspective=50,
-        n_sims_away_perspective=50,
+        n_sims_home_perspective=int(n_sims_home),
+        n_sims_away_perspective=int(n_sims_away),
     )
     engine = GolOncesiEngine(paths, cfg, verbose=False)
     _ENGINE_CACHE[key] = engine
@@ -149,7 +151,7 @@ def _configure_image_modules(output_dir, logo_dir):
         tahmini_skor.TEMPLATE_PATH = Path(logo_dir) / "tahmini_skor.png"
         return True
     except Exception as e:
-        print(f"Image module setup failed: {e}")
+        LOGGER.warning("Image module setup failed: %s", e)
         return False
 
 
@@ -181,7 +183,7 @@ def _build_markov_form(base_data_dir, team1, team2, random_state):
             },
         }
     except Exception as e:
-        print(f"Markov form generation failed: {e}")
+        LOGGER.warning("Markov form generation failed: %s", e)
         return None
 
 
@@ -191,7 +193,7 @@ def _safe_hmm_adjustment(engine, team_name):
         suggestion = engine.suggest_adjustments_hmm(team_name) or {}
         return float(suggestion.get("suggested_adj_pct", 0.0))
     except Exception as e:
-        print(f"HMM adjustment fallback for {team_name}: {e}")
+        LOGGER.warning("HMM adjustment fallback for %s: %s", team_name, e)
         return 0.0
 
 
@@ -221,7 +223,7 @@ def get_hmm_adjustment(
 ):
     """Return resolved team name and HMM-suggested adjustment percentage."""
     logo_dir = Path(assets_path) / "Logos"
-    engine = _get_engine(base_data_dir, output_dir, logo_dir)
+    engine = _get_engine(base_data_dir, output_dir, logo_dir, n_sims_home=25, n_sims_away=25)
     team_resolved = _resolve_team_for_disk(base_data_dir, team_name)
     hmm_adj = _safe_hmm_adjustment(engine, team_resolved)
     return {
@@ -242,24 +244,28 @@ def simulate_match(
     team1_formation=None,
     team2_formation=None,
     apply_hmm_adjustments=True,
+    n_sims_home=30,
+    n_sims_away=30,
+    include_heatmaps=False,
+    include_markov=True,
+    include_images=False,
 ):
-    print(f"Starting Combined Simulation (new engine): {team1} vs {team2}")
-    print(f"Adjustments: {team1}={team1_adj:+.1f}%, {team2}={team2_adj:+.1f}%")
+    LOGGER.info("Starting Combined Simulation: %s vs %s", team1, team2)
 
     team1_resolved = _resolve_team_for_disk(base_data_dir, team1)
     team2_resolved = _resolve_team_for_disk(base_data_dir, team2)
     if team1_resolved != team1:
-        print(f"Resolved Team1 '{team1}' -> '{team1_resolved}'")
+        LOGGER.info("Resolved Team1 '%s' -> '%s'", team1, team1_resolved)
     if team2_resolved != team2:
-        print(f"Resolved Team2 '{team2}' -> '{team2_resolved}'")
+        LOGGER.info("Resolved Team2 '%s' -> '%s'", team2, team2_resolved)
 
     home_form = parse_formation(team1_formation) if team1_formation else _detect_team_formation(base_data_dir, team1_resolved)
     away_form = parse_formation(team2_formation) if team2_formation else _detect_team_formation(base_data_dir, team2_resolved)
 
     logo_dir = Path(assets_path) / "Logos"
-    engine = _get_engine(base_data_dir, output_dir, logo_dir)
+    engine = _get_engine(base_data_dir, output_dir, logo_dir, n_sims_home=n_sims_home, n_sims_away=n_sims_away)
 
-    can_generate_images = _configure_image_modules(output_dir, logo_dir)
+    can_generate_images = include_images and _configure_image_modules(output_dir, logo_dir)
 
     manual_team1_adj = float(team1_adj)
     manual_team2_adj = float(team2_adj)
@@ -268,10 +274,10 @@ def simulate_match(
     final_team1_adj = manual_team1_adj + hmm_team1_adj
     final_team2_adj = manual_team2_adj + hmm_team2_adj
 
-    print(
-        "Applied adjustments: "
-        f"{team1_resolved} manual={manual_team1_adj:+.2f}% hmm={hmm_team1_adj:+.2f}% final={final_team1_adj:+.2f}% | "
-        f"{team2_resolved} manual={manual_team2_adj:+.2f}% hmm={hmm_team2_adj:+.2f}% final={final_team2_adj:+.2f}%"
+    LOGGER.info(
+        "Applied adjustments: %s manual=%+.2f%% hmm=%+.2f%% final=%+.2f%% | %s manual=%+.2f%% hmm=%+.2f%% final=%+.2f%%",
+        team1_resolved, manual_team1_adj, hmm_team1_adj, final_team1_adj,
+        team2_resolved, manual_team2_adj, hmm_team2_adj, final_team2_adj,
     )
 
     match_cfg = MatchConfig(
@@ -285,14 +291,14 @@ def simulate_match(
 
     result = engine.run_match(
         match_cfg,
-        draw_heatmaps=True,
+        draw_heatmaps=bool(include_heatmaps),
         generate_images=can_generate_images,
     )
 
     combined = result.combined
     top5_home_list = _build_top5_scores(result.home_sim.top5_scores)
     top5_away_list = _build_top5_scores(result.away_sim.top5_scores)
-    markov_data = _build_markov_form(base_data_dir, team1_resolved, team2_resolved, engine.cfg.random_seed)
+    markov_data = _build_markov_form(base_data_dir, team1_resolved, team2_resolved, engine.cfg.random_seed) if include_markov else None
 
     avg_ratings = {
         "team1": round(clean_val(result.home_sim.avg_team_ratings.get("team1", 0.0)), 2),
@@ -311,6 +317,9 @@ def simulate_match(
         except Exception:
             continue
 
+    prob_image_url = f"/outputs/{prob_image_name}?v={ts}" if can_generate_images else None
+    score_image_url = f"/outputs/{score_image_name}?v={ts}" if can_generate_images else None
+
     return {
         "team1": team1_resolved,
         "team2": team2_resolved,
@@ -324,10 +333,10 @@ def simulate_match(
         "predicted_score": combined["headline_score"],
         "exp_home_goals": round(clean_val(combined["exp_home_goals"]), 2),
         "exp_away_goals": round(clean_val(combined["exp_away_goals"]), 2),
-        "prob_image_url": f"/outputs/{prob_image_name}?v={ts}",
-        "score_image_url": f"/outputs/{score_image_name}?v={ts}",
-        "image_url": f"/outputs/{prob_image_name}?v={ts}",
-        "secondary_image_url": f"/outputs/{score_image_name}?v={ts}",
+        "prob_image_url": prob_image_url,
+        "score_image_url": score_image_url,
+        "image_url": prob_image_url,
+        "secondary_image_url": score_image_url,
         "heatmaps": heatmap_urls,
         "player_heatmap_url": heatmap_urls.get("player"),
         "main_cluster_heatmap_url": heatmap_urls.get("main_clusters"),

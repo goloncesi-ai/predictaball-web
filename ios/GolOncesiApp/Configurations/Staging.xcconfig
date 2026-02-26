@@ -1,0 +1,5 @@
+#include "Base.xcconfig"
+
+APP_ENV = Staging
+API_BASE_URL = predictaball-web.onrender.com
+SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) STAGING
