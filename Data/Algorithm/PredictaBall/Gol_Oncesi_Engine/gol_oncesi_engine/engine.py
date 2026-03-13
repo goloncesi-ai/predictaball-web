@@ -120,7 +120,7 @@ class GolOncesiEngine:
             random_state=self.cfg.random_seed
         )
 
-    def run_match(self, m: MatchConfig, draw_heatmaps: bool = True, generate_images: bool = False) -> MatchResult:
+    """def run_match(self, m: MatchConfig, draw_heatmaps: bool = True, generate_images: bool = False) -> MatchResult:
         home_form = parse_formation(m.home_formation)
         away_form = parse_formation(m.away_formation)
 
@@ -200,4 +200,66 @@ class GolOncesiEngine:
         if generate_images:
             self.image_gen.generate(m.home_team, m.away_team, combined)
 
+        return MatchResult(home_sim=home_sim, away_sim=away_sim, combined=combined, heatmaps=heatmap_paths)"""
+    
+    def run_match(self, m: MatchConfig, draw_heatmaps: bool = True, generate_images: bool = False) -> MatchResult:
+        home_form = parse_formation(m.home_formation)
+        away_form = parse_formation(m.away_formation)
+
+        # 1) Home perspective: Team1=home team, Team2=away team
+        home_sim = self.simulator.run_perspective(
+            team1_name=m.home_team,
+            team2_name=m.away_team,
+            team1_formation=home_form,
+            team2_formation=away_form,
+            n_sims=self.cfg.n_sims_home_perspective,
+            team1_homeaway="Home",
+            team1_adj_pct=m.home_adj_pct,
+            team2_adj_pct=m.away_adj_pct,
+            coords_team1_fn=coords_team1,
+            coords_team2_fn=lambda f: coords_team2(f, self.cfg),
+        )
+
+        # 2) Away perspective: Team1=away team, Team2=home team (still label Team1 as "Home" within that dataset)
+        away_sim = self.simulator.run_perspective(
+            team1_name=m.away_team,
+            team2_name=m.home_team,
+            team1_formation=away_form,
+            team2_formation=home_form,
+            n_sims=self.cfg.n_sims_away_perspective,
+            team1_homeaway="Home",
+            team1_adj_pct=m.away_adj_pct,
+            team2_adj_pct=m.home_adj_pct,
+            coords_team1_fn=coords_team1,
+            coords_team2_fn=lambda f: coords_team2(f, self.cfg),
+        )
+
+        combined = combine_perspectives(home_sim, away_sim)
+
+        heatmap_paths: Dict[str, Path] = {}
+        if draw_heatmaps and self.heatmaps is not None:
+            t1_avgs = home_sim.avg_player_ratings["team1_players"]
+            t2_avgs = home_sim.avg_player_ratings["team2_players"]
+
+            main_cluster_path = self.paths.output_folder / "power_map_golcesi.png"
+
+            # Single main cluster heatmap overlay on base image
+            heatmap_paths["power_map"] = self.heatmaps.main_cluster_heatmap(
+                logo_folder_path=self.paths.logo_folder,
+                team1_logo=f"{m.home_team}.png",
+                team2_logo=f"{m.away_team}.png",
+                team1_formation=home_form,
+                team2_formation=away_form,
+                team1_player_avgs=t1_avgs,
+                team2_player_avgs=t2_avgs,
+                clusters=main_clusters(),
+                output_path=main_cluster_path,
+            )
+        elif draw_heatmaps and self.verbose:
+            print("Heatmaps skipped: matplotlib dependency is not available.")
+
+        if generate_images:
+            self.image_gen.generate(m.home_team, m.away_team, combined)
+
         return MatchResult(home_sim=home_sim, away_sim=away_sim, combined=combined, heatmaps=heatmap_paths)
+

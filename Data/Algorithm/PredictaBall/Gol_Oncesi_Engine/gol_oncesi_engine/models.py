@@ -148,8 +148,7 @@ class ModelTrainer:
                         penalty="l2",
                         solver="lbfgs",
                         max_iter=_env_int("GOLO_LOGIT_MAX_ITER", 1200),
-                        random_state=self.random_state,
-                        multi_class="auto"
+                        random_state=self.random_state
                     )
 
                 outcome_model = Pipeline([
@@ -160,9 +159,32 @@ class ModelTrainer:
                 outcome_model.fit(X_tr, y_tr)
                 if self.verbose:
                     try:
-                        print(f"Outcome model score: {outcome_model.score(X_tr, y_tr):.3f}")
-                    except Exception:
-                        pass
+                        score = outcome_model.score(X_tr, y_tr)
+                        print(f"Outcome model score: {score:.3f}")
+                        
+                        # NEW: Print coefficients for all 3 classes
+                        clf = outcome_model.named_steps['clf']
+                        print("\n=== Outcome Model Coefficients ===")
+                        print(f"Classes: {clf.classes_}")
+                        print(f"coef_ shape: {clf.coef_.shape}")
+                        print(f"intercept_ shape: {clf.intercept_.shape}")
+                        
+                        # Feature names: base features + interaction columns created by pipeline
+                        feature_names = list(OUTCOME_BASE_FEATURES) + [f"{a}:{b}" for a, b in OUTCOME_INTERACTIONS]
+                        print(f"Features (n={len(feature_names)}): {feature_names}")
+                        
+                        # Top 5 coefficients per class (by absolute value)
+                        for i, class_name in enumerate(clf.classes_):
+                            top_idx = np.argsort(np.abs(clf.coef_[i]))[-5:]  # Top 5 abs values
+                            print(f"\nTop 5 coeffs for '{class_name}':")
+                            for idx in reversed(top_idx):
+                                feat = feature_names[idx]
+                                coef_val = clf.coef_[i, idx]
+                                print(f"  {feat}: {coef_val:.4f}")
+                        
+                        print("=====================================")
+                    except Exception as e:
+                        print(f"Could not print coefficients: {e}")
 
         rf_targets: Dict[str, RandomForestRegressor] = {}
         train_aux_targets = _env_flag("GOLO_TRAIN_AUX_TARGETS", False)

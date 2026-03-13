@@ -1,6 +1,6 @@
 {
   "round": 24,
-  "generated_at": "2026-02-25T09:33:35.602633",
+  "generated_at": "2026-03-13T18:32:16.227823",
   "matches": [
     {
       "match_id": 14109826,
@@ -9,168 +9,164 @@
       "datetime_iso": "2026-03-01T16:00:00",
       "home_team": "Antalyaspor",
       "away_team": "Fenerbahçe",
-      "predicted_score": "1-2",
+      "predicted_score": "1-1",
       "probabilities": {
-        "home_win": 13.0,
-        "draw": 17.0,
-        "away_win": 70.0
+        "home_win": 33.3,
+        "draw": 36.7,
+        "away_win": 30.0
       },
-      "confidence": "high",
+      "confidence": "low",
       "expected_goals": {
-        "home": 0.61,
-        "away": 1.87
+        "home": 1.23,
+        "away": 1.13
       },
       "score_distribution": [
         [
-          0,
-          2,
-          43.9
-        ],
-        [
           1,
-          2,
-          17.1
-        ],
-        [
-          0,
           1,
-          14.6
+          28.6
         ],
         [
           2,
           1,
-          12.2
+          19.0
         ],
         [
-          0,
           3,
-          12.2
+          1,
+          19.0
+        ],
+        [
+          0,
+          1,
+          19.0
+        ],
+        [
+          1,
+          0,
+          14.3
         ]
       ],
       "heatmap_data": [],
-      "heatmaps": {
-        "player": "/outputs/player_heatmap.png?v=1772008419",
-        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1772008419",
-        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1772008419"
-      },
-      "player_heatmap_url": "/outputs/player_heatmap.png?v=1772008419",
-      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1772008419",
-      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1772008419",
+      "heatmaps": {},
+      "player_heatmap_url": null,
+      "main_cluster_heatmap_url": null,
+      "strip_cluster_heatmap_url": null,
       "top5_scores": [
         {
-          "score": "0-2",
-          "count": 18,
-          "percentage": 43.9
-        },
-        {
-          "score": "1-2",
-          "count": 7,
-          "percentage": 17.1
-        },
-        {
-          "score": "0-1",
+          "score": "1-1",
           "count": 6,
-          "percentage": 14.6
+          "percentage": 28.6
         },
         {
           "score": "2-1",
-          "count": 5,
-          "percentage": 12.2
+          "count": 4,
+          "percentage": 19.0
         },
         {
-          "score": "0-3",
-          "count": 5,
-          "percentage": 12.2
+          "score": "3-1",
+          "count": 4,
+          "percentage": 19.0
+        },
+        {
+          "score": "0-1",
+          "count": 4,
+          "percentage": 19.0
+        },
+        {
+          "score": "1-0",
+          "count": 3,
+          "percentage": 14.3
         }
       ],
       "top5_scores_home_perspective": [
         {
-          "score": "0-2",
-          "count": 18,
-          "percentage": 43.9
-        },
-        {
-          "score": "1-2",
-          "count": 7,
-          "percentage": 17.1
-        },
-        {
-          "score": "0-1",
+          "score": "1-1",
           "count": 6,
-          "percentage": 14.6
+          "percentage": 28.6
         },
         {
           "score": "2-1",
-          "count": 5,
-          "percentage": 12.2
+          "count": 4,
+          "percentage": 19.0
         },
         {
-          "score": "0-3",
-          "count": 5,
-          "percentage": 12.2
+          "score": "3-1",
+          "count": 4,
+          "percentage": 19.0
+        },
+        {
+          "score": "0-1",
+          "count": 4,
+          "percentage": 19.0
+        },
+        {
+          "score": "1-0",
+          "count": 3,
+          "percentage": 14.3
         }
       ],
       "top5_scores_away_perspective": [
         {
-          "score": "1-1",
-          "count": 15,
-          "percentage": 42.9
-        },
-        {
-          "score": "3-1",
+          "score": "2-1",
           "count": 8,
-          "percentage": 22.9
+          "percentage": 30.8
         },
         {
-          "score": "2-0",
-          "count": 6,
-          "percentage": 17.1
-        },
-        {
-          "score": "4-0",
-          "count": 3,
-          "percentage": 8.6
+          "score": "1-1",
+          "count": 7,
+          "percentage": 26.9
         },
         {
           "score": "1-2",
+          "count": 6,
+          "percentage": 23.1
+        },
+        {
+          "score": "2-0",
           "count": 3,
-          "percentage": 8.6
+          "percentage": 11.5
+        },
+        {
+          "score": "0-1",
+          "count": 2,
+          "percentage": 7.7
         }
       ],
       "markov_form": {
         "team1": {
           "name": "Antalyaspor",
-          "next_win_prob": 33.1,
-          "next_draw_prob": 24.1,
-          "next_loss_prob": 42.8,
+          "next_win_prob": 27.9,
+          "next_draw_prob": 20.5,
+          "next_loss_prob": 51.6,
           "form_label": "Cold ❄️",
-          "matches_analyzed": 53,
+          "matches_analyzed": 54,
           "hidden_states": 0,
           "state_profiles": []
         },
         "team2": {
           "name": "Fenerbahçe",
-          "next_win_prob": 63.1,
-          "next_draw_prob": 24.6,
-          "next_loss_prob": 12.2,
+          "next_win_prob": 61.5,
+          "next_draw_prob": 26.9,
+          "next_loss_prob": 11.5,
           "form_label": "Hot 🔥",
-          "matches_analyzed": 59,
+          "matches_analyzed": 60,
           "hidden_states": 0,
           "state_profiles": []
         }
       },
       "adjustments": {
         "team1": 10.0,
-        "team2": 9.42789718910055,
+        "team2": -8.048044842119651,
         "manual_team1": 0.0,
         "manual_team2": 0.0,
         "hmm_team1": 10.0,
-        "hmm_team2": 9.42789718910055,
+        "hmm_team2": -8.048044842119651,
         "hmm_applied": true
       },
       "avg_ratings": {
-        "team1": 6.96,
-        "team2": 7.13
+        "team1": 6.94,
+        "team2": 6.9
       },
       "team1_logo_url": "/logos/Antalyaspor.png",
       "team2_logo_url": "/logos/Fenerbahçe.png"
@@ -182,152 +178,148 @@
       "datetime_iso": "2026-03-01T16:00:00",
       "home_team": "Başakşehir FK",
       "away_team": "Konyaspor",
-      "predicted_score": "2-0",
+      "predicted_score": "2-1",
       "probabilities": {
-        "home_win": 77.0,
-        "draw": 6.0,
-        "away_win": 17.0
+        "home_win": 73.3,
+        "draw": 6.7,
+        "away_win": 20.0
       },
       "confidence": "high",
       "expected_goals": {
-        "home": 2.3,
-        "away": 0.49
+        "home": 2.39,
+        "away": 0.86
       },
       "score_distribution": [
         [
           3,
-          0,
-          28.6
-        ],
-        [
-          2,
-          0,
-          20.0
+          1,
+          44.0
         ],
         [
           2,
           1,
           20.0
+        ],
+        [
+          3,
+          0,
+          16.0
+        ],
+        [
+          2,
+          0,
+          12.0
         ],
         [
           4,
-          0,
-          17.1
-        ],
-        [
           1,
-          2,
-          14.3
+          8.0
         ]
       ],
       "heatmap_data": [],
-      "heatmaps": {
-        "player": "/outputs/player_heatmap.png?v=1772008423",
-        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1772008423",
-        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1772008423"
-      },
-      "player_heatmap_url": "/outputs/player_heatmap.png?v=1772008423",
-      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1772008423",
-      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1772008423",
+      "heatmaps": {},
+      "player_heatmap_url": null,
+      "main_cluster_heatmap_url": null,
+      "strip_cluster_heatmap_url": null,
       "top5_scores": [
         {
-          "score": "3-0",
-          "count": 10,
-          "percentage": 28.6
-        },
-        {
-          "score": "2-0",
-          "count": 7,
-          "percentage": 20.0
+          "score": "3-1",
+          "count": 11,
+          "percentage": 44.0
         },
         {
           "score": "2-1",
-          "count": 7,
+          "count": 5,
           "percentage": 20.0
         },
         {
-          "score": "4-0",
-          "count": 6,
-          "percentage": 17.1
+          "score": "3-0",
+          "count": 4,
+          "percentage": 16.0
         },
         {
-          "score": "1-2",
-          "count": 5,
-          "percentage": 14.3
+          "score": "2-0",
+          "count": 3,
+          "percentage": 12.0
+        },
+        {
+          "score": "4-1",
+          "count": 2,
+          "percentage": 8.0
         }
       ],
       "top5_scores_home_perspective": [
         {
-          "score": "3-0",
-          "count": 10,
-          "percentage": 28.6
-        },
-        {
-          "score": "2-0",
-          "count": 7,
-          "percentage": 20.0
+          "score": "3-1",
+          "count": 11,
+          "percentage": 44.0
         },
         {
           "score": "2-1",
-          "count": 7,
+          "count": 5,
           "percentage": 20.0
         },
         {
-          "score": "4-0",
-          "count": 6,
-          "percentage": 17.1
+          "score": "3-0",
+          "count": 4,
+          "percentage": 16.0
         },
         {
-          "score": "1-2",
-          "count": 5,
-          "percentage": 14.3
+          "score": "2-0",
+          "count": 3,
+          "percentage": 12.0
+        },
+        {
+          "score": "4-1",
+          "count": 2,
+          "percentage": 8.0
         }
       ],
       "top5_scores_away_perspective": [
         {
-          "score": "0-2",
-          "count": 13,
-          "percentage": 36.1
+          "score": "1-2",
+          "count": 5,
+          "percentage": 26.3
         },
         {
-          "score": "1-2",
-          "count": 7,
-          "percentage": 19.4
+          "score": "2-1",
+          "count": 4,
+          "percentage": 21.1
         },
         {
           "score": "1-1",
-          "count": 6,
-          "percentage": 16.7
-        },
-        {
-          "score": "0-3",
-          "count": 5,
-          "percentage": 13.9
+          "count": 4,
+          "percentage": 21.1
         },
         {
           "score": "1-3",
-          "count": 5,
-          "percentage": 13.9
+          "count": 3,
+          "percentage": 15.8
+        },
+        {
+          "score": "0-3",
+          "count": 3,
+          "percentage": 15.8
         }
       ],
       "markov_form": {
         "team1": {
           "name": "Başakşehir",
-          "next_win_prob": 46.3,
-          "next_draw_prob": 17.4,
-          "next_loss_prob": 36.3,
-          "form_label": "Neutral ⚖️",
-          "matches_analyzed": 53,
+          "next_win_prob": 63.7,
+          "next_draw_prob": 13.1,
+          "next_loss_prob": 23.2,
+          "form_label": "Hot 🔥",
+          "matches_analyzed": 54,
           "hidden_states": 0,
           "state_profiles": []
         },
         "team2": {
           "name": "Konyaspor",
-          "next_win_prob": 18.8,
-          "next_draw_prob": 25.0,
-          "next_loss_prob": 56.3,
+          "next_win_prob": 9.1,
+          "next_draw_prob": 37.0,
+          "next_loss_prob": 54.0,
           "form_label": "Cold ❄️",
-          "matches_analyzed": 53,
+          "matches_analyzed": 54,
           "hidden_states": 0,
           "state_profiles": []
         }
@@ -342,8 +334,8 @@
         "hmm_applied": true
       },
       "avg_ratings": {
-        "team1": 7.14,
-        "team2": 6.79
+        "team1": 7.18,
+        "team2": 6.84
       },
       "team1_logo_url": "/logos/Başakşehir.png",
       "team2_logo_url": "/logos/Konyaspor.png"
@@ -355,22 +347,22 @@
       "datetime_iso": "2026-03-01T16:00:00",
       "home_team": "Galatasaray",
       "away_team": "Alanyaspor",
-      "predicted_score": "1-1",
+      "predicted_score": "2-1",
       "probabilities": {
-        "home_win": 24.0,
-        "draw": 63.0,
-        "away_win": 13.0
+        "home_win": 25.0,
+        "draw": 45.0,
+        "away_win": 30.0
       },
-      "confidence": "high",
+      "confidence": "medium",
       "expected_goals": {
-        "home": 1.4,
-        "away": 0.86
+        "home": 1.56,
+        "away": 0.98
       },
       "score_distribution": [
         [
           2,
           2,
-          27.8
+          33.3
         ],
         [
           1,
@@ -380,143 +372,139 @@
         [
           2,
           1,
-          19.4
+          20.8
         ],
         [
           3,
           0,
-          16.7
+          12.5
         ],
         [
-          1,
+          0,
           2,
-          11.1
+          8.3
         ]
       ],
       "heatmap_data": [],
-      "heatmaps": {
-        "player": "/outputs/player_heatmap.png?v=1772008427",
-        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1772008427",
-        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1772008427"
-      },
-      "player_heatmap_url": "/outputs/player_heatmap.png?v=1772008427",
-      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1772008427",
-      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1772008427",
+      "heatmaps": {},
+      "player_heatmap_url": null,
+      "main_cluster_heatmap_url": null,
+      "strip_cluster_heatmap_url": null,
       "top5_scores": [
         {
           "score": "2-2",
-          "count": 10,
-          "percentage": 27.8
+          "count": 8,
+          "percentage": 33.3
         },
         {
           "score": "1-1",
-          "count": 9,
+          "count": 6,
           "percentage": 25.0
         },
         {
           "score": "2-1",
-          "count": 7,
-          "percentage": 19.4
+          "count": 5,
+          "percentage": 20.8
         },
         {
           "score": "3-0",
-          "count": 6,
-          "percentage": 16.7
+          "count": 3,
+          "percentage": 12.5
         },
         {
-          "score": "1-2",
-          "count": 4,
-          "percentage": 11.1
+          "score": "0-2",
+          "count": 2,
+          "percentage": 8.3
         }
       ],
       "top5_scores_home_perspective": [
         {
           "score": "2-2",
-          "count": 10,
-          "percentage": 27.8
+          "count": 8,
+          "percentage": 33.3
         },
         {
           "score": "1-1",
-          "count": 9,
+          "count": 6,
           "percentage": 25.0
         },
         {
           "score": "2-1",
-          "count": 7,
-          "percentage": 19.4
+          "count": 5,
+          "percentage": 20.8
         },
         {
           "score": "3-0",
-          "count": 6,
-          "percentage": 16.7
+          "count": 3,
+          "percentage": 12.5
         },
         {
-          "score": "1-2",
-          "count": 4,
-          "percentage": 11.1
+          "score": "0-2",
+          "count": 2,
+          "percentage": 8.3
         }
       ],
       "top5_scores_away_perspective": [
         {
-          "score": "1-1",
-          "count": 15,
-          "percentage": 34.1
-        },
-        {
           "score": "0-1",
-          "count": 11,
+          "count": 7,
+          "percentage": 29.2
+        },
+        {
+          "score": "1-1",
+          "count": 6,
           "percentage": 25.0
-        },
-        {
-          "score": "0-2",
-          "count": 8,
-          "percentage": 18.2
-        },
-        {
-          "score": "0-0",
-          "count": 5,
-          "percentage": 11.4
         },
         {
           "score": "2-1",
           "count": 5,
-          "percentage": 11.4
+          "percentage": 20.8
+        },
+        {
+          "score": "0-3",
+          "count": 4,
+          "percentage": 16.7
+        },
+        {
+          "score": "0-2",
+          "count": 2,
+          "percentage": 8.3
         }
       ],
       "markov_form": {
         "team1": {
           "name": "Galatasaray",
-          "next_win_prob": 66.7,
-          "next_draw_prob": 24.6,
-          "next_loss_prob": 8.7,
+          "next_win_prob": 66.9,
+          "next_draw_prob": 19.2,
+          "next_loss_prob": 13.9,
           "form_label": "Hot 🔥",
-          "matches_analyzed": 59,
+          "matches_analyzed": 60,
           "hidden_states": 0,
           "state_profiles": []
         },
         "team2": {
           "name": "Alanyaspor",
-          "next_win_prob": 28.2,
-          "next_draw_prob": 35.5,
-          "next_loss_prob": 36.3,
+          "next_win_prob": 31.9,
+          "next_draw_prob": 35.6,
+          "next_loss_prob": 32.6,
           "form_label": "Cold ❄️",
-          "matches_analyzed": 41,
+          "matches_analyzed": 42,
           "hidden_states": 0,
           "state_profiles": []
         }
       },
       "adjustments": {
-        "team1": -0.8658285349109361,
-        "team2": 7.268286407211726,
+        "team1": -1.7917449588771053,
+        "team2": 1.9696421548529095,
         "manual_team1": 0.0,
         "manual_team2": 0.0,
-        "hmm_team1": -0.8658285349109361,
-        "hmm_team2": 7.268286407211726,
+        "hmm_team1": -1.7917449588771053,
+        "hmm_team2": 1.9696421548529095,
         "hmm_applied": true
       },
       "avg_ratings": {
-        "team1": 7.08,
-        "team2": 6.96
+        "team1": 6.98,
+        "team2": 6.89
       },
       "team1_logo_url": "/logos/Galatasaray.png",
       "team2_logo_url": "/logos/Alanyaspor.png"
@@ -530,166 +518,162 @@
       "away_team": "Kayserispor",
       "predicted_score": "1-1",
       "probabilities": {
-        "home_win": 32.0,
-        "draw": 48.0,
-        "away_win": 20.0
+        "home_win": 30.0,
+        "draw": 41.7,
+        "away_win": 28.3
       },
-      "confidence": "medium",
+      "confidence": "low",
       "expected_goals": {
-        "home": 1.2,
-        "away": 0.61
+        "home": 1.22,
+        "away": 0.8
       },
       "score_distribution": [
         [
           2,
+          1,
+          25.0
+        ],
+        [
+          2,
           0,
-          45.9
-        ],
-        [
-          2,
-          1,
-          16.2
+          20.0
         ],
         [
           1,
           1,
-          16.2
+          20.0
         ],
         [
-          1,
+          3,
           0,
-          10.8
+          20.0
         ],
         [
-          2,
-          2,
-          10.8
+          1,
+          3,
+          15.0
         ]
       ],
       "heatmap_data": [],
-      "heatmaps": {
-        "player": "/outputs/player_heatmap.png?v=1772008430",
-        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1772008430",
-        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1772008430"
-      },
-      "player_heatmap_url": "/outputs/player_heatmap.png?v=1772008430",
-      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1772008430",
-      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1772008430",
+      "heatmaps": {},
+      "player_heatmap_url": null,
+      "main_cluster_heatmap_url": null,
+      "strip_cluster_heatmap_url": null,
       "top5_scores": [
         {
-          "score": "2-0",
-          "count": 17,
-          "percentage": 45.9
+          "score": "2-1",
+          "count": 5,
+          "percentage": 25.0
         },
         {
-          "score": "2-1",
-          "count": 6,
-          "percentage": 16.2
+          "score": "2-0",
+          "count": 4,
+          "percentage": 20.0
         },
         {
           "score": "1-1",
-          "count": 6,
-          "percentage": 16.2
+          "count": 4,
+          "percentage": 20.0
         },
         {
-          "score": "1-0",
+          "score": "3-0",
           "count": 4,
-          "percentage": 10.8
+          "percentage": 20.0
         },
         {
-          "score": "2-2",
-          "count": 4,
-          "percentage": 10.8
+          "score": "1-3",
+          "count": 3,
+          "percentage": 15.0
         }
       ],
       "top5_scores_home_perspective": [
         {
-          "score": "2-0",
-          "count": 17,
-          "percentage": 45.9
+          "score": "2-1",
+          "count": 5,
+          "percentage": 25.0
         },
         {
-          "score": "2-1",
-          "count": 6,
-          "percentage": 16.2
+          "score": "2-0",
+          "count": 4,
+          "percentage": 20.0
         },
         {
           "score": "1-1",
-          "count": 6,
-          "percentage": 16.2
+          "count": 4,
+          "percentage": 20.0
         },
         {
-          "score": "1-0",
+          "score": "3-0",
           "count": 4,
-          "percentage": 10.8
+          "percentage": 20.0
         },
         {
-          "score": "2-2",
-          "count": 4,
-          "percentage": 10.8
+          "score": "1-3",
+          "count": 3,
+          "percentage": 15.0
         }
       ],
       "top5_scores_away_perspective": [
         {
           "score": "1-1",
-          "count": 14,
-          "percentage": 37.8
-        },
-        {
-          "score": "0-0",
-          "count": 10,
-          "percentage": 27.0
-        },
-        {
-          "score": "1-0",
-          "count": 5,
-          "percentage": 13.5
+          "count": 7,
+          "percentage": 33.3
         },
         {
           "score": "0-1",
-          "count": 5,
-          "percentage": 13.5
+          "count": 4,
+          "percentage": 19.0
         },
         {
-          "score": "2-2",
-          "count": 3,
-          "percentage": 8.1
+          "score": "1-0",
+          "count": 4,
+          "percentage": 19.0
+        },
+        {
+          "score": "0-0",
+          "count": 4,
+          "percentage": 19.0
+        },
+        {
+          "score": "2-1",
+          "count": 2,
+          "percentage": 9.5
         }
       ],
       "markov_form": {
         "team1": {
           "name": "Gençlerbirliği",
-          "next_win_prob": 43.5,
-          "next_draw_prob": 27.2,
-          "next_loss_prob": 29.3,
-          "form_label": "Neutral ⚖️",
-          "matches_analyzed": 50,
+          "next_win_prob": 37.6,
+          "next_draw_prob": 31.1,
+          "next_loss_prob": 31.3,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 51,
           "hidden_states": 0,
           "state_profiles": []
         },
         "team2": {
           "name": "Kayserispor",
-          "next_win_prob": 26.9,
-          "next_draw_prob": 34.5,
-          "next_loss_prob": 38.6,
+          "next_win_prob": 26.4,
+          "next_draw_prob": 33.8,
+          "next_loss_prob": 39.8,
           "form_label": "Cold ❄️",
-          "matches_analyzed": 55,
+          "matches_analyzed": 56,
           "hidden_states": 0,
           "state_profiles": []
         }
       },
       "adjustments": {
-        "team1": 5.999613633232073,
-        "team2": 1.6702031888494764,
+        "team1": 1.1037654875041483,
+        "team2": -0.8774122602904978,
         "manual_team1": 0.0,
         "manual_team2": 0.0,
-        "hmm_team1": 5.999613633232073,
-        "hmm_team2": 1.6702031888494764,
+        "hmm_team1": 1.1037654875041483,
+        "hmm_team2": -0.8774122602904978,
         "hmm_applied": true
       },
       "avg_ratings": {
-        "team1": 6.93,
-        "team2": 6.84
+        "team1": 6.82,
+        "team2": 6.8
       },
       "team1_logo_url": "/logos/Gençlerbirliği.png",
       "team2_logo_url": "/logos/Kayserispor.png"
@@ -703,166 +687,162 @@
       "away_team": "Eyüpspor",
       "predicted_score": "2-0",
       "probabilities": {
-        "home_win": 79.0,
-        "draw": 10.0,
-        "away_win": 11.0
+        "home_win": 56.7,
+        "draw": 30.0,
+        "away_win": 13.3
       },
-      "confidence": "high",
+      "confidence": "medium",
       "expected_goals": {
-        "home": 1.96,
-        "away": 0.19
+        "home": 1.68,
+        "away": 0.42
       },
       "score_distribution": [
         [
+          1,
+          0,
+          34.5
+        ],
+        [
           2,
           0,
-          54.5
+          27.6
+        ],
+        [
+          0,
+          0,
+          20.7
+        ],
+        [
+          3,
+          0,
+          10.3
         ],
         [
           1,
-          0,
-          18.2
-        ],
-        [
-          3,
-          0,
-          18.2
-        ],
-        [
-          0,
-          0,
-          6.8
-        ],
-        [
-          3,
-          2,
-          2.3
+          1,
+          6.9
         ]
       ],
       "heatmap_data": [],
-      "heatmaps": {
-        "player": "/outputs/player_heatmap.png?v=1772008433",
-        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1772008433",
-        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1772008433"
-      },
-      "player_heatmap_url": "/outputs/player_heatmap.png?v=1772008433",
-      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1772008433",
-      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1772008433",
+      "heatmaps": {},
+      "player_heatmap_url": null,
+      "main_cluster_heatmap_url": null,
+      "strip_cluster_heatmap_url": null,
       "top5_scores": [
         {
-          "score": "2-0",
-          "count": 24,
-          "percentage": 54.5
-        },
-        {
           "score": "1-0",
-          "count": 8,
-          "percentage": 18.2
+          "count": 10,
+          "percentage": 34.5
         },
         {
-          "score": "3-0",
+          "score": "2-0",
           "count": 8,
-          "percentage": 18.2
+          "percentage": 27.6
         },
         {
           "score": "0-0",
-          "count": 3,
-          "percentage": 6.8
+          "count": 6,
+          "percentage": 20.7
         },
         {
-          "score": "3-2",
-          "count": 1,
-          "percentage": 2.3
+          "score": "3-0",
+          "count": 3,
+          "percentage": 10.3
+        },
+        {
+          "score": "1-1",
+          "count": 2,
+          "percentage": 6.9
         }
       ],
       "top5_scores_home_perspective": [
         {
-          "score": "2-0",
-          "count": 24,
-          "percentage": 54.5
-        },
-        {
           "score": "1-0",
-          "count": 8,
-          "percentage": 18.2
+          "count": 10,
+          "percentage": 34.5
         },
         {
-          "score": "3-0",
+          "score": "2-0",
           "count": 8,
-          "percentage": 18.2
+          "percentage": 27.6
         },
         {
           "score": "0-0",
-          "count": 3,
-          "percentage": 6.8
+          "count": 6,
+          "percentage": 20.7
         },
         {
-          "score": "3-2",
-          "count": 1,
-          "percentage": 2.3
+          "score": "3-0",
+          "count": 3,
+          "percentage": 10.3
+        },
+        {
+          "score": "1-1",
+          "count": 2,
+          "percentage": 6.9
         }
       ],
       "top5_scores_away_perspective": [
         {
-          "score": "0-2",
-          "count": 20,
-          "percentage": 54.1
+          "score": "0-4",
+          "count": 5,
+          "percentage": 23.8
+        },
+        {
+          "score": "1-1",
+          "count": 5,
+          "percentage": 23.8
         },
         {
           "score": "1-2",
-          "count": 6,
-          "percentage": 16.2
+          "count": 5,
+          "percentage": 23.8
         },
         {
-          "score": "0-3",
-          "count": 4,
-          "percentage": 10.8
+          "score": "2-1",
+          "count": 3,
+          "percentage": 14.3
         },
         {
           "score": "1-3",
-          "count": 4,
-          "percentage": 10.8
-        },
-        {
-          "score": "1-0",
           "count": 3,
-          "percentage": 8.1
+          "percentage": 14.3
         }
       ],
       "markov_form": {
         "team1": {
           "name": "Göztepe",
-          "next_win_prob": 42.2,
-          "next_draw_prob": 37.6,
-          "next_loss_prob": 20.2,
-          "form_label": "Neutral ⚖️",
-          "matches_analyzed": 41,
+          "next_win_prob": 31.5,
+          "next_draw_prob": 40.7,
+          "next_loss_prob": 27.8,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 42,
           "hidden_states": 0,
           "state_profiles": []
         },
         "team2": {
           "name": "Eyüpspor",
-          "next_win_prob": 22.3,
-          "next_draw_prob": 21.3,
-          "next_loss_prob": 56.4,
+          "next_win_prob": 34.0,
+          "next_draw_prob": 19.1,
+          "next_loss_prob": 46.9,
           "form_label": "Cold ❄️",
-          "matches_analyzed": 41,
+          "matches_analyzed": 42,
           "hidden_states": 0,
           "state_profiles": []
         }
       },
       "adjustments": {
-        "team1": 1.2816090616941196,
-        "team2": -2.1765670491703655,
+        "team1": 3.845618026338473,
+        "team2": 6.021682097422212,
         "manual_team1": 0.0,
         "manual_team2": 0.0,
-        "hmm_team1": 1.2816090616941196,
-        "hmm_team2": -2.1765670491703655,
+        "hmm_team1": 3.845618026338473,
+        "hmm_team2": 6.021682097422212,
         "hmm_applied": true
       },
       "avg_ratings": {
-        "team1": 6.94,
-        "team2": 6.59
+        "team1": 6.86,
+        "team2": 6.66
       },
       "team1_logo_url": "/logos/Göztepe.png",
       "team2_logo_url": "/logos/Eyüpspor.png"
@@ -874,168 +854,164 @@
       "datetime_iso": "2026-03-01T16:00:00",
       "home_team": "Kasımpaşa",
       "away_team": "Çaykur Rizespor",
-      "predicted_score": "1-2",
+      "predicted_score": "1-1",
       "probabilities": {
-        "home_win": 27.0,
-        "draw": 27.0,
-        "away_win": 46.0
+        "home_win": 41.7,
+        "draw": 40.0,
+        "away_win": 18.3
       },
-      "confidence": "medium",
+      "confidence": "low",
       "expected_goals": {
-        "home": 1.06,
-        "away": 1.5
+        "home": 1.15,
+        "away": 0.97
       },
       "score_distribution": [
         [
           1,
-          1,
-          28.6
-        ],
-        [
           2,
-          2,
-          25.7
+          31.6
         ],
         [
           1,
-          2,
-          20.0
+          0,
+          21.1
+        ],
+        [
+          1,
+          1,
+          21.1
         ],
         [
           0,
-          2,
-          14.3
+          1,
+          15.8
         ],
         [
           2,
           1,
-          11.4
+          10.5
         ]
       ],
       "heatmap_data": [],
-      "heatmaps": {
-        "player": "/outputs/player_heatmap.png?v=1772008437",
-        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1772008437",
-        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1772008437"
-      },
-      "player_heatmap_url": "/outputs/player_heatmap.png?v=1772008437",
-      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1772008437",
-      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1772008437",
+      "heatmaps": {},
+      "player_heatmap_url": null,
+      "main_cluster_heatmap_url": null,
+      "strip_cluster_heatmap_url": null,
       "top5_scores": [
         {
-          "score": "1-1",
-          "count": 10,
-          "percentage": 28.6
-        },
-        {
-          "score": "2-2",
-          "count": 9,
-          "percentage": 25.7
-        },
-        {
           "score": "1-2",
-          "count": 7,
-          "percentage": 20.0
+          "count": 6,
+          "percentage": 31.6
         },
         {
-          "score": "0-2",
-          "count": 5,
-          "percentage": 14.3
+          "score": "1-0",
+          "count": 4,
+          "percentage": 21.1
+        },
+        {
+          "score": "1-1",
+          "count": 4,
+          "percentage": 21.1
+        },
+        {
+          "score": "0-1",
+          "count": 3,
+          "percentage": 15.8
         },
         {
           "score": "2-1",
-          "count": 4,
-          "percentage": 11.4
+          "count": 2,
+          "percentage": 10.5
         }
       ],
       "top5_scores_home_perspective": [
         {
-          "score": "1-1",
-          "count": 10,
-          "percentage": 28.6
-        },
-        {
-          "score": "2-2",
-          "count": 9,
-          "percentage": 25.7
-        },
-        {
           "score": "1-2",
-          "count": 7,
-          "percentage": 20.0
+          "count": 6,
+          "percentage": 31.6
         },
         {
-          "score": "0-2",
-          "count": 5,
-          "percentage": 14.3
+          "score": "1-0",
+          "count": 4,
+          "percentage": 21.1
+        },
+        {
+          "score": "1-1",
+          "count": 4,
+          "percentage": 21.1
+        },
+        {
+          "score": "0-1",
+          "count": 3,
+          "percentage": 15.8
         },
         {
           "score": "2-1",
-          "count": 4,
-          "percentage": 11.4
+          "count": 2,
+          "percentage": 10.5
         }
       ],
       "top5_scores_away_perspective": [
         {
-          "score": "2-0",
-          "count": 11,
-          "percentage": 29.7
-        },
-        {
-          "score": "2-1",
-          "count": 9,
-          "percentage": 24.3
+          "score": "0-2",
+          "count": 6,
+          "percentage": 28.6
         },
         {
           "score": "1-2",
-          "count": 7,
-          "percentage": 18.9
+          "count": 5,
+          "percentage": 23.8
         },
         {
           "score": "1-0",
-          "count": 5,
-          "percentage": 13.5
+          "count": 4,
+          "percentage": 19.0
         },
         {
-          "score": "0-2",
-          "count": 5,
-          "percentage": 13.5
+          "score": "1-1",
+          "count": 3,
+          "percentage": 14.3
+        },
+        {
+          "score": "2-1",
+          "count": 3,
+          "percentage": 14.3
         }
       ],
       "markov_form": {
         "team1": {
           "name": "Kasımpaşa",
-          "next_win_prob": 15.4,
-          "next_draw_prob": 29.5,
-          "next_loss_prob": 55.1,
+          "next_win_prob": 21.7,
+          "next_draw_prob": 33.3,
+          "next_loss_prob": 45.0,
           "form_label": "Cold ❄️",
-          "matches_analyzed": 39,
+          "matches_analyzed": 40,
           "hidden_states": 0,
           "state_profiles": []
         },
         "team2": {
           "name": "Çaykur Rizespor",
-          "next_win_prob": 20.2,
-          "next_draw_prob": 31.3,
-          "next_loss_prob": 48.6,
+          "next_win_prob": 15.1,
+          "next_draw_prob": 34.3,
+          "next_loss_prob": 50.5,
           "form_label": "Cold ❄️",
-          "matches_analyzed": 36,
+          "matches_analyzed": 37,
           "hidden_states": 0,
           "state_profiles": []
         }
       },
       "adjustments": {
-        "team1": -6.960784167725868,
-        "team2": 4.98235702095472,
+        "team1": 3.25847814687391,
+        "team2": -10.0,
         "manual_team1": 0.0,
         "manual_team2": 0.0,
-        "hmm_team1": -6.960784167725868,
-        "hmm_team2": 4.98235702095472,
+        "hmm_team1": 3.25847814687391,
+        "hmm_team2": -10.0,
         "hmm_applied": true
       },
       "avg_ratings": {
-        "team1": 6.74,
-        "team2": 6.73
+        "team1": 6.87,
+        "team2": 6.64
       },
       "team1_logo_url": "/logos/Kasımpaşa.png",
       "team2_logo_url": "/logos/Çaykur Rizespor.png"
@@ -1047,168 +1023,164 @@
       "datetime_iso": "2026-03-01T16:00:00",
       "home_team": "Kocaelispor",
       "away_team": "Beşiktaş JK",
-      "predicted_score": "1-1",
+      "predicted_score": "1-2",
       "probabilities": {
-        "home_win": 27.0,
-        "draw": 47.0,
-        "away_win": 26.0
+        "home_win": 8.3,
+        "draw": 41.7,
+        "away_win": 50.0
       },
       "confidence": "medium",
       "expected_goals": {
-        "home": 1.05,
-        "away": 1.05
+        "home": 0.59,
+        "away": 1.55
       },
       "score_distribution": [
         [
           1,
+          1,
+          28.0
+        ],
+        [
           0,
-          23.8
+          1,
+          24.0
         ],
         [
           0,
           0,
-          21.4
+          24.0
         ],
         [
+          1,
+          0,
+          16.0
+        ],
+        [
+          1,
           2,
-          0,
-          19.0
-        ],
-        [
-          1,
-          1,
-          19.0
-        ],
-        [
-          0,
-          1,
-          16.7
+          8.0
         ]
       ],
       "heatmap_data": [],
-      "heatmaps": {
-        "player": "/outputs/player_heatmap.png?v=1772008440",
-        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1772008440",
-        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1772008440"
-      },
-      "player_heatmap_url": "/outputs/player_heatmap.png?v=1772008440",
-      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1772008440",
-      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1772008440",
+      "heatmaps": {},
+      "player_heatmap_url": null,
+      "main_cluster_heatmap_url": null,
+      "strip_cluster_heatmap_url": null,
       "top5_scores": [
         {
-          "score": "1-0",
-          "count": 10,
-          "percentage": 23.8
-        },
-        {
-          "score": "0-0",
-          "count": 9,
-          "percentage": 21.4
-        },
-        {
-          "score": "2-0",
-          "count": 8,
-          "percentage": 19.0
-        },
-        {
           "score": "1-1",
-          "count": 8,
-          "percentage": 19.0
+          "count": 7,
+          "percentage": 28.0
         },
         {
           "score": "0-1",
-          "count": 7,
-          "percentage": 16.7
+          "count": 6,
+          "percentage": 24.0
+        },
+        {
+          "score": "0-0",
+          "count": 6,
+          "percentage": 24.0
+        },
+        {
+          "score": "1-0",
+          "count": 4,
+          "percentage": 16.0
+        },
+        {
+          "score": "1-2",
+          "count": 2,
+          "percentage": 8.0
         }
       ],
       "top5_scores_home_perspective": [
         {
-          "score": "1-0",
-          "count": 10,
-          "percentage": 23.8
-        },
-        {
-          "score": "0-0",
-          "count": 9,
-          "percentage": 21.4
-        },
-        {
-          "score": "2-0",
-          "count": 8,
-          "percentage": 19.0
-        },
-        {
           "score": "1-1",
-          "count": 8,
-          "percentage": 19.0
+          "count": 7,
+          "percentage": 28.0
         },
         {
           "score": "0-1",
-          "count": 7,
-          "percentage": 16.7
+          "count": 6,
+          "percentage": 24.0
+        },
+        {
+          "score": "0-0",
+          "count": 6,
+          "percentage": 24.0
+        },
+        {
+          "score": "1-0",
+          "count": 4,
+          "percentage": 16.0
+        },
+        {
+          "score": "1-2",
+          "count": 2,
+          "percentage": 8.0
         }
       ],
       "top5_scores_away_perspective": [
         {
-          "score": "1-1",
-          "count": 9,
+          "score": "3-0",
+          "count": 6,
           "percentage": 25.0
         },
         {
-          "score": "3-1",
-          "count": 8,
-          "percentage": 22.2
-        },
-        {
-          "score": "1-2",
-          "count": 8,
-          "percentage": 22.2
-        },
-        {
           "score": "2-1",
-          "count": 7,
-          "percentage": 19.4
+          "count": 5,
+          "percentage": 20.8
         },
         {
-          "score": "3-2",
-          "count": 4,
-          "percentage": 11.1
+          "score": "2-0",
+          "count": 5,
+          "percentage": 20.8
+        },
+        {
+          "score": "3-1",
+          "count": 5,
+          "percentage": 20.8
+        },
+        {
+          "score": "2-2",
+          "count": 3,
+          "percentage": 12.5
         }
       ],
       "markov_form": {
         "team1": {
           "name": "Kocaelispor",
-          "next_win_prob": 53.5,
-          "next_draw_prob": 28.6,
-          "next_loss_prob": 18.0,
+          "next_win_prob": 41.6,
+          "next_draw_prob": 23.8,
+          "next_loss_prob": 34.6,
           "form_label": "Neutral ⚖️",
-          "matches_analyzed": 53,
+          "matches_analyzed": 54,
           "hidden_states": 0,
           "state_profiles": []
         },
         "team2": {
           "name": "Beşiktaş",
-          "next_win_prob": 47.7,
-          "next_draw_prob": 27.3,
-          "next_loss_prob": 25.1,
+          "next_win_prob": 48.2,
+          "next_draw_prob": 26.1,
+          "next_loss_prob": 25.8,
           "form_label": "Neutral ⚖️",
-          "matches_analyzed": 50,
+          "matches_analyzed": 51,
           "hidden_states": 0,
           "state_profiles": []
         }
       },
       "adjustments": {
-        "team1": 5.9783939266661905,
-        "team2": 1.0536990897585252,
+        "team1": -2.7994393506996444,
+        "team2": 0.9386732132719006,
         "manual_team1": 0.0,
         "manual_team2": 0.0,
-        "hmm_team1": 5.9783939266661905,
-        "hmm_team2": 1.0536990897585252,
+        "hmm_team1": -2.7994393506996444,
+        "hmm_team2": 0.9386732132719006,
         "hmm_applied": true
       },
       "avg_ratings": {
-        "team1": 7.0,
-        "team2": 6.98
+        "team1": 6.86,
+        "team2": 7.02
       },
       "team1_logo_url": "/logos/Kocaelispor.png",
       "team2_logo_url": "/logos/Beşiktaş.png"
@@ -1222,166 +1194,162 @@
       "away_team": "Gaziantep FK",
       "predicted_score": "2-1",
       "probabilities": {
-        "home_win": 56.0,
-        "draw": 32.0,
-        "away_win": 12.0
+        "home_win": 61.7,
+        "draw": 26.7,
+        "away_win": 11.7
       },
-      "confidence": "medium",
+      "confidence": "high",
       "expected_goals": {
-        "home": 1.73,
-        "away": 0.88
+        "home": 1.78,
+        "away": 0.98
       },
       "score_distribution": [
         [
           2,
           1,
-          31.6
+          30.8
         ],
         [
           2,
           0,
-          21.1
+          26.9
         ],
         [
           1,
           1,
-          21.1
+          19.2
         ],
         [
-          3,
+          1,
           0,
-          15.8
+          19.2
         ],
         [
           0,
-          1,
-          10.5
+          2,
+          3.8
         ]
       ],
       "heatmap_data": [],
-      "heatmaps": {
-        "player": "/outputs/player_heatmap.png?v=1772008444",
-        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1772008444",
-        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1772008444"
-      },
-      "player_heatmap_url": "/outputs/player_heatmap.png?v=1772008444",
-      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1772008444",
-      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1772008444",
+      "heatmaps": {},
+      "player_heatmap_url": null,
+      "main_cluster_heatmap_url": null,
+      "strip_cluster_heatmap_url": null,
       "top5_scores": [
         {
           "score": "2-1",
-          "count": 12,
-          "percentage": 31.6
+          "count": 8,
+          "percentage": 30.8
         },
         {
           "score": "2-0",
-          "count": 8,
-          "percentage": 21.1
+          "count": 7,
+          "percentage": 26.9
         },
         {
           "score": "1-1",
-          "count": 8,
-          "percentage": 21.1
+          "count": 5,
+          "percentage": 19.2
         },
         {
-          "score": "3-0",
-          "count": 6,
-          "percentage": 15.8
+          "score": "1-0",
+          "count": 5,
+          "percentage": 19.2
         },
         {
-          "score": "0-1",
-          "count": 4,
-          "percentage": 10.5
+          "score": "0-2",
+          "count": 1,
+          "percentage": 3.8
         }
       ],
       "top5_scores_home_perspective": [
         {
           "score": "2-1",
-          "count": 12,
-          "percentage": 31.6
+          "count": 8,
+          "percentage": 30.8
         },
         {
           "score": "2-0",
-          "count": 8,
-          "percentage": 21.1
+          "count": 7,
+          "percentage": 26.9
         },
         {
           "score": "1-1",
-          "count": 8,
-          "percentage": 21.1
+          "count": 5,
+          "percentage": 19.2
         },
         {
-          "score": "3-0",
-          "count": 6,
-          "percentage": 15.8
+          "score": "1-0",
+          "count": 5,
+          "percentage": 19.2
         },
         {
-          "score": "0-1",
-          "count": 4,
-          "percentage": 10.5
+          "score": "0-2",
+          "count": 1,
+          "percentage": 3.8
         }
       ],
       "top5_scores_away_perspective": [
         {
-          "score": "1-1",
-          "count": 11,
-          "percentage": 29.7
+          "score": "1-2",
+          "count": 9,
+          "percentage": 37.5
         },
         {
           "score": "1-3",
-          "count": 9,
-          "percentage": 24.3
+          "count": 7,
+          "percentage": 29.2
         },
         {
-          "score": "1-2",
-          "count": 8,
-          "percentage": 21.6
+          "score": "3-1",
+          "count": 4,
+          "percentage": 16.7
+        },
+        {
+          "score": "1-1",
+          "count": 2,
+          "percentage": 8.3
         },
         {
           "score": "2-2",
-          "count": 5,
-          "percentage": 13.5
-        },
-        {
-          "score": "1-0",
-          "count": 4,
-          "percentage": 10.8
+          "count": 2,
+          "percentage": 8.3
         }
       ],
       "markov_form": {
         "team1": {
           "name": "Samsunspor",
-          "next_win_prob": 39.4,
-          "next_draw_prob": 28.6,
-          "next_loss_prob": 32.0,
-          "form_label": "Cold ❄️",
-          "matches_analyzed": 55,
+          "next_win_prob": 46.5,
+          "next_draw_prob": 27.4,
+          "next_loss_prob": 26.1,
+          "form_label": "Neutral ⚖️",
+          "matches_analyzed": 56,
           "hidden_states": 0,
           "state_profiles": []
         },
         "team2": {
           "name": "Gaziantep",
-          "next_win_prob": 24.2,
-          "next_draw_prob": 28.5,
-          "next_loss_prob": 47.3,
+          "next_win_prob": 29.6,
+          "next_draw_prob": 30.2,
+          "next_loss_prob": 40.2,
           "form_label": "Cold ❄️",
-          "matches_analyzed": 53,
+          "matches_analyzed": 54,
           "hidden_states": 0,
           "state_profiles": []
         }
       },
       "adjustments": {
-        "team1": 0.2688617080506255,
-        "team2": -8.01113450695919,
+        "team1": 10.0,
+        "team2": -4.17294581626041,
         "manual_team1": 0.0,
         "manual_team2": 0.0,
-        "hmm_team1": 0.2688617080506255,
-        "hmm_team2": -8.01113450695919,
+        "hmm_team1": 10.0,
+        "hmm_team2": -4.17294581626041,
         "hmm_applied": true
       },
       "avg_ratings": {
-        "team1": 6.7,
-        "team2": 6.59
+        "team1": 6.83,
+        "team2": 6.63
       },
       "team1_logo_url": "/logos/Samsunspor.png",
       "team2_logo_url": "/logos/Gaziantep.png"
@@ -1393,168 +1361,164 @@
       "datetime_iso": "2026-03-01T16:00:00",
       "home_team": "Trabzonspor",
       "away_team": "Fatih Karagümrük",
-      "predicted_score": "2-2",
+      "predicted_score": "2-1",
       "probabilities": {
-        "home_win": 62.0,
-        "draw": 8.0,
-        "away_win": 30.0
+        "home_win": 60.0,
+        "draw": 18.3,
+        "away_win": 21.7
       },
       "confidence": "high",
       "expected_goals": {
-        "home": 1.69,
-        "away": 1.67
+        "home": 1.7,
+        "away": 0.95
       },
       "score_distribution": [
         [
-          3,
           2,
-          31.2
+          0,
+          30.0
         ],
         [
+          3,
           2,
-          2,
-          25.0
+          30.0
         ],
         [
           3,
           1,
-          18.8
+          15.0
         ],
         [
           2,
-          3,
-          12.5
+          2,
+          15.0
         ],
         [
-          3,
-          3,
-          12.5
+          4,
+          0,
+          10.0
         ]
       ],
       "heatmap_data": [],
-      "heatmaps": {
-        "player": "/outputs/player_heatmap.png?v=1772008448",
-        "main_clusters": "/outputs/main_cluster_heatmap.png?v=1772008448",
-        "strip_clusters": "/outputs/strip_cluster_heatmap.png?v=1772008448"
-      },
-      "player_heatmap_url": "/outputs/player_heatmap.png?v=1772008448",
-      "main_cluster_heatmap_url": "/outputs/main_cluster_heatmap.png?v=1772008448",
-      "strip_cluster_heatmap_url": "/outputs/strip_cluster_heatmap.png?v=1772008448",
+      "heatmaps": {},
+      "player_heatmap_url": null,
+      "main_cluster_heatmap_url": null,
+      "strip_cluster_heatmap_url": null,
       "top5_scores": [
         {
-          "score": "3-2",
-          "count": 10,
-          "percentage": 31.2
+          "score": "2-0",
+          "count": 6,
+          "percentage": 30.0
         },
         {
-          "score": "2-2",
-          "count": 8,
-          "percentage": 25.0
+          "score": "3-2",
+          "count": 6,
+          "percentage": 30.0
         },
         {
           "score": "3-1",
-          "count": 6,
-          "percentage": 18.8
+          "count": 3,
+          "percentage": 15.0
         },
         {
-          "score": "2-3",
-          "count": 4,
-          "percentage": 12.5
+          "score": "2-2",
+          "count": 3,
+          "percentage": 15.0
         },
         {
-          "score": "3-3",
-          "count": 4,
-          "percentage": 12.5
+          "score": "4-0",
+          "count": 2,
+          "percentage": 10.0
         }
       ],
       "top5_scores_home_perspective": [
         {
-          "score": "3-2",
-          "count": 10,
-          "percentage": 31.2
+          "score": "2-0",
+          "count": 6,
+          "percentage": 30.0
         },
         {
-          "score": "2-2",
-          "count": 8,
-          "percentage": 25.0
+          "score": "3-2",
+          "count": 6,
+          "percentage": 30.0
         },
         {
           "score": "3-1",
-          "count": 6,
-          "percentage": 18.8
+          "count": 3,
+          "percentage": 15.0
         },
         {
-          "score": "2-3",
-          "count": 4,
-          "percentage": 12.5
+          "score": "2-2",
+          "count": 3,
+          "percentage": 15.0
         },
         {
-          "score": "3-3",
-          "count": 4,
-          "percentage": 12.5
+          "score": "4-0",
+          "count": 2,
+          "percentage": 10.0
         }
       ],
       "top5_scores_away_perspective": [
         {
-          "score": "2-0",
-          "count": 12,
-          "percentage": 34.3
-        },
-        {
           "score": "1-1",
-          "count": 8,
-          "percentage": 22.9
+          "count": 9,
+          "percentage": 39.1
         },
         {
-          "score": "1-2",
-          "count": 6,
-          "percentage": 17.1
+          "score": "1-0",
+          "count": 5,
+          "percentage": 21.7
         },
         {
           "score": "0-1",
-          "count": 5,
-          "percentage": 14.3
+          "count": 4,
+          "percentage": 17.4
         },
         {
           "score": "2-1",
-          "count": 4,
-          "percentage": 11.4
+          "count": 3,
+          "percentage": 13.0
+        },
+        {
+          "score": "0-2",
+          "count": 2,
+          "percentage": 8.7
         }
       ],
       "markov_form": {
         "team1": {
           "name": "Trabzonspor",
-          "next_win_prob": 35.8,
-          "next_draw_prob": 28.9,
-          "next_loss_prob": 35.3,
-          "form_label": "Cold ❄️",
-          "matches_analyzed": 44,
+          "next_win_prob": 60.8,
+          "next_draw_prob": 22.7,
+          "next_loss_prob": 16.5,
+          "form_label": "Hot 🔥",
+          "matches_analyzed": 45,
           "hidden_states": 0,
           "state_profiles": []
         },
         "team2": {
           "name": "Karagümrük",
-          "next_win_prob": 41.0,
-          "next_draw_prob": 20.5,
-          "next_loss_prob": 38.4,
-          "form_label": "Neutral ⚖️",
-          "matches_analyzed": 50,
+          "next_win_prob": 34.2,
+          "next_draw_prob": 20.2,
+          "next_loss_prob": 45.6,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 51,
           "hidden_states": 0,
           "state_profiles": []
         }
       },
       "adjustments": {
-        "team1": -7.7702603332984665,
-        "team2": 8.821249726083826,
+        "team1": 9.169403463694513,
+        "team2": 10.0,
         "manual_team1": 0.0,
         "manual_team2": 0.0,
-        "hmm_team1": -7.7702603332984665,
-        "hmm_team2": 8.821249726083826,
+        "hmm_team1": 9.169403463694513,
+        "hmm_team2": 10.0,
         "hmm_applied": true
       },
       "avg_ratings": {
-        "team1": 6.87,
-        "team2": 6.74
+        "team1": 7.01,
+        "team2": 6.75
       },
       "team1_logo_url": "/logos/Trabzonspor.png",
       "team2_logo_url": "/logos/Karagümrük.png"
