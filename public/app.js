@@ -136,6 +136,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const paContent = document.getElementById('pa-content');
     const paCards = document.getElementById('pa-cards');
     const paCompare = document.getElementById('pa-compare');
+    const worldCupBracketFrame = document.getElementById('world-cup-bracket-frame');
+    const worldCupBracketStatus = document.getElementById('world-cup-bracket-status');
 
     // Tab Navigation
     const tabBtns = document.querySelectorAll('.nav-btn');
@@ -164,6 +166,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     let simulationCrossLeagueEnabled = false;
     let simulationAdjustmentMode = 'easy';
     let drawingBoardInitialized = false;
+    let worldCupBracketLoaded = false;
     let drawingBoardLeague = '';
     let drawingBoardLineupTeam1 = null;
     let drawingBoardLineupTeam2 = null;
@@ -201,6 +204,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             nav_drawing_board: "Drawing Board",
             nav_recent_games: "Upcoming Games",
             nav_player_analysis: "Player Lab",
+            nav_world_cup_bracket: "World Cup Bracket",
             nav_scout: "Scout",
             nav_explore: "Explore",
             analysis_title: "Pre-Match Analysis",
@@ -276,6 +280,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             radar_title: "Performance Radar",
             recent_games_title: "Weekly Predictions",
             recent_games_desc: "AI-powered predictions for upcoming Turkish Super League matches.",
+            world_cup_bracket_title: "2026 World Cup Bracket",
+            world_cup_bracket_desc: "Use the full tournament predictor inside Gol Oncesi.",
+            world_cup_bracket_note: "The original interactive bracket is mirrored here and loads on demand.",
+            world_cup_bracket_open_full: "Open full page",
+            world_cup_bracket_loading: "Loading bracket...",
+            world_cup_bracket_error: "Bracket failed to load. Open the full page instead.",
             player_analysis_title: "Deep Player Analysis",
             player_analysis_desc: "Profile, season summary, and detailed statistics with instant player comparison.",
             pa_team_filter_label: "Team Filter",
@@ -298,6 +308,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             nav_drawing_board: "Çizim Tahtası",
             nav_recent_games: "Yaklaşan Maçlar",
             nav_player_analysis: "Oyuncu Laboratuvarı",
+            nav_world_cup_bracket: "Dünya Kupası Braketi",
             nav_scout: "Gözlemci",
             nav_explore: "Keşfet",
             analysis_title: "Maç Öncesi Analiz",
@@ -373,6 +384,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             radar_title: "Performans Radarı",
             recent_games_title: "Haftalık Tahminler",
             recent_games_desc: "Süper Lig maçları için yapay zeka destekli tahminler.",
+            world_cup_bracket_title: "2026 Dünya Kupası Braketi",
+            world_cup_bracket_desc: "Tam turnuva tahmin aracını Gol Oncesi içinde kullanın.",
+            world_cup_bracket_note: "Orijinal interaktif bracket burada aynalanır ve ihtiyaç olduğunda yüklenir.",
+            world_cup_bracket_open_full: "Tam sayfa aç",
+            world_cup_bracket_loading: "Bracket yükleniyor...",
+            world_cup_bracket_error: "Bracket yüklenemedi. Bunun yerine tam sayfayı açın.",
             player_analysis_title: "Derin Oyuncu Analizi",
             player_analysis_desc: "Profil, sezon özeti ve detaylı istatistikleri anında oyuncu karşılaştırmasıyla inceleyin.",
             pa_team_filter_label: "Takım Filtresi",
@@ -1096,9 +1113,38 @@ document.addEventListener('DOMContentLoaded', async () => {
                     }
                 });
 
+                if (targetId === 'tab-world-cup-bracket') {
+                    ensureWorldCupBracketLoaded();
+                }
+
                 queueLiquidGlassUpdate();
             });
         });
+    }
+
+    function ensureWorldCupBracketLoaded() {
+        if (!worldCupBracketFrame || !worldCupBracketStatus || worldCupBracketLoaded) {
+            return;
+        }
+
+        const src = worldCupBracketFrame.dataset.src;
+        if (!src) {
+            return;
+        }
+
+        worldCupBracketLoaded = true;
+        worldCupBracketStatus.classList.remove('hidden');
+
+        worldCupBracketFrame.addEventListener('load', () => {
+            worldCupBracketStatus.classList.add('hidden');
+        }, { once: true });
+
+        worldCupBracketFrame.addEventListener('error', () => {
+            worldCupBracketStatus.textContent = translations[currentLang]?.world_cup_bracket_error || 'Bracket failed to load. Open the full page instead.';
+            worldCupBracketStatus.classList.remove('hidden');
+        }, { once: true });
+
+        worldCupBracketFrame.src = src;
     }
 
     // --- Event Listeners (Comparison) ---

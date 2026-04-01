@@ -22,12 +22,12 @@ def main():
 
     engine = GolOncesiEngine(paths, cfg, verbose=True)
 
-    home_team = "Galatasaray" #input("Enter HOME team name: ").strip()
-    away_team = "Alanyaspor" #input("Enter AWAY team name: ").strip()
+    home_team = "Karagümrük" #input("Enter HOME team name: ").strip()
+    away_team = "Fenerbahçe" #input("Enter AWAY team name: ").strip()
 
     print("\nAvailable formations:\n" + ", ".join(available_formations()))
-    home_form = "4-2-3-1" #input(f"Enter formation for {home_team}: ").strip()
-    away_form = "3-4-2-1" #input(f"Enter formation for {away_team}: ").strip()
+    home_form = "4-4-2" #input(f"Enter formation for {home_team}: ").strip()
+    away_form = "4-3-2-1" #input(f"Enter formation for {away_team}: ").strip()
 
     # HMM suggestions (optional)
     t_home = engine.suggest_adjustments_hmm(home_team)
@@ -42,8 +42,8 @@ def main():
         away_team=away_team,
         home_formation=home_form,
         away_formation=away_form,
-        home_adj_pct= 5,  #float(t_home["suggested_adj_pct"]),
-        away_adj_pct= -5 #float(t_away["suggested_adj_pct"]),
+        home_adj_pct= 10,  #float(t_home["suggested_adj_pct"]),
+        away_adj_pct= -20 #float(t_away["suggested_adj_pct"]),
     )
 
     result = engine.run_match(m, draw_heatmaps=True, generate_images=True)

@@ -201,9 +201,12 @@ def get_next_scheduled_round(schedule):
     return int(schedule.get('current_round', 1))
 
 
-def run_weekly_predictions(schedule):
-    """Generate prediction JSON for the next scheduled round."""
-    target_round = get_next_scheduled_round(schedule)
+def run_weekly_predictions(schedule, forced_round=None):
+    """Generate prediction JSON for a target round.
+
+    If forced_round is provided, use it; otherwise use the next scheduled round.
+    """
+    target_round = int(forced_round) if forced_round is not None else get_next_scheduled_round(schedule)
     logging.info("")
     logging.info("=" * 60)
     logging.info(f"Step 3: Generating predictions for Round {target_round}...")
@@ -363,7 +366,7 @@ def scrape_and_append(match_id, team_name, team_path):
 
 
 
-def main(force_round=None):
+def main(force_round=None, prediction_round=None):
     """Main automation logic.
     
     Args:
@@ -456,8 +459,11 @@ def main(force_round=None):
             logging.error(f"❌ Error running ingest_data.py: {e}")
             return
         
-    # Step 3: Always generate upcoming round predictions
-    pred_ok, pred_round = run_weekly_predictions(schedule)
+    # Step 3: Always generate predictions.
+    # If prediction_round is passed, force that round.
+    # If only force_round is passed, align full pipeline to that same round.
+    forced_prediction_round = prediction_round if prediction_round is not None else force_round
+    pred_ok, pred_round = run_weekly_predictions(schedule, forced_round=forced_prediction_round)
 
     # Step 4: Send prediction emails for next round
     email_ok = False
@@ -526,15 +532,23 @@ Examples:
   # Normal automatic run (uses current round from API)
   python3 auto_weekly_scraper.py
   
-  # Manual override to scrape a specific round
+  # Manual override to force the full pipeline (scrape + predictions + email) to round 20
   python3 auto_weekly_scraper.py --round 20
+
+  # Force scrape and prediction/email rounds separately
+  python3 auto_weekly_scraper.py --round 20 --prediction-round 21
         """
     )
     parser.add_argument(
         '--round',
         type=int,
-        help='Override automatic round detection and scrape a specific round'
+        help='Override automatic round detection and scrape a specific round (also used for predictions/email unless --prediction-round is set)'
+    )
+    parser.add_argument(
+        '--prediction-round',
+        type=int,
+        help='Override prediction/email round (defaults to --round if provided, otherwise next scheduled round)'
     )
     
     args = parser.parse_args()
-    main(force_round=args.round)
+    main(force_round=args.round, prediction_round=args.prediction_round)

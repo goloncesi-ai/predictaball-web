@@ -347,6 +347,79 @@ body {
     color: var(--text-muted);
 }
 
+/* ===== WORLD CUP BRACKET TAB ===== */
+.bracket-embed-shell {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.bracket-embed-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 18px;
+}
+
+.bracket-embed-toolbar p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.bracket-open-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.1rem;
+    border-radius: 999px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    white-space: nowrap;
+    background: linear-gradient(132deg, rgba(28, 163, 255, 0.34), rgba(20, 198, 163, 0.3));
+    border: 1px solid rgba(158, 212, 255, 0.36);
+    box-shadow: inset 0 0 0 1px rgba(148, 198, 247, 0.2), 0 8px 20px -12px rgba(28, 163, 255, 0.65);
+}
+
+.bracket-frame-panel {
+    position: relative;
+    min-height: 78vh;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(148, 182, 219, 0.28);
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 24px 50px -26px rgba(2, 8, 20, 0.82);
+}
+
+.bracket-frame-status {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+    color: #222552;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    background:
+        radial-gradient(circle at top, rgba(235, 197, 116, 0.18), transparent 30%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(243, 245, 249, 0.98));
+    z-index: 1;
+}
+
+.bracket-frame {
+    display: block;
+    width: 100%;
+    min-height: 78vh;
+    border: 0;
+    background: #fff;
+}
+
 /* --- Comparison Interface --- */
 .comparison-interface {
     display: flex;
@@ -3661,6 +3734,21 @@ body {
     /* Content Container */
     .content-container {
         padding: 15px;
+    }
+
+    .bracket-embed-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+
+    .bracket-open-link {
+        width: 100%;
+    }
+
+    .bracket-frame-panel,
+    .bracket-frame {
+        min-height: 68vh;
     }
     
     /* Section Headers */

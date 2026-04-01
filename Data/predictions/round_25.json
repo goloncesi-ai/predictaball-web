@@ -1,0 +1,1527 @@
+{
+  "round": 25,
+  "generated_at": "2026-03-13T18:37:22.868796",
+  "matches": [
+    {
+      "match_id": 14109839,
+      "date": "2026-03-08",
+      "time": "16:00",
+      "datetime_iso": "2026-03-08T16:00:00",
+      "home_team": "Alanyaspor",
+      "away_team": "Gençlerbirliği",
+      "predicted_score": "1-1",
+      "probabilities": {
+        "home_win": 23.3,
+        "draw": 60.0,
+        "away_win": 16.7
+      },
+      "confidence": "high",
+      "expected_goals": {
+        "home": 1.2,
+        "away": 0.9
+      },
+      "score_distribution": [
+        [
+          1,
+          1,
+          36.0
+        ],
+        [
+          0,
+          2,
+          20.0
+        ],
+        [
+          1,
+          0,
+          16.0
+        ],
+        [
+          2,
+          1,
+          16.0
+        ],
+        [
+          2,
+          0,
+          12.0
+        ]
+      ],
+      "heatmap_data": [],
+      "heatmaps": {},
+      "player_heatmap_url": null,
+      "main_cluster_heatmap_url": null,
+      "strip_cluster_heatmap_url": null,
+      "top5_scores": [
+        {
+          "score": "1-1",
+          "count": 9,
+          "percentage": 36.0
+        },
+        {
+          "score": "0-2",
+          "count": 5,
+          "percentage": 20.0
+        },
+        {
+          "score": "1-0",
+          "count": 4,
+          "percentage": 16.0
+        },
+        {
+          "score": "2-1",
+          "count": 4,
+          "percentage": 16.0
+        },
+        {
+          "score": "2-0",
+          "count": 3,
+          "percentage": 12.0
+        }
+      ],
+      "top5_scores_home_perspective": [
+        {
+          "score": "1-1",
+          "count": 9,
+          "percentage": 36.0
+        },
+        {
+          "score": "0-2",
+          "count": 5,
+          "percentage": 20.0
+        },
+        {
+          "score": "1-0",
+          "count": 4,
+          "percentage": 16.0
+        },
+        {
+          "score": "2-1",
+          "count": 4,
+          "percentage": 16.0
+        },
+        {
+          "score": "2-0",
+          "count": 3,
+          "percentage": 12.0
+        }
+      ],
+      "top5_scores_away_perspective": [
+        {
+          "score": "1-2",
+          "count": 8,
+          "percentage": 33.3
+        },
+        {
+          "score": "1-1",
+          "count": 7,
+          "percentage": 29.2
+        },
+        {
+          "score": "2-2",
+          "count": 3,
+          "percentage": 12.5
+        },
+        {
+          "score": "0-1",
+          "count": 3,
+          "percentage": 12.5
+        },
+        {
+          "score": "0-0",
+          "count": 3,
+          "percentage": 12.5
+        }
+      ],
+      "markov_form": {
+        "team1": {
+          "name": "Alanyaspor",
+          "next_win_prob": 31.9,
+          "next_draw_prob": 35.6,
+          "next_loss_prob": 32.6,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 42,
+          "hidden_states": 0,
+          "state_profiles": []
+        },
+        "team2": {
+          "name": "Gençlerbirliği",
+          "next_win_prob": 37.6,
+          "next_draw_prob": 31.1,
+          "next_loss_prob": 31.3,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 51,
+          "hidden_states": 0,
+          "state_profiles": []
+        }
+      },
+      "adjustments": {
+        "team1": 1.9696421548529095,
+        "team2": 1.1037654875041483,
+        "manual_team1": 0.0,
+        "manual_team2": 0.0,
+        "hmm_team1": 1.9696421548529095,
+        "hmm_team2": 1.1037654875041483,
+        "hmm_applied": true
+      },
+      "avg_ratings": {
+        "team1": 6.93,
+        "team2": 6.8
+      },
+      "team1_logo_url": "/logos/Alanyaspor.png",
+      "team2_logo_url": "/logos/Gençlerbirliği.png"
+    },
+    {
+      "match_id": 14109837,
+      "date": "2026-03-08",
+      "time": "16:00",
+      "datetime_iso": "2026-03-08T16:00:00",
+      "home_team": "Başakşehir FK",
+      "away_team": "Göztepe",
+      "predicted_score": "1-1",
+      "probabilities": {
+        "home_win": 41.7,
+        "draw": 46.7,
+        "away_win": 11.7
+      },
+      "confidence": "medium",
+      "expected_goals": {
+        "home": 1.37,
+        "away": 0.8
+      },
+      "score_distribution": [
+        [
+          2,
+          1,
+          39.3
+        ],
+        [
+          3,
+          1,
+          35.7
+        ],
+        [
+          3,
+          0,
+          10.7
+        ],
+        [
+          2,
+          2,
+          10.7
+        ],
+        [
+          1,
+          0,
+          3.6
+        ]
+      ],
+      "heatmap_data": [],
+      "heatmaps": {},
+      "player_heatmap_url": null,
+      "main_cluster_heatmap_url": null,
+      "strip_cluster_heatmap_url": null,
+      "top5_scores": [
+        {
+          "score": "2-1",
+          "count": 11,
+          "percentage": 39.3
+        },
+        {
+          "score": "3-1",
+          "count": 10,
+          "percentage": 35.7
+        },
+        {
+          "score": "3-0",
+          "count": 3,
+          "percentage": 10.7
+        },
+        {
+          "score": "2-2",
+          "count": 3,
+          "percentage": 10.7
+        },
+        {
+          "score": "1-0",
+          "count": 1,
+          "percentage": 3.6
+        }
+      ],
+      "top5_scores_home_perspective": [
+        {
+          "score": "2-1",
+          "count": 11,
+          "percentage": 39.3
+        },
+        {
+          "score": "3-1",
+          "count": 10,
+          "percentage": 35.7
+        },
+        {
+          "score": "3-0",
+          "count": 3,
+          "percentage": 10.7
+        },
+        {
+          "score": "2-2",
+          "count": 3,
+          "percentage": 10.7
+        },
+        {
+          "score": "1-0",
+          "count": 1,
+          "percentage": 3.6
+        }
+      ],
+      "top5_scores_away_perspective": [
+        {
+          "score": "0-0",
+          "count": 10,
+          "percentage": 38.5
+        },
+        {
+          "score": "1-0",
+          "count": 8,
+          "percentage": 30.8
+        },
+        {
+          "score": "0-1",
+          "count": 4,
+          "percentage": 15.4
+        },
+        {
+          "score": "2-0",
+          "count": 2,
+          "percentage": 7.7
+        },
+        {
+          "score": "2-1",
+          "count": 2,
+          "percentage": 7.7
+        }
+      ],
+      "markov_form": {
+        "team1": {
+          "name": "Başakşehir",
+          "next_win_prob": 63.7,
+          "next_draw_prob": 13.1,
+          "next_loss_prob": 23.2,
+          "form_label": "Hot 🔥",
+          "matches_analyzed": 54,
+          "hidden_states": 0,
+          "state_profiles": []
+        },
+        "team2": {
+          "name": "Göztepe",
+          "next_win_prob": 31.5,
+          "next_draw_prob": 40.7,
+          "next_loss_prob": 27.8,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 42,
+          "hidden_states": 0,
+          "state_profiles": []
+        }
+      },
+      "adjustments": {
+        "team1": 10.0,
+        "team2": 3.845618026338473,
+        "manual_team1": 0.0,
+        "manual_team2": 0.0,
+        "hmm_team1": 10.0,
+        "hmm_team2": 3.845618026338473,
+        "hmm_applied": true
+      },
+      "avg_ratings": {
+        "team1": 7.18,
+        "team2": 6.86
+      },
+      "team1_logo_url": "/logos/Başakşehir.png",
+      "team2_logo_url": "/logos/Göztepe.png"
+    },
+    {
+      "match_id": 14109838,
+      "date": "2026-03-08",
+      "time": "16:00",
+      "datetime_iso": "2026-03-08T16:00:00",
+      "home_team": "Beşiktaş JK",
+      "away_team": "Galatasaray",
+      "predicted_score": "1-1",
+      "probabilities": {
+        "home_win": 45.0,
+        "draw": 25.0,
+        "away_win": 30.0
+      },
+      "confidence": "medium",
+      "expected_goals": {
+        "home": 1.3,
+        "away": 1.48
+      },
+      "score_distribution": [
+        [
+          1,
+          2,
+          28.6
+        ],
+        [
+          2,
+          0,
+          23.8
+        ],
+        [
+          2,
+          1,
+          19.0
+        ],
+        [
+          1,
+          1,
+          14.3
+        ],
+        [
+          3,
+          1,
+          14.3
+        ]
+      ],
+      "heatmap_data": [],
+      "heatmaps": {},
+      "player_heatmap_url": null,
+      "main_cluster_heatmap_url": null,
+      "strip_cluster_heatmap_url": null,
+      "top5_scores": [
+        {
+          "score": "1-2",
+          "count": 6,
+          "percentage": 28.6
+        },
+        {
+          "score": "2-0",
+          "count": 5,
+          "percentage": 23.8
+        },
+        {
+          "score": "2-1",
+          "count": 4,
+          "percentage": 19.0
+        },
+        {
+          "score": "1-1",
+          "count": 3,
+          "percentage": 14.3
+        },
+        {
+          "score": "3-1",
+          "count": 3,
+          "percentage": 14.3
+        }
+      ],
+      "top5_scores_home_perspective": [
+        {
+          "score": "1-2",
+          "count": 6,
+          "percentage": 28.6
+        },
+        {
+          "score": "2-0",
+          "count": 5,
+          "percentage": 23.8
+        },
+        {
+          "score": "2-1",
+          "count": 4,
+          "percentage": 19.0
+        },
+        {
+          "score": "1-1",
+          "count": 3,
+          "percentage": 14.3
+        },
+        {
+          "score": "3-1",
+          "count": 3,
+          "percentage": 14.3
+        }
+      ],
+      "top5_scores_away_perspective": [
+        {
+          "score": "3-1",
+          "count": 4,
+          "percentage": 21.1
+        },
+        {
+          "score": "2-2",
+          "count": 4,
+          "percentage": 21.1
+        },
+        {
+          "score": "1-0",
+          "count": 4,
+          "percentage": 21.1
+        },
+        {
+          "score": "1-1",
+          "count": 4,
+          "percentage": 21.1
+        },
+        {
+          "score": "3-0",
+          "count": 3,
+          "percentage": 15.8
+        }
+      ],
+      "markov_form": {
+        "team1": {
+          "name": "Beşiktaş",
+          "next_win_prob": 48.2,
+          "next_draw_prob": 26.1,
+          "next_loss_prob": 25.8,
+          "form_label": "Neutral ⚖️",
+          "matches_analyzed": 51,
+          "hidden_states": 0,
+          "state_profiles": []
+        },
+        "team2": {
+          "name": "Galatasaray",
+          "next_win_prob": 66.9,
+          "next_draw_prob": 19.2,
+          "next_loss_prob": 13.9,
+          "form_label": "Hot 🔥",
+          "matches_analyzed": 60,
+          "hidden_states": 0,
+          "state_profiles": []
+        }
+      },
+      "adjustments": {
+        "team1": 0.9386732132719006,
+        "team2": -1.7917449588771053,
+        "manual_team1": 0.0,
+        "manual_team2": 0.0,
+        "hmm_team1": 0.9386732132719006,
+        "hmm_team2": -1.7917449588771053,
+        "hmm_applied": true
+      },
+      "avg_ratings": {
+        "team1": 7.03,
+        "team2": 6.99
+      },
+      "team1_logo_url": "/logos/Beşiktaş.png",
+      "team2_logo_url": "/logos/Galatasaray.png"
+    },
+    {
+      "match_id": 14109832,
+      "date": "2026-03-08",
+      "time": "16:00",
+      "datetime_iso": "2026-03-08T16:00:00",
+      "home_team": "Çaykur Rizespor",
+      "away_team": "Antalyaspor",
+      "predicted_score": "1-2",
+      "probabilities": {
+        "home_win": 21.7,
+        "draw": 18.3,
+        "away_win": 60.0
+      },
+      "confidence": "high",
+      "expected_goals": {
+        "home": 0.94,
+        "away": 1.56
+      },
+      "score_distribution": [
+        [
+          1,
+          1,
+          31.6
+        ],
+        [
+          0,
+          2,
+          21.1
+        ],
+        [
+          1,
+          3,
+          15.8
+        ],
+        [
+          1,
+          2,
+          15.8
+        ],
+        [
+          0,
+          1,
+          15.8
+        ]
+      ],
+      "heatmap_data": [],
+      "heatmaps": {},
+      "player_heatmap_url": null,
+      "main_cluster_heatmap_url": null,
+      "strip_cluster_heatmap_url": null,
+      "top5_scores": [
+        {
+          "score": "1-1",
+          "count": 6,
+          "percentage": 31.6
+        },
+        {
+          "score": "0-2",
+          "count": 4,
+          "percentage": 21.1
+        },
+        {
+          "score": "1-3",
+          "count": 3,
+          "percentage": 15.8
+        },
+        {
+          "score": "1-2",
+          "count": 3,
+          "percentage": 15.8
+        },
+        {
+          "score": "0-1",
+          "count": 3,
+          "percentage": 15.8
+        }
+      ],
+      "top5_scores_home_perspective": [
+        {
+          "score": "1-1",
+          "count": 6,
+          "percentage": 31.6
+        },
+        {
+          "score": "0-2",
+          "count": 4,
+          "percentage": 21.1
+        },
+        {
+          "score": "1-3",
+          "count": 3,
+          "percentage": 15.8
+        },
+        {
+          "score": "1-2",
+          "count": 3,
+          "percentage": 15.8
+        },
+        {
+          "score": "0-1",
+          "count": 3,
+          "percentage": 15.8
+        }
+      ],
+      "top5_scores_away_perspective": [
+        {
+          "score": "1-1",
+          "count": 5,
+          "percentage": 33.3
+        },
+        {
+          "score": "2-1",
+          "count": 3,
+          "percentage": 20.0
+        },
+        {
+          "score": "2-0",
+          "count": 3,
+          "percentage": 20.0
+        },
+        {
+          "score": "2-3",
+          "count": 2,
+          "percentage": 13.3
+        },
+        {
+          "score": "0-3",
+          "count": 2,
+          "percentage": 13.3
+        }
+      ],
+      "markov_form": {
+        "team1": {
+          "name": "Çaykur Rizespor",
+          "next_win_prob": 15.1,
+          "next_draw_prob": 34.3,
+          "next_loss_prob": 50.5,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 37,
+          "hidden_states": 0,
+          "state_profiles": []
+        },
+        "team2": {
+          "name": "Antalyaspor",
+          "next_win_prob": 27.9,
+          "next_draw_prob": 20.5,
+          "next_loss_prob": 51.6,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 54,
+          "hidden_states": 0,
+          "state_profiles": []
+        }
+      },
+      "adjustments": {
+        "team1": -10.0,
+        "team2": 10.0,
+        "manual_team1": 0.0,
+        "manual_team2": 0.0,
+        "hmm_team1": -10.0,
+        "hmm_team2": 10.0,
+        "hmm_applied": true
+      },
+      "avg_ratings": {
+        "team1": 6.66,
+        "team2": 6.83
+      },
+      "team1_logo_url": "/logos/Çaykur Rizespor.png",
+      "team2_logo_url": "/logos/Antalyaspor.png"
+    },
+    {
+      "match_id": 14109829,
+      "date": "2026-03-08",
+      "time": "16:00",
+      "datetime_iso": "2026-03-08T16:00:00",
+      "home_team": "Eyüpspor",
+      "away_team": "Kocaelispor",
+      "predicted_score": "1-1",
+      "probabilities": {
+        "home_win": 11.7,
+        "draw": 43.3,
+        "away_win": 45.0
+      },
+      "confidence": "medium",
+      "expected_goals": {
+        "home": 0.55,
+        "away": 1.29
+      },
+      "score_distribution": [
+        [
+          1,
+          1,
+          36.0
+        ],
+        [
+          1,
+          2,
+          28.0
+        ],
+        [
+          0,
+          2,
+          16.0
+        ],
+        [
+          1,
+          3,
+          12.0
+        ],
+        [
+          0,
+          1,
+          8.0
+        ]
+      ],
+      "heatmap_data": [],
+      "heatmaps": {},
+      "player_heatmap_url": null,
+      "main_cluster_heatmap_url": null,
+      "strip_cluster_heatmap_url": null,
+      "top5_scores": [
+        {
+          "score": "1-1",
+          "count": 9,
+          "percentage": 36.0
+        },
+        {
+          "score": "1-2",
+          "count": 7,
+          "percentage": 28.0
+        },
+        {
+          "score": "0-2",
+          "count": 4,
+          "percentage": 16.0
+        },
+        {
+          "score": "1-3",
+          "count": 3,
+          "percentage": 12.0
+        },
+        {
+          "score": "0-1",
+          "count": 2,
+          "percentage": 8.0
+        }
+      ],
+      "top5_scores_home_perspective": [
+        {
+          "score": "1-1",
+          "count": 9,
+          "percentage": 36.0
+        },
+        {
+          "score": "1-2",
+          "count": 7,
+          "percentage": 28.0
+        },
+        {
+          "score": "0-2",
+          "count": 4,
+          "percentage": 16.0
+        },
+        {
+          "score": "1-3",
+          "count": 3,
+          "percentage": 12.0
+        },
+        {
+          "score": "0-1",
+          "count": 2,
+          "percentage": 8.0
+        }
+      ],
+      "top5_scores_away_perspective": [
+        {
+          "score": "1-0",
+          "count": 8,
+          "percentage": 30.8
+        },
+        {
+          "score": "1-1",
+          "count": 6,
+          "percentage": 23.1
+        },
+        {
+          "score": "2-0",
+          "count": 5,
+          "percentage": 19.2
+        },
+        {
+          "score": "0-0",
+          "count": 4,
+          "percentage": 15.4
+        },
+        {
+          "score": "0-1",
+          "count": 3,
+          "percentage": 11.5
+        }
+      ],
+      "markov_form": {
+        "team1": {
+          "name": "Eyüpspor",
+          "next_win_prob": 34.0,
+          "next_draw_prob": 19.1,
+          "next_loss_prob": 46.9,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 42,
+          "hidden_states": 0,
+          "state_profiles": []
+        },
+        "team2": {
+          "name": "Kocaelispor",
+          "next_win_prob": 41.6,
+          "next_draw_prob": 23.8,
+          "next_loss_prob": 34.6,
+          "form_label": "Neutral ⚖️",
+          "matches_analyzed": 54,
+          "hidden_states": 0,
+          "state_profiles": []
+        }
+      },
+      "adjustments": {
+        "team1": 6.021682097422212,
+        "team2": -2.7994393506996444,
+        "manual_team1": 0.0,
+        "manual_team2": 0.0,
+        "hmm_team1": 6.021682097422212,
+        "hmm_team2": -2.7994393506996444,
+        "hmm_applied": true
+      },
+      "avg_ratings": {
+        "team1": 6.74,
+        "team2": 6.75
+      },
+      "team1_logo_url": "/logos/Eyüpspor.png",
+      "team2_logo_url": "/logos/Kocaelispor.png"
+    },
+    {
+      "match_id": 14109834,
+      "date": "2026-03-08",
+      "time": "16:00",
+      "datetime_iso": "2026-03-08T16:00:00",
+      "home_team": "Fenerbahçe",
+      "away_team": "Samsunspor",
+      "predicted_score": "1-1",
+      "probabilities": {
+        "home_win": 35.0,
+        "draw": 40.0,
+        "away_win": 25.0
+      },
+      "confidence": "low",
+      "expected_goals": {
+        "home": 1.04,
+        "away": 1.0
+      },
+      "score_distribution": [
+        [
+          2,
+          1,
+          34.8
+        ],
+        [
+          2,
+          2,
+          17.4
+        ],
+        [
+          2,
+          0,
+          17.4
+        ],
+        [
+          1,
+          1,
+          17.4
+        ],
+        [
+          1,
+          2,
+          13.0
+        ]
+      ],
+      "heatmap_data": [],
+      "heatmaps": {},
+      "player_heatmap_url": null,
+      "main_cluster_heatmap_url": null,
+      "strip_cluster_heatmap_url": null,
+      "top5_scores": [
+        {
+          "score": "2-1",
+          "count": 8,
+          "percentage": 34.8
+        },
+        {
+          "score": "2-2",
+          "count": 4,
+          "percentage": 17.4
+        },
+        {
+          "score": "2-0",
+          "count": 4,
+          "percentage": 17.4
+        },
+        {
+          "score": "1-1",
+          "count": 4,
+          "percentage": 17.4
+        },
+        {
+          "score": "1-2",
+          "count": 3,
+          "percentage": 13.0
+        }
+      ],
+      "top5_scores_home_perspective": [
+        {
+          "score": "2-1",
+          "count": 8,
+          "percentage": 34.8
+        },
+        {
+          "score": "2-2",
+          "count": 4,
+          "percentage": 17.4
+        },
+        {
+          "score": "2-0",
+          "count": 4,
+          "percentage": 17.4
+        },
+        {
+          "score": "1-1",
+          "count": 4,
+          "percentage": 17.4
+        },
+        {
+          "score": "1-2",
+          "count": 3,
+          "percentage": 13.0
+        }
+      ],
+      "top5_scores_away_perspective": [
+        {
+          "score": "1-0",
+          "count": 8,
+          "percentage": 36.4
+        },
+        {
+          "score": "1-1",
+          "count": 5,
+          "percentage": 22.7
+        },
+        {
+          "score": "0-1",
+          "count": 3,
+          "percentage": 13.6
+        },
+        {
+          "score": "2-0",
+          "count": 3,
+          "percentage": 13.6
+        },
+        {
+          "score": "0-0",
+          "count": 3,
+          "percentage": 13.6
+        }
+      ],
+      "markov_form": {
+        "team1": {
+          "name": "Fenerbahçe",
+          "next_win_prob": 61.5,
+          "next_draw_prob": 26.9,
+          "next_loss_prob": 11.5,
+          "form_label": "Hot 🔥",
+          "matches_analyzed": 60,
+          "hidden_states": 0,
+          "state_profiles": []
+        },
+        "team2": {
+          "name": "Samsunspor",
+          "next_win_prob": 46.5,
+          "next_draw_prob": 27.4,
+          "next_loss_prob": 26.1,
+          "form_label": "Neutral ⚖️",
+          "matches_analyzed": 56,
+          "hidden_states": 0,
+          "state_profiles": []
+        }
+      },
+      "adjustments": {
+        "team1": -8.048044842119651,
+        "team2": 10.0,
+        "manual_team1": 0.0,
+        "manual_team2": 0.0,
+        "hmm_team1": -8.048044842119651,
+        "hmm_team2": 10.0,
+        "hmm_applied": true
+      },
+      "avg_ratings": {
+        "team1": 6.94,
+        "team2": 6.77
+      },
+      "team1_logo_url": "/logos/Fenerbahçe.png",
+      "team2_logo_url": "/logos/Samsunspor.png"
+    },
+    {
+      "match_id": 14109836,
+      "date": "2026-03-08",
+      "time": "16:00",
+      "datetime_iso": "2026-03-08T16:00:00",
+      "home_team": "Gaziantep FK",
+      "away_team": "Fatih Karagümrük",
+      "predicted_score": "1-2",
+      "probabilities": {
+        "home_win": 11.7,
+        "draw": 25.0,
+        "away_win": 63.3
+      },
+      "confidence": "high",
+      "expected_goals": {
+        "home": 0.98,
+        "away": 1.73
+      },
+      "score_distribution": [
+        [
+          1,
+          2,
+          30.4
+        ],
+        [
+          2,
+          1,
+          26.1
+        ],
+        [
+          1,
+          1,
+          21.7
+        ],
+        [
+          1,
+          3,
+          13.0
+        ],
+        [
+          2,
+          2,
+          8.7
+        ]
+      ],
+      "heatmap_data": [],
+      "heatmaps": {},
+      "player_heatmap_url": null,
+      "main_cluster_heatmap_url": null,
+      "strip_cluster_heatmap_url": null,
+      "top5_scores": [
+        {
+          "score": "1-2",
+          "count": 7,
+          "percentage": 30.4
+        },
+        {
+          "score": "2-1",
+          "count": 6,
+          "percentage": 26.1
+        },
+        {
+          "score": "1-1",
+          "count": 5,
+          "percentage": 21.7
+        },
+        {
+          "score": "1-3",
+          "count": 3,
+          "percentage": 13.0
+        },
+        {
+          "score": "2-2",
+          "count": 2,
+          "percentage": 8.7
+        }
+      ],
+      "top5_scores_home_perspective": [
+        {
+          "score": "1-2",
+          "count": 7,
+          "percentage": 30.4
+        },
+        {
+          "score": "2-1",
+          "count": 6,
+          "percentage": 26.1
+        },
+        {
+          "score": "1-1",
+          "count": 5,
+          "percentage": 21.7
+        },
+        {
+          "score": "1-3",
+          "count": 3,
+          "percentage": 13.0
+        },
+        {
+          "score": "2-2",
+          "count": 2,
+          "percentage": 8.7
+        }
+      ],
+      "top5_scores_away_perspective": [
+        {
+          "score": "2-1",
+          "count": 13,
+          "percentage": 50.0
+        },
+        {
+          "score": "2-0",
+          "count": 8,
+          "percentage": 30.8
+        },
+        {
+          "score": "1-0",
+          "count": 2,
+          "percentage": 7.7
+        },
+        {
+          "score": "1-1",
+          "count": 2,
+          "percentage": 7.7
+        },
+        {
+          "score": "1-2",
+          "count": 1,
+          "percentage": 3.8
+        }
+      ],
+      "markov_form": {
+        "team1": {
+          "name": "Gaziantep",
+          "next_win_prob": 29.6,
+          "next_draw_prob": 30.2,
+          "next_loss_prob": 40.2,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 54,
+          "hidden_states": 0,
+          "state_profiles": []
+        },
+        "team2": {
+          "name": "Karagümrük",
+          "next_win_prob": 34.2,
+          "next_draw_prob": 20.2,
+          "next_loss_prob": 45.6,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 51,
+          "hidden_states": 0,
+          "state_profiles": []
+        }
+      },
+      "adjustments": {
+        "team1": -4.17294581626041,
+        "team2": 10.0,
+        "manual_team1": 0.0,
+        "manual_team2": 0.0,
+        "hmm_team1": -4.17294581626041,
+        "hmm_team2": 10.0,
+        "hmm_applied": true
+      },
+      "avg_ratings": {
+        "team1": 6.75,
+        "team2": 6.8
+      },
+      "team1_logo_url": "/logos/Gaziantep.png",
+      "team2_logo_url": "/logos/Karagümrük.png"
+    },
+    {
+      "match_id": 14109833,
+      "date": "2026-03-08",
+      "time": "16:00",
+      "datetime_iso": "2026-03-08T16:00:00",
+      "home_team": "Kayserispor",
+      "away_team": "Trabzonspor",
+      "predicted_score": "2-1",
+      "probabilities": {
+        "home_win": 25.0,
+        "draw": 43.3,
+        "away_win": 31.7
+      },
+      "confidence": "low",
+      "expected_goals": {
+        "home": 1.71,
+        "away": 1.48
+      },
+      "score_distribution": [
+        [
+          1,
+          1,
+          36.4
+        ],
+        [
+          0,
+          0,
+          27.3
+        ],
+        [
+          1,
+          0,
+          13.6
+        ],
+        [
+          2,
+          1,
+          13.6
+        ],
+        [
+          3,
+          1,
+          9.1
+        ]
+      ],
+      "heatmap_data": [],
+      "heatmaps": {},
+      "player_heatmap_url": null,
+      "main_cluster_heatmap_url": null,
+      "strip_cluster_heatmap_url": null,
+      "top5_scores": [
+        {
+          "score": "1-1",
+          "count": 8,
+          "percentage": 36.4
+        },
+        {
+          "score": "0-0",
+          "count": 6,
+          "percentage": 27.3
+        },
+        {
+          "score": "1-0",
+          "count": 3,
+          "percentage": 13.6
+        },
+        {
+          "score": "2-1",
+          "count": 3,
+          "percentage": 13.6
+        },
+        {
+          "score": "3-1",
+          "count": 2,
+          "percentage": 9.1
+        }
+      ],
+      "top5_scores_home_perspective": [
+        {
+          "score": "1-1",
+          "count": 8,
+          "percentage": 36.4
+        },
+        {
+          "score": "0-0",
+          "count": 6,
+          "percentage": 27.3
+        },
+        {
+          "score": "1-0",
+          "count": 3,
+          "percentage": 13.6
+        },
+        {
+          "score": "2-1",
+          "count": 3,
+          "percentage": 13.6
+        },
+        {
+          "score": "3-1",
+          "count": 2,
+          "percentage": 9.1
+        }
+      ],
+      "top5_scores_away_perspective": [
+        {
+          "score": "3-2",
+          "count": 8,
+          "percentage": 40.0
+        },
+        {
+          "score": "2-2",
+          "count": 5,
+          "percentage": 25.0
+        },
+        {
+          "score": "3-3",
+          "count": 3,
+          "percentage": 15.0
+        },
+        {
+          "score": "2-3",
+          "count": 2,
+          "percentage": 10.0
+        },
+        {
+          "score": "1-4",
+          "count": 2,
+          "percentage": 10.0
+        }
+      ],
+      "markov_form": {
+        "team1": {
+          "name": "Kayserispor",
+          "next_win_prob": 26.4,
+          "next_draw_prob": 33.8,
+          "next_loss_prob": 39.8,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 56,
+          "hidden_states": 0,
+          "state_profiles": []
+        },
+        "team2": {
+          "name": "Trabzonspor",
+          "next_win_prob": 60.8,
+          "next_draw_prob": 22.7,
+          "next_loss_prob": 16.5,
+          "form_label": "Hot 🔥",
+          "matches_analyzed": 45,
+          "hidden_states": 0,
+          "state_profiles": []
+        }
+      },
+      "adjustments": {
+        "team1": -0.8774122602904978,
+        "team2": 9.169403463694513,
+        "manual_team1": 0.0,
+        "manual_team2": 0.0,
+        "hmm_team1": -0.8774122602904978,
+        "hmm_team2": 9.169403463694513,
+        "hmm_applied": true
+      },
+      "avg_ratings": {
+        "team1": 6.88,
+        "team2": 6.97
+      },
+      "team1_logo_url": "/logos/Kayserispor.png",
+      "team2_logo_url": "/logos/Trabzonspor.png"
+    },
+    {
+      "match_id": 14109830,
+      "date": "2026-03-08",
+      "time": "16:00",
+      "datetime_iso": "2026-03-08T16:00:00",
+      "home_team": "Konyaspor",
+      "away_team": "Kasımpaşa",
+      "predicted_score": "1-1",
+      "probabilities": {
+        "home_win": 33.3,
+        "draw": 43.3,
+        "away_win": 23.3
+      },
+      "confidence": "low",
+      "expected_goals": {
+        "home": 1.12,
+        "away": 1.02
+      },
+      "score_distribution": [
+        [
+          1,
+          1,
+          45.0
+        ],
+        [
+          0,
+          2,
+          20.0
+        ],
+        [
+          1,
+          0,
+          15.0
+        ],
+        [
+          2,
+          1,
+          10.0
+        ],
+        [
+          2,
+          0,
+          10.0
+        ]
+      ],
+      "heatmap_data": [],
+      "heatmaps": {},
+      "player_heatmap_url": null,
+      "main_cluster_heatmap_url": null,
+      "strip_cluster_heatmap_url": null,
+      "top5_scores": [
+        {
+          "score": "1-1",
+          "count": 9,
+          "percentage": 45.0
+        },
+        {
+          "score": "0-2",
+          "count": 4,
+          "percentage": 20.0
+        },
+        {
+          "score": "1-0",
+          "count": 3,
+          "percentage": 15.0
+        },
+        {
+          "score": "2-1",
+          "count": 2,
+          "percentage": 10.0
+        },
+        {
+          "score": "2-0",
+          "count": 2,
+          "percentage": 10.0
+        }
+      ],
+      "top5_scores_home_perspective": [
+        {
+          "score": "1-1",
+          "count": 9,
+          "percentage": 45.0
+        },
+        {
+          "score": "0-2",
+          "count": 4,
+          "percentage": 20.0
+        },
+        {
+          "score": "1-0",
+          "count": 3,
+          "percentage": 15.0
+        },
+        {
+          "score": "2-1",
+          "count": 2,
+          "percentage": 10.0
+        },
+        {
+          "score": "2-0",
+          "count": 2,
+          "percentage": 10.0
+        }
+      ],
+      "top5_scores_away_perspective": [
+        {
+          "score": "1-1",
+          "count": 9,
+          "percentage": 39.1
+        },
+        {
+          "score": "2-1",
+          "count": 5,
+          "percentage": 21.7
+        },
+        {
+          "score": "0-1",
+          "count": 4,
+          "percentage": 17.4
+        },
+        {
+          "score": "2-2",
+          "count": 3,
+          "percentage": 13.0
+        },
+        {
+          "score": "0-2",
+          "count": 2,
+          "percentage": 8.7
+        }
+      ],
+      "markov_form": {
+        "team1": {
+          "name": "Konyaspor",
+          "next_win_prob": 9.1,
+          "next_draw_prob": 37.0,
+          "next_loss_prob": 54.0,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 54,
+          "hidden_states": 0,
+          "state_profiles": []
+        },
+        "team2": {
+          "name": "Kasımpaşa",
+          "next_win_prob": 21.7,
+          "next_draw_prob": 33.3,
+          "next_loss_prob": 45.0,
+          "form_label": "Cold ❄️",
+          "matches_analyzed": 40,
+          "hidden_states": 0,
+          "state_profiles": []
+        }
+      },
+      "adjustments": {
+        "team1": 10.0,
+        "team2": 3.25847814687391,
+        "manual_team1": 0.0,
+        "manual_team2": 0.0,
+        "hmm_team1": 10.0,
+        "hmm_team2": 3.25847814687391,
+        "hmm_applied": true
+      },
+      "avg_ratings": {
+        "team1": 6.9,
+        "team2": 6.79
+      },
+      "team1_logo_url": "/logos/Konyaspor.png",
+      "team2_logo_url": "/logos/Kasımpaşa.png"
+    }
+  ]
+}

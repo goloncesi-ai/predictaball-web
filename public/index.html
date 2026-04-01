@@ -88,6 +88,9 @@
                 <button class="nav-btn" data-tab="tab-player-analysis">
                     <span class="icon">🧬</span> <span data-i18n="nav_player_analysis">Player Lab</span>
                 </button>
+                <button class="nav-btn" data-tab="tab-world-cup-bracket">
+                    <span class="icon">🏆</span> <span data-i18n="nav_world_cup_bracket">World Cup Bracket</span>
+                </button>
                 <!-- 
                 <button class="nav-btn" data-tab="tab-players">
                     <span class="icon">👤</span> <span data-i18n="nav_scout">Scout</span>
@@ -546,6 +549,30 @@
             <div id="pa-content" class="pa-content hidden">
                 <div id="pa-cards" class="pa-cards"></div>
                 <div id="pa-compare" class="pa-compare hidden"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tab 5: World Cup Bracket -->
+    <section id="tab-world-cup-bracket" class="view-section hidden">
+        <div class="section-header">
+            <h2 data-i18n="world_cup_bracket_title">2026 World Cup Bracket</h2>
+            <p data-i18n="world_cup_bracket_desc">Use the full tournament predictor inside Gol Öncesi.</p>
+        </div>
+
+        <div class="bracket-embed-shell">
+            <div class="bracket-embed-toolbar">
+                <p data-i18n="world_cup_bracket_note">The original interactive bracket is mirrored here and loads on demand.</p>
+                <a class="bracket-open-link" href="/world-cup-bracket.html" target="_blank" rel="noopener"
+                    data-i18n="world_cup_bracket_open_full">Open full page</a>
+            </div>
+
+            <div class="bracket-frame-panel">
+                <div id="world-cup-bracket-status" class="bracket-frame-status" aria-live="polite"
+                    data-i18n="world_cup_bracket_loading">Loading bracket…</div>
+                <iframe id="world-cup-bracket-frame" class="bracket-frame" data-src="/world-cup-bracket.html"
+                    title="2026 FIFA World Cup Bracket Predictor" loading="lazy"
+                    referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
         </div>
     </section>

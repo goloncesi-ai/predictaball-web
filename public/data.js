@@ -2,18 +2,30 @@ window.teamData = [
   {
     "name": "Alanyaspor",
     "stats": {
-      "win_rate": 0.30952380952380953,
-      "avg_goals_scored": 1.1666666666666667,
-      "avg_goals_conceded": 1.2380952380952381,
-      "avg_shots": 12.452380952380953,
-      "avg_possession": 0.4866666666666668,
-      "avg_corners": 4.761904761904762,
-      "total_games": 42,
-      "wins": 13,
+      "win_rate": 0.32558139534883723,
+      "avg_goals_scored": 1.255813953488372,
+      "avg_goals_conceded": 1.2093023255813953,
+      "avg_shots": 12.395348837209303,
+      "avg_possession": 0.48465116279069775,
+      "avg_corners": 4.72093023255814,
+      "total_games": 43,
+      "wins": 14,
       "draws": 15,
       "losses": 14
     },
     "match_history": [
+      {
+        "opponent": "Kocaelispor",
+        "home_away": "H",
+        "goals_for": 5,
+        "goals_against": 0,
+        "shots": 10,
+        "possession": 0.4,
+        "corners": 3,
+        "passes": 307,
+        "big_chances": 2,
+        "result": "W"
+      },
       {
         "opponent": "Gen\u00e7lerbirli\u011fi",
         "home_away": "H",
@@ -241,21 +253,16 @@ window.teamData = [
         "passes": 385,
         "big_chances": 6,
         "result": "D"
-      },
-      {
-        "opponent": "Fenerbah\u00e7e",
-        "home_away": "A",
-        "goals_for": 2,
-        "goals_against": 2,
-        "shots": 5,
-        "possession": 0.38,
-        "corners": 0,
-        "passes": 347,
-        "big_chances": 1,
-        "result": "D"
       }
     ],
     "head_to_head": {
+      "Kocaelispor": {
+        "wins": 1,
+        "draws": 0,
+        "losses": 1,
+        "goals_for": 5,
+        "goals_against": 2
+      },
       "Gen\u00e7lerbirli\u011fi": {
         "wins": 0,
         "draws": 2,
@@ -354,13 +361,6 @@ window.teamData = [
         "goals_for": 1,
         "goals_against": 0
       },
-      "Kocaelispor": {
-        "wins": 0,
-        "draws": 0,
-        "losses": 1,
-        "goals_for": 0,
-        "goals_against": 2
-      },
       "G\u00f6ztepe": {
         "wins": 2,
         "draws": 0,
@@ -408,18 +408,30 @@ window.teamData = [
   {
     "name": "Antalyaspor",
     "stats": {
-      "win_rate": 0.2777777777777778,
-      "avg_goals_scored": 0.9629629629629629,
-      "avg_goals_conceded": 1.6851851851851851,
-      "avg_shots": 9.777777777777779,
-      "avg_possession": 0.4801851851851853,
-      "avg_corners": 3.925925925925926,
-      "total_games": 54,
+      "win_rate": 0.2727272727272727,
+      "avg_goals_scored": 0.9454545454545454,
+      "avg_goals_conceded": 1.6545454545454545,
+      "avg_shots": 9.727272727272727,
+      "avg_possession": 0.4772727272727274,
+      "avg_corners": 3.909090909090909,
+      "total_games": 55,
       "wins": 15,
-      "draws": 11,
+      "draws": 12,
       "losses": 28
     },
     "match_history": [
+      {
+        "opponent": "Ba\u015fak\u015fehir FK",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 0,
+        "shots": 7,
+        "possession": 0.32,
+        "corners": 3,
+        "passes": 242,
+        "big_chances": 2,
+        "result": "D"
+      },
       {
         "opponent": "\u00c7aykur Rizespor",
         "home_away": "A",
@@ -647,21 +659,16 @@ window.teamData = [
         "passes": 292,
         "big_chances": 1,
         "result": "L"
-      },
-      {
-        "opponent": "Kayserispor",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 13,
-        "possession": 0.53,
-        "corners": 10,
-        "passes": 405,
-        "big_chances": 2,
-        "result": "D"
       }
     ],
     "head_to_head": {
+      "Ba\u015fak\u015fehir FK": {
+        "wins": 0,
+        "draws": 2,
+        "losses": 1,
+        "goals_for": 0,
+        "goals_against": 4
+      },
       "\u00c7aykur Rizespor": {
         "wins": 1,
         "draws": 0,
@@ -760,13 +767,6 @@ window.teamData = [
         "goals_for": 3,
         "goals_against": 6
       },
-      "Ba\u015fak\u015fehir FK": {
-        "wins": 0,
-        "draws": 1,
-        "losses": 1,
-        "goals_for": 0,
-        "goals_against": 4
-      },
       "Gaziantep FK": {
         "wins": 0,
         "draws": 1,
@@ -808,451 +808,36 @@ window.teamData = [
         "losses": 0,
         "goals_for": 3,
         "goals_against": 2
-      }
-    }
-  },
-  {
-    "name": "Ba\u015fak\u015fehir",
-    "stats": {
-      "win_rate": 0.45,
-      "avg_goals_scored": 1.7,
-      "avg_goals_conceded": 1.3,
-      "avg_shots": 12.075,
-      "avg_possession": 0.5435,
-      "avg_corners": 4.725,
-      "total_games": 40,
-      "wins": 18,
-      "draws": 7,
-      "losses": 15
-    },
-    "match_history": [
-      {
-        "opponent": "Gen\u00e7lerbirli\u011fi",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 2,
-        "shots": 19,
-        "possession": 0.72,
-        "corners": 9,
-        "passes": 534,
-        "big_chances": 3,
-        "result": "L"
-      },
-      {
-        "opponent": "Kocaelispor",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 0,
-        "shots": 16,
-        "possession": 0.59,
-        "corners": 6,
-        "passes": 445,
-        "big_chances": 1,
-        "result": "W"
-      },
-      {
-        "opponent": "Antalyaspor",
-        "home_away": "A",
-        "goals_for": 4,
-        "goals_against": 0,
-        "shots": 19,
-        "possession": 0.66,
-        "corners": 8,
-        "passes": 585,
-        "big_chances": 6,
-        "result": "W"
-      },
-      {
-        "opponent": "\u00c7aykur Rizespor",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 0,
-        "shots": 15,
-        "possession": 0.53,
-        "corners": 5,
-        "passes": 424,
-        "big_chances": 1,
-        "result": "D"
-      },
-      {
-        "opponent": "Galatasaray",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 2,
-        "shots": 5,
-        "possession": 0.45,
-        "corners": 2,
-        "passes": 374,
-        "big_chances": 3,
-        "result": "L"
-      },
-      {
-        "opponent": "G\u00f6ztepe",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 1,
-        "shots": 11,
-        "possession": 0.72,
-        "corners": 5,
-        "passes": 562,
-        "big_chances": 2,
-        "result": "L"
-      },
-      {
-        "opponent": "Konyaspor",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 2,
-        "shots": 17,
-        "possession": 0.7,
-        "corners": 11,
-        "passes": 536,
-        "big_chances": 2,
-        "result": "L"
-      },
-      {
-        "opponent": "Alanyaspor",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 13,
-        "possession": 0.53,
-        "corners": 7,
-        "passes": 424,
-        "big_chances": 3,
-        "result": "D"
-      },
-      {
-        "opponent": "Fatih Karag\u00fcmr\u00fck",
-        "home_away": "A",
-        "goals_for": 2,
-        "goals_against": 0,
-        "shots": 4,
-        "possession": 0.52,
-        "corners": 4,
-        "passes": 409,
-        "big_chances": 0,
-        "result": "W"
-      },
-      {
-        "opponent": "Be\u015fikta\u015f JK",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 2,
-        "shots": 11,
-        "possession": 0.47,
-        "corners": 5,
-        "passes": 377,
-        "big_chances": 0,
-        "result": "L"
-      },
-      {
-        "opponent": "Ey\u00fcpspor",
-        "home_away": "H",
-        "goals_for": 0,
-        "goals_against": 0,
-        "shots": 10,
-        "possession": 0.51,
-        "corners": 5,
-        "passes": 384,
-        "big_chances": 1,
-        "result": "D"
-      },
-      {
-        "opponent": "Universitatea Craiova",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 3,
-        "shots": 10,
-        "possession": 0.57,
-        "corners": 5,
-        "passes": 434,
-        "big_chances": 1,
-        "result": "L"
-      },
-      {
-        "opponent": "Universitatea Craiova",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 2,
-        "shots": 14,
-        "possession": 0.72,
-        "corners": 7,
-        "passes": 566,
-        "big_chances": 3,
-        "result": "L"
-      },
-      {
-        "opponent": "Viking FK",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 8,
-        "possession": 0.45,
-        "corners": 2,
-        "passes": 353,
-        "big_chances": 2,
-        "result": "D"
-      },
-      {
-        "opponent": "Viking FK",
-        "home_away": "A",
-        "goals_for": 3,
-        "goals_against": 1,
-        "shots": 8,
-        "possession": 0.44,
-        "corners": 2,
-        "passes": 361,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "Cherno More Varna",
-        "home_away": "H",
-        "goals_for": 4,
-        "goals_against": 0,
-        "shots": 13,
-        "possession": 0.7,
-        "corners": 4,
-        "passes": 615,
-        "big_chances": 5,
-        "result": "W"
-      },
-      {
-        "opponent": "Galatasaray",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 2,
-        "shots": 9,
-        "possession": 0.41,
-        "corners": 3,
-        "passes": 316,
-        "big_chances": 3,
-        "result": "L"
-      },
-      {
-        "opponent": "Adana Demirspor",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 3,
-        "shots": 31,
-        "possession": 0.72,
-        "corners": 10,
-        "passes": 563,
-        "big_chances": 7,
-        "result": "L"
-      },
-      {
-        "opponent": "Kas\u0131mpa\u015fa",
-        "home_away": "A",
-        "goals_for": 3,
-        "goals_against": 2,
-        "shots": 10,
-        "possession": 0.45,
-        "corners": 2,
-        "passes": 321,
-        "big_chances": 4,
-        "result": "W"
-      },
-      {
-        "opponent": "Fenerbah\u00e7e",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 4,
-        "shots": 14,
-        "possession": 0.5,
-        "corners": 5,
-        "passes": 442,
-        "big_chances": 2,
-        "result": "L"
-      }
-    ],
-    "head_to_head": {
-      "Gen\u00e7lerbirli\u011fi": {
-        "wins": 0,
-        "draws": 0,
-        "losses": 1,
-        "goals_for": 1,
-        "goals_against": 2
-      },
-      "Kocaelispor": {
-        "wins": 1,
-        "draws": 0,
-        "losses": 0,
-        "goals_for": 1,
-        "goals_against": 0
-      },
-      "Antalyaspor": {
-        "wins": 1,
-        "draws": 1,
-        "losses": 0,
-        "goals_for": 4,
-        "goals_against": 0
-      },
-      "\u00c7aykur Rizespor": {
-        "wins": 1,
-        "draws": 1,
-        "losses": 0,
-        "goals_for": 2,
-        "goals_against": 0
-      },
-      "Galatasaray": {
-        "wins": 0,
-        "draws": 0,
-        "losses": 3,
-        "goals_for": 2,
-        "goals_against": 6
-      },
-      "G\u00f6ztepe": {
-        "wins": 1,
-        "draws": 0,
-        "losses": 2,
-        "goals_for": 5,
-        "goals_against": 6
-      },
-      "Konyaspor": {
-        "wins": 1,
-        "draws": 0,
-        "losses": 1,
-        "goals_for": 2,
-        "goals_against": 2
-      },
-      "Alanyaspor": {
-        "wins": 0,
-        "draws": 1,
-        "losses": 1,
-        "goals_for": 5,
-        "goals_against": 6
-      },
-      "Fatih Karag\u00fcmr\u00fck": {
-        "wins": 1,
-        "draws": 0,
-        "losses": 0,
-        "goals_for": 2,
-        "goals_against": 0
-      },
-      "Be\u015fikta\u015f JK": {
-        "wins": 1,
-        "draws": 0,
-        "losses": 1,
-        "goals_for": 3,
-        "goals_against": 2
-      },
-      "Ey\u00fcpspor": {
-        "wins": 1,
-        "draws": 1,
-        "losses": 0,
-        "goals_for": 3,
-        "goals_against": 1
-      },
-      "Universitatea Craiova": {
-        "wins": 0,
-        "draws": 0,
-        "losses": 2,
-        "goals_for": 2,
-        "goals_against": 5
-      },
-      "Viking FK": {
-        "wins": 1,
-        "draws": 1,
-        "losses": 0,
-        "goals_for": 4,
-        "goals_against": 2
-      },
-      "Cherno More Varna": {
-        "wins": 1,
-        "draws": 0,
-        "losses": 0,
-        "goals_for": 4,
-        "goals_against": 0
-      },
-      "Adana Demirspor": {
-        "wins": 1,
-        "draws": 0,
-        "losses": 1,
-        "goals_for": 3,
-        "goals_against": 3
-      },
-      "Kas\u0131mpa\u015fa": {
-        "wins": 1,
-        "draws": 1,
-        "losses": 0,
-        "goals_for": 5,
-        "goals_against": 4
-      },
-      "Fenerbah\u00e7e": {
-        "wins": 0,
-        "draws": 0,
-        "losses": 2,
-        "goals_for": 2,
-        "goals_against": 7
-      },
-      "Hatayspor": {
-        "wins": 2,
-        "draws": 0,
-        "losses": 0,
-        "goals_for": 7,
-        "goals_against": 2
-      },
-      "Gaziantep FK": {
-        "wins": 1,
-        "draws": 0,
-        "losses": 0,
-        "goals_for": 2,
-        "goals_against": 1
-      },
-      "Sivasspor": {
-        "wins": 1,
-        "draws": 0,
-        "losses": 0,
-        "goals_for": 1,
-        "goals_against": 0
-      },
-      "Bodrum FK": {
-        "wins": 0,
-        "draws": 0,
-        "losses": 1,
-        "goals_for": 0,
-        "goals_against": 1
-      },
-      "Samsunspor": {
-        "wins": 1,
-        "draws": 0,
-        "losses": 0,
-        "goals_for": 4,
-        "goals_against": 0
-      },
-      "Cercle Brugge": {
-        "wins": 0,
-        "draws": 1,
-        "losses": 0,
-        "goals_for": 1,
-        "goals_against": 1
-      },
-      "1. FC Heidenheim": {
-        "wins": 1,
-        "draws": 0,
-        "losses": 0,
-        "goals_for": 3,
-        "goals_against": 1
       }
     }
   },
   {
     "name": "Be\u015fikta\u015f",
     "stats": {
-      "win_rate": 0.49019607843137253,
-      "avg_goals_scored": 1.7843137254901962,
-      "avg_goals_conceded": 1.1568627450980393,
-      "avg_shots": 15.098039215686274,
-      "avg_possession": 0.5474509803921567,
-      "avg_corners": 5.372549019607843,
-      "total_games": 51,
-      "wins": 25,
+      "win_rate": 0.5,
+      "avg_goals_scored": 1.7884615384615385,
+      "avg_goals_conceded": 1.1538461538461537,
+      "avg_shots": 15.076923076923077,
+      "avg_possession": 0.5465384615384614,
+      "avg_corners": 5.3076923076923075,
+      "total_games": 52,
+      "wins": 26,
       "draws": 13,
       "losses": 13
     },
     "match_history": [
+      {
+        "opponent": "Kas\u0131mpa\u015fa",
+        "home_away": "H",
+        "goals_for": 2,
+        "goals_against": 1,
+        "shots": 14,
+        "possession": 0.5,
+        "corners": 2,
+        "passes": 434,
+        "big_chances": 2,
+        "result": "W"
+      },
       {
         "opponent": "Galatasaray",
         "home_away": "H",
@@ -1480,21 +1065,16 @@ window.teamData = [
         "passes": 392,
         "big_chances": 5,
         "result": "W"
-      },
-      {
-        "opponent": "G\u00f6ztepe",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 3,
-        "shots": 13,
-        "possession": 0.7,
-        "corners": 5,
-        "passes": 464,
-        "big_chances": 0,
-        "result": "L"
       }
     ],
     "head_to_head": {
+      "Kas\u0131mpa\u015fa": {
+        "wins": 1,
+        "draws": 2,
+        "losses": 0,
+        "goals_for": 4,
+        "goals_against": 3
+      },
       "Galatasaray": {
         "wins": 1,
         "draws": 1,
@@ -1585,13 +1165,6 @@ window.teamData = [
         "losses": 1,
         "goals_for": 3,
         "goals_against": 3
-      },
-      "Kas\u0131mpa\u015fa": {
-        "wins": 0,
-        "draws": 2,
-        "losses": 0,
-        "goals_for": 2,
-        "goals_against": 2
       },
       "Gen\u00e7lerbirli\u011fi": {
         "wins": 0,
@@ -2081,18 +1654,30 @@ window.teamData = [
   {
     "name": "Fenerbah\u00e7e",
     "stats": {
-      "win_rate": 0.6,
-      "avg_goals_scored": 2.1166666666666667,
-      "avg_goals_conceded": 1.0666666666666667,
-      "avg_shots": 16.483333333333334,
-      "avg_possession": 0.558,
-      "avg_corners": 5.783333333333333,
-      "total_games": 60,
-      "wins": 36,
+      "win_rate": 0.6065573770491803,
+      "avg_goals_scored": 2.1475409836065573,
+      "avg_goals_conceded": 1.0655737704918034,
+      "avg_shots": 16.524590163934427,
+      "avg_possession": 0.559344262295082,
+      "avg_corners": 5.868852459016393,
+      "total_games": 61,
+      "wins": 37,
       "draws": 16,
       "losses": 8
     },
     "match_history": [
+      {
+        "opponent": "Gaziantep FK",
+        "home_away": "H",
+        "goals_for": 4,
+        "goals_against": 1,
+        "shots": 19,
+        "possession": 0.64,
+        "corners": 11,
+        "passes": 571,
+        "big_chances": 5,
+        "result": "W"
+      },
       {
         "opponent": "Samsunspor",
         "home_away": "H",
@@ -2320,21 +1905,16 @@ window.teamData = [
         "passes": 587,
         "big_chances": 1,
         "result": "D"
-      },
-      {
-        "opponent": "\u00c7aykur Rizespor",
-        "home_away": "A",
-        "goals_for": 5,
-        "goals_against": 2,
-        "shots": 28,
-        "possession": 0.59,
-        "corners": 9,
-        "passes": 457,
-        "big_chances": 5,
-        "result": "W"
       }
     ],
     "head_to_head": {
+      "Gaziantep FK": {
+        "wins": 3,
+        "draws": 0,
+        "losses": 0,
+        "goals_for": 11,
+        "goals_against": 2
+      },
       "Samsunspor": {
         "wins": 2,
         "draws": 2,
@@ -2467,13 +2047,6 @@ window.teamData = [
         "losses": 1,
         "goals_for": 3,
         "goals_against": 3
-      },
-      "Gaziantep FK": {
-        "wins": 2,
-        "draws": 0,
-        "losses": 0,
-        "goals_for": 7,
-        "goals_against": 1
       },
       "VfB Stuttgart": {
         "wins": 1,
@@ -3033,18 +2606,30 @@ window.teamData = [
   {
     "name": "Gaziantep",
     "stats": {
-      "win_rate": 0.3148148148148148,
-      "avg_goals_scored": 1.2962962962962963,
-      "avg_goals_conceded": 1.5925925925925926,
-      "avg_shots": 12.5,
-      "avg_possession": 0.48537037037037045,
-      "avg_corners": 4.222222222222222,
-      "total_games": 54,
+      "win_rate": 0.3090909090909091,
+      "avg_goals_scored": 1.290909090909091,
+      "avg_goals_conceded": 1.6363636363636365,
+      "avg_shots": 12.472727272727273,
+      "avg_possession": 0.4830909090909092,
+      "avg_corners": 4.2727272727272725,
+      "total_games": 55,
       "wins": 17,
       "draws": 16,
-      "losses": 21
+      "losses": 22
     },
     "match_history": [
+      {
+        "opponent": "Fenerbah\u00e7e",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 4,
+        "shots": 11,
+        "possession": 0.36,
+        "corners": 7,
+        "passes": 317,
+        "big_chances": 2,
+        "result": "L"
+      },
       {
         "opponent": "Fatih Karag\u00fcmr\u00fck",
         "home_away": "H",
@@ -3272,21 +2857,16 @@ window.teamData = [
         "passes": 515,
         "big_chances": 2,
         "result": "D"
-      },
-      {
-        "opponent": "Trabzonspor",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 4,
-        "possession": 0.51,
-        "corners": 5,
-        "passes": 419,
-        "big_chances": 0,
-        "result": "D"
       }
     ],
     "head_to_head": {
+      "Fenerbah\u00e7e": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 4,
+        "goals_for": 3,
+        "goals_against": 14
+      },
       "Fatih Karag\u00fcmr\u00fck": {
         "wins": 1,
         "draws": 1,
@@ -3385,13 +2965,6 @@ window.teamData = [
         "goals_for": 0,
         "goals_against": 4
       },
-      "Fenerbah\u00e7e": {
-        "wins": 0,
-        "draws": 0,
-        "losses": 3,
-        "goals_for": 2,
-        "goals_against": 10
-      },
       "Antalyaspor": {
         "wins": 2,
         "draws": 1,
@@ -3439,18 +3012,30 @@ window.teamData = [
   {
     "name": "Gen\u00e7lerbirli\u011fi",
     "stats": {
-      "win_rate": 0.4117647058823529,
-      "avg_goals_scored": 1.5098039215686274,
-      "avg_goals_conceded": 1.1372549019607843,
-      "avg_shots": 12.529411764705882,
-      "avg_possession": 0.4543137254901961,
-      "avg_corners": 4.490196078431373,
-      "total_games": 51,
+      "win_rate": 0.40384615384615385,
+      "avg_goals_scored": 1.4807692307692308,
+      "avg_goals_conceded": 1.1346153846153846,
+      "avg_shots": 12.346153846153847,
+      "avg_possession": 0.45423076923076927,
+      "avg_corners": 4.461538461538462,
+      "total_games": 52,
       "wins": 21,
       "draws": 15,
-      "losses": 15
+      "losses": 16
     },
     "match_history": [
+      {
+        "opponent": "Konyaspor",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 1,
+        "shots": 3,
+        "possession": 0.45,
+        "corners": 3,
+        "passes": 362,
+        "big_chances": 0,
+        "result": "L"
+      },
       {
         "opponent": "Alanyaspor",
         "home_away": "A",
@@ -3678,21 +3263,16 @@ window.teamData = [
         "passes": 182,
         "big_chances": 1,
         "result": "D"
-      },
-      {
-        "opponent": "Ey\u00fcpspor",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 0,
-        "shots": 11,
-        "possession": 0.34,
-        "corners": 2,
-        "passes": 220,
-        "big_chances": 0,
-        "result": "W"
       }
     ],
     "head_to_head": {
+      "Konyaspor": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 2,
+        "goals_for": 1,
+        "goals_against": 3
+      },
       "Alanyaspor": {
         "wins": 0,
         "draws": 2,
@@ -3790,13 +3370,6 @@ window.teamData = [
         "losses": 1,
         "goals_for": 0,
         "goals_against": 1
-      },
-      "Konyaspor": {
-        "wins": 0,
-        "draws": 0,
-        "losses": 1,
-        "goals_for": 1,
-        "goals_against": 2
       },
       "Be\u015fikta\u015f JK": {
         "wins": 1,
@@ -4340,517 +3913,32 @@ window.teamData = [
     }
   },
   {
-    "name": "Karag\u00fcmr\u00fck",
-    "stats": {
-      "win_rate": 0.34146341463414637,
-      "avg_goals_scored": 1.024390243902439,
-      "avg_goals_conceded": 1.3170731707317074,
-      "avg_shots": 10.829268292682928,
-      "avg_possession": 0.4807317073170732,
-      "avg_corners": 4.487804878048781,
-      "total_games": 41,
-      "wins": 14,
-      "draws": 8,
-      "losses": 19
-    },
-    "match_history": [
-      {
-        "opponent": "Gen\u00e7lerbirli\u011fi",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 3,
-        "shots": 8,
-        "possession": 0.6,
-        "corners": 4,
-        "passes": 400,
-        "big_chances": 3,
-        "result": "L"
-      },
-      {
-        "opponent": "Be\u015fikta\u015f JK",
-        "home_away": "H",
-        "goals_for": 0,
-        "goals_against": 2,
-        "shots": 7,
-        "possession": 0.38,
-        "corners": 2,
-        "passes": 277,
-        "big_chances": 0,
-        "result": "L"
-      },
-      {
-        "opponent": "Ey\u00fcpspor",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 9,
-        "possession": 0.45,
-        "corners": 6,
-        "passes": 370,
-        "big_chances": 2,
-        "result": "D"
-      },
-      {
-        "opponent": "Konyaspor",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 0,
-        "shots": 10,
-        "possession": 0.43,
-        "corners": 4,
-        "passes": 368,
-        "big_chances": 2,
-        "result": "W"
-      },
-      {
-        "opponent": "\u00c7aykur Rizespor",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 1,
-        "shots": 14,
-        "possession": 0.38,
-        "corners": 4,
-        "passes": 327,
-        "big_chances": 0,
-        "result": "L"
-      },
-      {
-        "opponent": "Kayserispor",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 2,
-        "shots": 10,
-        "possession": 0.47,
-        "corners": 1,
-        "passes": 365,
-        "big_chances": 3,
-        "result": "D"
-      },
-      {
-        "opponent": "Fenerbah\u00e7e",
-        "home_away": "A",
-        "goals_for": 1,
-        "goals_against": 2,
-        "shots": 16,
-        "possession": 0.41,
-        "corners": 6,
-        "passes": 311,
-        "big_chances": 1,
-        "result": "L"
-      },
-      {
-        "opponent": "Gaziantep FK",
-        "home_away": "H",
-        "goals_for": 0,
-        "goals_against": 2,
-        "shots": 13,
-        "possession": 0.44,
-        "corners": 5,
-        "passes": 308,
-        "big_chances": 3,
-        "result": "L"
-      },
-      {
-        "opponent": "Trabzonspor",
-        "home_away": "H",
-        "goals_for": 3,
-        "goals_against": 4,
-        "shots": 13,
-        "possession": 0.44,
-        "corners": 1,
-        "passes": 348,
-        "big_chances": 5,
-        "result": "L"
-      },
-      {
-        "opponent": "Samsunspor",
-        "home_away": "A",
-        "goals_for": 2,
-        "goals_against": 3,
-        "shots": 11,
-        "possession": 0.51,
-        "corners": 5,
-        "passes": 364,
-        "big_chances": 0,
-        "result": "L"
-      },
-      {
-        "opponent": "Ba\u015fak\u015fehir FK",
-        "home_away": "H",
-        "goals_for": 0,
-        "goals_against": 2,
-        "shots": 6,
-        "possession": 0.48,
-        "corners": 3,
-        "passes": 381,
-        "big_chances": 0,
-        "result": "L"
-      },
-      {
-        "opponent": "Kas\u0131mpa\u015fa",
-        "home_away": "H",
-        "goals_for": 0,
-        "goals_against": 1,
-        "shots": 14,
-        "possession": 0.72,
-        "corners": 6,
-        "passes": 586,
-        "big_chances": 0,
-        "result": "L"
-      },
-      {
-        "opponent": "Antalyaspor",
-        "home_away": "A",
-        "goals_for": 2,
-        "goals_against": 1,
-        "shots": 17,
-        "possession": 0.51,
-        "corners": 4,
-        "passes": 392,
-        "big_chances": 5,
-        "result": "W"
-      },
-      {
-        "opponent": "G\u00f6ztepe",
-        "home_away": "H",
-        "goals_for": 0,
-        "goals_against": 2,
-        "shots": 11,
-        "possession": 0.65,
-        "corners": 4,
-        "passes": 440,
-        "big_chances": 0,
-        "result": "L"
-      },
-      {
-        "opponent": "Galatasaray",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 3,
-        "shots": 6,
-        "possession": 0.28,
-        "corners": 3,
-        "passes": 225,
-        "big_chances": 1,
-        "result": "L"
-      },
-      {
-        "opponent": "Band\u0131rmaspor",
-        "home_away": "H",
-        "goals_for": 3,
-        "goals_against": 1,
-        "shots": 16,
-        "possession": 0.53,
-        "corners": 7,
-        "passes": 446,
-        "big_chances": 3,
-        "result": "W"
-      },
-      {
-        "opponent": "I\u011fd\u0131r FK",
-        "home_away": "H",
-        "goals_for": 2,
-        "goals_against": 1,
-        "shots": 9,
-        "possession": 0.27,
-        "corners": 2,
-        "passes": 193,
-        "big_chances": 2,
-        "result": "W"
-      },
-      {
-        "opponent": "Pendikspor",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 2,
-        "shots": 9,
-        "possession": 0.57,
-        "corners": 7,
-        "passes": 394,
-        "big_chances": 0,
-        "result": "L"
-      },
-      {
-        "opponent": "Ke\u00e7i\u00f6reng\u00fcc\u00fc",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 0,
-        "shots": 15,
-        "possession": 0.42,
-        "corners": 6,
-        "passes": 291,
-        "big_chances": 4,
-        "result": "W"
-      },
-      {
-        "opponent": "Boluspor",
-        "home_away": "A",
-        "goals_for": 0,
-        "goals_against": 1,
-        "shots": 10,
-        "possession": 0.49,
-        "corners": 8,
-        "passes": 400,
-        "big_chances": 2,
-        "result": "L"
-      }
-    ],
-    "head_to_head": {
-      "Gen\u00e7lerbirli\u011fi": {
-        "wins": 0,
-        "draws": 1,
-        "losses": 2,
-        "goals_for": 0,
-        "goals_against": 4
-      },
-      "Be\u015fikta\u015f JK": {
-        "wins": 0,
-        "draws": 0,
-        "losses": 1,
-        "goals_for": 0,
-        "goals_against": 2
-      },
-      "Ey\u00fcpspor": {
-        "wins": 0,
-        "draws": 1,
-        "losses": 0,
-        "goals_for": 1,
-        "goals_against": 1
-      },
-      "Konyaspor": {
-        "wins": 1,
-        "draws": 0,
-        "losses": 0,
-        "goals_for": 2,
-        "goals_against": 0
-      },
-      "\u00c7aykur Rizespor": {
-        "wins": 0,
-        "draws": 0,
-        "losses": 1,
-        "goals_for": 0,
-        "goals_against": 1
-      },
-      "Kayserispor": {
-        "wins": 0,
-        "draws": 1,
-        "losses": 0,
-        "goals_for": 2,
-        "goals_against": 2
-      },
-      "Fenerbah\u00e7e": {
-        "wins": 0,
-        "draws": 0,
-        "losses": 1,
-        "goals_for": 1,
-        "goals_against": 2
-      },
-      "Gaziantep FK": {
-        "wins": 0,
-        "draws": 0,
-        "losses": 1,
-        "goals_for": 0,
-        "goals_against": 2
-      },
-      "Trabzonspor": {
-        "wins": 0,
-        "draws": 0,
-        "losses": 1,
-        "goals_for": 3,
-        "goals_against": 4
-      },
-      "Samsunspor": {
-        "wins": 0,
-        "draws": 0,
-        "losses": 1,
-        "goals_for": 2,
-        "goals_against": 3
-      },
-      "Ba\u015fak\u015fehir FK": {
-        "wins": 0,
-        "draws": 0,
-        "losses": 1,
-        "goals_for": 0,
-        "goals_against": 2
-      },
-      "Kas\u0131mpa\u015fa": {
-        "wins": 0,
-        "draws": 0,
-        "losses": 1,
-        "goals_for": 0,
-        "goals_against": 1
-      },
-      "Antalyaspor": {
-        "wins": 1,
-        "draws": 0,
-        "losses": 0,
-        "goals_for": 2,
-        "goals_against": 1
-      },
-      "G\u00f6ztepe": {
-        "wins": 0,
-        "draws": 0,
-        "losses": 1,
-        "goals_for": 0,
-        "goals_against": 2
-      },
-      "Galatasaray": {
-        "wins": 0,
-        "draws": 0,
-        "losses": 1,
-        "goals_for": 0,
-        "goals_against": 3
-      },
-      "Band\u0131rmaspor": {
-        "wins": 1,
-        "draws": 0,
-        "losses": 1,
-        "goals_for": 4,
-        "goals_against": 3
-      },
-      "I\u011fd\u0131r FK": {
-        "wins": 2,
-        "draws": 0,
-        "losses": 0,
-        "goals_for": 3,
-        "goals_against": 1
-      },
-      "Pendikspor": {
-        "wins": 0,
-        "draws": 0,
-        "losses": 2,
-        "goals_for": 0,
-        "goals_against": 4
-      },
-      "Ke\u00e7i\u00f6reng\u00fcc\u00fc": {
-        "wins": 2,
-        "draws": 0,
-        "losses": 0,
-        "goals_for": 2,
-        "goals_against": 0
-      },
-      "Boluspor": {
-        "wins": 0,
-        "draws": 1,
-        "losses": 1,
-        "goals_for": 2,
-        "goals_against": 3
-      },
-      "Esenler Erokspor": {
-        "wins": 0,
-        "draws": 0,
-        "losses": 1,
-        "goals_for": 1,
-        "goals_against": 2
-      },
-      "Erzurumspor FK": {
-        "wins": 1,
-        "draws": 0,
-        "losses": 0,
-        "goals_for": 1,
-        "goals_against": 0
-      },
-      "Yeni Malatyaspor": {
-        "wins": 1,
-        "draws": 0,
-        "losses": 0,
-        "goals_for": 2,
-        "goals_against": 0
-      },
-      "Kocaelispor": {
-        "wins": 0,
-        "draws": 1,
-        "losses": 0,
-        "goals_for": 1,
-        "goals_against": 1
-      },
-      "Adanaspor": {
-        "wins": 1,
-        "draws": 0,
-        "losses": 0,
-        "goals_for": 2,
-        "goals_against": 1
-      },
-      "Sakaryaspor": {
-        "wins": 1,
-        "draws": 0,
-        "losses": 0,
-        "goals_for": 3,
-        "goals_against": 1
-      },
-      "\u0130skenderun A.\u015e.": {
-        "wins": 0,
-        "draws": 0,
-        "losses": 1,
-        "goals_for": 1,
-        "goals_against": 2
-      },
-      "\u0130stanbulspor": {
-        "wins": 0,
-        "draws": 0,
-        "losses": 1,
-        "goals_for": 0,
-        "goals_against": 2
-      },
-      "\u015eanl\u0131urfaspor": {
-        "wins": 0,
-        "draws": 1,
-        "losses": 0,
-        "goals_for": 1,
-        "goals_against": 1
-      },
-      "MKE Ankarag\u00fcc\u00fc": {
-        "wins": 1,
-        "draws": 0,
-        "losses": 0,
-        "goals_for": 1,
-        "goals_against": 0
-      },
-      "\u00dcmraniyespor": {
-        "wins": 1,
-        "draws": 0,
-        "losses": 0,
-        "goals_for": 1,
-        "goals_against": 0
-      },
-      "Manisa FK": {
-        "wins": 0,
-        "draws": 1,
-        "losses": 0,
-        "goals_for": 2,
-        "goals_against": 2
-      },
-      "\u00c7orum FK": {
-        "wins": 1,
-        "draws": 0,
-        "losses": 0,
-        "goals_for": 1,
-        "goals_against": 0
-      },
-      "Amed Sportif Faaliyetler": {
-        "wins": 0,
-        "draws": 1,
-        "losses": 0,
-        "goals_for": 1,
-        "goals_against": 1
-      }
-    }
-  },
-  {
     "name": "Kas\u0131mpa\u015fa",
     "stats": {
-      "win_rate": 0.25,
-      "avg_goals_scored": 1.3,
-      "avg_goals_conceded": 1.5,
-      "avg_shots": 11.575,
-      "avg_possession": 0.48224999999999996,
-      "avg_corners": 5.1,
-      "total_games": 40,
+      "win_rate": 0.24390243902439024,
+      "avg_goals_scored": 1.2926829268292683,
+      "avg_goals_conceded": 1.5121951219512195,
+      "avg_shots": 11.439024390243903,
+      "avg_possession": 0.4826829268292683,
+      "avg_corners": 5.048780487804878,
+      "total_games": 41,
       "wins": 10,
       "draws": 13,
-      "losses": 17
+      "losses": 18
     },
     "match_history": [
+      {
+        "opponent": "Be\u015fikta\u015f JK",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 2,
+        "shots": 6,
+        "possession": 0.5,
+        "corners": 3,
+        "passes": 431,
+        "big_chances": 1,
+        "result": "L"
+      },
       {
         "opponent": "Konyaspor",
         "home_away": "A",
@@ -5078,21 +4166,16 @@ window.teamData = [
         "passes": 288,
         "big_chances": 0,
         "result": "W"
-      },
-      {
-        "opponent": "Fenerbah\u00e7e",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 17,
-        "possession": 0.34,
-        "corners": 5,
-        "passes": 280,
-        "big_chances": 2,
-        "result": "D"
       }
     ],
     "head_to_head": {
+      "Be\u015fikta\u015f JK": {
+        "wins": 0,
+        "draws": 2,
+        "losses": 1,
+        "goals_for": 3,
+        "goals_against": 4
+      },
       "Konyaspor": {
         "wins": 0,
         "draws": 2,
@@ -5191,13 +4274,6 @@ window.teamData = [
         "goals_for": 2,
         "goals_against": 4
       },
-      "Be\u015fikta\u015f JK": {
-        "wins": 0,
-        "draws": 2,
-        "losses": 0,
-        "goals_for": 2,
-        "goals_against": 2
-      },
       "Ey\u00fcpspor": {
         "wins": 1,
         "draws": 0,
@@ -5238,18 +4314,30 @@ window.teamData = [
   {
     "name": "Kayserispor",
     "stats": {
-      "win_rate": 0.2641509433962264,
-      "avg_goals_scored": 1.0566037735849056,
-      "avg_goals_conceded": 1.6603773584905661,
-      "avg_shots": 11.056603773584905,
-      "avg_possession": 0.4592452830188679,
-      "avg_corners": 5.056603773584905,
-      "total_games": 53,
-      "wins": 14,
+      "win_rate": 0.2777777777777778,
+      "avg_goals_scored": 1.0555555555555556,
+      "avg_goals_conceded": 1.6296296296296295,
+      "avg_shots": 11.148148148148149,
+      "avg_possession": 0.4620370370370371,
+      "avg_corners": 5.018518518518518,
+      "total_games": 54,
+      "wins": 15,
       "draws": 18,
       "losses": 21
     },
     "match_history": [
+      {
+        "opponent": "Fatih Karag\u00fcmr\u00fck",
+        "home_away": "H",
+        "goals_for": 1,
+        "goals_against": 0,
+        "shots": 16,
+        "possession": 0.61,
+        "corners": 3,
+        "passes": 518,
+        "big_chances": 6,
+        "result": "W"
+      },
       {
         "opponent": "Trabzonspor",
         "home_away": "H",
@@ -5477,21 +4565,16 @@ window.teamData = [
         "passes": 438,
         "big_chances": 4,
         "result": "D"
-      },
-      {
-        "opponent": "Be\u015fikta\u015f JK",
-        "home_away": "H",
-        "goals_for": 0,
-        "goals_against": 4,
-        "shots": 6,
-        "possession": 0.51,
-        "corners": 4,
-        "passes": 401,
-        "big_chances": 1,
-        "result": "L"
       }
     ],
     "head_to_head": {
+      "Fatih Karag\u00fcmr\u00fck": {
+        "wins": 1,
+        "draws": 1,
+        "losses": 0,
+        "goals_for": 3,
+        "goals_against": 2
+      },
       "Trabzonspor": {
         "wins": 0,
         "draws": 1,
@@ -5590,13 +4673,6 @@ window.teamData = [
         "goals_for": 6,
         "goals_against": 3
       },
-      "Fatih Karag\u00fcmr\u00fck": {
-        "wins": 0,
-        "draws": 1,
-        "losses": 0,
-        "goals_for": 2,
-        "goals_against": 2
-      },
       "Samsunspor": {
         "wins": 0,
         "draws": 0,
@@ -5644,18 +4720,30 @@ window.teamData = [
   {
     "name": "Kocaelispor",
     "stats": {
-      "win_rate": 0.46296296296296297,
-      "avg_goals_scored": 1.5,
-      "avg_goals_conceded": 1.0740740740740742,
-      "avg_shots": 12.981481481481481,
-      "avg_possession": 0.506851851851852,
-      "avg_corners": 4.7407407407407405,
-      "total_games": 54,
+      "win_rate": 0.45454545454545453,
+      "avg_goals_scored": 1.4727272727272727,
+      "avg_goals_conceded": 1.1454545454545455,
+      "avg_shots": 12.854545454545455,
+      "avg_possession": 0.5085454545454546,
+      "avg_corners": 4.709090909090909,
+      "total_games": 55,
       "wins": 25,
       "draws": 14,
-      "losses": 15
+      "losses": 16
     },
     "match_history": [
+      {
+        "opponent": "Alanyaspor",
+        "home_away": "A",
+        "goals_for": 0,
+        "goals_against": 5,
+        "shots": 6,
+        "possession": 0.6,
+        "corners": 3,
+        "passes": 465,
+        "big_chances": 0,
+        "result": "L"
+      },
       {
         "opponent": "Ey\u00fcpspor",
         "home_away": "A",
@@ -5883,21 +4971,16 @@ window.teamData = [
         "passes": 482,
         "big_chances": 0,
         "result": "L"
-      },
-      {
-        "opponent": "\u00c7aykur Rizespor",
-        "home_away": "H",
-        "goals_for": 1,
-        "goals_against": 1,
-        "shots": 16,
-        "possession": 0.58,
-        "corners": 8,
-        "passes": 392,
-        "big_chances": 1,
-        "result": "D"
       }
     ],
     "head_to_head": {
+      "Alanyaspor": {
+        "wins": 1,
+        "draws": 0,
+        "losses": 1,
+        "goals_for": 2,
+        "goals_against": 5
+      },
       "Ey\u00fcpspor": {
         "wins": 2,
         "draws": 0,
@@ -5995,13 +5078,6 @@ window.teamData = [
         "losses": 1,
         "goals_for": 0,
         "goals_against": 1
-      },
-      "Alanyaspor": {
-        "wins": 1,
-        "draws": 0,
-        "losses": 0,
-        "goals_for": 2,
-        "goals_against": 0
       },
       "Konyaspor": {
         "wins": 1,
@@ -6995,18 +6071,30 @@ window.teamData = [
   {
     "name": "Trabzonspor",
     "stats": {
-      "win_rate": 0.5333333333333333,
-      "avg_goals_scored": 1.8,
-      "avg_goals_conceded": 1.288888888888889,
-      "avg_shots": 14.88888888888889,
-      "avg_possession": 0.5506666666666669,
-      "avg_corners": 4.377777777777778,
-      "total_games": 45,
-      "wins": 24,
+      "win_rate": 0.5434782608695652,
+      "avg_goals_scored": 1.7826086956521738,
+      "avg_goals_conceded": 1.2608695652173914,
+      "avg_shots": 14.782608695652174,
+      "avg_possession": 0.5495652173913045,
+      "avg_corners": 4.391304347826087,
+      "total_games": 46,
+      "wins": 25,
       "draws": 11,
       "losses": 10
     },
     "match_history": [
+      {
+        "opponent": "Ey\u00fcpspor",
+        "home_away": "A",
+        "goals_for": 1,
+        "goals_against": 0,
+        "shots": 10,
+        "possession": 0.5,
+        "corners": 5,
+        "passes": 453,
+        "big_chances": 2,
+        "result": "W"
+      },
       {
         "opponent": "Kayserispor",
         "home_away": "A",
@@ -7234,21 +6322,16 @@ window.teamData = [
         "passes": 430,
         "big_chances": 8,
         "result": "W"
-      },
-      {
-        "opponent": "Fatih Karag\u00fcmr\u00fck",
-        "home_away": "A",
-        "goals_for": 4,
-        "goals_against": 3,
-        "shots": 22,
-        "possession": 0.56,
-        "corners": 7,
-        "passes": 436,
-        "big_chances": 4,
-        "result": "W"
       }
     ],
     "head_to_head": {
+      "Ey\u00fcpspor": {
+        "wins": 3,
+        "draws": 0,
+        "losses": 0,
+        "goals_for": 4,
+        "goals_against": 0
+      },
       "Kayserispor": {
         "wins": 2,
         "draws": 1,
@@ -7346,13 +6429,6 @@ window.teamData = [
         "losses": 0,
         "goals_for": 5,
         "goals_against": 4
-      },
-      "Ey\u00fcpspor": {
-        "wins": 2,
-        "draws": 0,
-        "losses": 0,
-        "goals_for": 3,
-        "goals_against": 0
       },
       "\u00c7aykur Rizespor": {
         "wins": 2,
@@ -8061,18 +7137,6 @@ window.playerData = [
     ]
   },
   {
-    "name": "Abbosbek Fayzullaev",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 6.2,
-    "games": 1,
-    "ratings": [
-      {
-        "rating": 6.2,
-        "opponent": "Ey\u00fcpspor"
-      }
-    ]
-  },
-  {
     "name": "Abdullah Yi\u011fiter",
     "team": "Antalyaspor",
     "avg_rating": 6.49,
@@ -8503,9 +7567,13 @@ window.playerData = [
   {
     "name": "Adama Malouda Traor\u00e9",
     "team": "Gen\u00e7lerbirli\u011fi",
-    "avg_rating": 6.42,
-    "games": 6,
+    "avg_rating": 6.43,
+    "games": 7,
     "ratings": [
+      {
+        "rating": 6.5,
+        "opponent": "Konyaspor"
+      },
       {
         "rating": 6.6,
         "opponent": "Alanyaspor"
@@ -8567,9 +7635,13 @@ window.playerData = [
   {
     "name": "Adem Arous",
     "team": "Kas\u0131mpa\u015fa",
-    "avg_rating": 7.06,
-    "games": 9,
+    "avg_rating": 7.03,
+    "games": 10,
     "ratings": [
+      {
+        "rating": 6.8,
+        "opponent": "Be\u015fikta\u015f JK"
+      },
       {
         "rating": 6.9,
         "opponent": "Fenerbah\u00e7e"
@@ -8903,9 +7975,13 @@ window.playerData = [
   {
     "name": "Adrian Benedyczak",
     "team": "Kas\u0131mpa\u015fa",
-    "avg_rating": 7.04,
-    "games": 5,
+    "avg_rating": 7.0,
+    "games": 6,
     "ratings": [
+      {
+        "rating": 6.8,
+        "opponent": "Be\u015fikta\u015f JK"
+      },
       {
         "rating": 7.3,
         "opponent": "Konyaspor"
@@ -9192,30 +8268,6 @@ window.playerData = [
     "ratings": [
       {
         "rating": 6.2,
-        "opponent": "I\u011fd\u0131r FK"
-      }
-    ]
-  },
-  {
-    "name": "Ahmet Sivri",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.35,
-    "games": 4,
-    "ratings": [
-      {
-        "rating": 6.0,
-        "opponent": "Kayserispor"
-      },
-      {
-        "rating": 5.7,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 7.5,
         "opponent": "I\u011fd\u0131r FK"
       }
     ]
@@ -9527,9 +8579,13 @@ window.playerData = [
   {
     "name": "Alexandru Maxim",
     "team": "Gaziantep",
-    "avg_rating": 7.23,
-    "games": 49,
+    "avg_rating": 7.25,
+    "games": 50,
     "ratings": [
+      {
+        "rating": 7.9,
+        "opponent": "Fenerbah\u00e7e"
+      },
       {
         "rating": 8.2,
         "opponent": "Fatih Karag\u00fcmr\u00fck"
@@ -10093,18 +9149,6 @@ window.playerData = [
     ]
   },
   {
-    "name": "Alper Demirol",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.6,
-    "games": 1,
-    "ratings": [
-      {
-        "rating": 6.6,
-        "opponent": "G\u00f6ztepe"
-      }
-    ]
-  },
-  {
     "name": "Alperen Babacan",
     "team": "Gen\u00e7lerbirli\u011fi",
     "avg_rating": 6.91,
@@ -10461,26 +9505,6 @@ window.playerData = [
     ]
   },
   {
-    "name": "Amine Harit",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 6.47,
-    "games": 3,
-    "ratings": [
-      {
-        "rating": 6.0,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 6.1,
-        "opponent": "Konyaspor"
-      }
-    ]
-  },
-  {
     "name": "Amir Had\u017eiahmetovi\u0107",
     "team": "Be\u015fikta\u015f",
     "avg_rating": 7.23,
@@ -10519,9 +9543,13 @@ window.playerData = [
   {
     "name": "Amir Murillo",
     "team": "Be\u015fikta\u015f",
-    "avg_rating": 6.9,
-    "games": 3,
+    "avg_rating": 6.73,
+    "games": 4,
     "ratings": [
+      {
+        "rating": 6.2,
+        "opponent": "Kas\u0131mpa\u015fa"
+      },
       {
         "rating": 6.4,
         "opponent": "Galatasaray"
@@ -10733,59 +9761,15 @@ window.playerData = [
     ]
   },
   {
-    "name": "Andre Gray",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.74,
-    "games": 10,
-    "ratings": [
-      {
-        "rating": 6.5,
-        "opponent": "Gaziantep FK"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Trabzonspor"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Samsunspor"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Ba\u015fak\u015fehir FK"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 7.7,
-        "opponent": "Yeni Malatyaspor"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "\u00dcmraniyespor"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Manisa FK"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Amed Sportif Faaliyetler"
-      }
-    ]
-  },
-  {
     "name": "Andreas Gianniotis",
     "team": "Kas\u0131mpa\u015fa",
-    "avg_rating": 6.87,
-    "games": 36,
+    "avg_rating": 6.86,
+    "games": 37,
     "ratings": [
+      {
+        "rating": 6.3,
+        "opponent": "Be\u015fikta\u015f JK"
+      },
       {
         "rating": 7.8,
         "opponent": "Konyaspor"
@@ -10935,9 +9919,13 @@ window.playerData = [
   {
     "name": "Andri Baldursson",
     "team": "Kas\u0131mpa\u015fa",
-    "avg_rating": 6.81,
-    "games": 22,
+    "avg_rating": 6.8,
+    "games": 23,
     "ratings": [
+      {
+        "rating": 6.6,
+        "opponent": "Be\u015fikta\u015f JK"
+      },
       {
         "rating": 5.9,
         "opponent": "Konyaspor"
@@ -11059,9 +10047,13 @@ window.playerData = [
   {
     "name": "Andr\u00e9 Onana",
     "team": "Trabzonspor",
-    "avg_rating": 7.11,
-    "games": 21,
+    "avg_rating": 7.13,
+    "games": 22,
     "ratings": [
+      {
+        "rating": 7.5,
+        "opponent": "Ey\u00fcpspor"
+      },
       {
         "rating": 7.5,
         "opponent": "Kayserispor"
@@ -11203,9 +10195,13 @@ window.playerData = [
   {
     "name": "Anfernee Dijksteel",
     "team": "Kocaelispor",
-    "avg_rating": 6.86,
-    "games": 19,
+    "avg_rating": 6.82,
+    "games": 20,
     "ratings": [
+      {
+        "rating": 5.9,
+        "opponent": "Alanyaspor"
+      },
       {
         "rating": 6.6,
         "opponent": "Ey\u00fcpspor"
@@ -11447,9 +10443,13 @@ window.playerData = [
   {
     "name": "Anthony Musaba",
     "team": "Samsunspor",
-    "avg_rating": 7.01,
-    "games": 24,
+    "avg_rating": 7.0,
+    "games": 25,
     "ratings": [
+      {
+        "rating": 6.8,
+        "opponent": "Gaziantep FK"
+      },
       {
         "rating": 7.0,
         "opponent": "Samsunspor"
@@ -11713,42 +10713,6 @@ window.playerData = [
     ]
   },
   {
-    "name": "An\u0131l Yi\u011fit \u00c7\u0131nar",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.57,
-    "games": 7,
-    "ratings": [
-      {
-        "rating": 6.0,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Kayserispor"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Fenerbah\u00e7e"
-      },
-      {
-        "rating": 6.0,
-        "opponent": "Samsunspor"
-      },
-      {
-        "rating": 6.0,
-        "opponent": "Ba\u015fak\u015fehir FK"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 7.7,
-        "opponent": "Antalyaspor"
-      }
-    ]
-  },
-  {
     "name": "Arbnor Muja",
     "team": "Samsunspor",
     "avg_rating": 6.68,
@@ -11779,9 +10743,13 @@ window.playerData = [
   {
     "name": "Archie Brown",
     "team": "Fenerbah\u00e7e",
-    "avg_rating": 7.09,
-    "games": 19,
+    "avg_rating": 7.08,
+    "games": 20,
     "ratings": [
+      {
+        "rating": 6.8,
+        "opponent": "Gaziantep FK"
+      },
       {
         "rating": 7.0,
         "opponent": "Samsunspor"
@@ -12481,162 +11449,6 @@ window.playerData = [
     ]
   },
   {
-    "name": "Atakan \u00c7ankaya",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.96,
-    "games": 37,
-    "ratings": [
-      {
-        "rating": 5.9,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 8.6,
-        "opponent": "Kayserispor"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Fenerbah\u00e7e"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "Gaziantep FK"
-      },
-      {
-        "rating": 5.2,
-        "opponent": "Trabzonspor"
-      },
-      {
-        "rating": 6.3,
-        "opponent": "Samsunspor"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Ba\u015fak\u015fehir FK"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 6.3,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 7.9,
-        "opponent": "Band\u0131rmaspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "I\u011fd\u0131r FK"
-      },
-      {
-        "rating": 7.8,
-        "opponent": "Ke\u00e7i\u00f6reng\u00fcc\u00fc"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Boluspor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Esenler Erokspor"
-      },
-      {
-        "rating": 7.6,
-        "opponent": "Erzurumspor FK"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "Yeni Malatyaspor"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Kocaelispor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Adanaspor"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "Band\u0131rmaspor"
-      },
-      {
-        "rating": 8.1,
-        "opponent": "Sakaryaspor"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "\u0130stanbulspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "\u015eanl\u0131urfaspor"
-      },
-      {
-        "rating": 7.7,
-        "opponent": "MKE Ankarag\u00fcc\u00fc"
-      },
-      {
-        "rating": 7.8,
-        "opponent": "\u00dcmraniyespor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Manisa FK"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "\u00c7orum FK"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "I\u011fd\u0131r FK"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Pendikspor"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Ke\u00e7i\u00f6reng\u00fcc\u00fc"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "Boluspor"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      }
-    ]
-  },
-  {
     "name": "Attila Mocsi",
     "team": "\u00c7aykur Rizespor",
     "avg_rating": 6.75,
@@ -13091,9 +11903,13 @@ window.playerData = [
   {
     "name": "Bahad\u0131r \u00d6zt\u00fcrk",
     "team": "Antalyaspor",
-    "avg_rating": 6.91,
-    "games": 10,
+    "avg_rating": 6.96,
+    "games": 11,
     "ratings": [
+      {
+        "rating": 7.5,
+        "opponent": "Ba\u015fak\u015fehir FK"
+      },
       {
         "rating": 7.1,
         "opponent": "Alanyaspor"
@@ -13241,30 +12057,6 @@ window.playerData = [
       {
         "rating": 6.6,
         "opponent": "\u00c7aykur Rizespor"
-      }
-    ]
-  },
-  {
-    "name": "Baris Kalayci",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.53,
-    "games": 4,
-    "ratings": [
-      {
-        "rating": 6.6,
-        "opponent": "Ba\u015fak\u015fehir FK"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "G\u00f6ztepe"
       }
     ]
   },
@@ -13641,126 +12433,6 @@ window.playerData = [
     ]
   },
   {
-    "name": "Berat Ayberk \u00d6zdemir",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 7.06,
-    "games": 28,
-    "ratings": [
-      {
-        "rating": 6.8,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 7.7,
-        "opponent": "Kocaelispor"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 7.9,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Alanyaspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Fatih Karag\u00fcmr\u00fck"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Universitatea Craiova"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Universitatea Craiova"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Viking FK"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Viking FK"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Cherno More Varna"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Hatayspor"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Gaziantep FK"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Ey\u00fcpspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Sivasspor"
-      },
-      {
-        "rating": 7.7,
-        "opponent": "Bodrum FK"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "Samsunspor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Alanyaspor"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Fenerbah\u00e7e"
-      }
-    ]
-  },
-  {
     "name": "Berkan Kutlu",
     "team": "Konyaspor",
     "avg_rating": 6.78,
@@ -13821,63 +12493,11 @@ window.playerData = [
     ]
   },
   {
-    "name": "Berkay Dabanl\u0131",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.9,
-    "games": 2,
-    "ratings": [
-      {
-        "rating": 7.2,
-        "opponent": "Yeni Malatyaspor"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      }
-    ]
-  },
-  {
     "name": "Berkay \u00d6zcan",
     "team": "\u00c7aykur Rizespor",
-    "avg_rating": 6.72,
-    "games": 17,
+    "avg_rating": 6.9,
+    "games": 8,
     "ratings": [
-      {
-        "rating": 6.7,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Kayserispor"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "Gaziantep FK"
-      },
-      {
-        "rating": 5.8,
-        "opponent": "Samsunspor"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Ba\u015fak\u015fehir FK"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Galatasaray"
-      },
       {
         "rating": 6.8,
         "opponent": "Konyaspor"
@@ -13988,8 +12608,12 @@ window.playerData = [
     "name": "Bilal Bayazit",
     "team": "Kayserispor",
     "avg_rating": 7.05,
-    "games": 39,
+    "games": 40,
     "ratings": [
+      {
+        "rating": 6.9,
+        "opponent": "Fatih Karag\u00fcmr\u00fck"
+      },
       {
         "rating": 7.0,
         "opponent": "Trabzonspor"
@@ -14259,9 +12883,13 @@ window.playerData = [
   {
     "name": "Botond Balogh",
     "team": "Kocaelispor",
-    "avg_rating": 7.0,
-    "games": 15,
+    "avg_rating": 6.93,
+    "games": 16,
     "ratings": [
+      {
+        "rating": 5.9,
+        "opponent": "Alanyaspor"
+      },
       {
         "rating": 7.3,
         "opponent": "Ey\u00fcpspor"
@@ -14811,9 +13439,13 @@ window.playerData = [
   {
     "name": "Caf\u00fa",
     "team": "Kas\u0131mpa\u015fa",
-    "avg_rating": 6.76,
-    "games": 17,
+    "avg_rating": 6.77,
+    "games": 18,
     "ratings": [
+      {
+        "rating": 7.0,
+        "opponent": "Be\u015fikta\u015f JK"
+      },
       {
         "rating": 6.7,
         "opponent": "Ba\u015fak\u015fehir FK"
@@ -15887,9 +14519,13 @@ window.playerData = [
   {
     "name": "Chibuike Nwaiwu",
     "team": "Trabzonspor",
-    "avg_rating": 7.16,
-    "games": 7,
+    "avg_rating": 7.19,
+    "games": 8,
     "ratings": [
+      {
+        "rating": 7.4,
+        "opponent": "Ey\u00fcpspor"
+      },
       {
         "rating": 6.4,
         "opponent": "Gaziantep FK"
@@ -15923,9 +14559,13 @@ window.playerData = [
   {
     "name": "Christ Inao Oula\u00ef",
     "team": "Trabzonspor",
-    "avg_rating": 7.12,
-    "games": 16,
+    "avg_rating": 7.1,
+    "games": 17,
     "ratings": [
+      {
+        "rating": 6.8,
+        "opponent": "Ey\u00fcpspor"
+      },
       {
         "rating": 7.4,
         "opponent": "Kayserispor"
@@ -16121,110 +14761,6 @@ window.playerData = [
     ]
   },
   {
-    "name": "Christopher Operi",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 6.96,
-    "games": 24,
-    "ratings": [
-      {
-        "rating": 6.4,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 6.0,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Alanyaspor"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Fatih Karag\u00fcmr\u00fck"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 7.8,
-        "opponent": "Ey\u00fcpspor"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Universitatea Craiova"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "Universitatea Craiova"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Viking FK"
-      },
-      {
-        "rating": 7.9,
-        "opponent": "Viking FK"
-      },
-      {
-        "rating": 9.2,
-        "opponent": "Cherno More Varna"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 7.6,
-        "opponent": "Adana Demirspor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Fenerbah\u00e7e"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Hatayspor"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "Gaziantep FK"
-      },
-      {
-        "rating": 7.8,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Ey\u00fcpspor"
-      }
-    ]
-  },
-  {
     "name": "Cihan \u00c7anak",
     "team": "Trabzonspor",
     "avg_rating": 7.1,
@@ -16383,9 +14919,13 @@ window.playerData = [
   {
     "name": "Cl\u00e1udio Winck",
     "team": "Kas\u0131mpa\u015fa",
-    "avg_rating": 6.87,
-    "games": 27,
+    "avg_rating": 6.84,
+    "games": 28,
     "ratings": [
+      {
+        "rating": 6.0,
+        "opponent": "Be\u015fikta\u015f JK"
+      },
       {
         "rating": 7.0,
         "opponent": "Konyaspor"
@@ -16583,9 +15123,13 @@ window.playerData = [
   {
     "name": "Daniel Agyei",
     "team": "Kocaelispor",
-    "avg_rating": 6.85,
-    "games": 13,
+    "avg_rating": 6.8,
+    "games": 14,
     "ratings": [
+      {
+        "rating": 6.1,
+        "opponent": "Alanyaspor"
+      },
       {
         "rating": 5.8,
         "opponent": "Ey\u00fcpspor"
@@ -16637,138 +15181,6 @@ window.playerData = [
       {
         "rating": 6.9,
         "opponent": "Konyaspor"
-      }
-    ]
-  },
-  {
-    "name": "Daniel Johnson",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.94,
-    "games": 31,
-    "ratings": [
-      {
-        "rating": 6.3,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Fenerbah\u00e7e"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Gaziantep FK"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Trabzonspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Samsunspor"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Ba\u015fak\u015fehir FK"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 7.8,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 5.9,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Band\u0131rmaspor"
-      },
-      {
-        "rating": 6.0,
-        "opponent": "I\u011fd\u0131r FK"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Boluspor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Esenler Erokspor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Erzurumspor FK"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "Yeni Malatyaspor"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "Kocaelispor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Adanaspor"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Band\u0131rmaspor"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Sakaryaspor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "\u0130stanbulspor"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "\u015eanl\u0131urfaspor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "MKE Ankarag\u00fcc\u00fc"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "\u00dcmraniyespor"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "\u00c7orum FK"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Amed Sportif Faaliyetler"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Pendikspor"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "Ke\u00e7i\u00f6reng\u00fcc\u00fc"
-      },
-      {
-        "rating": 7.7,
-        "opponent": "Boluspor"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
       }
     ]
   },
@@ -16996,8 +15408,12 @@ window.playerData = [
     "name": "Darko Churlinov",
     "team": "Kocaelispor",
     "avg_rating": 6.46,
-    "games": 9,
+    "games": 10,
     "ratings": [
+      {
+        "rating": 6.5,
+        "opponent": "Alanyaspor"
+      },
       {
         "rating": 6.4,
         "opponent": "Ey\u00fcpspor"
@@ -17033,38 +15449,6 @@ window.playerData = [
       {
         "rating": 6.3,
         "opponent": "Gaziantep FK"
-      }
-    ]
-  },
-  {
-    "name": "David Datro Fofana",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.73,
-    "games": 6,
-    "ratings": [
-      {
-        "rating": 6.7,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 7.8,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 6.3,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "Kayserispor"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Fenerbah\u00e7e"
       }
     ]
   },
@@ -17245,66 +15629,6 @@ window.playerData = [
       {
         "rating": 6.6,
         "opponent": "Kayserispor"
-      }
-    ]
-  },
-  {
-    "name": "Davidson",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 7.31,
-    "games": 9,
-    "ratings": [
-      {
-        "rating": 6.3,
-        "opponent": "Alanyaspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 8.9,
-        "opponent": "Adana Demirspor"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "Cercle Brugge"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Fenerbah\u00e7e"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "1. FC Heidenheim"
-      },
-      {
-        "rating": 7.9,
-        "opponent": "Hatayspor"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "G\u00f6ztepe"
-      }
-    ]
-  },
-  {
-    "name": "Davie Selke",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 7.55,
-    "games": 2,
-    "ratings": [
-      {
-        "rating": 7.3,
-        "opponent": "Universitatea Craiova"
-      },
-      {
-        "rating": 7.8,
-        "opponent": "Viking FK"
       }
     ]
   },
@@ -17797,26 +16121,6 @@ window.playerData = [
     ]
   },
   {
-    "name": "Deniz Dilmen",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 6.53,
-    "games": 3,
-    "ratings": [
-      {
-        "rating": 7.4,
-        "opponent": "Ey\u00fcpspor"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "Adana Demirspor"
-      },
-      {
-        "rating": 6.0,
-        "opponent": "Fenerbah\u00e7e"
-      }
-    ]
-  },
-  {
     "name": "Deniz Eren D\u00f6nmezer",
     "team": "Kayserispor",
     "avg_rating": 6.3,
@@ -17924,88 +16228,8 @@ window.playerData = [
     "name": "Deniz T\u00fcr\u00fc\u00e7",
     "team": "Konyaspor",
     "avg_rating": 7.27,
-    "games": 27,
+    "games": 7,
     "ratings": [
-      {
-        "rating": 6.7,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Fatih Karag\u00fcmr\u00fck"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Universitatea Craiova"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "Viking FK"
-      },
-      {
-        "rating": 8.9,
-        "opponent": "Adana Demirspor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Hatayspor"
-      },
-      {
-        "rating": 7.9,
-        "opponent": "Sivasspor"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Bodrum FK"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "Samsunspor"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "Alanyaspor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 7.8,
-        "opponent": "Adana Demirspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Cercle Brugge"
-      },
-      {
-        "rating": 6.3,
-        "opponent": "Fenerbah\u00e7e"
-      },
-      {
-        "rating": 7.7,
-        "opponent": "1. FC Heidenheim"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "Hatayspor"
-      },
-      {
-        "rating": 9.2,
-        "opponent": "G\u00f6ztepe"
-      },
       {
         "rating": 7.0,
         "opponent": "Kas\u0131mpa\u015fa"
@@ -18053,22 +16277,6 @@ window.playerData = [
     ]
   },
   {
-    "name": "Didier Lamkel Z\u00e9",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 7.5,
-    "games": 2,
-    "ratings": [
-      {
-        "rating": 7.9,
-        "opponent": "Boluspor"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      }
-    ]
-  },
-  {
     "name": "Diego Carlos",
     "team": "Fenerbah\u00e7e",
     "avg_rating": 6.55,
@@ -18099,9 +16307,13 @@ window.playerData = [
   {
     "name": "Dimitris Goutas",
     "team": "Gen\u00e7lerbirli\u011fi",
-    "avg_rating": 6.94,
-    "games": 24,
+    "avg_rating": 6.95,
+    "games": 25,
     "ratings": [
+      {
+        "rating": 7.1,
+        "opponent": "Konyaspor"
+      },
       {
         "rating": 7.9,
         "opponent": "Alanyaspor"
@@ -18335,9 +16547,13 @@ window.playerData = [
   {
     "name": "Dorgeles Nene",
     "team": "Fenerbah\u00e7e",
-    "avg_rating": 6.99,
-    "games": 15,
+    "avg_rating": 7.14,
+    "games": 16,
     "ratings": [
+      {
+        "rating": 9.4,
+        "opponent": "Gaziantep FK"
+      },
       {
         "rating": 7.1,
         "opponent": "Kas\u0131mpa\u015fa"
@@ -18788,8 +17004,12 @@ window.playerData = [
     "name": "Ederson",
     "team": "Fenerbah\u00e7e",
     "avg_rating": 7.14,
-    "games": 27,
+    "games": 28,
     "ratings": [
+      {
+        "rating": 7.2,
+        "opponent": "Gaziantep FK"
+      },
       {
         "rating": 7.7,
         "opponent": "Samsunspor"
@@ -19261,70 +17481,6 @@ window.playerData = [
     ]
   },
   {
-    "name": "Eldor Shomurodov",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 6.94,
-    "games": 14,
-    "ratings": [
-      {
-        "rating": 7.0,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Kocaelispor"
-      },
-      {
-        "rating": 8.7,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 7.7,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "Alanyaspor"
-      },
-      {
-        "rating": 6.3,
-        "opponent": "Fatih Karag\u00fcmr\u00fck"
-      },
-      {
-        "rating": 7.6,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 6.1,
-        "opponent": "Ey\u00fcpspor"
-      },
-      {
-        "rating": 6.1,
-        "opponent": "Universitatea Craiova"
-      },
-      {
-        "rating": 6.3,
-        "opponent": "Universitatea Craiova"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Viking FK"
-      }
-    ]
-  },
-  {
     "name": "Elias Durmaz",
     "team": "Gen\u00e7lerbirli\u011fi",
     "avg_rating": 6.6,
@@ -19417,34 +17573,6 @@ window.playerData = [
       {
         "rating": 6.9,
         "opponent": "Samsunspor"
-      }
-    ]
-  },
-  {
-    "name": "Emir Tinti\u015f",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.8,
-    "games": 5,
-    "ratings": [
-      {
-        "rating": 6.7,
-        "opponent": "Adanaspor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Band\u0131rmaspor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Sakaryaspor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "\u0130stanbulspor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Ke\u00e7i\u00f6reng\u00fcc\u00fc"
       }
     ]
   },
@@ -19591,9 +17719,13 @@ window.playerData = [
   {
     "name": "Emmanuel Agbadou",
     "team": "Be\u015fikta\u015f",
-    "avg_rating": 6.73,
-    "games": 3,
+    "avg_rating": 6.75,
+    "games": 4,
     "ratings": [
+      {
+        "rating": 6.8,
+        "opponent": "Kas\u0131mpa\u015fa"
+      },
       {
         "rating": 6.8,
         "opponent": "Galatasaray"
@@ -19753,46 +17885,6 @@ window.playerData = [
       {
         "rating": 7.5,
         "opponent": "Alanyaspor"
-      }
-    ]
-  },
-  {
-    "name": "Emre Bilgin",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.8,
-    "games": 8,
-    "ratings": [
-      {
-        "rating": 7.0,
-        "opponent": "I\u011fd\u0131r FK"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "Pendikspor"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Ke\u00e7i\u00f6reng\u00fcc\u00fc"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Boluspor"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Kocaelispor"
-      },
-      {
-        "rating": 5.7,
-        "opponent": "Pendikspor"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "Ke\u00e7i\u00f6reng\u00fcc\u00fc"
       }
     ]
   },
@@ -20337,38 +18429,6 @@ window.playerData = [
     ]
   },
   {
-    "name": "Enzo Roco",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.97,
-    "games": 6,
-    "ratings": [
-      {
-        "rating": 7.1,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 7.8,
-        "opponent": "Kayserispor"
-      },
-      {
-        "rating": 6.1,
-        "opponent": "Fenerbah\u00e7e"
-      }
-    ]
-  },
-  {
     "name": "Erdal Rakip",
     "team": "Antalyaspor",
     "avg_rating": 6.57,
@@ -20491,9 +18551,13 @@ window.playerData = [
   {
     "name": "Erdo\u011fan Ye\u015filyurt",
     "team": "Antalyaspor",
-    "avg_rating": 7.39,
-    "games": 7,
+    "avg_rating": 7.3,
+    "games": 8,
     "ratings": [
+      {
+        "rating": 6.7,
+        "opponent": "Ba\u015fak\u015fehir FK"
+      },
       {
         "rating": 7.6,
         "opponent": "Kayserispor"
@@ -20799,8 +18863,8 @@ window.playerData = [
   {
     "name": "Ernest Mu\u00e7i",
     "team": "Trabzonspor",
-    "avg_rating": 6.94,
-    "games": 31,
+    "avg_rating": 6.92,
+    "games": 32,
     "ratings": [
       {
         "rating": 6.3,
@@ -20857,6 +18921,10 @@ window.playerData = [
       {
         "rating": 6.9,
         "opponent": "Alanyaspor"
+      },
+      {
+        "rating": 6.5,
+        "opponent": "Ey\u00fcpspor"
       },
       {
         "rating": 7.1,
@@ -20931,9 +18999,13 @@ window.playerData = [
   {
     "name": "Ersin Destano\u011flu",
     "team": "Be\u015fikta\u015f",
-    "avg_rating": 6.88,
-    "games": 17,
+    "avg_rating": 6.87,
+    "games": 18,
     "ratings": [
+      {
+        "rating": 6.6,
+        "opponent": "Kas\u0131mpa\u015fa"
+      },
       {
         "rating": 7.3,
         "opponent": "Galatasaray"
@@ -21301,27 +19373,15 @@ window.playerData = [
     ]
   },
   {
-    "name": "Fatih Kurucuk",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.35,
-    "games": 2,
-    "ratings": [
-      {
-        "rating": 6.6,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 6.1,
-        "opponent": "Galatasaray"
-      }
-    ]
-  },
-  {
     "name": "Fedor Chalov",
     "team": "Kayserispor",
-    "avg_rating": 6.5,
-    "games": 2,
+    "avg_rating": 6.67,
+    "games": 3,
     "ratings": [
+      {
+        "rating": 7.0,
+        "opponent": "Fatih Karag\u00fcmr\u00fck"
+      },
       {
         "rating": 7.0,
         "opponent": "Trabzonspor"
@@ -21424,8 +19484,12 @@ window.playerData = [
     "name": "Felix Uduokhai",
     "team": "Be\u015fikta\u015f",
     "avg_rating": 6.91,
-    "games": 25,
+    "games": 26,
     "ratings": [
+      {
+        "rating": 7.0,
+        "opponent": "Kas\u0131mpa\u015fa"
+      },
       {
         "rating": 7.5,
         "opponent": "Galatasaray"
@@ -21617,51 +19681,15 @@ window.playerData = [
     ]
   },
   {
-    "name": "Festy Ebosele",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 6.95,
-    "games": 8,
-    "ratings": [
-      {
-        "rating": 6.5,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "Alanyaspor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Fatih Karag\u00fcmr\u00fck"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "Ey\u00fcpspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Universitatea Craiova"
-      },
-      {
-        "rating": 8.0,
-        "opponent": "Adana Demirspor"
-      }
-    ]
-  },
-  {
     "name": "Fidan Aliti",
     "team": "Alanyaspor",
-    "avg_rating": 6.87,
-    "games": 38,
+    "avg_rating": 6.88,
+    "games": 39,
     "ratings": [
+      {
+        "rating": 7.4,
+        "opponent": "Kocaelispor"
+      },
       {
         "rating": 7.5,
         "opponent": "Gen\u00e7lerbirli\u011fi"
@@ -21991,9 +20019,13 @@ window.playerData = [
   {
     "name": "Florent Hadergjonaj",
     "team": "Alanyaspor",
-    "avg_rating": 7.18,
-    "games": 29,
+    "avg_rating": 7.22,
+    "games": 30,
     "ratings": [
+      {
+        "rating": 8.5,
+        "opponent": "Kocaelispor"
+      },
       {
         "rating": 7.5,
         "opponent": "Gen\u00e7lerbirli\u011fi"
@@ -22115,9 +20147,13 @@ window.playerData = [
   {
     "name": "Fousseni Diabat\u00e9",
     "team": "Kas\u0131mpa\u015fa",
-    "avg_rating": 6.85,
-    "games": 11,
+    "avg_rating": 6.8,
+    "games": 12,
     "ratings": [
+      {
+        "rating": 6.2,
+        "opponent": "Be\u015fikta\u015f JK"
+      },
       {
         "rating": 6.9,
         "opponent": "Konyaspor"
@@ -22167,9 +20203,13 @@ window.playerData = [
   {
     "name": "Franco Tongya",
     "team": "Gen\u00e7lerbirli\u011fi",
-    "avg_rating": 6.8,
-    "games": 17,
+    "avg_rating": 6.78,
+    "games": 18,
     "ratings": [
+      {
+        "rating": 6.5,
+        "opponent": "Konyaspor"
+      },
       {
         "rating": 6.8,
         "opponent": "Ey\u00fcpspor"
@@ -22437,70 +20477,6 @@ window.playerData = [
     ]
   },
   {
-    "name": "Furkan Beklevi\u00e7",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.85,
-    "games": 14,
-    "ratings": [
-      {
-        "rating": 6.8,
-        "opponent": "Band\u0131rmaspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Adanaspor"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Band\u0131rmaspor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Sakaryaspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "\u0130stanbulspor"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "\u015eanl\u0131urfaspor"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "MKE Ankarag\u00fcc\u00fc"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "\u00dcmraniyespor"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Manisa FK"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "\u00c7orum FK"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Amed Sportif Faaliyetler"
-      },
-      {
-        "rating": 7.8,
-        "opponent": "I\u011fd\u0131r FK"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Boluspor"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      }
-    ]
-  },
-  {
     "name": "Furkan Gedik",
     "team": "Kocaelispor",
     "avg_rating": 6.65,
@@ -22517,31 +20493,15 @@ window.playerData = [
     ]
   },
   {
-    "name": "Furkan Onur Aky\u00fcz",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.7,
-    "games": 3,
-    "ratings": [
-      {
-        "rating": 6.4,
-        "opponent": "Esenler Erokspor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Erzurumspor FK"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Yeni Malatyaspor"
-      }
-    ]
-  },
-  {
     "name": "Furkan Soyalp",
     "team": "Gaziantep",
-    "avg_rating": 6.87,
-    "games": 20,
+    "avg_rating": 6.86,
+    "games": 21,
     "ratings": [
+      {
+        "rating": 6.6,
+        "opponent": "Fatih Karag\u00fcmr\u00fck"
+      },
       {
         "rating": 6.5,
         "opponent": "Trabzonspor"
@@ -22891,9 +20851,13 @@ window.playerData = [
   {
     "name": "Gaius Makouta",
     "team": "Alanyaspor",
-    "avg_rating": 6.74,
-    "games": 33,
+    "avg_rating": 6.75,
+    "games": 34,
     "ratings": [
+      {
+        "rating": 7.0,
+        "opponent": "Kocaelispor"
+      },
       {
         "rating": 6.9,
         "opponent": "Gen\u00e7lerbirli\u011fi"
@@ -23139,9 +21103,13 @@ window.playerData = [
   {
     "name": "Georgiy Dzhikiya",
     "team": "Antalyaspor",
-    "avg_rating": 6.71,
-    "games": 10,
+    "avg_rating": 6.77,
+    "games": 11,
     "ratings": [
+      {
+        "rating": 7.4,
+        "opponent": "Ba\u015fak\u015fehir FK"
+      },
       {
         "rating": 6.1,
         "opponent": "Be\u015fikta\u015f JK"
@@ -23739,9 +21707,13 @@ window.playerData = [
   {
     "name": "G\u00f6khan De\u011firmenci",
     "team": "Kocaelispor",
-    "avg_rating": 7.03,
-    "games": 33,
+    "avg_rating": 6.99,
+    "games": 34,
     "ratings": [
+      {
+        "rating": 5.6,
+        "opponent": "Alanyaspor"
+      },
       {
         "rating": 7.9,
         "opponent": "Ey\u00fcpspor"
@@ -24059,92 +22031,12 @@ window.playerData = [
   {
     "name": "G\u00f6ktan G\u00fcrp\u00fcz",
     "team": "Gen\u00e7lerbirli\u011fi",
-    "avg_rating": 6.75,
-    "games": 40,
+    "avg_rating": 6.72,
+    "games": 20,
     "ratings": [
       {
-        "rating": 6.9,
-        "opponent": "Band\u0131rmaspor"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "I\u011fd\u0131r FK"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Boluspor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Esenler Erokspor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Erzurumspor FK"
-      },
-      {
-        "rating": 8.3,
-        "opponent": "Yeni Malatyaspor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Kocaelispor"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Band\u0131rmaspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Sakaryaspor"
-      },
-      {
         "rating": 6.5,
-        "opponent": "\u0130stanbulspor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "\u015eanl\u0131urfaspor"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "MKE Ankarag\u00fcc\u00fc"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "\u00dcmraniyespor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Manisa FK"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "\u00c7orum FK"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "Amed Sportif Faaliyetler"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "I\u011fd\u0131r FK"
-      },
-      {
-        "rating": 6.1,
-        "opponent": "Pendikspor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Ke\u00e7i\u00f6reng\u00fcc\u00fc"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Boluspor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
+        "opponent": "Konyaspor"
       },
       {
         "rating": 6.6,
@@ -24451,9 +22343,13 @@ window.playerData = [
   {
     "name": "Habib Keita",
     "team": "Kocaelispor",
-    "avg_rating": 6.83,
-    "games": 15,
+    "avg_rating": 6.78,
+    "games": 16,
     "ratings": [
+      {
+        "rating": 6.1,
+        "opponent": "Alanyaspor"
+      },
       {
         "rating": 6.9,
         "opponent": "Ey\u00fcpspor"
@@ -24697,46 +22593,6 @@ window.playerData = [
     ]
   },
   {
-    "name": "Hamza G\u00fcreler",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 6.91,
-    "games": 8,
-    "ratings": [
-      {
-        "rating": 7.2,
-        "opponent": "Fatih Karag\u00fcmr\u00fck"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "Adana Demirspor"
-      },
-      {
-        "rating": 6.0,
-        "opponent": "Alanyaspor"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Adana Demirspor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "1. FC Heidenheim"
-      }
-    ]
-  },
-  {
     "name": "Haris Hajradinovi\u0107",
     "team": "Kas\u0131mpa\u015fa",
     "avg_rating": 7.59,
@@ -24931,9 +22787,13 @@ window.playerData = [
   {
     "name": "Hrvoje Smol\u010di\u0107",
     "team": "Kocaelispor",
-    "avg_rating": 7.1,
-    "games": 17,
+    "avg_rating": 7.04,
+    "games": 18,
     "ratings": [
+      {
+        "rating": 6.1,
+        "opponent": "Alanyaspor"
+      },
       {
         "rating": 6.9,
         "opponent": "Ey\u00fcpspor"
@@ -25071,9 +22931,13 @@ window.playerData = [
   {
     "name": "Hyeon-gyu Oh",
     "team": "Be\u015fikta\u015f",
-    "avg_rating": 7.35,
-    "games": 2,
+    "avg_rating": 7.43,
+    "games": 3,
     "ratings": [
+      {
+        "rating": 7.6,
+        "opponent": "Kas\u0131mpa\u015fa"
+      },
       {
         "rating": 6.6,
         "opponent": "Galatasaray"
@@ -25316,8 +23180,12 @@ window.playerData = [
     "name": "Ianis Hagi",
     "team": "Alanyaspor",
     "avg_rating": 6.93,
-    "games": 12,
+    "games": 13,
     "ratings": [
+      {
+        "rating": 6.9,
+        "opponent": "Kocaelispor"
+      },
       {
         "rating": 6.7,
         "opponent": "Ba\u015fak\u015fehir FK"
@@ -25645,127 +23513,11 @@ window.playerData = [
     ]
   },
   {
-    "name": "Ivan Brni\u0107",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 7.02,
-    "games": 13,
-    "ratings": [
-      {
-        "rating": 6.7,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Alanyaspor"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Universitatea Craiova"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Viking FK"
-      },
-      {
-        "rating": 8.7,
-        "opponent": "Cherno More Varna"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Adana Demirspor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Fenerbah\u00e7e"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Gaziantep FK"
-      },
-      {
-        "rating": 6.1,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "Ey\u00fcpspor"
-      }
-    ]
-  },
-  {
     "name": "Ivo Grbi\u0107",
     "team": "\u00c7aykur Rizespor",
-    "avg_rating": 7.05,
-    "games": 22,
+    "avg_rating": 7.06,
+    "games": 8,
     "ratings": [
-      {
-        "rating": 6.8,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 9.6,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Kayserispor"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Fenerbah\u00e7e"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Gaziantep FK"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "Trabzonspor"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "Samsunspor"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Ba\u015fak\u015fehir FK"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 6.3,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Galatasaray"
-      },
       {
         "rating": 7.3,
         "opponent": "Hatayspor"
@@ -25886,9 +23638,9 @@ window.playerData = [
   },
   {
     "name": "Jakub Ka\u0142uzi\u0144ski",
-    "team": "Ba\u015fak\u015fehir",
+    "team": "Antalyaspor",
     "avg_rating": 7.13,
-    "games": 28,
+    "games": 26,
     "ratings": [
       {
         "rating": 6.9,
@@ -25993,14 +23745,6 @@ window.playerData = [
       {
         "rating": 7.5,
         "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "G\u00f6ztepe"
       }
     ]
   },
@@ -26240,8 +23984,12 @@ window.playerData = [
     "name": "Jayden Oosterwolde",
     "team": "Fenerbah\u00e7e",
     "avg_rating": 6.89,
-    "games": 34,
+    "games": 35,
     "ratings": [
+      {
+        "rating": 7.1,
+        "opponent": "Gaziantep FK"
+      },
       {
         "rating": 6.2,
         "opponent": "Samsunspor"
@@ -26393,135 +24141,15 @@ window.playerData = [
     ]
   },
   {
-    "name": "Jerome Opoku",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 6.94,
-    "games": 29,
-    "ratings": [
-      {
-        "rating": 7.1,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Kocaelispor"
-      },
-      {
-        "rating": 7.9,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Alanyaspor"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Fatih Karag\u00fcmr\u00fck"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 7.6,
-        "opponent": "Ey\u00fcpspor"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "Universitatea Craiova"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Adana Demirspor"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Fenerbah\u00e7e"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Hatayspor"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Bodrum FK"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 7.7,
-        "opponent": "Samsunspor"
-      },
-      {
-        "rating": 6.1,
-        "opponent": "Alanyaspor"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 6.1,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Adana Demirspor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Cercle Brugge"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Fenerbah\u00e7e"
-      },
-      {
-        "rating": 7.7,
-        "opponent": "1. FC Heidenheim"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Hatayspor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "G\u00f6ztepe"
-      }
-    ]
-  },
-  {
     "name": "Jesper Ceesay",
     "team": "Antalyaspor",
     "avg_rating": 6.9,
-    "games": 14,
+    "games": 15,
     "ratings": [
+      {
+        "rating": 6.9,
+        "opponent": "Ba\u015fak\u015fehir FK"
+      },
       {
         "rating": 6.5,
         "opponent": "\u00c7aykur Rizespor"
@@ -26739,9 +24367,13 @@ window.playerData = [
   {
     "name": "Jim Allevinah",
     "team": "Kas\u0131mpa\u015fa",
-    "avg_rating": 6.6,
-    "games": 1,
+    "avg_rating": 6.65,
+    "games": 2,
     "ratings": [
+      {
+        "rating": 6.7,
+        "opponent": "Be\u015fikta\u015f JK"
+      },
       {
         "rating": 6.6,
         "opponent": "Gaziantep FK"
@@ -27151,9 +24783,13 @@ window.playerData = [
   {
     "name": "Joseph Nonge",
     "team": "Kocaelispor",
-    "avg_rating": 6.65,
-    "games": 8,
+    "avg_rating": 6.69,
+    "games": 9,
     "ratings": [
+      {
+        "rating": 7.0,
+        "opponent": "Alanyaspor"
+      },
       {
         "rating": 6.3,
         "opponent": "Kas\u0131mpa\u015fa"
@@ -27191,9 +24827,13 @@ window.playerData = [
   {
     "name": "Joshua Brenet",
     "team": "Kayserispor",
-    "avg_rating": 6.7,
-    "games": 4,
+    "avg_rating": 6.8,
+    "games": 5,
     "ratings": [
+      {
+        "rating": 7.2,
+        "opponent": "Fatih Karag\u00fcmr\u00fck"
+      },
       {
         "rating": 6.1,
         "opponent": "Trabzonspor"
@@ -27361,147 +25001,15 @@ window.playerData = [
     ]
   },
   {
-    "name": "Jo\u00e3o Camacho",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.75,
-    "games": 25,
-    "ratings": [
-      {
-        "rating": 6.1,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "Trabzonspor"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Band\u0131rmaspor"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "I\u011fd\u0131r FK"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Pendikspor"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Ke\u00e7i\u00f6reng\u00fcc\u00fc"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Boluspor"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Erzurumspor FK"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Yeni Malatyaspor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Kocaelispor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Adanaspor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Band\u0131rmaspor"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Sakaryaspor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "\u0130stanbulspor"
-      },
-      {
-        "rating": 7.6,
-        "opponent": "\u015eanl\u0131urfaspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "MKE Ankarag\u00fcc\u00fc"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "\u00dcmraniyespor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Manisa FK"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "\u00c7orum FK"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Amed Sportif Faaliyetler"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Pendikspor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Ke\u00e7i\u00f6reng\u00fcc\u00fc"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Boluspor"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      }
-    ]
-  },
-  {
-    "name": "Jo\u00e3o Figueiredo",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 6.76,
-    "games": 5,
-    "ratings": [
-      {
-        "rating": 6.7,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 6.3,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Sivasspor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Kas\u0131mpa\u015fa"
-      }
-    ]
-  },
-  {
     "name": "Jo\u00e3o Mendes",
     "team": "Kayserispor",
-    "avg_rating": 6.98,
-    "games": 13,
+    "avg_rating": 6.96,
+    "games": 14,
     "ratings": [
+      {
+        "rating": 6.8,
+        "opponent": "Fatih Karag\u00fcmr\u00fck"
+      },
       {
         "rating": 6.7,
         "opponent": "Antalyaspor"
@@ -27787,9 +25295,13 @@ window.playerData = [
   {
     "name": "Juli\u00e1n Cuesta",
     "team": "Antalyaspor",
-    "avg_rating": 7.11,
-    "games": 14,
+    "avg_rating": 7.19,
+    "games": 15,
     "ratings": [
+      {
+        "rating": 8.3,
+        "opponent": "Ba\u015fak\u015fehir FK"
+      },
       {
         "rating": 8.2,
         "opponent": "\u00c7aykur Rizespor"
@@ -27867,9 +25379,13 @@ window.playerData = [
   {
     "name": "Junior Olaitan",
     "team": "G\u00f6ztepe",
-    "avg_rating": 7.08,
-    "games": 13,
+    "avg_rating": 7.07,
+    "games": 14,
     "ratings": [
+      {
+        "rating": 7.0,
+        "opponent": "Kas\u0131mpa\u015fa"
+      },
       {
         "rating": 6.6,
         "opponent": "Galatasaray"
@@ -27927,57 +25443,9 @@ window.playerData = [
   {
     "name": "Jure Balkovec",
     "team": "Alanyaspor",
-    "avg_rating": 6.8,
-    "games": 20,
+    "avg_rating": 7.11,
+    "games": 8,
     "ratings": [
-      {
-        "rating": 7.1,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 7.6,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 5.4,
-        "opponent": "Fenerbah\u00e7e"
-      },
-      {
-        "rating": 6.0,
-        "opponent": "Gaziantep FK"
-      },
-      {
-        "rating": 5.5,
-        "opponent": "Trabzonspor"
-      },
-      {
-        "rating": 6.1,
-        "opponent": "Samsunspor"
-      },
-      {
-        "rating": 5.9,
-        "opponent": "Ba\u015fak\u015fehir FK"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Galatasaray"
-      },
       {
         "rating": 7.7,
         "opponent": "Sivasspor"
@@ -28103,9 +25571,13 @@ window.playerData = [
   {
     "name": "Kacper Koz\u0142owski",
     "team": "Gaziantep",
-    "avg_rating": 6.99,
-    "games": 40,
+    "avg_rating": 6.97,
+    "games": 41,
     "ratings": [
+      {
+        "rating": 6.1,
+        "opponent": "Fenerbah\u00e7e"
+      },
       {
         "rating": 6.5,
         "opponent": "Trabzonspor"
@@ -28271,9 +25743,13 @@ window.playerData = [
   {
     "name": "Kamil Ahmet \u00c7\u00f6rek\u00e7i",
     "team": "Kas\u0131mpa\u015fa",
-    "avg_rating": 6.7,
-    "games": 3,
+    "avg_rating": 6.6,
+    "games": 4,
     "ratings": [
+      {
+        "rating": 6.3,
+        "opponent": "Be\u015fikta\u015f JK"
+      },
       {
         "rating": 7.7,
         "opponent": "Fenerbah\u00e7e"
@@ -28343,9 +25819,13 @@ window.playerData = [
   {
     "name": "Karamba Gassama",
     "team": "Gaziantep",
-    "avg_rating": 6.7,
-    "games": 3,
+    "avg_rating": 6.72,
+    "games": 4,
     "ratings": [
+      {
+        "rating": 6.8,
+        "opponent": "Fenerbah\u00e7e"
+      },
       {
         "rating": 6.3,
         "opponent": "Fatih Karag\u00fcmr\u00fck"
@@ -28363,9 +25843,13 @@ window.playerData = [
   {
     "name": "Karol Linetty",
     "team": "Kocaelispor",
-    "avg_rating": 6.7,
-    "games": 16,
+    "avg_rating": 6.69,
+    "games": 17,
     "ratings": [
+      {
+        "rating": 6.5,
+        "opponent": "Alanyaspor"
+      },
       {
         "rating": 6.5,
         "opponent": "Ey\u00fcpspor"
@@ -28815,9 +26299,13 @@ window.playerData = [
   {
     "name": "Kenneth Paal",
     "team": "Antalyaspor",
-    "avg_rating": 6.5,
-    "games": 22,
+    "avg_rating": 6.54,
+    "games": 23,
     "ratings": [
+      {
+        "rating": 7.4,
+        "opponent": "Ba\u015fak\u015fehir FK"
+      },
       {
         "rating": 7.0,
         "opponent": "\u00c7aykur Rizespor"
@@ -29239,9 +26727,13 @@ window.playerData = [
   {
     "name": "Kristjan Asllani",
     "team": "Be\u015fikta\u015f",
-    "avg_rating": 6.73,
-    "games": 3,
+    "avg_rating": 6.65,
+    "games": 4,
     "ratings": [
+      {
+        "rating": 6.4,
+        "opponent": "Kas\u0131mpa\u015fa"
+      },
       {
         "rating": 6.7,
         "opponent": "Galatasaray"
@@ -29253,94 +26745,6 @@ window.playerData = [
       {
         "rating": 6.5,
         "opponent": "Ba\u015fak\u015fehir FK"
-      }
-    ]
-  },
-  {
-    "name": "Krzysztof Pi\u0105tek",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 7.53,
-    "games": 20,
-    "ratings": [
-      {
-        "rating": 6.4,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Fenerbah\u00e7e"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Hatayspor"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Gaziantep FK"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Ey\u00fcpspor"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Sivasspor"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Bodrum FK"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 9.5,
-        "opponent": "Samsunspor"
-      },
-      {
-        "rating": 9.3,
-        "opponent": "Alanyaspor"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Adana Demirspor"
-      },
-      {
-        "rating": 8.1,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "Cercle Brugge"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Fenerbah\u00e7e"
-      },
-      {
-        "rating": 8.7,
-        "opponent": "1. FC Heidenheim"
-      },
-      {
-        "rating": 7.6,
-        "opponent": "Hatayspor"
-      },
-      {
-        "rating": 9.9,
-        "opponent": "G\u00f6ztepe"
       }
     ]
   },
@@ -29912,8 +27316,12 @@ window.playerData = [
     "name": "Levent Mercan",
     "team": "Fenerbah\u00e7e",
     "avg_rating": 7.12,
-    "games": 12,
+    "games": 13,
     "ratings": [
+      {
+        "rating": 7.2,
+        "opponent": "Gaziantep FK"
+      },
       {
         "rating": 6.3,
         "opponent": "Samsunspor"
@@ -30325,62 +27733,6 @@ window.playerData = [
     ]
   },
   {
-    "name": "Lucas Lima",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 6.86,
-    "games": 12,
-    "ratings": [
-      {
-        "rating": 7.5,
-        "opponent": "Sivasspor"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "Bodrum FK"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Samsunspor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Adana Demirspor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Cercle Brugge"
-      },
-      {
-        "rating": 6.1,
-        "opponent": "Fenerbah\u00e7e"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "1. FC Heidenheim"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Hatayspor"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "G\u00f6ztepe"
-      }
-    ]
-  },
-  {
     "name": "Lucas Torreira",
     "team": "Galatasaray",
     "avg_rating": 7.22,
@@ -30691,9 +28043,13 @@ window.playerData = [
   {
     "name": "Luis P\u00e9rez",
     "team": "Gaziantep",
-    "avg_rating": 6.91,
-    "games": 15,
+    "avg_rating": 6.9,
+    "games": 16,
     "ratings": [
+      {
+        "rating": 6.7,
+        "opponent": "Fenerbah\u00e7e"
+      },
       {
         "rating": 6.9,
         "opponent": "Fatih Karag\u00fcmr\u00fck"
@@ -30759,9 +28115,13 @@ window.playerData = [
   {
     "name": "L\u00e1szl\u00f3 B\u00e9nes",
     "team": "Kayserispor",
-    "avg_rating": 7.03,
-    "games": 21,
+    "avg_rating": 7.04,
+    "games": 22,
     "ratings": [
+      {
+        "rating": 7.1,
+        "opponent": "Fatih Karag\u00fcmr\u00fck"
+      },
       {
         "rating": 8.0,
         "opponent": "Trabzonspor"
@@ -30849,130 +28209,6 @@ window.playerData = [
     ]
   },
   {
-    "name": "L\u00e9o Duarte",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 7.03,
-    "games": 29,
-    "ratings": [
-      {
-        "rating": 6.5,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "Kocaelispor"
-      },
-      {
-        "rating": 7.7,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 8.1,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Universitatea Craiova"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Viking FK"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Viking FK"
-      },
-      {
-        "rating": 7.6,
-        "opponent": "Cherno More Varna"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 7.8,
-        "opponent": "Fenerbah\u00e7e"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Hatayspor"
-      },
-      {
-        "rating": 6.3,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Gaziantep FK"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Ey\u00fcpspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Sivasspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Bodrum FK"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Samsunspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Adana Demirspor"
-      },
-      {
-        "rating": 6.0,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 7.7,
-        "opponent": "Cercle Brugge"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "Fenerbah\u00e7e"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "1. FC Heidenheim"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Hatayspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "G\u00f6ztepe"
-      }
-    ]
-  },
-  {
     "name": "L\u00e9o Ga\u00facho",
     "team": "Gen\u00e7lerbirli\u011fi",
     "avg_rating": 7.0,
@@ -30991,9 +28227,13 @@ window.playerData = [
   {
     "name": "M'Baye Niang",
     "team": "Gen\u00e7lerbirli\u011fi",
-    "avg_rating": 6.54,
-    "games": 14,
+    "avg_rating": 6.52,
+    "games": 15,
     "ratings": [
+      {
+        "rating": 6.2,
+        "opponent": "Konyaspor"
+      },
       {
         "rating": 6.5,
         "opponent": "Ey\u00fcpspor"
@@ -31640,8 +28880,12 @@ window.playerData = [
     "name": "Marco Asensio",
     "team": "Fenerbah\u00e7e",
     "avg_rating": 7.32,
-    "games": 25,
+    "games": 26,
     "ratings": [
+      {
+        "rating": 7.1,
+        "opponent": "Gaziantep FK"
+      },
       {
         "rating": 7.2,
         "opponent": "Samsunspor"
@@ -32205,138 +29449,6 @@ window.playerData = [
     ]
   },
   {
-    "name": "Marius Tresor Doh",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.93,
-    "games": 31,
-    "ratings": [
-      {
-        "rating": 6.0,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 6.3,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Gaziantep FK"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Trabzonspor"
-      },
-      {
-        "rating": 6.3,
-        "opponent": "Samsunspor"
-      },
-      {
-        "rating": 3.0,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Band\u0131rmaspor"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "I\u011fd\u0131r FK"
-      },
-      {
-        "rating": 7.6,
-        "opponent": "Pendikspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Ke\u00e7i\u00f6reng\u00fcc\u00fc"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Boluspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Esenler Erokspor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Erzurumspor FK"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Yeni Malatyaspor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Kocaelispor"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Adanaspor"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Band\u0131rmaspor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Sakaryaspor"
-      },
-      {
-        "rating": 8.4,
-        "opponent": "\u015eanl\u0131urfaspor"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "MKE Ankarag\u00fcc\u00fc"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "\u00dcmraniyespor"
-      },
-      {
-        "rating": 9.1,
-        "opponent": "Manisa FK"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Amed Sportif Faaliyetler"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "I\u011fd\u0131r FK"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Pendikspor"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "Ke\u00e7i\u00f6reng\u00fcc\u00fc"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Boluspor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      }
-    ]
-  },
-  {
     "name": "Marko Jevtovi\u0107",
     "team": "Konyaspor",
     "avg_rating": 6.9,
@@ -32525,18 +29637,6 @@ window.playerData = [
       {
         "rating": 6.6,
         "opponent": "Trabzonspor"
-      }
-    ]
-  },
-  {
-    "name": "Matchoi Djal\u00f3",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 6.2,
-    "games": 1,
-    "ratings": [
-      {
-        "rating": 6.2,
-        "opponent": "Adana Demirspor"
       }
     ]
   },
@@ -32763,9 +29863,13 @@ window.playerData = [
   {
     "name": "Mathias L\u00f8vik",
     "team": "Trabzonspor",
-    "avg_rating": 6.3,
-    "games": 5,
+    "avg_rating": 6.38,
+    "games": 6,
     "ratings": [
+      {
+        "rating": 6.8,
+        "opponent": "Ey\u00fcpspor"
+      },
       {
         "rating": 6.0,
         "opponent": "Fenerbah\u00e7e"
@@ -32792,8 +29896,12 @@ window.playerData = [
     "name": "Matt\u00e9o Guendouzi",
     "team": "Fenerbah\u00e7e",
     "avg_rating": 7.48,
-    "games": 9,
+    "games": 10,
     "ratings": [
+      {
+        "rating": 7.5,
+        "opponent": "Gaziantep FK"
+      },
       {
         "rating": 8.5,
         "opponent": "Samsunspor"
@@ -32829,38 +29937,6 @@ window.playerData = [
       {
         "rating": 8.8,
         "opponent": "Galatasaray"
-      }
-    ]
-  },
-  {
-    "name": "Mat\u00edas Kranevitter",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.5,
-    "games": 6,
-    "ratings": [
-      {
-        "rating": 6.7,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 6.3,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Kayserispor"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Fenerbah\u00e7e"
       }
     ]
   },
@@ -33167,8 +30243,8 @@ window.playerData = [
   {
     "name": "Melih Kabasakal",
     "team": "Gaziantep",
-    "avg_rating": 6.85,
-    "games": 29,
+    "avg_rating": 6.84,
+    "games": 30,
     "ratings": [
       {
         "rating": 7.5,
@@ -33229,6 +30305,10 @@ window.playerData = [
       {
         "rating": 7.3,
         "opponent": "Antalyaspor"
+      },
+      {
+        "rating": 6.7,
+        "opponent": "Fenerbah\u00e7e"
       },
       {
         "rating": 6.6,
@@ -33863,9 +30943,13 @@ window.playerData = [
   {
     "name": "Metehan Mimaro\u011flu",
     "team": "Gen\u00e7lerbirli\u011fi",
-    "avg_rating": 7.09,
-    "games": 41,
+    "avg_rating": 7.08,
+    "games": 42,
     "ratings": [
+      {
+        "rating": 6.7,
+        "opponent": "Konyaspor"
+      },
       {
         "rating": 6.2,
         "opponent": "Alanyaspor"
@@ -34140,8 +31224,12 @@ window.playerData = [
     "name": "Miguel Cardoso",
     "team": "Kayserispor",
     "avg_rating": 6.95,
-    "games": 48,
+    "games": 49,
     "ratings": [
+      {
+        "rating": 7.1,
+        "opponent": "Fatih Karag\u00fcmr\u00fck"
+      },
       {
         "rating": 7.4,
         "opponent": "Trabzonspor"
@@ -34333,150 +31421,6 @@ window.playerData = [
       {
         "rating": 7.0,
         "opponent": "Hatayspor"
-      }
-    ]
-  },
-  {
-    "name": "Miguel Crespo",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 7.03,
-    "games": 34,
-    "ratings": [
-      {
-        "rating": 6.9,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Kocaelispor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 7.7,
-        "opponent": "Alanyaspor"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Fatih Karag\u00fcmr\u00fck"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 6.0,
-        "opponent": "Ey\u00fcpspor"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Universitatea Craiova"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Universitatea Craiova"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "Viking FK"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Viking FK"
-      },
-      {
-        "rating": 8.5,
-        "opponent": "Cherno More Varna"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Fenerbah\u00e7e"
-      },
-      {
-        "rating": 8.4,
-        "opponent": "Hatayspor"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Gaziantep FK"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Ey\u00fcpspor"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Samsunspor"
-      },
-      {
-        "rating": 7.6,
-        "opponent": "Alanyaspor"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Adana Demirspor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Cercle Brugge"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Fenerbah\u00e7e"
-      },
-      {
-        "rating": 8.9,
-        "opponent": "1. FC Heidenheim"
-      },
-      {
-        "rating": 8.1,
-        "opponent": "Hatayspor"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "G\u00f6ztepe"
       }
     ]
   },
@@ -35003,9 +31947,13 @@ window.playerData = [
   {
     "name": "Mohamed Bayo",
     "team": "Gaziantep",
-    "avg_rating": 6.81,
-    "games": 18,
+    "avg_rating": 6.78,
+    "games": 19,
     "ratings": [
+      {
+        "rating": 6.3,
+        "opponent": "Fenerbah\u00e7e"
+      },
       {
         "rating": 6.6,
         "opponent": "Fatih Karag\u00fcmr\u00fck"
@@ -35083,9 +32031,13 @@ window.playerData = [
   {
     "name": "Mortadha Ben Ouanes",
     "team": "Kas\u0131mpa\u015fa",
-    "avg_rating": 6.81,
-    "games": 30,
+    "avg_rating": 6.8,
+    "games": 31,
     "ratings": [
+      {
+        "rating": 6.3,
+        "opponent": "Be\u015fikta\u015f JK"
+      },
       {
         "rating": 6.6,
         "opponent": "Konyaspor"
@@ -35441,202 +32393,6 @@ window.playerData = [
     ]
   },
   {
-    "name": "Muhammed Kad\u0131o\u011flu",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.24,
-    "games": 5,
-    "ratings": [
-      {
-        "rating": 5.8,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 6.0,
-        "opponent": "Gaziantep FK"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Ba\u015fak\u015fehir FK"
-      },
-      {
-        "rating": 5.8,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Antalyaspor"
-      }
-    ]
-  },
-  {
-    "name": "Muhammed Mert",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.55,
-    "games": 2,
-    "ratings": [
-      {
-        "rating": 6.5,
-        "opponent": "Pendikspor"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Adanaspor"
-      }
-    ]
-  },
-  {
-    "name": "Muhammed \u015eengezer",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 7.22,
-    "games": 36,
-    "ratings": [
-      {
-        "rating": 7.9,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 8.9,
-        "opponent": "Kocaelispor"
-      },
-      {
-        "rating": 7.6,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Alanyaspor"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "Fatih Karag\u00fcmr\u00fck"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Universitatea Craiova"
-      },
-      {
-        "rating": 7.6,
-        "opponent": "Viking FK"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Viking FK"
-      },
-      {
-        "rating": 8.0,
-        "opponent": "Cherno More Varna"
-      },
-      {
-        "rating": 8.0,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 7.9,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 6.0,
-        "opponent": "Fenerbah\u00e7e"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Hatayspor"
-      },
-      {
-        "rating": 8.3,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Gaziantep FK"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 8.7,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Ey\u00fcpspor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Sivasspor"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Bodrum FK"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "Samsunspor"
-      },
-      {
-        "rating": 5.8,
-        "opponent": "Alanyaspor"
-      },
-      {
-        "rating": 7.8,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Adana Demirspor"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 8.0,
-        "opponent": "Cercle Brugge"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "1. FC Heidenheim"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "Hatayspor"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "G\u00f6ztepe"
-      }
-    ]
-  },
-  {
     "name": "Muhammet Taha Gunes",
     "team": "Gaziantep",
     "avg_rating": 7.0,
@@ -35795,9 +32551,13 @@ window.playerData = [
   {
     "name": "Mustafa Burak Bozan",
     "team": "Gaziantep",
-    "avg_rating": 6.9,
-    "games": 24,
+    "avg_rating": 6.84,
+    "games": 25,
     "ratings": [
+      {
+        "rating": 5.3,
+        "opponent": "Fenerbah\u00e7e"
+      },
       {
         "rating": 6.9,
         "opponent": "Fenerbah\u00e7e"
@@ -36175,9 +32935,13 @@ window.playerData = [
   {
     "name": "Myenty Abena",
     "team": "Gaziantep",
-    "avg_rating": 6.73,
-    "games": 12,
+    "avg_rating": 6.68,
+    "games": 13,
     "ratings": [
+      {
+        "rating": 6.1,
+        "opponent": "Fenerbah\u00e7e"
+      },
       {
         "rating": 6.3,
         "opponent": "Ba\u015fak\u015fehir FK"
@@ -36231,9 +32995,13 @@ window.playerData = [
   {
     "name": "N'Golo Kant\u00e9",
     "team": "Fenerbah\u00e7e",
-    "avg_rating": 6.7,
-    "games": 4,
+    "avg_rating": 7.0,
+    "games": 5,
     "ratings": [
+      {
+        "rating": 8.2,
+        "opponent": "Gaziantep FK"
+      },
       {
         "rating": 7.4,
         "opponent": "Samsunspor"
@@ -36443,9 +33211,13 @@ window.playerData = [
   {
     "name": "Nicolas Janvier",
     "team": "Alanyaspor",
-    "avg_rating": 7.09,
-    "games": 19,
+    "avg_rating": 7.13,
+    "games": 20,
     "ratings": [
+      {
+        "rating": 8.0,
+        "opponent": "Kocaelispor"
+      },
       {
         "rating": 7.9,
         "opponent": "Gen\u00e7lerbirli\u011fi"
@@ -36527,8 +33299,8 @@ window.playerData = [
   {
     "name": "Nihad Mujaki\u0107",
     "team": "Gaziantep",
-    "avg_rating": 6.66,
-    "games": 18,
+    "avg_rating": 6.62,
+    "games": 19,
     "ratings": [
       {
         "rating": 6.3,
@@ -36581,6 +33353,10 @@ window.playerData = [
       {
         "rating": 6.4,
         "opponent": "Be\u015fikta\u015f JK"
+      },
+      {
+        "rating": 5.8,
+        "opponent": "Fenerbah\u00e7e"
       },
       {
         "rating": 7.2,
@@ -36657,54 +33433,6 @@ window.playerData = [
     ]
   },
   {
-    "name": "Nikola Dovedan",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.91,
-    "games": 10,
-    "ratings": [
-      {
-        "rating": 6.5,
-        "opponent": "Pendikspor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Ke\u00e7i\u00f6reng\u00fcc\u00fc"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "Esenler Erokspor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Yeni Malatyaspor"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Manisa FK"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "\u00c7orum FK"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Amed Sportif Faaliyetler"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "I\u011fd\u0131r FK"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Pendikspor"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "Ke\u00e7i\u00f6reng\u00fcc\u00fc"
-      }
-    ]
-  },
-  {
     "name": "Nikola Storm",
     "team": "Antalyaspor",
     "avg_rating": 6.71,
@@ -36769,22 +33497,6 @@ window.playerData = [
       {
         "rating": 7.9,
         "opponent": "Kas\u0131mpa\u015fa"
-      }
-    ]
-  },
-  {
-    "name": "Nikoloz Ugrekhelidze",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.3,
-    "games": 2,
-    "ratings": [
-      {
-        "rating": 6.5,
-        "opponent": "Gaziantep FK"
-      },
-      {
-        "rating": 6.1,
-        "opponent": "Trabzonspor"
       }
     ]
   },
@@ -36907,41 +33619,9 @@ window.playerData = [
   {
     "name": "Nuno Da Costa",
     "team": "Kas\u0131mpa\u015fa",
-    "avg_rating": 7.33,
-    "games": 20,
+    "avg_rating": 7.51,
+    "games": 12,
     "ratings": [
-      {
-        "rating": 6.9,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 6.3,
-        "opponent": "Kocaelispor"
-      },
-      {
-        "rating": 8.3,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Universitatea Craiova"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Viking FK"
-      },
-      {
-        "rating": 8.0,
-        "opponent": "Cherno More Varna"
-      },
       {
         "rating": 7.8,
         "opponent": "Gaziantep FK"
@@ -36995,9 +33675,13 @@ window.playerData = [
   {
     "name": "Nuno Lima",
     "team": "Alanyaspor",
-    "avg_rating": 6.93,
-    "games": 38,
+    "avg_rating": 6.96,
+    "games": 39,
     "ratings": [
+      {
+        "rating": 8.2,
+        "opponent": "Kocaelispor"
+      },
       {
         "rating": 7.9,
         "opponent": "Gen\u00e7lerbirli\u011fi"
@@ -37927,9 +34611,13 @@ window.playerData = [
   {
     "name": "Oleksandr Zubkov",
     "team": "Trabzonspor",
-    "avg_rating": 7.38,
-    "games": 32,
+    "avg_rating": 7.39,
+    "games": 33,
     "ratings": [
+      {
+        "rating": 7.9,
+        "opponent": "Ey\u00fcpspor"
+      },
       {
         "rating": 7.3,
         "opponent": "Kayserispor"
@@ -38057,118 +34745,6 @@ window.playerData = [
       {
         "rating": 6.8,
         "opponent": "Ey\u00fcpspor"
-      }
-    ]
-  },
-  {
-    "name": "Olivier Kemen",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 6.9,
-    "games": 26,
-    "ratings": [
-      {
-        "rating": 6.6,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 6.1,
-        "opponent": "Alanyaspor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Fatih Karag\u00fcmr\u00fck"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Ey\u00fcpspor"
-      },
-      {
-        "rating": 7.7,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Fenerbah\u00e7e"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Hatayspor"
-      },
-      {
-        "rating": 6.3,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Gaziantep FK"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Sivasspor"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 8.2,
-        "opponent": "Samsunspor"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Alanyaspor"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Adana Demirspor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Cercle Brugge"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Fenerbah\u00e7e"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "1. FC Heidenheim"
-      },
-      {
-        "rating": 8.1,
-        "opponent": "Hatayspor"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "G\u00f6ztepe"
       }
     ]
   },
@@ -38326,89 +34902,13 @@ window.playerData = [
   },
   {
     "name": "Onur Bulut",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 6.77,
-    "games": 8,
+    "team": "Be\u015fikta\u015f",
+    "avg_rating": 7.1,
+    "games": 1,
     "ratings": [
       {
         "rating": 7.1,
         "opponent": "Bodrum FK"
-      },
-      {
-        "rating": 6.3,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Kocaelispor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Universitatea Craiova"
-      },
-      {
-        "rating": 6.3,
-        "opponent": "Viking FK"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Viking FK"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Cherno More Varna"
-      }
-    ]
-  },
-  {
-    "name": "Onur Erg\u00fcn",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 6.89,
-    "games": 10,
-    "ratings": [
-      {
-        "rating": 6.6,
-        "opponent": "Ey\u00fcpspor"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Universitatea Craiova"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Adana Demirspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Cercle Brugge"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "1. FC Heidenheim"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Hatayspor"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "G\u00f6ztepe"
       }
     ]
   },
@@ -38495,9 +34995,13 @@ window.playerData = [
   {
     "name": "Orkun K\u00f6k\u00e7\u00fc",
     "team": "Be\u015fikta\u015f",
-    "avg_rating": 7.46,
-    "games": 24,
+    "avg_rating": 7.5,
+    "games": 25,
     "ratings": [
+      {
+        "rating": 8.3,
+        "opponent": "Kas\u0131mpa\u015fa"
+      },
       {
         "rating": 8.0,
         "opponent": "Galatasaray"
@@ -38609,115 +35113,15 @@ window.playerData = [
     ]
   },
   {
-    "name": "Ousseynou Ba",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 6.87,
-    "games": 24,
-    "ratings": [
-      {
-        "rating": 6.7,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 6.0,
-        "opponent": "Alanyaspor"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Ey\u00fcpspor"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Universitatea Craiova"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Universitatea Craiova"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Viking FK"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "Viking FK"
-      },
-      {
-        "rating": 7.7,
-        "opponent": "Cherno More Varna"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 6.1,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Gaziantep FK"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Ey\u00fcpspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Sivasspor"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "Alanyaspor"
-      },
-      {
-        "rating": 8.0,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Cercle Brugge"
-      },
-      {
-        "rating": 5.6,
-        "opponent": "Fenerbah\u00e7e"
-      },
-      {
-        "rating": 7.9,
-        "opponent": "Hatayspor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "G\u00f6ztepe"
-      }
-    ]
-  },
-  {
     "name": "Ozan Tufan",
     "team": "Trabzonspor",
-    "avg_rating": 6.82,
-    "games": 19,
+    "avg_rating": 6.83,
+    "games": 20,
     "ratings": [
+      {
+        "rating": 7.0,
+        "opponent": "Ey\u00fcpspor"
+      },
       {
         "rating": 6.5,
         "opponent": "Kayserispor"
@@ -39241,123 +35645,15 @@ window.playerData = [
     ]
   },
   {
-    "name": "Papy Djilobodji",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 7.07,
-    "games": 23,
-    "ratings": [
-      {
-        "rating": 6.8,
-        "opponent": "Band\u0131rmaspor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "I\u011fd\u0131r FK"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Pendikspor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Ke\u00e7i\u00f6reng\u00fcc\u00fc"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Boluspor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Esenler Erokspor"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "Erzurumspor FK"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Kocaelispor"
-      },
-      {
-        "rating": 7.9,
-        "opponent": "Adanaspor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Band\u0131rmaspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Sakaryaspor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "\u0130stanbulspor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "\u015eanl\u0131urfaspor"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "MKE Ankarag\u00fcc\u00fc"
-      },
-      {
-        "rating": 8.3,
-        "opponent": "\u00dcmraniyespor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Manisa FK"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "\u00c7orum FK"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "Amed Sportif Faaliyetler"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "I\u011fd\u0131r FK"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Pendikspor"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "Ke\u00e7i\u00f6reng\u00fcc\u00fc"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Boluspor"
-      }
-    ]
-  },
-  {
-    "name": "Patryk Szysz",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 6.6,
-    "games": 1,
-    "ratings": [
-      {
-        "rating": 6.6,
-        "opponent": "Kas\u0131mpa\u015fa"
-      }
-    ]
-  },
-  {
     "name": "Paul Onuachu",
     "team": "Trabzonspor",
-    "avg_rating": 7.35,
-    "games": 20,
+    "avg_rating": 7.29,
+    "games": 21,
     "ratings": [
+      {
+        "rating": 6.2,
+        "opponent": "Ey\u00fcpspor"
+      },
       {
         "rating": 7.9,
         "opponent": "Kayserispor"
@@ -39443,9 +35739,13 @@ window.playerData = [
   {
     "name": "Paulo Victor",
     "team": "Alanyaspor",
-    "avg_rating": 6.67,
-    "games": 4,
+    "avg_rating": 6.92,
+    "games": 5,
     "ratings": [
+      {
+        "rating": 7.9,
+        "opponent": "Kocaelispor"
+      },
       {
         "rating": 6.6,
         "opponent": "Gen\u00e7lerbirli\u011fi"
@@ -39772,8 +36072,12 @@ window.playerData = [
     "name": "Pedro Pereira",
     "team": "Gen\u00e7lerbirli\u011fi",
     "avg_rating": 6.55,
-    "games": 22,
+    "games": 23,
     "ratings": [
+      {
+        "rating": 6.6,
+        "opponent": "Konyaspor"
+      },
       {
         "rating": 7.1,
         "opponent": "Alanyaspor"
@@ -39861,50 +36165,6 @@ window.playerData = [
       {
         "rating": 5.8,
         "opponent": "Samsunspor"
-      }
-    ]
-  },
-  {
-    "name": "Philippe Keny",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 6.93,
-    "games": 9,
-    "ratings": [
-      {
-        "rating": 6.5,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Adana Demirspor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Bodrum FK"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "Samsunspor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Alanyaspor"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Galatasaray"
       }
     ]
   },
@@ -40371,9 +36631,13 @@ window.playerData = [
   {
     "name": "Ramazan Civelek",
     "team": "Kayserispor",
-    "avg_rating": 6.61,
-    "games": 34,
+    "avg_rating": 6.62,
+    "games": 35,
     "ratings": [
+      {
+        "rating": 6.8,
+        "opponent": "Fatih Karag\u00fcmr\u00fck"
+      },
       {
         "rating": 6.2,
         "opponent": "Trabzonspor"
@@ -40516,8 +36780,12 @@ window.playerData = [
     "name": "Ramzi Safuri",
     "team": "Antalyaspor",
     "avg_rating": 6.9,
-    "games": 28,
+    "games": 29,
     "ratings": [
+      {
+        "rating": 6.9,
+        "opponent": "Ba\u015fak\u015fehir FK"
+      },
       {
         "rating": 7.2,
         "opponent": "Samsunspor"
@@ -40701,39 +36969,15 @@ window.playerData = [
     ]
   },
   {
-    "name": "Ricardo Esgaio",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.02,
-    "games": 5,
-    "ratings": [
-      {
-        "rating": 5.8,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 5.8,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 5.9,
-        "opponent": "Trabzonspor"
-      },
-      {
-        "rating": 5.5,
-        "opponent": "Samsunspor"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Kas\u0131mpa\u015fa"
-      }
-    ]
-  },
-  {
     "name": "Ricardo Velho",
     "team": "Gen\u00e7lerbirli\u011fi",
-    "avg_rating": 7.12,
-    "games": 13,
+    "avg_rating": 7.21,
+    "games": 14,
     "ratings": [
+      {
+        "rating": 8.5,
+        "opponent": "Konyaspor"
+      },
       {
         "rating": 9.1,
         "opponent": "Alanyaspor"
@@ -41183,9 +37427,13 @@ window.playerData = [
   {
     "name": "Rigoberto Rivas",
     "team": "Kocaelispor",
-    "avg_rating": 6.82,
-    "games": 16,
+    "avg_rating": 6.74,
+    "games": 17,
     "ratings": [
+      {
+        "rating": 5.3,
+        "opponent": "Alanyaspor"
+      },
       {
         "rating": 6.9,
         "opponent": "\u00c7aykur Rizespor"
@@ -41387,9 +37635,13 @@ window.playerData = [
   {
     "name": "Rodrigo Bec\u00e3o",
     "team": "Kas\u0131mpa\u015fa",
-    "avg_rating": 6.7,
-    "games": 6,
+    "avg_rating": 6.73,
+    "games": 7,
     "ratings": [
+      {
+        "rating": 6.9,
+        "opponent": "Be\u015fikta\u015f JK"
+      },
       {
         "rating": 6.1,
         "opponent": "Konyaspor"
@@ -41588,8 +37840,12 @@ window.playerData = [
     "name": "Ruan",
     "team": "Alanyaspor",
     "avg_rating": 6.91,
-    "games": 16,
+    "games": 17,
     "ratings": [
+      {
+        "rating": 7.0,
+        "opponent": "Kocaelispor"
+      },
       {
         "rating": 6.8,
         "opponent": "Ba\u015fak\u015fehir FK"
@@ -41903,9 +38159,13 @@ window.playerData = [
   {
     "name": "R\u0131dvan Y\u0131lmaz",
     "team": "Be\u015fikta\u015f",
-    "avg_rating": 6.81,
-    "games": 13,
+    "avg_rating": 6.78,
+    "games": 14,
     "ratings": [
+      {
+        "rating": 6.4,
+        "opponent": "Kas\u0131mpa\u015fa"
+      },
       {
         "rating": 7.5,
         "opponent": "Galatasaray"
@@ -42053,22 +38313,6 @@ window.playerData = [
     ]
   },
   {
-    "name": "Salih Dursun",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.7,
-    "games": 2,
-    "ratings": [
-      {
-        "rating": 6.9,
-        "opponent": "Yeni Malatyaspor"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "\u0130stanbulspor"
-      }
-    ]
-  },
-  {
     "name": "Salih Malko\u00e7o\u011flu",
     "team": "Trabzonspor",
     "avg_rating": 7.17,
@@ -42126,9 +38370,9 @@ window.playerData = [
   },
   {
     "name": "Sam Larsson",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.72,
-    "games": 30,
+    "team": "Antalyaspor",
+    "avg_rating": 6.73,
+    "games": 24,
     "ratings": [
       {
         "rating": 6.6,
@@ -42225,30 +38469,6 @@ window.playerData = [
       {
         "rating": 7.1,
         "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Kayserispor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Fenerbah\u00e7e"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Gaziantep FK"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Trabzonspor"
       }
     ]
   },
@@ -42547,9 +38767,13 @@ window.playerData = [
   {
     "name": "Samuel Ballet",
     "team": "Antalyaspor",
-    "avg_rating": 6.77,
-    "games": 9,
+    "avg_rating": 6.68,
+    "games": 10,
     "ratings": [
+      {
+        "rating": 5.9,
+        "opponent": "Ba\u015fak\u015fehir FK"
+      },
       {
         "rating": 6.4,
         "opponent": "\u00c7aykur Rizespor"
@@ -42607,9 +38831,13 @@ window.playerData = [
   {
     "name": "Sander van de Streek",
     "team": "Antalyaspor",
-    "avg_rating": 6.77,
-    "games": 38,
+    "avg_rating": 6.76,
+    "games": 39,
     "ratings": [
+      {
+        "rating": 6.4,
+        "opponent": "Ba\u015fak\u015fehir FK"
+      },
       {
         "rating": 6.3,
         "opponent": "\u00c7aykur Rizespor"
@@ -42943,9 +39171,13 @@ window.playerData = [
   {
     "name": "Semih G\u00fcler",
     "team": "Gaziantep",
-    "avg_rating": 6.87,
-    "games": 19,
+    "avg_rating": 6.95,
+    "games": 20,
     "ratings": [
+      {
+        "rating": 8.4,
+        "opponent": "Fatih Karag\u00fcmr\u00fck"
+      },
       {
         "rating": 7.5,
         "opponent": "Trabzonspor"
@@ -43047,9 +39279,13 @@ window.playerData = [
   {
     "name": "Serdar Dursun",
     "team": "Kocaelispor",
-    "avg_rating": 6.75,
-    "games": 8,
+    "avg_rating": 6.68,
+    "games": 9,
     "ratings": [
+      {
+        "rating": 6.1,
+        "opponent": "Alanyaspor"
+      },
       {
         "rating": 7.7,
         "opponent": "Ey\u00fcpspor"
@@ -43169,110 +39405,6 @@ window.playerData = [
       {
         "rating": 6.5,
         "opponent": "G\u00f6ztepe"
-      }
-    ]
-  },
-  {
-    "name": "Serginho",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.87,
-    "games": 24,
-    "ratings": [
-      {
-        "rating": 6.9,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 6.3,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 8.6,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "Kayserispor"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Fenerbah\u00e7e"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Samsunspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Pendikspor"
-      },
-      {
-        "rating": 7.8,
-        "opponent": "Ke\u00e7i\u00f6reng\u00fcc\u00fc"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Boluspor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Esenler Erokspor"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Erzurumspor FK"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Kocaelispor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Adanaspor"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Band\u0131rmaspor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Sakaryaspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "\u0130stanbulspor"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "\u015eanl\u0131urfaspor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "MKE Ankarag\u00fcc\u00fc"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "\u00dcmraniyespor"
       }
     ]
   },
@@ -43451,9 +39583,13 @@ window.playerData = [
   {
     "name": "Sidiki Cherif",
     "team": "Fenerbah\u00e7e",
-    "avg_rating": 6.8,
-    "games": 1,
+    "avg_rating": 6.75,
+    "games": 2,
     "ratings": [
+      {
+        "rating": 6.7,
+        "opponent": "Gaziantep FK"
+      },
       {
         "rating": 6.8,
         "opponent": "Samsunspor"
@@ -43807,9 +39943,13 @@ window.playerData = [
   {
     "name": "Soner Dikmen",
     "team": "Antalyaspor",
-    "avg_rating": 6.7,
-    "games": 34,
+    "avg_rating": 6.69,
+    "games": 35,
     "ratings": [
+      {
+        "rating": 6.3,
+        "opponent": "Ba\u015fak\u015fehir FK"
+      },
       {
         "rating": 6.5,
         "opponent": "\u00c7aykur Rizespor"
@@ -43996,8 +40136,12 @@ window.playerData = [
     "name": "Stefan Savi\u0107",
     "team": "Trabzonspor",
     "avg_rating": 7.18,
-    "games": 23,
+    "games": 24,
     "ratings": [
+      {
+        "rating": 7.2,
+        "opponent": "Ey\u00fcpspor"
+      },
       {
         "rating": 7.2,
         "opponent": "Kayserispor"
@@ -44095,9 +40239,13 @@ window.playerData = [
   {
     "name": "Stefano Denswil",
     "team": "Kayserispor",
-    "avg_rating": 6.65,
-    "games": 23,
+    "avg_rating": 6.7,
+    "games": 24,
     "ratings": [
+      {
+        "rating": 7.8,
+        "opponent": "Fatih Karag\u00fcmr\u00fck"
+      },
       {
         "rating": 6.6,
         "opponent": "Trabzonspor"
@@ -44195,9 +40343,13 @@ window.playerData = [
   {
     "name": "Steve Mouni\u00e9",
     "team": "Alanyaspor",
-    "avg_rating": 6.0,
-    "games": 2,
+    "avg_rating": 6.1,
+    "games": 3,
     "ratings": [
+      {
+        "rating": 6.3,
+        "opponent": "Kocaelispor"
+      },
       {
         "rating": 6.1,
         "opponent": "Gen\u00e7lerbirli\u011fi"
@@ -44514,9 +40666,9 @@ window.playerData = [
   },
   {
     "name": "Talha \u00dclvan",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.95,
-    "games": 17,
+    "team": "Ey\u00fcpspor",
+    "avg_rating": 6.93,
+    "games": 8,
     "ratings": [
       {
         "rating": 7.7,
@@ -44549,42 +40701,6 @@ window.playerData = [
       {
         "rating": 8.1,
         "opponent": "Konyaspor"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Band\u0131rmaspor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "I\u011fd\u0131r FK"
-      },
-      {
-        "rating": 6.1,
-        "opponent": "Pendikspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Ke\u00e7i\u00f6reng\u00fcc\u00fc"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Manisa FK"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "\u00c7orum FK"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Amed Sportif Faaliyetler"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "I\u011fd\u0131r FK"
       }
     ]
   },
@@ -44737,22 +40853,6 @@ window.playerData = [
       {
         "rating": 6.9,
         "opponent": "Kas\u0131mpa\u015fa"
-      }
-    ]
-  },
-  {
-    "name": "Tarik Bugra Kalpakli",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.45,
-    "games": 2,
-    "ratings": [
-      {
-        "rating": 6.6,
-        "opponent": "Ba\u015fak\u015fehir FK"
-      },
-      {
-        "rating": 6.3,
-        "opponent": "Antalyaspor"
       }
     ]
   },
@@ -45083,8 +41183,8 @@ window.playerData = [
   {
     "name": "Tayyip Talha Sanu\u00e7",
     "team": "Gaziantep",
-    "avg_rating": 6.56,
-    "games": 18,
+    "avg_rating": 6.52,
+    "games": 19,
     "ratings": [
       {
         "rating": 5.4,
@@ -45109,6 +41209,10 @@ window.playerData = [
       {
         "rating": 6.4,
         "opponent": "Adana Demirspor"
+      },
+      {
+        "rating": 5.9,
+        "opponent": "Fenerbah\u00e7e"
       },
       {
         "rating": 7.2,
@@ -45196,7 +41300,7 @@ window.playerData = [
     "name": "Thalisson Kelven",
     "team": "Gen\u00e7lerbirli\u011fi",
     "avg_rating": 6.82,
-    "games": 45,
+    "games": 46,
     "ratings": [
       {
         "rating": 6.8,
@@ -45293,6 +41397,10 @@ window.playerData = [
       {
         "rating": 7.1,
         "opponent": "Be\u015fikta\u015f JK"
+      },
+      {
+        "rating": 6.7,
+        "opponent": "Konyaspor"
       },
       {
         "rating": 7.1,
@@ -45437,59 +41545,15 @@ window.playerData = [
     ]
   },
   {
-    "name": "Tiago \u00c7ukur",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.51,
-    "games": 10,
-    "ratings": [
-      {
-        "rating": 6.5,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Fenerbah\u00e7e"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Gaziantep FK"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Trabzonspor"
-      },
-      {
-        "rating": 6.3,
-        "opponent": "Samsunspor"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "Ba\u015fak\u015fehir FK"
-      },
-      {
-        "rating": 6.3,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Galatasaray"
-      }
-    ]
-  },
-  {
     "name": "Tim Jabol-Folcarelli",
     "team": "Trabzonspor",
     "avg_rating": 6.94,
-    "games": 26,
+    "games": 27,
     "ratings": [
+      {
+        "rating": 6.9,
+        "opponent": "Ey\u00fcpspor"
+      },
       {
         "rating": 6.7,
         "opponent": "Gaziantep FK"
@@ -45600,8 +41664,12 @@ window.playerData = [
     "name": "Tom Dele-Bashiru",
     "team": "Gen\u00e7lerbirli\u011fi",
     "avg_rating": 6.88,
-    "games": 18,
+    "games": 19,
     "ratings": [
+      {
+        "rating": 6.9,
+        "opponent": "Konyaspor"
+      },
       {
         "rating": 7.3,
         "opponent": "Alanyaspor"
@@ -45823,9 +41891,13 @@ window.playerData = [
   {
     "name": "Ui-Jo Hwang",
     "team": "Alanyaspor",
-    "avg_rating": 6.68,
-    "games": 28,
+    "avg_rating": 6.73,
+    "games": 29,
     "ratings": [
+      {
+        "rating": 8.2,
+        "opponent": "Kocaelispor"
+      },
       {
         "rating": 6.4,
         "opponent": "Gen\u00e7lerbirli\u011fi"
@@ -46027,49 +42099,9 @@ window.playerData = [
   {
     "name": "Umut G\u00fcne\u015f",
     "team": "Trabzonspor",
-    "avg_rating": 6.79,
-    "games": 13,
+    "avg_rating": 6.77,
+    "games": 3,
     "ratings": [
-      {
-        "rating": 6.5,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Kocaelispor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "\u00c7aykur Rizespor"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "Adana Demirspor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Fenerbah\u00e7e"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Ey\u00fcpspor"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Bodrum FK"
-      },
       {
         "rating": 6.9,
         "opponent": "Ey\u00fcpspor"
@@ -46195,9 +42227,13 @@ window.playerData = [
   {
     "name": "Umut Nayir",
     "team": "Konyaspor",
-    "avg_rating": 7.2,
-    "games": 25,
+    "avg_rating": 7.18,
+    "games": 26,
     "ratings": [
+      {
+        "rating": 6.7,
+        "opponent": "Ey\u00fcpspor"
+      },
       {
         "rating": 7.0,
         "opponent": "Gaziantep FK"
@@ -46679,9 +42715,13 @@ window.playerData = [
   {
     "name": "Veysel Sar\u0131",
     "team": "Antalyaspor",
-    "avg_rating": 6.87,
-    "games": 42,
+    "avg_rating": 6.88,
+    "games": 43,
     "ratings": [
+      {
+        "rating": 7.2,
+        "opponent": "Ba\u015fak\u015fehir FK"
+      },
       {
         "rating": 7.2,
         "opponent": "\u00c7aykur Rizespor"
@@ -47057,18 +43097,6 @@ window.playerData = [
     ]
   },
   {
-    "name": "Volkan Babacan",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 7.3,
-    "games": 1,
-    "ratings": [
-      {
-        "rating": 7.3,
-        "opponent": "Universitatea Craiova"
-      }
-    ]
-  },
-  {
     "name": "V\u00e1clav Jure\u010dka",
     "team": "\u00c7aykur Rizespor",
     "avg_rating": 6.64,
@@ -47115,9 +43143,13 @@ window.playerData = [
   {
     "name": "V\u00e1clav \u010cern\u00fd",
     "team": "Be\u015fikta\u015f",
-    "avg_rating": 6.88,
-    "games": 18,
+    "avg_rating": 6.86,
+    "games": 19,
     "ratings": [
+      {
+        "rating": 6.5,
+        "opponent": "Kas\u0131mpa\u015fa"
+      },
       {
         "rating": 6.6,
         "opponent": "Galatasaray"
@@ -47293,103 +43325,15 @@ window.playerData = [
     ]
   },
   {
-    "name": "Wesley Moraes",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 7.26,
-    "games": 21,
-    "ratings": [
-      {
-        "rating": 7.6,
-        "opponent": "Band\u0131rmaspor"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "I\u011fd\u0131r FK"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Pendikspor"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "Ke\u00e7i\u00f6reng\u00fcc\u00fc"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Boluspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 8.1,
-        "opponent": "Esenler Erokspor"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "Erzurumspor FK"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Kocaelispor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Adanaspor"
-      },
-      {
-        "rating": 8.2,
-        "opponent": "Band\u0131rmaspor"
-      },
-      {
-        "rating": 8.8,
-        "opponent": "Sakaryaspor"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "\u0130stanbulspor"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "\u015eanl\u0131urfaspor"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "MKE Ankarag\u00fcc\u00fc"
-      },
-      {
-        "rating": 5.9,
-        "opponent": "\u00c7orum FK"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "I\u011fd\u0131r FK"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Pendikspor"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Ke\u00e7i\u00f6reng\u00fcc\u00fc"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Boluspor"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      }
-    ]
-  },
-  {
     "name": "Wilfred Ndidi",
     "team": "Be\u015fikta\u015f",
-    "avg_rating": 6.94,
-    "games": 17,
+    "avg_rating": 6.9,
+    "games": 18,
     "ratings": [
+      {
+        "rating": 6.3,
+        "opponent": "Kas\u0131mpa\u015fa"
+      },
       {
         "rating": 6.3,
         "opponent": "Galatasaray"
@@ -47902,10 +43846,14 @@ window.playerData = [
   },
   {
     "name": "Yi\u011fit Efe Demir",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 7.06,
-    "games": 26,
+    "team": "Fenerbah\u00e7e",
+    "avg_rating": 7.27,
+    "games": 3,
     "ratings": [
+      {
+        "rating": 7.3,
+        "opponent": "Gaziantep FK"
+      },
       {
         "rating": 7.1,
         "opponent": "G\u00f6ztepe"
@@ -47913,102 +43861,6 @@ window.playerData = [
       {
         "rating": 7.4,
         "opponent": "Ba\u015fak\u015fehir FK"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "Band\u0131rmaspor"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "I\u011fd\u0131r FK"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Pendikspor"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Ke\u00e7i\u00f6reng\u00fcc\u00fc"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Boluspor"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "Esenler Erokspor"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "Erzurumspor FK"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Kocaelispor"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "Adanaspor"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Band\u0131rmaspor"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Sakaryaspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "\u0130stanbulspor"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "\u015eanl\u0131urfaspor"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "MKE Ankarag\u00fcc\u00fc"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "\u00dcmraniyespor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Manisa FK"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "\u00c7orum FK"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Amed Sportif Faaliyetler"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "I\u011fd\u0131r FK"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Pendikspor"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Ke\u00e7i\u00f6reng\u00fcc\u00fc"
-      },
-      {
-        "rating": 6.1,
-        "opponent": "Boluspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
       }
     ]
   },
@@ -48051,9 +43903,13 @@ window.playerData = [
   {
     "name": "Youssef A\u00eft Bennasser",
     "team": "Samsunspor",
-    "avg_rating": 6.96,
-    "games": 31,
+    "avg_rating": 6.97,
+    "games": 32,
     "ratings": [
+      {
+        "rating": 7.3,
+        "opponent": "Fatih Karag\u00fcmr\u00fck"
+      },
       {
         "rating": 6.7,
         "opponent": "Kocaelispor"
@@ -48759,9 +44615,13 @@ window.playerData = [
   {
     "name": "Yusuf Kabadayi",
     "team": "Gaziantep",
-    "avg_rating": 6.38,
-    "games": 4,
+    "avg_rating": 6.3,
+    "games": 5,
     "ratings": [
+      {
+        "rating": 6.0,
+        "opponent": "Fenerbah\u00e7e"
+      },
       {
         "rating": 6.1,
         "opponent": "Konyaspor"
@@ -48793,98 +44653,6 @@ window.playerData = [
       {
         "rating": 6.9,
         "opponent": "Fenerbah\u00e7e"
-      }
-    ]
-  },
-  {
-    "name": "Yusuf Sar\u0131",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 7.2,
-    "games": 21,
-    "ratings": [
-      {
-        "rating": 6.5,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 7.9,
-        "opponent": "Kocaelispor"
-      },
-      {
-        "rating": 7.6,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Alanyaspor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Fatih Karag\u00fcmr\u00fck"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Ey\u00fcpspor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Viking FK"
-      },
-      {
-        "rating": 7.6,
-        "opponent": "Cherno More Varna"
-      },
-      {
-        "rating": 6.3,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 8.5,
-        "opponent": "Kas\u0131mpa\u015fa"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Fenerbah\u00e7e"
-      },
-      {
-        "rating": 8.3,
-        "opponent": "Hatayspor"
-      },
-      {
-        "rating": 6.3,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Gaziantep FK"
-      },
-      {
-        "rating": 8.1,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 7.6,
-        "opponent": "Ey\u00fcpspor"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Sivasspor"
-      },
-      {
-        "rating": 7.6,
-        "opponent": "Bodrum FK"
       }
     ]
   },
@@ -49405,214 +45173,6 @@ window.playerData = [
     ]
   },
   {
-    "name": "\u00c7a\u011ftay Kurukal\u0131p",
-    "team": "Karag\u00fcmr\u00fck",
-    "avg_rating": 6.95,
-    "games": 24,
-    "ratings": [
-      {
-        "rating": 7.6,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Kayserispor"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Band\u0131rmaspor"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "I\u011fd\u0131r FK"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Pendikspor"
-      },
-      {
-        "rating": 7.3,
-        "opponent": "Ke\u00e7i\u00f6reng\u00fcc\u00fc"
-      },
-      {
-        "rating": 7.1,
-        "opponent": "Boluspor"
-      },
-      {
-        "rating": 7.9,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Esenler Erokspor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Erzurumspor FK"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Yeni Malatyaspor"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Kocaelispor"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "\u015eanl\u0131urfaspor"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "MKE Ankarag\u00fcc\u00fc"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "\u00dcmraniyespor"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Manisa FK"
-      },
-      {
-        "rating": 7.5,
-        "opponent": "\u00c7orum FK"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Amed Sportif Faaliyetler"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "I\u011fd\u0131r FK"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "Pendikspor"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Boluspor"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      }
-    ]
-  },
-  {
-    "name": "\u00d6mer Ali \u015eahiner",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 6.66,
-    "games": 18,
-    "ratings": [
-      {
-        "rating": 6.5,
-        "opponent": "Gen\u00e7lerbirli\u011fi"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Kocaelispor"
-      },
-      {
-        "rating": 6.5,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Viking FK"
-      },
-      {
-        "rating": 7.2,
-        "opponent": "Cherno More Varna"
-      },
-      {
-        "rating": 6.3,
-        "opponent": "Galatasaray"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Fenerbah\u00e7e"
-      },
-      {
-        "rating": 6.4,
-        "opponent": "Hatayspor"
-      },
-      {
-        "rating": 6.3,
-        "opponent": "G\u00f6ztepe"
-      },
-      {
-        "rating": 7.4,
-        "opponent": "Gaziantep FK"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Be\u015fikta\u015f JK"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Konyaspor"
-      },
-      {
-        "rating": 5.9,
-        "opponent": "Ey\u00fcpspor"
-      },
-      {
-        "rating": 7.0,
-        "opponent": "Sivasspor"
-      },
-      {
-        "rating": 6.2,
-        "opponent": "Bodrum FK"
-      },
-      {
-        "rating": 6.9,
-        "opponent": "Antalyaspor"
-      },
-      {
-        "rating": 6.7,
-        "opponent": "Samsunspor"
-      }
-    ]
-  },
-  {
-    "name": "\u00d6mer Faruk Beyaz",
-    "team": "Ba\u015fak\u015fehir",
-    "avg_rating": 6.47,
-    "games": 4,
-    "ratings": [
-      {
-        "rating": 6.2,
-        "opponent": "Universitatea Craiova"
-      },
-      {
-        "rating": 6.3,
-        "opponent": "Viking FK"
-      },
-      {
-        "rating": 6.8,
-        "opponent": "Adana Demirspor"
-      },
-      {
-        "rating": 6.6,
-        "opponent": "Galatasaray"
-      }
-    ]
-  },
-  {
     "name": "\u00d6m\u00fcrcan Artan",
     "team": "Gaziantep",
     "avg_rating": 7.0,
@@ -49636,8 +45196,12 @@ window.playerData = [
     "name": "\u00dcmit Akda\u011f",
     "team": "Alanyaspor",
     "avg_rating": 7.0,
-    "games": 20,
+    "games": 21,
     "ratings": [
+      {
+        "rating": 7.1,
+        "opponent": "Kocaelispor"
+      },
       {
         "rating": 7.9,
         "opponent": "Gen\u00e7lerbirli\u011fi"
@@ -50311,9 +45875,13 @@ window.playerData = [
   {
     "name": "\u017dan \u017du\u017eek",
     "team": "Gen\u00e7lerbirli\u011fi",
-    "avg_rating": 6.96,
-    "games": 45,
+    "avg_rating": 6.95,
+    "games": 46,
     "ratings": [
+      {
+        "rating": 6.4,
+        "opponent": "Konyaspor"
+      },
       {
         "rating": 7.8,
         "opponent": "Alanyaspor"
